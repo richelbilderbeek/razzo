@@ -1,11 +1,21 @@
 Package: razzo
 Type: Package
-Title: What the Package Does (Title Case)
+Title: The Error If Nature Is MBD 
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Authors@R: c(
+  person("Giavonni", "Laudanno", role = c("aut")),
+  person("Richel", "Bilderbeek", email = "richel@richelbilderbeek.nl", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1107-7049")))
+Author: Richel J.C. Bilderbeek <richel@richelbilderbeek.nl>
+Maintainer: Richel J.C. Bilderbeek <richel@richelbilderbeek.nl>
+Description: The MBD model is a model that does stuff.
+  That stuff is important. That is why we use it. This
+  package measures the error BEAST2 makes if nature follow that model,
+  when we are only using contemporary priors.
+License: GPL-3 | file LICENSE
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 6.1.0
+Suggests: testthat,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
