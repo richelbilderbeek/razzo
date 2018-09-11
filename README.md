@@ -19,4 +19,4 @@ devtools::install_github("richelbilderbeek/razzo")
 
 Package|[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)|[![Codecov logo](pics/Codecov.png)](https://www.codecov.io)
 ---|---|---
-[mbd](https://github.com/giappo/mbd)|[![Build Status](https://travis-ci.org/giappo/mbd.svg?branch=master)](https://travis-ci.org/giappo/mbd)|[![codecov.io](https://codecov.io/github/giappo/mbd/coverage.svg?branch=master)](https://codecov.io/github/giappo/mbd/branch/master)
+[mbd](https://github.com/Giappo/mbd)|[![Build Status](https://travis-ci.org/Giappo/mbd.svg?branch=master)](https://travis-ci.org/Giappo/mbd)|[![codecov.io](https://codecov.io/github/Giappo/mbd/coverage.svg?branch=master)](https://codecov.io/github/Giappo/mbd/branch/master)
