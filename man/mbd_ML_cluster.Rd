@@ -2,7 +2,7 @@
 % Please edit documentation in R/mbd_ml_cluster.R
 \name{mbd_ML_cluster}
 \alias{mbd_ML_cluster}
-\title{Maximization of the loglikelihood under 
+\title{Maximization of the loglikelihood under
   a multiple birth-death diversification model, wrapped for cluster usage.}
 \usage{
 mbd_ML_cluster(s, initparsopt = c(0.6, 0.1, 1.3, 0.16))
