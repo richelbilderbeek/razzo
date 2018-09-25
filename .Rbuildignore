@@ -4,3 +4,5 @@
 ^pics$
 ^CONTRIBUTING\.md$
 ^NEWS\.md$
+^cluster_scripts$
+^scripts$

@@ -8,9 +8,15 @@ r_packages:
   - xml2
 
 r_github_packages:
+  - Giappo/mbd
   - jimhester/covr
   - jimhester/lintr
   - MangoTheCat/goodpractice
+  - richelbilderbeek/beautier
+  - richelbilderbeek/beastier
+  - richelbilderbeek/babette
+  - richelbilderbeek/pirouette
+  - richelbilderbeek/tracerer
   - ropensci/spelling
 
 before_script:
