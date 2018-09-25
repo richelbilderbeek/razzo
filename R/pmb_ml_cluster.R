@@ -4,6 +4,8 @@
 #' @inheritParams default_params_doc
 #' @param s something
 #' @param initparsopt something
+#' @param mbd_ML something
+#' @param sim_data something
 #' @export
 pmb_ML_cluster <- function(
   s,
@@ -106,6 +108,11 @@ pmb_ML_cluster <- function(
 # @Giappo: add doc
 # TODO: may be same as pmb_ML_cluster
 #' Does something O
+#' @param s something
+#' @param initparsopt something
+#' @param pmb_ML something
+#' @param sim_data something
+#' @param brts something
 #' @export
 pmb_ML_cluster2 <- function(
   s,

@@ -19,6 +19,10 @@ pmb_ML_cluster(s, initparsopt = c(0.5, 0, 1.7, 0.15), sim_pars, cond,
 
 \item{tips_interval}{Sets tips boundaries constrain on simulated dataset.}
 
+\item{mbd_ML}{something}
+
+\item{sim_data}{something}
+
 \item{soc}{Sets whether stem or crown age should be used (1 or 2).}
 
 \item{brts}{something}

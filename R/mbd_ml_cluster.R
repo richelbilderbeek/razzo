@@ -6,6 +6,8 @@
 #' @inheritParams default_params_doc
 #' @param s The number of the simulation you want to evaluate.
 #' @param initparsopt The initial values of the parameters that must be optimized
+#' @param sim_data something
+#' @param mbd_ML something
 #' @return The output is saved on the document "mbd_MLE.txt".
 #' \itemize{
 #' \item First column contains ML estimates for lambda.

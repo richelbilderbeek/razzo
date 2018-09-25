@@ -7,6 +7,17 @@
 pmb_ML_cluster2(s, initparsopt = c(0.5, 0.15, 0.1), pmb_ML, sim_data,
   brts)
 }
+\arguments{
+\item{s}{something}
+
+\item{initparsopt}{something}
+
+\item{pmb_ML}{something}
+
+\item{sim_data}{something}
+
+\item{brts}{something}
+}
 \description{
 Does something O
 }
