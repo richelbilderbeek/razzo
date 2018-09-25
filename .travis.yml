@@ -8,16 +8,16 @@ r_packages:
   - xml2
 
 r_github_packages:
-  - Giappo/mbd
   - jimhester/covr
   - jimhester/lintr
   - MangoTheCat/goodpractice
+  - ropensci/spelling
   - richelbilderbeek/beautier
   - richelbilderbeek/beastier
+  - richelbilderbeek/tracerer
   - richelbilderbeek/babette
   - richelbilderbeek/pirouette
-  - richelbilderbeek/tracerer
-  - ropensci/spelling
+  - Giappo/mbd
 
 before_script:
   - if [ -f ".lintr" ]; then echo "Do use Hadley Wickham's style guide"; exit 1; fi
