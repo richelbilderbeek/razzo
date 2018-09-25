@@ -21,7 +21,19 @@
 #' # mbd_ML_cluster(1)
 #'
 #' @export
-mbd_ML_cluster <- function(s, initparsopt = c(0.6, 0.1, 1.3, 0.16)){
+mbd_ML_cluster <- function(
+  s,
+  initparsopt = c(0.6, 0.1, 1.3, 0.16),
+  sim_data,
+  cond,
+  soc,
+  tips_interval,
+  brts,
+  sim_pars,
+  mbd_ML,
+  missnumspec,
+  minimum_multiple_births
+){
   print(s)
   parnames <- c("lambda","mu","nu","q"); Npars <- length(parnames)
   idparsopt <- 1:Npars; parsfix <- NULL;

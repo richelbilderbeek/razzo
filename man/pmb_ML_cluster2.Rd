@@ -4,7 +4,8 @@
 \alias{pmb_ML_cluster2}
 \title{Does something O}
 \usage{
-pmb_ML_cluster2(s, initparsopt = c(0.5, 0.15, 0.1))
+pmb_ML_cluster2(s, initparsopt = c(0.5, 0.15, 0.1), pmb_ML, sim_data,
+  brts)
 }
 \description{
 Does something O

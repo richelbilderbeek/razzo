@@ -4,12 +4,28 @@
 \alias{pmb_ML_cluster}
 \title{Does something I}
 \usage{
-pmb_ML_cluster(s, initparsopt = c(0.5, 0, 1.7, 0.15))
+pmb_ML_cluster(s, initparsopt = c(0.5, 0, 1.7, 0.15), sim_pars, cond,
+  tips_interval, mbd_ML, sim_data, soc, brts, missnumspec,
+  minimum_multiple_births)
 }
 \arguments{
 \item{s}{something}
 
 \item{initparsopt}{something}
+
+\item{sim_pars}{something}
+
+\item{cond}{Set 1 if you want to condition on stem or crown age and non-extinction of the phylogeny. Set 0 otherwise.}
+
+\item{tips_interval}{Sets tips boundaries constrain on simulated dataset.}
+
+\item{soc}{Sets whether stem or crown age should be used (1 or 2).}
+
+\item{brts}{something}
+
+\item{missnumspec}{something}
+
+\item{minimum_multiple_births}{something}
 }
 \description{
 Does something I

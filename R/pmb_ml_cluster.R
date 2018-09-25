@@ -2,10 +2,21 @@
 # @Giappo: add doc
 #' Does something I
 #' @inheritParams default_params_doc
+#' @param s something
+#' @param initparsopt something
 #' @export
 pmb_ML_cluster <- function(
   s,
-  initparsopt = c(0.5, 0, 1.7, 0.15)
+  initparsopt = c(0.5, 0, 1.7, 0.15),
+  sim_pars,
+  cond,
+  tips_interval,
+  mbd_ML,
+  sim_data,
+  soc,
+  brts,
+  missnumspec,
+  minimum_multiple_births
 ) {
   print(s)
   parnames <- c("lambda","mu","nu","q"); Npars <- length(parnames)
@@ -96,7 +107,13 @@ pmb_ML_cluster <- function(
 # TODO: may be same as pmb_ML_cluster
 #' Does something O
 #' @export
-pmb_ML_cluster2 <- function(s,initparsopt=c(0.5,0.15,0.1)){
+pmb_ML_cluster2 <- function(
+  s,
+  initparsopt = c(0.5,0.15,0.1),
+  pmb_ML,
+  sim_data,
+  brts
+) {
   # initparsopt=c(1.8,0.3,0.15);
   parnames <- c("lambda","mu","nu","q"); Npars <- length(parnames)
   idparsopt <- 1:Npars; parsfix <- NULL;

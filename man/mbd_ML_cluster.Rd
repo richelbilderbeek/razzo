@@ -5,12 +5,28 @@
 \title{Maximization of the loglikelihood under
   a multiple birth-death diversification model, wrapped for cluster usage.}
 \usage{
-mbd_ML_cluster(s, initparsopt = c(0.6, 0.1, 1.3, 0.16))
+mbd_ML_cluster(s, initparsopt = c(0.6, 0.1, 1.3, 0.16), sim_data, cond,
+  soc, tips_interval, brts, sim_pars, mbd_ML, missnumspec,
+  minimum_multiple_births)
 }
 \arguments{
 \item{s}{The number of the simulation you want to evaluate.}
 
 \item{initparsopt}{The initial values of the parameters that must be optimized}
+
+\item{cond}{Set 1 if you want to condition on stem or crown age and non-extinction of the phylogeny. Set 0 otherwise.}
+
+\item{soc}{Sets whether stem or crown age should be used (1 or 2).}
+
+\item{tips_interval}{Sets tips boundaries constrain on simulated dataset.}
+
+\item{brts}{something}
+
+\item{sim_pars}{something}
+
+\item{missnumspec}{something}
+
+\item{minimum_multiple_births}{something}
 }
 \value{
 The output is saved on the document "mbd_MLE.txt".
