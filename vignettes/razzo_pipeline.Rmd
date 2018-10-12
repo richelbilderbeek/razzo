@@ -15,7 +15,7 @@ This is the pipeline to follow for the Razzo project. Our aim is to compare two 
 ```{r setup, results = "hide"}
 if (!require(mbd)) {devtools::install_github("Giappo/mbd")}
 if (!require(TESS)) {install.packages("TESS")}
-if (!require(pirouette)) {devtools::install_github("richelbilderbeek/pirouette")}
+if (!require(pirouette)) {devtools::install_github("richelbilderbeek/babette");    devtools::install_github("richelbilderbeek/pirouette")}
 
 rm(list = ls()); seed <- 1
 ```
