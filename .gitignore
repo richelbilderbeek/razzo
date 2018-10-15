@@ -28,3 +28,4 @@ rsconnect/
 .Rproj.user
 inst/doc
 vignettes/pirouette_*.*
+vignettes/razzo_pipeline_files/

@@ -18,10 +18,13 @@ This is the pipeline to follow for the Razzo project. Our aim is to compare two 
 
 ```{r setup, results = "hide"}
 if (!require(mbd)) {devtools::install_github("Giappo/mbd")}
-if (!require(TESS)) {install.packages("TESS")}
-if (!require(pirouette)) {devtools::install_github("richelbilderbeek/babette");    devtools::install_github("richelbilderbeek/pirouette")}
-
-rm(list = ls()); seed <- 1
+if (!require(TESS)) {
+  install.packages("TESS", repo = "https://lib.ugent.be/CRAN/")
+}
+if (!require(pirouette)) {
+  devtools::install_github("richelbilderbeek/babette")
+  devtools::install_github("richelbilderbeek/pirouette")
+}
 ```
 
 ## Overview
@@ -29,6 +32,8 @@ rm(list = ls()); seed <- 1
 ![Pipeline](pipeline.png)
 
 ```{r}
+library(razzo)
+
 # Create all parameter files
 parameters_filenames <- raz_create_parameters_files()
 testit::assert("1.csv" %in% parameters_filenames)
@@ -74,6 +79,13 @@ for (trees_filename in trees_filenames)
 
 
 ### step 1: simulate MBD tree
+
+Set seed:
+
+```{r}
+seed <- 1
+```
+
 First we want to simulate an MBD tree.
 
 ```{r}
@@ -122,7 +134,7 @@ Now that we have the BD equivalent parameters for a fair "twinning" we can simul
 We use "TESS::tess.sim.taxa.age" to generate the branching times (BD_brts). 
 We then plug these branching times in the l_table coming from the original MBD tree to be sure that the topology is the same.
 
-```{r}
+```{r simulate_twin_bd_tree}
 set.seed(seed)
 BD_tree0 <- TESS::tess.sim.taxa.age(n = 1,
                                     lambda = as.numeric(unname(BD_pars[1])),
