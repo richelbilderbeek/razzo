@@ -27,6 +27,7 @@ Imports:
 Suggests:
     TESS,
     testthat,
+    lintr,
     knitr,
     rmarkdown
 VignetteBuilder: knitr
