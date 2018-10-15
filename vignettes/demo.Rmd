@@ -20,5 +20,4 @@ This vignette shows off all `razzo` functionality:
 
 ```{r}
 library(razzo)
-print(hello())
 ```

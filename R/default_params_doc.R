@@ -12,13 +12,14 @@
 #' @param changeloglikifnoconv something
 #' @param colormap something
 #' @param idparsfix something
-#' @param idparsopt The ids of the parameters that must be optimized. The ids are defined as follows:
-#' \itemize{
-#' \item id == 1 corresponds to lambda (speciation rate)
-#' \item id == 2 corresponds to mu (extinction rate)
-#' \item id == 3 corresponds to nu (multiple speciation trigger rate)
-#' \item id == 4 corresponds to q (single-lineage speciation probability)
-#' }
+#' @param idparsopt The ids of the parameters that must be optimized.
+#'   The ids are defined as follows:
+#'   \itemize{
+#'     \item id == 1 corresponds to lambda (speciation rate)
+#'     \item id == 2 corresponds to mu (extinction rate)
+#'     \item id == 3 corresponds to nu (multiple speciation trigger rate)
+#'     \item id == 4 corresponds to q (single-lineage speciation probability)
+#'   }
 #' @param initparsopt something
 #' @param interval.max something
 #' @param interval.min something
@@ -92,10 +93,12 @@
 #' @param z something
 #' @param z.name something
 #' @param age The age of the tree.
-#' @param cond Set 1 if you want to condition on stem or crown age and non-extinction of the phylogeny. Set 0 otherwise.
+#' @param cond Set 1 if you want to condition on stem or crown age
+#'   and non-extinction of the phylogeny. Set 0 otherwise.
 #' @param soc Sets whether stem or crown age should be used (1 or 2).
 #' @param tips_interval Sets tips boundaries constrain on simulated dataset.
-#' @author Documentation by Giovanni Laudanno, use of this function by Richel J.C. Bilderbeek
+#' @author Documentation by Giovanni Laudanno,
+#'   use of this function by Richel J.C. Bilderbeek
 #' @note This is an internal function, so it should be marked with
 #'   \code{@noRd}. This is not done, as this will disallow all
 #'   functions to find the documentation parameters

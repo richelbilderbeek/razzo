@@ -16,7 +16,8 @@ mbd_ML_cluster(s, initparsopt = c(0.6, 0.1, 1.3, 0.16), sim_data, cond,
 
 \item{sim_data}{something}
 
-\item{cond}{Set 1 if you want to condition on stem or crown age and non-extinction of the phylogeny. Set 0 otherwise.}
+\item{cond}{Set 1 if you want to condition on stem or crown age
+and non-extinction of the phylogeny. Set 0 otherwise.}
 
 \item{soc}{Sets whether stem or crown age should be used (1 or 2).}
 

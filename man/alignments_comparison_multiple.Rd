@@ -20,7 +20,8 @@ alignments_comparison_multiple(sim_pars = c(0.2, 0.15, 2, 0.15),
 
 \item{sequence_length}{something}
 
-\item{cond}{Set 1 if you want to condition on stem or crown age and non-extinction of the phylogeny. Set 0 otherwise.}
+\item{cond}{Set 1 if you want to condition on stem or crown age
+and non-extinction of the phylogeny. Set 0 otherwise.}
 
 \item{age}{The age of the tree.}
 
