@@ -3,5 +3,5 @@
 #' @author Hayley Wickham, modified by Richel J.C. Bilderbeek
 #' @export
 hello <- function() {
-  "Hello, world!"
+  "Hello, world! Today is a good day!"
 }
