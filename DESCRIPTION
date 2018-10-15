@@ -1,6 +1,6 @@
 Package: razzo
 Type: Package
-Title: The Error If Nature Is MBD 
+Title: The Error If Nature Is MBD
 Version: 0.1.0
 Authors@R: c(
   person("Giavonni", "Laudanno", role = c("aut")),
@@ -24,7 +24,9 @@ Imports:
   nLTT,
   pirouette,
   tracerer
-Suggests: testthat,
+Suggests:
+    TESS,
+    testthat,
     knitr,
     rmarkdown
 VignetteBuilder: knitr
