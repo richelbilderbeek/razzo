@@ -1,8 +1,12 @@
 ---
-title: "razzo_pipeline"
-author: "G. Laudanno"
-date: "12 ottobre 2018"
-output: html_document
+title: "razzo pipeline"
+author: "G. Laudanno and Richel J.C. Bilderbeek"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{razzo pipeline}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 Legenda:
@@ -20,7 +24,14 @@ if (!require(pirouette)) {devtools::install_github("richelbilderbeek/babette"); 
 rm(list = ls()); seed <- 1
 ```
 
-# step 1: simulate MBD tree
+## Overview
+
+![Pipeline](pipeline.png)
+
+### Step 0: create parameters
+
+
+### step 1: simulate MBD tree
 First we want to simulate an MBD tree.
 
 ```{r}
@@ -33,7 +44,7 @@ MBD_l_matrix <- MBD_sim$l_matrix
 plot(MBD_tree)
 ```
 
-#step 2: calculate the best pars for the twin BD tree (be careful with the estimated parameters!)
+### step 2: calculate the best pars for the twin BD tree (be careful with the estimated parameters!)
 Then we wanto to generate a "twin" BD tree. To create such tree we have to estimate the best lambda and mu to make the comparison fair. 
 To estimate the parameters we run a ML inference using the BD model.
 We also want to condition on the same amount of tips and on the survival of the phylogeny (cond = 2).
@@ -60,8 +71,8 @@ BD_pars <- DDD::bd_ML(brts = abs(MBD_sim$brts),
 ```
 
 
-#step 3: simulate the twin BD tree
-#(check if the method to keep the topology is right. from the figures it seems ok-ish. check with small tree)
+### step 3: simulate the twin BD tree
+###(check if the method to keep the topology is right. from the figures it seems ok-ish. check with small tree)
 Now that we have the BD equivalent parameters for a fair "twinning" we can simulate a BD tree.
 We use "TESS::tess.sim.taxa.age" to generate the branching times (BD_brts). 
 We then plug these branching times in the l_table coming from the original MBD tree to be sure that the topology is the same.
@@ -75,7 +86,7 @@ BD_tree0 <- TESS::tess.sim.taxa.age(n = 1,
                                     age = age,
                                     MRCA = TRUE)[[1]]
 
-BD_brts <- branching.times(BD_tree0)
+BD_brts <- ape::branching.times(BD_tree0)
 BD_l_matrix <- MBD_l_matrix
 alive <- BD_l_matrix[, 4] == -1
 alive2 <- alive
@@ -88,7 +99,7 @@ BD_tree <- DDD:::L2phylo(BD_l_matrix)
 plot(MBD_tree, main = "MBD tree"); plot(BD_tree, main = "twin BD tree")
 ```
 
-#step 4: generate MBD posterior, given BD prior
+###step 4: generate MBD posterior, given BD prior
 The next step is to use the package "pirouette" to generate, from the MBD tree, first the alignments and then, through BEAST, a posterior distribution of trees. These trees are obtained using a BD prior. This means that there are no simultaneous branching events.
 
 ```{r}
@@ -113,8 +124,8 @@ MBD_posterior <- pirouette::pir_run( #test1 is a posterior of 10001 trees genera
 )
 ```
 
-#step 5: generate BD posterior, given BD prior
-#(check BD_substitution rate, see Rampal's email)
+###step 5: generate BD posterior, given BD prior
+###(check BD_substitution rate, see Rampal's email)
 We repeat the same process for the tree simulated according to the BD model. We want to have, in principle, the same amount of substitutions; to do so we modify the mutation rate according to the ratio of the total branch lenghts of the trees simulated with the two models.
 
 ```{r}
@@ -138,7 +149,7 @@ BD_posterior <- pirouette::pir_run( #test1 is a posterior of 10001 trees generat
 )
 ```
 
-# step 6: calculating nLTT statistics for MBD and BD
+### step 6: calculating nLTT statistics for MBD and BD
 Finally we calculate the nLTT statistics for both posteriors related to the original trees.
 
 ```{r}
