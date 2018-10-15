@@ -15,7 +15,8 @@ pmb_ML_cluster(s, initparsopt = c(0.5, 0, 1.7, 0.15), sim_pars, cond,
 
 \item{sim_pars}{something}
 
-\item{cond}{Set 1 if you want to condition on stem or crown age and non-extinction of the phylogeny. Set 0 otherwise.}
+\item{cond}{Set 1 if you want to condition on stem or crown age
+and non-extinction of the phylogeny. Set 0 otherwise.}
 
 \item{tips_interval}{Sets tips boundaries constrain on simulated dataset.}
 

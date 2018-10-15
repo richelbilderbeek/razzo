@@ -13,7 +13,8 @@ mbd_sim_dataset0(sim_pars = c(2.5, 0.1, 0.1), soc = 2, cond = 1,
 
 \item{soc}{Sets whether stem or crown age should be used (1 or 2).}
 
-\item{cond}{Set 1 if you want to condition on stem or crown age and non-extinction of the phylogeny. Set 0 otherwise.}
+\item{cond}{Set 1 if you want to condition on stem or crown age
+and non-extinction of the phylogeny. Set 0 otherwise.}
 
 \item{age}{The age of the tree.}
 
