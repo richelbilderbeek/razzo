@@ -2,7 +2,7 @@
 title: "razzo pipeline"
 author: "G. Laudanno and Richel J.C. Bilderbeek"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output: rmarkdown::pdf_document
 vignette: >
   %\VignetteIndexEntry{razzo pipeline}
   %\VignetteEngine{knitr::rmarkdown}
@@ -35,7 +35,10 @@ rm(list = ls()); seed <- 1
 First we want to simulate an MBD tree.
 
 ```{r}
-MBD_pars <- c(0.2, 0.15, 2, 0.10); soc <- 2; age <- 10; cond <- 1
+MBD_pars <- c(0.2, 0.15, 2, 0.10)
+soc <- 2
+age <- 10
+cond <- 1
 set.seed(seed)
 MBD_sim  <- mbd::mbd_sim(pars = MBD_pars, soc = soc, age = age, cond = cond)
 MBD_brts <- MBD_sim$brts
