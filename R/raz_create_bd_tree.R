@@ -48,7 +48,7 @@ raz_create_bd_tree <- function(
     vec[seq_along(vec) * alive2] <- BD_brts
     BD_l_matrix[, 1] <- vec
     par(mfrow = c(1,2))
-    BD_tree <- DDD:::L2phylo(BD_l_matrix)
+    BD_tree <- DDD::L2phylo(BD_l_matrix)
     plot(MBD_tree, main = "MBD tree"); plot(BD_tree, main = "twin BD tree")
 
   }
