@@ -5,16 +5,21 @@
 #' @export
 raz_get_parameters_path <- function(parameters, folder_name)
 {
-  path <- paste0(
-    folder_name, "/",
-    parameters$lambda, "-",
-    parameters$mu, "-",
-    parameters$nu, "-",
-    parameters$q, "/",
-    parameters$seed, "/"
+  path <- file.path(
+    folder_name,
+    "razzo_project",
+    paste0(
+      parameters$lambda, "-",
+      parameters$mu, "-",
+      parameters$nu, "-",
+      parameters$q
+    ),
+    parameters$seed#, "parameters.csv"
   )
 
-  if (!file.exists(path)) {print("There is no folder for this parameter setting!")}
+  if (!file.exists(path)) {
+    stop("Cannot find path '", path, "'")
+  }
 
   return(path)
 }

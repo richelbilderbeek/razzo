@@ -6,18 +6,13 @@
 #' @export
 
 raz_create_bd_tree <- function(
-  mbd_tree_filename
+  parameters,
+  folder_name
 )
-  # raz_create_bd_tree <- function(
-  #   init_speciation_rate,
-  #   init_extinction_rate,
-  #   mbd_tree,
-  #   bd_tree_filename
-  # )
 {
+    parameters_folder <- raz_get_parameters_path(parameters, folder_name)
+    mbd_tree_filename <- file.path(parameters_folder, list.files(parameters_folder, pattern = "mbd.tree"))
     mbd_tree <- get(load(mbd_tree_filename))
-    # parameters <- read.csv(paste0(dirname(mbd_tree_filename), "/parameters.csv"))
-    parameters <- raz_open_parameters_file(paste0(dirname(mbd_tree_filename), "/parameters.csv"))
     seed <- parameters$seed
     age <- parameters$age
     soc <- parameters$soc
