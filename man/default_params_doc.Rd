@@ -5,23 +5,20 @@
 \title{This function does nothing. It is intended to inherit is parameters'
 documentation.}
 \usage{
-default_params_doc(A_abstol, A_reltol, abstol, account_name, alpha, alpha0, b,
-  brts, chain_length, changeloglikifnoconv, colormap, idparsfix, idparsopt,
-  initparsopt, interval.max, interval.min, iterations, k, lambda, logs, lx, lx0,
-  matrix, matrix_builder, max_iter, max_k, max_number_of_species,
-  max_repetitions, max_sims, maxiter, mbd.lambda, methode,
-  minimum_multiple_births, missnumspec, mu, mutation_rate, N, N0, Nsteps, Nsubs,
-  nu, optimmethod, pars.transform, parsfix, precision, print_errors, Q, q,
-  reltol, res, s, sample_interval, sequence_length, sim_pars, sim_phylo, soc, t,
-  t1, t2, time_interval, tol, transition_matrix, trparsfix, trparsopt, verbose,
-  x, x.name, x.splits, y, y.name, y.splits, z, z.name, age, cond, pars,
-  tips_interval)
+default_params_doc(abstol, account_name, alpha, alpha0, b,
+  bd_tree_filename, brts, chain_length, changeloglikifnoconv, colormap,
+  fasta_filename, folder_name, idparsfix, idparsopt, initparsopt,
+  init_speciation_rate, init_extinction_rate, iterations, k, lambda, logs,
+  lx, lx0, matrix, matrix_builder, max_iter, max_k, max_number_of_species,
+  max_repetitions, max_sims, maxiter, mbd_tree, methode,
+  minimum_multiple_births, missnumspec, mu, mutation_rate, nu, optimmethod,
+  parameters, parameter_filename, parameters_filename, pars.transform,
+  parsfix, precision, print_errors, q, reltol, res, s, sample_interval,
+  sequence_length, sim_pars, sim_phylo, soc, t, t1, t2, time_interval, tol,
+  transition_matrix, tree_filename, trees_filename, trparsfix, trparsopt,
+  verbose, age, cond, pars, tips_interval)
 }
 \arguments{
-\item{A_abstol}{something}
-
-\item{A_reltol}{something}
-
 \item{abstol}{something}
 
 \item{account_name}{something}
@@ -32,6 +29,8 @@ default_params_doc(A_abstol, A_reltol, abstol, account_name, alpha, alpha0, b,
 
 \item{b}{something}
 
+\item{bd_tree_filename}{name of the file that stores a BD twin tree}
+
 \item{brts}{something}
 
 \item{chain_length}{something}
@@ -39,6 +38,10 @@ default_params_doc(A_abstol, A_reltol, abstol, account_name, alpha, alpha0, b,
 \item{changeloglikifnoconv}{something}
 
 \item{colormap}{something}
+
+\item{fasta_filename}{name of a FASTA file}
+
+\item{folder_name}{name of the folder}
 
 \item{idparsfix}{something}
 
@@ -53,9 +56,9 @@ The ids are defined as follows:
 
 \item{initparsopt}{something}
 
-\item{interval.max}{something}
+\item{init_speciation_rate}{a speciation rate}
 
-\item{interval.min}{something}
+\item{init_extinction_rate}{an extinction rate}
 
 \item{iterations}{something}
 
@@ -85,7 +88,7 @@ The ids are defined as follows:
 
 \item{maxiter}{something}
 
-\item{mbd.lambda}{something}
+\item{mbd_tree}{an MBD tree}
 
 \item{methode}{something}
 
@@ -97,17 +100,15 @@ The ids are defined as follows:
 
 \item{mutation_rate}{something}
 
-\item{N}{something}
-
-\item{N0}{something}
-
-\item{Nsteps}{something}
-
-\item{Nsubs}{something}
-
 \item{nu}{something}
 
 \item{optimmethod}{something}
+
+\item{parameters}{the razzo parameters}
+
+\item{parameter_filename}{full path to a 'parameters.csv' file}
+
+\item{parameters_filename}{full path to a 'parameters.csv' file}
 
 \item{pars.transform}{something}
 
@@ -116,8 +117,6 @@ The ids are defined as follows:
 \item{precision}{something}
 
 \item{print_errors}{something}
-
-\item{Q}{something}
 
 \item{q}{something}
 
@@ -149,27 +148,15 @@ The ids are defined as follows:
 
 \item{transition_matrix}{something}
 
+\item{tree_filename}{name of the phylogeny file}
+
+\item{trees_filename}{name of the BEAST2 posterior phylogenies file}
+
 \item{trparsfix}{something}
 
 \item{trparsopt}{something}
 
 \item{verbose}{something}
-
-\item{x}{something}
-
-\item{x.name}{something}
-
-\item{x.splits}{something}
-
-\item{y}{something}
-
-\item{y.name}{something}
-
-\item{y.splits}{something}
-
-\item{z}{something}
-
-\item{z.name}{something}
 
 \item{age}{The age of the tree.}
 
@@ -191,20 +178,6 @@ or
 }}
 
 \item{tips_interval}{Sets tips boundaries constrain on simulated dataset.}
-
-\item{fasta_filename}{name of a FASTA file}
-
-\item{folder_name}{name of the folder}
-
-\item{parameters}{the razzo parameters}
-
-\item{parameter_filename}{full path to a 'parameters.csv' file}
-
-\item{parameters_filename}{full path to a 'parameters.csv' file}
-
-\item{tree_filename}{name of the phylogeny file}
-
-\item{trees_filename}{name of the BEAST2 posterior phylogenies file}
 }
 \description{
 This function does nothing. It is intended to inherit is parameters'

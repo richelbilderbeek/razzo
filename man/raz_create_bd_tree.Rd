@@ -2,21 +2,23 @@
 % Please edit documentation in R/raz_create_bd_tree.R
 \name{raz_create_bd_tree}
 \alias{raz_create_bd_tree}
-\title{Create an BD tree from the razzo parameters
+\title{Create an BD twin tree from an MBD tree
 and save it as a file}
 \usage{
-raz_create_bd_tree(bd_tree, tree_filename)
+raz_create_bd_tree(parameters, folder_name)
 }
 \arguments{
-\item{tree_filename}{name of the phylogeny file}
+\item{parameters}{the razzo parameters}
+
+\item{folder_name}{name of the folder}
 }
 \value{
-nothing. Will create a file with name in \code{tree_filename}
+A twin BD tree
 }
 \description{
-Create an BD tree from the razzo parameters
+Create an BD twin tree from an MBD tree
 and save it as a file
 }
 \author{
-Richel J.C. Bilderbeek
+Richel J.C. Bilderbeek, Giovanni Laudanno
 }

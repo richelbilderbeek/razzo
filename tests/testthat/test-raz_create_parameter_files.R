@@ -1,7 +1,6 @@
 context("raz_create_parameters_files")
 
 test_that("use", {
-#<<<<<<< HEAD
   # gio: I don't really get how to use this
   # # Will be something like 'home/tece/razzo_project/data
   # razzo_project_data_folder <- file.path(rappdirs::user_data_dir(), "razzo_project", "data")
@@ -9,7 +8,7 @@ test_that("use", {
   # expect_true(length(filenames) >= 1)
   # # TODO: add test that foldername is in filename, e.g. 'myfolder/1.csv'
   # expect_true(all(file.exists(filenames)))
-#=======
+
   # Work from a folder
   folder_name <- raz_tempdir(); # folder_name <- tempdir()
   testthat::expect_true(

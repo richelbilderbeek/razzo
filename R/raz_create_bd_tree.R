@@ -39,6 +39,16 @@ raz_create_bd_tree <- function(
     #                       tdmodel = 0,
     #                       btorph = 1,
     #                       soc = soc)
+
+    # TODO: read seed from parameters file
+    seed <- NULL
+
+    # TODO: get the MBD tree
+    MBD_tree <- NULL
+
+    # TODO: get the MBD sim
+    MBD_sim <- NULL
+
     set.seed(seed)
     bd_tree0 <- TESS::tess.sim.taxa.age(n = 1,
                                         lambda = as.numeric(unname(bd_pars[1])),

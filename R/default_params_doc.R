@@ -1,13 +1,12 @@
 #' This function does nothing. It is intended to inherit is parameters'
 #' documentation.
-#' @param A_abstol something
-#' @param A_reltol something
 #' @param abstol something
 #' @param account_name something
 #' @param alpha something
 #' @param alpha0 something
 #' @param b something
 #' @param brts something
+#' @param bd_tree_filename name of the file that stores a BD twin tree
 #' @param chain_length something
 #' @param changeloglikifnoconv something
 #' @param colormap something
@@ -23,8 +22,8 @@
 #'     \item id == 4 corresponds to q (single-lineage speciation probability)
 #'   }
 #' @param initparsopt something
-#' @param interval.max something
-#' @param interval.min something
+#' @param init_speciation_rate a speciation rate
+#' @param init_extinction_rate an extinction rate
 #' @param iterations something
 #' @param k something
 #' @param lambda something
@@ -39,16 +38,12 @@
 #' @param max_repetitions something
 #' @param max_sims something
 #' @param maxiter something
-#' @param mbd.lambda something
+#' @param mbd_tree an MBD tree
 #' @param methode something
 #' @param minimum_multiple_births something
 #' @param missnumspec something
 #' @param mu something
 #' @param mutation_rate something
-#' @param N something
-#' @param N0 something
-#' @param Nsteps something
-#' @param Nsubs something
 #' @param nu something
 #' @param optimmethod something
 #' @param parameters the razzo parameters
@@ -71,7 +66,6 @@
 #' @param parsfix The values of the parameters that should not be optimized.
 #' @param precision something
 #' @param print_errors something
-#' @param Q something
 #' @param q something
 #' @param reltol something
 #' @param res something
@@ -91,14 +85,6 @@
 #' @param trparsfix something
 #' @param trparsopt something
 #' @param verbose something
-#' @param x something
-#' @param x.name something
-#' @param x.splits something
-#' @param y something
-#' @param y.name something
-#' @param y.splits something
-#' @param z something
-#' @param z.name something
 #' @param age The age of the tree.
 #' @param cond Set 1 if you want to condition on stem or crown age
 #'   and non-extinction of the phylogeny. Set 0 otherwise.
@@ -109,23 +95,25 @@
 #' @note This is an internal function, so it should be marked with
 #'   \code{@noRd}. This is not done, as this will disallow all
 #'   functions to find the documentation parameters
+#'
 default_params_doc <- function(
-  A_abstol,
-  A_reltol,
   abstol,
   account_name,
   alpha,
   alpha0,
   b,
+  bd_tree_filename,
   brts,
   chain_length,
   changeloglikifnoconv,
   colormap,
+  fasta_filename,
+  folder_name,
   idparsfix,
   idparsopt,
   initparsopt,
-  interval.max,
-  interval.min,
+  init_speciation_rate,
+  init_extinction_rate,
   iterations,
   k,
   lambda,
@@ -140,23 +128,21 @@ default_params_doc <- function(
   max_repetitions,
   max_sims,
   maxiter,
-  mbd.lambda,
+  mbd_tree,
   methode,
   minimum_multiple_births,
   missnumspec,
   mu,
   mutation_rate,
-  N,
-  N0,
-  Nsteps,
-  Nsubs,
   nu,
   optimmethod,
+  parameters,
+  parameter_filename,
+  parameters_filename,
   pars.transform,
   parsfix,
   precision,
   print_errors,
-  Q,
   q,
   reltol,
   res,
@@ -172,17 +158,11 @@ default_params_doc <- function(
   time_interval,
   tol,
   transition_matrix,
+  tree_filename,
+  trees_filename,
   trparsfix,
   trparsopt,
   verbose,
-  x,
-  x.name,
-  x.splits,
-  y,
-  y.name,
-  y.splits,
-  z,
-  z.name,
   age,
   cond,
   pars,

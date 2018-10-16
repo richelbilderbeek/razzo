@@ -4,9 +4,11 @@
 \alias{raz_open_parameters_file}
 \title{Opens a parameter file and parses it}
 \usage{
-raz_open_parameters_file(parameter_filename)
+raz_open_parameters_file(parameters_filename)
 }
 \arguments{
+\item{parameters_filename}{full path to a 'parameters.csv' file}
+
 \item{parameter_filename}{name of the parameter filename,
 for example '/my_folder/1/parameters.csv'}
 }
@@ -17,5 +19,5 @@ the razzo parameters
 Opens a parameter file and parses it
 }
 \author{
-Richel J.C. Bilderbeek
+Richel J.C. Bilderbeek, Giovanni Laudanno
 }

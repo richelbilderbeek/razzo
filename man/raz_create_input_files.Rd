@@ -12,10 +12,12 @@ For example, for a path '/my_folder/parameters.csv', this function creates:
   \item '/my_folder/bd.fasta': the MBD alignment
 }}
 \usage{
-raz_create_input_files(parameters_filename)
+raz_create_input_files(parameters, folder_name)
 }
 \arguments{
-\item{parameters_filename}{full path to a 'parameters.csv' file}
+\item{parameters}{the razzo parameters}
+
+\item{folder_name}{name of the folder}
 }
 \value{
 names of the files created
