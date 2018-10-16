@@ -15,6 +15,9 @@ Assumes, for a FASTA file named '/my_folder/mbd.fasta', this
 \usage{
 raz_create_inference_files(fasta_filename)
 }
+\arguments{
+\item{fasta_filename}{name of a FASTA file}
+}
 \value{
 names of the files created
 }

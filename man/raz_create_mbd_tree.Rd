@@ -10,7 +10,7 @@ raz_create_mbd_tree(parameters, tree_filename)
 \arguments{
 \item{parameters}{the razzo parameters}
 
-\item{tree_filename}{name of the file to store the phylogeny}
+\item{tree_filename}{name of the phylogeny file}
 }
 \value{
 nothing. Will create a file with name in \code{tree_filename}

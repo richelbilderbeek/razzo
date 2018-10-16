@@ -35,7 +35,7 @@ In `folder_name`:
      * `parameters.csv`: the parameter file, created by `raz_create_parameter_files`
      * `mbd.tree`: the true MBD tree, created by `raz_create_input_files`
      * `mbd.fasta`: the true MBD alignment, created by `raz_create_input_files`
-     * `bd.tree`: the win BD tree, created by `raz_create_input_files`
+     * `bd.tree`: the twin BD tree, created by `raz_create_input_files`
      * `bd.fasta`: the twin BD alignment, created by `raz_create_input_files`
      * `mbd.trees`: the posterior trees from `mbd.tree`, created by `raz_create_inference_files("mbd.tree")`
      * `mbd.log`: the posterior parameter estimates from `mbd.tree`, created by `raz_create_inference_files("mbd.tree")`
@@ -73,6 +73,9 @@ Here we create all parameter files:
 parameters_filenames <- raz_create_parameters_files(folder_name)
 testit::assert(file.path(folder_name, "1", "parameters.csv") %in% parameters_filenames)
 ```
+
+## Step 1: create input files
+
 Each parameter file is read to create a MBD tree and alignment and its BD twin:
 
 ```{r}
@@ -88,7 +91,20 @@ for (parameters_filename in parameters_filenames) {
   # Twin BD alignment
   testit::assert(file.path(folder_name, "1", "bd.fasta") %in% input_filenames)
 }
+```
 
+Show the first MBD tree:
+
+```{r}
+# TODO: Issue #8: actually create an MBD tree and save it
+if (1 == 2) {
+  plot(file.path(folder_name, "1", "mbd.tree"))
+}
+```
+
+## Step 2: create inference files
+
+```{r}
 # Do the inference
 fasta_filenames <- c("1a.fasta") # Search the folder
 for (fasta_filename in fasta_filenames) 
@@ -114,28 +130,6 @@ for (trees_filename in trees_filenames)
 ```
 
 
-### step 1: simulate MBD tree
-
-Set seed:
-
-```{r}
-seed <- 1
-```
-
-First we want to simulate an MBD tree.
-
-```{r}
-MBD_pars <- c(0.2, 0.15, 2, 0.10)
-soc <- 2
-age <- 10
-cond <- 1
-set.seed(seed)
-MBD_sim  <- mbd::mbd_sim(pars = MBD_pars, soc = soc, age = age, cond = cond)
-MBD_brts <- MBD_sim$brts
-MBD_tree <- MBD_sim$tes
-MBD_l_matrix <- MBD_sim$l_matrix
-plot(MBD_tree)
-```
 
 ### step 2: calculate the best pars for the twin BD tree (be careful with the estimated parameters!)
 Then we wanto to generate a "twin" BD tree. To create such tree we have to estimate the best lambda and mu to make the comparison fair. 
@@ -143,24 +137,25 @@ To estimate the parameters we run a ML inference using the BD model.
 We also want to condition on the same amount of tips and on the survival of the phylogeny (cond = 2).
 
 ```{r}
-BD_pars <- DDD::bd_ML(brts = abs(MBD_sim$brts),
-                      cond = 2,
-                      initparsopt = MBD_pars[1:2],
-                      idparsopt = 1:2,
-                      missnumspec = 0,
-                      tdmodel = 0,
-                      btorph = 1,
-                      soc = soc); BD_pars
-
-# BD_pars2 <- DDD::bd_ML(brts = abs(MBDsim$brts),
-#                       cond = 1,
-#                       initparsopt = simpars[1:2],
-#                       idparsopt = 1:2,
-#                       missnumspec = 0,
-#                       tdmodel = 0,
-#                       btorph = 1,
-#                       soc = soc)
-
+if (1 == 2) {
+  BD_pars <- DDD::bd_ML(brts = abs(sim$brts),
+                        cond = 2,
+                        initparsopt = MBD_pars[1:2],
+                        idparsopt = 1:2,
+                        missnumspec = 0,
+                        tdmodel = 0,
+                        btorph = 1,
+                        soc = soc)
+  
+  # BD_pars2 <- DDD::bd_ML(brts = abs(MBDsim$brts),
+  #                       cond = 1,
+  #                       initparsopt = simpars[1:2],
+  #                       idparsopt = 1:2,
+  #                       missnumspec = 0,
+  #                       tdmodel = 0,
+  #                       btorph = 1,
+  #                       soc = soc)
+}
 ```
 
 

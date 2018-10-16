@@ -1,7 +1,7 @@
 #' Create all parameters files in a folder.
 #' In that folder, one folder is created per parameter file.
 #' In each subfolder, a file 'parameters.csv' is created
-#' @param folder_name name of the folder
+#' @inheritParams default_params_doc
 #' @return full paths of the files created
 #' @author Richel J.C. Bilderbeek
 #' @export

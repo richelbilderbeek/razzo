@@ -7,7 +7,7 @@
 #'   \item '/my_folder/bd.tree': the MBD tree
 #'   \item '/my_folder/bd.fasta': the MBD alignment
 #' }
-#' @param parameters_filename full path to a 'parameters.csv' file
+#' @inheritParams default_params_doc
 #' @return names of the files created
 #' @author Richel J.C. Bilderbeek
 #' @export

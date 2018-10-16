@@ -1,6 +1,7 @@
 #' Create the NLTT statistics distribution files from a posterior file.
 #' Assumes for a posterior file named '1x.trees'
 #'   that there is a 'true' tree file called '1x.tree'
+#' @inheritParams default_params_doc
 #' @return name of the nLTT file created
 #' @author Richel J.C. Bilderbeek
 #' @export

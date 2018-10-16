@@ -8,6 +8,7 @@
 #' }
 #' Assumes, for a FASTA file named '/my_folder/mbd.fasta', this
 #'   that there is a parameters file named '/my_folder/parameters.csv'
+#' @inheritParams default_params_doc
 #' @return names of the files created
 #' @author Richel J.C. Bilderbeek
 #' @export
