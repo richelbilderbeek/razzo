@@ -39,6 +39,11 @@ if (1 == 2) {
 }
 
 ## ------------------------------------------------------------------------
+if (1 == 2) {
+  plot(file.path(folder_name, "1", "bd.tree"))
+}
+
+## ------------------------------------------------------------------------
 # Do the inference
 fasta_filenames <- c("1a.fasta") # Search the folder
 for (fasta_filename in fasta_filenames) 
@@ -62,49 +67,7 @@ for (trees_filename in trees_filenames)
 
 # All files are in place!
 
-## ------------------------------------------------------------------------
-if (1 == 2) {
-  BD_pars <- DDD::bd_ML(brts = abs(sim$brts),
-                        cond = 2,
-                        initparsopt = MBD_pars[1:2],
-                        idparsopt = 1:2,
-                        missnumspec = 0,
-                        tdmodel = 0,
-                        btorph = 1,
-                        soc = soc)
-  
-  # BD_pars2 <- DDD::bd_ML(brts = abs(MBDsim$brts),
-  #                       cond = 1,
-  #                       initparsopt = simpars[1:2],
-  #                       idparsopt = 1:2,
-  #                       missnumspec = 0,
-  #                       tdmodel = 0,
-  #                       btorph = 1,
-  #                       soc = soc)
-}
-
 ## ----simulate_twin_bd_tree-----------------------------------------------
-if (1 == 2) {
-  set.seed(seed)
-  BD_tree0 <- TESS::tess.sim.taxa.age(n = 1,
-                                      lambda = as.numeric(unname(BD_pars[1])),
-                                      mu     = as.numeric(unname(BD_pars[2])),
-                                      nTaxa = ((soc - 1) + length(MBD_sim$brts)),
-                                      age = age,
-                                      MRCA = TRUE)[[1]]
-  
-  BD_brts <- ape::branching.times(BD_tree0)
-  BD_l_matrix <- MBD_l_matrix
-  alive <- BD_l_matrix[, 4] == -1
-  alive2 <- alive
-  t <- length(alive); while (sum(alive2) > length(BD_brts)) {if (alive2[t] == 1) {alive2[t] = 0}; t = t - 1}
-  vec <- BD_l_matrix[, 1]
-  vec[seq_along(vec) * alive2] <- BD_brts
-  BD_l_matrix[, 1] <- vec
-  par(mfrow = c(1,2))
-  BD_tree <- DDD:::L2phylo(BD_l_matrix)
-  plot(MBD_tree, main = "MBD tree"); plot(BD_tree, main = "twin BD tree")
-}
 
 ## ------------------------------------------------------------------------
 if (1 == 2) {

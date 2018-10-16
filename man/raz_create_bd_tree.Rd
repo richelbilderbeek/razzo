@@ -2,19 +2,17 @@
 % Please edit documentation in R/raz_create_bd_tree.R
 \name{raz_create_bd_tree}
 \alias{raz_create_bd_tree}
-\title{Create an BD tree from the razzo parameters
+\title{Create an BD twin tree from an MBD tree
 and save it as a file}
 \usage{
-raz_create_bd_tree(bd_tree, tree_filename)
-}
-\arguments{
-\item{tree_filename}{name of the phylogeny file}
+raz_create_bd_tree(init_speciation_rate, init_extinction_rate, mbd_tree,
+  bd_tree_filename)
 }
 \value{
 nothing. Will create a file with name in \code{tree_filename}
 }
 \description{
-Create an BD tree from the razzo parameters
+Create an BD twin tree from an MBD tree
 and save it as a file
 }
 \author{
