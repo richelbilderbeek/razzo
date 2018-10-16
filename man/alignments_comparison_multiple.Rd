@@ -6,8 +6,8 @@
 \usage{
 alignments_comparison_multiple(sim_pars = c(0.2, 0.15, 2, 0.15),
   max_sims = 10, chain_length = 1e+06, sample_interval = 1000,
-  sequence_length = 1000, cond = 1, age = 10, tips_interval = c(0,
-  Inf), mutation_rate = 1/age)
+  sequence_length = 1000, cond = 1, age = 10, tips_interval = c(0, Inf),
+  mutation_rate = 1/age)
 }
 \arguments{
 \item{sim_pars}{something}

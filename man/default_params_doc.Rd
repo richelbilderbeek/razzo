@@ -5,17 +5,17 @@
 \title{This function does nothing. It is intended to inherit is parameters'
 documentation.}
 \usage{
-default_params_doc(A_abstol, A_reltol, abstol, account_name, alpha, alpha0,
-  b, brts, chain_length, changeloglikifnoconv, colormap, idparsfix,
-  idparsopt, initparsopt, interval.max, interval.min, iterations, k,
-  lambda, logs, lx, lx0, matrix, matrix_builder, max_iter, max_k,
-  max_number_of_species, max_repetitions, max_sims, maxiter, mbd.lambda,
-  methode, minimum_multiple_births, missnumspec, mu, mutation_rate, N, N0,
-  Nsteps, Nsubs, nu, optimmethod, pars.transform, parsfix, precision,
-  print_errors, Q, q, reltol, res, s, sample_interval, sequence_length,
-  sim_pars, sim_phylo, soc, t, t1, t2, time_interval, tol,
-  transition_matrix, trparsfix, trparsopt, verbose, x, x.name, x.splits, y,
-  y.name, y.splits, z, z.name, age, cond, pars, tips_interval)
+default_params_doc(A_abstol, A_reltol, abstol, account_name, alpha, alpha0, b,
+  brts, chain_length, changeloglikifnoconv, colormap, idparsfix, idparsopt,
+  initparsopt, interval.max, interval.min, iterations, k, lambda, logs, lx, lx0,
+  matrix, matrix_builder, max_iter, max_k, max_number_of_species,
+  max_repetitions, max_sims, maxiter, mbd.lambda, methode,
+  minimum_multiple_births, missnumspec, mu, mutation_rate, N, N0, Nsteps, Nsubs,
+  nu, optimmethod, pars.transform, parsfix, precision, print_errors, Q, q,
+  reltol, res, s, sample_interval, sequence_length, sim_pars, sim_phylo, soc, t,
+  t1, t2, time_interval, tol, transition_matrix, trparsfix, trparsopt, verbose,
+  x, x.name, x.splits, y, y.name, y.splits, z, z.name, age, cond, pars,
+  tips_interval)
 }
 \arguments{
 \item{A_abstol}{something}

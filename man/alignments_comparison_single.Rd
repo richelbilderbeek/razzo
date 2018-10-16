@@ -5,8 +5,7 @@
 \title{Does something E}
 \usage{
 alignments_comparison_single(sim_phylo, chain_length = 1e+07,
-  sample_interval = 1000, sequence_length = 1000,
-  max_repetitions = 10,
+  sample_interval = 1000, sequence_length = 1000, max_repetitions = 10,
   mutation_rate = 1/max(abs(ape::branching.times(sim_phylo))))
 }
 \arguments{

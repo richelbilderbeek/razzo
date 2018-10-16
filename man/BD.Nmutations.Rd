@@ -4,8 +4,8 @@
 \alias{BD.Nmutations}
 \title{Does something C}
 \usage{
-BD.Nmutations(lambda, mu, age, init_n_lineages = 2,
-  sequence_length = 1000, mutation_rate = 1/age)
+BD.Nmutations(lambda, mu, age, init_n_lineages = 2, sequence_length = 1000,
+  mutation_rate = 1/age)
 }
 \arguments{
 \item{lambda}{something}
