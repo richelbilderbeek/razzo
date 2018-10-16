@@ -104,7 +104,7 @@ raz_create_inference_files <- function(fasta_filename)
     )
 
     # Save marginal likelihood data
-    write.csv(x = posterior$ns, file = mar_lik_filename)
+    utils::write.csv(x = posterior$ns, file = mar_lik_filename)
   }
 
   inference_filenames <- c(

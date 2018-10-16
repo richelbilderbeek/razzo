@@ -12,6 +12,13 @@ raz_create_bd_tree <- function(
 )
 {
   if (1 == 2) {
+
+    # TODO: get from parameters file
+    crown_age <- NULL
+
+    soc <- 2 # Always crown age
+
+
     brts <- ape::branching.times(mbd_tree) # nolint
     bd_pars <- DDD::bd_ML( # nolint
       brts = abs(brts),
@@ -31,15 +38,29 @@ raz_create_bd_tree <- function(
     #                       tdmodel = 0,
     #                       btorph = 1,
     #                       soc = soc)
+
+    # TODO: read seed from parameters file
+    seed <- NULL
+
+    # TODO: get the MBD tree
+    MBD_tree <- NULL
+
+    # TODO: get the MBD sim
+    MBD_sim <- NULL
+
     set.seed(seed)
     BD_tree0 <- TESS::tess.sim.taxa.age(n = 1,
                                         lambda = as.numeric(unname(bd_pars[1])),
                                         mu     = as.numeric(unname(bd_pars[2])),
                                         nTaxa = ((soc - 1) + length(MBD_sim$brts)),
-                                        age = age,
+                                        age = crown_age,
                                         MRCA = TRUE)[[1]]
 
     BD_brts <- ape::branching.times(BD_tree0)
+
+    # TODO: get this from ?
+    MBD_l_matrix <- NULL
+
     BD_l_matrix <- MBD_l_matrix
     alive <- BD_l_matrix[, 4] == -1
     alive2 <- alive
@@ -47,12 +68,11 @@ raz_create_bd_tree <- function(
     vec <- BD_l_matrix[, 1]
     vec[seq_along(vec) * alive2] <- BD_brts
     BD_l_matrix[, 1] <- vec
-    par(mfrow = c(1,2))
+    graphics::par(mfrow = c(1, 2))
     BD_tree <- DDD::L2phylo(BD_l_matrix)
-    plot(MBD_tree, main = "MBD tree"); plot(BD_tree, main = "twin BD tree")
-
+    ape::plot.phylo(MBD_tree, main = "MBD tree")
+    ape::plot.phylo(BD_tree, main = "twin BD tree")
   }
-
 
   # Save the tree to a file
 }

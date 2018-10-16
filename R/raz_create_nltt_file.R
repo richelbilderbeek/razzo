@@ -33,7 +33,7 @@ raz_create_nltt_file <- function(trees_filename) {
     {
       nltt_diff[i] <- nLTT::nLTTstat(tree, posterior$trees[[i]]) # nolint nLTT used older coding standard
     }
-    write.csv(x = nltt_diff, file = nltt_filename)
+    utils::write.csv(x = nltt_diff, file = nltt_filename)
   }
 
   nltt_filename
