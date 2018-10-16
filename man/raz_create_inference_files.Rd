@@ -2,14 +2,16 @@
 % Please edit documentation in R/raz_create_inference_files.R
 \name{raz_create_inference_files}
 \alias{raz_create_inference_files}
-\title{Create the inference files from a FASTA file:
+\title{Create the inference files from a FASTA file.
+For example, for a FASTA file named '/my_folder/mbd.fasta', this
+function will create:
 \itemize{
-  \item A a
-  \item B aqwf
-  \item C aewf
+  \item '/my_folder/mbd.trees' BEAST2 posterior trees
+  \item '/my_folder/mbd.log' BEAST2 parameter estimates
+  \item '/my_folder/mbd_mar_lik.csv' BEAST2 marginal likelihood estimate
 }
-Assumes for a FASTA file named '1x.fasta'
-  that there is a parameters file called '1.csv'}
+Assumes, for a FASTA file named '/my_folder/mbd.fasta', this
+  that there is a parameters file named '/my_folder/parameters.csv'}
 \usage{
 raz_create_inference_files(fasta_filename)
 }
@@ -17,14 +19,16 @@ raz_create_inference_files(fasta_filename)
 names of the files created
 }
 \description{
-Create the inference files from a FASTA file:
+Create the inference files from a FASTA file.
+For example, for a FASTA file named '/my_folder/mbd.fasta', this
+function will create:
 \itemize{
-  \item A a
-  \item B aqwf
-  \item C aewf
+  \item '/my_folder/mbd.trees' BEAST2 posterior trees
+  \item '/my_folder/mbd.log' BEAST2 parameter estimates
+  \item '/my_folder/mbd_mar_lik.csv' BEAST2 marginal likelihood estimate
 }
-Assumes for a FASTA file named '1x.fasta'
-  that there is a parameters file called '1.csv'
+Assumes, for a FASTA file named '/my_folder/mbd.fasta', this
+  that there is a parameters file named '/my_folder/parameters.csv'
 }
 \author{
 Richel J.C. Bilderbeek

@@ -18,11 +18,16 @@ raz_create_inference_files <- function(fasta_filename)
     testit::assert(file.exists(fasta_filename))
   }
 
+  parameters_filename <- file.path(dirname(fasta_filename), "parameters.csv")
+
   # TODO: parameter file should exist one day :-)
   if (1 == 2) {
-    parameters_filename <- file.path(dirname(fasta_filename), "parameters.csv")
     testit::assert(file.exists(parameters_filename))
   }
+
+  # Read the parameters
+  parameters <- raz_open_parameters_file(parameters_filename)
+  testit::assert(parameters$lambda >= 0.0)
 
   base <- tools::file_path_sans_ext(fasta_filename)
   trees_filename <- paste0(c(base, ".trees"), collapse = "")

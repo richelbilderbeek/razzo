@@ -65,6 +65,8 @@ We will work in this folder:
 folder_name <- tempdir()
 ```
 
+## Step 0: create parameters
+
 Here we create all parameter files:
 
 ```{r}
@@ -110,8 +112,6 @@ for (trees_filename in trees_filenames)
 
 # All files are in place!
 ```
-
-### Step 0: create parameters
 
 
 ### step 1: simulate MBD tree

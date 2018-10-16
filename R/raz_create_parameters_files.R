@@ -18,6 +18,7 @@ raz_create_parameters_files <- function(folder_name) {
   sub_folder_name <- "1"
   local_path <- file.path(folder_name, sub_folder_name)
   path <- file.path(local_path, "parameters.csv")
+
   # TODO: Create the parameters file here
 
   # Return the path to the file
