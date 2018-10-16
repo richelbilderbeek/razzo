@@ -102,6 +102,17 @@ if (1 == 2) {
 }
 ```
 
+Then we want to generate a "twin" BD tree. To create such tree we have to estimate the best lambda and mu to make the comparison fair. 
+To estimate the parameters we run a ML inference using the BD model.
+We also want to condition on the same amount of tips and on the survival of the phylogeny (cond = 2).
+
+```{r}
+if (1 == 2) {
+  plot(file.path(folder_name, "1", "bd.tree"))
+}
+```
+
+
 ## Step 2: create inference files
 
 ```{r}
@@ -131,32 +142,6 @@ for (trees_filename in trees_filenames)
 
 
 
-### step 2: calculate the best pars for the twin BD tree (be careful with the estimated parameters!)
-Then we wanto to generate a "twin" BD tree. To create such tree we have to estimate the best lambda and mu to make the comparison fair. 
-To estimate the parameters we run a ML inference using the BD model.
-We also want to condition on the same amount of tips and on the survival of the phylogeny (cond = 2).
-
-```{r}
-if (1 == 2) {
-  BD_pars <- DDD::bd_ML(brts = abs(sim$brts),
-                        cond = 2,
-                        initparsopt = MBD_pars[1:2],
-                        idparsopt = 1:2,
-                        missnumspec = 0,
-                        tdmodel = 0,
-                        btorph = 1,
-                        soc = soc)
-  
-  # BD_pars2 <- DDD::bd_ML(brts = abs(MBDsim$brts),
-  #                       cond = 1,
-  #                       initparsopt = simpars[1:2],
-  #                       idparsopt = 1:2,
-  #                       missnumspec = 0,
-  #                       tdmodel = 0,
-  #                       btorph = 1,
-  #                       soc = soc)
-}
-```
 
 
 ### step 3: simulate the twin BD tree
@@ -166,27 +151,6 @@ We use "TESS::tess.sim.taxa.age" to generate the branching times (BD_brts).
 We then plug these branching times in the l_table coming from the original MBD tree to be sure that the topology is the same.
 
 ```{r simulate_twin_bd_tree}
-if (1 == 2) {
-  set.seed(seed)
-  BD_tree0 <- TESS::tess.sim.taxa.age(n = 1,
-                                      lambda = as.numeric(unname(BD_pars[1])),
-                                      mu     = as.numeric(unname(BD_pars[2])),
-                                      nTaxa = ((soc - 1) + length(MBD_sim$brts)),
-                                      age = age,
-                                      MRCA = TRUE)[[1]]
-  
-  BD_brts <- ape::branching.times(BD_tree0)
-  BD_l_matrix <- MBD_l_matrix
-  alive <- BD_l_matrix[, 4] == -1
-  alive2 <- alive
-  t <- length(alive); while (sum(alive2) > length(BD_brts)) {if (alive2[t] == 1) {alive2[t] = 0}; t = t - 1}
-  vec <- BD_l_matrix[, 1]
-  vec[seq_along(vec) * alive2] <- BD_brts
-  BD_l_matrix[, 1] <- vec
-  par(mfrow = c(1,2))
-  BD_tree <- DDD:::L2phylo(BD_l_matrix)
-  plot(MBD_tree, main = "MBD tree"); plot(BD_tree, main = "twin BD tree")
-}
 ```
 
 ###step 4: generate MBD posterior, given BD prior
