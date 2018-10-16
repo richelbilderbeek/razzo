@@ -57,39 +57,25 @@ for (fasta_filename in fasta_filenames)
   testit::assert("1a_mar_lik.csv" %in% output_filenames)
 }
 
+## ------------------------------------------------------------------------
 # Create the nLTT distribution
 trees_filenames <- c("1a.trees") # Search the folder
 for (trees_filename in trees_filenames)
 {
-  nltt_filename <- raz_create_nltt_file(trees_filename)
-  testit::assert("1a_nltts.csv" %in% nltt_filename)
+  if (1 == 2) {
+    # TODO: Issue 5
+    nltt_filename <- raz_create_nltt_file(trees_filename)
+    testit::assert("1a_nltts.csv" %in% nltt_filename)
+  }
 }
 
 # All files are in place!
 
-## ----simulate_twin_bd_tree-----------------------------------------------
-
 ## ------------------------------------------------------------------------
+# TODO: plot the nLTT
 
 ## ------------------------------------------------------------------------
 if (1 == 2) {
-  MBD_nLTT.diff <- rep(NA, length(MBD_posterior$trees))
-  for (i in 1:length(MBD_posterior$trees))
-  {
-    MBD_nLTT.diff[i] <- nLTT::nLTTstat(MBD_tree, MBD_posterior$trees[[i]])
-  }
-  MBD_mean.nLTT <- mean(MBD_nLTT.diff)
-  MBD_std.nLTT  <- sqrt(stats::var(MBD_nLTT.diff)); MBD_std.nLTT
-  MBD_df.nLTT   <- data.frame(diff = MBD_nLTT.diff)
-  
-  BD_nLTT.diff <- rep(NA, length(BD_posterior$trees))
-  for (i in 1:length(BD_posterior$trees))
-  {
-    BD_nLTT.diff[i] <- nLTT::nLTTstat(BD_tree, BD_posterior$trees[[i]])
-  }
-  BD_mean.nLTT <- mean(BD_nLTT.diff)
-  BD_std.nLTT  <- sqrt(stats::var(BD_nLTT.diff)); BD_std.nLTT
-  BD_df.nLTT   <- data.frame(diff = BD_nLTT.diff)
   
   par(mfrow = c(1,2))
   hist(unlist(MBD_df.nLTT), main = "MBD nLTT")
