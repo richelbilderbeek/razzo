@@ -1,6 +1,6 @@
 #' For each parameter setting create a folder and a parameters file
 #' @return Create folders for each parameter setting and saves each setting in a file.
-#' @author Giovanni Laudanno
+#' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
 raz_create_parameters_files <- function(folder_name,
                                          lambda.interval = c(0.2, 0.2),
