@@ -4,6 +4,7 @@ test_that("use", {
 
   # Work from a folder
   folder_name <- tempdir()
+
   # Create the parameter files
   soc <- 2
   age <- 10
@@ -17,7 +18,10 @@ test_that("use", {
                                            soc = soc,
                                            age = age,
                                            cond = cond)
-  one_parameter_setting <- dirname(filenames[1])
+
+  one_parameter_setting <- paste0(folder_name, "/", dirname(filenames[1]))
+  testthat::expect_true(file.exists(one_parameter_setting))
+
   parameters_filename <- file.path(one_parameter_setting, "parameters.csv")
   mbd_tree_filename <- file.path(one_parameter_setting, "mbd.tree")
 
@@ -25,7 +29,7 @@ test_that("use", {
   parameters <- raz_open_parameters_file(parameters_filename)
 
   # Create tree
-  raz_create_mbd_tree(parameters, mbd_tree_filename)
+  raz_create_mbd_tree(parameters = parameters, mbd_tree_filename = mbd_tree_filename)
 
   # Actually create an MBD tree and save it
   testthat::expect_true(file.exists(mbd_tree_filename))

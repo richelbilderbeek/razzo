@@ -4,7 +4,7 @@
 #' @return nothing. Will create a file with name in \code{tree_filename}
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
-raz_create_mbd_tree <- function(parameters, tree_filename)
+raz_create_mbd_tree <- function(parameters, mbd_tree_filename, folder_name)
 {
   # # Create the MBD tree
   MBD_pars <- c(0.2, 0.15, 2, 0.10)
@@ -14,7 +14,7 @@ raz_create_mbd_tree <- function(parameters, tree_filename)
   cond <- parameters$cond
   seed <- parameters$seed
   set.seed(seed)
-  sim  <- mbd::mbd_sim(pars = MBD_pars, soc = soc, age = age, cond = cond)
+  mbd.sim  <- mbd::mbd_sim(pars = MBD_pars, soc = soc, age = age, cond = cond)
   brts <- sim$brts
   tree <- sim$tes
   l_matrix <- sim$l_matrix
@@ -22,7 +22,10 @@ raz_create_mbd_tree <- function(parameters, tree_filename)
   testit::assert(!is.null(tree))
   testit::assert(!is.null(l_matrix))
 
-  save(sim, file = tree_filename)
-
   # Save the tree to a file
+  # parameters_folder <- raz_get_parameters_path(parameters, folder_name)
+  save(mbd.sim, file = mbd_tree_filename)
+
+  # Return the tree
+  return(mbd.sim)
 }

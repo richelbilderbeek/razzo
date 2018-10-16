@@ -3,14 +3,14 @@
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
 raz_create_parameters_files <- function(folder_name,
-                                         lambda.interval = c(0.2, 0.2),
-                                         mu.interval = c(0.15, 0.15),
-                                         nu.interval = seq(from = 1, to = 2.5, by = 0.5),
-                                         q.interval = seq(from = 0.10, to = 0.20, by = 0.05),
-                                         seed.interval = 1:1000,
-                                         soc,
-                                         age,
-                                         cond
+                                        lambda.interval = c(0.2, 0.2),
+                                        mu.interval = c(0.15, 0.15),
+                                        nu.interval = seq(from = 1, to = 2.5, by = 0.5),
+                                        q.interval = seq(from = 0.10, to = 0.20, by = 0.05),
+                                        seed.interval = 1:1000,
+                                        soc,
+                                        age,
+                                        cond
 ) {
 
   setwd(folder_name)
