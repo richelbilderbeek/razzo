@@ -18,6 +18,8 @@ raz_create_mbd_alignment <- function(parameters_filename) {
   sequence_length <- NULL
 
   # Calculate the mutation rate from the tree
+  # Found:
+  #   BD_mutation_rate <-  MBD_mutation_rate * (sum(MBD_tree$edge.length)/sum(BD_tree$edge.length)); # nolint
   mutation_rate <- NULL
 
   # Root sequence is e.g. AAACCCGGGTTT

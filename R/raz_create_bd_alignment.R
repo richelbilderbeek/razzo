@@ -15,6 +15,8 @@ raz_create_bd_alignment <- function(parameters_filename) {
   bd_phylogeny <- NULL
 
   # Get the sequence length from the parameters filename
+  # Found
+  #   BD_mutation_rate <-  MBD_mutation_rate * (sum(MBD_tree$edge.length)/sum(BD_tree$edge.length)); # nolint
   sequence_length <- NULL
 
   # Calculate the mutation rate from the tree

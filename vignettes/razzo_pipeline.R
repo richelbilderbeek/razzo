@@ -70,49 +70,6 @@ for (trees_filename in trees_filenames)
 ## ----simulate_twin_bd_tree-----------------------------------------------
 
 ## ------------------------------------------------------------------------
-if (1 == 2) {
-  MBD_sequence_length <- 1e3;
-  MBD_mutation_rate   <- 1e-3;
-  MBD_chain_length    <- 1e6;
-  MBD_sample_interval <- 1e3;
-  set.seed(seed)
-  MBD_posterior <- pirouette::pir_run( #test1 is a posterior of 10001 trees generated from sim_tes[[1]]
-    phylogeny = MBD_tree,
-    sequence_length = MBD_sequence_length,
-    mutation_rate = MBD_mutation_rate,
-    mcmc = beautier::create_mcmc(chain_length = MBD_chain_length, store_every = MBD_sample_interval), #store_every = -1
-    site_models = beautier::create_jc69_site_model(),
-    clock_models = beautier::create_strict_clock_model(),
-    tree_priors = beautier::create_bd_tree_prior(),
-    mrca_distr = beautier::create_normal_distr(mean  = beautier::create_mean_param(value = age), 
-                                               sigma = beautier::create_sigma_param(value = 0.001)),
-    alignment_rng_seed = 0,
-    beast2_rng_seed = 1,
-    verbose = FALSE
-  )
-}
-
-## ------------------------------------------------------------------------
-if (1 == 2) {
-  BD_sequence_length <- MBD_sequence_length;
-  BD_mutation_rate   <- MBD_mutation_rate * (sum(MBD_tree$edge.length)/sum(BD_tree$edge.length));
-  BD_chain_length    <- MBD_chain_length;
-  BD_sample_interval <- MBD_sample_interval;
-  set.seed(seed)
-  BD_posterior <- pirouette::pir_run( #test1 is a posterior of 10001 trees generated from sim_tes[[1]]
-    phylogeny = BD_tree,
-    sequence_length = BD_sequence_length,
-    mutation_rate = BD_mutation_rate,
-    mcmc = beautier::create_mcmc(chain_length = BD_chain_length, store_every = BD_sample_interval), #store_every = -1
-    site_models = beautier::create_jc69_site_model(),
-    clock_models = beautier::create_strict_clock_model(),
-    tree_priors = beautier::create_bd_tree_prior(),
-    mrca_distr = beautier::create_normal_distr(mean = beautier::create_mean_param(value = age), sigma = beautier::create_sigma_param(value = 0.001)),
-    alignment_rng_seed = 0,
-    beast2_rng_seed = 1,
-    verbose = FALSE
-  )
-}
 
 ## ------------------------------------------------------------------------
 if (1 == 2) {

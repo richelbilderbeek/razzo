@@ -6,6 +6,7 @@
 #' @param alpha0 something
 #' @param b something
 #' @param brts something
+#' @param bd_tree_filename name of the file that stores a BD twin tree
 #' @param chain_length something
 #' @param changeloglikifnoconv something
 #' @param colormap something
@@ -21,8 +22,8 @@
 #'     \item id == 4 corresponds to q (single-lineage speciation probability)
 #'   }
 #' @param initparsopt something
-#' @param interval.max something
-#' @param interval.min something
+#' @param init_speciation_rate a speciation rate
+#' @param init_extinction_rate an extinction rate
 #' @param iterations something
 #' @param k something
 #' @param lambda something
@@ -37,7 +38,7 @@
 #' @param max_repetitions something
 #' @param max_sims something
 #' @param maxiter something
-#' @param mbd.lambda something
+#' @param mbd_tree an MBD tree
 #' @param methode something
 #' @param minimum_multiple_births something
 #' @param missnumspec something
@@ -101,6 +102,7 @@ default_params_doc <- function(
   alpha,
   alpha0,
   b,
+  bd_tree_filename,
   brts,
   chain_length,
   changeloglikifnoconv,
@@ -110,8 +112,8 @@ default_params_doc <- function(
   idparsfix,
   idparsopt,
   initparsopt,
-  interval.max,
-  interval.min,
+  init_speciation_rate,
+  init_extinction_rate,
   iterations,
   k,
   lambda,
@@ -126,7 +128,7 @@ default_params_doc <- function(
   max_repetitions,
   max_sims,
   maxiter,
-  mbd.lambda,
+  mbd_tree,
   methode,
   minimum_multiple_births,
   missnumspec,

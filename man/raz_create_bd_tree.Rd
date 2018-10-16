@@ -8,6 +8,15 @@ and save it as a file}
 raz_create_bd_tree(init_speciation_rate, init_extinction_rate, mbd_tree,
   bd_tree_filename)
 }
+\arguments{
+\item{init_speciation_rate}{a speciation rate}
+
+\item{init_extinction_rate}{an extinction rate}
+
+\item{mbd_tree}{an MBD tree}
+
+\item{bd_tree_filename}{name of the file that stores a BD twin tree}
+}
 \value{
 nothing. Will create a file with name in \code{tree_filename}
 }
