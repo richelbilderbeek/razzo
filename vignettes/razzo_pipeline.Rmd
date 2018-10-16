@@ -67,11 +67,53 @@ folder_name <- tempdir()
 
 ## Step 0: create parameters
 
+# Create all parameter files
+# parameters_filenames <- raz_create_parameters_files()
+# testit::assert("1.csv" %in% parameters_filenames)
+# 
+# # Create all true trees, true alignments and their twins
+# for (parameters_filename in parameters_filenames) {
+#   input_filenames <- raz_create_input_files(parameters_filename)
+#   # True MBD tree
+#   testit::assert("1a.tree" %in% input_filenames)
+#   # True MBD alignment
+#   testit::assert("1a.fasta" %in% input_filenames)
+#   # Twin BD tree
+#   testit::assert("1b.tree" %in% input_filenames)
+#   # Twin BD alignment
+#   testit::assert("1b.fasta" %in% input_filenames)
+# }
+# 
+# # Do the inference
+# fasta_filenames <- c("1a.fasta") # Search the folder
+# for (fasta_filename in fasta_filenames) 
+# {
+#   output_filenames <- raz_create_inference_files(fasta_filename)
+#   # Posterior trees
+#   testit::assert("1a.trees" %in% output_filenames)
+#   # Trace of MCMC, to estimate the Effective Sample Sizes
+#   testit::assert("1a.log" %in% output_filenames)
+#   # Marginal likelihood
+#   testit::assert("1a_mar_lik.csv" %in% output_filenames)
+# }
+# 
+# # Create the nLTT distribution
+# trees_filenames <- c("1a.trees") # Search the folder
+# for (trees_filename in trees_filenames)
+# {
+#   nltt_filename <- raz_create_nltt_file(trees_filename)
+#   testit::assert("1a_nltts.csv" %in% nltt_filename)
+# }
+# 
+# # All files are in place!
+
 Here we create all parameter files:
 
 ```{r}
-parameters_filenames <- raz_create_parameters_files(folder_name)
-testit::assert(file.path(folder_name, "1", "parameters.csv") %in% parameters_filenames)
+if (1 == 2) {
+  parameters_filenames <- raz_create_parameters_files(folder_name)
+  testit::assert(file.path(folder_name, "1", "parameters.csv") %in% parameters_filenames)
+}
 ```
 
 ## Step 1: create input files
@@ -79,17 +121,19 @@ testit::assert(file.path(folder_name, "1", "parameters.csv") %in% parameters_fil
 Each parameter file is read to create a MBD tree and alignment and its BD twin:
 
 ```{r}
-# Create all true trees, true alignments and their twins
-for (parameters_filename in parameters_filenames) {
-  input_filenames <- raz_create_input_files(parameters_filename)
-  # True MBD tree
-  testit::assert(file.path(folder_name, "1", "mbd.tree") %in% input_filenames)
-  # True MBD alignment
-  testit::assert(file.path(folder_name, "1", "mbd.fasta") %in% input_filenames)
-  # Twin BD tree
-  testit::assert(file.path(folder_name, "1", "bd.tree") %in% input_filenames)
-  # Twin BD alignment
-  testit::assert(file.path(folder_name, "1", "bd.fasta") %in% input_filenames)
+if (1 == 2) {
+  # Create all true trees, true alignments and their twins
+  for (parameters_filename in parameters_filenames) {
+    input_filenames <- raz_create_input_files(parameters_filename)
+    # True MBD tree
+    testit::assert(file.path(folder_name, "1", "mbd.tree") %in% input_filenames)
+    # True MBD alignment
+    testit::assert(file.path(folder_name, "1", "mbd.fasta") %in% input_filenames)
+    # Twin BD tree
+    testit::assert(file.path(folder_name, "1", "bd.tree") %in% input_filenames)
+    # Twin BD alignment
+    testit::assert(file.path(folder_name, "1", "bd.fasta") %in% input_filenames)
+  }
 }
 ```
 
@@ -176,5 +220,4 @@ if (1 == 2) {
   cat("Average nLTT for MBD", MBD_mean.nLTT, "\nAverage nLTT for BD ", BD_mean.nLTT)
 }
 ```
-
 

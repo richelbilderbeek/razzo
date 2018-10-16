@@ -3,23 +3,42 @@ context("raz_create_mbd_tree")
 test_that("use", {
 
   # Work from a folder
-  folder_name <- tempdir()
-  # Create the parameter files
-  raz_create_parameters_files(folder_name)
-  sub_folder_name <- "1"
-  parameters_filename <- file.path(folder_name, sub_folder_name, "parameters.csv")
-  mbd_tree_filename <- file.path(folder_name, sub_folder_name, "mbd.tree")
+  folder_name <- raz_tempdir(); # folder_name <- tempdir()
+  testthat::expect_true(
+    dir.exists(folder_name)
+  )
 
+  # Create the parameter files
+  lambda.interval <- c(0.2, 0.2)
+  mu.interval     <- c(0.15, 0.15)
+  nu.interval     <- seq(from = 1, to = 2.5, by = 0.5)
+  q.interval      <- seq(from = 0.10, to = 0.20, by = 0.05)
+  seed.interval   <- 1:3
+  soc  <- 2
+  age  <- 10
+  cond <- 1
+  filenames <- raz_create_parameters_files(folder_name = folder_name,
+                                           lambda.interval = lambda.interval,
+                                           mu.interval = mu.interval,
+                                           nu.interval = nu.interval,
+                                           q.interval = q.interval,
+                                           seed.interval = seed.interval,
+                                           soc = soc,
+                                           age = age,
+                                           cond = cond)
+
+  one_parameter_setting <- dirname(filenames[1])
+  testthat::expect_true(file.exists(one_parameter_setting))
+  parameters_filename <- file.path(one_parameter_setting, "parameters.csv")
+  mbd_tree_filename   <- file.path(one_parameter_setting, "mbd.tree")
+
+  # Get parameters
   parameters <- raz_open_parameters_file(parameters_filename)
 
-  # No tree present yet
-  testit::assert(!file.exists(mbd_tree_filename))
-
   # Create tree
-  raz_create_mbd_tree(parameters, mbd_tree_filename)
+  raz_create_mbd_tree(parameters = parameters, folder_name = folder_name)
 
-  # TODO: Issue #8: actually create an MBD tree and save it
-  if (1 == 2) {
-    expect_true(file.exists(mbd_tree_filename))
-  }
+  # Actually create an MBD tree and save it
+  testthat::expect_true(file.exists(mbd_tree_filename))
+
 })

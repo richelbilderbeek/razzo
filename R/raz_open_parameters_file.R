@@ -3,16 +3,22 @@
 #' @param parameter_filename name of the parameter filename,
 #'   for example '/my_folder/1/parameters.csv'
 #' @return the razzo parameters
-#' @author Richel J.C. Bilderbeek
+#' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
-raz_open_parameters_file <- function(parameter_filename)
+raz_open_parameters_file <- function(parameters_filename)
 {
-  # TODO: actually read the file
-  if (1 == 2) {
-    testit::assert(file.exists(parameter_filename))
-  }
 
-  parameters <- list()
-  parameters$lambda <- 1.0
-  parameters
+  testit::assert(file.exists(parameters_filename))
+
+  reading <- read.csv(parameters_filename)
+  parameters <- data.frame(t(reading[,2]))
+  names(parameters) <- reading[,1]
+
+  testit::assert(parameters$lambda >= 0)
+  testit::assert(parameters$mu >= 0)
+  testit::assert(parameters$nu >= 0)
+  testit::assert(parameters$q >= 0)
+  testit::assert(parameters$q <= 1)
+
+  return(parameters)
 }

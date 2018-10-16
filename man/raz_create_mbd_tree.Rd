@@ -5,12 +5,12 @@
 \title{Create an MBD tree from the razzo parameters
 and save it as a file}
 \usage{
-raz_create_mbd_tree(parameters, tree_filename)
+raz_create_mbd_tree(parameters, folder_name)
 }
 \arguments{
 \item{parameters}{the razzo parameters}
 
-\item{tree_filename}{name of the phylogeny file}
+\item{folder_name}{name of the folder}
 }
 \value{
 nothing. Will create a file with name in \code{tree_filename}
@@ -20,5 +20,5 @@ Create an MBD tree from the razzo parameters
 and save it as a file
 }
 \author{
-Richel J.C. Bilderbeek
+Richel J.C. Bilderbeek, Giovanni Laudanno
 }

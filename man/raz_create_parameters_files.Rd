@@ -2,23 +2,19 @@
 % Please edit documentation in R/raz_create_parameters_files.R
 \name{raz_create_parameters_files}
 \alias{raz_create_parameters_files}
-\title{Create all parameters files in a folder.
-In that folder, one folder is created per parameter file.
-In each subfolder, a file 'parameters.csv' is created}
+\title{For each parameter setting create a folder and a parameters file}
 \usage{
-raz_create_parameters_files(folder_name)
-}
-\arguments{
-\item{folder_name}{name of the folder}
+raz_create_parameters_files(folder_name, lambda.interval = c(0.2, 0.2),
+  mu.interval = c(0.15, 0.15), nu.interval = seq(from = 1, to = 2.5, by
+  = 0.5), q.interval = seq(from = 0.1, to = 0.2, by = 0.05),
+  seed.interval = 1:1000, soc, age, cond)
 }
 \value{
-full paths of the files created
+Create folders for each parameter setting and saves each setting in a file.
 }
 \description{
-Create all parameters files in a folder.
-In that folder, one folder is created per parameter file.
-In each subfolder, a file 'parameters.csv' is created
+For each parameter setting create a folder and a parameters file
 }
 \author{
-Richel J.C. Bilderbeek
+Giovanni Laudanno, Richel J.C. Bilderbeek
 }
