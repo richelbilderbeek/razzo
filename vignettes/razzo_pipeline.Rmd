@@ -160,17 +160,19 @@ if (1 == 2) {
 ## Step 2: create inference files
 
 ```{r}
-# Do the inference
-fasta_filenames <- c("1a.fasta") # Search the folder
-for (fasta_filename in fasta_filenames) 
-{
-  output_filenames <- raz_create_inference_files(fasta_filename)
-  # Posterior trees
-  testit::assert("1a.trees" %in% output_filenames)
-  # Trace of MCMC, to estimate the Effective Sample Sizes
-  testit::assert("1a.log" %in% output_filenames)
-  # Marginal likelihood
-  testit::assert("1a_mar_lik.csv" %in% output_filenames)
+if (1 == 2) {
+  # Do the inference
+  fasta_filenames <- c("1a.fasta") # Search the folder
+  for (fasta_filename in fasta_filenames) 
+  {
+    output_filenames <- raz_create_inference_files(fasta_filename)
+    # Posterior trees
+    testit::assert("1a.trees" %in% output_filenames)
+    # Trace of MCMC, to estimate the Effective Sample Sizes
+    testit::assert("1a.log" %in% output_filenames)
+    # Marginal likelihood
+    testit::assert("1a_mar_lik.csv" %in% output_filenames)
+  }
 }
 ```
 
@@ -179,17 +181,18 @@ for (fasta_filename in fasta_filenames)
 Finally we calculate the nLTT statistics for both posteriors related to the original trees.
 
 ```{r}
-# Create the nLTT distribution
-trees_filenames <- c("1a.trees") # Search the folder
-for (trees_filename in trees_filenames)
-{
-  if (1 == 2) {
-    # TODO: Issue 5
-    nltt_filename <- raz_create_nltt_file(trees_filename)
-    testit::assert("1a_nltts.csv" %in% nltt_filename)
+if (1 == 2) {
+  # Create the nLTT distribution
+  trees_filenames <- c("1a.trees") # Search the folder
+  for (trees_filename in trees_filenames)
+  {
+    if (1 == 2) {
+      # TODO: Issue 5
+      nltt_filename <- raz_create_nltt_file(trees_filename)
+      testit::assert("1a_nltts.csv" %in% nltt_filename)
+    }
   }
 }
-
 # All files are in place!
 ```
 
