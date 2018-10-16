@@ -4,12 +4,14 @@
 #' '/my_folder/bd.fasta'.
 #' @inheritParams default_params_doc
 #' @return nothing
-#' @author Richel J.C. Bilderbeek
+#' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
-raz_create_bd_alignment <- function(parameters_filename) {
+raz_create_bd_alignment <- function(parameters, folder_name) {
 
   # Create the name of the alignent file, e.g. '/myfolder/bd.fasta'
-  bd_alignment_filename <- NULL
+  # bd_alignment_filename <- NULL
+  parameters_folder <- raz_get_parameters_path(parameters, folder_name)
+  bd_alignment_filename <- file.path(parameters_folder, "bd.fasta")
 
   # Get the twin BD phylogeny for 'bd.tree'
   bd_phylogeny <- NULL
@@ -17,13 +19,14 @@ raz_create_bd_alignment <- function(parameters_filename) {
   # Get the sequence length from the parameters filename
   # Found
   #   BD_mutation_rate <-  MBD_mutation_rate * (sum(MBD_tree$edge.length)/sum(BD_tree$edge.length)); # nolint
-  sequence_length <- NULL
+  sequence_length <- parameters$sequence_length
 
   # Calculate the mutation rate from the tree
   mutation_rate <- NULL
 
   # Root sequence is e.g. AAACCCGGGTTT
   root_sequence <- pirouette::create_blocked_dna(sequence_length)
+  root_sequence <- pirouette::create_blocked_dna(20)
 
   alignment <- pirouette::sim_alignment(
     phylogeny = bd_phylogeny,

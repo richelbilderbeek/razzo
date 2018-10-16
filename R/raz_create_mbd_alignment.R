@@ -4,18 +4,26 @@
 #' '/my_folder/mbd.fasta'.
 #' @inheritParams default_params_doc
 #' @return nothing
-#' @author Richel J.C. Bilderbeek
+#' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
-raz_create_mbd_alignment <- function(parameters_filename) {
+raz_create_mbd_alignment <- function(parameters, folder_name) {
+
+  # parameters <- raz_standard_parameters()
+
+  parameters_folder <- raz_get_parameters_path(parameters, folder_name)
+  mbd_tree_filename <- file.path(parameters_folder, "mbd.tree")
+  testit::assert(file.exists(mbd_tree_filename))
+  testit::assert("mbd.tree" %in% list.files(parameters_folder))
+  testit::assert(length(mbd_tree_filename) > 0)
 
   # Create the name of the alignent file, e.g. '/myfolder/mbd.fasta'
-  mbd_alignment_filename <- NULL
+  mbd_alignment_filename <- file.path(parameters_folder, "mbd.fasta")
 
   # Get the MBD phylogeny for 'mbd.tree'
-  mbd_phylogeny <- NULL
+  mbd_phylogeny <- get(load(mbd_tree_filename))$tes
 
   # Get the sequence length from the parameters filename
-  sequence_length <- NULL
+  sequence_length <- parameters$sequence_length
 
   # Calculate the mutation rate from the tree
   # Found:

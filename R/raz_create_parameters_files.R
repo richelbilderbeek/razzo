@@ -10,7 +10,8 @@ raz_create_parameters_files <- function(folder_name,
                                         seed.interval = 1:1000,
                                         soc,
                                         age,
-                                        cond
+                                        cond,
+                                        sequence_length
 ) {
 
   lambda.interval <- unique(lambda.interval)
@@ -53,7 +54,8 @@ raz_create_parameters_files <- function(folder_name,
                             seed = seed,
                             cond = cond,
                             age = age,
-                            soc = soc)
+                            soc = soc,
+                            sequence_length = sequence_length)
             parameters_filenames[i] <- file.path(seedfolder, "parameters.csv")
             write.csv(parameters, file = parameters_filenames[i])
             i <- i + 1
