@@ -19,6 +19,8 @@ Imports:
   ape, 
   beastier, 
   beautier,
+  DDD,
+  devtools,
   ggplot2, 
   mbd,
   nLTT,
