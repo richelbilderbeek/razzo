@@ -35,6 +35,21 @@ raz_create_input_files <- function(parameters_filename) {
     raz_create_mbd_tree(parameters, mbd_tree_filename)
     testit::assert(file.exists(mbd_tree_filename))
   }
+  if (1 == 2) {
+    # Create an MBD alignment
+    raz_create_mbd_alignment(parameters_filename)
+    testit::assert(file.exists(mbd_alignment_filename))
+  }
+  if (1 == 2) {
+    # Create a BD tree
+    raz_create_bd_tree(parameters, bd_tree_filename, NULL, NULL) # Nonsense
+    testit::assert(file.exists(bd_tree_filename))
+  }
+  if (1 == 2) {
+    # Create a BD alignment
+    raz_create_bd_alignment(parameters_filename)
+    testit::assert(file.exists(bd_alignment_filename))
+  }
 
   # Return the filenames
   input_filenames <- c(
