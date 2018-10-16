@@ -27,28 +27,64 @@ if (!require(pirouette)) {
 }
 ```
 
+## Folder structure
+
+In `folder_name`:
+
+  * `1`
+     * `parameters.csv`: the parameter file, created by `raz_create_parameter_files`
+     * `mbd.tree`: the true MBD tree, created by `raz_create_input_files`
+     * `mbd.fasta`: the true MBD alignment, created by `raz_create_input_files`
+     * `bd.tree`: the win BD tree, created by `raz_create_input_files`
+     * `bd.fasta`: the twin BD alignment, created by `raz_create_input_files`
+     * `mbd.trees`: the posterior trees from `mbd.tree`, created by `raz_create_inference_files("mbd.tree")`
+     * `mbd.log`: the posterior parameter estimates from `mbd.tree`, created by `raz_create_inference_files("mbd.tree")`
+     * `mbd_mar_lik.csv`: the posterior's marginal likelihood from `mbd.tree`, created by `raz_create_inference_files("mbd.tree")`
+     * `bd.trees`: the posterior trees from `bd.tree`, created by `raz_create_inference_files("bd.tree")`
+     * `bd.log`: the posterior parameter estimates from `bd.tree`, created by `raz_create_inference_files("bd.tree")`
+     * `bd_mar_lik.csv`: the posterior's marginal likelihood from `bd.tree`, created by `raz_create_inference_files("bd.tree")`
+     * `mbd_nltts.csv`: the nLTT statistic distribution between `mbd.tree` and `mbd.trees`, created by `raz_create_nltt_file("mbd.tree", "mbd.trees")`
+     * `bd_nltts.csv`: the nLTT statistic distribution between `bd.tree` and `bd.trees`, created by `raz_create_nltt_file("bd.tree", "bd.trees")`
+  * `2`
+  * `3`
+  * Etcetera
+     
 ## Overview
 
 ![Pipeline](pipeline.png)
 
+Load the library:
+
 ```{r}
 library(razzo)
+```
 
-# Create all parameter files
-parameters_filenames <- raz_create_parameters_files()
-testit::assert("1.csv" %in% parameters_filenames)
+We will work in this folder:
 
+```{r}
+folder_name <- tempdir()
+```
+
+Here we create all parameter files:
+
+```{r}
+parameters_filenames <- raz_create_parameters_files(folder_name)
+testit::assert(file.path(folder_name, "1", "parameters.csv") %in% parameters_filenames)
+```
+Each parameter file is read to create a MBD tree and alignment and its BD twin:
+
+```{r}
 # Create all true trees, true alignments and their twins
 for (parameters_filename in parameters_filenames) {
   input_filenames <- raz_create_input_files(parameters_filename)
   # True MBD tree
-  testit::assert("1a.tree" %in% input_filenames)
+  testit::assert(file.path(folder_name, "1", "mbd.tree") %in% input_filenames)
   # True MBD alignment
-  testit::assert("1a.fasta" %in% input_filenames)
+  testit::assert(file.path(folder_name, "1", "mbd.fasta") %in% input_filenames)
   # Twin BD tree
-  testit::assert("1b.tree" %in% input_filenames)
+  testit::assert(file.path(folder_name, "1", "bd.tree") %in% input_filenames)
   # Twin BD alignment
-  testit::assert("1b.fasta" %in% input_filenames)
+  testit::assert(file.path(folder_name, "1", "bd.fasta") %in% input_filenames)
 }
 
 # Do the inference
@@ -135,50 +171,54 @@ We use "TESS::tess.sim.taxa.age" to generate the branching times (BD_brts).
 We then plug these branching times in the l_table coming from the original MBD tree to be sure that the topology is the same.
 
 ```{r simulate_twin_bd_tree}
-set.seed(seed)
-BD_tree0 <- TESS::tess.sim.taxa.age(n = 1,
-                                    lambda = as.numeric(unname(BD_pars[1])),
-                                    mu     = as.numeric(unname(BD_pars[2])),
-                                    nTaxa = ((soc - 1) + length(MBD_sim$brts)),
-                                    age = age,
-                                    MRCA = TRUE)[[1]]
-
-BD_brts <- ape::branching.times(BD_tree0)
-BD_l_matrix <- MBD_l_matrix
-alive <- BD_l_matrix[, 4] == -1
-alive2 <- alive
-t <- length(alive); while (sum(alive2) > length(BD_brts)) {if (alive2[t] == 1) {alive2[t] = 0}; t = t - 1}
-vec <- BD_l_matrix[, 1]
-vec[seq_along(vec) * alive2] <- BD_brts
-BD_l_matrix[, 1] <- vec
-par(mfrow = c(1,2))
-BD_tree <- DDD:::L2phylo(BD_l_matrix)
-plot(MBD_tree, main = "MBD tree"); plot(BD_tree, main = "twin BD tree")
+if (1 == 2) {
+  set.seed(seed)
+  BD_tree0 <- TESS::tess.sim.taxa.age(n = 1,
+                                      lambda = as.numeric(unname(BD_pars[1])),
+                                      mu     = as.numeric(unname(BD_pars[2])),
+                                      nTaxa = ((soc - 1) + length(MBD_sim$brts)),
+                                      age = age,
+                                      MRCA = TRUE)[[1]]
+  
+  BD_brts <- ape::branching.times(BD_tree0)
+  BD_l_matrix <- MBD_l_matrix
+  alive <- BD_l_matrix[, 4] == -1
+  alive2 <- alive
+  t <- length(alive); while (sum(alive2) > length(BD_brts)) {if (alive2[t] == 1) {alive2[t] = 0}; t = t - 1}
+  vec <- BD_l_matrix[, 1]
+  vec[seq_along(vec) * alive2] <- BD_brts
+  BD_l_matrix[, 1] <- vec
+  par(mfrow = c(1,2))
+  BD_tree <- DDD:::L2phylo(BD_l_matrix)
+  plot(MBD_tree, main = "MBD tree"); plot(BD_tree, main = "twin BD tree")
+}
 ```
 
 ###step 4: generate MBD posterior, given BD prior
 The next step is to use the package "pirouette" to generate, from the MBD tree, first the alignments and then, through BEAST, a posterior distribution of trees. These trees are obtained using a BD prior. This means that there are no simultaneous branching events.
 
 ```{r}
-MBD_sequence_length <- 1e3;
-MBD_mutation_rate   <- 1e-3;
-MBD_chain_length    <- 1e6;
-MBD_sample_interval <- 1e3;
-set.seed(seed)
-MBD_posterior <- pirouette::pir_run( #test1 is a posterior of 10001 trees generated from sim_tes[[1]]
-  phylogeny = MBD_tree,
-  sequence_length = MBD_sequence_length,
-  mutation_rate = MBD_mutation_rate,
-  mcmc = beautier::create_mcmc(chain_length = MBD_chain_length, store_every = MBD_sample_interval), #store_every = -1
-  site_models = beautier::create_jc69_site_model(),
-  clock_models = beautier::create_strict_clock_model(),
-  tree_priors = beautier::create_bd_tree_prior(),
-  mrca_distr = beautier::create_normal_distr(mean  = beautier::create_mean_param(value = age), 
-                                             sigma = beautier::create_sigma_param(value = 0.001)),
-  alignment_rng_seed = 0,
-  beast2_rng_seed = 1,
-  verbose = FALSE
-)
+if (1 == 2) {
+  MBD_sequence_length <- 1e3;
+  MBD_mutation_rate   <- 1e-3;
+  MBD_chain_length    <- 1e6;
+  MBD_sample_interval <- 1e3;
+  set.seed(seed)
+  MBD_posterior <- pirouette::pir_run( #test1 is a posterior of 10001 trees generated from sim_tes[[1]]
+    phylogeny = MBD_tree,
+    sequence_length = MBD_sequence_length,
+    mutation_rate = MBD_mutation_rate,
+    mcmc = beautier::create_mcmc(chain_length = MBD_chain_length, store_every = MBD_sample_interval), #store_every = -1
+    site_models = beautier::create_jc69_site_model(),
+    clock_models = beautier::create_strict_clock_model(),
+    tree_priors = beautier::create_bd_tree_prior(),
+    mrca_distr = beautier::create_normal_distr(mean  = beautier::create_mean_param(value = age), 
+                                               sigma = beautier::create_sigma_param(value = 0.001)),
+    alignment_rng_seed = 0,
+    beast2_rng_seed = 1,
+    verbose = FALSE
+  )
+}
 ```
 
 ###step 5: generate BD posterior, given BD prior
@@ -186,52 +226,56 @@ MBD_posterior <- pirouette::pir_run( #test1 is a posterior of 10001 trees genera
 We repeat the same process for the tree simulated according to the BD model. We want to have, in principle, the same amount of substitutions; to do so we modify the mutation rate according to the ratio of the total branch lenghts of the trees simulated with the two models.
 
 ```{r}
-BD_sequence_length <- MBD_sequence_length;
-BD_mutation_rate   <- MBD_mutation_rate * (sum(MBD_tree$edge.length)/sum(BD_tree$edge.length));
-BD_chain_length    <- MBD_chain_length;
-BD_sample_interval <- MBD_sample_interval;
-set.seed(seed)
-BD_posterior <- pirouette::pir_run( #test1 is a posterior of 10001 trees generated from sim_tes[[1]]
-  phylogeny = BD_tree,
-  sequence_length = BD_sequence_length,
-  mutation_rate = BD_mutation_rate,
-  mcmc = beautier::create_mcmc(chain_length = BD_chain_length, store_every = BD_sample_interval), #store_every = -1
-  site_models = beautier::create_jc69_site_model(),
-  clock_models = beautier::create_strict_clock_model(),
-  tree_priors = beautier::create_bd_tree_prior(),
-  mrca_distr = beautier::create_normal_distr(mean = beautier::create_mean_param(value = age), sigma = beautier::create_sigma_param(value = 0.001)),
-  alignment_rng_seed = 0,
-  beast2_rng_seed = 1,
-  verbose = FALSE
-)
+if (1 == 2) {
+  BD_sequence_length <- MBD_sequence_length;
+  BD_mutation_rate   <- MBD_mutation_rate * (sum(MBD_tree$edge.length)/sum(BD_tree$edge.length));
+  BD_chain_length    <- MBD_chain_length;
+  BD_sample_interval <- MBD_sample_interval;
+  set.seed(seed)
+  BD_posterior <- pirouette::pir_run( #test1 is a posterior of 10001 trees generated from sim_tes[[1]]
+    phylogeny = BD_tree,
+    sequence_length = BD_sequence_length,
+    mutation_rate = BD_mutation_rate,
+    mcmc = beautier::create_mcmc(chain_length = BD_chain_length, store_every = BD_sample_interval), #store_every = -1
+    site_models = beautier::create_jc69_site_model(),
+    clock_models = beautier::create_strict_clock_model(),
+    tree_priors = beautier::create_bd_tree_prior(),
+    mrca_distr = beautier::create_normal_distr(mean = beautier::create_mean_param(value = age), sigma = beautier::create_sigma_param(value = 0.001)),
+    alignment_rng_seed = 0,
+    beast2_rng_seed = 1,
+    verbose = FALSE
+  )
+}
 ```
 
 ### step 6: calculating nLTT statistics for MBD and BD
 Finally we calculate the nLTT statistics for both posteriors related to the original trees.
 
 ```{r}
-MBD_nLTT.diff <- rep(NA, length(MBD_posterior$trees))
-for (i in 1:length(MBD_posterior$trees))
-{
-  MBD_nLTT.diff[i] <- nLTT::nLTTstat(MBD_tree, MBD_posterior$trees[[i]])
+if (1 == 2) {
+  MBD_nLTT.diff <- rep(NA, length(MBD_posterior$trees))
+  for (i in 1:length(MBD_posterior$trees))
+  {
+    MBD_nLTT.diff[i] <- nLTT::nLTTstat(MBD_tree, MBD_posterior$trees[[i]])
+  }
+  MBD_mean.nLTT <- mean(MBD_nLTT.diff)
+  MBD_std.nLTT  <- sqrt(stats::var(MBD_nLTT.diff)); MBD_std.nLTT
+  MBD_df.nLTT   <- data.frame(diff = MBD_nLTT.diff)
+  
+  BD_nLTT.diff <- rep(NA, length(BD_posterior$trees))
+  for (i in 1:length(BD_posterior$trees))
+  {
+    BD_nLTT.diff[i] <- nLTT::nLTTstat(BD_tree, BD_posterior$trees[[i]])
+  }
+  BD_mean.nLTT <- mean(BD_nLTT.diff)
+  BD_std.nLTT  <- sqrt(stats::var(BD_nLTT.diff)); BD_std.nLTT
+  BD_df.nLTT   <- data.frame(diff = BD_nLTT.diff)
+  
+  par(mfrow = c(1,2))
+  hist(unlist(MBD_df.nLTT), main = "MBD nLTT")
+  hist(unlist(BD_df.nLTT), main = "BD nLTT")
+  cat("Average nLTT for MBD", MBD_mean.nLTT, "\nAverage nLTT for BD ", BD_mean.nLTT)
 }
-MBD_mean.nLTT <- mean(MBD_nLTT.diff)
-MBD_std.nLTT  <- sqrt(stats::var(MBD_nLTT.diff)); MBD_std.nLTT
-MBD_df.nLTT   <- data.frame(diff = MBD_nLTT.diff)
-
-BD_nLTT.diff <- rep(NA, length(BD_posterior$trees))
-for (i in 1:length(BD_posterior$trees))
-{
-  BD_nLTT.diff[i] <- nLTT::nLTTstat(BD_tree, BD_posterior$trees[[i]])
-}
-BD_mean.nLTT <- mean(BD_nLTT.diff)
-BD_std.nLTT  <- sqrt(stats::var(BD_nLTT.diff)); BD_std.nLTT
-BD_df.nLTT   <- data.frame(diff = BD_nLTT.diff)
-
-par(mfrow = c(1,2))
-hist(unlist(MBD_df.nLTT), main = "MBD nLTT")
-hist(unlist(BD_df.nLTT), main = "BD nLTT")
-cat("Average nLTT for MBD", MBD_mean.nLTT, "\nAverage nLTT for BD ", BD_mean.nLTT)
 ```
 
 
