@@ -2,15 +2,34 @@
 % Please edit documentation in R/raz_create_input_files.R
 \name{raz_create_input_files}
 \alias{raz_create_input_files}
-\title{Create the input files from a parameters file}
+\title{Create the input files from a parameters file in the same folder
+as that parameters file.
+For example, for a path '/my_folder/parameters.csv', this function creates:
+\itemize{
+  \item '/my_folder/mbd.tree': the MBD tree
+  \item '/my_folder/mbd.fasta': the MBD alignment
+  \item '/my_folder/bd.tree': the MBD tree
+  \item '/my_folder/bd.fasta': the MBD alignment
+}}
 \usage{
 raz_create_input_files(parameters_filename)
+}
+\arguments{
+\item{parameters_filename}{full path to a 'parameters.csv' file}
 }
 \value{
 names of the files created
 }
 \description{
-Create the input files from a parameters file
+Create the input files from a parameters file in the same folder
+as that parameters file.
+For example, for a path '/my_folder/parameters.csv', this function creates:
+\itemize{
+  \item '/my_folder/mbd.tree': the MBD tree
+  \item '/my_folder/mbd.fasta': the MBD alignment
+  \item '/my_folder/bd.tree': the MBD tree
+  \item '/my_folder/bd.fasta': the MBD alignment
+}
 }
 \author{
 Richel J.C. Bilderbeek

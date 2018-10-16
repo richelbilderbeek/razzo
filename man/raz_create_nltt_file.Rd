@@ -8,6 +8,9 @@ Assumes for a posterior file named '1x.trees'
 \usage{
 raz_create_nltt_file(trees_filename)
 }
+\arguments{
+\item{trees_filename}{name of the BEAST2 posterior phylogenies file}
+}
 \value{
 name of the nLTT file created
 }

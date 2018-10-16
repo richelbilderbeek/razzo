@@ -11,6 +11,8 @@
 #' @param chain_length something
 #' @param changeloglikifnoconv something
 #' @param colormap something
+#' @param fasta_filename name of a FASTA file
+#' @param folder_name name of the folder
 #' @param idparsfix something
 #' @param idparsopt The ids of the parameters that must be optimized.
 #'   The ids are defined as follows:
@@ -49,6 +51,9 @@
 #' @param Nsubs something
 #' @param nu something
 #' @param optimmethod something
+#' @param parameters the razzo parameters
+#' @param parameter_filename full path to a 'parameters.csv' file
+#' @param parameters_filename full path to a 'parameters.csv' file
 #' @param pars vector of parameters:
 #' \itemize{
 #'   \item pars[1] is the multiple speciation trigger rate;
@@ -81,6 +86,8 @@
 #' @param time_interval something
 #' @param tol something
 #' @param transition_matrix something
+#' @param tree_filename name of the phylogeny file
+#' @param trees_filename name of the BEAST2 posterior phylogenies file
 #' @param trparsfix something
 #' @param trparsopt something
 #' @param verbose something

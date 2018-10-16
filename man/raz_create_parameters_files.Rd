@@ -2,15 +2,22 @@
 % Please edit documentation in R/raz_create_parameters_files.R
 \name{raz_create_parameters_files}
 \alias{raz_create_parameters_files}
-\title{Create all parameters files}
+\title{Create all parameters files in a folder.
+In that folder, one folder is created per parameter file.
+In each subfolder, a file 'parameters.csv' is created}
 \usage{
-raz_create_parameters_files()
+raz_create_parameters_files(folder_name)
+}
+\arguments{
+\item{folder_name}{name of the folder}
 }
 \value{
-names of the files created
+full paths of the files created
 }
 \description{
-Create all parameters files
+Create all parameters files in a folder.
+In that folder, one folder is created per parameter file.
+In each subfolder, a file 'parameters.csv' is created
 }
 \author{
 Richel J.C. Bilderbeek
