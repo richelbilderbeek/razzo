@@ -191,6 +191,20 @@ or
 }}
 
 \item{tips_interval}{Sets tips boundaries constrain on simulated dataset.}
+
+\item{fasta_filename}{name of a FASTA file}
+
+\item{folder_name}{name of the folder}
+
+\item{parameters}{the razzo parameters}
+
+\item{parameter_filename}{full path to a 'parameters.csv' file}
+
+\item{parameters_filename}{full path to a 'parameters.csv' file}
+
+\item{tree_filename}{name of the phylogeny file}
+
+\item{trees_filename}{name of the BEAST2 posterior phylogenies file}
 }
 \description{
 This function does nothing. It is intended to inherit is parameters'

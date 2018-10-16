@@ -19,15 +19,18 @@ Imports:
   ape, 
   beastier, 
   beautier,
+  DDD,
+  devtools,
   ggplot2, 
   mbd,
   nLTT,
   pirouette,
+  testit,
   tracerer
 Suggests:
-    TESS,
-    testthat,
-    lintr,
-    knitr,
-    rmarkdown
+  TESS,
+  testthat,
+  lintr,
+  knitr,
+  rmarkdown
 VignetteBuilder: knitr

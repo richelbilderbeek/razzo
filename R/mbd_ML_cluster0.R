@@ -5,7 +5,7 @@
 #' @inheritParams default_params_doc
 #' @param s The number of the simulation you want to evaluate.
 #' @param initparsopt The initial values of the parameters that must be optimized
-#' @param idparsopt The ids of the parameters that must be optimized. 
+#' @param idparsopt The ids of the parameters that must be optimized.
 #'   The ids are defined as follows:
 #' \itemize{
 #' \item id == 1 corresponds to lambda (multiple speciation trigger rate)
@@ -23,12 +23,12 @@
 #' }
 #'
 #' @examples
-#' #You will need two files to make it work: "general_settings","sim_data".
-#' mbd:::mbd_ML_cluster0(1)
+#' # You will need two files to make it work: "general_settings","sim_data".
+#' # mbd:::mbd_ML_cluster0(1)
 #'
 #' @export
 mbd_ML_cluster0 <- function(
-  s, 
+  s,
   initparsopt = c(1.8, 0.3, 0.15)
 ){
   # initparsopt=c(1.8,0.3,0.15);
@@ -36,18 +36,18 @@ mbd_ML_cluster0 <- function(
   n_pars <- length(parnames)
   idparsopt <- 1:n_pars
   parsfix <- NULL
-  
+
   # simpath=paste("sims/",sim_pars[1],"-",sim_pars[2],"-",sim_pars[3],"/",sep = '')
   simpath = getwd()
-  
+
   datapath <- paste(simpath, "/data",sep = '')
   load(file = paste(datapath, "/general_settings",sep = ''))
   load(file = paste(datapath, "/sim_data",sep = ''))
   print(s)
-  
+
   if ( !file.exists(paste(simpath,"/errors",sep = '')) ){dir.create(paste(simpath,"/errors",sep = ''))}
   sink(file = paste(simpath,"/errors/mbd_MLE_errors",s,".txt",sep = ''), append = T)
-  
+
   res <- mbd:::mbd_ML0(
     brts = sim_data[[s]],
     initparsopt = initparsopt,
@@ -64,7 +64,7 @@ mbd_ML_cluster0 <- function(
     changeloglikifnoconv = FALSE,
     optimmethod = 'subplex'
   )
-  
+
   #additional tree info
   how_many_multiple=percent_multiple <- -1;
   if (length(sim_data[[s]]) > 2){
@@ -81,7 +81,7 @@ mbd_ML_cluster0 <- function(
   }
   # additional_species = sum( duplicated(sim_data[[s]]) );
   tips <- length(sim_data[[s]])+1;
-  
+
   out <- c(res[1:(n_pars+1)],how_many_multiple,tips,percent_multiple,s);
   out2 <- out;#names(out2)=c("lambda","mu","q","LL","species born from multiple events","number of tips","percentage of species born from multiple events","tree id")
   names(out2)=c(parnames,"LL","species born from multiple events","number of tips","percentage of species born from multiple events","tree id")
@@ -96,7 +96,7 @@ mbd_ML_cluster0 <- function(
   #out[8] = tree id
   sink()
   print(out2)
-  
+
   utils::write.table(
     matrix(
       out,
@@ -105,14 +105,14 @@ mbd_ML_cluster0 <- function(
     file = paste(simpath,"/mbd_MLE",s,".txt",sep = ''),
     append = TRUE,
     row.names = FALSE,
-    col.names = FALSE, 
+    col.names = FALSE,
     sep = ","
   )
   if (res[1:4] != c(-1,-1,-1,-1)) {
     suppressWarnings(
       file.remove(
         paste(simpath,"/errors/mbd_MLE_errors",s,".txt",sep = '')
-      )  
+      )
     )
   }
 }
