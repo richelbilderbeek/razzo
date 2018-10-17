@@ -11,7 +11,7 @@ raz_tempdir <- function(...) {
 
   rm(folder_name)
   folder_name <- tempdir(...) #folder_name <- tempdir()
-  dir.create(folder_name)
+  if (!dir.exists(folder_name)) {dir.create(folder_name)}
   testit::assert(dir.exists(folder_name))
   return(folder_name)
 }

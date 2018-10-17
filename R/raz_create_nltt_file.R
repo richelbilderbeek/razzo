@@ -5,8 +5,11 @@
 #' @return nltt statistics
 #' @author Richel J.C. Bilderbeek
 #' @export
-raz_create_nltt_file <- function(parameters, folder_name) {
-
+raz_create_nltt_file <- function(
+  parameters,
+  folder_name
+)
+{
   parameters_folder <- raz_get_parameters_path(parameters, folder_name)
   mbd_tree_filename <- file.path(parameters_folder, "mbd.tree")
   bd_tree_filename <- file.path(parameters_folder, "bd.tree")

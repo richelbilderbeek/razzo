@@ -12,7 +12,9 @@
 #' @return names of the files created
 #' @author Richel J.C. Bilderbeek
 #' @export
-raz_create_inference_files <- function(fasta_filename)
+raz_create_inference_files <- function(
+  fasta_filename
+)
 {
   # TODO: fasta_filename should exist one day :-)
   if (1 == 2) {
@@ -27,7 +29,7 @@ raz_create_inference_files <- function(fasta_filename)
   }
 
   # Read the parameters
-  parameters <- raz_open_parameters_file(parameters_filename)
+  parameters <- razzo::raz_open_parameters_file(parameters_filename)
   testit::assert(parameters$lambda >= 0.0)
 
   base <- tools::file_path_sans_ext(fasta_filename)

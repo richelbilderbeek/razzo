@@ -1,0 +1,62 @@
+context("raz_create_input_files")
+
+test_that("use", {
+
+  # Work from a folder
+  folder_name <- razzo:::raz_tempdir(); # folder_name <- tempdir()
+  testthat::expect_true(
+    dir.exists(folder_name)
+  )
+
+  # Create the parameter files
+  razzo:::raz_standard_parameters_interval()
+  filenames <- razzo::raz_create_parameters_files(folder_name = folder_name,
+                                                  lambda.interval = lambda.interval,
+                                                  mu.interval = mu.interval,
+                                                  nu.interval = nu.interval,
+                                                  q.interval = q.interval,
+                                                  seed.interval = seed.interval,
+                                                  soc = soc,
+                                                  age = age,
+                                                  cond = cond,
+                                                  sequence_length = sequence_length)
+
+  parameters_filename <- filenames[1]
+  parameters <- razzo::raz_open_parameters_file(parameters_filename = parameters_filename)
+
+  # Get filenames
+  mbd_tree_filename  <- razzo::raz_filename.mbd_tree(parameters = parameters, folder_name = folder_name)
+  bd_tree_filename   <- razzo::raz_filename.bd_tree(parameters = parameters, folder_name = folder_name)
+  mbd_fasta_filename <- razzo::raz_filename.mbd_alignment(parameters = parameters, folder_name = folder_name)
+  bd_fasta_filename  <- razzo::raz_filename.bd_alignment(parameters = parameters, folder_name = folder_name)
+  filenames <- c(mbd_fasta_filename,
+                 mbd_tree_filename,
+                 bd_fasta_filename,
+                 bd_tree_filename)
+
+  parameters_path <- razzo::raz_get_parameters_path(parameters = parameters, folder_name = folder_name)
+
+  # Expect four files to be created
+  exp_mbd_fasta_filename <- file.path(parameters_path, "mbd.fasta")
+  exp_mbd_tree_filename  <- file.path(parameters_path, "mbd.tree")
+  exp_bd_fasta_filename  <- file.path(parameters_path, "bd.fasta")
+  exp_bd_tree_filename   <- file.path(parameters_path, "bd.tree")
+  expected_filenames <- c(exp_mbd_fasta_filename,
+                          exp_mbd_tree_filename,
+                          exp_bd_fasta_filename,
+                          exp_bd_tree_filename)
+
+  testthat::expect_equal(
+    sort(filenames),
+    sort(expected_filenames)
+  )
+
+  # is this really the aim of the test/function?
+  if (1 == 2) {
+    testthat::expect_true(file.exists(mbd_tree_filename))
+    testthat::expect_true(file.exists(mbd_fasta_filename))
+    testthat::expect_true(file.exists(bd_tree_filename))
+    testthat::expect_true(file.exists(bd_fasta_filename))
+  }
+
+})

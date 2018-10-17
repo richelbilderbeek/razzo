@@ -11,7 +11,7 @@
 #' @param changeloglikifnoconv something
 #' @param colormap something
 #' @param fasta_filename name of a FASTA file
-#' @param folder_name name of the folder
+#' @param folder_name name of the main folder
 #' @param idparsfix something
 #' @param idparsopt The ids of the parameters that must be optimized.
 #'   The ids are defined as follows:

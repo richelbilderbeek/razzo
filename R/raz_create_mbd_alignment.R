@@ -1,4 +1,5 @@
-#' Create an MBD alignment from a parameters file in the same folder
+#' @title Create an MBD alignment from a parameters file in the same folder
+#' @description Create an MBD alignment from a parameters file in the same folder
 #' as that parameters file.
 #' For example, for a path '/my_folder/parameters.csv', this function creates:
 #' '/my_folder/mbd.fasta'.
@@ -6,18 +7,19 @@
 #' @return nothing
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
-raz_create_mbd_alignment <- function(parameters, folder_name) {
-
-  # parameters <- raz_standard_parameters()
-
+raz_create_mbd_alignment <- function(
+  parameters,
+  folder_name
+)
+{
   parameters_folder <- raz_get_parameters_path(parameters, folder_name)
-  mbd_tree_filename <- file.path(parameters_folder, "mbd.tree")
+  mbd_tree_filename <- razzo::raz_filename.mbd_tree(parameters, folder_name)
   testit::assert(file.exists(mbd_tree_filename))
   testit::assert("mbd.tree" %in% list.files(parameters_folder))
   testit::assert(length(mbd_tree_filename) > 0)
 
   # Create the name of the alignent file, e.g. '/myfolder/mbd.fasta'
-  mbd_alignment_filename <- file.path(parameters_folder, "mbd.fasta")
+  mbd_alignment_filename <- razzo::raz_filename.mbd_alignment(parameters, folder_name)
 
   # Get the MBD phylogeny for 'mbd.tree'
   mbd_phylogeny <- get(load(mbd_tree_filename))$tes

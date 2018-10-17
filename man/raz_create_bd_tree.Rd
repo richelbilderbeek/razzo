@@ -10,10 +10,10 @@ raz_create_bd_tree(parameters, folder_name)
 \arguments{
 \item{parameters}{the razzo parameters}
 
-\item{folder_name}{name of the folder}
+\item{folder_name}{name of the main folder}
 }
 \value{
-A twin BD tree
+The twin BD tree obtained from the corresponding MBD tree. It will create a file with name \code{bd.tree} in the folder relative to the chosen parameters
 }
 \description{
 Create an BD twin tree from an MBD tree

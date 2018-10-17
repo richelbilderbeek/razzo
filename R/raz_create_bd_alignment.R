@@ -1,4 +1,5 @@
-#' Create the twin BD alignment from a parameters file in the same folder
+#' @title Create the twin BD alignment from a parameters file in the same folder
+#' @description Create the twin BD alignment from a parameters file in the same folder
 #' as that parameters file.
 #' For example, for a path '/my_folder/parameters.csv', this function creates:
 #' '/my_folder/bd.fasta'.
@@ -6,12 +7,15 @@
 #' @return nothing
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
-raz_create_bd_alignment <- function(parameters, folder_name) {
-
+raz_create_bd_alignment <- function(
+  parameters,
+  folder_name
+)
+{
   # Create the name of the alignent file, e.g. '/myfolder/bd.fasta'
   # bd_alignment_filename <- NULL
   parameters_folder <- raz_get_parameters_path(parameters, folder_name)
-  bd_alignment_filename <- file.path(parameters_folder, "bd.fasta")
+  bd_alignment_filename <- razzo::raz_filename.bd_alignment(parameters, folder_name)
 
   # Get the twin BD phylogeny for 'bd.tree'
   bd_phylogeny <- NULL

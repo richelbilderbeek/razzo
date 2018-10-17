@@ -1,13 +1,12 @@
 #' Opens a parameter file and parses it
 #' @inheritParams default_params_doc
-#' @param parameter_filename name of the parameter filename,
-#'   for example '/my_folder/1/parameters.csv'
 #' @return the razzo parameters
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
-raz_open_parameters_file <- function(parameters_filename)
+raz_open_parameters_file <- function(
+  parameters_filename
+)
 {
-
   testit::assert(file.exists(parameters_filename))
 
   reading <- read.csv(parameters_filename)

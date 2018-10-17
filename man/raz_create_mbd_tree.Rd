@@ -10,10 +10,10 @@ raz_create_mbd_tree(parameters, folder_name)
 \arguments{
 \item{parameters}{the razzo parameters}
 
-\item{folder_name}{name of the folder}
+\item{folder_name}{name of the main folder}
 }
 \value{
-nothing. Will create a file with name in \code{tree_filename}
+The tree simulated under the MBD process. It will create a file with name \code{mbd.tree} in the folder relative to the chosen parameters
 }
 \description{
 Create an MBD tree from the razzo parameters

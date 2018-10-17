@@ -11,7 +11,7 @@ raz_create_nltt_file(parameters, folder_name)
 \arguments{
 \item{parameters}{the razzo parameters}
 
-\item{folder_name}{name of the folder}
+\item{folder_name}{name of the main folder}
 }
 \value{
 nltt statistics

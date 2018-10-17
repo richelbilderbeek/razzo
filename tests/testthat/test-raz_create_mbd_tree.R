@@ -9,15 +9,7 @@ test_that("use", {
   )
 
   # Create the parameter files
-  lambda.interval <- c(0.2, 0.2)
-  mu.interval     <- c(0.15, 0.15)
-  nu.interval     <- seq(from = 1, to = 2.5, by = 0.5)
-  q.interval      <- seq(from = 0.10, to = 0.20, by = 0.05)
-  seed.interval   <- 1:3
-  soc  <- 2
-  age  <- 10
-  cond <- 1
-  sequence_length <- 10^3
+  razzo:::raz_standard_parameters_interval()
   filenames <- razzo::raz_create_parameters_files(folder_name = folder_name,
                                                   lambda.interval = lambda.interval,
                                                   mu.interval = mu.interval,
@@ -29,6 +21,7 @@ test_that("use", {
                                                   cond = cond,
                                                   sequence_length = sequence_length)
 
+  testthat::expect_true(length(filenames) > 0)
   one_parameter_setting <- dirname(filenames[1])
   testthat::expect_true(file.exists(one_parameter_setting))
   parameters_filename <- file.path(one_parameter_setting, "parameters.csv")

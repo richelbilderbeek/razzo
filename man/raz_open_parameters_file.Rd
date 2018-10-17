@@ -8,9 +8,6 @@ raz_open_parameters_file(parameters_filename)
 }
 \arguments{
 \item{parameters_filename}{full path to a 'parameters.csv' file}
-
-\item{parameter_filename}{name of the parameter filename,
-for example '/my_folder/1/parameters.csv'}
 }
 \value{
 the razzo parameters

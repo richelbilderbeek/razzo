@@ -3,7 +3,10 @@
 #' @return Path
 #' @author Giovanni Laudanno
 #' @export
-raz_get_parameters_path <- function(parameters, folder_name)
+raz_get_parameters_path <- function(
+  parameters,
+  folder_name
+)
 {
   path <- file.path(
     folder_name,
