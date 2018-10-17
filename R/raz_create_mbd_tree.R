@@ -26,7 +26,7 @@ raz_create_mbd_tree <- function(
   testit::assert(!is.null(l_matrix))
 
   # Save the tree to a file
-  parameters_folder <- raz_get_parameters_path(parameters, folder_name)
+  parameters_folder <- razzo::raz_get_parameters_path(parameters, folder_name)
   save(mbd.sim, file = mbd_tree_filename)
 
   # Return the tree

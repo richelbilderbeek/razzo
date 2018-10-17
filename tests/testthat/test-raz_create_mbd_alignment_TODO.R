@@ -1,4 +1,4 @@
-context("raz_create_mbd_tree")
+context("raz_create_mbd_alignment")
 
 test_that("use", {
 
@@ -8,16 +8,19 @@ test_that("use", {
     dir.exists(folder_name)
   )
 
-  # Create the parameter files
-  lambda.interval <- c(0.2, 0.2)
-  mu.interval     <- c(0.15, 0.15)
-  nu.interval     <- seq(from = 1, to = 2.5, by = 0.5)
-  q.interval      <- seq(from = 0.10, to = 0.20, by = 0.05)
-  seed.interval   <- 1:3
-  soc  <- 2
-  age  <- 10
-  cond <- 1
-  sequence_length <- 10^3
+  # # Create the parameter files
+  # lambda.interval <- c(0.2, 0.2)
+  # mu.interval     <- c(0.15, 0.15)
+  # nu.interval     <- seq(from = 1, to = 2.5, by = 0.5)
+  # q.interval      <- seq(from = 0.10, to = 0.20, by = 0.05)
+  # seed.interval   <- 1:3
+  # soc  <- 2
+  # age  <- 10
+  # cond <- 1
+  # sequence_length <- 10^3
+  # raz_source()
+  razzo:::raz_standard_parameters_interval()
+
   filenames <- razzo::raz_create_parameters_files(folder_name = folder_name,
                                                   lambda.interval = lambda.interval,
                                                   mu.interval = mu.interval,
@@ -29,18 +32,15 @@ test_that("use", {
                                                   cond = cond,
                                                   sequence_length = sequence_length)
 
-  one_parameter_setting <- dirname(filenames[1])
-  testthat::expect_true(file.exists(one_parameter_setting))
-  parameters_filename <- file.path(one_parameter_setting, "parameters.csv")
-  mbd_tree_filename   <- file.path(one_parameter_setting, "mbd.tree")
+  # # Create the parameter files
+  # raz_create_parameters_files(folder_name)
+  # sub_folder_name <- "1"
+  # parameters_filename <- file.path(folder_name, sub_folder_name, "parameters.csv")
+  # mbd_alignment_filename <- file.path(folder_name, sub_folder_name, "mbd.fasta")
 
-  # Get parameters
-  parameters <- razzo::raz_open_parameters_file(parameters_filename)
-
-  # Create tree
-  razzo::raz_create_mbd_tree(parameters = parameters, folder_name = folder_name)
-
-  # Actually create an MBD tree and save it
-  testthat::expect_true(file.exists(mbd_tree_filename))
-
+  # TODO: Issue #14: Add 'raz_create_mbd_alignment'
+  if (1 == 2) {
+    raz_create_mbd_alignment(parameters_filename)
+    expect_true(file.exists(mbd_alignment_filename))
+  }
 })

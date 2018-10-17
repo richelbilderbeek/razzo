@@ -7,10 +7,12 @@ as that parameters file.
 For example, for a path '/my_folder/parameters.csv', this function creates:
 '/my_folder/bd.fasta'.}
 \usage{
-raz_create_bd_alignment(parameters_filename)
+raz_create_bd_alignment(parameters, folder_name)
 }
 \arguments{
-\item{parameters_filename}{full path to a 'parameters.csv' file}
+\item{parameters}{the razzo parameters}
+
+\item{folder_name}{name of the folder}
 }
 \value{
 nothing
@@ -22,5 +24,5 @@ For example, for a path '/my_folder/parameters.csv', this function creates:
 '/my_folder/bd.fasta'.
 }
 \author{
-Richel J.C. Bilderbeek
+Richel J.C. Bilderbeek, Giovanni Laudanno
 }

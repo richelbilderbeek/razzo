@@ -1,7 +1,7 @@
 raz_tempdir <- function(...) {
 
   folder_name <- tempdir(...)
-  dir.create(folder_name)
+  suppressWarnings(dir.create(folder_name))
 
   x <- unlink(
     file.path(temp_dir <- dirname(folder_name),
@@ -10,8 +10,9 @@ raz_tempdir <- function(...) {
   ); list.files(temp_dir, pattern = "Rtmp")
 
   rm(folder_name)
-  folder_name <- tempdir(...)
+  folder_name <- tempdir(...) #folder_name <- tempdir()
   dir.create(folder_name)
+  testit::assert(dir.exists(folder_name))
   return(folder_name)
 }
 

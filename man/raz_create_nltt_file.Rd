@@ -6,13 +6,15 @@
 Assumes for a posterior file named '1x.trees'
   that there is a 'true' tree file called '1x.tree'}
 \usage{
-raz_create_nltt_file(trees_filename)
+raz_create_nltt_file(parameters, folder_name)
 }
 \arguments{
-\item{trees_filename}{name of the BEAST2 posterior phylogenies file}
+\item{parameters}{the razzo parameters}
+
+\item{folder_name}{name of the folder}
 }
 \value{
-name of the nLTT file created
+nltt statistics
 }
 \description{
 Create the NLTT statistics distribution files from a posterior file.

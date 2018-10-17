@@ -36,7 +36,7 @@ raz_create_input_files <- function(
 
   # TODO: create the four files
   # Create an MBD tree
-  raz_create_mbd_tree(parameters, folder_name = folder_name)
+  razzo::raz_create_mbd_tree(parameters, folder_name = folder_name)
   testit::assert(file.exists(mbd_tree_filename))
 
   if (1 == 2) {

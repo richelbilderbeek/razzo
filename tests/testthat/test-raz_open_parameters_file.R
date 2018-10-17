@@ -3,7 +3,7 @@ context("raz_open_parameters_file")
 test_that("use", {
 
   # Work from a folder
-  folder_name <- raz_tempdir(); # folder_name <- tempdir()
+  folder_name <- razzo:::raz_tempdir(); # folder_name <- tempdir()
   testthat::expect_true(
     dir.exists(folder_name)
   )
@@ -17,15 +17,17 @@ test_that("use", {
   soc  <- 2
   age  <- 10
   cond <- 1
-  filenames <- raz_create_parameters_files(folder_name = folder_name,
-                                           lambda.interval = lambda.interval,
-                                           mu.interval = mu.interval,
-                                           nu.interval = nu.interval,
-                                           q.interval = q.interval,
-                                           seed.interval = seed.interval,
-                                           soc = soc,
-                                           age = age,
-                                           cond = cond)
+  sequence_length <- 10^3
+  filenames <- razzo::raz_create_parameters_files(folder_name = folder_name,
+                                                  lambda.interval = lambda.interval,
+                                                  mu.interval = mu.interval,
+                                                  nu.interval = nu.interval,
+                                                  q.interval = q.interval,
+                                                  seed.interval = seed.interval,
+                                                  soc = soc,
+                                                  age = age,
+                                                  cond = cond,
+                                                  sequence_length = sequence_length)
 
   filename <- filenames[1]
   parameters <- raz_open_parameters_file(filename)
