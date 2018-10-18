@@ -65,10 +65,7 @@ test_that("must have as much multiple bursts as predicted by nu", {
   mbd_tree <- ape::read.tree(file = mbd_tree_filename)
 
   # Calculate the number of expected triggered speciation events
-  exp_n_spec_events <- mbd::mbd_calc_exp_n_spec_events(
-    nu = parameters$nu,
-    time <- parameters$crown_age
-  )
+  exp_n_spec_events <- parameters$crown_age / parameters$nu
 
   # Count the number of actual triggered speciation events
   n_spec_events <- mbd::mbd_count_n_spec_events(mbd_tree)
