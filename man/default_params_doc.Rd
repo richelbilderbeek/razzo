@@ -64,7 +64,7 @@ The ids are defined as follows:
 
 \item{k}{something}
 
-\item{lambda}{something}
+\item{lambda}{per-lineage speciation rate}
 
 \item{logs}{something}
 

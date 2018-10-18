@@ -47,6 +47,8 @@ raz_create_parameters_files <- function(folder_name,
             dir.create(file.path(seedfolder),
                        showWarnings = FALSE)
 
+            # TODO: Use 'raz_create_params',
+            # like 'parameters <- raz_create_params(...)'
             parameters <- c(lambda = lambda,
                             mu = mu,
                             nu = nu,

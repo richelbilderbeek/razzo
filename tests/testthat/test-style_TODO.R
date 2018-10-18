@@ -1,6 +1,6 @@
 context("Package Style")
 
 test_that("Package Style", {
-  # Not ready for this yet
-  # lintr::expect_lint_free()
+  skip("TODO, Issue #20: Fix package style")
+  lintr::expect_lint_free()
 })

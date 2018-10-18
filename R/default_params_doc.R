@@ -26,7 +26,7 @@
 #' @param init_extinction_rate an extinction rate
 #' @param iterations something
 #' @param k something
-#' @param lambda something
+#' @param lambda per-lineage speciation rate
 #' @param logs something
 #' @param lx It is the number of ODEs considered for the computation.
 #' @param lx0 something
