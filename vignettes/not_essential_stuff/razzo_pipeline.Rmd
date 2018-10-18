@@ -142,7 +142,7 @@ Show the first MBD tree:
 ```{r}
 # TODO: Issue #8: actually create an MBD tree and save it
 if (1 == 2) {
-  plot(file.path(folder_name, "1", "mbd.tree"))
+  graphics::plot(file.path(folder_name, "1", "mbd.tree"))
 }
 ```
 
@@ -152,7 +152,7 @@ We also want to condition on the same amount of tips and on the survival of the 
 
 ```{r}
 if (1 == 2) {
-  plot(file.path(folder_name, "1", "bd.tree"))
+  graphics::plot(file.path(folder_name, "1", "bd.tree"))
 }
 ```
 
@@ -217,7 +217,7 @@ We repeat the same process for the tree simulated according to the BD model. We 
 ```{r}
 if (1 == 2) {
   
-  par(mfrow = c(1,2))
+  graphics::par(mfrow = c(1,2))
   hist(unlist(MBD_df.nLTT), main = "MBD nLTT")
   hist(unlist(BD_df.nLTT), main = "BD nLTT")
   cat("Average nLTT for MBD", MBD_mean.nLTT, "\nAverage nLTT for BD ", BD_mean.nLTT)

@@ -6,7 +6,8 @@
 #' @export
 raz_create_bd_tree <- function(
   parameters,
-  folder_name
+  folder_name,
+  verbose = FALSE
 )
 {
   parameters_folder <- raz_get_parameters_path(parameters, folder_name)
@@ -50,9 +51,12 @@ raz_create_bd_tree <- function(
   bd_l_matrix[, 1] <- vec
   bd_tree <- DDD:::L2phylo(bd_l_matrix)
 
-  # Show the comparison between the original MBD tree and the twin BD tree
-  par(mfrow = c(1,2))
-  plot(mbd_tree$tes, main = "MBD tree"); plot(bd_tree, main = "twin BD tree")
+  if (verbose == TRUE) {
+    # Show the comparison between the original MBD tree and the twin BD tree
+    graphics::par(mfrow = c(1, 2))
+    graphics::plot(mbd_tree$tes, main = "MBD tree")
+    graphics::plot(bd_tree, main = "twin BD tree")
+  }
 
   # Save the tree to a file
   parameters_folder <- dirname(mbd_tree_filename)

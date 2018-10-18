@@ -9,7 +9,7 @@ raz_open_parameters_file <- function(
 {
   testit::assert(file.exists(parameters_filename))
 
-  reading <- read.csv(parameters_filename)
+  reading <- utils::read.csv(parameters_filename)
   parameters <- data.frame(t(reading[,2]))
   names(parameters) <- reading[,1]
 

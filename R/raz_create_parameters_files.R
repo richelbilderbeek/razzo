@@ -59,7 +59,7 @@ raz_create_parameters_files <- function(folder_name = getwd(),
                             soc = soc,
                             sequence_length = sequence_length)
             parameters_filenames[i] <- file.path(seedfolder, "parameters.csv")
-            write.csv(parameters, file = parameters_filenames[i])
+            utils::write.csv(parameters, file = parameters_filenames[i])
             i <- i + 1
           }
         }

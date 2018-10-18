@@ -84,7 +84,7 @@
 #' @param trees_filename name of the BEAST2 posterior phylogenies file
 #' @param trparsfix something
 #' @param trparsopt something
-#' @param verbose something
+#' @param verbose give more output
 #' @param age The age of the tree.
 #' @param cond Set 1 if you want to condition on stem or crown age
 #'   and non-extinction of the phylogeny. Set 0 otherwise.
