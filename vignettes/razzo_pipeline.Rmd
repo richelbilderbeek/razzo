@@ -1,0 +1,226 @@
+---
+title: "razzo pipeline"
+author: "G. Laudanno and Richel J.C. Bilderbeek"
+date: "`r Sys.Date()`"
+output: rmarkdown::pdf_document
+vignette: >
+  %\VignetteIndexEntry{razzo pipeline}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+Legenda:
+nLTT = normalized lineages through time;
+BD = Birth Death Model;
+MBD = Multiple Birth Death Model;
+
+This is the pipeline to follow for the Razzo project. Our aim is to compare two nLTT distributions related to two tree posteriors: one descending from MBD alignments and another one from BD alignments. Both posteriors are generated using a BD prior in BEAST.
+
+```{r setup, results = "hide"}
+if (!require(mbd)) {devtools::install_github("Giappo/mbd")}
+if (!require(TESS)) {
+  install.packages("TESS", repo = "https://lib.ugent.be/CRAN/")
+}
+if (!require(pirouette)) {
+  devtools::install_github("richelbilderbeek/babette")
+  devtools::install_github("richelbilderbeek/pirouette")
+}
+```
+
+## Folder structure
+
+In `folder_name`:
+
+  * `1`
+     * `parameters.csv`: the parameter file, created by `raz_create_parameter_files`
+     * `mbd.tree`: the true MBD tree, created by `raz_create_input_files`
+     * `mbd.fasta`: the true MBD alignment, created by `raz_create_input_files`
+     * `bd.tree`: the twin BD tree, created by `raz_create_input_files`
+     * `bd.fasta`: the twin BD alignment, created by `raz_create_input_files`
+     * `mbd.trees`: the posterior trees from `mbd.tree`, created by `raz_create_inference_files("mbd.tree")`
+     * `mbd.log`: the posterior parameter estimates from `mbd.tree`, created by `raz_create_inference_files("mbd.tree")`
+     * `mbd_mar_lik.csv`: the posterior's marginal likelihood from `mbd.tree`, created by `raz_create_inference_files("mbd.tree")`
+     * `bd.trees`: the posterior trees from `bd.tree`, created by `raz_create_inference_files("bd.tree")`
+     * `bd.log`: the posterior parameter estimates from `bd.tree`, created by `raz_create_inference_files("bd.tree")`
+     * `bd_mar_lik.csv`: the posterior's marginal likelihood from `bd.tree`, created by `raz_create_inference_files("bd.tree")`
+     * `mbd_nltts.csv`: the nLTT statistic distribution between `mbd.tree` and `mbd.trees`, created by `raz_create_nltt_file("mbd.tree", "mbd.trees")`
+     * `bd_nltts.csv`: the nLTT statistic distribution between `bd.tree` and `bd.trees`, created by `raz_create_nltt_file("bd.tree", "bd.trees")`
+  * `2`
+  * `3`
+  * Etcetera
+     
+## Overview
+
+![Pipeline](pipeline.png)
+
+Load the library:
+
+```{r}
+library(razzo)
+```
+
+We will work in this folder:
+
+```{r}
+folder_name <- tempdir()
+```
+
+## Step 0: create parameters
+
+# Create all parameter files
+# parameters_filenames <- raz_create_parameters_files()
+# testit::assert("1.csv" %in% parameters_filenames)
+# 
+# # Create all true trees, true alignments and their twins
+# for (parameters_filename in parameters_filenames) {
+#   input_filenames <- raz_create_input_files(parameters_filename)
+#   # True MBD tree
+#   testit::assert("1a.tree" %in% input_filenames)
+#   # True MBD alignment
+#   testit::assert("1a.fasta" %in% input_filenames)
+#   # Twin BD tree
+#   testit::assert("1b.tree" %in% input_filenames)
+#   # Twin BD alignment
+#   testit::assert("1b.fasta" %in% input_filenames)
+# }
+# 
+# # Do the inference
+# fasta_filenames <- c("1a.fasta") # Search the folder
+# for (fasta_filename in fasta_filenames) 
+# {
+#   output_filenames <- raz_create_inference_files(fasta_filename)
+#   # Posterior trees
+#   testit::assert("1a.trees" %in% output_filenames)
+#   # Trace of MCMC, to estimate the Effective Sample Sizes
+#   testit::assert("1a.log" %in% output_filenames)
+#   # Marginal likelihood
+#   testit::assert("1a_mar_lik.csv" %in% output_filenames)
+# }
+# 
+# # Create the nLTT distribution
+# trees_filenames <- c("1a.trees") # Search the folder
+# for (trees_filename in trees_filenames)
+# {
+#   nltt_filename <- raz_create_nltt_file(trees_filename)
+#   testit::assert("1a_nltts.csv" %in% nltt_filename)
+# }
+# 
+# # All files are in place!
+
+Here we create all parameter files:
+
+```{r}
+if (1 == 2) {
+  parameters_filenames <- raz_create_parameters_files(folder_name)
+  testit::assert(file.path(folder_name, "1", "parameters.csv") %in% parameters_filenames)
+}
+```
+
+## Step 1: create input files
+
+Each parameter file is read to create a MBD tree and alignment and its BD twin:
+
+```{r}
+if (1 == 2) {
+  # Create all true trees, true alignments and their twins
+  for (parameters_filename in parameters_filenames) {
+    input_filenames <- raz_create_input_files(parameters_filename)
+    # True MBD tree
+    testit::assert(file.path(folder_name, "1", "mbd.tree") %in% input_filenames)
+    # True MBD alignment
+    testit::assert(file.path(folder_name, "1", "mbd.fasta") %in% input_filenames)
+    # Twin BD tree
+    testit::assert(file.path(folder_name, "1", "bd.tree") %in% input_filenames)
+    # Twin BD alignment
+    testit::assert(file.path(folder_name, "1", "bd.fasta") %in% input_filenames)
+  }
+}
+```
+
+Show the first MBD tree:
+
+```{r}
+# TODO: Issue #8: actually create an MBD tree and save it
+if (1 == 2) {
+  plot(file.path(folder_name, "1", "mbd.tree"))
+}
+```
+
+Then we want to generate a "twin" BD tree. To create such tree we have to estimate the best lambda and mu to make the comparison fair. 
+To estimate the parameters we run a ML inference using the BD model.
+We also want to condition on the same amount of tips and on the survival of the phylogeny (cond = 2).
+
+```{r}
+if (1 == 2) {
+  plot(file.path(folder_name, "1", "bd.tree"))
+}
+```
+
+
+## Step 2: create inference files
+
+```{r}
+if (1 == 2) {
+  # Do the inference
+  fasta_filenames <- c("1a.fasta") # Search the folder
+  for (fasta_filename in fasta_filenames) 
+  {
+    output_filenames <- raz_create_inference_files(fasta_filename)
+    # Posterior trees
+    testit::assert("1a.trees" %in% output_filenames)
+    # Trace of MCMC, to estimate the Effective Sample Sizes
+    testit::assert("1a.log" %in% output_filenames)
+    # Marginal likelihood
+    testit::assert("1a_mar_lik.csv" %in% output_filenames)
+  }
+}
+```
+
+## step 6: calculating nLTT statistics for MBD and BD
+
+Finally we calculate the nLTT statistics for both posteriors related to the original trees.
+
+```{r}
+if (1 == 2) {
+  # Create the nLTT distribution
+  trees_filenames <- c("1a.trees") # Search the folder
+  for (trees_filename in trees_filenames)
+  {
+    if (1 == 2) {
+      # TODO: Issue 5
+      nltt_filename <- raz_create_nltt_file(trees_filename)
+      testit::assert("1a_nltts.csv" %in% nltt_filename)
+    }
+  }
+}
+# All files are in place!
+```
+
+```{r}
+# TODO: plot the nLTT
+```
+
+### step 3: simulate the twin BD tree
+###(check if the method to keep the topology is right. from the figures it seems ok-ish. check with small tree)
+Now that we have the BD equivalent parameters for a fair "twinning" we can simulate a BD tree.
+We use "TESS::tess.sim.taxa.age" to generate the branching times (BD_brts). 
+We then plug these branching times in the l_table coming from the original MBD tree to be sure that the topology is the same.
+
+###step 4: generate MBD posterior, given BD prior
+The next step is to use the package "pirouette" to generate, from the MBD tree, first the alignments and then, through BEAST, a posterior distribution of trees. These trees are obtained using a BD prior. This means that there are no simultaneous branching events.
+
+###step 5: generate BD posterior, given BD prior
+###(check BD_substitution rate, see Rampal's email)
+We repeat the same process for the tree simulated according to the BD model. We want to have, in principle, the same amount of substitutions; to do so we modify the mutation rate according to the ratio of the total branch lenghts of the trees simulated with the two models.
+
+
+```{r}
+if (1 == 2) {
+  
+  par(mfrow = c(1,2))
+  hist(unlist(MBD_df.nLTT), main = "MBD nLTT")
+  hist(unlist(BD_df.nLTT), main = "BD nLTT")
+  cat("Average nLTT for MBD", MBD_mean.nLTT, "\nAverage nLTT for BD ", BD_mean.nLTT)
+}
+```
+
