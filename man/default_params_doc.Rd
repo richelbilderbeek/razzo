@@ -156,7 +156,7 @@ The ids are defined as follows:
 
 \item{trparsopt}{something}
 
-\item{verbose}{something}
+\item{verbose}{give more output}
 
 \item{age}{The age of the tree.}
 

@@ -12,7 +12,7 @@ raz_create_bd_tree(parameters, folder_name, verbose = FALSE)
 
 \item{folder_name}{name of the main folder}
 
-\item{verbose}{something}
+\item{verbose}{give more output}
 }
 \value{
 The twin BD tree obtained from the corresponding MBD tree. It will create a file with name \code{bd.tree} in the folder relative to the chosen parameters

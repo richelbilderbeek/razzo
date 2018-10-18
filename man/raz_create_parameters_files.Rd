@@ -11,6 +11,18 @@ raz_create_parameters_files(folder_name = getwd(),
   seed.interval = 1:1000, soc = 2, age = 15, cond = 1,
   sequence_length = 1000)
 }
+\arguments{
+\item{folder_name}{name of the main folder}
+
+\item{soc}{Sets whether stem or crown age should be used (1 or 2).}
+
+\item{age}{The age of the tree.}
+
+\item{cond}{Set 1 if you want to condition on stem or crown age
+and non-extinction of the phylogeny. Set 0 otherwise.}
+
+\item{sequence_length}{something}
+}
 \value{
 Create folders for each parameter setting and saves each setting in a file within the corresponding folder.
 }
