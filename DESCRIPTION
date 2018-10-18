@@ -20,6 +20,7 @@ Imports:
   babette,
   beastier, 
   beautier,
+  cli,
   DDD,
   devtools,
   ggplot2, 
