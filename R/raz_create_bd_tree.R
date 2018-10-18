@@ -49,7 +49,7 @@ raz_create_bd_tree <- function(
   vec <- bd_l_matrix[, 1]
   vec[seq_along(vec) * alive2] <- bd_brts
   bd_l_matrix[, 1] <- vec
-  bd_tree <- DDD:::L2phylo(bd_l_matrix)
+  bd_tree <- DDD::L2phylo(bd_l_matrix)
 
   if (verbose == TRUE) {
     # Show the comparison between the original MBD tree and the twin BD tree
