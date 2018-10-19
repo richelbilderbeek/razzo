@@ -6,3 +6,4 @@
 ^NEWS\.md$
 ^cluster_scripts$
 ^scripts$
+^data-raw$

@@ -43,20 +43,51 @@ raz_standard_parameters <- function() {
 
 #' @title Create standard parameters interval for tests
 #' @description Create standard parameters interval to test the function "raz_create_parameters_files".
+#' It saves the dataset in the data folder of the package.
 #' @inheritParams default_params_doc
-#' @return the whole parameters interval
+#' @return nothing
 #' @author Giovanni Laudanno
-raz_standard_parameters_interval <- function() {
-  lambda.interval <<- c(0.2, 0.2)
-  mu.interval     <<- c(0.15, 0.15)
-  nu.interval     <<- seq(from = 1, to = 2.5, by = 0.5)
-  q.interval      <<- seq(from = 0.10, to = 0.20, by = 0.05)
-  seed.interval   <<- 1:3
-  soc  <<- 2
-  age  <<- 10
-  cond <<- 1
-  sequence_length <<- 10^3
+raz_save_standard_test_parameters <- function() {
+  lambda.interval <- c(0.2, 0.2)
+  mu.interval   <- c(0.15, 0.15)
+  nu.interval   <- seq(from = 1, to = 2.5, by = 0.5)
+  q.interval    <- seq(from = 0.10, to = 0.20, by = 0.05)
+  seed.interval <- 1:3
+  soc  <- 2
+  age  <- 10
+  cond <- 1
+  sequence_length <- 10^3
+
+  save(
+    lambda.interval,
+    mu.interval,
+    nu.interval,
+    q.interval,
+    seed.interval,
+    soc,
+    age,
+    cond,
+    sequence_length,
+    file = file.path(getwd(),
+                     'data',
+                     "standard_test_parameters.RData"
+    )
+  )
+
 }
+
+#' @title Load standard parameters interval for tests
+#' @description Load standard parameters interval to test the function "raz_create_parameters_files".
+#' It loads the dataset in the data folder of the package.
+#' @inheritParams default_params_doc
+#' @return nothing
+#' @author Giovanni Laudanno
+raz_load_standard_test_parameters <- function() {
+  data(standard_test_parameters)
+}
+
+
+
 
 # raz_source <- function() {
 #   razzo_scripts <- file.path(getwd(),
