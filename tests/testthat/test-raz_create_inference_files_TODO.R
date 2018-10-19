@@ -6,9 +6,7 @@ test_that("use", {
   # folder_name <- tempdir()
   #
   # # Create the parameter files
-  # soc <- 2
-  # age <- 10
-  # cond <- 1
+  # razzo:::raz_load_standard_test_parameters
   # filenames <- raz_create_parameters_files(folder_name = folder_name,
   #                                          lambda.interval = c(0.2, 0.2),
   #                                          mu.interval = c(0.15, 0.15),
