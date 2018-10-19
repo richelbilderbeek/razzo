@@ -34,7 +34,9 @@ test_that("use", {
   razzo::raz_create_mbd_tree(parameters = parameters, folder_name = folder_name)
 
   # Create BD tree
-  razzo::raz_create_bd_tree(parameters = parameters, folder_name = folder_name)
+  silent_output <- capture.output(
+    razzo::raz_create_bd_tree(parameters = parameters, folder_name = folder_name)
+  )
 
   # Actually create a BD tree and save it
   bd_tree_filename <- file.path(one_parameter_setting, "bd.tree")
