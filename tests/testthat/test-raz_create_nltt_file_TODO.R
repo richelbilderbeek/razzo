@@ -3,7 +3,7 @@ context("raz_create_nltt_file")
 test_that("use", {
 
   # # Work from a folder
-  # folder_name <- tempdir()
+  # folder_name <- razzo:::raz_make_tempdir(); # folder_name <- tempdir()
   #
   # # Create the parameter files
   # raz_create_parameters_files(folder_name)

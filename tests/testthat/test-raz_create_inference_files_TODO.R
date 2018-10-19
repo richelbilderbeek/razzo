@@ -3,7 +3,7 @@ context("raz_create_inference_files")
 test_that("use", {
 
   # # Work from a folder
-  # folder_name <- tempdir()
+  # folder_name <- razzo:::raz_make_tempdir(); # folder_name <- tempdir()
   #
   # # Create the parameter files
   # razzo:::raz_load_standard_test_parameters

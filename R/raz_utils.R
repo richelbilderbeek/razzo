@@ -4,7 +4,7 @@
 #' @inheritParams default_params_doc
 #' @return the address of the temporary folder
 #' @author Giovanni Laudanno
-raz_tempdir <- function(...) {
+raz_make_tempdir <- function(...) {
 
   folder_name <- tempdir(...)
   suppressWarnings(dir.create(folder_name))
@@ -20,25 +20,6 @@ raz_tempdir <- function(...) {
   if (!dir.exists(folder_name)) {dir.create(folder_name)}
   testit::assert(dir.exists(folder_name))
   return(folder_name)
-}
-
-#' @title Create standard parameters for tests
-#' @description Create standard parameters for tests
-#' @inheritParams default_params_doc
-#' @return the parameters
-#' @author Giovanni Laudanno
-raz_standard_parameters <- function() {
-  parameters <- c(lambda = 0.2,
-                  mu = 0.15,
-                  nu = 1,
-                  q = 0.1,
-                  seed = 1,
-                  soc = 2,
-                  age = 10,
-                  cond = 1,
-                  sequence_length = 10^3
-                  )
-  return(parameters)
 }
 
 #' @title Create standard parameters interval for tests

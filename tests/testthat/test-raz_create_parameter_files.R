@@ -11,7 +11,7 @@ test_that("use", {
   # expect_true(all(file.exists(filenames)))
 
   # Work from a folder
-  folder_name <- razzo:::raz_tempdir(); # folder_name <- tempdir()
+  folder_name <- razzo:::raz_make_tempdir(); # folder_name <- tempdir()
   testthat::expect_true(
     dir.exists(folder_name)
   )

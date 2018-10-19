@@ -3,7 +3,7 @@ context("raz_create_input_files")
 test_that("use", {
 
   # Work from a folder
-  folder_name <- razzo:::raz_tempdir(); # folder_name <- tempdir()
+  folder_name <- razzo:::raz_make_tempdir(); # folder_name <- tempdir()
   testthat::expect_true(
     dir.exists(folder_name)
   )
@@ -25,10 +25,10 @@ test_that("use", {
   parameters <- razzo::raz_open_parameters_file(parameters_filename = parameters_filename)
 
   # Get filenames
-  mbd_tree_filename  <- razzo::raz_filename.mbd_tree(parameters = parameters, folder_name = folder_name)
-  bd_tree_filename   <- razzo::raz_filename.bd_tree(parameters = parameters, folder_name = folder_name)
-  mbd_fasta_filename <- razzo::raz_filename.mbd_alignment(parameters = parameters, folder_name = folder_name)
-  bd_fasta_filename  <- razzo::raz_filename.bd_alignment(parameters = parameters, folder_name = folder_name)
+  mbd_tree_filename  <- razzo::raz_create_filename.mbd_tree(parameters = parameters, folder_name = folder_name)
+  bd_tree_filename   <- razzo::raz_create_filename.bd_tree(parameters = parameters, folder_name = folder_name)
+  mbd_fasta_filename <- razzo::raz_create_filename.mbd_alignment(parameters = parameters, folder_name = folder_name)
+  bd_fasta_filename  <- razzo::raz_create_filename.bd_alignment(parameters = parameters, folder_name = folder_name)
   filenames <- c(mbd_fasta_filename,
                  mbd_tree_filename,
                  bd_fasta_filename,

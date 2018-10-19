@@ -3,7 +3,7 @@ context("raz_create_mbd_tree")
 test_that("use", {
 
   # Work from a folder
-  folder_name <- razzo:::raz_tempdir(); # folder_name <- tempdir()
+  folder_name <- razzo:::raz_make_tempdir(); # folder_name <- tempdir()
   testthat::expect_true(
     dir.exists(folder_name)
   )
