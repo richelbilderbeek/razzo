@@ -1,3 +1,9 @@
+#' @title Create a temporary folder
+#' @description The function removes all the pre-existing temporary folders and creates a new temporary folder.
+#' Mainly used to run tests.
+#' @inheritParams default_params_doc
+#' @return the address of the temporary folder
+#' @author Giovanni Laudanno
 raz_tempdir <- function(...) {
 
   folder_name <- tempdir(...)
@@ -16,6 +22,11 @@ raz_tempdir <- function(...) {
   return(folder_name)
 }
 
+#' @title Create standard parameters for tests
+#' @description Create standard parameters for tests
+#' @inheritParams default_params_doc
+#' @return the parameters
+#' @author Giovanni Laudanno
 raz_standard_parameters <- function() {
   parameters <- c(lambda = 0.2,
                   mu = 0.15,
@@ -30,6 +41,11 @@ raz_standard_parameters <- function() {
   return(parameters)
 }
 
+#' @title Create standard parameters interval for tests
+#' @description Create standard parameters interval to test the function "raz_create_parameters_files".
+#' @inheritParams default_params_doc
+#' @return the whole parameters interval
+#' @author Giovanni Laudanno
 raz_standard_parameters_interval <- function() {
   lambda.interval <<- c(0.2, 0.2)
   mu.interval     <<- c(0.15, 0.15)
@@ -42,10 +58,10 @@ raz_standard_parameters_interval <- function() {
   sequence_length <<- 10^3
 }
 
-raz_source <- function() {
-  razzo_scripts <- file.path(getwd(),
-                             list.files(file.path(getwd(), "R"))
-  )
-  # source(razzo_scripts[2])
-  # sapply(razzo_scripts[1], source, .GlobalEnv)
-}
+# raz_source <- function() {
+#   razzo_scripts <- file.path(getwd(),
+#                              list.files(file.path(getwd(), "R"))
+#   )
+#   # source(razzo_scripts[2])
+#   # sapply(razzo_scripts[1], source, .GlobalEnv)
+# }
