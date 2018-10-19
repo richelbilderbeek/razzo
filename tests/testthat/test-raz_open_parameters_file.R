@@ -22,7 +22,7 @@ test_that("use", {
                                                   sequence_length = sequence_length)
 
   filename <- filenames[1]
-  parameters <- raz_open_parameters_file(filename)
+  parameters <- razzo::raz_open_parameters_file(filename)
   testthat::expect_true(parameters$lambda > 0.0)
   testthat::expect_true(parameters$mu >= 0.0)
   testthat::expect_true(parameters$nu >= 0.0)
