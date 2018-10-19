@@ -7,7 +7,7 @@ raz_get_param_checks <- function(name, value) {
   if (name == 'lambda') {
     if (!
         (out <- value > 0)
-    ) {stop('lambda has to be greater than 0!')}
+    ) {stop('lambda has to be positive!')}
   }
   if (name == 'mu') {
     if (!
@@ -50,11 +50,11 @@ raz_get_param_checks <- function(name, value) {
     ){stop('sequence_length has to be a positive integer number!')}
   }
   if (!
-      (out <- out * is.numeric(value))
-  ){stop(paste0(name, " must be numeric!"))}
-  if (!
       (out <- out * razzo:::raz_is_param_name(name))
   ){stop(paste0(name, " is not a correct parameter name for this model!"))}
+  if (!
+      (out <- out * is.numeric(value))
+  ){stop(paste0(name, " must be numeric!"))}
   out
 }
 
@@ -84,7 +84,6 @@ raz_get_param_names <- function() {
     "sequence_length"
   )
 }
-
 
 #' General function to create a parameter.
 #' @inheritParams default_parameters_doc
