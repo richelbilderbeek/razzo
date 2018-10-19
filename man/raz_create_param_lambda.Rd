@@ -4,54 +4,14 @@
 \alias{raz_create_param_lambda}
 \title{Create a parameter called lambda}
 \usage{
-raz_create_param_lambda(id = NA, value = 0)
-
-raz_create_param_lambda(id = NA, value = 0)
-
-raz_create_param_lambda(id = NA, value = 0)
-
-raz_create_param_lambda(id = NA, value = 0)
-
-raz_create_param_lambda(id = NA, value = 0)
-
-raz_create_param_lambda(id = NA, value = 0)
+raz_create_param_lambda(value = 0)
 }
 \value{
 a parameter called lambda
-
-a parameter called seed
-
-a parameter called cond
-
-a parameter called age
-
-a parameter called soc
-
-a parameter called sequence_length
 }
 \description{
 Create a parameter called lambda
-
-Create a parameter called seed
-
-Create a parameter called cond
-
-Create a parameter called age
-
-Create a parameter called soc
-
-Create a parameter called sequence_length
 }
 \author{
-Richel J.C. Bilderbeek, Giovanni Laudanno
-
-Richel J.C. Bilderbeek, Giovanni Laudanno
-
-Richel J.C. Bilderbeek, Giovanni Laudanno
-
-Richel J.C. Bilderbeek, Giovanni Laudanno
-
-Richel J.C. Bilderbeek, Giovanni Laudanno
-
 Richel J.C. Bilderbeek, Giovanni Laudanno
 }

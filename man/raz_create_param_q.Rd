@@ -4,7 +4,7 @@
 \alias{raz_create_param_q}
 \title{Create a parameter called q}
 \usage{
-raz_create_param_q(id = NA, value = 0)
+raz_create_param_q(value = 0)
 }
 \value{
 a parameter called q

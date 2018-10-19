@@ -26,29 +26,55 @@ raz_get_param_checks <- function(name, value) {
   }
   if (name == 'seed') {
     if (!
-        (floor(value) == ceiling(value))
+        (out <- floor(value) == ceiling(value))
     ){stop('seed must be an integer!')}
   }
   if (name == 'cond') {
     if (!
-        (value == 0 || value == 1)
+        (out <- value == 0 || value == 1)
     ){stop('cond must be either TRUE or FALSE!')}
   }
   if (name == 'age') {
     if (!
-        (value >= 0)
+        (out <- value >= 0)
     ){stop('age has to be non negative!')}
   }
   if (name == 'soc') {
     if (!
-        (value == 1 || value == 2)
+        (out <- value == 1 || value == 2)
     ){stop('soc has to be either 1 (stem) or 2 (crown)!')}
   }
   if (name == 'sequence_length') {
     if (!
-        (floor(value) == ceiling(value) && value > 0)
+        (out <- floor(value) == ceiling(value) && value > 0)
     ){stop('sequence_length has to be a positive integer number!')}
   }
+  if (name == 'mbd_mutation_rate') {
+    if (!
+        (out <- value > 0)
+    ){stop('mbd_mutation_rate has to be a positive number!')}
+  }
+  if (name == 'sample_interval') {
+    if (!
+        (out <- value > 0)
+    ){stop('sample_interval has to be a positive number!')}
+  }
+  if (name == 'sample_interval') {
+    if (!
+        (out <- value > 0)
+    ){stop('sample_interval has to be a positive number!')}
+  }
+  if (name == 'chain_length') {
+    if (!
+        (out <- value > 0)
+    ){stop('chain_length has to be a positive number!')}
+  }
+  if (name == 'sub_chain_length') {
+    if (!
+        (out <- value > 0)
+    ){stop('sub_chain_length has to be a positive number!')}
+  }
+
   if (!
       (out <- out * razzo:::raz_is_param_name(name))
   ){stop(paste0(name, " is not a correct parameter name for this model!"))}
@@ -81,7 +107,11 @@ raz_get_param_names <- function() {
     "cond",
     "age",
     "soc",
-    "sequence_length"
+    "sequence_length",
+    "mbd_mutation_rate",
+    "sample_interval",
+    "chain_length",
+    "sub_chain_length"
   )
 }
 
@@ -97,13 +127,14 @@ raz_get_param_names <- function() {
 #'   \code{\link{create_param_cond}},
 #'   \code{\link{create_param_age}},
 #'   \code{\link{create_param_soc}},
-#'   and \code{\link{create_param_sequence_length}}
+#'   \code{\link{create_param_sequence_length}},
+#'   \code{\link{create_param_mbd_mutation_rate}}
+#'   and \code{\link{create_param_sample_interval}}
 #' @return a parameter
 #' @author Richel J.C. Bilderbeek
 #' @export
 raz_create_param <- function(
   name,
-  id,
   value,
   ...
 ) {
@@ -123,11 +154,11 @@ raz_create_param <- function(
   }
   parameter <- list(
     name = name,
-    id = id,
     value = value,
     ...
   )
-  testit::assert(razzo:::raz_get_param_checks(name, value))
+  testit::assert(razzo:::raz_get_param_checks(name = parameter$name,
+                                              value = parameter$value) == TRUE)
   parameter
 }
 
@@ -137,12 +168,10 @@ raz_create_param <- function(
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
 raz_create_param_lambda <- function(
-  id = NA,
   value = 0.0
 ) {
   out <- razzo::raz_create_param(
     name = "lambda",
-    id = id,
     value = value
   )
 }
@@ -153,12 +182,10 @@ raz_create_param_lambda <- function(
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
 raz_create_param_mu <- function(
-  id = NA,
   value = 0.0
 ) {
   out <- razzo::raz_create_param(
     name = "mu",
-    id = id,
     value = value
   )
 }
@@ -169,12 +196,10 @@ raz_create_param_mu <- function(
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
 raz_create_param_nu <- function(
-  id = NA,
   value = 0.0
 ) {
-  razzo::raz_create_param(
+  out <- razzo::raz_create_param(
     name = "nu",
-    id = id,
     value = value
   )
   testit::assert(out$value >= 0)
@@ -187,12 +212,10 @@ raz_create_param_nu <- function(
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
 raz_create_param_q <- function(
-  id = NA,
   value = 0.0
 ) {
-  razzo::raz_create_param(
+  out <- razzo::raz_create_param(
     name = "q",
-    id = id,
     value = value
   )
 }
@@ -202,13 +225,11 @@ raz_create_param_q <- function(
 #' @return a parameter called seed
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
-raz_create_param_lambda <- function(
-  id = NA,
+raz_create_param_seed <- function(
   value = 0.0
 ) {
-  razzo::raz_create_param(
+  out <- razzo::raz_create_param(
     name = "seed",
-    id = id,
     value = value
   )
 }
@@ -218,15 +239,14 @@ raz_create_param_lambda <- function(
 #' @return a parameter called cond
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
-raz_create_param_lambda <- function(
-  id = cond,
+raz_create_param_cond <- function(
   value = 0.0
 ) {
-  razzo::raz_create_param(
+  out <- razzo::raz_create_param(
     name = "cond",
-    id = id,
     value = value
   )
+  out
 }
 
 #' Create a parameter called age
@@ -234,15 +254,14 @@ raz_create_param_lambda <- function(
 #' @return a parameter called age
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
-raz_create_param_lambda <- function(
-  id = NA,
+raz_create_param_age <- function(
   value = 0.0
 ) {
-  razzo::raz_create_param(
+  out <- razzo::raz_create_param(
     name = "age",
-    id = id,
     value = value
   )
+  out
 }
 
 #' Create a parameter called soc
@@ -250,15 +269,14 @@ raz_create_param_lambda <- function(
 #' @return a parameter called soc
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
-raz_create_param_lambda <- function(
-  id = NA,
+raz_create_param_soc <- function(
   value = 0.0
 ) {
-  razzo::raz_create_param(
+  out <- razzo::raz_create_param(
     name = "soc",
-    id = id,
     value = value
   )
+  out
 }
 
 #' Create a parameter called sequence_length
@@ -266,13 +284,67 @@ raz_create_param_lambda <- function(
 #' @return a parameter called sequence_length
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
-raz_create_param_lambda <- function(
-  id = NA,
+raz_create_param_sequence_length <- function(
   value = 0.0
 ) {
-  razzo::raz_create_param(
+  out <- razzo::raz_create_param(
     name = "sequence_length",
-    id = id,
+    value = value
+  )
+  out
+}
+
+#' Create a parameter called mbd_mutation_rate
+#' @inheritParams default_parameters_doc
+#' @return a parameter called mbd_mutation_rate
+#' @author Richel J.C. Bilderbeek, Giovanni Laudanno
+#' @export
+raz_create_param_mbd_mutation_rate <- function(
+  value = 0.0
+) {
+  out <- razzo::raz_create_param(
+    name = "mbd_mutation_rate",
+    value = value
+  )
+}
+
+#' Create a parameter called sample_interval
+#' @inheritParams default_parameters_doc
+#' @return a parameter called sample_interval
+#' @author Richel J.C. Bilderbeek, Giovanni Laudanno
+#' @export
+raz_create_param_sample_interval <- function(
+  value = 0.0
+) {
+  out <- razzo::raz_create_param(
+    name = "sample_interval",
+    value = value
+  )
+}
+
+#' Create a parameter called chain_length
+#' @inheritParams default_parameters_doc
+#' @return a parameter called chain_length
+#' @author Richel J.C. Bilderbeek, Giovanni Laudanno
+#' @export
+raz_create_param_chain_length <- function(
+  value = 0.0
+) {
+  out <- razzo::raz_create_param(
+    name = "chain_length",
+    value = value
+  )
+}
+#' Create a parameter called sub_chain_length
+#' @inheritParams default_parameters_doc
+#' @return a parameter called sub_chain_length
+#' @author Richel J.C. Bilderbeek, Giovanni Laudanno
+#' @export
+raz_create_param_sub_chain_length <- function(
+  value = 0.0
+) {
+  out <- razzo::raz_create_param(
+    name = "sub_chain_length",
     value = value
   )
 }

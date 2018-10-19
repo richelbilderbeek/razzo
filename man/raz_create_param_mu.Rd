@@ -4,7 +4,7 @@
 \alias{raz_create_param_mu}
 \title{Create a parameter called mu}
 \usage{
-raz_create_param_mu(id = NA, value = 0)
+raz_create_param_mu(value = 0)
 }
 \value{
 a parameter called mu

@@ -4,7 +4,7 @@
 \alias{raz_create_param}
 \title{General function to create a parameter.}
 \usage{
-raz_create_param(name, id, value, ...)
+raz_create_param(name, value, ...)
 }
 \value{
 a parameter
@@ -23,7 +23,9 @@ Prefer using the
   \code{\link{create_param_cond}},
   \code{\link{create_param_age}},
   \code{\link{create_param_soc}},
-  and \code{\link{create_param_sequence_length}}
+  \code{\link{create_param_sequence_length}},
+  \code{\link{create_param_mbd_mutation_rate}}
+  and \code{\link{create_param_sample_interval}}
 }
 \author{
 Richel J.C. Bilderbeek

@@ -16,42 +16,31 @@ raz_create_inference_files <- function(
   fasta_filename
 )
 {
-  # TODO: fasta_filename should exist one day :-)
-  if (1 == 2) {
-    testit::assert(file.exists(fasta_filename))
-  }
+
+  testit::assert(file.exists(fasta_filename))
 
   parameters_filename <- file.path(dirname(fasta_filename), "parameters.csv")
-
-  # TODO: parameter file should exist one day :-)
-  if (1 == 2) {
-    testit::assert(file.exists(parameters_filename))
-  }
+  testit::assert(file.exists(parameters_filename))
 
   # Read the parameters
   parameters <- razzo::raz_open_parameters_file(parameters_filename)
   testit::assert(parameters$lambda >= 0.0)
 
   base <- tools::file_path_sans_ext(fasta_filename)
+
   trees_filename <- paste0(c(base, ".trees"), collapse = "")
   log_filename <- paste0(c(base, ".log"), collapse = "")
   mar_lik_filename <- paste0(c(base, "_mar_lik.csv"), collapse = "")
 
-  # TODO: read from parameter file
-  chain_length <- NULL
-
   # TODO: read from parameter file, or set to 1000
-  sample_interval <- NULL
+  sample_interval <- parameters$sample_interval
+  crown_age <- parameters$age
+  rng_seed <- parameters$seed
+  chain_length <- parameters$chain_length
 
   # The Nested Sampling subchain length
-  # TODO: read from parameter file, or set to ?1000
-  sub_chain_length <- NULL
+  sub_chain_length <- parameters$sub_chain_length
 
-  # TODO: read from parameter file, or set to 15
-  crown_age <- NULL
-
-  # TODO: read from parameter file
-  rng_seed <- NULL
 
   # TODO: read site model from file
   site_model <- beautier::create_jc69_site_model() # Stub
@@ -80,6 +69,10 @@ raz_create_inference_files <- function(
   # TODO: create the BEAST2 posterior trees, parameter estimates
   # and marginal likelihood files
   if (1 == 2) {
+    try(mauricer::mrc_install("NS"), silent = TRUE)
+
+    # What is input_filename ???
+
     posterior <- babette::bbt_run(
       fasta_filenames = fasta_filename,
       mcmc = beautier::create_mcmc_nested_sampling(

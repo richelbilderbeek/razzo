@@ -9,17 +9,8 @@ test_that("use", {
   )
 
   # Create the parameter files
-  razzo:::raz_load_standard_test_parameters()
-  filenames <- razzo::raz_create_parameters_files(folder_name = folder_name,
-                                                  lambda.interval = lambda.interval,
-                                                  mu.interval = mu.interval,
-                                                  nu.interval = nu.interval,
-                                                  q.interval = q.interval,
-                                                  seed.interval = seed.interval,
-                                                  soc = soc,
-                                                  age = age,
-                                                  cond = cond,
-                                                  sequence_length = sequence_length)
+  razzo:::raz_save_standard_test_parameters()
+  filenames <- razzo:::raz_get_standard_test_filenames()
 
   filename <- filenames[1]
   parameters <- razzo::raz_open_parameters_file(filename)

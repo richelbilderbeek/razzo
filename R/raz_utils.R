@@ -38,6 +38,13 @@ raz_save_standard_test_parameters <- function() {
   age  <- 10
   cond <- 1
   sequence_length <- 10^3
+  mbd_mutation_rate <- 10^3
+  sample_interval <- 10^3
+  chain_length <- 10^6
+  sub_chain_length <- 10^3
+
+  datafile_name <- file.path(getwd(), 'data', 'standard_test_parameters.RData')
+  if (file.exists(datafile_name)) {file.remove(datafile_name)}
 
   save(
     lambda.interval,
@@ -49,10 +56,11 @@ raz_save_standard_test_parameters <- function() {
     age,
     cond,
     sequence_length,
-    file = file.path(getwd(),
-                     'data',
-                     "standard_test_parameters.RData"
-    )
+    mbd_mutation_rate,
+    sample_interval,
+    chain_length,
+    sub_chain_length,
+    file = datafile_name
   )
 
 }
@@ -65,6 +73,31 @@ raz_save_standard_test_parameters <- function() {
 #' @author Giovanni Laudanno
 raz_load_standard_test_parameters <- function() {
   data(standard_test_parameters)
+}
+
+#' @title Get standard parameters names for tests
+#' @description Get standard parameters names for tests
+#' @inheritParams default_params_doc
+#' @return nothing
+#' @author Giovanni Laudanno
+raz_get_standard_test_filenames <- function() {
+    raz_load_standard_test_parameters()
+    filenames <- razzo::raz_create_parameters_files(folder_name = folder_name,
+                                                  lambda.interval = lambda.interval,
+                                                  mu.interval = mu.interval,
+                                                  nu.interval = nu.interval,
+                                                  q.interval = q.interval,
+                                                  seed.interval = seed.interval,
+                                                  soc = soc,
+                                                  age = age,
+                                                  cond = cond,
+                                                  sequence_length = sequence_length,
+                                                  mbd_mutation_rate = mbd_mutation_rate,
+                                                  sample_interval = sample_interval,
+                                                  chain_length = chain_length,
+                                                  sub_chain_length = sub_chain_length)
+
+    filenames
 }
 
 
