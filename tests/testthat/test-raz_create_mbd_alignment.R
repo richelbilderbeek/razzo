@@ -8,7 +8,7 @@ test_that("the file of mbd alignment exists", {
 
   skip("TODO: fix test")
   # # Create the parameter files
-  razzo:::raz_save_standard_test_parameters()
+  razzo:::raz_save_test_params()
   filenames <- razzo:::raz_get_test_filenames()
 
   testthat::expect_true(length(filenames) > 0)

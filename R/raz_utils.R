@@ -32,7 +32,7 @@ raz_make_tempdir <- function(...) {
 #' @inheritParams default_params_doc
 #' @return nothing
 #' @author Giovanni Laudanno
-raz_save_standard_test_parameters <- function() {
+raz_save_test_params <- function() {
   lambda_interval <- c(0.2, 0.2)
   mu_interval   <- c(0.15, 0.15)
   nu_interval   <- seq(from = 1, to = 2.5, by = 0.5)

@@ -11,7 +11,7 @@ test_that("use", {
   skip("TODO: fix test")
 
   # Create the parameter files
-  razzo:::raz_save_standard_test_parameters()
+  razzo:::raz_save_test_params()
 
   testthat::expect_true(length(filenames) >= 1)
   testthat::expect_true(all(file.exists(filenames)))
