@@ -87,7 +87,7 @@ raz_load_standard_test_parameters <- function() {
 #' @inheritParams default_params_doc
 #' @return nothing
 #' @author Giovanni Laudanno
-raz_get_standard_test_filenames <- function() {
+raz_get_test_filenames <- function() {
     raz_load_standard_test_parameters()
     filenames <- razzo::raz_create_parameters_files(
       folder_name = folder_name,
