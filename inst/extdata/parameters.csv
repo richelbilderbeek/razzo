@@ -1,0 +1,14 @@
+"","x"
+"lambda",0.2
+"mu",0.15
+"nu",1
+"q",0.1
+"seed",1
+"cond",1
+"age",10
+"soc",2
+"sequence_length",1000
+"mbd_mutation_rate",1000
+"sample_interval",1000
+"chain_length",1e+06
+"sub_chain_length",1000
