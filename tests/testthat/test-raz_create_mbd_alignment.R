@@ -30,7 +30,8 @@ test_that("the file of mbd alignment exists", {
   )
 
   # Create MBD tree
-  razzo::raz_create_mbd_tree_file(parameters = parameters, folder_name = folder_name)
+  razzo::raz_create_mbd_tree_file(
+    parameters = parameters, folder_name = folder_name)
 
   testthat::expect_true(
     length(parameters_filename) > 0
@@ -38,6 +39,7 @@ test_that("the file of mbd alignment exists", {
   testthat::expect_true(
     length(mbd_alignment_filename) > 0
   )
-  razzo::raz_create_mbd_alignment(parameters = parameters, folder_name = folder_name)
+  razzo::raz_create_mbd_alignment(
+    parameters = parameters, folder_name = folder_name)
   testthat::expect_true(file.exists(mbd_alignment_filename))
 })
