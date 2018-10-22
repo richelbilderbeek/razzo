@@ -12,7 +12,9 @@ raz_create_bd_tree <- function(
 {
   parameters_folder <- raz_get_parameters_path(parameters, folder_name)
   mbd_tree_filename <- razzo::raz_create_filename_mbd_tree(parameters, folder_name)
-  if (!file.exists(mbd_tree_filename)) stop('There is no mbd.tree for these parameters. Create it first!')
+  if (!file.exists(mbd_tree_filename)) {
+    stop("There is no mbd.tree for these parameters. Create it first!")
+  }
   mbd_tree <- get(load(mbd_tree_filename))
   seed <- parameters$seed
   age  <- parameters$age
@@ -69,7 +71,9 @@ raz_create_bd_tree <- function(
   bd_tree_filename <- razzo::raz_create_filename_bd_tree(parameters, folder_name)
   bd.sim <- list(bd_tree = bd_tree, bd_l_matrix = bd_l_matrix, bd_brts = bd_brts)
   save(bd.sim, file = bd_tree_filename)
-  if (!file.exists(bd_tree_filename)) stop('bd.tree has not been created!')
+  if (!file.exists(bd_tree_filename)) {
+    stop("bd.tree has not been created!")
+  }
 
   # Return the tree
   return(bd.sim)

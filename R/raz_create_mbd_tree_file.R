@@ -17,7 +17,9 @@ raz_create_mbd_tree_file <- function(
   parameters_folder <- razzo::raz_get_parameters_path(parameters, folder_name)
   mbd_tree_filename <- razzo::raz_create_filename_mbd_tree(parameters, folder_name)
   save(mbd_sim, file = mbd_tree_filename)
-  if (!file.exists(mbd_tree_filename)) stop('mbd.tree has not been created!')
+  if (!file.exists(mbd_tree_filename)) {
+    stop("mbd.tree has not been created!")
+  }
 
   # Return the tree
   return(mbd_sim)

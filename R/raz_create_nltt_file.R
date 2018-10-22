@@ -64,8 +64,7 @@ raz_create_nltt_file <- function(
   # Perhaps already work
   if (1 == 2) {
     nltt_diff <- rep(NA, length(posterior$trees))
-    for (i in 1:length(posterior$trees))
-    {
+    for (i in 1:length(posterior$trees)) {
       tree <- bd_tree # TODO: use one of the two, the function creates one file
       nltt_diff[i] <- nLTT::nLTTstat(tree, posterior$trees[[i]]) # nolint nLTT used older coding standard
     }

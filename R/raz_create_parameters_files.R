@@ -1,6 +1,7 @@
 #' For each parameter setting create a folder and a parameters file
 #' @inheritParams default_params_doc
-#' @return Create folders for each parameter setting and saves each setting in a file within the corresponding folder.
+#' @return Create folders for each parameter setting
+#'   and saves each setting in a file within the corresponding folder.
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
 raz_create_parameters_files <- function(
