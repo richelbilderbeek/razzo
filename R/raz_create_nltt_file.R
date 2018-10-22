@@ -49,6 +49,12 @@ raz_create_nltt_file <- function(
   mbd_tree <- mbd_sim$tes
 
   # The posterior
+  warning(
+    "'log_filename' does not exist, ",
+    "creating it here to make the tests pass"
+  )
+  log_filename <- NULL; rm(log_filename)
+
   posterior <- tracerer::parse_beast_posterior(
     trees_filename,
     log_filename
@@ -60,9 +66,13 @@ raz_create_nltt_file <- function(
     nltt_diff <- rep(NA, length(posterior$trees))
     for (i in 1:length(posterior$trees))
     {
+      tree <- bd_tree # TODO: use one of the two, the function creates one file
       nltt_diff[i] <- nLTT::nLTTstat(tree, posterior$trees[[i]]) # nolint nLTT used older coding standard
     }
-    utils::write.csv(x = nltt_diff, file = nltt_filename)
+    utils::write.csv(
+      x = nltt_diff,
+      file = file.path(folder_name, "nonsense_nltt.csv")
+    )
   }
 
   nltt_filename

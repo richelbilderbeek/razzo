@@ -14,9 +14,9 @@ default_params_doc(abstol, account_name, alpha, alpha0, b,
   minimum_multiple_births, missnumspec, mu, mutation_rate, nu, optimmethod,
   parameters, parameter_filename, parameters_filename, pars.transform,
   parsfix, precision, print_errors, q, reltol, res, s, sample_interval,
-  sequence_length, sim_pars, sim_phylo, soc, t, t1, t2, time_interval, tol,
-  transition_matrix, tree_filename, trees_filename, trparsfix, trparsopt,
-  verbose, age, cond, pars, tips_interval)
+  sequence_length, sim_pars, sim_phylo, soc, sub_chain_length, t, t1, t2,
+  time_interval, tol, transition_matrix, tree_filename, trees_filename,
+  trparsfix, trparsopt, verbose, age, cond, pars, tips_interval)
 }
 \arguments{
 \item{abstol}{something}
@@ -136,6 +136,9 @@ The ids are defined as follows:
 
 \item{soc}{Sets whether stem or crown age should be used (1 or 2).}
 
+\item{sub_chain_length}{length of the sub-chain used by the Nested Sampling
+algorithm to estimate the marginal likelihood}
+
 \item{t}{something}
 
 \item{t1}{something}
@@ -178,9 +181,6 @@ or
 }}
 
 \item{tips_interval}{Sets tips boundaries constrain on simulated dataset.}
-
-\item{sub_chain_length}{length of the sub-chain used by the Nested Sampling
-algorithm to estimate the marginal likelihood}
 }
 \description{
 This function does nothing. It is intended to inherit is parameters'

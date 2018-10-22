@@ -154,6 +154,7 @@ default_params_doc <- function(
   sim_pars,
   sim_phylo,
   soc,
+  sub_chain_length,
   t,
   t1,
   t2,
