@@ -18,8 +18,7 @@ raz_create_parameters_files <- function(
   sample_interval = 1000,
   chain_length = 10000,
   sub_chain_length = 1000
-)
-{
+) {
   lambda_interval <- unique(lambda_interval)
   mu_interval     <- unique(mu_interval)
   nu_interval     <- unique(nu_interval)

@@ -5,8 +5,7 @@
 #' @export
 raz_open_parameters_file <- function(
   parameters_filename
-)
-{
+) {
   testit::assert(file.exists(parameters_filename))
 
   reading <- utils::read.csv(parameters_filename)

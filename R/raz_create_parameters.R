@@ -333,7 +333,7 @@ raz_create_param_soc <- function(
 #' @return a parameter called sequence_length
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
-raz_create_param_sequence_length <- function(
+raz_create_param_sequence_length <- function( # nolint internal function
   value = 0.0
 ) {
   out <- razzo::raz_create_param(
@@ -349,7 +349,7 @@ raz_create_param_sequence_length <- function(
 #' @return a parameter called mbd_mutation_rate
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
-raz_create_param_mbd_mutation_rate <- function(
+raz_create_param_mbd_mutation_rate <- function( # nolint internal function
   value = 0.0
 ) {
   out <- razzo::raz_create_param(
@@ -364,7 +364,7 @@ raz_create_param_mbd_mutation_rate <- function(
 #' @return a parameter called sample_interval
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
-raz_create_param_sample_interval <- function(
+raz_create_param_sample_interval <- function( # nolint internal function
   value = 0.0
 ) {
   out <- razzo::raz_create_param(
@@ -393,7 +393,7 @@ raz_create_param_chain_length <- function(
 #' @return a parameter called sub_chain_length
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
-raz_create_param_sub_chain_length <- function(
+raz_create_param_sub_chain_length <- function( # nolint internal function
   value = 0.0
 ) {
   out <- razzo::raz_create_param(

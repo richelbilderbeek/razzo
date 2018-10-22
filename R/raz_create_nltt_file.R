@@ -8,18 +8,18 @@
 raz_create_nltt_file <- function(
   parameters,
   folder_name
-)
-{
+) {
   parameters_folder <- raz_get_parameters_path(parameters, folder_name)
   mbd_tree_filename <- file.path(parameters_folder, "mbd.tree")
   bd_tree_filename <- file.path(parameters_folder, "bd.tree")
   testit::assert(file.exists(mbd_tree_filename))
   testit::assert("mbd.tree" %in% list.files(parameters_folder))
   testit::assert(length(mbd_tree_filename) > 0)
-  if (1 == 2) { #TODO: we can use these checks only after we have a way to simulate bd_tree
-  testit::assert(file.exists(bd_tree_filename))
-  testit::assert("bd_tree" %in% list.files(parameters_folder))
-  testit::assert(length(bd_tree_filename) > 0)
+  # TODO: we can use these checks only after we have a way to simulate bd_tree
+  if (1 == 2) {
+    testit::assert(file.exists(bd_tree_filename))
+    testit::assert("bd_tree" %in% list.files(parameters_folder))
+    testit::assert(length(bd_tree_filename) > 0)
   }
 
   trees_filename <- c(mbd_tree_filename, bd_tree_filename)
