@@ -64,7 +64,8 @@ test_that("use", {
 
   mbd_trees_filename <- file.path(folder_name, sub_folder_name, "mbd.trees")
   mbd_log_filename <- file.path(folder_name, sub_folder_name, "mbd.log")
-  mbd_mar_lik_filename <- file.path(folder_name, sub_folder_name, "mbd_mar_lik.csv")
+  mbd_mar_lik_filename <- file.path(
+    folder_name, sub_folder_name, "mbd_mar_lik.csv")
 
   expect_true(mbd_trees_filename %in% inference_filenames)
   expect_true(mbd_log_filename %in% inference_filenames)

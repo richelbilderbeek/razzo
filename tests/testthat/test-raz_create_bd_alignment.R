@@ -9,7 +9,7 @@ test_that("use", {
   parameters <- razzo::raz_open_parameters_file(raz_get_path("parameters.csv"))
 
   skip("TODO: Issue #15: Add 'raz_create_bd_alignment'")
-  # bd_alignment_filename <- file.path(folder_name, sub_folder_name, "bd.fasta")
+  bd_alignment_filename <- file.path(folder_name, sub_folder_name, "bd.fasta")
 
   if (1 == 2) {
     raz_create_bd_alignment(parameters_filename)
