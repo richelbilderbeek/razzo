@@ -4,12 +4,11 @@
 \alias{raz_create_parameters_files}
 \title{For each parameter setting create a folder and a parameters file}
 \usage{
-raz_create_parameters_files(folder_name = getwd(),
-  lambda.interval = c(0.2, 0.2), mu.interval = c(0.15, 0.15),
-  nu.interval = seq(from = 1, to = 2.5, by = 0.5),
-  q.interval = seq(from = 0.1, to = 0.2, by = 0.05),
-  seed.interval = 1:1000, soc = 2, age = 15, cond = 1,
-  sequence_length = 1000)
+raz_create_parameters_files(folder_name, lambda.interval = c(0.2, 0.2),
+  mu.interval = c(0.15, 0.15), nu.interval = seq(from = 1, to = 2.5, by
+  = 0.5), q.interval = seq(from = 0.1, to = 0.2, by = 0.05),
+  seed.interval = 1:1000, soc, age, cond, sequence_length,
+  mbd_mutation_rate, sample_interval, chain_length, sub_chain_length)
 }
 \arguments{
 \item{folder_name}{name of the main folder}
@@ -22,6 +21,10 @@ raz_create_parameters_files(folder_name = getwd(),
 and non-extinction of the phylogeny. Set 0 otherwise.}
 
 \item{sequence_length}{something}
+
+\item{sample_interval}{something}
+
+\item{chain_length}{something}
 }
 \value{
 Create folders for each parameter setting and saves each setting in a file within the corresponding folder.
