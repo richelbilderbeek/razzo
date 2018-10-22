@@ -17,7 +17,7 @@ raz_make_tempdir <- function(...) {
   ); list.files(temp_dir, pattern = "Rtmp")
 
   rm(folder_name)
-  folder_name <- tempdir(...) #folder_name <- tempdir()
+  folder_name <- tempdir(...)
   if (!dir.exists(folder_name)) {
     dir.create(folder_name)
   }
