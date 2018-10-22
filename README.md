@@ -13,7 +13,7 @@ Research project by Giovanni Laudanno and Richel J.C. Bilderbeek
 
 Status|Description|Function name
 ---|---|---
-Done|Create parameter files|`raz_create_parameters_files`
+Tested locally, cluster unfriendly|Create parameter files|`raz_create_parameters_files`
 ?|Create MBD tree|`raz_?`
 ?|Create twin BD tree|`raz_?`
 ?|Create alignments|`raz_?`
