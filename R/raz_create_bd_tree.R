@@ -26,9 +26,10 @@ raz_create_bd_tree <- function(
   mbd_brts     <- abs(mbd_tree$brts)
   mbd_l_matrix <- mbd_tree$l_matrix
   set.seed(seed)
+  # NOTE: should cond be 1 or 2?
   bd_pars <- DDD::bd_ML( # nolint
     brts = abs(mbd_brts),
-    cond = 2, #cond = 1 #?
+    cond = 2,
     initparsopt = c(parameters$lambda, parameters$mu),
     idparsopt = 1:2,
     missnumspec = 0,
@@ -72,13 +73,13 @@ raz_create_bd_tree <- function(
   parameters_folder <- dirname(mbd_tree_filename)
   bd_tree_filename <- razzo::raz_create_filename_bd_tree(
     parameters, folder_name)
-  bd.sim <- list(
+  bd_sim <- list(
     bd_tree = bd_tree, bd_l_matrix = bd_l_matrix, bd_brts = bd_brts)
-  save(bd.sim, file = bd_tree_filename)
+  save(bd_sim, file = bd_tree_filename)
   if (!file.exists(bd_tree_filename)) {
     stop("bd.tree has not been created!")
   }
 
   # Return the tree
-  return(bd.sim)
+  return(bd_sim)
 }

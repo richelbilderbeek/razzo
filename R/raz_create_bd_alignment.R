@@ -1,5 +1,6 @@
 #' @title Create the twin BD alignment from a parameters file in the same folder
-#' @description Create the twin BD alignment from a parameters file in the same folder
+#' @description Create the twin BD alignment
+#'   from a parameters file in the same folder
 #' as that parameters file.
 #' For example, for a path '/my_folder/parameters.csv', this function creates:
 #' '/my_folder/bd.fasta'.
@@ -13,16 +14,16 @@ raz_create_bd_alignment <- function(
 )
 {
   # Create the name of the alignent file, e.g. '/myfolder/bd.fasta'
-  # bd_alignment_filename <- NULL
-  parameters_folder <- raz_get_parameters_path(parameters, folder_name)
-  bd_alignment_filename <- razzo::raz_create_filename_bd_alignment(parameters, folder_name)
+  bd_alignment_filename <- razzo::raz_create_filename_bd_alignment(
+    parameters, folder_name)
 
   # Get the twin BD phylogeny for 'bd.tree'
   bd_phylogeny <- NULL
 
   # Get the sequence length from the parameters filename
   # Found
-  #   BD_mutation_rate <-  MBD_mutation_rate * (sum(MBD_tree$edge.length)/sum(BD_tree$edge.length)); # nolint
+  #   BD_mutation_rate <-  MBD_mutation_rate *                 # nolint
+  #     * (sum(MBD_tree$edge.length)/sum(BD_tree$edge.length)) # nolint
   sequence_length <- parameters$sequence_length
 
   # Calculate the mutation rate from the tree
