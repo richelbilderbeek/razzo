@@ -15,7 +15,8 @@ raz_create_bd_alignment(parameters, folder_name)
 nothing
 }
 \description{
-Create the twin BD alignment from a parameters file in the same folder
+Create the twin BD alignment
+  from a parameters file in the same folder
 as that parameters file.
 For example, for a path '/my_folder/parameters.csv', this function creates:
 '/my_folder/bd.fasta'.

@@ -11,8 +11,7 @@
 raz_create_bd_alignment <- function(
   parameters,
   folder_name
-)
-{
+) {
   # Create the name of the alignent file, e.g. '/myfolder/bd.fasta'
   bd_alignment_filename <- razzo::raz_create_filename_bd_alignment(
     parameters, folder_name)
