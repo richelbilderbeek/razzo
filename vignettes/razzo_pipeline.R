@@ -51,7 +51,7 @@ if (1 == 2) {
 if (1 == 2) {
   # Do the inference
   fasta_filenames <- c("1a.fasta") # Search the folder
-  for (fasta_filename in fasta_filenames) 
+  for (fasta_filename in fasta_filenames)
   {
     output_filenames <- raz_create_inference_files(fasta_filename)
     # Posterior trees
@@ -83,8 +83,8 @@ if (1 == 2) {
 
 ## ------------------------------------------------------------------------
 if (1 == 2) {
-  
-  graphics::par(mfrow = c(1,2))
+
+  graphics::par(mfrow = c(1, 2))
   hist(unlist(MBD_df.nLTT), main = "MBD nLTT")
   hist(unlist(BD_df.nLTT), main = "BD nLTT")
   cat("Average nLTT for MBD", MBD_mean.nLTT, "\nAverage nLTT for BD ", BD_mean.nLTT)

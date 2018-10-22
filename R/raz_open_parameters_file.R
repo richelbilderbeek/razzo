@@ -10,7 +10,7 @@ raz_open_parameters_file <- function(
   testit::assert(file.exists(parameters_filename))
 
   reading <- utils::read.csv(parameters_filename)
-  parameters <- data.frame(t(reading[,2]))
+  parameters <- data.frame(t(reading[, 2]))
   names(parameters) <- reading[,1]
 
   testit::assert(parameters$lambda >= 0)
