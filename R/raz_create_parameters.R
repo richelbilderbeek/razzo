@@ -131,17 +131,17 @@ raz_get_param_names <- function() {
 #'   \code{\link{create_param_mbd_mutation_rate}}
 #'   and \code{\link{create_param_sample_interval}}
 #' @return a parameter
-#' @author Richel J.C. Bilderbeek
+#' @author Giovanni Laudanno and Richel J.C. Bilderbeek
 #' @export
 raz_create_param <- function(
   name,
   value,
   ...
 ) {
-  if (!razzo:::raz_is_param_name(name)) {
+  if (!raz_is_param_name(name)) {
     parameters_as_string <- function() {
       s <- NULL
-      for (p in razzo:::raz_get_param_names()) {
+      for (p in raz_get_param_names()) {
         s <- paste0(s, ", ", p)
       }
       s <- substr(s, start = 3, stop = nchar(s))
@@ -157,8 +157,10 @@ raz_create_param <- function(
     value = value,
     ...
   )
-  testit::assert(razzo:::raz_get_param_checks(name = parameter$name,
-                                              value = parameter$value) == TRUE)
+  testit::assert(raz_get_param_checks(
+    name = parameter$name,
+    value = parameter$value) == TRUE
+  )
   parameter
 }
 

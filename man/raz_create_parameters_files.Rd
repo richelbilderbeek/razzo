@@ -28,6 +28,9 @@ and non-extinction of the phylogeny. Set 0 otherwise.}
 \item{sample_interval}{something}
 
 \item{chain_length}{something}
+
+\item{sub_chain_length}{length of the sub-chain used by the Nested Sampling
+algorithm to estimate the marginal likelihood}
 }
 \value{
 Create folders for each parameter setting and saves each setting in a file within the corresponding folder.

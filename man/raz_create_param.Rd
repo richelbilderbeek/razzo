@@ -28,5 +28,5 @@ Prefer using the
   and \code{\link{create_param_sample_interval}}
 }
 \author{
-Richel J.C. Bilderbeek
+Giovanni Laudanno and Richel J.C. Bilderbeek
 }

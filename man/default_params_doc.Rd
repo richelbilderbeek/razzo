@@ -178,6 +178,9 @@ or
 }}
 
 \item{tips_interval}{Sets tips boundaries constrain on simulated dataset.}
+
+\item{sub_chain_length}{length of the sub-chain used by the Nested Sampling
+algorithm to estimate the marginal likelihood}
 }
 \description{
 This function does nothing. It is intended to inherit is parameters'
