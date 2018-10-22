@@ -6,6 +6,9 @@
 \usage{
 raz_create_param_mbd_mutation_rate(value = 0)
 }
+\arguments{
+\item{value}{value of the parameter}
+}
 \value{
 a parameter called mbd_mutation_rate
 }

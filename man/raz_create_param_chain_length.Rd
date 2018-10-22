@@ -6,6 +6,9 @@
 \usage{
 raz_create_param_chain_length(value = 0)
 }
+\arguments{
+\item{value}{value of the parameter}
+}
 \value{
 a parameter called chain_length
 }

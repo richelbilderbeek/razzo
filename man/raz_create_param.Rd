@@ -6,6 +6,14 @@
 \usage{
 raz_create_param(name, value, ...)
 }
+\arguments{
+\item{name}{name of the parameter}
+
+\item{value}{value of the parameter}
+
+\item{...}{other aspects of more complex parameters (never
+applies within this package yet)}
+}
 \value{
 a parameter
 }

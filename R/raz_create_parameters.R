@@ -1,4 +1,6 @@
 #' Determines parameters checks
+#' @param name name of the parameter
+#' @param value value of the parameter
 #' @return parameter checks
 #' @author Giovanni Laudanno
 #' @noRd
@@ -117,6 +119,10 @@ raz_get_param_names <- function() {
 
 #' General function to create a parameter.
 #' @inheritParams default_params_doc
+#' @param name name of the parameter
+#' @param value value of the parameter
+#' @param ... other aspects of more complex parameters (never
+#'   applies within this package yet)
 #' @note Prefer using the
 #'   named functions
 #'   \code{\link{create_param_lambda}},
@@ -166,6 +172,7 @@ raz_create_param <- function(
 
 #' Create a parameter called lambda
 #' @inheritParams default_params_doc
+#' @param value value of the parameter
 #' @return a parameter called lambda
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
@@ -180,6 +187,7 @@ raz_create_param_lambda <- function(
 
 #' Create a parameter called mu
 #' @inheritParams default_params_doc
+#' @param value value of the parameter
 #' @return a parameter called mu
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
@@ -194,6 +202,7 @@ raz_create_param_mu <- function(
 
 #' Create a parameter called nu
 #' @inheritParams default_params_doc
+#' @param value value of the parameter
 #' @return a parameter called nu
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
@@ -210,6 +219,7 @@ raz_create_param_nu <- function(
 
 #' Create a parameter called q
 #' @inheritParams default_params_doc
+#' @param value value of the parameter
 #' @return a parameter called q
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
@@ -224,6 +234,7 @@ raz_create_param_q <- function(
 
 #' Create a parameter called seed
 #' @inheritParams default_params_doc
+#' @param value value of the parameter
 #' @return a parameter called seed
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
@@ -238,6 +249,7 @@ raz_create_param_seed <- function(
 
 #' Create a parameter called cond
 #' @inheritParams default_params_doc
+#' @param value value of the parameter
 #' @return a parameter called cond
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
@@ -253,6 +265,7 @@ raz_create_param_cond <- function(
 
 #' Create a parameter called age
 #' @inheritParams default_params_doc
+#' @param value value of the parameter
 #' @return a parameter called age
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
@@ -268,6 +281,7 @@ raz_create_param_age <- function(
 
 #' Create a parameter called soc
 #' @inheritParams default_params_doc
+#' @param value value of the parameter
 #' @return a parameter called soc
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
@@ -283,6 +297,7 @@ raz_create_param_soc <- function(
 
 #' Create a parameter called sequence_length
 #' @inheritParams default_params_doc
+#' @param value value of the parameter
 #' @return a parameter called sequence_length
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
@@ -298,6 +313,7 @@ raz_create_param_sequence_length <- function(
 
 #' Create a parameter called mbd_mutation_rate
 #' @inheritParams default_params_doc
+#' @param value value of the parameter
 #' @return a parameter called mbd_mutation_rate
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
@@ -312,6 +328,7 @@ raz_create_param_mbd_mutation_rate <- function(
 
 #' Create a parameter called sample_interval
 #' @inheritParams default_params_doc
+#' @param value value of the parameter
 #' @return a parameter called sample_interval
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
@@ -326,6 +343,7 @@ raz_create_param_sample_interval <- function(
 
 #' Create a parameter called chain_length
 #' @inheritParams default_params_doc
+#' @param value value of the parameter
 #' @return a parameter called chain_length
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
@@ -339,6 +357,7 @@ raz_create_param_chain_length <- function(
 }
 #' Create a parameter called sub_chain_length
 #' @inheritParams default_params_doc
+#' @param value value of the parameter
 #' @return a parameter called sub_chain_length
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export

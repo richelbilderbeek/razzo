@@ -6,6 +6,9 @@
 \usage{
 raz_create_param_age(value = 0)
 }
+\arguments{
+\item{value}{value of the parameter}
+}
 \value{
 a parameter called age
 }
