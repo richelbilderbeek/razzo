@@ -10,7 +10,8 @@ raz_load_standard_test_parameters()
 nothing
 }
 \description{
-Load standard parameters interval to test the function "raz_create_parameters_files".
+Load standard parameters interval to test
+  the function "raz_create_parameters_files".
 It loads the dataset in the data folder of the package.
 }
 \author{

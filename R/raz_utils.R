@@ -87,11 +87,11 @@ raz_get_standard_test_filenames <- function() {
     raz_load_standard_test_parameters()
     filenames <- razzo::raz_create_parameters_files(
       folder_name = folder_name,
-      lambda.interval = lambda.interval,
-      mu.interval = mu.interval,
-      nu.interval = nu.interval,
-      q.interval = q.interval,
-      seed.interval = seed.interval,
+      lambda_interval = lambda_interval,
+      mu_interval = mu_interval,
+      nu_interval = nu_interval,
+      q_interval = q_interval,
+      seed_interval = seed_interval,
       soc = soc,
       age = age,
       cond = cond,

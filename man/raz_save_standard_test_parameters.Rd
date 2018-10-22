@@ -10,7 +10,8 @@ raz_save_standard_test_parameters()
 nothing
 }
 \description{
-Create standard parameters interval to test the function "raz_create_parameters_files".
+Create standard parameters interval
+  to test the function "raz_create_parameters_files".
 It saves the dataset in the data folder of the package.
 }
 \author{

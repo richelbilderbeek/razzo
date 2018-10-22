@@ -5,10 +5,10 @@
 \title{For each parameter setting create a folder and a parameters file}
 \usage{
 raz_create_parameters_files(folder_name = getwd(),
-  lambda.interval = c(0.2, 0.2), mu.interval = c(0.15, 0.15),
-  nu.interval = seq(from = 1, to = 2.5, by = 0.5),
-  q.interval = seq(from = 0.1, to = 0.2, by = 0.05),
-  seed.interval = 1:1000, soc = 2, age = 15, cond = 1,
+  lambda_interval = c(0.2, 0.2), mu_interval = c(0.15, 0.15),
+  nu_interval = seq(from = 1, to = 2.5, by = 0.5),
+  q_interval = seq(from = 0.1, to = 0.2, by = 0.05),
+  seed_interval = 1:1000, soc = 2, age = 15, cond = 1,
   sequence_length = 1000, mbd_mutation_rate = 1/age,
   sample_interval = 1000, chain_length = 10000,
   sub_chain_length = 1000)

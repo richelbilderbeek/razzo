@@ -5,11 +5,11 @@
 #' @export
 raz_create_parameters_files <- function(
   folder_name = getwd(),
-  lambda.interval = c(0.2, 0.2),
-  mu.interval = c(0.15, 0.15),
-  nu.interval = seq(from = 1, to = 2.5, by = 0.5),
-  q.interval = seq(from = 0.10, to = 0.20, by = 0.05),
-  seed.interval = 1:1000,
+  lambda_interval = c(0.2, 0.2),
+  mu_interval = c(0.15, 0.15),
+  nu_interval = seq(from = 1, to = 2.5, by = 0.5),
+  q_interval = seq(from = 0.10, to = 0.20, by = 0.05),
+  seed_interval = 1:1000,
   soc = 2,
   age = 15,
   cond = 1,
@@ -20,15 +20,15 @@ raz_create_parameters_files <- function(
   sub_chain_length = 1000
 )
 {
-  lambda.interval <- unique(lambda.interval)
-  mu.interval     <- unique(mu.interval)
-  nu.interval     <- unique(nu.interval)
-  q.interval      <- unique(q.interval)
+  lambda_interval <- unique(lambda_interval)
+  mu_interval     <- unique(mu_interval)
+  nu_interval     <- unique(nu_interval)
+  q_interval      <- unique(q_interval)
 
-  Lpars <- length(lambda.interval) *
-           length(mu.interval) *
-           length(nu.interval) *
-           length(q.interval)
+  Lpars <- length(lambda_interval) *
+           length(mu_interval) *
+           length(nu_interval) *
+           length(q_interval)
 
   project_name <- "razzo_project"
 
@@ -36,16 +36,16 @@ raz_create_parameters_files <- function(
   testit::assert(dir.exists(file.path(folder_name, project_name)))
   parameters_filenames <- rep(NA, Lpars)
   i <- 1
-  for (lambda in lambda.interval) {
-    for (mu in mu.interval) {
-      for (nu in nu.interval) {
-        for (q in q.interval) {
+  for (lambda in lambda_interval) {
+    for (mu in mu_interval) {
+      for (nu in nu_interval) {
+        for (q in q_interval) {
           parsettings_name <- paste0(lambda, "-", mu, "-", nu, "-", q)
           dir.create(file.path(folder_name,
                                project_name,
                                parsettings_name),
                      showWarnings = FALSE)
-          for (seed in seed.interval) {
+          for (seed in seed_interval) {
             seedfolder <- file.path(folder_name,
                                     project_name,
                                     parsettings_name,
