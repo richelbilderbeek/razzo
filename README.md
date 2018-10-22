@@ -7,7 +7,13 @@ Branch|[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)|[![Codecov 
 `giovanni`|[![Build Status](https://travis-ci.org/richelbilderbeek/razzo.svg?branch=giovanni)](https://travis-ci.org/richelbilderbeek/razzo) | [![codecov.io](https://codecov.io/github/richelbilderbeek/razzo/coverage.svg?branch=giovanni)](https://codecov.io/github/richelbilderbeek/razzo?branch=giovanni)
 `richel`|[![Build Status](https://travis-ci.org/richelbilderbeek/razzo.svg?branch=richel)](https://travis-ci.org/richelbilderbeek/razzo) | [![codecov.io](https://codecov.io/github/richelbilderbeek/razzo/coverage.svg?branch=richel)](https://codecov.io/github/richelbilderbeek/razzo?branch=richel)
 
-Research project by Giovanni Laudanno and Richel J.C. Bilderbeek
+Research project by Giovanni Laudanno and Richel J.C. Bilderbeek.
+
+The research project uses three GitHub repo's:
+
+ * [razzo](https://github.com/richelbilderbeek/razzo): R code
+ * [razzo_article](https://github.com/richelbilderbeek/razzo_article): scientific manuscript (private GitHub for now)
+ * [razzo_project](https://github.com/richelbilderbeek/razzo_project): bash scripts
 
 ## Roadmap
 
