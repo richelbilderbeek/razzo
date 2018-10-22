@@ -9,80 +9,111 @@ raz_get_param_checks <- function(name, value) {
   if (name == "lambda") {
     if (!
         (out <- value > 0)
-    ) {stop("lambda has to be positive!")}
+    ) {
+      stop("lambda has to be positive!")
+    }
   }
   if (name == "mu") {
     if (!
         (out <- value >= 0)
-    ){stop("mu has to be non negative!")}
+    ) {
+      stop("mu has to be non negative!")
+    }
   }
   if (name == "nu") {
     if (!
         (out <- value >= 0)
-    ){stop("mu has to be non negative!")}
+    ) {
+      stop("mu has to be non negative!")
+    }
   }
   if (name == "q") {
     if (!
         (out <- value >= 0 && value <= 1)
-    ){stop("q has to be between zero and one!")}
+    ) {
+      stop("q has to be between zero and one!")
+    }
   }
   if (name == "seed") {
     if (!
         (out <- floor(value) == ceiling(value))
-    ){stop("seed must be an integer!")}
+    ) {
+      stop("seed must be an integer!")
+    }
   }
   if (name == "cond") {
     if (!
         (out <- value == 0 || value == 1)
-    ){stop("cond must be either TRUE or FALSE!")}
+    ) {
+      stop("cond must be either TRUE or FALSE!")
+    }
   }
   if (name == "age") {
     if (!
         (out <- value >= 0)
-    ){stop("age has to be non negative!")}
+    ) {
+      stop("age has to be non negative!")
+    }
   }
   if (name == "soc") {
     if (!
         (out <- value == 1 || value == 2)
-    ){stop("soc has to be either 1 (stem) or 2 (crown)!")}
+    ) {
+      stop("soc has to be either 1 (stem) or 2 (crown)!")
+    }
   }
   if (name == "sequence_length") {
     if (!
         (out <- floor(value) == ceiling(value) && value > 0)
-    ){stop("sequence_length has to be a positive integer number!")}
+    ) {
+      stop("sequence_length has to be a positive integer number!")
+    }
   }
   if (name == "mbd_mutation_rate") {
     if (!
         (out <- value > 0)
-    ){stop("mbd_mutation_rate has to be a positive number!")}
+    ) {
+      stop("mbd_mutation_rate has to be a positive number!")
+    }
   }
   if (name == "sample_interval") {
     if (!
         (out <- value > 0)
-    ){stop("sample_interval has to be a positive number!")}
+    ) {
+      stop("sample_interval has to be a positive number!")
+    }
   }
   if (name == "sample_interval") {
     if (!
         (out <- value > 0)
-    ){stop("sample_interval has to be a positive number!")}
+    ) {
+      stop("sample_interval has to be a positive number!")
+    }
   }
   if (name == "chain_length") {
     if (!
         (out <- value > 0)
-    ){stop("chain_length has to be a positive number!")}
+    ) {
+      stop("chain_length has to be a positive number!")
+    }
   }
   if (name == "sub_chain_length") {
     if (!
         (out <- value > 0)
-    ){stop("sub_chain_length has to be a positive number!")}
+    ) {
+      stop("sub_chain_length has to be a positive number!")
+    }
   }
 
   if (!
       (out <- out * raz_is_param_name(name))
-  ){stop(paste0(name, " is not a correct parameter name for this model!"))}
+  ) { stop(paste0(name, " is not a correct parameter name for this model!"))
+  }
   if (!
       (out <- out * is.numeric(value))
-  ){stop(paste0(name, " must be numeric!"))}
+  ) {
+    stop(paste0(name, " must be numeric!"))
+  }
   out
 }
 
