@@ -74,6 +74,8 @@
 #' @param sequence_length something
 #' @param sim_pars something
 #' @param sim_phylo something
+#' @param sub_chain_length length of the sub-chain used by the Nested Sampling
+#'   algorithm to estimate the marginal likelihood
 #' @param t something
 #' @param t1 something
 #' @param t2 something

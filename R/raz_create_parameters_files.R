@@ -3,20 +3,21 @@
 #' @return Create folders for each parameter setting and saves each setting in a file within the corresponding folder.
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
-raz_create_parameters_files <- function(folder_name,
-                                        lambda.interval = c(0.2, 0.2),
-                                        mu.interval = c(0.15, 0.15),
-                                        nu.interval = seq(from = 1, to = 2.5, by = 0.5),
-                                        q.interval = seq(from = 0.10, to = 0.20, by = 0.05),
-                                        seed.interval = 1:1000,
-                                        soc,
-                                        age,
-                                        cond,
-                                        sequence_length,
-                                        mbd_mutation_rate,
-                                        sample_interval,
-                                        chain_length,
-                                        sub_chain_length
+raz_create_parameters_files <- function(
+  folder_name = getwd(),
+  lambda.interval = c(0.2, 0.2),
+  mu.interval = c(0.15, 0.15),
+  nu.interval = seq(from = 1, to = 2.5, by = 0.5),
+  q.interval = seq(from = 0.10, to = 0.20, by = 0.05),
+  seed.interval = 1:1000,
+  soc = 2,
+  age = 15,
+  cond = 1,
+  sequence_length = 1000,
+  mbd_mutation_rate = 1.0 / age,
+  sample_interval = 1000,
+  chain_length = 10000,
+  sub_chain_length = 1000
 )
 {
   lambda.interval <- unique(lambda.interval)
