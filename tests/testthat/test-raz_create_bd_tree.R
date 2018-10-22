@@ -21,11 +21,13 @@ test_that("use", {
   #
   # Instead, the function expects subfolders to be present.
   # If the folder structure is important, these folders must be created
-  razzo::raz_create_mbd_tree_file(parameters = parameters, folder_name = folder_name)
+  razzo::raz_create_mbd_tree_file(
+    parameters = parameters, folder_name = folder_name)
 
   # Create BD tree
   silent_output <- capture.output(
-    razzo::raz_create_bd_tree(parameters = parameters, folder_name = folder_name)
+    razzo::raz_create_bd_tree(
+      parameters = parameters, folder_name = folder_name)
   )
 
   # Actually create a BD tree and save it

@@ -39,7 +39,8 @@ test_that("use", {
   )
 
   # Create MBD tree
-  razzo::raz_create_mbd_tree_file(parameters = parameters, folder_name = folder_name)
+  razzo::raz_create_mbd_tree_file(
+    parameters = parameters, folder_name = folder_name)
 
   testthat::expect_true(
     length(parameters_filename) > 0

@@ -20,7 +20,8 @@ test_that("use", {
   #
   # Instead, the function expects subfolders to be present.
   # If the folder structure is important, these folders must be created
-  razzo::raz_create_mbd_tree_file(parameters = parameters, folder_name = folder_name)
+  razzo::raz_create_mbd_tree_file(
+    parameters = parameters, folder_name = folder_name)
   # This line below may not be true if the subfolder structure is important
   mbd_tree_filename <- file.path(folder_name, "mbd.tree")
 
