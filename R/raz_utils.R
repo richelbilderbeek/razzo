@@ -31,11 +31,11 @@ raz_make_tempdir <- function(...) {
 #' @return nothing
 #' @author Giovanni Laudanno
 raz_save_standard_test_parameters <- function() {
-  lambda.interval <- c(0.2, 0.2)
-  mu.interval   <- c(0.15, 0.15)
-  nu.interval   <- seq(from = 1, to = 2.5, by = 0.5)
-  q.interval    <- seq(from = 0.10, to = 0.20, by = 0.05)
-  seed.interval <- 1:3
+  lambda_interval <- c(0.2, 0.2)
+  mu_interval   <- c(0.15, 0.15)
+  nu_interval   <- seq(from = 1, to = 2.5, by = 0.5)
+  q_interval    <- seq(from = 0.10, to = 0.20, by = 0.05)
+  seed_interval <- 1:3
   soc  <- 2
   age  <- 10
   cond <- 1
@@ -45,15 +45,15 @@ raz_save_standard_test_parameters <- function() {
   chain_length <- 10^6
   sub_chain_length <- 10^3
 
-  datafile_name <- file.path(getwd(), 'data', 'standard_test_parameters.RData')
+  datafile_name <- file.path(getwd(), "data", "standard_test_parameters.RData")
   if (file.exists(datafile_name)) {file.remove(datafile_name)}
 
   save(
-    lambda.interval,
-    mu.interval,
-    nu.interval,
-    q.interval,
-    seed.interval,
+    lambda_interval,
+    mu_interval,
+    nu_interval,
+    q_interval,
+    seed_interval,
     soc,
     age,
     cond,
