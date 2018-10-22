@@ -62,7 +62,7 @@
 #'   \item pars[3] is nu, the multiple allopatric speciation trigger rate;
 #'   \item pars[4] is q, the single-lineage speciation probability.
 #' }
-#' @param pars.transform something
+#' @param pars_transform something
 #' @param parsfix The values of the parameters that should not be optimized.
 #' @param precision something
 #' @param print_errors something
@@ -141,7 +141,7 @@ default_params_doc <- function(
   parameters,
   parameter_filename,
   parameters_filename,
-  pars.transform,
+  pars_transform,
   parsfix,
   precision,
   print_errors,

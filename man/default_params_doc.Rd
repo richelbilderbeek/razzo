@@ -12,7 +12,7 @@ default_params_doc(abstol, account_name, alpha, alpha0, b,
   lx, lx0, matrix, matrix_builder, max_iter, max_k, max_number_of_species,
   max_repetitions, max_sims, maxiter, mbd_tree, methode,
   minimum_multiple_births, missnumspec, mu, mutation_rate, nu, optimmethod,
-  parameters, parameter_filename, parameters_filename, pars.transform,
+  parameters, parameter_filename, parameters_filename, pars_transform,
   parsfix, precision, print_errors, q, reltol, res, s, sample_interval,
   sequence_length, sim_pars, sim_phylo, soc, sub_chain_length, t, t1, t2,
   time_interval, tol, transition_matrix, tree_filename, trees_filename,
@@ -110,7 +110,7 @@ The ids are defined as follows:
 
 \item{parameters_filename}{full path to a 'parameters.csv' file}
 
-\item{pars.transform}{something}
+\item{pars_transform}{something}
 
 \item{parsfix}{The values of the parameters that should not be optimized.}
 
