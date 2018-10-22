@@ -15,7 +15,7 @@ raz_create_bd_alignment <- function(
   # Create the name of the alignent file, e.g. '/myfolder/bd.fasta'
   # bd_alignment_filename <- NULL
   parameters_folder <- raz_get_parameters_path(parameters, folder_name)
-  bd_alignment_filename <- razzo::raz_create_filename.bd_alignment(parameters, folder_name)
+  bd_alignment_filename <- razzo::raz_create_filename_bd_alignment(parameters, folder_name)
 
   # Get the twin BD phylogeny for 'bd.tree'
   bd_phylogeny <- NULL

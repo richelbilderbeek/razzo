@@ -13,13 +13,13 @@ raz_create_mbd_alignment <- function(
 )
 {
   parameters_folder <- razzo::raz_get_parameters_path(parameters, folder_name)
-  mbd_tree_filename <- razzo::raz_create_filename.mbd_tree(parameters, folder_name)
+  mbd_tree_filename <- razzo::raz_create_filename_mbd_tree(parameters, folder_name)
   testit::assert(file.exists(mbd_tree_filename))
   testit::assert("mbd.tree" %in% list.files(parameters_folder))
   testit::assert(length(mbd_tree_filename) > 0)
 
   # Create the name of the alignent file, e.g. '/myfolder/mbd.fasta'
-  mbd_alignment_filename <- razzo::raz_create_filename.mbd_alignment(parameters, folder_name)
+  mbd_alignment_filename <- razzo::raz_create_filename_mbd_alignment(parameters, folder_name)
 
   # Get the MBD phylogeny for 'mbd.tree'
   mbd_phylogeny <- get(load(mbd_tree_filename))$tes

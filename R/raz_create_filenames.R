@@ -3,7 +3,7 @@
 #' @return name of the mbd_tree file
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
-raz_create_filename.mbd_tree <- function(
+raz_create_filename_mbd_tree <- function(
   parameters,
   folder_name
 )
@@ -18,7 +18,7 @@ raz_create_filename.mbd_tree <- function(
 #' @return name of the bd_tree file
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
-raz_create_filename.bd_tree <- function(
+raz_create_filename_bd_tree <- function(
   parameters,
   folder_name
 )
@@ -33,7 +33,7 @@ raz_create_filename.bd_tree <- function(
 #' @return name of the mbd_alignment file
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
-raz_create_filename.mbd_alignment <- function(
+raz_create_filename_mbd_alignment <- function(
   parameters,
   folder_name
 )
@@ -48,7 +48,7 @@ raz_create_filename.mbd_alignment <- function(
 #' @return name of the bd_alignment file
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
-raz_create_filename.bd_alignment <- function(
+raz_create_filename_bd_alignment <- function(
   parameters,
   folder_name
 )

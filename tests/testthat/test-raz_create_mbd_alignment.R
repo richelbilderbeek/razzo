@@ -3,10 +3,8 @@ context("raz_create_mbd_alignment")
 test_that("the file of mbd alignment exists", {
 
   # Work from a folder
-  folder_name <- razzo:::raz_make_tempdir(); # folder_name <- tempdir()
-  testthat::expect_true(
-    dir.exists(folder_name)
-  )
+  folder_name <- razzo:::raz_make_tempdir()
+  testthat::expect_true(dir.exists(folder_name))
 
   # # Create the parameter files
   razzo:::raz_save_standard_test_parameters()
@@ -21,17 +19,17 @@ test_that("the file of mbd alignment exists", {
   parameters <- razzo::raz_open_parameters_file(parameters_filename)
 
   # Get filenames
-  mbd_tree_filename   <- razzo::raz_create_filename.mbd_tree(
+  mbd_tree_filename   <- razzo::raz_create_filename_mbd_tree(
     parameters = parameters,
     folder_name = folder_name
   )
-  mbd_alignment_filename <- razzo::raz_create_filename.mbd_alignment(
+  mbd_alignment_filename <- razzo::raz_create_filename_mbd_alignment(
     parameters = parameters,
     folder_name = folder_name
   )
 
   # Create MBD tree
-  razzo::raz_create_mbd_tree(parameters = parameters, folder_name = folder_name)
+  razzo::raz_create_mbd_tree_file(parameters = parameters, folder_name = folder_name)
 
   testthat::expect_true(
     length(parameters_filename) > 0
