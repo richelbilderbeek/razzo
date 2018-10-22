@@ -18,7 +18,9 @@ raz_make_tempdir <- function(...) {
 
   rm(folder_name)
   folder_name <- tempdir(...) #folder_name <- tempdir()
-  if (!dir.exists(folder_name)) {dir.create(folder_name)}
+  if (!dir.exists(folder_name)) {
+    dir.create(folder_name)
+  }
   testit::assert(dir.exists(folder_name))
   return(folder_name)
 }
@@ -46,7 +48,9 @@ raz_save_standard_test_parameters <- function() {
   sub_chain_length <- 10^3
 
   datafile_name <- file.path(getwd(), "data", "standard_test_parameters.RData")
-  if (file.exists(datafile_name)) {file.remove(datafile_name)}
+  if (file.exists(datafile_name)) {
+    file.remove(datafile_name)
+  }
 
   save(
     lambda_interval,

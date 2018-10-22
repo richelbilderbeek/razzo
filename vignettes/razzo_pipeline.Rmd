@@ -17,7 +17,9 @@ MBD = Multiple Birth Death Model;
 This is the pipeline to follow for the Razzo project. Our aim is to compare two nLTT distributions related to two tree posteriors: one descending from MBD alignments and another one from BD alignments. Both posteriors are generated using a BD prior in BEAST.
 
 ```{r setup, results = "hide"}
-if (!require(mbd)) {devtools::install_github("Giappo/mbd")}
+if (!require(mbd)) {
+  devtools::install_github("Giappo/mbd")
+}
 if (!require(TESS)) {
   install.packages("TESS", repo = "https://lib.ugent.be/CRAN/")
 }

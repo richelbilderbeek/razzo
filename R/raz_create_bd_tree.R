@@ -45,7 +45,13 @@ raz_create_bd_tree <- function(
   bd_l_matrix <- mbd_l_matrix
   alive <- bd_l_matrix[, 4] == -1
   alive2 <- alive
-  t <- length(alive); while (sum(alive2) > length(bd_brts)) {if (alive2[t] == 1) {alive2[t] = 0}; t = t - 1}
+  t <- length(alive)
+  while (sum(alive2) > length(bd_brts)) {
+    if (alive2[t] == 1) {
+      alive2[t] = 0
+    }
+    t = t - 1
+  }
   vec <- bd_l_matrix[, 1]
   vec[seq_along(vec) * alive2] <- bd_brts
   bd_l_matrix[, 1] <- vec
