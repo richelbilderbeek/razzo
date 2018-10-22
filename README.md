@@ -11,19 +11,19 @@ Research project by Giovanni Laudanno and Richel J.C. Bilderbeek
 
 ## Roadmap
 
-Status|Description|Function name
----|---|---
-Tested locally, ?cluster friendly|Create parameter files|`raz_create_parameters_files`
-?|Create MBD tree|`raz_?`
-?|Create twin BD tree|`raz_?`
-?|Create alignments|`raz_?`
-?|Create posterior|`raz_?`
-?|Create nLTT|`raz_?`
-?|Create figure 1|`raz_?`
-?|Create figure 2|`raz_?`
-?|Create figure 3|`raz_?`
-?|Create figure ?4|`raz_?`
-?|Create marginal likelihoods|`raz_?`
+Local status|Cluster status|Description|Function name
+---|---|---|---
+Done|Appears done|Create parameter files|`raz_create_parameters_files`
+?|?|Create MBD tree|`raz_?`
+?|?|Create twin BD tree|`raz_?`
+?|?|Create alignments|`raz_?`
+?|?|Create posterior|`raz_?`
+?|?|Create nLTT|`raz_?`
+?|?|Create figure 1|`raz_?`
+?|?|Create figure 2|`raz_?`
+?|?|Create figure 3|`raz_?`
+?|?|Create figure ?4|`raz_?`
+?|?|Create marginal likelihoods|`raz_?`
 
 ## Installation
 
