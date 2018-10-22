@@ -9,6 +9,22 @@ Branch|[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)|[![Codecov 
 
 Research project by Giovanni Laudanno and Richel J.C. Bilderbeek
 
+## Roadmap
+
+Status|Description
+---|---
+Done|Create parameter files
+?|Create MBD tree
+?|Create twin BD tree
+?|Create alignments
+?|Create posterior
+?|Create nLTT
+?|Create figure 1
+?|Create figure 2
+?|Create figure 3
+?|Create figure ?4
+?|Create marginal likelihoods
+
 ## Installation
 
 If you use the `devtools` R package, this is easy:
