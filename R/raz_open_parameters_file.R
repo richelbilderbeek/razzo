@@ -11,7 +11,7 @@ raz_open_parameters_file <- function(
 
   reading <- utils::read.csv(parameters_filename)
   parameters <- data.frame(t(reading[, 2]))
-  names(parameters) <- reading[,1]
+  names(parameters) <- reading[, 1]
 
   testit::assert(parameters$lambda >= 0)
   testit::assert(parameters$mu >= 0)

@@ -107,7 +107,8 @@ raz_get_param_checks <- function(name, value) {
 
   if (!
       (out <- out * raz_is_param_name(name))
-  ) { stop(paste0(name, " is not a correct parameter name for this model!"))
+  ) {
+    stop(paste0(name, " is not a correct parameter name for this model!"))
   }
   if (!
       (out <- out * is.numeric(value))
