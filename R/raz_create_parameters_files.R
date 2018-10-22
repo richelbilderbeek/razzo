@@ -24,7 +24,7 @@ raz_create_parameters_files <- function(
   nu_interval     <- unique(nu_interval)
   q_interval      <- unique(q_interval)
 
-  Lpars <- length(lambda_interval) *
+  l_pars <- length(lambda_interval) *
            length(mu_interval) *
            length(nu_interval) *
            length(q_interval)
@@ -33,7 +33,7 @@ raz_create_parameters_files <- function(
 
   dir.create(file.path(folder_name, project_name), showWarnings = TRUE)
   testit::assert(dir.exists(file.path(folder_name, project_name)))
-  parameters_filenames <- rep(NA, Lpars)
+  parameters_filenames <- rep(NA, l_pars)
   i <- 1
   for (lambda in lambda_interval) {
     for (mu in mu_interval) {
