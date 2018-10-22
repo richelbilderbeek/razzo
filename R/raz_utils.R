@@ -24,7 +24,8 @@ raz_make_tempdir <- function(...) {
 }
 
 #' @title Create standard parameters interval for tests
-#' @description Create standard parameters interval to test the function "raz_create_parameters_files".
+#' @description Create standard parameters interval
+#'   to test the function "raz_create_parameters_files".
 #' It saves the dataset in the data folder of the package.
 #' @inheritParams default_params_doc
 #' @return nothing
@@ -67,7 +68,8 @@ raz_save_standard_test_parameters <- function() {
 }
 
 #' @title Load standard parameters interval for tests
-#' @description Load standard parameters interval to test the function "raz_create_parameters_files".
+#' @description Load standard parameters interval to test
+#'   the function "raz_create_parameters_files".
 #' It loads the dataset in the data folder of the package.
 #' @inheritParams default_params_doc
 #' @return nothing
@@ -83,31 +85,22 @@ raz_load_standard_test_parameters <- function() {
 #' @author Giovanni Laudanno
 raz_get_standard_test_filenames <- function() {
     raz_load_standard_test_parameters()
-    filenames <- razzo::raz_create_parameters_files(folder_name = folder_name,
-                                                  lambda.interval = lambda.interval,
-                                                  mu.interval = mu.interval,
-                                                  nu.interval = nu.interval,
-                                                  q.interval = q.interval,
-                                                  seed.interval = seed.interval,
-                                                  soc = soc,
-                                                  age = age,
-                                                  cond = cond,
-                                                  sequence_length = sequence_length,
-                                                  mbd_mutation_rate = mbd_mutation_rate,
-                                                  sample_interval = sample_interval,
-                                                  chain_length = chain_length,
-                                                  sub_chain_length = sub_chain_length)
+    filenames <- razzo::raz_create_parameters_files(
+      folder_name = folder_name,
+      lambda.interval = lambda.interval,
+      mu.interval = mu.interval,
+      nu.interval = nu.interval,
+      q.interval = q.interval,
+      seed.interval = seed.interval,
+      soc = soc,
+      age = age,
+      cond = cond,
+      sequence_length = sequence_length,
+      mbd_mutation_rate = mbd_mutation_rate,
+      sample_interval = sample_interval,
+      chain_length = chain_length,
+      sub_chain_length = sub_chain_length
+    )
 
     filenames
 }
-
-
-
-
-# raz_source <- function() {
-#   razzo_scripts <- file.path(getwd(),
-#                              list.files(file.path(getwd(), "R"))
-#   )
-#   # source(razzo_scripts[2])
-#   # sapply(razzo_scripts[1], source, .GlobalEnv)
-# }
