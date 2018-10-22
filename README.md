@@ -14,7 +14,7 @@ Research project by Giovanni Laudanno and Richel J.C. Bilderbeek
 Local status|Cluster status|Description|Function name
 ---|---|---|---
 Incorrect folder structure|Done|Create parameter files|`raz_create_parameters_files`
-Incorrect folder structure|?|Create MBD tree|`raz_create_mbd_tree`
+Incorrect folder structure|?|Create MBD tree|`raz_create_mbd_tree_file`
 ?|?|Create twin BD tree|`raz_?`
 ?|?|Create alignments|`raz_?`
 ?|?|Create posterior|`raz_?`
