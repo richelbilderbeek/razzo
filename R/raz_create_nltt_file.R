@@ -16,37 +16,37 @@ raz_create_nltt_file <- function(
   testit::assert(file.exists(mbd_tree_filename))
   testit::assert("mbd.tree" %in% list.files(parameters_folder))
   testit::assert(length(mbd_tree_filename) > 0)
-  if (1 == 2) { #TODO: we can use these checks only after we have a way to simulate bd.tree
+  if (1 == 2) { #TODO: we can use these checks only after we have a way to simulate bd_tree
   testit::assert(file.exists(bd_tree_filename))
-  testit::assert("bd.tree" %in% list.files(parameters_folder))
+  testit::assert("bd_tree" %in% list.files(parameters_folder))
   testit::assert(length(bd_tree_filename) > 0)
   }
 
   trees_filename <- c(mbd_tree_filename, bd_tree_filename)
 
-  bd.base <- tools::file_path_sans_ext(bd_tree_filename)
-  bd.nltt_filename <- paste0(c(bd.base, "_nltts.csv"), collapse = "")
-  # bd.tree_filename <- paste0(c(bd.base, ".tree"), collapse = "")
-  bd.log_filename <- paste0(c(bd.base, ".log"), collapse = "")
+  bd_base <- tools::file_path_sans_ext(bd_tree_filename)
+  bd_nltt_filename <- paste0(c(bd_base, "_nltts.csv"), collapse = "")
+  # bd_tree_filename <- paste0(c(bd_base, ".tree"), collapse = "")
+  bd_log_filename <- paste0(c(bd_base, ".log"), collapse = "")
 
-  mbd.base <- tools::file_path_sans_ext(bd_tree_filename)
-  mbd.nltt_filename <- paste0(c(mbd.base, "_nltts.csv"), collapse = "")
-  # tree_filename <- paste0(c(mbd.base, ".tree"), collapse = "")
-  mbd.log_filename <- paste0(c(mbd.base, ".log"), collapse = "")
+  mbd_base <- tools::file_path_sans_ext(bd_tree_filename)
+  mbd_nltt_filename <- paste0(c(mbd_base, "_nltts.csv"), collapse = "")
+  # tree_filename <- paste0(c(mbd_base, ".tree"), collapse = "")
+  mbd_log_filename <- paste0(c(mbd_base, ".log"), collapse = "")
 
   # The true tree
-  # bd.tree <- ape::read.tree(file = bd_tree_filename)
-  # mbd.tree <- ape::read.tree(file = mbd_tree_filename)
+  # bd_tree <- ape::read.tree(file = bd_tree_filename)
+  # mbd_tree <- ape::read.tree(file = mbd_tree_filename)
 
-  bd.sim <- get(load(
+  bd_sim <- get(load(
     bd_tree_filename
   ))
-  bd.tree <- bd.sim$bd_tree
+  bd_tree <- bd_sim$bd_tree
 
-  mbd.sim <- get(load(
+  mbd_sim <- get(load(
     mbd_tree_filename
   ))
-  mbd.tree <- mbd.sim$tes
+  mbd_tree <- mbd_sim$tes
 
   # The posterior
   posterior <- tracerer::parse_beast_posterior(
