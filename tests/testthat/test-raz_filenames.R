@@ -3,10 +3,8 @@ context("raz_create_input_files")
 test_that("use", {
 
   # Work from a folder
-  folder_name <- razzo:::raz_make_tempdir(); # folder_name <- tempdir()
-  testthat::expect_true(
-    dir.exists(folder_name)
-  )
+  folder_name <- razzo:::raz_make_tempdir()
+  testthat::expect_true(dir.exists(folder_name))
 
   skip("TODO: fix test")
 
