@@ -76,7 +76,7 @@ raz_get_param_checks <- function(name, value) {
   }
 
   if (!
-      (out <- out * razzo:::raz_is_param_name(name))
+      (out <- out * raz_is_param_name(name))
   ){stop(paste0(name, " is not a correct parameter name for this model!"))}
   if (!
       (out <- out * is.numeric(value))
@@ -90,7 +90,7 @@ raz_get_param_checks <- function(name, value) {
 #' @author Richel J.C. Bilderbeek
 #' @noRd
 raz_is_param_name <- function(name) {
-  name %in% razzo:::raz_get_param_names() # nolint internal function
+  name %in% raz_get_param_names() # nolint internal function
 }
 
 #' Get the parameter names
