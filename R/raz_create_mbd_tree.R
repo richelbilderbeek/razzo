@@ -5,13 +5,12 @@
 #' @export
 raz_create_mbd_tree <- function(
   parameters
-)
-{
-  MBD_pars <- c(parameters$lambda, parameters$mu, parameters$nu, parameters$q)
+) {
+  mbd_pars <- c(parameters$lambda, parameters$mu, parameters$nu, parameters$q)
   soc <- parameters$soc
   age <- parameters$age
   cond <- parameters$cond
   seed <- parameters$seed
   set.seed(seed)
-  mbd::mbd_sim(pars = MBD_pars, soc = soc, age = age, cond = cond)
+  mbd::mbd_sim(pars = mbd_pars, soc = soc, age = age, cond = cond)
 }

@@ -25,18 +25,18 @@ raz_create_nltt_file <- function(
   trees_filename <- c(mbd_tree_filename, bd_tree_filename)
 
   bd_base <- tools::file_path_sans_ext(bd_tree_filename)
-  bd_nltt_filename <- paste0(c(bd_base, "_nltts.csv"), collapse = "")
-  # bd_tree_filename <- paste0(c(bd_base, ".tree"), collapse = "")
-  bd_log_filename <- paste0(c(bd_base, ".log"), collapse = "")
+  bd_nltt_filename <- paste0(c(bd_base, "_nltts.csv"), collapse = "") # nolint unusued variable indeed
+  # bd_tree_filename <- paste0(c(bd_base, ".tree"), collapse = "") # nolint commented code should be deleted
+  bd_log_filename <- paste0(c(bd_base, ".log"), collapse = "") # nolint unusued variable indeed
 
   mbd_base <- tools::file_path_sans_ext(bd_tree_filename)
-  mbd_nltt_filename <- paste0(c(mbd_base, "_nltts.csv"), collapse = "")
-  # tree_filename <- paste0(c(mbd_base, ".tree"), collapse = "")
-  mbd_log_filename <- paste0(c(mbd_base, ".log"), collapse = "")
+  mbd_nltt_filename <- paste0(c(mbd_base, "_nltts.csv"), collapse = "") # nolint unusued variable indeed
+  # tree_filename <- paste0(c(mbd_base, ".tree"), collapse = "") # nolint commented code should be deleted
+  mbd_log_filename <- paste0(c(mbd_base, ".log"), collapse = "") # nolint unusued variable indeed
 
   # The true tree
-  # bd_tree <- ape::read.tree(file = bd_tree_filename)
-  # mbd_tree <- ape::read.tree(file = mbd_tree_filename)
+  # * bd_tree <- ape::read.tree(file = bd_tree_filename)
+  # * mbd_tree <- ape::read.tree(file = mbd_tree_filename)
 
   bd_sim <- get(load(
     bd_tree_filename
@@ -46,7 +46,9 @@ raz_create_nltt_file <- function(
   mbd_sim <- get(load(
     mbd_tree_filename
   ))
-  mbd_tree <- mbd_sim$tes
+  mbd_tree <- mbd_sim$tes # nolint unused variable indeed
+
+
 
   # The posterior
   warning(
@@ -73,6 +75,8 @@ raz_create_nltt_file <- function(
       file = file.path(folder_name, "nonsense_nltt.csv")
     )
   }
-
+  # TODO: stub
+  testit::assert(!"Do something proper") # nolint accepted idiom
+  nltt_filename <- NULL
   nltt_filename
 }

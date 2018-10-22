@@ -14,8 +14,7 @@
 #' @export
 raz_create_inference_files <- function(
   fasta_filename
-)
-{
+) {
 
   testit::assert(file.exists(fasta_filename))
 

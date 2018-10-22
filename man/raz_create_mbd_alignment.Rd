@@ -15,7 +15,8 @@ raz_create_mbd_alignment(parameters, folder_name)
 nothing
 }
 \description{
-Create an MBD alignment from a parameters file in the same folder
+Create an MBD alignment
+  from a parameters file in the same folder
 as that parameters file.
 For example, for a path '/my_folder/parameters.csv', this function creates:
 '/my_folder/mbd.fasta'.

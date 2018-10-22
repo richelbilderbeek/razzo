@@ -1,17 +1,19 @@
 #' Create an BD twin tree from an MBD tree
 #' and save it as a file
 #' @inheritParams default_params_doc
-#' @return The twin BD tree obtained from the corresponding MBD tree. It will create a file with name \code{bd.tree} in the folder relative to the chosen parameters
+#' @return The twin BD tree obtained from the corresponding MBD tree.
+#'   It will create a file with name \code{bd.tree}
+#'   in the folder relative to the chosen parameters
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
 raz_create_bd_tree <- function(
   parameters,
   folder_name,
   verbose = FALSE
-)
-{
+) {
   parameters_folder <- raz_get_parameters_path(parameters, folder_name)
-  mbd_tree_filename <- razzo::raz_create_filename_mbd_tree(parameters, folder_name)
+  mbd_tree_filename <- razzo::raz_create_filename_mbd_tree(
+    parameters, folder_name)
   if (!file.exists(mbd_tree_filename)) {
     stop("There is no mbd.tree for these parameters. Create it first!")
   }
@@ -50,9 +52,9 @@ raz_create_bd_tree <- function(
   t <- length(alive)
   while (sum(alive2) > length(bd_brts)) {
     if (alive2[t] == 1) {
-      alive2[t] = 0
+      alive2[t] <- 0
     }
-    t = t - 1
+    t <- t - 1
   }
   vec <- bd_l_matrix[, 1]
   vec[seq_along(vec) * alive2] <- bd_brts
@@ -68,8 +70,10 @@ raz_create_bd_tree <- function(
 
   # Save the tree to a file
   parameters_folder <- dirname(mbd_tree_filename)
-  bd_tree_filename <- razzo::raz_create_filename_bd_tree(parameters, folder_name)
-  bd.sim <- list(bd_tree = bd_tree, bd_l_matrix = bd_l_matrix, bd_brts = bd_brts)
+  bd_tree_filename <- razzo::raz_create_filename_bd_tree(
+    parameters, folder_name)
+  bd.sim <- list(
+    bd_tree = bd_tree, bd_l_matrix = bd_l_matrix, bd_brts = bd_brts)
   save(bd.sim, file = bd_tree_filename)
   if (!file.exists(bd_tree_filename)) {
     stop("bd.tree has not been created!")

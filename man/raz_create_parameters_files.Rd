@@ -33,7 +33,8 @@ and non-extinction of the phylogeny. Set 0 otherwise.}
 algorithm to estimate the marginal likelihood}
 }
 \value{
-Create folders for each parameter setting and saves each setting in a file within the corresponding folder.
+Create folders for each parameter setting
+  and saves each setting in a file within the corresponding folder.
 }
 \description{
 For each parameter setting create a folder and a parameters file
