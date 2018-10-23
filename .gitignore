@@ -32,3 +32,5 @@ vignettes/razzo_pipeline_files/
 razzo_project/
 tests/testthat/*.log
 tests/testthat/*.trees
+*.posterior.log
+*.posterior.trees
