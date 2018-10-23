@@ -5,7 +5,7 @@ test_that("creates a tree", {
   parameters <- raz_open_parameters_file(raz_get_path("parameters.csv"))
   tree <- raz_create_mbd_tree(parameters)
   expect_equal(class(tree), "phylo")
-}
+})
 
 test_that("must have as much multiple bursts as predicted by nu", {
 
