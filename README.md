@@ -29,7 +29,7 @@ Done|Done|Create parameter files|`raz_create_parameters_files`
 Done|Create MBD tree file|`raz_create_mbd_tree_file`
 Done|Create MBD alignment file|`raz_create_mbd_alignment_file`
 Done|Create twin BD tree file|`raz_create_bd_tree_file`
-?|Create BD alignment file|`raz_create_bd_alignment_file`
+Done|Create BD alignment file|`raz_create_bd_alignment_file`
 ?|Create posterior files|`raz_create_posterior_files`
 ?|Create nLTT files|`raz_create_nltt_file`
 ?|Create marginal likelihood file|`raz_create_mar_lik_file`
@@ -47,7 +47,7 @@ Done|Create parameter|`raz_create_parameters`
 Done|Create MBD tree|`raz_create_mbd_tree`
 Done|Create MBD alignment|`raz_create_mbd_alignment`
 Done|Create twin BD tree|`raz_create_bd_tree`
-?|Create BD alignment|`raz_create_bd_alignment`
+Done|Create BD alignment|`raz_create_bd_alignment`
 ?|Create posterior|`raz_create_posterior`
 ?|Create nLTT|`raz_create_nltt`
 ?|Create marginal likelihoods|`raz_create_mar_lik`
