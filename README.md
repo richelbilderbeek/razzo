@@ -29,10 +29,11 @@ Done|Done|Create parameter files|`raz_create_parameters_files`
 Done|Create MBD tree file|`raz_create_mbd_tree_file`
 Done|Create MBD alignment file|`raz_create_mbd_alignment_file`
 Done|Create twin BD tree file|`raz_create_bd_tree_file`
-Done|Create BD alignment file|`raz_create_bd_alignment_file`
+Done|Create twin BD alignment file|`raz_create_bd_alignment_file`
 Done|Create MBD posterior files|`raz_create_mbd_posterior_files`
-Done|Create BD posterior files|`raz_create_bd_posterior_files`
-?|Create nLTT files|`raz_create_nltt_file`
+Done|Create twin BD posterior files|`raz_create_bd_posterior_files`
+Done|Create MBD nLTT file|`raz_create_mbd_nltt_file`
+Done|Create twin BD nLTT file|`raz_create_bd_nltt_file`
 ?|Create marginal likelihood file|`raz_create_mar_lik_file`
 ?|Create figure 1|`raz_create_fig_1`
 ?|Create figure 2|`raz_create_fig_2`
@@ -50,7 +51,7 @@ Done|Create MBD alignment|`raz_create_mbd_alignment`
 Done|Create twin BD tree|`raz_create_bd_tree`
 Done|Create BD alignment|`raz_create_bd_alignment`
 Done|Create posterior|`raz_create_posterior`
-?|Create nLTT|`raz_create_nltt`
+Done|Create nLTT|`raz_create_nltt`
 ?|Create marginal likelihoods|`raz_create_mar_lik`
 
 ## Installation
@@ -58,6 +59,13 @@ Done|Create posterior|`raz_create_posterior`
 If you use the `devtools` R package, this is easy:
 
 ```
+devtools::install_github("richelbilderbeek/beautier")
+devtools::install_github("richelbilderbeek/tracerer")
+devtools::install_github("richelbilderbeek/beastier")
+devtools::install_github("richelbilderbeek/mauricer")
+devtools::install_github("richelbilderbeek/babette")
+devtools::install_github("Giappo/mbd")
+devtools::install_github("richelbilderbeek/pirouette")
 devtools::install_github("richelbilderbeek/razzo")
 ```
 
