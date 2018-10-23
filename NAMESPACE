@@ -2,6 +2,7 @@
 
 export(raz_create_bd_alignment)
 export(raz_create_bd_alignment_file)
+export(raz_create_bd_posterior_files)
 export(raz_create_bd_tree)
 export(raz_create_bd_tree_file)
 export(raz_create_filename_bd_alignment)
