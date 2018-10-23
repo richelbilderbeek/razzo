@@ -5,44 +5,29 @@
 \title{This function does nothing. It is intended to inherit is parameters'
 documentation.}
 \usage{
-default_params_doc(bd_tree_filename, brts, chain_length,
-  changeloglikifnoconv, colormap, fasta_filename, folder_name, idparsfix,
-  idparsopt, initparsopt, init_speciation_rate, init_extinction_rate,
+default_params_doc(bd_mutation_rate, bd_tree_filename, chain_length,
+  fasta_filename, folder_name, init_speciation_rate, init_extinction_rate,
   iterations, k, lambda, logs, lx, lx0, matrix, matrix_builder, max_iter,
   max_k, max_number_of_species, max_repetitions, max_sims, maxiter,
-  mbd_tree, methode, minimum_multiple_births, missnumspec, mu,
-  mutation_rate, nu, optimmethod, parameters, parameter_filename,
-  parameters_filename, pars_transform, parsfix, precision, print_errors, q,
-  reltol, res, s, sample_interval, sequence_length, sim_pars, sim_phylo,
-  soc, sub_chain_length, t, t1, t2, time_interval, tol, transition_matrix,
-  tree_filename, trees_filename, trparsfix, trparsopt, verbose, age, cond,
-  pars, tips_interval)
+  mbd_mutation_rate, mbd_tree, methode, minimum_multiple_births,
+  missnumspec, mu, mutation_rate, nu, optimmethod, parameters,
+  parameter_filename, parameters_filename, pars_transform, parsfix,
+  precision, print_errors, q, reltol, res, s, sample_interval,
+  sequence_length, sim_pars, sim_phylo, soc, sub_chain_length, t, t1, t2,
+  time_interval, tol, transition_matrix, tree_filename, trees_filename,
+  trparsfix, trparsopt, verbose, age, cond, pars, tips_interval)
 }
 \arguments{
+\item{bd_mutation_rate}{the mutation rate when creating an alignment
+from a BD tree}
+
 \item{bd_tree_filename}{name of the file that stores a BD twin tree}
 
 \item{chain_length}{something}
 
-\item{changeloglikifnoconv}{something}
-
-\item{colormap}{something}
-
 \item{fasta_filename}{name of a FASTA file}
 
 \item{folder_name}{name of the main folder}
-
-\item{idparsfix}{something}
-
-\item{idparsopt}{The ids of the parameters that must be optimized.
-The ids are defined as follows:
-\itemize{
-  \item id == 1 corresponds to lambda (speciation rate)
-  \item id == 2 corresponds to mu (extinction rate)
-  \item id == 3 corresponds to nu (multiple speciation trigger rate)
-  \item id == 4 corresponds to q (single-lineage speciation probability)
-}}
-
-\item{initparsopt}{something}
 
 \item{init_speciation_rate}{a speciation rate}
 
@@ -169,6 +154,9 @@ or
 }}
 
 \item{tips_interval}{Sets tips boundaries constrain on simulated dataset.}
+
+\item{bd_mutation_rate}{the mutation rate when creating an alignment
+from a BD tree}
 }
 \description{
 This function does nothing. It is intended to inherit is parameters'

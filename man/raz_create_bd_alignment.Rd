@@ -2,24 +2,19 @@
 % Please edit documentation in R/raz_create_bd_alignment.R
 \name{raz_create_bd_alignment}
 \alias{raz_create_bd_alignment}
-\title{Create the twin BD alignment from a parameters file in the same folder}
+\title{Create a BD alignment from a BD tree}
 \usage{
-raz_create_bd_alignment(parameters, folder_name)
+raz_create_bd_alignment(parameters, bd_tree)
 }
 \arguments{
 \item{parameters}{the razzo parameters}
-
-\item{folder_name}{name of the main folder}
 }
 \value{
-nothing
+an alignment
 }
 \description{
 Create the twin BD alignment
-  from a parameters file in the same folder
-as that parameters file.
-For example, for a path '/my_folder/parameters.csv', this function creates:
-'/my_folder/bd.fasta'.
+  from parameters and a BD tree
 }
 \author{
 Richel J.C. Bilderbeek, Giovanni Laudanno

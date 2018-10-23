@@ -8,6 +8,7 @@
 "age",10
 "soc",2
 "sequence_length",1000
+"bd_mutation_rate",1000
 "mbd_mutation_rate",1000
 "sample_interval",1000
 "chain_length",1e+06

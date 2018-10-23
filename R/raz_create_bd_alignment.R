@@ -1,50 +1,27 @@
-#' @title Create the twin BD alignment from a parameters file in the same folder
+#' @title Create a BD alignment from a BD tree
 #' @description Create the twin BD alignment
-#'   from a parameters file in the same folder
-#' as that parameters file.
-#' For example, for a path '/my_folder/parameters.csv', this function creates:
-#' '/my_folder/bd.fasta'.
+#'   from parameters and a BD tree
 #' @inheritParams default_params_doc
-#' @return nothing
+#' @return an alignment
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
 raz_create_bd_alignment <- function(
   parameters,
-  folder_name
+  bd_tree
 ) {
-  # Create the name of the alignent file, e.g. '/myfolder/bd.fasta'
-  bd_alignment_filename <- razzo::raz_create_filename_bd_alignment(
-    parameters, folder_name)
-
-  # Get the twin BD phylogeny for 'bd.tree'
-  bd_phylogeny <- NULL
-
-  # Get the sequence length from the parameters filename
-  # Found
-  #   BD_mutation_rate <-  MBD_mutation_rate *                 # nolint
-  #     * (sum(MBD_tree$edge.length)/sum(BD_tree$edge.length)) # nolint
   sequence_length <- parameters$sequence_length
 
   # Calculate the mutation rate from the tree
-  mutation_rate <- NULL
+  bd_mutation_rate <- parameters$bd_mutation_rate
+  testit::assert(is.numeric(bd_mutation_rate))
 
   # Root sequence is e.g. AAACCCGGGTTT
   root_sequence <- pirouette::create_blocked_dna(sequence_length)
-  root_sequence <- pirouette::create_blocked_dna(20)
 
-  alignment <- pirouette::sim_alignment(
-    phylogeny = bd_phylogeny,
+  pirouette::sim_alignment(
+    phylogeny = bd_tree,
     sequence_length = NULL,
     root_sequence = root_sequence,
-    mutation_rate = mutation_rate
+    mutation_rate = bd_mutation_rate
   )
-
-  # Save the alignment
-  ape::write.dna(
-    alignment,
-    file = bd_alignment_filename,
-    format = "fasta"
-  )
-
-  testit::assert(file.exists(bd_alignment_filename))
 }

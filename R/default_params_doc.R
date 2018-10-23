@@ -1,21 +1,11 @@
 #' This function does nothing. It is intended to inherit is parameters'
 #' documentation.
+#' @param bd_mutation_rate the mutation rate when creating an alignment
+#'   from a BD tree
 #' @param bd_tree_filename name of the file that stores a BD twin tree
 #' @param chain_length something
-#' @param changeloglikifnoconv something
-#' @param colormap something
 #' @param fasta_filename name of a FASTA file
 #' @param folder_name name of the main folder
-#' @param idparsfix something
-#' @param idparsopt The ids of the parameters that must be optimized.
-#'   The ids are defined as follows:
-#'   \itemize{
-#'     \item id == 1 corresponds to lambda (speciation rate)
-#'     \item id == 2 corresponds to mu (extinction rate)
-#'     \item id == 3 corresponds to nu (multiple speciation trigger rate)
-#'     \item id == 4 corresponds to q (single-lineage speciation probability)
-#'   }
-#' @param initparsopt something
 #' @param init_speciation_rate a speciation rate
 #' @param init_extinction_rate an extinction rate
 #' @param iterations something
@@ -32,6 +22,8 @@
 #' @param max_repetitions something
 #' @param max_sims something
 #' @param maxiter something
+#' @param bd_mutation_rate the mutation rate when creating an alignment
+#'   from a BD tree
 #' @param mbd_tree an MBD tree
 #' @param methode something
 #' @param minimum_multiple_births something
@@ -93,16 +85,11 @@
 #'   functions to find the documentation parameters
 #'
 default_params_doc <- function(
+  bd_mutation_rate,
   bd_tree_filename,
-  brts,
   chain_length,
-  changeloglikifnoconv,
-  colormap,
   fasta_filename,
   folder_name,
-  idparsfix,
-  idparsopt,
-  initparsopt,
   init_speciation_rate,
   init_extinction_rate,
   iterations,
@@ -119,6 +106,7 @@ default_params_doc <- function(
   max_repetitions,
   max_sims,
   maxiter,
+  mbd_mutation_rate,
   mbd_tree,
   methode,
   minimum_multiple_births,

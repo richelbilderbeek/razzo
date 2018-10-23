@@ -16,6 +16,7 @@ raz_create_parameters_files <- function(
   cond = 1,
   sequence_length = 1000,
   mbd_mutation_rate = 1.0 / age,
+  bd_mutation_rate = 1.0 / age,
   sample_interval = 1000,
   chain_length = 10000,
   sub_chain_length = 1000
@@ -55,19 +56,22 @@ raz_create_parameters_files <- function(
 
             # TODO: Use 'raz_create_params',
             # like 'parameters <- raz_create_params(...)'
-            parameters <- c(lambda = lambda,
-                            mu = mu,
-                            nu = nu,
-                            q = q,
-                            seed = seed,
-                            cond = cond,
-                            age = age,
-                            soc = soc,
-                            sequence_length = sequence_length,
-                            mbd_mutation_rate = mbd_mutation_rate,
-                            sample_interval = sample_interval,
-                            chain_length = chain_length,
-                            sub_chain_length = sub_chain_length)
+            parameters <- c(
+              lambda = lambda,
+              mu = mu,
+              nu = nu,
+              q = q,
+              seed = seed,
+              cond = cond,
+              age = age,
+              soc = soc,
+              sequence_length = sequence_length,
+              mbd_mutation_rate = mbd_mutation_rate,
+              bd_mutation_rate = bd_mutation_rate,
+              sample_interval = sample_interval,
+              chain_length = chain_length,
+              sub_chain_length = sub_chain_length
+            )
 
             parameters_filenames[i] <- file.path(seedfolder, "parameters.csv")
             utils::write.csv(parameters, file = parameters_filenames[i])

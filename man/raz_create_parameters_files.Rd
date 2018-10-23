@@ -10,8 +10,8 @@ raz_create_parameters_files(folder_name = getwd(),
   q_interval = seq(from = 0.1, to = 0.2, by = 0.05),
   seed_interval = 1:1000, soc = 2, age = 15, cond = 1,
   sequence_length = 1000, mbd_mutation_rate = 1/age,
-  sample_interval = 1000, chain_length = 10000,
-  sub_chain_length = 1000)
+  bd_mutation_rate = 1/age, sample_interval = 1000,
+  chain_length = 10000, sub_chain_length = 1000)
 }
 \arguments{
 \item{folder_name}{name of the main folder}
@@ -24,6 +24,9 @@ raz_create_parameters_files(folder_name = getwd(),
 and non-extinction of the phylogeny. Set 0 otherwise.}
 
 \item{sequence_length}{something}
+
+\item{bd_mutation_rate}{the mutation rate when creating an alignment
+from a BD tree}
 
 \item{sample_interval}{something}
 
