@@ -17,7 +17,7 @@ test_that("use", {
   mbd_fasta_filename <- file.path(folder_name, sub_folder_name, "mbd.fasta")
   mbd_tree_filename <- file.path(folder_name, sub_folder_name, "mbd.tree")
   # Do inference on the first MBD trees
-  inference_filenames <- raz_create_inference_files(
+  posterior_filenames <- raz_create_posterior_files(
     fasta_filename = mbd_fasta_filename
   )
   mbd_trees_filename <- file.path(folder_name, sub_folder_name, "mbd.trees")

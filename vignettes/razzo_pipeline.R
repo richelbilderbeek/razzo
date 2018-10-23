@@ -55,7 +55,7 @@ if (1 == 2) {
   fasta_filenames <- c("1a.fasta") # Search the folder
   for (fasta_filename in fasta_filenames) 
   {
-    output_filenames <- raz_create_inference_files(fasta_filename)
+    output_filenames <- raz_create_posterior_files(fasta_filename)
     # Posterior trees
     testit::assert("1a.trees" %in% output_filenames)
     # Trace of MCMC, to estimate the Effective Sample Sizes

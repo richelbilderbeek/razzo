@@ -39,12 +39,12 @@ In `folder_name`:
      * `mbd.fasta`: the true MBD alignment, created by `raz_create_input_files`
      * `bd.tree`: the twin BD tree, created by `raz_create_input_files`
      * `bd.fasta`: the twin BD alignment, created by `raz_create_input_files`
-     * `mbd.trees`: the posterior trees from `mbd.tree`, created by `raz_create_inference_files("mbd.tree")`
-     * `mbd.log`: the posterior parameter estimates from `mbd.tree`, created by `raz_create_inference_files("mbd.tree")`
-     * `mbd_mar_lik.csv`: the posterior's marginal likelihood from `mbd.tree`, created by `raz_create_inference_files("mbd.tree")`
-     * `bd.trees`: the posterior trees from `bd.tree`, created by `raz_create_inference_files("bd.tree")`
-     * `bd.log`: the posterior parameter estimates from `bd.tree`, created by `raz_create_inference_files("bd.tree")`
-     * `bd_mar_lik.csv`: the posterior's marginal likelihood from `bd.tree`, created by `raz_create_inference_files("bd.tree")`
+     * `mbd.trees`: the posterior trees from `mbd.tree`, created by `raz_create_posterior_files("mbd.tree")`
+     * `mbd.log`: the posterior parameter estimates from `mbd.tree`, created by `raz_create_posterior_files("mbd.tree")`
+     * `mbd_mar_lik.csv`: the posterior's marginal likelihood from `mbd.tree`, created by `raz_create_posterior_files("mbd.tree")`
+     * `bd.trees`: the posterior trees from `bd.tree`, created by `raz_create_posterior_files("bd.tree")`
+     * `bd.log`: the posterior parameter estimates from `bd.tree`, created by `raz_create_posterior_files("bd.tree")`
+     * `bd_mar_lik.csv`: the posterior's marginal likelihood from `bd.tree`, created by `raz_create_posterior_files("bd.tree")`
      * `mbd_nltts.csv`: the nLTT statistic distribution between `mbd.tree` and `mbd.trees`, created by `raz_create_nltt_file("mbd.tree", "mbd.trees")`
      * `bd_nltts.csv`: the nLTT statistic distribution between `bd.tree` and `bd.trees`, created by `raz_create_nltt_file("bd.tree", "bd.trees")`
   * `2`
@@ -90,7 +90,7 @@ folder_name <- tempdir()
 # fasta_filenames <- c("1a.fasta") # Search the folder
 # for (fasta_filename in fasta_filenames) 
 # {
-#   output_filenames <- raz_create_inference_files(fasta_filename)
+#   output_filenames <- raz_create_posterior_files(fasta_filename)
 #   # Posterior trees
 #   testit::assert("1a.trees" %in% output_filenames)
 #   # Trace of MCMC, to estimate the Effective Sample Sizes
@@ -167,7 +167,7 @@ if (1 == 2) {
   fasta_filenames <- c("1a.fasta") # Search the folder
   for (fasta_filename in fasta_filenames) 
   {
-    output_filenames <- raz_create_inference_files(fasta_filename)
+    output_filenames <- raz_create_posterior_files(fasta_filename)
     # Posterior trees
     testit::assert("1a.trees" %in% output_filenames)
     # Trace of MCMC, to estimate the Effective Sample Sizes

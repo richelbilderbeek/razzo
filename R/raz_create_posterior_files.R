@@ -12,7 +12,7 @@
 #' @return names of the files created
 #' @author Richel J.C. Bilderbeek
 #' @export
-raz_create_inference_files <- function(
+raz_create_posterior_files <- function(
   fasta_filename
 ) {
 
@@ -101,10 +101,10 @@ raz_create_inference_files <- function(
     utils::write.csv(x = posterior$ns, file = mar_lik_filename)
   }
 
-  inference_filenames <- c(
+  posterior_filenames <- c(
     trees_filename,
     log_filename,
     mar_lik_filename
   )
-  inference_filenames
+  posterior_filenames
 }

@@ -1,4 +1,4 @@
-context("raz_create_inference_files")
+context("raz_create_posterior_files")
 
 test_that("use", {
 
@@ -58,7 +58,7 @@ test_that("use", {
   mbd_fasta_filename <- file.path(one_parameter_setting, "mbd.fasta")
 
   # Do inference on the first FASTA file
-  inference_filenames <- raz_create_inference_files(
+  posterior_filenames <- raz_create_posterior_files(
     fasta_filename = mbd_fasta_filename
   )
 
@@ -67,11 +67,11 @@ test_that("use", {
   mbd_mar_lik_filename <- file.path(
     folder_name, sub_folder_name, "mbd_mar_lik.csv")
 
-  expect_true(mbd_trees_filename %in% inference_filenames)
-  expect_true(mbd_log_filename %in% inference_filenames)
-  expect_true(mbd_mar_lik_filename %in% inference_filenames)
+  expect_true(mbd_trees_filename %in% posterior_filenames)
+  expect_true(mbd_log_filename %in% posterior_filenames)
+  expect_true(mbd_mar_lik_filename %in% posterior_filenames)
 
-  # TODO: Issue #4: 'raz_create_inference_files' must create the inference files
+  # TODO: Issue #4: 'raz_create_posterior_files' must create the inference files
   if (1 == 2) {
     expect_true(file.exists(mbd_trees_filename))
     expect_true(file.exists(mbd_log_filename))
