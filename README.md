@@ -46,7 +46,7 @@ Status|Description|Function name
 Done|Create parameter|`raz_create_parameters`
 Done|Create MBD tree|`raz_create_mbd_tree`
 Done|Create MBD alignment|`raz_create_mbd_alignment`
-?|Create twin BD tree|`raz_create_bd_tree`
+Done|Create twin BD tree|`raz_create_bd_tree`
 ?|Create BD alignment|`raz_create_bd_alignment`
 ?|Create posterior|`raz_create_posterior`
 ?|Create nLTT|`raz_create_nltt`
