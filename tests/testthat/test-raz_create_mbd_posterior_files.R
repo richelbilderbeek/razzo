@@ -9,14 +9,18 @@ test_that("use", {
     # file?'. Spoiler: because BEAST2.exe does not allow scripted use
   }
 
+  # Create input files
   parameters_filename <- raz_create_tempfile("parameters.csv")
   mbd_alignment_filename <- raz_create_tempfile("mbd.fasta")
   testit::assert(file.exists(parameters_filename))
   testit::assert(file.exists(mbd_alignment_filename))
 
+  # Run
   mbd_posterior_filenames <- raz_create_mbd_posterior_files(
     parameters_filename = parameters_filename
   )
+
+  # Check
   expect_true(all(file.exists(mbd_posterior_filenames)))
   expect_true(length(grep(
     pattern = "mbd\\.trees$",
