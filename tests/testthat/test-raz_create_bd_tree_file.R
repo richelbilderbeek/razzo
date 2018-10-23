@@ -7,7 +7,7 @@ test_that("use", {
   raz_create_tempfile("mbd_l_matrix.csv")
 
   bd_tree_filename <- raz_create_bd_tree_file(
-    parameters_filename = raz_create_tempfile("parameters.csv")
+    parameters_filename = parameters_filename
   )
   expect_true(file.exists(bd_tree_filename))
   expect_true(length(grep(

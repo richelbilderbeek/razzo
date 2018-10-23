@@ -4,12 +4,10 @@
 \alias{raz_create_bd_alignment_file}
 \title{Create the twin BD alignment from a parameters file in the same folder}
 \usage{
-raz_create_bd_alignment_file(parameters, folder_name)
+raz_create_bd_alignment_file(parameters_filename)
 }
 \arguments{
-\item{parameters}{the razzo parameters}
-
-\item{folder_name}{name of the main folder}
+\item{parameters_filename}{full path to a 'parameters.csv' file}
 }
 \value{
 nothing

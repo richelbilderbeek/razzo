@@ -9,42 +9,23 @@
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
 raz_create_bd_alignment_file <- function(
-  parameters,
-  folder_name
+  parameters_filename
 ) {
-  # Create the name of the alignent file, e.g. '/myfolder/bd.fasta'
-  bd_alignment_filename <- razzo::raz_create_filename_bd_alignment(
-    parameters, folder_name)
+  testit::assert(file.exists(parameters_filename))
+  bd_tree_filename <- file.path(dirname(parameters_filename), "bd.tree")
+  testit::assert(file.exists(bd_tree_filename))
 
-  # Get the twin BD phylogeny for 'bd.tree'
-  bd_phylogeny <- NULL
 
-  # Get the sequence length from the parameters filename
-  # Found
-  #   BD_mutation_rate <-  MBD_mutation_rate *                 # nolint
-  #     * (sum(MBD_tree$edge.length)/sum(BD_tree$edge.length)) # nolint
-  sequence_length <- parameters$sequence_length
-
-  # Calculate the mutation rate from the tree
-  mutation_rate <- NULL
-
-  # Root sequence is e.g. AAACCCGGGTTT
-  root_sequence <- pirouette::create_blocked_dna(sequence_length)
-  root_sequence <- pirouette::create_blocked_dna(20)
-
-  alignment <- pirouette::sim_alignment(
-    phylogeny = bd_phylogeny,
-    sequence_length = NULL,
-    root_sequence = root_sequence,
-    mutation_rate = mutation_rate
+  alignment <- raz_create_bd_alignment(
+    parameters = raz_open_parameters_file(parameters_filename),
+    bd_tree = ape::read.tree(bd_tree_filename)
   )
 
   # Save the alignment
-  ape::write.dna(
-    alignment,
-    file = bd_alignment_filename,
-    format = "fasta"
+  bd_alignment_filename <- file.path(dirname(parameters_filename), "bd.fasta")
+  ape::write.FASTA(
+    x = alignment,
+    file = bd_alignment_filename
   )
-
-  testit::assert(file.exists(bd_alignment_filename))
+  bd_alignment_filename
 }
