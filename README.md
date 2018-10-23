@@ -28,7 +28,7 @@ Status|Description|Function name
 Done|Done|Create parameter files|`raz_create_parameters_files`
 Done|Create MBD tree file|`raz_create_mbd_tree_file`
 Done|Create MBD alignment file|`raz_create_mbd_alignment_file`
-?|Create twin BD tree file|`raz_create_bd_tree_file`
+Done|Create twin BD tree file|`raz_create_bd_tree_file`
 ?|Create BD alignment file|`raz_create_bd_alignment_file`
 ?|Create posterior files|`raz_create_posterior_files`
 ?|Create nLTT files|`raz_create_nltt_file`
