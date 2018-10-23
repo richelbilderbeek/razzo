@@ -2,13 +2,12 @@ context("raz_create_params")
 
 test_that("use", {
 
-  skip("TODO, Issue #19")
   lambda <- 0.1
   mu <- 0.2
   nu <- 0.3
   q <- 0.4
   seed <- 42
-  age <- 15
+  crown_age <- 15
   sequence_length <- 123
 
   params <- raz_create_params(
@@ -17,7 +16,7 @@ test_that("use", {
     nu = nu,
     q = q,
     seed = seed,
-    age = age,
+    crown_age = crown_age,
     sequence_length = sequence_length
   )
 
@@ -25,21 +24,20 @@ test_that("use", {
   expect_equal(params$mu, mu)
   expect_equal(params$nu, nu)
   expect_equal(params$q, q)
-  expect_equal(params$seed, age)
-  expect_equal(params$age, age)
+  expect_equal(params$seed, seed)
+  expect_equal(params$crown_age, crown_age)
   expect_equal(params$sequence_length, sequence_length)
 
 })
 
 test_that("abuse", {
 
-  skip("TODO, Issue #19")
   lambda <- 0.1
   mu <- 0.2
   nu <- 0.3
   q <- 0.4
   seed <- 42
-  age <- 15
+  crown_age <- 15
   sequence_length <- 123
 
   expect_silent(
@@ -49,7 +47,7 @@ test_that("abuse", {
       nu = nu,
       q = q,
       seed = seed,
-      age = age,
+      crown_age = crown_age,
       sequence_length = sequence_length
     )
   )
@@ -61,7 +59,7 @@ test_that("abuse", {
       nu = nu,
       q = q,
       seed = seed,
-      age = age,
+      crown_age = crown_age,
       sequence_length = sequence_length
     ),
     "'lambda' must be positive"
@@ -74,10 +72,10 @@ test_that("abuse", {
       nu = nu,
       q = q,
       seed = seed,
-      age = age,
+      crown_age = crown_age,
       sequence_length = sequence_length
     ),
-    "'mu' must be positive"
+    "mu has to be non negative"
   )
 
   expect_error(
@@ -87,10 +85,10 @@ test_that("abuse", {
       nu = -123.456,
       q = q,
       seed = seed,
-      age = age,
+      crown_age = crown_age,
       sequence_length = sequence_length
     ),
-    "'nu' must be positive"
+    "nu has to be non negative"
   )
   expect_error(
     raz_create_params(
@@ -99,10 +97,10 @@ test_that("abuse", {
       nu = nu,
       q = -123.456,
       seed = seed,
-      age = age,
+      crown_age = crown_age,
       sequence_length = sequence_length
     ),
-    "'q' must be in range [0, 1]"
+    "q has to be between zero and one"
   )
   expect_error(
     raz_create_params(
@@ -111,10 +109,10 @@ test_that("abuse", {
       nu = nu,
       q = q,
       seed = "nonsense",
-      age = age,
+      crown_age = crown_age,
       sequence_length = sequence_length
     ),
-    "'seed' must be numeric"
+    "seed must be an integer"
   )
   expect_error(
     raz_create_params(
@@ -123,10 +121,10 @@ test_that("abuse", {
       nu = nu,
       q = q,
       seed = seed,
-      age = -123.456,
+      crown_age = -123.456,
       sequence_length = sequence_length
     ),
-    "'age' must be positive"
+    "age has to be non negative"
   )
   expect_error(
     raz_create_params(
@@ -135,9 +133,9 @@ test_that("abuse", {
       nu = nu,
       q = q,
       seed = seed,
-      age = age,
+      crown_age = crown_age,
       sequence_length = -123456
     ),
-    "'sequence_length' must be positive"
+    "sequence_length has to be a positive integer number"
   )
 })

@@ -25,12 +25,12 @@ raz_create_params <- function(
     stop("mu has to be non negative!")
   }
   if (nu <= 0.0) {
-    stop("mu has to be non negative!")
+    stop("nu has to be non negative!")
   }
   if (q < 0.0 || q > 1.0) {
       stop("q has to be between zero and one!")
   }
-  if (floor(seed) != ceiling(seed)) {
+  if (!is.numeric(seed)) {
     stop("seed must be an integer!")
   }
   if (crown_age < 0) {
