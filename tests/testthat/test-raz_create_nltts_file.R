@@ -1,4 +1,4 @@
-context("raz_create_nltt_file")
+context("raz_create_nltts_file")
 
 test_that("use", {
 
@@ -23,13 +23,13 @@ test_that("use", {
   mbd_trees_filename <- file.path(folder_name, sub_folder_name, "mbd.trees")
 
   # Start real work
-  nltt_filename <- raz_create_nltt_file(
+  nltt_filename <- raz_create_nltts_file(
     trees_filename = mbd_trees_filename
   )
   expect_equal(file.path(folder_name, sub_folder_name, "mbd_nltts.csv"),
     nltt_filename)
 
-  # TODO: Issue #5: 'raz_create_nltt_file' must create an nLTT file
+  # TODO: Issue #5: 'raz_create_nltts_file' must create an nLTT file
   if (1 == 2) {
     expect_true(file.exists(nltt_filename))
   }

@@ -5,7 +5,7 @@
 #' @return nltt statistics
 #' @author Richel J.C. Bilderbeek
 #' @export
-raz_create_nltt_file <- function(
+raz_create_nltts_file <- function(
   parameters,
   folder_name
 ) {
