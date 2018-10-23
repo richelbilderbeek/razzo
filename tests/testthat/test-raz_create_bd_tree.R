@@ -2,35 +2,16 @@ context("raz_create_bd_tree")
 
 test_that("use", {
 
-  # Work from a folder
-  folder_name <- razzo:::raz_make_tempdir()
-  testthat::expect_true(dir.exists(folder_name))
-
-  # Create the parameter files
-  parameters_filename <- raz_get_path("parameters.csv")
-  parameters <- razzo::raz_open_parameters_file(parameters_filename)
-
-  #
-  mbd_tree_filename   <- file.path(folder_name, "mbd.tree")
-
-
-  # Create MBD tree
-  skip("TODO: Issue #: interface should work")
-  # The interface below should save an MBD tree as 'mbd.tree' in the
-  # folder named 'folder_name'.
-  #
-  # Instead, the function expects subfolders to be present.
-  # If the folder structure is important, these folders must be created
-  razzo::raz_create_mbd_tree_file(
-    parameters = parameters, folder_name = folder_name)
-
-  # Create BD tree
-  silent_output <- capture.output(
-    razzo::raz_create_bd_tree(
-      parameters = parameters, folder_name = folder_name)
+  parameters <- raz_open_parameters_file(raz_get_path("parameters.csv"))
+  mbd_tree <- ape::read.tree(file = raz_get_path("mbd.tree"))
+  mbd_l_matrix <- as.matrix(
+    utils::read.csv(file = raz_get_path("mbd_l_matrix.csv")))
+  # Remove the first column?
+  mbd_l_matrix <- mbd_l_matrix[, -1]
+  bd_tree <- raz_create_bd_tree(
+    parameters = parameters,
+    mbd_tree = mbd_tree,
+    mbd_l_matrix = mbd_l_matrix
   )
-
-  # Actually create a BD tree and save it
-  bd_tree_filename <- file.path(one_parameter_setting, "bd.tree")
-  testthat::expect_true(file.exists(bd_tree_filename))
+  expect_equal(class(bd_tree), "phylo")
 })

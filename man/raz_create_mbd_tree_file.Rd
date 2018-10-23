@@ -3,7 +3,7 @@
 \name{raz_create_mbd_tree_file}
 \alias{raz_create_mbd_tree_file}
 \title{Create an MBD tree from the razzo parameters
-and save it as a file}
+and save it as two files: \code{mbd.tree} and \code{mbd_l_matrix.csv}}
 \usage{
 raz_create_mbd_tree_file(parameters_filename)
 }
@@ -17,7 +17,7 @@ The full path to the file named \code{mbd.tree}.
 }
 \description{
 Create an MBD tree from the razzo parameters
-and save it as a file
+and save it as two files: \code{mbd.tree} and \code{mbd_l_matrix.csv}
 }
 \author{
 Richel J.C. Bilderbeek, Giovanni Laudanno

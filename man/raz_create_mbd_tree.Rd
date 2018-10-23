@@ -10,8 +10,12 @@ raz_create_mbd_tree(parameters)
 \item{parameters}{the razzo parameters}
 }
 \value{
-a reconstructed tree of class \code{[hylo},
-   as simulated under the MBD process
+a list with elements that resulted from a
+simulation under the MBD process:
+\itemize{
+  \item mbd_tree the reconstructed tree of class \code{phylo}
+  \item l_matrix the L matrix
+}
 }
 \description{
 Create an MBD tree from the razzo parameters

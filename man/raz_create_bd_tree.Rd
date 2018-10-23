@@ -5,19 +5,16 @@
 \title{Create an BD twin tree from an MBD tree
 and save it as a file}
 \usage{
-raz_create_bd_tree(parameters, folder_name, verbose = FALSE)
+raz_create_bd_tree(parameters, mbd_tree, mbd_l_matrix)
 }
 \arguments{
 \item{parameters}{the razzo parameters}
 
-\item{folder_name}{name of the main folder}
-
-\item{verbose}{give more output}
+\item{mbd_tree}{an MBD tree}
 }
 \value{
-The twin BD tree obtained from the corresponding MBD tree.
-  It will create a file with name \code{bd.tree}
-  in the folder relative to the chosen parameters
+a twin BD tree of class \code{phylo},
+  obtained from the corresponding MBD tree.
 }
 \description{
 Create an BD twin tree from an MBD tree
