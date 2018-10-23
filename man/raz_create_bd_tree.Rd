@@ -11,6 +11,8 @@ raz_create_bd_tree(parameters, mbd_tree, mbd_l_matrix)
 \item{parameters}{the razzo parameters}
 
 \item{mbd_tree}{an MBD tree}
+
+\item{mbd_l_matrix}{the L matrix of an MBD tree}
 }
 \value{
 a twin BD tree of class \code{phylo},

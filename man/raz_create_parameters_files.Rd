@@ -4,36 +4,10 @@
 \alias{raz_create_parameters_files}
 \title{For each parameter setting create a folder and a parameters file}
 \usage{
-raz_create_parameters_files(folder_name = getwd(),
-  lambda_interval = c(0.2, 0.2), mu_interval = c(0.15, 0.15),
-  nu_interval = seq(from = 1, to = 2.5, by = 0.5),
-  q_interval = seq(from = 0.1, to = 0.2, by = 0.05),
-  seed_interval = 1:1000, soc = 2, age = 15, cond = 1,
-  sequence_length = 1000, mbd_mutation_rate = 1/age,
-  bd_mutation_rate = 1/age, sample_interval = 1000,
-  chain_length = 10000, sub_chain_length = 1000)
+raz_create_parameters_files(folder_name = getwd())
 }
 \arguments{
 \item{folder_name}{name of the main folder}
-
-\item{soc}{Sets whether stem or crown age should be used (1 or 2).}
-
-\item{age}{The age of the tree.}
-
-\item{cond}{Set 1 if you want to condition on stem or crown age
-and non-extinction of the phylogeny. Set 0 otherwise.}
-
-\item{sequence_length}{something}
-
-\item{bd_mutation_rate}{the mutation rate when creating an alignment
-from a BD tree}
-
-\item{sample_interval}{something}
-
-\item{chain_length}{something}
-
-\item{sub_chain_length}{length of the sub-chain used by the Nested Sampling
-algorithm to estimate the marginal likelihood}
 }
 \value{
 Create folders for each parameter setting

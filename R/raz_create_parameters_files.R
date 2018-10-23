@@ -5,22 +5,22 @@
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
 raz_create_parameters_files <- function(
-  folder_name = getwd(),
-  lambda_interval = c(0.2, 0.2),
-  mu_interval = c(0.15, 0.15),
-  nu_interval = seq(from = 1, to = 2.5, by = 0.5),
-  q_interval = seq(from = 0.10, to = 0.20, by = 0.05),
-  seed_interval = 1:1000,
-  soc = 2,
-  age = 15,
-  cond = 1,
-  sequence_length = 1000,
-  mbd_mutation_rate = 1.0 / age,
-  bd_mutation_rate = 1.0 / age,
-  sample_interval = 1000,
-  chain_length = 10000,
-  sub_chain_length = 1000
+  folder_name = getwd()
 ) {
+  # Just use the parameter combinations in the article
+  lambda_interval <- c(0.2, 0.2)
+  mu_interval <- c(0.15, 0.15)
+  nu_interval <- seq(from = 1, to = 2.5, by = 0.5)
+  q_interval <- seq(from = 0.10, to = 0.20, by = 0.05)
+  seed_interval <- 1:1000
+  crown_age <- 15
+  sequence_length <- 1000
+  mbd_mutation_rate <- 1.0 / crown_age
+  bd_mutation_rate <- 1.0 / crown_age
+  sample_interval <- 1000
+  chain_length <- 10000
+  sub_chain_length <- 1000
+
   lambda_interval <- unique(lambda_interval)
   mu_interval     <- unique(mu_interval)
   nu_interval     <- unique(nu_interval)
@@ -56,15 +56,13 @@ raz_create_parameters_files <- function(
 
             # TODO: Use 'raz_create_params',
             # like 'parameters <- raz_create_params(...)'
-            parameters <- c(
+            parameters <- raz_create_params(
               lambda = lambda,
               mu = mu,
               nu = nu,
               q = q,
               seed = seed,
-              cond = cond,
-              age = age,
-              soc = soc,
+              crown_age = crown_age,
               sequence_length = sequence_length,
               mbd_mutation_rate = mbd_mutation_rate,
               bd_mutation_rate = bd_mutation_rate,

@@ -6,6 +6,9 @@
 \usage{
 raz_make_tempdir(...)
 }
+\arguments{
+\item{...}{options for \code{tempdir}}
+}
 \value{
 the address of the temporary folder
 }

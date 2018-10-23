@@ -8,6 +8,9 @@ raz_create_bd_alignment(parameters, bd_tree)
 }
 \arguments{
 \item{parameters}{the razzo parameters}
+
+\item{bd_tree}{a phylogent of class \code{phylo}, created by a Birth Death
+process}
 }
 \value{
 an alignment

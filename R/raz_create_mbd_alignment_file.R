@@ -24,10 +24,9 @@ raz_create_mbd_alignment_file <- function(
   alignment <- raz_create_mbd_alignment(parameters, mbd_tree)
 
   # Save the alignment
-  ape::write.dna(
+  ape::write.FASTA(
     alignment,
-    file = mbd_alignment_filename,
-    format = "fasta"
+    file = mbd_alignment_filename
   )
   mbd_alignment_filename
 }

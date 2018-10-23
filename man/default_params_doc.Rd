@@ -5,25 +5,28 @@
 \title{This function does nothing. It is intended to inherit is parameters'
 documentation.}
 \usage{
-default_params_doc(bd_mutation_rate, bd_tree_filename, chain_length,
-  fasta_filename, folder_name, init_speciation_rate, init_extinction_rate,
-  iterations, k, lambda, logs, lx, lx0, matrix, matrix_builder, max_iter,
-  max_k, max_number_of_species, max_repetitions, max_sims, maxiter,
-  mbd_mutation_rate, mbd_tree, methode, minimum_multiple_births,
-  missnumspec, mu, mutation_rate, nu, optimmethod, parameters,
-  parameter_filename, parameters_filename, pars_transform, parsfix,
-  precision, print_errors, q, reltol, res, s, sample_interval,
-  sequence_length, sim_pars, sim_phylo, soc, sub_chain_length, t, t1, t2,
-  time_interval, tol, transition_matrix, tree_filename, trees_filename,
-  trparsfix, trparsopt, verbose, age, cond, pars, tips_interval)
+default_params_doc(alignment, bd_mutation_rate, bd_tree, bd_tree_filename,
+  chain_length, crown_age, fasta_filename, folder_name,
+  init_speciation_rate, init_extinction_rate, lambda, mbd_l_matrix,
+  mbd_mutation_rate, mbd_tree, mu, mutation_rate, nu, parameters,
+  parameter_filename, parameters_filename, q, sample_interval, seed,
+  sequence_length, sim_pars, sim_phylo, sub_chain_length, tree_filename,
+  trees_filename, verbose)
 }
 \arguments{
+\item{alignment}{a DNA alignment}
+
 \item{bd_mutation_rate}{the mutation rate when creating an alignment
 from a BD tree}
+
+\item{bd_tree}{a phylogent of class \code{phylo}, created by a Birth Death
+process}
 
 \item{bd_tree_filename}{name of the file that stores a BD twin tree}
 
 \item{chain_length}{something}
+
+\item{crown_age}{The crown age of the tree.}
 
 \item{fasta_filename}{name of a FASTA file}
 
@@ -33,49 +36,20 @@ from a BD tree}
 
 \item{init_extinction_rate}{an extinction rate}
 
-\item{iterations}{something}
-
-\item{k}{something}
-
 \item{lambda}{per-lineage speciation rate}
 
-\item{logs}{something}
+\item{mbd_l_matrix}{the L matrix of an MBD tree}
 
-\item{lx}{It is the number of ODEs considered for the computation.}
-
-\item{lx0}{something}
-
-\item{matrix}{something}
-
-\item{matrix_builder}{something}
-
-\item{max_iter}{Sets the maximum number of iterations in the optimization}
-
-\item{max_k}{something}
-
-\item{max_number_of_species}{something}
-
-\item{max_repetitions}{something}
-
-\item{max_sims}{something}
-
-\item{maxiter}{something}
+\item{mbd_mutation_rate}{the mutation rate when creating an alignment
+from a MBD tree}
 
 \item{mbd_tree}{an MBD tree}
 
-\item{methode}{something}
-
-\item{minimum_multiple_births}{something}
-
-\item{missnumspec}{something}
-
-\item{mu}{something}
+\item{mu}{per-species extinction rate}
 
 \item{mutation_rate}{something}
 
-\item{nu}{something}
-
-\item{optimmethod}{something}
+\item{nu}{the rate at which a multiple-birth specation is triggered}
 
 \item{parameters}{the razzo parameters}
 
@@ -83,80 +57,27 @@ from a BD tree}
 
 \item{parameters_filename}{full path to a 'parameters.csv' file}
 
-\item{pars_transform}{something}
-
-\item{parsfix}{The values of the parameters that should not be optimized.}
-
-\item{precision}{something}
-
-\item{print_errors}{something}
-
 \item{q}{something}
 
-\item{reltol}{something}
+\item{sample_interval}{the interval at which the MCMC algorithm
+makes a measurement}
 
-\item{res}{something}
+\item{seed}{a random number generator seed}
 
-\item{s}{something}
-
-\item{sample_interval}{something}
-
-\item{sequence_length}{something}
+\item{sequence_length}{the length of each DNA sequence in an alignment}
 
 \item{sim_pars}{something}
 
 \item{sim_phylo}{something}
 
-\item{soc}{Sets whether stem or crown age should be used (1 or 2).}
-
 \item{sub_chain_length}{length of the sub-chain used by the Nested Sampling
 algorithm to estimate the marginal likelihood}
-
-\item{t}{something}
-
-\item{t1}{something}
-
-\item{t2}{something}
-
-\item{time_interval}{something}
-
-\item{tol}{something}
-
-\item{transition_matrix}{something}
 
 \item{tree_filename}{name of the phylogeny file}
 
 \item{trees_filename}{name of the BEAST2 posterior phylogenies file}
 
-\item{trparsfix}{something}
-
-\item{trparsopt}{something}
-
 \item{verbose}{give more output}
-
-\item{age}{The age of the tree.}
-
-\item{cond}{Set 1 if you want to condition on stem or crown age
-and non-extinction of the phylogeny. Set 0 otherwise.}
-
-\item{pars}{vector of parameters:
-\itemize{
-  \item pars[1] is the multiple speciation trigger rate;
-  \item pars[2] is the extinction rate;
-  \item pars[3] is the single-lineage speciation probability.
-}
-or
-\itemize{
-  \item pars[1] is lambda, the sympatric speciation rate;
-  \item pars[2] is mu, the extinction rate;
-  \item pars[3] is nu, the multiple allopatric speciation trigger rate;
-  \item pars[4] is q, the single-lineage speciation probability.
-}}
-
-\item{tips_interval}{Sets tips boundaries constrain on simulated dataset.}
-
-\item{bd_mutation_rate}{the mutation rate when creating an alignment
-from a BD tree}
 }
 \description{
 This function does nothing. It is intended to inherit is parameters'

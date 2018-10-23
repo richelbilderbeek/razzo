@@ -28,6 +28,7 @@ Imports:
   mbd,
   nLTT,
   pirouette,
+  stringr,
   testit,
   tracerer
 Suggests:
