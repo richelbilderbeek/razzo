@@ -30,10 +30,10 @@ raz_create_parameters_files <- function(
            length(nu_interval) *
            length(q_interval)
 
-  project_name <- "razzo_project"
+  data_folder_name <- "data"
 
-  dir.create(file.path(folder_name, project_name), showWarnings = TRUE)
-  testit::assert(dir.exists(file.path(folder_name, project_name)))
+  dir.create(file.path(folder_name, data_folder_name), showWarnings = TRUE)
+  testit::assert(dir.exists(file.path(folder_name, data_folder_name)))
   parameters_filenames <- rep(NA, l_pars)
   i <- 1
   for (lambda in lambda_interval) {
@@ -42,12 +42,12 @@ raz_create_parameters_files <- function(
         for (q in q_interval) {
           parsettings_name <- paste0(lambda, "-", mu, "-", nu, "-", q)
           dir.create(file.path(folder_name,
-                               project_name,
+                               data_folder_name,
                                parsettings_name),
                      showWarnings = FALSE)
           for (seed in seed_interval) {
             seedfolder <- file.path(folder_name,
-                                    project_name,
+                                    data_folder_name,
                                     parsettings_name,
                                     seed)
             dir.create(file.path(seedfolder),
@@ -77,5 +77,5 @@ raz_create_parameters_files <- function(
       }
     }
   }
-  return(parameters_filenames)
+  parameters_filenames
 }

@@ -4,21 +4,12 @@ test_that("use", {
 
   # Put files in temporary folder
   folder_name <- razzo:::raz_make_tempdir()
-  testthat::expect_true(
-    dir.exists(folder_name)
-  )
+  testthat::expect_true(dir.exists(folder_name))
 
-  skip("TODO: fix test")
+  filenames <- raz_create_parameters_files(folder_name = folder_name)
 
-  # Create the parameter files
-  razzo:::raz_save_test_params()
-
-  testthat::expect_true(length(filenames) >= 1)
-  testthat::expect_true(all(file.exists(filenames)))
-
-  skip("TODO: Issue #: use the folder structure agreed up")
-  # The folder structure we agreed upon:
-  # * razzo_project
+  # The folder structure created:
+  # * razzo_project (the name of the GitHub containing the scripts)
   #   * scripts
   #   * data
   #     * folder named after parameters, e.g. '0.2-0.15-2.5-0.1'
@@ -33,8 +24,7 @@ test_that("use", {
       )
     ) > 0
   )
-  # Not OK: there should be a data folder
-  # (note: simply replace 'razzo_project' by 'data' :-) )
+  # OK: there is a data folder
   testthat::expect_true(
     length(
       grep(
