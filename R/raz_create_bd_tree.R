@@ -16,18 +16,22 @@ raz_create_bd_tree <- function(
 
   mbd_brts     <- abs(ape::branching.times(mbd_tree))
   set.seed(seed)
-  # TODO and NOTE: should cond be 1 or 2?
-  bd_pars <- DDD::bd_ML( # nolint
-    brts = abs(mbd_brts),
-    cond = 2,
-    initparsopt = c(parameters$lambda, parameters$mu),
-    idparsopt = 1:2,
-    missnumspec = 0,
-    tdmodel = 0,
-    btorph = 1,
-    soc = soc
-  )
-
+  { # nolint indeed bracket incorrect, is to scope the sink, which is thanks to DDD
+    # Suppress output
+    sink("/dev/null")
+    # TODO and NOTE: Issue #32: should cond be 1 or 2?
+    bd_pars <- DDD::bd_ML( # nolint
+      brts = abs(mbd_brts),
+      cond = 2,
+      initparsopt = c(parameters$lambda, parameters$mu),
+      idparsopt = 1:2,
+      missnumspec = 0,
+      tdmodel = 0,
+      btorph = 1,
+      soc = soc
+    )
+    sink()
+  }
   set.seed(seed)
   bd_tree0 <- TESS::tess.sim.taxa.age(
     n = 1,
