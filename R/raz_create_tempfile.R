@@ -10,7 +10,7 @@
 #'   testthat::expect_true(file.exists(filename))
 #' @export
 raz_create_tempfile <- function(filename) {
-  to <- file.path(raz_make_tempdir(), filename)
+  to <- file.path(tempdir(), filename)
   file.copy(
     from = raz_get_path(filename),
     to = to
