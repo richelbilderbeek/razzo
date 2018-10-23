@@ -1,6 +1,7 @@
 #' Create an MBD tree from the razzo parameters
 #' @inheritParams default_params_doc
-#' @return The trees simulated under the MBD process
+#' @return a reconstructed tree of class \code{[hylo},
+#'    as simulated under the MBD process
 #' @author Giovanni Laudanno and Richel J.C. Bilderbeek
 #' @export
 raz_create_mbd_tree <- function(
@@ -12,5 +13,5 @@ raz_create_mbd_tree <- function(
   cond <- parameters$cond
   seed <- parameters$seed
   set.seed(seed)
-  mbd::mbd_sim(pars = mbd_pars, soc = soc, age = age, cond = cond)
+  mbd::mbd_sim(pars = mbd_pars, soc = soc, age = age, cond = cond)$tes
 }

@@ -5,33 +5,21 @@
 \title{This function does nothing. It is intended to inherit is parameters'
 documentation.}
 \usage{
-default_params_doc(abstol, account_name, alpha, alpha0, b,
-  bd_tree_filename, brts, chain_length, changeloglikifnoconv, colormap,
-  fasta_filename, folder_name, idparsfix, idparsopt, initparsopt,
-  init_speciation_rate, init_extinction_rate, iterations, k, lambda, logs,
-  lx, lx0, matrix, matrix_builder, max_iter, max_k, max_number_of_species,
-  max_repetitions, max_sims, maxiter, mbd_tree, methode,
-  minimum_multiple_births, missnumspec, mu, mutation_rate, nu, optimmethod,
-  parameters, parameter_filename, parameters_filename, pars_transform,
-  parsfix, precision, print_errors, q, reltol, res, s, sample_interval,
-  sequence_length, sim_pars, sim_phylo, soc, sub_chain_length, t, t1, t2,
-  time_interval, tol, transition_matrix, tree_filename, trees_filename,
-  trparsfix, trparsopt, verbose, age, cond, pars, tips_interval)
+default_params_doc(bd_tree_filename, brts, chain_length,
+  changeloglikifnoconv, colormap, fasta_filename, folder_name, idparsfix,
+  idparsopt, initparsopt, init_speciation_rate, init_extinction_rate,
+  iterations, k, lambda, logs, lx, lx0, matrix, matrix_builder, max_iter,
+  max_k, max_number_of_species, max_repetitions, max_sims, maxiter,
+  mbd_tree, methode, minimum_multiple_births, missnumspec, mu,
+  mutation_rate, nu, optimmethod, parameters, parameter_filename,
+  parameters_filename, pars_transform, parsfix, precision, print_errors, q,
+  reltol, res, s, sample_interval, sequence_length, sim_pars, sim_phylo,
+  soc, sub_chain_length, t, t1, t2, time_interval, tol, transition_matrix,
+  tree_filename, trees_filename, trparsfix, trparsopt, verbose, age, cond,
+  pars, tips_interval)
 }
 \arguments{
-\item{abstol}{something}
-
-\item{account_name}{something}
-
-\item{alpha}{something}
-
-\item{alpha0}{something}
-
-\item{b}{something}
-
 \item{bd_tree_filename}{name of the file that stores a BD twin tree}
-
-\item{brts}{something}
 
 \item{chain_length}{something}
 

@@ -1,11 +1,5 @@
 #' This function does nothing. It is intended to inherit is parameters'
 #' documentation.
-#' @param abstol something
-#' @param account_name something
-#' @param alpha something
-#' @param alpha0 something
-#' @param b something
-#' @param brts something
 #' @param bd_tree_filename name of the file that stores a BD twin tree
 #' @param chain_length something
 #' @param changeloglikifnoconv something
@@ -99,11 +93,6 @@
 #'   functions to find the documentation parameters
 #'
 default_params_doc <- function(
-  abstol,
-  account_name,
-  alpha,
-  alpha0,
-  b,
   bd_tree_filename,
   brts,
   chain_length,

@@ -5,17 +5,15 @@
 \title{Create an MBD tree from the razzo parameters
 and save it as a file}
 \usage{
-raz_create_mbd_tree_file(parameters, folder_name)
+raz_create_mbd_tree_file(parameters_filename)
 }
 \arguments{
-\item{parameters}{the razzo parameters}
-
-\item{folder_name}{name of the main folder}
+\item{parameters_filename}{full path to a 'parameters.csv' file}
 }
 \value{
-The tree simulated under the MBD process.
-  It will create a file with name \code{mbd.tree}
-  in the folder relative to the chosen parameters
+The full path to the file named \code{mbd.tree}.
+  This file contains a phylogeny simulated under the MBD process.
+  The file will be saved in the same folder as the parameter file.
 }
 \description{
 Create an MBD tree from the razzo parameters
