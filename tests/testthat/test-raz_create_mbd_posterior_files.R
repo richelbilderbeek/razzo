@@ -10,13 +10,13 @@ test_that("use", {
   }
 
   # Create input files
-  parameters_filename <- raz_create_tempfile("parameters.csv")
-  mbd_alignment_filename <- raz_create_tempfile("mbd.fasta")
+  parameters_filename <- raz_create_tempfile("parameters.csv") # nolint internal function
+  mbd_alignment_filename <- raz_create_tempfile("mbd.fasta") # nolint internal function
   testit::assert(file.exists(parameters_filename))
   testit::assert(file.exists(mbd_alignment_filename))
 
   # Run
-  mbd_posterior_filenames <- raz_create_mbd_posterior_files(
+  mbd_posterior_filenames <- raz_create_mbd_posterior_files( # nolint internal function
     parameters_filename = parameters_filename
   )
 

@@ -7,7 +7,7 @@ test_that("must create file", {
   testit::assert(file.exists(parameters_filename))
   testit::assert(file.exists(mbd_tree_filename))
 
-  mbd_alignment_filename <- raz_create_mbd_alignment_file(
+  mbd_alignment_filename <- raz_create_mbd_alignment_file( # nolint internal function
     parameters_filename = parameters_filename
   )
   expect_true(file.exists(mbd_alignment_filename))

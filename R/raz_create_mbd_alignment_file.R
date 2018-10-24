@@ -17,11 +17,11 @@ raz_create_mbd_alignment_file <- function(
   testit::assert(file.exists(mbd_tree_filename))
   mbd_alignment_filename <- file.path(dirname(parameters_filename), "mbd.fasta")
 
-  parameters <- raz_open_parameters_file(parameters_filename)
+  parameters <- raz_open_parameters_file(parameters_filename) # nolint internal function
   mbd_tree <- ape::read.tree(file = mbd_tree_filename)
 
   # Create the alignment
-  alignment <- raz_create_mbd_alignment(parameters, mbd_tree)
+  alignment <- raz_create_mbd_alignment(parameters, mbd_tree) # nolint internal function
 
   # Save the alignment
   ape::write.FASTA(

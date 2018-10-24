@@ -11,7 +11,7 @@ test_that("use", {
   testit::assert(file.exists(mbd_trees_filename))
 
   # Run
-  mbd_nltts_filename <- raz_create_mbd_nltts_file(
+  mbd_nltts_filename <- raz_create_mbd_nltts_file( # nolint internal function
     parameters_filename = parameters_filename
   )
 

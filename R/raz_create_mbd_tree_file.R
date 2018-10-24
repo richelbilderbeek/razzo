@@ -9,8 +9,8 @@
 raz_create_mbd_tree_file <- function(
   parameters_filename
 ) {
-  parameters <- raz_open_parameters_file(parameters_filename)
-  mbd_sim <- raz_create_mbd_tree(parameters)
+  parameters <- raz_open_parameters_file(parameters_filename) # nolint internal function
+  mbd_sim <- raz_create_mbd_tree(parameters) # nolint internal function
 
   # Tree
   mbd_tree_filename <- file.path(dirname(parameters_filename), "mbd.tree")

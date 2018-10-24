@@ -3,10 +3,13 @@ context("raz_create_parameters_files")
 test_that("use", {
 
   # Put files in temporary folder
-  folder_name <- razzo:::raz_make_tempdir()
-  testthat::expect_true(dir.exists(folder_name))
+  super_folder_name <- tempdir()
+  project_folder_name <- file.path(super_folder_name, "razzo_project")
+  dir.create(path = project_folder_name)
 
-  filenames <- raz_create_parameters_files(folder_name = folder_name)
+  filenames <- raz_create_parameters_files(
+    project_folder_name = project_folder_name
+  )
 
   # The folder structure created:
   # * razzo_project (the name of the GitHub containing the scripts)

@@ -34,7 +34,10 @@ raz_create_parameters_files <- function(
 
   data_folder_name <- "data"
 
-  dir.create(file.path(project_folder_name, data_folder_name), showWarnings = TRUE)
+  dir.create(
+    file.path(project_folder_name, data_folder_name),
+    showWarnings = TRUE
+  )
   testit::assert(dir.exists(file.path(project_folder_name, data_folder_name)))
   parameters_filenames <- rep(NA, l_pars)
   i <- 1

@@ -20,7 +20,7 @@ raz_create_bd_nltts_file <- function(
   bd_trees <- ape::read.tree(file = bd_trees_filename)
 
   # Produce nLTTs
-  nltts <- raz_create_nltts(tree = bd_tree, posterior_trees = bd_trees)
+  nltts <- raz_create_nltts(tree = bd_tree, posterior_trees = bd_trees) # nolint internal function
 
   # Save nLTTs
   bd_nltts_filename <- file.path(dirname(parameters_filename), "bd_nltts.csv")

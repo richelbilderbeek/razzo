@@ -20,7 +20,7 @@ raz_create_mbd_nltts_file <- function(
   mbd_trees <- ape::read.tree(file = mbd_trees_filename)
 
   # Produce nLTTs
-  nltts <- raz_create_nltts(tree = mbd_tree, posterior_trees = mbd_trees)
+  nltts <- raz_create_nltts(tree = mbd_tree, posterior_trees = mbd_trees) # nolint internal function
 
   # Save nLTTs
   mbd_nltts_filename <- file.path(dirname(parameters_filename), "mbd_nltts.csv")
