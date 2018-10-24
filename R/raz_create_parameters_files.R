@@ -1,11 +1,12 @@
-#' For each parameter setting create a folder and a parameters file
+#' Create all parameter files  in
+#'   \code{project_folder_name/data/[settings]/seed}
 #' @inheritParams default_params_doc
 #' @return Create folders for each parameter setting
 #'   and saves each setting in a file within the corresponding folder.
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
 raz_create_parameters_files <- function(
-  folder_name = getwd()
+  project_folder_name = getwd()
 ) {
   # Just use the parameter combinations in the article
   lambda_interval <- c(0.2, 0.2)
