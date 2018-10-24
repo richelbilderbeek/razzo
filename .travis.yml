@@ -19,8 +19,10 @@ r_github_packages:
   - richelbilderbeek/pirouette
   - Giappo/mbd
 
+before_install:
+  - curl -H "Authorization: token 5a5b9bff08e120e68e8dac2742701c11f55df126" https://api.github.com
+
 before_script:
-  - curl -u "richelbilderbeek" https://api.github.com
   - sudo apt-get install -qq oracle-java8-installer # Java 8
   - sudo apt-get install oracle-java8-set-default
   - Rscript -e "beastier::install_beast2()"
