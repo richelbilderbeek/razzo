@@ -3,6 +3,7 @@ context("raz_create_bd_tree")
 test_that("use", {
 
   parameters <- raz_open_parameters_file(raz_get_path("parameters.csv"))
+  parameters$seed <- 12
   mbd_tree <- ape::read.tree(file = raz_get_path("mbd.tree"))
   mbd_l_matrix <- as.matrix(
     utils::read.csv(file = raz_get_path("mbd_l_matrix.csv")))

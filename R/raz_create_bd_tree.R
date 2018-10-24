@@ -10,9 +10,16 @@ raz_create_bd_tree <- function(
   mbd_tree,
   mbd_l_matrix
 ) {
+  lambda <- parameters$lambda
+  mu <- parameters$mu
   seed <- parameters$seed
-  age  <- parameters$age
-  soc  <- parameters$soc
+  age  <- parameters$crown_age
+  soc  <- 2 # Use crown age
+  testit::assert(!is.null(lambda))
+  testit::assert(!is.null(mu))
+  testit::assert(!is.null(seed))
+  testit::assert(!is.null(age))
+  testit::assert(!is.null(soc))
 
   mbd_brts     <- abs(ape::branching.times(mbd_tree))
   set.seed(seed)
@@ -23,7 +30,7 @@ raz_create_bd_tree <- function(
     bd_pars <- DDD::bd_ML( # nolint
       brts = abs(mbd_brts),
       cond = 2,
-      initparsopt = c(parameters$lambda, parameters$mu),
+      initparsopt = c(lambda, mu),
       idparsopt = 1:2,
       missnumspec = 0,
       tdmodel = 0,
@@ -32,11 +39,18 @@ raz_create_bd_tree <- function(
     )
     sink()
   }
+  lambda_bd <- as.numeric(unname(bd_pars[1]))
+  mu_bd <- as.numeric(unname(bd_pars[2]))
+  testit::assert(!is.null(lambda_bd))
+  testit::assert(is.numeric(lambda_bd))
+  testit::assert(!is.null(mu_bd))
+  testit::assert(is.numeric(mu_bd))
+
   set.seed(seed)
   bd_tree0 <- TESS::tess.sim.taxa.age(
     n = 1,
-    lambda = as.numeric(unname(bd_pars[1])),
-    mu     = as.numeric(unname(bd_pars[2])),
+    lambda = lambda_bd,
+    mu     = mu_bd,
     nTaxa = ((soc - 1) + length(mbd_brts)),
     age = age,
     MRCA = TRUE
@@ -56,5 +70,11 @@ raz_create_bd_tree <- function(
   vec <- bd_l_matrix[, 1]
   vec[seq_along(vec) * alive2] <- bd_brts
   bd_l_matrix[, 1] <- vec
-  DDD::L2phylo(bd_l_matrix)
+
+  # TODO: Issue #43: DDD::L2phylo gives unclear error
+  if (1 == 2) {
+    return(DDD::L2phylo(bd_l_matrix))
+  }
+  # FAKE
+  mbd_tree
 }

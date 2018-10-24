@@ -10,9 +10,11 @@ raz_create_bd_alignment <- function(
   bd_tree
 ) {
   sequence_length <- parameters$sequence_length
+  testit::assert(!is.null(sequence_length))
 
   # Calculate the mutation rate from the tree
   bd_mutation_rate <- parameters$bd_mutation_rate
+  testit::assert(!is.null(bd_mutation_rate))
   testit::assert(is.numeric(bd_mutation_rate))
 
   # Root sequence is e.g. AAACCCGGGTTT

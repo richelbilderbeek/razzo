@@ -20,10 +20,16 @@ raz_create_posterior <- function(
   )
 
   sample_interval <- parameters$sample_interval
-  crown_age <- parameters$age
+  crown_age <- parameters$crown_age
   rng_seed <- parameters$seed
   chain_length <- parameters$chain_length
   sub_chain_length <- parameters$sub_chain_length
+
+  testit::assert(!is.null(sample_interval))
+  testit::assert(!is.null(crown_age))
+  testit::assert(!is.null(rng_seed))
+  testit::assert(!is.null(chain_length))
+  testit::assert(!is.null(sub_chain_length))
 
   # TODO: read site model from file
   site_model <- beautier::create_jc69_site_model() # Stub

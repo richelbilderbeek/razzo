@@ -13,12 +13,14 @@ raz_create_mbd_alignment <- function(
 ) {
   # Get the sequence length from the parameters filename
   sequence_length <- parameters$sequence_length
+  testit::assert(!is.null(sequence_length))
 
   # Calculate the mutation rate from the tree
   # Found:
   #  * BD_mutation_rate <-  MBD_mutation_rate * (sum(MBD_tree$edge.length)/sum(BD_tree$edge.length)); # nolint
   #  * mbd_total_branch_length <- sum(mbd_tree$edge.length)
   mutation_rate <- parameters$mbd_mutation_rate
+  testit::assert(!is.null(mutation_rate))
 
   # Root sequence is e.g. AAACCCGGGTTT
   root_sequence <- pirouette::create_blocked_dna(sequence_length)
