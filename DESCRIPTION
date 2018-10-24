@@ -29,10 +29,10 @@ Imports:
   nLTT,
   pirouette,
   stringr,
+  TESS,
   testit,
   tracerer
 Suggests:
-  TESS,
   testthat,
   lintr,
   knitr,
