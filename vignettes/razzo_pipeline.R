@@ -14,13 +14,15 @@ if (!require(pirouette)) {
 library(razzo)
 
 ## ------------------------------------------------------------------------
-project_folder_name <- tempdir()
+super_folder_name <- tempdir()
+project_folder_name <- file.path(super_folder_name, "razzo_project") 
+dir.create(path = project_folder_name)
 
 ## ------------------------------------------------------------------------
-#parameters_filenames <- raz_create_parameters_files(
-#  project_folder_name = project_folder_name
-#)
-#testit::assert(file.path(folder_name, "1", "parameters.csv") %in% parameters_filenames)
+parameters_filenames <- raz_create_parameters_files(
+  project_folder_name = project_folder_name
+)
+knitr::kable(parameters_filenames)
 
 ## ------------------------------------------------------------------------
 if (1 == 2) {
