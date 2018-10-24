@@ -8,6 +8,12 @@ Assumes for a posterior file named '1x.trees'
 \usage{
 raz_create_nltts(tree, posterior_trees)
 }
+\arguments{
+\item{tree}{an ultrametric phylogenetic tree of class \code{phylo}}
+
+\item{posterior_trees}{phylogenetic trees in a BEAST2 posterior,
+of class \code{multiphylo}}
+}
 \value{
 nltt statistics
 }

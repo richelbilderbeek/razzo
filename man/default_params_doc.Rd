@@ -9,9 +9,9 @@ default_params_doc(alignment, bd_mutation_rate, bd_tree, bd_tree_filename,
   chain_length, crown_age, fasta_filename, folder_name,
   init_speciation_rate, init_extinction_rate, lambda, mbd_l_matrix,
   mbd_mutation_rate, mbd_tree, mu, mutation_rate, nu, parameters,
-  parameter_filename, parameters_filename, q, sample_interval, seed,
-  sequence_length, sim_pars, sim_phylo, sub_chain_length, tree_filename,
-  trees_filename, verbose)
+  parameter_filename, parameters_filename, posterior_trees, q,
+  sample_interval, seed, sequence_length, sim_pars, sim_phylo,
+  sub_chain_length, tree, tree_filename, trees_filename, verbose)
 }
 \arguments{
 \item{alignment}{a DNA alignment}
@@ -57,6 +57,9 @@ from a MBD tree}
 
 \item{parameters_filename}{full path to a 'parameters.csv' file}
 
+\item{posterior_trees}{phylogenetic trees in a BEAST2 posterior,
+of class \code{multiphylo}}
+
 \item{q}{something}
 
 \item{sample_interval}{the interval at which the MCMC algorithm
@@ -72,6 +75,8 @@ makes a measurement}
 
 \item{sub_chain_length}{length of the sub-chain used by the Nested Sampling
 algorithm to estimate the marginal likelihood}
+
+\item{tree}{an ultrametric phylogenetic tree of class \code{phylo}}
 
 \item{tree_filename}{name of the phylogeny file}
 

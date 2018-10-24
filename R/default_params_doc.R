@@ -23,6 +23,8 @@
 #' @param parameters the razzo parameters
 #' @param parameter_filename full path to a 'parameters.csv' file
 #' @param parameters_filename full path to a 'parameters.csv' file
+#' @param posterior_trees phylogenetic trees in a BEAST2 posterior,
+#'   of class \code{multiphylo}
 #' @param q something
 #' @param sample_interval the interval at which the MCMC algorithm
 #'   makes a measurement
@@ -32,6 +34,7 @@
 #' @param sim_phylo something
 #' @param sub_chain_length length of the sub-chain used by the Nested Sampling
 #'   algorithm to estimate the marginal likelihood
+#' @param tree an ultrametric phylogenetic tree of class \code{phylo}
 #' @param tree_filename name of the phylogeny file
 #' @param trees_filename name of the BEAST2 posterior phylogenies file
 #' @param verbose give more output
@@ -62,6 +65,7 @@ default_params_doc <- function(
   parameters,
   parameter_filename,
   parameters_filename,
+  posterior_trees,
   q,
   sample_interval,
   seed,
@@ -69,6 +73,7 @@ default_params_doc <- function(
   sim_pars,
   sim_phylo,
   sub_chain_length,
+  tree,
   tree_filename,
   trees_filename,
   verbose
