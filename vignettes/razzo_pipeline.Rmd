@@ -16,41 +16,29 @@ MBD = Multiple Birth Death Model;
 
 This is the pipeline to follow for the Razzo project. Our aim is to compare two nLTT distributions related to two tree posteriors: one descending from MBD alignments and another one from BD alignments. Both posteriors are generated using a BD prior in BEAST.
 
-```{r setup, results = "hide"}
-if (!require(mbd)) {
-  devtools::install_github("Giappo/mbd")
-}
-if (!require(TESS)) {
-  install.packages("TESS", repo = "https://lib.ugent.be/CRAN/")
-}
-if (!require(pirouette)) {
-  devtools::install_github("richelbilderbeek/babette")
-  devtools::install_github("richelbilderbeek/pirouette")
-}
-```
-
 ## Folder structure
 
-In `folder_name`:
+In `razzo_project`, there is a folder called `data`.
+In `data`, there are folders named after their parameters, e.g. `0.2-0.15-1-0.1`.
+In each of these folders, there are folders named after their seeds, e.g. `1`.
+In each of these folders, there are:
 
-  * `1`
-     * `parameters.csv`: the parameter file, created by `raz_create_parameter_files`
-     * `mbd.tree`: the true MBD tree, created by `raz_create_input_files`
-     * `mbd.fasta`: the true MBD alignment, created by `raz_create_input_files`
-     * `bd.tree`: the twin BD tree, created by `raz_create_input_files`
-     * `bd.fasta`: the twin BD alignment, created by `raz_create_input_files`
-     * `mbd.trees`: the posterior trees from `mbd.tree`, created by `raz_create_posterior_files("mbd.tree")`
-     * `mbd.log`: the posterior parameter estimates from `mbd.tree`, created by `raz_create_posterior_files("mbd.tree")`
-     * `mbd_mar_lik.csv`: the posterior's marginal likelihood from `mbd.tree`, created by `raz_create_posterior_files("mbd.tree")`
-     * `bd.trees`: the posterior trees from `bd.tree`, created by `raz_create_posterior_files("bd.tree")`
-     * `bd.log`: the posterior parameter estimates from `bd.tree`, created by `raz_create_posterior_files("bd.tree")`
-     * `bd_mar_lik.csv`: the posterior's marginal likelihood from `bd.tree`, created by `raz_create_posterior_files("bd.tree")`
-     * `mbd_nltts.csv`: the nLTT statistic distribution between `mbd.tree` and `mbd.trees`, created by `raz_create_nltt_file("mbd.tree", "mbd.trees")`
-     * `bd_nltts.csv`: the nLTT statistic distribution between `bd.tree` and `bd.trees`, created by `raz_create_nltt_file("bd.tree", "bd.trees")`
-  * `2`
-  * `3`
-  * Etcetera
-     
+Filename|Description|Created by
+-------------|---------------------------------------|--------------------------
+`parameters.csv`|the parameter file|`raz_create_parameter_files`
+`mbd.tree`|the true MBD tree|`raz_create_mbd_tree_file`
+`mbd.fasta`|the true MBD alignment|`raz_create_mbd_alignment_file`
+`bd.tree`|the twin BD tree|`raz_create_bd_tree_file`
+`bd.fasta`|the twin BD alignment|`raz_create_bd_alignment_file`
+`mbd.trees`|the posterior trees from `mbd.tree`|`raz_create_mbd_posterior_files`
+`mbd.log`|the posterior parameter estimates from `mbd.tree`|`raz_create_mbd_posterior_files`
+`mbd_mar_lik.csv`|the posterior's marginal likelihood from `mbd.tree`|`raz_create_mbd_posterior_files`
+`bd.trees`|the posterior trees from `bd.tree`|`raz_create_bd_posterior_files`
+`bd.log`|the posterior parameter estimates from `bd.tree`|`raz_create_bd_posterior_files`
+`bd_mar_lik.csv`|the posterior's marginal likelihood from `bd.tree`|`raz_create_mb_posterior_files`
+`mbd_nltts.csv`|the nLTT statistic distribution between `mbd.tree` and `mbd.trees`|`raz_create_mbd_nltt_file`
+`bd_nltts.csv`|the nLTT statistic distribution between `bd.tree` and `bd.trees`|`raz_create_bd_nltt_file`
+
 ## Overview
 
 ![Pipeline](pipeline.png)
@@ -69,7 +57,7 @@ project_folder_name <- file.path(super_folder_name, "razzo_project")
 dir.create(path = project_folder_name, recursive = TRUE)
 ```
 
-## Step 0: create parameters
+## Step 1: Create parameter files
 
 Here we create all parameter files:
 
@@ -77,59 +65,103 @@ Here we create all parameter files:
 parameters_filenames <- raz_create_parameters_files(
   project_folder_name = project_folder_name
 )
+```
+
+To speed things up, we'll be keeping only two parameter files:
+
+```{r}
+parameters_filenames <- parameters_filenames[ c(1, 2) ]
 knitr::kable(parameters_filenames)
 ```
 
-## Step 1: create MBD trees
+## Step 2: create MBD trees
 
 ```{r}
 mbd_tree_filenames <- parameters_filenames
 # Create all true trees, true alignments and their twins
-# for (i in seq_along(parameters_filenames)) {
-#   i <- 1
-#   parameters_filename <- parameters_filenames[i]
-#   mbd_tree_filenames[i] <- raz_create_mbd_tree_file(parameters_filename)
-# }
-```
-
-Each parameter file is read to create a MBD tree and alignment and its BD twin:
-
-```{r}
-if (1 == 2) {
-  # Create all true trees, true alignments and their twins
-  for (parameters_filename in parameters_filenames) {
-    input_filenames <- raz_create_input_files(parameters_filename)
-    # True MBD tree
-    testit::assert(file.path(folder_name, "1", "mbd.tree") %in% input_filenames)
-    # True MBD alignment
-    testit::assert(file.path(folder_name, "1", "mbd.fasta") %in% input_filenames)
-    # Twin BD tree
-    testit::assert(file.path(folder_name, "1", "bd.tree") %in% input_filenames)
-    # Twin BD alignment
-    testit::assert(file.path(folder_name, "1", "bd.fasta") %in% input_filenames)
-  }
+for (i in seq_along(parameters_filenames)) {
+  parameters_filename <- parameters_filenames[i]
+  mbd_tree_filenames[i] <- raz_create_mbd_tree_file(parameters_filename)
 }
 ```
 
-Show the first MBD tree:
+Taking a look at the first MBD tree:
 
 ```{r}
-# TODO: Issue #8: actually create an MBD tree and save it
-if (1 == 2) {
-  graphics::plot(file.path(folder_name, "1", "mbd.tree"))
-}
+ape::plot.phylo(ape::read.tree(file = mbd_tree_filenames[1]))
 ```
+
+## Step 3: create twin BD trees
 
 Then we want to generate a "twin" BD tree. To create such tree we have to estimate the best lambda and mu to make the comparison fair. 
 To estimate the parameters we run a ML inference using the BD model.
 We also want to condition on the same amount of tips and on the survival of the phylogeny (cond = 2).
 
 ```{r}
+# TODO: Issue: row names were found from a short variable and have been discarded
 if (1 == 2) {
-  graphics::plot(file.path(folder_name, "1", "bd.tree"))
+  bd_tree_filenames <- parameters_filenames
+  # Create all BD twin trees, true alignments and their twins
+  for (i in seq_along(parameters_filenames)) {
+    parameters_filename <- parameters_filenames[i]
+    bd_tree_filenames[i] <- raz_create_bd_tree_file(parameters_filename)
+  }
 }
 ```
 
+Taking a look at the first MBD tree:
+
+```{r}
+if (1 == 2) {
+  ape::plot.phylo(ape::read.tree(file = bd_tree_filenames[1]))
+}
+```
+
+## Step 4: Create MBD alignments
+
+```{r}
+if (1 == 2) {
+  mbd_alignment_filenames <- parameters_filenames
+  # Create all true trees, true alignments and their twins
+  for (i in seq_along(parameters_filenames)) {
+    parameters_filename <- parameters_filenames[i]
+    mbd_alignment_filenames[i] <- raz_create_mbd_alignment_file(parameters_filename)
+  }
+}
+```
+
+Taking a look at the first MBD alignment:
+
+```{r}
+if (1 == 2) {
+  image(ape::read.FASTA(file = mbd_alignment_filenames[1]))
+}
+```
+
+## Step 5: Create BD alignments
+
+```{r}
+# TODO: Issue Error in pirouette::sim_alignment(phylogeny = bd_tree, sequence_length = NULL, : phylogeny must not contain extant species
+if (1 == 2) {
+  bd_alignment_filenames <- parameters_filenames
+  # Create all true trees, true alignments and their twins
+  for (i in seq_along(parameters_filenames)) {
+    i <- 1
+    parameters_filename <- parameters_filenames[i]
+    bd_alignment_filenames[i] <- raz_create_bd_alignment_file(parameters_filename)
+  }
+}
+```
+
+Taking a look at the first MBD alignment:
+
+```{r}
+if (1 == 2) {
+  image(ape::read.FASTA(file = bd_alignment_filenames[1]))
+}
+```
+
+# UP TILL HERE
 
 ## Step 2: create inference files
 
