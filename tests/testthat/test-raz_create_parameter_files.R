@@ -40,11 +40,12 @@ test_that("use", {
 
 test_that("can read", {
 
-  skip("TODO: Issue #41")
-  # Put files in temporary folder
+  # Create parameter files from fresh
   filenames <- raz_create_parameters_files(
     project_folder_name = tempdir()
   )
+
+  # Load the first one
   expect_silent(
     raz_open_parameters_file(parameters_filename = filenames[1])
   )
