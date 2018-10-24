@@ -13,7 +13,7 @@ raz_create_parameters_files <- function(
   mu_interval <- c(0.15, 0.15)
   nu_interval <- seq(from = 1, to = 2.5, by = 0.5)
   q_interval <- seq(from = 0.10, to = 0.20, by = 0.05)
-  seed_interval <- 1:1000
+  seed_interval <- 1:2
   crown_age <- 15
   sequence_length <- 1000
   mbd_mutation_rate <- 1.0 / crown_age
@@ -34,8 +34,8 @@ raz_create_parameters_files <- function(
 
   data_folder_name <- "data"
 
-  dir.create(file.path(folder_name, data_folder_name), showWarnings = TRUE)
-  testit::assert(dir.exists(file.path(folder_name, data_folder_name)))
+  dir.create(file.path(project_folder_name, data_folder_name), showWarnings = TRUE)
+  testit::assert(dir.exists(file.path(project_folder_name, data_folder_name)))
   parameters_filenames <- rep(NA, l_pars)
   i <- 1
   for (lambda in lambda_interval) {
@@ -43,12 +43,12 @@ raz_create_parameters_files <- function(
       for (nu in nu_interval) {
         for (q in q_interval) {
           parsettings_name <- paste0(lambda, "-", mu, "-", nu, "-", q)
-          dir.create(file.path(folder_name,
+          dir.create(file.path(project_folder_name,
                                data_folder_name,
                                parsettings_name),
                      showWarnings = FALSE)
           for (seed in seed_interval) {
-            seedfolder <- file.path(folder_name,
+            seedfolder <- file.path(project_folder_name,
                                     data_folder_name,
                                     parsettings_name,
                                     seed)
