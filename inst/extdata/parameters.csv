@@ -1,15 +1,2 @@
-"","x"
-"lambda",0.2
-"mu",0.15
-"nu",1
-"q",0.1
-"seed",1
-"cond",1
-"age",10
-"soc",2
-"sequence_length",1000
-"bd_mutation_rate",1000
-"mbd_mutation_rate",1000
-"sample_interval",1000
-"chain_length",1e+06
-"sub_chain_length",1000
+"","lambda","mu","nu","q","seed","crown_age","sequence_length","mbd_mutation_rate","bd_mutation_rate","sample_interval","chain_length","sub_chain_length"
+"1",0.2,0.15,1,0.1,1,15,1000,0.0666666666666667,0.0666666666666667,1000,10000,1000

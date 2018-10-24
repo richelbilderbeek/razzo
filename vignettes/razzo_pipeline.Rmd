@@ -66,7 +66,7 @@ We will work in this folder:
 ```{r}
 super_folder_name <- tempdir()
 project_folder_name <- file.path(super_folder_name, "razzo_project") 
-dir.create(path = project_folder_name)
+dir.create(path = project_folder_name, recursive = TRUE)
 ```
 
 ## Step 0: create parameters
@@ -80,7 +80,17 @@ parameters_filenames <- raz_create_parameters_files(
 knitr::kable(parameters_filenames)
 ```
 
-## Step 1: create input files
+## Step 1: create MBD trees
+
+```{r}
+mbd_tree_filenames <- parameters_filenames
+# Create all true trees, true alignments and their twins
+# for (i in seq_along(parameters_filenames)) {
+#   i <- 1
+#   parameters_filename <- parameters_filenames[i]
+#   mbd_tree_filenames[i] <- raz_create_mbd_tree_file(parameters_filename)
+# }
+```
 
 Each parameter file is read to create a MBD tree and alignment and its BD twin:
 
