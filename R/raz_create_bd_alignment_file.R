@@ -15,7 +15,6 @@ raz_create_bd_alignment_file <- function(
   bd_tree_filename <- file.path(dirname(parameters_filename), "bd.tree")
   testit::assert(file.exists(bd_tree_filename))
 
-
   alignment <- raz_create_bd_alignment(
     parameters = raz_open_parameters_file(parameters_filename),
     bd_tree = ape::read.tree(bd_tree_filename)

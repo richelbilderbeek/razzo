@@ -1,15 +1,3 @@
-## ----setup, results = "hide"---------------------------------------------
-if (!require(mbd)) {
-  devtools::install_github("Giappo/mbd")
-}
-if (!require(TESS)) {
-  install.packages("TESS", repo = "https://lib.ugent.be/CRAN/")
-}
-if (!require(pirouette)) {
-  devtools::install_github("richelbilderbeek/babette")
-  devtools::install_github("richelbilderbeek/pirouette")
-}
-
 ## ------------------------------------------------------------------------
 library(razzo)
 
@@ -22,42 +10,68 @@ dir.create(path = project_folder_name, recursive = TRUE)
 parameters_filenames <- raz_create_parameters_files(
   project_folder_name = project_folder_name
 )
+
+## ------------------------------------------------------------------------
+parameters_filenames <- parameters_filenames[ c(1, 2) ]
 knitr::kable(parameters_filenames)
 
 ## ------------------------------------------------------------------------
 mbd_tree_filenames <- parameters_filenames
 # Create all true trees, true alignments and their twins
-# for (i in seq_along(parameters_filenames)) {
-#   i <- 1
-#   parameters_filename <- parameters_filenames[i]
-#   mbd_tree_filenames[i] <- raz_create_mbd_tree_file(parameters_filename)
-# }
+for (i in seq_along(parameters_filenames)) {
+  parameters_filename <- parameters_filenames[i]
+  mbd_tree_filenames[i] <- raz_create_mbd_tree_file(parameters_filename)
+}
 
 ## ------------------------------------------------------------------------
+ape::plot.phylo(ape::read.tree(file = mbd_tree_filenames[1]))
+
+## ------------------------------------------------------------------------
+# TODO: Issue: row names were found from a short variable and have been discarded
 if (1 == 2) {
-  # Create all true trees, true alignments and their twins
-  for (parameters_filename in parameters_filenames) {
-    input_filenames <- raz_create_input_files(parameters_filename)
-    # True MBD tree
-    testit::assert(file.path(folder_name, "1", "mbd.tree") %in% input_filenames)
-    # True MBD alignment
-    testit::assert(file.path(folder_name, "1", "mbd.fasta") %in% input_filenames)
-    # Twin BD tree
-    testit::assert(file.path(folder_name, "1", "bd.tree") %in% input_filenames)
-    # Twin BD alignment
-    testit::assert(file.path(folder_name, "1", "bd.fasta") %in% input_filenames)
+  bd_tree_filenames <- parameters_filenames
+  # Create all BD twin trees, true alignments and their twins
+  for (i in seq_along(parameters_filenames)) {
+    parameters_filename <- parameters_filenames[i]
+    bd_tree_filenames[i] <- raz_create_bd_tree_file(parameters_filename)
   }
 }
 
 ## ------------------------------------------------------------------------
-# TODO: Issue #8: actually create an MBD tree and save it
 if (1 == 2) {
-  graphics::plot(file.path(folder_name, "1", "mbd.tree"))
+  ape::plot.phylo(ape::read.tree(file = bd_tree_filenames[1]))
 }
 
 ## ------------------------------------------------------------------------
 if (1 == 2) {
-  graphics::plot(file.path(folder_name, "1", "bd.tree"))
+  mbd_alignment_filenames <- parameters_filenames
+  # Create all true trees, true alignments and their twins
+  for (i in seq_along(parameters_filenames)) {
+    parameters_filename <- parameters_filenames[i]
+    mbd_alignment_filenames[i] <- raz_create_mbd_alignment_file(parameters_filename)
+  }
+}
+
+## ------------------------------------------------------------------------
+if (1 == 2) {
+  image(ape::read.FASTA(file = mbd_alignment_filenames[1]))
+}
+
+## ------------------------------------------------------------------------
+# TODO: Issue Error in pirouette::sim_alignment(phylogeny = bd_tree, sequence_length = NULL, : phylogeny must not contain extant species
+if (1 == 2) {
+  bd_alignment_filenames <- parameters_filenames
+  # Create all true trees, true alignments and their twins
+  for (i in seq_along(parameters_filenames)) {
+    i <- 1
+    parameters_filename <- parameters_filenames[i]
+    bd_alignment_filenames[i] <- raz_create_bd_alignment_file(parameters_filename)
+  }
+}
+
+## ------------------------------------------------------------------------
+if (1 == 2) {
+  image(ape::read.FASTA(file = bd_alignment_filenames[1]))
 }
 
 ## ------------------------------------------------------------------------

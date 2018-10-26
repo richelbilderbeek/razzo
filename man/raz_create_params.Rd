@@ -5,7 +5,7 @@
 \title{Creates a list of parameters,
 after checking the arguments for their validity}
 \usage{
-raz_create_params(lambda = 0.1, mu = 0.05, nu = 0.1, q = 0.1,
+raz_create_params(lambda = 0.1, mu = 0.05, nu = 1, q = 0.1,
   seed = 42, crown_age = 15, sequence_length = 100,
   mbd_mutation_rate = 1/crown_age, bd_mutation_rate = 1/crown_age,
   sample_interval = 1000, chain_length = 2000,

@@ -6,7 +6,7 @@
 #'   \item mbd_tree the reconstructed tree of class \code{phylo}
 #'   \item l_matrix the L matrix
 #' }
-#' @author Giovanni Laudanno and Richel J.C. Bilderbeek
+#' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
 raz_create_mbd_tree <- function(
   parameters
