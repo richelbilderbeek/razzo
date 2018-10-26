@@ -4,18 +4,19 @@
 \alias{raz_create_mbd_alignment}
 \title{Create an MBD alignment from a parameters file in the same folder}
 \usage{
-raz_create_mbd_alignment(parameters, folder_name)
+raz_create_mbd_alignment(parameters, mbd_tree)
 }
 \arguments{
 \item{parameters}{the razzo parameters}
 
-\item{folder_name}{name of the main folder}
+\item{mbd_tree}{an MBD tree}
 }
 \value{
 nothing
 }
 \description{
-Create an MBD alignment from a parameters file in the same folder
+Create an MBD alignment
+  from a parameters file in the same folder
 as that parameters file.
 For example, for a path '/my_folder/parameters.csv', this function creates:
 '/my_folder/mbd.fasta'.

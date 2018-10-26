@@ -14,6 +14,7 @@ r_github_packages:
   - ropensci/spelling
   - richelbilderbeek/beautier
   - richelbilderbeek/beastier
+  - richelbilderbeek/mauricer
   - richelbilderbeek/tracerer
   - richelbilderbeek/babette
   - richelbilderbeek/pirouette

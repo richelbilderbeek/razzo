@@ -6,8 +6,7 @@
 raz_get_parameters_path <- function(
   parameters,
   folder_name
-)
-{
+) {
   path <- file.path(
     folder_name,
     "razzo_project",

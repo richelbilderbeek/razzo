@@ -2,23 +2,24 @@
 % Please edit documentation in R/raz_create_mbd_tree.R
 \name{raz_create_mbd_tree}
 \alias{raz_create_mbd_tree}
-\title{Create an MBD tree from the razzo parameters
-and save it as a file}
+\title{Create an MBD tree from the razzo parameters}
 \usage{
-raz_create_mbd_tree(parameters, folder_name)
+raz_create_mbd_tree(parameters)
 }
 \arguments{
 \item{parameters}{the razzo parameters}
-
-\item{folder_name}{name of the main folder}
 }
 \value{
-The tree simulated under the MBD process. It will create a file with name \code{mbd.tree} in the folder relative to the chosen parameters
+a list with elements that resulted from a
+simulation under the MBD process:
+\itemize{
+  \item mbd_tree the reconstructed tree of class \code{phylo}
+  \item l_matrix the L matrix
+}
 }
 \description{
 Create an MBD tree from the razzo parameters
-and save it as a file
 }
 \author{
-Richel J.C. Bilderbeek, Giovanni Laudanno
+Giovanni Laudanno and Richel J.C. Bilderbeek
 }

@@ -2,18 +2,9 @@ context("raz_open_parameters_file")
 
 test_that("use", {
 
-  # Work from a folder
-  folder_name <- razzo:::raz_make_tempdir(); # folder_name <- tempdir()
-  testthat::expect_true(
-    dir.exists(folder_name)
+  parameters <- raz_open_parameters_file(
+    parameters_filename = raz_get_path("parameters.csv")
   )
-
-  # Create the parameter files
-  razzo:::raz_save_standard_test_parameters()
-  filenames <- razzo:::raz_get_standard_test_filenames()
-
-  filename <- filenames[1]
-  parameters <- razzo::raz_open_parameters_file(filename)
   testthat::expect_true(parameters$lambda > 0.0)
   testthat::expect_true(parameters$mu >= 0.0)
   testthat::expect_true(parameters$nu >= 0.0)

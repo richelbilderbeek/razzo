@@ -2,34 +2,18 @@ context("raz_create_bd_tree")
 
 test_that("use", {
 
-  # Work from a folder
-  folder_name <- razzo:::raz_make_tempdir(); # folder_name <- tempdir()
-  testthat::expect_true(
-    dir.exists(folder_name)
+  parameters <- raz_open_parameters_file(raz_get_path("parameters.csv"))
+  parameters$seed <- 12
+  mbd_tree <- ape::read.tree(file = raz_get_path("mbd.tree"))
+  mbd_l_matrix <- as.matrix(
+    utils::read.csv(file = raz_get_path("mbd_l_matrix.csv")))
+  # Remove the first column?
+  mbd_l_matrix <- mbd_l_matrix[, -1]
+
+  bd_tree <- raz_create_bd_tree(
+    parameters = parameters,
+    mbd_tree = mbd_tree,
+    mbd_l_matrix = mbd_l_matrix
   )
-
-  # Create the parameter files
-  razzo:::raz_save_standard_test_parameters()
-  filenames <- razzo:::raz_get_standard_test_filenames()
-
-  testthat::expect_true(length(filenames) > 0)
-  one_parameter_setting <- dirname(filenames[1])
-  testthat::expect_true(file.exists(one_parameter_setting))
-  parameters_filename <- file.path(one_parameter_setting, "parameters.csv")
-  mbd_tree_filename   <- file.path(one_parameter_setting, "mbd.tree")
-
-  # Get parameters
-  parameters <- razzo::raz_open_parameters_file(parameters_filename)
-
-  # Create MBD tree
-  razzo::raz_create_mbd_tree(parameters = parameters, folder_name = folder_name)
-
-  # Create BD tree
-  silent_output <- capture.output(
-    razzo::raz_create_bd_tree(parameters = parameters, folder_name = folder_name)
-  )
-
-  # Actually create a BD tree and save it
-  bd_tree_filename <- file.path(one_parameter_setting, "bd.tree")
-  testthat::expect_true(file.exists(bd_tree_filename))
+  expect_equal(class(bd_tree), "phylo")
 })

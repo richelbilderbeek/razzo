@@ -1,30 +1,39 @@
 context("raz_create_mbd_tree")
 
-test_that("use", {
+test_that("creates a tree", {
 
-  # Work from a folder
-  folder_name <- razzo:::raz_make_tempdir(); # folder_name <- tempdir()
-  testthat::expect_true(
-    dir.exists(folder_name)
-  )
+  parameters <- raz_open_parameters_file(raz_get_path("parameters.csv"))
+  parameters$seed <- 5
+  mbd_sim <- raz_create_mbd_tree(parameters)
+  expect_true("mbd_tree" %in% names(mbd_sim))
+  expect_true("mbd_l_matrix" %in% names(mbd_sim))
+  expect_equal(class(mbd_sim$mbd_tree), "phylo")
 
-  # Create the parameter files
-  razzo:::raz_save_standard_test_parameters()
-  filenames <- razzo:::raz_get_standard_test_filenames()
+  nrow(mbd_sim$mbd_l_matrix)
+  # Should preferably be a data.frame or tibble
+  expect_equal(class(mbd_sim$mbd_l_matrix), "matrix")
 
-  testthat::expect_true(length(filenames) > 0)
-  one_parameter_setting <- dirname(filenames[1])
-  testthat::expect_true(file.exists(one_parameter_setting))
-  parameters_filename <- file.path(one_parameter_setting, "parameters.csv")
-  mbd_tree_filename   <- file.path(one_parameter_setting, "mbd.tree")
+  if (1 == 2) {
+    # To re-create the files in inst/extdata
+    ape::plot.phylo(mbd_sim$mbd_tree)
+    ape::write.tree(phy = mbd_sim$mbd_tree, file = "~/mbd.tree")
+    write.csv(x = mbd_sim$mbd_l_matrix, file = "~/mbd_l_matrix.csv")
+  }
+})
 
-  # Get parameters
-  parameters <- razzo::raz_open_parameters_file(parameters_filename)
+test_that("must have as much multiple bursts as predicted by nu", {
 
-  # Create tree
-  razzo::raz_create_mbd_tree(parameters = parameters, folder_name = folder_name)
+  parameters <- razzo::raz_open_parameters_file(raz_get_path("parameters.csv"))
 
-  # Actually create an MBD tree and save it
-  testthat::expect_true(file.exists(mbd_tree_filename))
+  mbd_sim <- razzo::raz_create_mbd_tree(parameters)
+  tree <- mbd_sim$mbd_tree
 
+  # Calculate the number of expected triggered speciation events
+  exp_n_spec_events <- parameters$crown_age / parameters$nu
+
+  skip("TODO: Issue #: Create trees with expected number of speciation events")
+  # Count the number of actual triggered speciation events
+  n_spec_events <- mbd::mbd_count_n_spec_events(mbd_tree)
+
+  expect_equal(exp_n_spec_events, n_spec_events)
 })

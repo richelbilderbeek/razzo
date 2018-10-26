@@ -5,13 +5,11 @@
 #' @export
 raz_open_parameters_file <- function(
   parameters_filename
-)
-{
+) {
   testit::assert(file.exists(parameters_filename))
 
-  reading <- read.csv(parameters_filename)
-  parameters <- data.frame(t(reading[,2]))
-  names(parameters) <- reading[,1]
+  # Remove the first column, as it is an unused row name
+  parameters <- utils::read.csv(parameters_filename)[, -1]
 
   testit::assert(parameters$lambda >= 0)
   testit::assert(parameters$mu >= 0)
@@ -19,5 +17,5 @@ raz_open_parameters_file <- function(
   testit::assert(parameters$q >= 0)
   testit::assert(parameters$q <= 1)
 
-  return(parameters)
+  parameters
 }

@@ -6,11 +6,15 @@
 \usage{
 raz_make_tempdir(...)
 }
+\arguments{
+\item{...}{options for \code{tempdir}}
+}
 \value{
 the address of the temporary folder
 }
 \description{
-The function removes all the pre-existing temporary folders and creates a new temporary folder.
+The function removes all the pre-existing temporary folders
+  and creates a new temporary folder.
 Mainly used to run tests.
 }
 \author{

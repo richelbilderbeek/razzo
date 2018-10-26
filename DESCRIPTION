@@ -16,19 +16,22 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.0
 Imports: 
-  ape, 
+  ape,
+  babette,
   beastier, 
   beautier,
   DDD,
   devtools,
-  ggplot2, 
+  ggplot2,
+  mauricer,
   mbd,
   nLTT,
   pirouette,
+  stringr,
+  TESS,
   testit,
   tracerer
 Suggests:
-  TESS,
   testthat,
   lintr,
   knitr,

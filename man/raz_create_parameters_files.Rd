@@ -2,19 +2,22 @@
 % Please edit documentation in R/raz_create_parameters_files.R
 \name{raz_create_parameters_files}
 \alias{raz_create_parameters_files}
-\title{For each parameter setting create a folder and a parameters file}
+\title{Create all parameter files  in
+  \code{project_folder_name/data/[settings]/seed}}
 \usage{
-raz_create_parameters_files(folder_name, lambda.interval = c(0.2, 0.2),
-  mu.interval = c(0.15, 0.15), nu.interval = seq(from = 1, to = 2.5, by
-  = 0.5), q.interval = seq(from = 0.1, to = 0.2, by = 0.05),
-  seed.interval = 1:1000, soc, age, cond, sequence_length,
-  mbd_mutation_rate, sample_interval)
+raz_create_parameters_files(project_folder_name = getwd())
+}
+\arguments{
+\item{project_folder_name}{project folder name,
+will be the full path to \code{razzo_project}}
 }
 \value{
-Create folders for each parameter setting and saves each setting in a file within the corresponding folder.
+Create folders for each parameter setting
+  and saves each setting in a file within the corresponding folder.
 }
 \description{
-For each parameter setting create a folder and a parameters file
+Create all parameter files  in
+  \code{project_folder_name/data/[settings]/seed}
 }
 \author{
 Giovanni Laudanno, Richel J.C. Bilderbeek
