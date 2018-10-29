@@ -180,7 +180,7 @@ test_that("clock model", {
 
 })
 
-test_that("clock model", {
+test_that("site model", {
 
   skip("TODO: #33: Add parameter for site model")
 
