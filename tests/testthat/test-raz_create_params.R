@@ -139,3 +139,83 @@ test_that("abuse", {
     "sequence_length has to be a positive integer number"
   )
 })
+
+test_that("clock model", {
+
+  skip("TODO: #34: Add parameter for clock model")
+
+  # Construct params with strict clock model
+  expect_silent(
+    raz_create_params(
+      clock_model = "strict"
+    )
+  )
+
+  # Construct params with relaxed log-normal clock model
+  expect_silent(
+    raz_create_params(
+      clock_model = "rln"
+    )
+  )
+
+  # Nonsense clock model
+  expect_error(
+    raz_create_params(
+      clock_model = "nonsense"
+    ),
+    "'clock_model' must be either 'strict' or 'rln'"
+  )
+
+  # Retrieve strict clock from parameters
+  expect_equal(
+    "strict",
+    raz_create_params(clock_model = "strict")$clock_model
+  )
+
+  # Retrieve strict clock from parameters
+  expect_equal(
+    "rln",
+    raz_create_params(clock_model = "rln")$clock_model
+  )
+
+})
+
+test_that("clock model", {
+
+  skip("TODO: #33: Add parameter for site model")
+
+  # Construct params with JC69 site model
+  expect_silent(
+    raz_create_params(
+      site_model = "jc69"
+    )
+  )
+
+  # Construct params with GTR site model
+  expect_silent(
+    raz_create_params(
+      site_model = "gtr"
+    )
+  )
+
+  # Nonsense site model
+  expect_error(
+    raz_create_params(
+      site_model = "nonsense"
+    ),
+    "'site_model' must be either 'jc69' or 'gtr'"
+  )
+
+  # Retrieve JC69 site model from parameters
+  expect_equal(
+    "jc69",
+    raz_create_params(site_model = "jc69")$site_model
+  )
+
+  # Retrieve GTR site model from parameters
+  expect_equal(
+    "gtr",
+    raz_create_params(site_model = "gtr")$site_model
+  )
+
+})
