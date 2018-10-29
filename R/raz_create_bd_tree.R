@@ -25,7 +25,11 @@ raz_create_bd_tree <- function(
   set.seed(seed)
   { # nolint indeed bracket incorrect, is to scope the sink, which is thanks to DDD
     # Suppress output
-    sink("/dev/null")
+    if (rappdirs::app_dir()$os != "win") {
+      sink("/dev/null")
+    } else {
+      sink(rappdirs::user_cache_dir())
+    }
     # TODO and NOTE: Issue #32: should cond be 1 or 2?
     bd_pars <- DDD::bd_ML( # nolint
       brts = abs(mbd_brts),

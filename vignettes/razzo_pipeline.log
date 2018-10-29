@@ -1,7 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100) (preloaded format=pdflatex 2017.1.9)  26 OCT 2018 14:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100) (preloaded format=pdflatex 2017.1.9)  29 OCT 2018 13:08
 entering extended mode
-**./razzo_pipeline.tex
-(razzo_pipeline.tex
+**C:/Users/P274829/AppData/Local/Temp/Rtmpg7fNQg/preview-234c2b2c100.dir/razzo_
+pipeline.tex
+
+(C:/Users/P274829/AppData/Local/Temp/Rtmpg7fNQg/preview-234c2b2c100.dir/razzo_p
+ipeline.tex
 LaTeX2e <2016/03/31> patch level 3
 Babel <3.9r> and hyphenation patterns for 76 language(s) loaded.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
@@ -1025,12 +1028,12 @@ fonts.
 l.285 \begin{Shaded}
                      
 Here is how much of TeX's memory you used:
- 12766 strings out of 493329
- 183971 string characters out of 3136460
+ 12767 strings out of 493329
+ 184184 string characters out of 3136460
  298566 words of memory out of 3000000
  16146 multiletter control sequences out of 15000+200000
  22325 words of font info for 33 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 32i,6n,38p,241b,360s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 32i,6n,38p,310b,360s stack positions out of 5000i,500n,10000p,200000b,50000s
 
 !  ==> Fatal error occurred, no output PDF file produced!
