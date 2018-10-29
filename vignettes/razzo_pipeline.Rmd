@@ -43,6 +43,17 @@ Filename|Description|Created by
 
 ![Pipeline](pipeline.png)
 
+Update our dependencies:
+
+```{r}
+devtools::install_github("Giappo/mbd")
+devtools::install_github("richelbilderbeek/beautier")
+devtools::install_github("richelbilderbeek/tracerer")
+devtools::install_github("richelbilderbeek/beastier")
+devtools::install_github("richelbilderbeek/mauricer")
+devtools::install_github("richelbilderbeek/babette")
+```
+
 Load the library:
 
 ```{r}
