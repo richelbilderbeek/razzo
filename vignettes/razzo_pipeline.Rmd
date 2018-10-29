@@ -167,7 +167,6 @@ if (1 == 2) {
   # Do the inference
   mbd_alignment_filenames <- list() # Search the folder
   for (i in seq_along(parameters_filenames)) {
-  {
     parameter_filename <- parameters_filenames[i] 
     mbd_alignment_filenames[[i]] <- raz_create_mbd_posterior_files(
       parameter_filename

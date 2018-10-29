@@ -21,5 +21,5 @@ simulation under the MBD process:
 Create an MBD tree from the razzo parameters
 }
 \author{
-Giovanni Laudanno and Richel J.C. Bilderbeek
+Giovanni Laudanno, Richel J.C. Bilderbeek
 }
