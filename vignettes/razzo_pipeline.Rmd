@@ -168,10 +168,13 @@ if (1 == 2) {
 ```{r}
 if (1 == 2) {
   # Do the inference
-  fasta_filenames <- c("1a.fasta") # Search the folder
-  for (fasta_filename in fasta_filenames) 
+  mbd_alignment_filenames <- list() # Search the folder
+  for (i in seq_along(parameters_filenames)) {
   {
-    output_filenames <- raz_create_posterior_files(fasta_filename)
+    parameter_filename <- parameters_filenames[i] 
+    mbd_alignment_filenames[[i]] <- raz_create_mbd_posterior_files(
+      parameter_filename
+    )
     # Posterior trees
     testit::assert("1a.trees" %in% output_filenames)
     # Trace of MCMC, to estimate the Effective Sample Sizes
