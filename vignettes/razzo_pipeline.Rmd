@@ -98,14 +98,11 @@ To estimate the parameters we run a ML inference using the BD model.
 We also want to condition on the same amount of tips and on the survival of the phylogeny (cond = 2).
 
 ```{r}
-# TODO: Issue: row names were found from a short variable and have been discarded
-if (1 == 2) {
-  bd_tree_filenames <- parameters_filenames
-  # Create all BD twin trees, true alignments and their twins
-  for (i in seq_along(parameters_filenames)) {
-    parameters_filename <- parameters_filenames[i]
-    bd_tree_filenames[i] <- raz_create_bd_tree_file(parameters_filename)
-  }
+bd_tree_filenames <- parameters_filenames
+# Create all BD twin trees, true alignments and their twins
+for (i in seq_along(parameters_filenames)) {
+  parameters_filename <- parameters_filenames[i]
+  bd_tree_filenames[i] <- raz_create_bd_tree_file(parameters_filename)
 }
 ```
 

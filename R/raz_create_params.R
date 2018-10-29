@@ -7,7 +7,7 @@
 raz_create_params <- function(
   lambda = 0.1,
   mu = 0.05,
-  nu = 0.1,
+  nu = 1,
   q = 0.1,
   seed = 42,
   crown_age = 15,
