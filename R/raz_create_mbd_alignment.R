@@ -9,7 +9,8 @@
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
 raz_create_mbd_alignment <- function(
-  parameters, mbd_tree
+  parameters,
+  mbd_tree
 ) {
   # Get the sequence length from the parameters filename
   sequence_length <- parameters$sequence_length

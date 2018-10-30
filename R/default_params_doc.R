@@ -7,6 +7,7 @@
 #'   process
 #' @param bd_tree_filename name of the file that stores a BD twin tree
 #' @param chain_length something
+#' @param clock_model Name of the clock model that has to be used for the inference. Valid names are 'strict' and 'rln'.
 #' @param crown_age The crown age of the tree.
 #' @param fasta_filename name of a FASTA file
 #' @param folder_name name of the main folder
@@ -34,6 +35,7 @@
 #' @param seed a random number generator seed
 #' @param sim_pars something
 #' @param sim_phylo something
+#' @param site_model Name of the site model that has to be used for the inference. Valid names are 'jc69' and 'gtr'.
 #' @param sub_chain_length length of the sub-chain used by the Nested Sampling
 #'   algorithm to estimate the marginal likelihood
 #' @param tree an ultrametric phylogenetic tree of class \code{phylo}
@@ -52,6 +54,7 @@ default_params_doc <- function(
   bd_tree,
   bd_tree_filename,
   chain_length,
+  clock_model,
   crown_age,
   fasta_filename,
   folder_name,
@@ -75,6 +78,7 @@ default_params_doc <- function(
   sequence_length,
   sim_pars,
   sim_phylo,
+  site_model,
   sub_chain_length,
   tree,
   tree_filename,

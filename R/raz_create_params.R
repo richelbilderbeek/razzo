@@ -16,8 +16,10 @@ raz_create_params <- function(
   bd_mutation_rate = 1.0 / crown_age,
   sample_interval = 1000,
   chain_length = 2000,
-  sub_chain_length = 500
-  ) {
+  sub_chain_length = 500,
+  clock_model = "strict",
+  site_model = "jc69"
+) {
   if (lambda < 0.0) {
     stop("'lambda' must be positive")
   }
@@ -28,7 +30,7 @@ raz_create_params <- function(
     stop("nu has to be non negative!")
   }
   if (q < 0.0 || q > 1.0) {
-      stop("q has to be between zero and one!")
+    stop("q has to be between zero and one!")
   }
   if (!is.numeric(seed)) {
     stop("seed must be an integer!")
@@ -48,13 +50,19 @@ raz_create_params <- function(
     stop("bd_mutation_rate has to be a positive number!")
   }
   if (sample_interval <= 0) {
-      stop("sample_interval has to be a positive number!")
+    stop("sample_interval has to be a positive number!")
   }
   if (chain_length <= 0) {
     stop("chain_length has to be a positive number!")
   }
   if (sub_chain_length <= 0) {
     stop("sub_chain_length has to be a positive number!")
+  }
+  if (!(clock_model == "strict" || clock_model == "rln")) {
+    stop("'clock_model' must be either 'strict' or 'rln'")
+  }
+  if (!(site_model == "jc69" || site_model == "gtr")) {
+    stop("'site_model' must be either 'jc69' or 'gtr'")
   }
 
   params <- list(
@@ -69,7 +77,9 @@ raz_create_params <- function(
     bd_mutation_rate = bd_mutation_rate,
     sample_interval = sample_interval,
     chain_length = chain_length,
-    sub_chain_length = sub_chain_length
+    sub_chain_length = sub_chain_length,
+    clock_model = clock_model,
+    site_model = site_model
   )
   params
 }

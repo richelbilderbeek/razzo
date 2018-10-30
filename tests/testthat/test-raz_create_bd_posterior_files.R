@@ -3,7 +3,7 @@ context("raz_create_bd_posterior_files")
 test_that("use", {
 
   if (rappdirs::app_dir()$os == "win") {
-    skip("Cannot do inference on Windows computers")
+  skip("Cannot do inference on Windows computers")
     # See https://github.com/richelbilderbeek/beastier/blob/master/doc/faq.md ,
     # section 'Why doesn't beastier support calling the Windows BEAST2.exe
     # file?'. Spoiler: because BEAST2.exe does not allow scripted use
