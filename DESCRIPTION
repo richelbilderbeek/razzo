@@ -4,8 +4,7 @@ Title: The Error If Nature Is MBD
 Version: 0.1.0
 Authors@R: c(
   person("Giavonni", "Laudanno", role = c("aut")),
-  person("Richel", "Bilderbeek", email = "richel@richelbilderbeek.nl", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1107-7049")))
-Author: Richel J.C. Bilderbeek <richel@richelbilderbeek.nl>
+  person("Richel J.C.", "Bilderbeek", email = "richel@richelbilderbeek.nl", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1107-7049")))
 Maintainer: Richel J.C. Bilderbeek <richel@richelbilderbeek.nl>
 Description: The MBD model is a model that does stuff.
   That stuff is important. That is why we use it. This
@@ -27,6 +26,7 @@ Imports:
   mbd,
   nLTT,
   pirouette,
+  rappdirs,
   stringr,
   TESS,
   testit,

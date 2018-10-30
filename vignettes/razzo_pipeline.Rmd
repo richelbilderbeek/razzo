@@ -43,6 +43,17 @@ Filename|Description|Created by
 
 ![Pipeline](pipeline.png)
 
+Update our dependencies:
+
+```{r}
+devtools::install_github("Giappo/mbd")
+devtools::install_github("richelbilderbeek/beautier")
+devtools::install_github("richelbilderbeek/tracerer")
+devtools::install_github("richelbilderbeek/beastier")
+devtools::install_github("richelbilderbeek/mauricer")
+devtools::install_github("richelbilderbeek/babette")
+```
+
 Load the library:
 
 ```{r}
@@ -165,10 +176,12 @@ if (1 == 2) {
 ```{r}
 if (1 == 2) {
   # Do the inference
-  fasta_filenames <- c("1a.fasta") # Search the folder
-  for (fasta_filename in fasta_filenames) 
-  {
-    output_filenames <- raz_create_posterior_files(fasta_filename)
+  mbd_alignment_filenames <- list() # Search the folder
+  for (i in seq_along(parameters_filenames)) {
+    parameter_filename <- parameters_filenames[i] 
+    mbd_alignment_filenames[[i]] <- raz_create_mbd_posterior_files(
+      parameter_filename
+    )
     # Posterior trees
     testit::assert("1a.trees" %in% output_filenames)
     # Trace of MCMC, to estimate the Effective Sample Sizes
