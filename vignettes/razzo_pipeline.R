@@ -1,11 +1,11 @@
 ## ----message=FALSE-------------------------------------------------------
 if (1 == 2) {
-  devtools::install_github("Giappo/mbd")
-  devtools::install_github("richelbilderbeek/beautier")
-  devtools::install_github("richelbilderbeek/tracerer")
-  devtools::install_github("richelbilderbeek/beastier")
-  devtools::install_github("richelbilderbeek/mauricer")
-  devtools::install_github("richelbilderbeek/babette")
+  devtools::install_github("Giappo/mbd", quiet = TRUE)
+  devtools::install_github("richelbilderbeek/beautier", quiet = TRUE)
+  devtools::install_github("richelbilderbeek/tracerer", quiet = TRUE)
+  devtools::install_github("richelbilderbeek/beastier", quiet = TRUE)
+  devtools::install_github("richelbilderbeek/mauricer", quiet = TRUE)
+  devtools::install_github("richelbilderbeek/babette", quiet = TRUE)
 }
 
 ## ------------------------------------------------------------------------
@@ -61,8 +61,8 @@ image(ape::read.FASTA(file = mbd_alignment_filenames[1]))
 ## ------------------------------------------------------------------------
 bd_alignment_filenames <- parameters_filenames
 # Create all true trees, true alignments and their twins
+i <- 1
 for (i in seq_along(parameters_filenames)) {
-  i <- 1
   parameters_filename <- parameters_filenames[i]
   bd_alignment_filenames[i] <- raz_create_bd_alignment_file(parameters_filename)
 }
@@ -72,7 +72,7 @@ image(ape::read.FASTA(file = bd_alignment_filenames[1]))
 
 ## ------------------------------------------------------------------------
 if (1 == 2) {
-  # Do the inference
+  # Do the inference. It doesn't work on Windows.
   mbd_alignment_filenames <- list() # Search the folder
   for (i in seq_along(parameters_filenames)) {
     parameter_filename <- parameters_filenames[i] 
