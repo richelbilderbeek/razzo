@@ -30,10 +30,10 @@ raz_create_bd_tree <- function(
     } else {
       sink(rappdirs::user_cache_dir())
     }
-    # TODO and NOTE: Issue #32: should cond be 1 or 2?
+    # TODO and NOTE: Issue #32: should cond be 1 or 2? I think Rampal told us to use cond=2...
     bd_pars <- DDD::bd_ML( # nolint
-      brts = abs(mbd_brts),
-      cond = 2,
+      brts = sort(mbd_brts, decreasing = TRUE),
+      cond = 2, #conditioning on stem or crown age and on the total number of extant taxa (including missing species)
       initparsopt = c(lambda, mu),
       idparsopt = 1:2,
       missnumspec = 0,
@@ -60,25 +60,12 @@ raz_create_bd_tree <- function(
     MRCA = TRUE
   )[[1]]
 
-  bd_brts <- ape::branching.times(bd_tree0)
-  bd_l_matrix <- mbd_l_matrix
-  alive <- bd_l_matrix[, 4] == -1
-  alive2 <- alive
-  t <- length(alive)
-  while (sum(alive2) > length(bd_brts)) {
-    if (alive2[t] == 1) {
-      alive2[t] <- 0
-    }
-    t <- t - 1
-  }
-  vec <- bd_l_matrix[, 1]
-  vec[seq_along(vec) * alive2] <- bd_brts
-  bd_l_matrix[, 1] <- vec
+  bd_brts0 <- ape::branching.times(bd_tree0)
 
-  # TODO: Issue #43: DDD::L2phylo gives unclear error
-  if (1 == 2) {
-    return(DDD::L2phylo(bd_l_matrix))
-  }
-  # FAKE
-  mbd_tree
+  bd_tree <- raz_combine_brts_and_topology(
+    brts = bd_brts0,
+    tree = mbd_tree
+  )
+
+  bd_tree
 }

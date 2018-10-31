@@ -6,13 +6,13 @@
 documentation.}
 \usage{
 default_params_doc(alignment, bd_mutation_rate, bd_tree, bd_tree_filename,
-  chain_length, crown_age, fasta_filename, folder_name,
+  chain_length, clock_model, crown_age, fasta_filename, folder_name,
   init_speciation_rate, init_extinction_rate, lambda, mbd_l_matrix,
   mbd_mutation_rate, mbd_tree, mu, mutation_rate, nu, parameters,
   parameter_filename, parameters_filename, posterior_trees,
   project_folder_name, q, sample_interval, seed, sequence_length, sim_pars,
-  sim_phylo, sub_chain_length, tree, tree_filename, trees_filename,
-  verbose)
+  sim_phylo, site_model, sub_chain_length, tree, tree_filename,
+  trees_filename, verbose)
 }
 \arguments{
 \item{alignment}{a DNA alignment}
@@ -26,6 +26,8 @@ process}
 \item{bd_tree_filename}{name of the file that stores a BD twin tree}
 
 \item{chain_length}{something}
+
+\item{clock_model}{Name of the clock model that has to be used for the inference. Valid names are 'strict' and 'rln'.}
 
 \item{crown_age}{The crown age of the tree.}
 
@@ -76,6 +78,8 @@ makes a measurement}
 \item{sim_pars}{something}
 
 \item{sim_phylo}{something}
+
+\item{site_model}{Name of the site model that has to be used for the inference. Valid names are 'jc69' and 'gtr'.}
 
 \item{sub_chain_length}{length of the sub-chain used by the Nested Sampling
 algorithm to estimate the marginal likelihood}

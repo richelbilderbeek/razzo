@@ -23,5 +23,5 @@ the posterior, as a list of these items:
 Create the posterior from parameters and an alignment.
 }
 \author{
-Richel J.C. Bilderbeek
+Richel J.C. Bilderbeek, Giovanni Laudanno
 }

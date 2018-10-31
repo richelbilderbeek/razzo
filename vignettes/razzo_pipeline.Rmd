@@ -1,12 +1,14 @@
 ---
 title: "razzo pipeline"
-author: "G. Laudanno and Richel J.C. Bilderbeek"
+author: "Giovanni Laudanno and Richel J.C. Bilderbeek"
 date: "`r Sys.Date()`"
 output: rmarkdown::pdf_document
 vignette: >
   %\VignetteIndexEntry{razzo pipeline}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  \usepackage[T1]{fontenc}
+  \usepackage{lmodern}
 ---
 
 Legenda:
@@ -83,7 +85,7 @@ parameters_filenames <- raz_create_parameters_files(
 To speed things up, we'll be keeping only two parameter files:
 
 ```{r}
-parameters_filenames <- parameters_filenames[ c(1, 2) ]
+parameters_filenames <- parameters_filenames[c(1, 2)]
 knitr::kable(parameters_filenames)
 ```
 
@@ -101,7 +103,7 @@ for (i in seq_along(parameters_filenames)) {
 Taking a look at the first MBD tree:
 
 ```{r}
-ape::plot.phylo(ape::read.tree(file = mbd_tree_filenames[1]))
+ape::plot.phylo(ape::read.tree(file = mbd_tree_filenames[2]))
 ```
 
 ## Step 3: create twin BD trees
@@ -122,7 +124,7 @@ for (i in seq_along(parameters_filenames)) {
 Taking a look at the first MBD tree:
 
 ```{r}
-ape::plot.phylo(ape::read.tree(file = bd_tree_filenames[1]))
+ape::plot.phylo(ape::read.tree(file = bd_tree_filenames[2]))
 ```
 
 ## Step 4: Create MBD alignments
