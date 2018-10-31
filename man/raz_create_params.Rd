@@ -41,9 +41,11 @@ makes a measurement}
 \item{sub_chain_length}{length of the sub-chain used by the Nested Sampling
 algorithm to estimate the marginal likelihood}
 
-\item{clock_model}{Name of the clock model that has to be used for the inference. Valid names are 'strict' and 'rln'.}
+\item{clock_model}{Name of the clock model that has
+to be used for the inference. Valid names are 'strict' and 'rln'.}
 
-\item{site_model}{Name of the site model that has to be used for the inference. Valid names are 'jc69' and 'gtr'.}
+\item{site_model}{Name of the site model that
+has to be used for the inference. Valid names are 'jc69' and 'gtr'.}
 }
 \value{
 a list of parameters

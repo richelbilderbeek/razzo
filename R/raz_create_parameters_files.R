@@ -16,8 +16,6 @@ raz_create_parameters_files <- function(
   seed_interval <- 1:2
   crown_age <- 15
   sequence_length <- 1000
-  mbd_mutation_rate <- 1.0 / crown_age
-  bd_mutation_rate <- 1.0 / crown_age
   sample_interval <- 1000
   chain_length <- 10000
   sub_chain_length <- 1000
@@ -60,8 +58,6 @@ raz_create_parameters_files <- function(
             dir.create(file.path(seedfolder),
                        showWarnings = FALSE)
 
-            # TODO: Use 'raz_create_params',
-            # like 'parameters <- raz_create_params(...)'
             parameters <- raz_create_params(
               lambda = lambda,
               mu = mu,
@@ -70,13 +66,11 @@ raz_create_parameters_files <- function(
               seed = seed,
               crown_age = crown_age,
               sequence_length = sequence_length,
-              mbd_mutation_rate = mbd_mutation_rate,
-              bd_mutation_rate = bd_mutation_rate,
               sample_interval = sample_interval,
               chain_length = chain_length,
               sub_chain_length = sub_chain_length,
-              clock_model = "strict",
-              site_model = "jc69"
+              clock_model = clock_model,
+              site_model = site_model
             )
 
             parameters_filenames[i] <- file.path(seedfolder, "parameters.csv")

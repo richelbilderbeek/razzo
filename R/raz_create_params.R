@@ -35,19 +35,13 @@ raz_create_params <- function(
   if (!is.numeric(seed)) {
     stop("seed must be an integer!")
   }
-  if (crown_age < 0) {
-    stop("age has to be non negative!")
+  if (crown_age <= 0) {
+    stop("age has to be positive!")
   }
   if (floor(sequence_length) != ceiling(sequence_length) ||
       sequence_length < 0
   ) {
     stop("sequence_length has to be a positive integer number!")
-  }
-  if (mbd_mutation_rate < 0.0) {
-    stop("mbd_mutation_rate has to be a positive number!")
-  }
-  if (bd_mutation_rate < 0.0) {
-    stop("bd_mutation_rate has to be a positive number!")
   }
   if (sample_interval <= 0) {
     stop("sample_interval has to be a positive number!")
@@ -73,8 +67,8 @@ raz_create_params <- function(
     seed = seed,
     crown_age = crown_age,
     sequence_length = sequence_length,
-    mbd_mutation_rate = mbd_mutation_rate,
-    bd_mutation_rate = bd_mutation_rate,
+    # mbd_mutation_rate = mbd_mutation_rate,
+    # bd_mutation_rate = bd_mutation_rate,
     sample_interval = sample_interval,
     chain_length = chain_length,
     sub_chain_length = sub_chain_length,

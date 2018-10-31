@@ -1,11 +1,12 @@
-context("raz_brts2branch_lengths")
+context("raz_combine_brts_and_topology")
 
 test_that("check usage with brts coming from the same tree", {
 
-  parameters <- razzo::raz_open_parameters_file(razzo::raz_get_path("parameters.csv"))
+  parameters <- razzo::raz_open_parameters_file(
+    razzo::raz_get_path("parameters.csv")
+  )
 
-  for (seed in 1:20)
-  {
+  for (seed in 1:10) {
     parameters$seed <- seed
     tree <- razzo::raz_create_mbd_tree(parameters)$mbd_tree
     brts <- ape::branching.times(tree)
@@ -28,7 +29,8 @@ test_that("check usage with brts coming from the same tree", {
       all(test$root.edge == tree$root.edge)
     )
     testthat::expect_true(
-      max(unname(test$edge.length) - tree$edge.length) < max(tree$edge.length * 1e-6)
+      max(unname(test$edge.length) - tree$edge.length) <
+        max(tree$edge.length * 1e-6)
     )
   }
 

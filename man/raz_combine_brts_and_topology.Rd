@@ -13,7 +13,8 @@ raz_combine_brts_and_topology(brts, tree)
 a tree
 }
 \description{
-Given a tree topology and a set of branching times it combines them together. They have to be compatible.
+Given a tree topology and a set of branching times,
+it combines them together. They have to be compatible.
 }
 \author{
 Giovanni Laudanno, David Bapst

@@ -20,8 +20,8 @@ raz_create_mbd_alignment <- function(
   # Found:
   #  * BD_mutation_rate <-  MBD_mutation_rate * (sum(MBD_tree$edge.length)/sum(BD_tree$edge.length)); # nolint
   #  * mbd_total_branch_length <- sum(mbd_tree$edge.length)
-  mutation_rate <- parameters$mbd_mutation_rate
-  testit::assert(!is.null(mutation_rate))
+  mbd_mutation_rate <- 1 / parameters$crown_age
+  testit::assert(!is.null(mbd_mutation_rate))
 
   # Root sequence is e.g. AAACCCGGGTTT
   root_sequence <- pirouette::create_blocked_dna(sequence_length)
@@ -31,7 +31,7 @@ raz_create_mbd_alignment <- function(
     phylogeny = mbd_tree,
     sequence_length = NA,
     root_sequence = root_sequence,
-    mutation_rate = mutation_rate
+    mutation_rate = mbd_mutation_rate
   )
 
   alignment

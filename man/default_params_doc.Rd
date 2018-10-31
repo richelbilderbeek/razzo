@@ -27,7 +27,8 @@ process}
 
 \item{chain_length}{something}
 
-\item{clock_model}{Name of the clock model that has to be used for the inference. Valid names are 'strict' and 'rln'.}
+\item{clock_model}{Name of the clock model that has
+to be used for the inference. Valid names are 'strict' and 'rln'.}
 
 \item{crown_age}{The crown age of the tree.}
 
@@ -79,7 +80,8 @@ makes a measurement}
 
 \item{sim_phylo}{something}
 
-\item{site_model}{Name of the site model that has to be used for the inference. Valid names are 'jc69' and 'gtr'.}
+\item{site_model}{Name of the site model that
+has to be used for the inference. Valid names are 'jc69' and 'gtr'.}
 
 \item{sub_chain_length}{length of the sub-chain used by the Nested Sampling
 algorithm to estimate the marginal likelihood}
