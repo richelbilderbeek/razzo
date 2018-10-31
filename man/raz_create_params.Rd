@@ -9,7 +9,8 @@ raz_create_params(lambda = 0.1, mu = 0.05, nu = 1, q = 0.1,
   seed = 42, crown_age = 15, sequence_length = 100,
   mbd_mutation_rate = 1/crown_age, bd_mutation_rate = 1/crown_age,
   sample_interval = 1000, chain_length = 2000,
-  sub_chain_length = 500)
+  sub_chain_length = 500, clock_model = "strict",
+  site_model = "jc69")
 }
 \arguments{
 \item{lambda}{per-lineage speciation rate}
@@ -39,6 +40,10 @@ makes a measurement}
 
 \item{sub_chain_length}{length of the sub-chain used by the Nested Sampling
 algorithm to estimate the marginal likelihood}
+
+\item{clock_model}{Name of the clock model that has to be used for the inference. Valid names are 'strict' and 'rln'.}
+
+\item{site_model}{Name of the site model that has to be used for the inference. Valid names are 'jc69' and 'gtr'.}
 }
 \value{
 a list of parameters
