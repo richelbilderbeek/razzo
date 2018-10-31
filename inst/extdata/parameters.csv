@@ -1,2 +1,2 @@
-"","lambda","mu","nu","q","seed","crown_age","sequence_length","mbd_mutation_rate","bd_mutation_rate","sample_interval","chain_length","sub_chain_length"
-"1",0.2,0.15,1,0.1,1,15,1000,0.0666666666666667,0.0666666666666667,1000,10000,1000
+"","lambda","mu","nu","q","seed","crown_age","sequence_length","mbd_mutation_rate","bd_mutation_rate","sample_interval","chain_length","sub_chain_length","site_model","clock_model"
+"1",0.2,0.15,1,0.1,1,15,1000,0.0666666666666667,0.0666666666666667,1000,10000,1000,"jc69","strict"
