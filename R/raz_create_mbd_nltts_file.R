@@ -9,11 +9,11 @@ raz_create_mbd_nltts_file <- function(
   parameters_filename
 ) {
   # Create input filenames
-  testit::assert(file.exists(parameters_filename))
+  raz_check_file_exists(parameters_filename)
   mbd_tree_filename <- file.path(dirname(parameters_filename), "mbd.tree")
   mbd_trees_filename <- file.path(dirname(parameters_filename), "mbd.trees")
-  testit::assert(file.exists(mbd_tree_filename))
-  testit::assert(file.exists(mbd_trees_filename))
+  raz_check_file_exists(mbd_tree_filename)
+  raz_check_file_exists(mbd_trees_filename)
 
   # Read input
   mbd_tree <- ape::read.tree(file = mbd_tree_filename)
