@@ -15,7 +15,7 @@
 raz_create_mbd_posterior_files <- function(
   parameters_filename
 ) {
-  raz_check_file_exists(parameters_filename)
+  raz_check_file_exists(parameters_filename) # nolint internal function
   mbd_alignment_filename <- file.path(dirname(parameters_filename), "mbd.fasta")
   raz_check_file_exists(mbd_alignment_filename)
 
