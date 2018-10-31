@@ -22,7 +22,7 @@ parameters_filenames <- raz_create_parameters_files(
 )
 
 ## ------------------------------------------------------------------------
-parameters_filenames <- parameters_filenames[ c(1, 2) ]
+parameters_filenames <- parameters_filenames[c(1, 2)]
 knitr::kable(parameters_filenames)
 
 ## ------------------------------------------------------------------------
@@ -34,7 +34,7 @@ for (i in seq_along(parameters_filenames)) {
 }
 
 ## ------------------------------------------------------------------------
-ape::plot.phylo(ape::read.tree(file = mbd_tree_filenames[1]))
+ape::plot.phylo(ape::read.tree(file = mbd_tree_filenames[2]))
 
 ## ------------------------------------------------------------------------
 bd_tree_filenames <- parameters_filenames
@@ -45,7 +45,7 @@ for (i in seq_along(parameters_filenames)) {
 }
 
 ## ------------------------------------------------------------------------
-ape::plot.phylo(ape::read.tree(file = bd_tree_filenames[1]))
+ape::plot.phylo(ape::read.tree(file = bd_tree_filenames[2]))
 
 ## ------------------------------------------------------------------------
 mbd_alignment_filenames <- parameters_filenames

@@ -130,7 +130,7 @@ test_that("abuse", {
       crown_age = -123.456,
       sequence_length = sequence_length
     ),
-    "age has to be non negative"
+    "age has to be positive"
   )
   expect_error(
     raz_create_params(
