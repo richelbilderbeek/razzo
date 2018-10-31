@@ -11,9 +11,9 @@
 raz_create_bd_alignment_file <- function(
   parameters_filename
 ) {
-  raz_check_file_exists(parameters_filename)
+  raz_check_file_exists(parameters_filename) # nolint internal function
   bd_tree_filename <- file.path(dirname(parameters_filename), "bd.tree")
-  raz_check_file_exists(bd_tree_filename)
+  raz_check_file_exists(bd_tree_filename) # nolint internal function
 
   alignment <- raz_create_bd_alignment(
     parameters = raz_open_parameters_file(parameters_filename),

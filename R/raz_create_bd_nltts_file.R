@@ -9,11 +9,11 @@ raz_create_bd_nltts_file <- function(
   parameters_filename
 ) {
   # Create input filenames
-  raz_check_file_exists(parameters_filename)
+  raz_check_file_exists(parameters_filename) # nolint internal function
   bd_tree_filename <- file.path(dirname(parameters_filename), "bd.tree")
   bd_trees_filename <- file.path(dirname(parameters_filename), "bd.trees")
-  raz_check_file_exists(bd_tree_filename)
-  raz_check_file_exists(bd_trees_filename)
+  raz_check_file_exists(bd_tree_filename) # nolint internal function
+  raz_check_file_exists(bd_trees_filename) # nolint internal function
 
   # Read input
   bd_tree <- ape::read.tree(file = bd_tree_filename)

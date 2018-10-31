@@ -15,9 +15,9 @@
 raz_create_bd_posterior_files <- function(
   parameters_filename
 ) {
-  raz_check_file_exists(parameters_filename)
+  raz_check_file_exists(parameters_filename) # nolint internal function
   bd_alignment_filename <- file.path(dirname(parameters_filename), "bd.fasta")
-  raz_check_file_exists(bd_alignment_filename)
+  raz_check_file_exists(bd_alignment_filename) # nolint internal function
 
   bd_posterior <- raz_create_posterior(
     parameters = raz_open_parameters_file(parameters_filename),

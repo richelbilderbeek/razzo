@@ -34,3 +34,5 @@ tests/testthat/*.log
 tests/testthat/*.trees
 *.posterior.log
 *.posterior.trees
+vignettes/*.log
+vignettes/*.trees
