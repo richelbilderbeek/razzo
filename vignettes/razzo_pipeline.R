@@ -1,3 +1,13 @@
+## ----message=FALSE-------------------------------------------------------
+if (1 == 2) {
+  devtools::install_github("Giappo/mbd")
+  devtools::install_github("richelbilderbeek/beautier")
+  devtools::install_github("richelbilderbeek/tracerer")
+  devtools::install_github("richelbilderbeek/beastier")
+  devtools::install_github("richelbilderbeek/mauricer")
+  devtools::install_github("richelbilderbeek/babette")
+}
+
 ## ------------------------------------------------------------------------
 library(razzo)
 
@@ -27,60 +37,48 @@ for (i in seq_along(parameters_filenames)) {
 ape::plot.phylo(ape::read.tree(file = mbd_tree_filenames[1]))
 
 ## ------------------------------------------------------------------------
-# TODO: Issue: row names were found from a short variable and have been discarded
-if (1 == 2) {
-  bd_tree_filenames <- parameters_filenames
-  # Create all BD twin trees, true alignments and their twins
-  for (i in seq_along(parameters_filenames)) {
-    parameters_filename <- parameters_filenames[i]
-    bd_tree_filenames[i] <- raz_create_bd_tree_file(parameters_filename)
-  }
+bd_tree_filenames <- parameters_filenames
+# Create all BD twin trees, true alignments and their twins
+for (i in seq_along(parameters_filenames)) {
+  parameters_filename <- parameters_filenames[i]
+  bd_tree_filenames[i] <- raz_create_bd_tree_file(parameters_filename)
 }
 
 ## ------------------------------------------------------------------------
-if (1 == 2) {
-  ape::plot.phylo(ape::read.tree(file = bd_tree_filenames[1]))
+ape::plot.phylo(ape::read.tree(file = bd_tree_filenames[1]))
+
+## ------------------------------------------------------------------------
+mbd_alignment_filenames <- parameters_filenames
+# Create all true trees, true alignments and their twins
+for (i in seq_along(parameters_filenames)) {
+  parameters_filename <- parameters_filenames[i]
+  mbd_alignment_filenames[i] <- raz_create_mbd_alignment_file(parameters_filename)
 }
 
 ## ------------------------------------------------------------------------
-if (1 == 2) {
-  mbd_alignment_filenames <- parameters_filenames
-  # Create all true trees, true alignments and their twins
-  for (i in seq_along(parameters_filenames)) {
-    parameters_filename <- parameters_filenames[i]
-    mbd_alignment_filenames[i] <- raz_create_mbd_alignment_file(parameters_filename)
-  }
+image(ape::read.FASTA(file = mbd_alignment_filenames[1]))
+
+## ------------------------------------------------------------------------
+bd_alignment_filenames <- parameters_filenames
+# Create all true trees, true alignments and their twins
+for (i in seq_along(parameters_filenames)) {
+  i <- 1
+  parameters_filename <- parameters_filenames[i]
+  bd_alignment_filenames[i] <- raz_create_bd_alignment_file(parameters_filename)
 }
 
 ## ------------------------------------------------------------------------
-if (1 == 2) {
-  image(ape::read.FASTA(file = mbd_alignment_filenames[1]))
-}
-
-## ------------------------------------------------------------------------
-# TODO: Issue Error in pirouette::sim_alignment(phylogeny = bd_tree, sequence_length = NULL, : phylogeny must not contain extant species
-if (1 == 2) {
-  bd_alignment_filenames <- parameters_filenames
-  # Create all true trees, true alignments and their twins
-  for (i in seq_along(parameters_filenames)) {
-    i <- 1
-    parameters_filename <- parameters_filenames[i]
-    bd_alignment_filenames[i] <- raz_create_bd_alignment_file(parameters_filename)
-  }
-}
-
-## ------------------------------------------------------------------------
-if (1 == 2) {
-  image(ape::read.FASTA(file = bd_alignment_filenames[1]))
-}
+image(ape::read.FASTA(file = bd_alignment_filenames[1]))
 
 ## ------------------------------------------------------------------------
 if (1 == 2) {
   # Do the inference
-  fasta_filenames <- c("1a.fasta") # Search the folder
-  for (fasta_filename in fasta_filenames) 
-  {
-    output_filenames <- raz_create_posterior_files(fasta_filename)
+  mbd_alignment_filenames <- list() # Search the folder
+  for (i in seq_along(parameters_filenames)) {
+    parameter_filename <- parameters_filenames[i] 
+    mbd_alignment_filenames[[i]] <- raz_create_mbd_posterior_files(
+      parameter_filename
+    )
     # Posterior trees
     testit::assert("1a.trees" %in% output_filenames)
     # Trace of MCMC, to estimate the Effective Sample Sizes

@@ -45,13 +45,15 @@ Filename|Description|Created by
 
 Update our dependencies:
 
-```{r}
-devtools::install_github("Giappo/mbd", quiet = TRUE)
-devtools::install_github("richelbilderbeek/beautier", quiet = TRUE)
-devtools::install_github("richelbilderbeek/tracerer", quiet = TRUE)
-devtools::install_github("richelbilderbeek/beastier", quiet = TRUE)
-devtools::install_github("richelbilderbeek/mauricer", quiet = TRUE)
-devtools::install_github("richelbilderbeek/babette", quiet = TRUE)
+```{r message=FALSE}
+if (1 == 2) {
+  devtools::install_github("Giappo/mbd", quiet = TRUE)
+  devtools::install_github("richelbilderbeek/beautier", quiet = TRUE)
+  devtools::install_github("richelbilderbeek/tracerer", quiet = TRUE)
+  devtools::install_github("richelbilderbeek/beastier", quiet = TRUE)
+  devtools::install_github("richelbilderbeek/mauricer", quiet = TRUE)
+  devtools::install_github("richelbilderbeek/babette", quiet = TRUE)
+}
 ```
 
 Load the library:
@@ -143,24 +145,19 @@ image(ape::read.FASTA(file = mbd_alignment_filenames[1]))
 ## Step 5: Create BD alignments
 
 ```{r}
-# TODO: Issue Error in pirouette::sim_alignment(phylogeny = bd_tree, sequence_length = NULL, : phylogeny must not contain extant species
-if (1 == 2) {
-  bd_alignment_filenames <- parameters_filenames
-  # Create all true trees, true alignments and their twins
-  i <- 1
-  for (i in seq_along(parameters_filenames)) {
-    parameters_filename <- parameters_filenames[i]
-    bd_alignment_filenames[i] <- raz_create_bd_alignment_file(parameters_filename)
-  }
+bd_alignment_filenames <- parameters_filenames
+# Create all true trees, true alignments and their twins
+i <- 1
+for (i in seq_along(parameters_filenames)) {
+  parameters_filename <- parameters_filenames[i]
+  bd_alignment_filenames[i] <- raz_create_bd_alignment_file(parameters_filename)
 }
 ```
 
 Taking a look at the first MBD alignment:
 
 ```{r}
-if (1 == 2) {
-  image(ape::read.FASTA(file = bd_alignment_filenames[1]))
-}
+image(ape::read.FASTA(file = bd_alignment_filenames[1]))
 ```
 
 # UP TILL HERE

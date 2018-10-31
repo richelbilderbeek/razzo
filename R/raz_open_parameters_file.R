@@ -6,7 +6,7 @@
 raz_open_parameters_file <- function(
   parameters_filename
 ) {
-  testit::assert(file.exists(parameters_filename))
+  raz_check_file_exists(parameters_filename)
 
   # Remove the first column, as it is an unused row name
   parameters <- utils::read.csv(parameters_filename)[, -1]

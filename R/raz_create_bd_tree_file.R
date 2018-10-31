@@ -9,12 +9,12 @@
 raz_create_bd_tree_file <- function(
   parameters_filename
 ) {
-  testit::assert(file.exists(parameters_filename))
+  raz_check_file_exists(parameters_filename)
   mbd_tree_filename <- file.path(dirname(parameters_filename), "mbd.tree")
-  testit::assert(file.exists(mbd_tree_filename))
+  raz_check_file_exists(mbd_tree_filename)
   mbd_l_matrix_filename <- file.path(
     dirname(parameters_filename), "mbd_l_matrix.csv")
-  testit::assert(file.exists(mbd_l_matrix_filename))
+  raz_check_file_exists(mbd_l_matrix_filename)
 
   parameters <- raz_open_parameters_file(parameters_filename) # nolint internal function
   mbd_tree <- ape::read.tree(file = mbd_tree_filename)

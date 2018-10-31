@@ -15,9 +15,9 @@
 raz_create_bd_posterior_files <- function(
   parameters_filename
 ) {
-  testit::assert(file.exists(parameters_filename))
+  raz_check_file_exists(parameters_filename)
   bd_alignment_filename <- file.path(dirname(parameters_filename), "bd.fasta")
-  testit::assert(file.exists(bd_alignment_filename))
+  raz_check_file_exists(bd_alignment_filename)
 
   bd_posterior <- raz_create_posterior(
     parameters = raz_open_parameters_file(parameters_filename),

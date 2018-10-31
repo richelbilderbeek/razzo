@@ -12,9 +12,9 @@ raz_create_mbd_alignment_file <- function(
   parameters_filename
 ) {
   # Load input
-  testit::assert(file.exists(parameters_filename))
+  raz_check_file_exists(parameters_filename)
   mbd_tree_filename <- file.path(dirname(parameters_filename), "mbd.tree")
-  testit::assert(file.exists(mbd_tree_filename))
+  raz_check_file_exists(mbd_tree_filename)
   mbd_alignment_filename <- file.path(dirname(parameters_filename), "mbd.fasta")
 
   parameters <- raz_open_parameters_file(parameters_filename) # nolint internal function
