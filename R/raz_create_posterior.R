@@ -6,7 +6,7 @@
 #'   \item estimates the posterior parameter estimates, as a \code{data.frame}
 #'   \item \code{ns} the Nested Sampling information
 #' }
-#' @author Richel J.C. Bilderbeek
+#' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
 raz_create_posterior <- function(
   parameters,
@@ -24,37 +24,36 @@ raz_create_posterior <- function(
   rng_seed <- parameters$seed
   chain_length <- parameters$chain_length
   sub_chain_length <- parameters$sub_chain_length
+  clock_model <- parameters$clock_model
+  site_model <- parameters$site_model
 
   testit::assert(!is.null(sample_interval))
   testit::assert(!is.null(crown_age))
   testit::assert(!is.null(rng_seed))
   testit::assert(!is.null(chain_length))
   testit::assert(!is.null(sub_chain_length))
+  testit::assert(!is.null(clock_model))
+  testit::assert(!is.null(site_model))
 
-  # TODO: read site model from file
-  site_model <- beautier::create_jc69_site_model() # Stub
-  if ("site_model" %in% names(parameters)) {
-    site_model <- parameters$site_model
-    if (site_model == "JC69") {
-      site_model <- beautier::create_jc69_site_model()
-    } else {
-      testit::assert(site_model == "GTR")
-      site_model <- beautier::create_gtr_site_model()
-    }
+  if (!(clock_model == "strict" || clock_model == "rln")) {
+    stop("'clock_model' must be either 'strict' or 'rln'")
+  }
+  if (clock_model == "strict") {
+    clock_model_function <- beautier::create_clock_model_strict
+  }
+  if (clock_model == "rln") {
+    clock_model_function <- beautier::create_clock_model_rln
   }
 
-  # TODO: read clock model from file
-  clock_model <- beautier::create_strict_clock_model()
-  if ("clock_model" %in% names(parameters)) {
-    clock_model <- parameters$clock_model
-    if (clock_model == "S") {
-      clock_model <- beautier::create_strict_clock_model()
-    } else {
-      testit::assert(clock_model == "RLN")
-      clock_model <- beautier::create_rln_clock_model()
-    }
+  if (!(site_model == "jc69" || site_model == "gtr")) {
+    stop("'site_model' must be either 'jc69' or 'gtr'")
   }
-
+  if (site_model == "jc69") {
+    site_model_function <- beautier::create_jc69_site_model
+  }
+  if (site_model == "gtr") {
+    site_model_function <- beautier::create_gtr_site_model
+  }
 
   # Install maurices if needed
   try(mauricer::mrc_install("NS"), silent = TRUE)
@@ -71,8 +70,8 @@ raz_create_posterior <- function(
       store_every = sample_interval,
       sub_chain_length = sub_chain_length
     ),
-    site_models = site_model,
-    clock_models = clock_model,
+    site_models = site_model_function(),
+    clock_models = clock_model_function(),
     tree_priors = beautier::create_bd_tree_prior(),
     mrca_priors = beautier::create_mrca_prior(
       alignment_id = beautier::get_alignment_id(fasta_filename),

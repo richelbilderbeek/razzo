@@ -21,6 +21,8 @@ raz_create_parameters_files <- function(
   sample_interval <- 1000
   chain_length <- 10000
   sub_chain_length <- 1000
+  clock_model <- "strict"
+  site_model <- "jc69"
 
   lambda_interval <- unique(lambda_interval)
   mu_interval     <- unique(mu_interval)
@@ -28,9 +30,9 @@ raz_create_parameters_files <- function(
   q_interval      <- unique(q_interval)
 
   l_pars <- length(lambda_interval) *
-           length(mu_interval) *
-           length(nu_interval) *
-           length(q_interval)
+    length(mu_interval) *
+    length(nu_interval) *
+    length(q_interval)
 
   data_folder_name <- "data"
 
@@ -72,7 +74,9 @@ raz_create_parameters_files <- function(
               bd_mutation_rate = bd_mutation_rate,
               sample_interval = sample_interval,
               chain_length = chain_length,
-              sub_chain_length = sub_chain_length
+              sub_chain_length = sub_chain_length,
+              clock_model = "strict",
+              site_model = "jc69"
             )
 
             parameters_filenames[i] <- file.path(seedfolder, "parameters.csv")

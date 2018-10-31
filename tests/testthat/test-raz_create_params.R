@@ -9,6 +9,8 @@ test_that("use", {
   seed <- 42
   crown_age <- 15
   sequence_length <- 123
+  clock_model <- "strict"
+  site_model <- "jc69"
 
   params <- raz_create_params(
     lambda = lambda,
@@ -17,7 +19,9 @@ test_that("use", {
     q = q,
     seed = seed,
     crown_age = crown_age,
-    sequence_length = sequence_length
+    sequence_length = sequence_length,
+    clock_model = clock_model,
+    site_model = site_model
   )
 
   expect_equal(params$lambda, lambda)
@@ -27,6 +31,8 @@ test_that("use", {
   expect_equal(params$seed, seed)
   expect_equal(params$crown_age, crown_age)
   expect_equal(params$sequence_length, sequence_length)
+  expect_equal(params$clock_model, clock_model)
+  expect_equal(params$site_model, site_model)
 
 })
 
@@ -142,8 +148,6 @@ test_that("abuse", {
 
 test_that("clock model", {
 
-  skip("TODO: #34: Add parameter for clock model")
-
   # Construct params with strict clock model
   expect_silent(
     raz_create_params(
@@ -181,8 +185,6 @@ test_that("clock model", {
 })
 
 test_that("site model", {
-
-  skip("TODO: #33: Add parameter for site model")
 
   # Construct params with JC69 site model
   expect_silent(
