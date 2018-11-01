@@ -6,7 +6,7 @@
 documentation.}
 \usage{
 default_params_doc(alignment, bd_mutation_rate, bd_tree, bd_tree_filename,
-  chain_length, clock_model, crown_age, fasta_filename, folder_name,
+  brts, chain_length, clock_model, crown_age, fasta_filename, folder_name,
   init_speciation_rate, init_extinction_rate, lambda, mbd_l_matrix,
   mbd_mutation_rate, mbd_tree, mu, mutation_rate, nu, parameters,
   parameter_filename, parameters_filename, posterior_trees,
@@ -24,6 +24,8 @@ from a BD tree}
 process}
 
 \item{bd_tree_filename}{name of the file that stores a BD twin tree}
+
+\item{brts}{branching times}
 
 \item{chain_length}{something}
 
