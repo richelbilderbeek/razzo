@@ -106,3 +106,11 @@ if (1 == 2) {
 ## ------------------------------------------------------------------------
 # TODO: plot the nLTT
 
+## ------------------------------------------------------------------------
+if (1 == 2) {
+  graphics::par(mfrow = c(1, 2))
+  hist(unlist(MBD_df.nLTT), main = "MBD nLTT")
+  hist(unlist(BD_df.nLTT), main = "BD nLTT")
+  cat("Average nLTT for MBD", MBD_mean.nLTT, "\nAverage nLTT for BD ", BD_mean.nLTT)
+}
+

@@ -7,7 +7,7 @@
 raz_combine_brts_and_topology(brts, tree)
 }
 \arguments{
-\item{brts}{branching times}
+\item{brts}{set of branching times}
 
 \item{tree}{an ultrametric phylogenetic tree of class \code{phylo}}
 }
