@@ -12,6 +12,8 @@ raz_create_posterior <- function(
   parameters,
   alignment
 ) {
+  testit::assert(beastier::is_beast2_installed())
+
   # Save the alignment to file
   fasta_filename <- tempfile(fileext = ".fasta")
   ape::write.FASTA(
