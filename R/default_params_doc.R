@@ -6,7 +6,7 @@
 #' @param bd_tree a phylogent of class \code{phylo}, created by a Birth Death
 #'   process
 #' @param bd_tree_filename name of the file that stores a BD twin tree
-#' @param brts branching times
+#' @param brts set of branching times
 #' @param chain_length something
 #' @param clock_model Name of the clock model that has
 #' to be used for the inference. Valid names are 'strict' and 'rln'.

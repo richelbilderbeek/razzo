@@ -25,7 +25,7 @@ process}
 
 \item{bd_tree_filename}{name of the file that stores a BD twin tree}
 
-\item{brts}{branching times}
+\item{brts}{set of branching times}
 
 \item{chain_length}{something}
 
