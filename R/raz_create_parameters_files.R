@@ -11,13 +11,13 @@ raz_create_parameters_files <- function(
   # Just use the parameter combinations in the article
   lambda_interval <- c(0.2, 0.2)
   mu_interval <- c(0.15, 0.15)
-  nu_interval <- seq(from = 1, to = 2.5, by = 0.5)
-  q_interval <- seq(from = 0.10, to = 0.20, by = 0.05)
+  nu_interval <- c(1.0, 1.0) # Testing
+  q_interval <- c(0.10, 0.10) # Testing
   seed_interval <- 1:2
   crown_age <- 15
-  sequence_length <- 1000
+  sequence_length <- 100 # Testing
   sample_interval <- 1000
-  chain_length <- 10000
+  chain_length <- 3000 # Testing
   sub_chain_length <- 1000
   clock_model <- "strict"
   site_model <- "jc69"
