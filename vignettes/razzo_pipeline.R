@@ -108,7 +108,6 @@ if (1 == 2) {
 
 ## ------------------------------------------------------------------------
 if (1 == 2) {
-  
   graphics::par(mfrow = c(1, 2))
   hist(unlist(MBD_df.nLTT), main = "MBD nLTT")
   hist(unlist(BD_df.nLTT), main = "BD nLTT")

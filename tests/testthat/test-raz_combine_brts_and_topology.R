@@ -4,9 +4,10 @@ test_that("check usage with brts coming from the same tree", {
 
   parameters <- razzo::raz_open_parameters_file(
     razzo::raz_get_path("parameters.csv")
-  )
+  ); seed <- 1
 
-  for (seed in 1:10) {
+  max_seed <- 5
+  for (seed in 1:max_seed) {
     parameters$seed <- seed
     tree <- razzo::raz_create_mbd_tree(parameters)$mbd_tree
     brts <- ape::branching.times(tree)

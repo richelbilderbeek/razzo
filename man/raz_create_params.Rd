@@ -7,7 +7,6 @@ after checking the arguments for their validity}
 \usage{
 raz_create_params(lambda = 0.1, mu = 0.05, nu = 1, q = 0.1,
   seed = 42, crown_age = 15, sequence_length = 100,
-  mbd_mutation_rate = 1/crown_age, bd_mutation_rate = 1/crown_age,
   sample_interval = 1000, chain_length = 2000,
   sub_chain_length = 500, clock_model = "strict",
   site_model = "jc69")
@@ -26,12 +25,6 @@ raz_create_params(lambda = 0.1, mu = 0.05, nu = 1, q = 0.1,
 \item{crown_age}{The crown age of the tree.}
 
 \item{sequence_length}{the length of each DNA sequence in an alignment}
-
-\item{mbd_mutation_rate}{the mutation rate when creating an alignment
-from a MBD tree}
-
-\item{bd_mutation_rate}{the mutation rate when creating an alignment
-from a BD tree}
 
 \item{sample_interval}{the interval at which the MCMC algorithm
 makes a measurement}

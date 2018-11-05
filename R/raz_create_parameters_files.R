@@ -19,6 +19,8 @@ raz_create_parameters_files <- function(
   sample_interval <- 1000
   chain_length <- 10000
   sub_chain_length <- 1000
+  clock_model <- "strict"
+  site_model <- "jc69"
 
   lambda_interval <- unique(lambda_interval)
   mu_interval     <- unique(mu_interval)
@@ -67,8 +69,8 @@ raz_create_parameters_files <- function(
               sample_interval = sample_interval,
               chain_length = chain_length,
               sub_chain_length = sub_chain_length,
-              clock_model = "strict", # STUB
-              site_model = "jc69" # STUB
+              clock_model = clock_model,
+              site_model = site_model
             )
 
             parameters_filenames[i] <- file.path(seedfolder, "parameters.csv")
