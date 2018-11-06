@@ -62,7 +62,9 @@ test_that("must contain both site models", {
   # Collect the site models
   site_models <- rep(NA, length(filenames))
   for (i in seq_along(filenames)) {
-    site_models[i] <- as.character(raz_open_parameters_file(filenames[i])$site_model)
+    site_models[i] <- as.character(
+      raz_open_parameters_file(filenames[i])$site_model
+    )
   }
 
   # Expect both to be present
@@ -81,7 +83,9 @@ test_that("must contain both clock models", {
   # Collect the site models
   clock_models <- rep(NA, length(filenames))
   for (i in seq_along(filenames)) {
-    clock_models[i] <- as.character(raz_open_parameters_file(filenames[i])$clock_model)
+    clock_models[i] <- as.character(
+      raz_open_parameters_file(filenames[i])$clock_model
+    )
   }
 
   # Expect both to be present
