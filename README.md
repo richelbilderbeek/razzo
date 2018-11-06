@@ -9,6 +9,11 @@ Branch|[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)|[![AppVeyor
 
 Research project by Giovanni Laudanno and Richel J.C. Bilderbeek.
 
+Primary tasks:
+
+ * Giovanni Laudanno: making each step right
+ * Richel J.C. Bilderbeek: big picture, software architecture, testing, continuous integration
+
 The research project uses three GitHub repo's:
 
  * [razzo](https://github.com/richelbilderbeek/razzo): R code
@@ -16,6 +21,13 @@ The research project uses three GitHub repo's:
  * [razzo_project](https://github.com/richelbilderbeek/razzo_project): bash scripts
 
 ## Roadmap
+
+### Project stages
+
+ * `Ignition`: prepare to do the experiment badly, e.g. short MCMC chains, few replicates, etc.
+ * `Launch`: prepare to do the experiment correctly, in line with manuscript
+ * `Flight`: running the experiment, maintaining the process
+ * `Land`: write down results
 
 ### File handling functions
 
