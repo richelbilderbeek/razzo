@@ -60,10 +60,11 @@ if (1 == 2) {
 }
 ```
 
-Load the library:
+Load the libraries needed:
 
 ```{r}
 library(razzo)
+library(ggplot2)
 ```
 
 We will work in this folder:
@@ -110,9 +111,12 @@ ape::plot.phylo(ape::read.tree(file = mbd_tree_filenames[2]))
 
 ## Step 3: create twin BD trees
 
-Then we want to generate a "twin" BD tree. To create such tree we have to estimate the best lambda and mu to make the comparison fair. 
+Then we want to generate a "twin" BD tree. 
+To create such tree we have to estimate the best lambda and mu to make the comparison fair. 
 To estimate the parameters we run a ML inference using the BD model.
+We use "TESS::tess.sim.taxa.age" to generate the branching times (BD_brts). 
 We also want to condition on the same amount of tips and on the survival of the phylogeny (cond = 2).
+We then plug these branching times in the l_table coming from the original MBD tree to be sure that the topology is the same.
 
 ```{r}
 bd_tree_filenames <- parameters_filenames
@@ -165,6 +169,12 @@ image(ape::read.FASTA(file = bd_alignment_filenames[1]))
 
 ## Step 6: create MBD posterior files
 
+The next step is to use the package "pirouette" to generate, from the MBD tree, 
+first the alignments and then, through BEAST, 
+a posterior distribution of trees. 
+These trees are obtained using a BD prior. 
+This means that there are no simultaneous branching events.
+
 ```{r}
 mbd_alignment_filenames <- list()
 for (i in seq_along(parameters_filenames)) {
@@ -214,6 +224,11 @@ knitr::kable(
 
 ## Step 7: create BD posterior files
 
+We repeat the same process for the tree simulated according to the BD model. 
+We want to have, in principle, the same amount of substitutions; 
+to do so we modify the mutation rate according to the ratio 
+of the total branch lenghts of the trees simulated with the two models.
+
 ```{r}
 bd_alignment_filenames <- list()
 for (i in seq_along(parameters_filenames)) {
@@ -260,52 +275,48 @@ knitr::kable(
 )
 ```
 
-# UP UNTIL HERE
+## step 8: calculate nLTT statistics for MBD
 
-## step 6: calculating nLTT statistics for MBD and BD
-
-Finally we calculate the nLTT statistics for both posteriors related to the original trees.
+Finally we calculate the nLTT statistics for the MBD posteriors 
+related to the original trees.
 
 ```{r}
-if (1 == 2) {
-  # Create the nLTT distribution
-  trees_filenames <- c("1a.trees") # Search the folder
-  for (trees_filename in trees_filenames)
-  {
-    if (1 == 2) {
-      # TODO: Issue 5
-      nltt_filename <- raz_create_nltt_file(trees_filename)
-      testit::assert("1a_nltts.csv" %in% nltt_filename)
-    }
-  }
+mbd_nltt_filenames <- rep(NA, length(parameters_filenames))
+for (i in seq_along(parameters_filenames)) {
+  mbd_nltt_filenames[i] <- raz_create_mbd_nltts_file(
+    parameters_filenames[i]
+  )
 }
-# All files are in place!
 ```
 
 ```{r}
-# TODO: plot the nLTT
+ggplot(
+  data = data.frame(nltt = utils::read.csv(mbd_nltt_filenames[1])$x),
+  aes(x = nltt)
+) + geom_histogram(binwidth = 0.01) + 
+  ggplot2::scale_x_continuous(limits = c(0.0, 1.0))
 ```
 
-### step 3: simulate the twin BD tree
-###(check if the method to keep the topology is right. from the figures it seems ok-ish. check with small tree)
-Now that we have the BD equivalent parameters for a fair "twinning" we can simulate a BD tree.
-We use "TESS::tess.sim.taxa.age" to generate the branching times (BD_brts). 
-We then plug these branching times in the l_table coming from the original MBD tree to be sure that the topology is the same.
 
-###step 4: generate MBD posterior, given BD prior
-The next step is to use the package "pirouette" to generate, from the MBD tree, first the alignments and then, through BEAST, a posterior distribution of trees. These trees are obtained using a BD prior. This means that there are no simultaneous branching events.
+## step 9: calculate nLTT statistics for BD
 
-###step 5: generate BD posterior, given BD prior
-###(check BD_substitution rate, see Rampal's email)
-We repeat the same process for the tree simulated according to the BD model. We want to have, in principle, the same amount of substitutions; to do so we modify the mutation rate according to the ratio of the total branch lenghts of the trees simulated with the two models.
-
+Finally we calculate the nLTT statistics for the BD posteriors 
+related to the original trees.
 
 ```{r}
-if (1 == 2) {
-  graphics::par(mfrow = c(1, 2))
-  hist(unlist(MBD_df.nLTT), main = "MBD nLTT")
-  hist(unlist(BD_df.nLTT), main = "BD nLTT")
-  cat("Average nLTT for MBD", MBD_mean.nLTT, "\nAverage nLTT for BD ", BD_mean.nLTT)
+bd_nltt_filenames <- rep(NA, length(parameters_filenames))
+for (i in seq_along(parameters_filenames)) {
+  bd_nltt_filenames[i] <- raz_create_bd_nltts_file(
+    parameters_filenames[i]
+  )
 }
+```
+
+```{r}
+ggplot(
+  data = data.frame(nltt = utils::read.csv(bd_nltt_filenames[1])$x),
+  aes(x = nltt)
+) + geom_histogram(binwidth = 0.01) + 
+  ggplot2::scale_x_continuous(limits = c(0.0, 1.0))
 ```
 
