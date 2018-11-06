@@ -53,7 +53,7 @@ test_that("can read", {
 
 test_that("must contain both site models", {
 
-  skip("must contain both site models")
+  skip("TODO: Issue 65, #65: must contain both site models")
   # Create parameter files from fresh
   filenames <- raz_create_parameters_files(
     project_folder_name = tempdir()
@@ -68,4 +68,23 @@ test_that("must contain both site models", {
   # Expect both to be present
   expect_true("jc69" %in% site_models)
   expect_true("gtr" %in% site_models)
+})
+
+test_that("must contain both clock models", {
+
+  skip("TODO: Issue 66, #66: must contain both clock models")
+  # Create parameter files from fresh
+  filenames <- raz_create_parameters_files(
+    project_folder_name = tempdir()
+  )
+
+  # Collect the site models
+  clock_models <- rep(NA, length(filenames))
+  for (i in seq_along(filenames)) {
+    clock_models[i] <- as.character(raz_open_parameters_file(filenames[i])$clock_model)
+  }
+
+  # Expect both to be present
+  expect_true("strict" %in% site_models)
+  expect_true("rln" %in% site_models)
 })
