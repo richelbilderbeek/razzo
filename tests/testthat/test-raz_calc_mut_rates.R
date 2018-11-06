@@ -4,13 +4,13 @@ test_that("use, simple case", {
 
   # For two identical trees, both mutation rates will be 1 / crown_age
 
-  #   +---------------- A
+  #   +---------------- A                                                       # nolint this is no code
   # +-+
   # | +---------------- B
   # +
   # | +---------------- C
   # +-+
-  #   +---------------- D
+  #   +---------------- D                                                       # nolint this is no code
   tree <- ape::read.tree(text = "((A:9, B:9):1, (C:9, D:9):1);")
 
   skip("TODO: Issue 61, #61")
@@ -34,13 +34,13 @@ test_that("use", {
   # Tree that has all branching events close to root
   # Sum of branch lengths: 38
   #
-  #   +---------------- A
+  #   +---------------- A                                                       # nolint this is no code
   # +-+
   # | +---------------- B
   # +
   # | +---------------- C
   # +-+
-  #   +---------------- D
+  #   +---------------- D                                                       # nolint this is no code
   early_tree <- ape::read.tree(text = "((A:9, B:9):1, (C:9, D:9):1);")
 
   # Tree that has all branching events far from root
