@@ -320,3 +320,26 @@ ggplot(
   ggplot2::scale_x_continuous(limits = c(0.0, 1.0))
 ```
 
+## Step 10: what is the effect of MBD on the error?
+
+The nLTT statistics of the BD tree shows the baseline error:
+the Bayesian analysis assumes BD, and that tree *is* BD.
+
+```{r}
+mbd_nltts <- utils::read.csv(mbd_nltt_filenames[1])$x
+bd_nltts <- utils::read.csv(bd_nltt_filenames[1])$x
+
+df <- data.frame(
+  model = c(rep("MBD", length(mbd_nltts)), rep("BD", length(bd_nltts))),
+  nltt = c(mbd_nltts, bd_nltts),
+  stringsAsFactors = TRUE  
+)
+
+plot <- ggplot(
+  data = df,
+  aes(x = nltt, fill = model)
+) + ggplot2::scale_x_continuous(limits = c(0.0, 1.0))
+
+plot + geom_histogram(binwidth = 0.01, alpha = 0.5)
+plot + geom_density(alpha = 0.5)
+```
