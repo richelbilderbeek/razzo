@@ -50,3 +50,22 @@ test_that("can read", {
     raz_open_parameters_file(parameters_filename = filenames[1])
   )
 })
+
+test_that("must contain both site models", {
+
+  skip("must contain both site models")
+  # Create parameter files from fresh
+  filenames <- raz_create_parameters_files(
+    project_folder_name = tempdir()
+  )
+
+  # Collect the site models
+  site_models <- rep(NA, length(filenames))
+  for (i in seq_along(filenames)) {
+    site_models[i] <- as.character(raz_open_parameters_file(filenames[i])$site_model)
+  }
+
+  # Expect both to be present
+  expect_true("jc69" %in% site_models)
+  expect_true("gtr" %in% site_models)
+})
