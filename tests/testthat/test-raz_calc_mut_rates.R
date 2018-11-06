@@ -46,13 +46,13 @@ test_that("use", {
   # Tree that has all branching events far from root
   # Sum of branch lengths: 22
   #
-  #                  +- A
+  #                  +- A                                                       # nolint this is no code
   # +----------------+
   # |                +- B
   # +
   # |                +- C
   # +----------------+
-  #                  +- D
+  #                  +- D                                                       # nolint this is no code
   late_tree <- ape::read.tree(text = "((A:1, B:1):9, (C:1, D:1):9);")
 
   skip("TODO: Issue 61, #61")

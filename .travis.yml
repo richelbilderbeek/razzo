@@ -18,7 +18,7 @@ r_github_packages:
   - richelbilderbeek/tracerer
   - richelbilderbeek/babette
   - richelbilderbeek/pirouette
-  - Giappo/mbd
+  # - Giappo/mbd # Don't use before overhaul is finished
 
 before_script:
   - sudo apt-get install -qq oracle-java8-installer # Java 8
@@ -27,6 +27,8 @@ before_script:
   - if [ -f ".lintr" ]; then echo "Do use Hadley Wickham's style guide"; exit 1; fi
   # proselint
   - sudo pip install proselint
+  # Use mbd package before overhaul
+  - devtools::install_github("Giappo/mbd", ref = "d1b85b44cbcc28c20376708d8b6dee87298fa43d")
 
 after_success:
   - Rscript -e 'lintr::lint_package()'
