@@ -22,13 +22,14 @@ environment:
     USE_RTOOLS: true
 
 build_script:
-  - travis-tool.sh install_deps
   - travis-tool.sh install_github richelbilderbeek/beautier
   - travis-tool.sh install_github richelbilderbeek/tracerer
   - travis-tool.sh install_github richelbilderbeek/beastier
   - travis-tool.sh install_github richelbilderbeek/mauricer
   - travis-tool.sh install_github richelbilderbeek/babette
   - Rscript -e 'devtools::install_github("Giappo/mbd", ref = "d1b85b44cbcc28c20376708d8b6dee87298fa43d")'
+  - travis-tool.sh install_github richelbilderbeek/pirouette
+  - travis-tool.sh install_deps
   - Rscript -e "beastier::install_beast2()"
   - Rscript -e 'mauricer::mrc_install("NS")'
 
