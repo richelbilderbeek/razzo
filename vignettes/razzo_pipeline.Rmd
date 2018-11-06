@@ -320,7 +320,38 @@ ggplot(
   ggplot2::scale_x_continuous(limits = c(0.0, 1.0))
 ```
 
-## Step 10: what is the effect of MBD on the error?
+## Step 10: measure Effective Sample Sizes
+
+We already had a sneak-peek at the ESSes.
+In this step, we measure the ESSes of all files and
+combine it into one file:
+
+```{r}
+if (1 == 2) {
+  esses_filename <- raz_create_esses_file(parameters_filenames)
+  knitr::kable(utils::read.csv(esses_filename)[-1])
+}
+```
+
+## Step 11: compare marginal likelihoods
+
+For each biological parameter setting, 
+we use two site models and two clock models in our inference.
+Although we know the generative model follows a 
+Jukes-Cantor site model and a strict clock model, 
+does this also show when using the Bayes factor?
+
+
+```{r}
+# Do after #65
+if (1 == 2) {
+  marg_log_lik_filename <- raz_create_marg_log_lik_file(parameters_filenames)
+  knitr::kable(utils::read.csv(marg_log_lik_filename)[-1])
+}
+```
+
+
+## Step 12: what is the effect of MBD on the error?
 
 The nLTT statistics of the BD tree shows the baseline error:
 the Bayesian analysis assumes BD, and that tree *is* BD.
