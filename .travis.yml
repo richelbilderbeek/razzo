@@ -28,7 +28,7 @@ before_script:
   # proselint
   - sudo pip install proselint
   # Use mbd package before overhaul
-  - devtools::install_github("Giappo/mbd", ref = "d1b85b44cbcc28c20376708d8b6dee87298fa43d")
+  - Rscript -e 'devtools::install_github("Giappo/mbd", ref = "d1b85b44cbcc28c20376708d8b6dee87298fa43d")'
 
 after_success:
   - Rscript -e 'lintr::lint_package()'
