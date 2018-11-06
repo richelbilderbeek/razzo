@@ -5,7 +5,7 @@
 #'   and saves each setting in a file within the corresponding folder.
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
-raz_create_parameters_files <- function(
+raz_create_parameter_files <- raz_create_parameters_files <- function(
   project_folder_name = getwd()
 ) {
   # Just use the parameter combinations in the article
