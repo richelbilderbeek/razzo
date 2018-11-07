@@ -1,13 +1,18 @@
 # razzo
 
-Branch|[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)|[![Codecov logo](pics/Codecov.png)](https://www.codecov.io)
----|---|---
-`master`|[![Build Status](https://travis-ci.org/richelbilderbeek/razzo.svg?branch=master)](https://travis-ci.org/richelbilderbeek/razzo) | [![codecov.io](https://codecov.io/github/richelbilderbeek/razzo/coverage.svg?branch=master)](https://codecov.io/github/richelbilderbeek/razzo?branch=master)
-`develop`|[![Build Status](https://travis-ci.org/richelbilderbeek/razzo.svg?branch=develop)](https://travis-ci.org/richelbilderbeek/razzo) | [![codecov.io](https://codecov.io/github/richelbilderbeek/razzo/coverage.svg?branch=develop)](https://codecov.io/github/richelbilderbeek/razzo?branch=develop)
-`giovanni`|[![Build Status](https://travis-ci.org/richelbilderbeek/razzo.svg?branch=giovanni)](https://travis-ci.org/richelbilderbeek/razzo) | [![codecov.io](https://codecov.io/github/richelbilderbeek/razzo/coverage.svg?branch=giovanni)](https://codecov.io/github/richelbilderbeek/razzo?branch=giovanni)
-`richel`|[![Build Status](https://travis-ci.org/richelbilderbeek/razzo.svg?branch=richel)](https://travis-ci.org/richelbilderbeek/razzo) | [![codecov.io](https://codecov.io/github/richelbilderbeek/razzo/coverage.svg?branch=richel)](https://codecov.io/github/richelbilderbeek/razzo?branch=richel)
+Branch|[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)|[![AppVeyor logo](pics/AppVeyor.png)](https://www.appveyor.com)|[![Codecov logo](pics/Codecov.png)](https://www.codecov.io)
+---|---|---|---
+`master`|[![Build Status](https://travis-ci.org/richelbilderbeek/razzo.svg?branch=master)](https://travis-ci.org/richelbilderbeek/razzo) |[![Build status](https://ci.appveyor.com/api/projects/status/o6htu70cv6ttqw5r/branch/master?svg=true)](https://ci.appveyor.com/project/richelbilderbeek/razzo/branch/master)| [![codecov.io](https://codecov.io/github/richelbilderbeek/razzo/coverage.svg?branch=master)](https://codecov.io/github/richelbilderbeek/razzo?branch=master)
+`develop`|[![Build Status](https://travis-ci.org/richelbilderbeek/razzo.svg?branch=develop)](https://travis-ci.org/richelbilderbeek/razzo) |[![Build status](https://ci.appveyor.com/api/projects/status/o6htu70cv6ttqw5r/branch/develop?svg=true)](https://ci.appveyor.com/project/richelbilderbeek/razzo/branch/develop)| [![codecov.io](https://codecov.io/github/richelbilderbeek/razzo/coverage.svg?branch=develop)](https://codecov.io/github/richelbilderbeek/razzo?branch=develop)
+`giovanni`|[![Build Status](https://travis-ci.org/richelbilderbeek/razzo.svg?branch=giovanni)](https://travis-ci.org/richelbilderbeek/razzo) |[![Build status](https://ci.appveyor.com/api/projects/status/o6htu70cv6ttqw5r/branch/giovanni?svg=true)](https://ci.appveyor.com/project/richelbilderbeek/razzo/branch/giovanni)| [![codecov.io](https://codecov.io/github/richelbilderbeek/razzo/coverage.svg?branch=giovanni)](https://codecov.io/github/richelbilderbeek/razzo?branch=giovanni)
+`richel`|[![Build Status](https://travis-ci.org/richelbilderbeek/razzo.svg?branch=richel)](https://travis-ci.org/richelbilderbeek/razzo) |[![Build status](https://ci.appveyor.com/api/projects/status/o6htu70cv6ttqw5r/branch/richel?svg=true)](https://ci.appveyor.com/project/richelbilderbeek/razzo/branch/richel)| [![codecov.io](https://codecov.io/github/richelbilderbeek/razzo/coverage.svg?branch=richel)](https://codecov.io/github/richelbilderbeek/razzo?branch=richel)
 
 Research project by Giovanni Laudanno and Richel J.C. Bilderbeek.
+
+Primary tasks:
+
+ * Giovanni Laudanno: making each step right
+ * Richel J.C. Bilderbeek: big picture, software architecture, testing, continuous integration
 
 The research project uses three GitHub repo's:
 
@@ -16,6 +21,13 @@ The research project uses three GitHub repo's:
  * [razzo_project](https://github.com/richelbilderbeek/razzo_project): bash scripts
 
 ## Roadmap
+
+### Project stages
+
+ * `Ignition`: prepare to do the experiment badly, e.g. short MCMC chains, few replicates, etc.
+ * `Launch`: prepare to do the experiment correctly, in line with manuscript
+ * `Flight`: running the experiment, maintaining the process
+ * `Land`: write down results
 
 ### File handling functions
 

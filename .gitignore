@@ -36,3 +36,4 @@ tests/testthat/*.trees
 *.posterior.trees
 vignettes/*.log
 vignettes/*.trees
+example.nex
