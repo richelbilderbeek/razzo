@@ -12,6 +12,8 @@ raz_create_posterior <- function(
   parameters,
   alignment
 ) {
+  testit::assert(beastier::is_beast2_installed())
+
   # Save the alignment to file
   fasta_filename <- tempfile(fileext = ".fasta")
   ape::write.FASTA(
@@ -48,11 +50,12 @@ raz_create_posterior <- function(
   if (!(site_model == "jc69" || site_model == "gtr")) {
     stop("'site_model' must be either 'jc69' or 'gtr'")
   }
+  # Up the site model from a character vector to a data structure
   if (site_model == "jc69") {
-    site_model_function <- beautier::create_jc69_site_model
-  }
-  if (site_model == "gtr") {
-    site_model_function <- beautier::create_gtr_site_model
+    site_model <- beautier::create_jc69_site_model()
+  } else {
+    testit::assert(site_model == "gtr")
+    site_model <- beautier::create_gtr_site_model()
   }
 
   # Install maurices if needed
@@ -70,7 +73,7 @@ raz_create_posterior <- function(
       store_every = sample_interval,
       sub_chain_length = sub_chain_length
     ),
-    site_models = site_model_function(),
+    site_models = site_model,
     clock_models = clock_model_function(),
     tree_priors = beautier::create_bd_tree_prior(),
     mrca_priors = beautier::create_mrca_prior(
