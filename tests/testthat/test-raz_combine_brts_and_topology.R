@@ -34,5 +34,41 @@ test_that("check usage with brts coming from the same tree", {
         max(tree$edge.length * 1e-6)
     )
   }
+})
 
+test_that("all the tree features (but the branching times) are preserved", {
+
+set.seed(1)
+  age <- 10
+  sim <- mbd::mbd_sim(
+    pars = c(0.3, 0.1, 2, 0.1),
+    n_0 = 2,
+    age = age,
+    cond = 1
+  )
+  tree <- sim$reconstructed_tree
+  brts <- sort(c(
+    age,
+    runif(
+      n = (length(sim$brts) - 1),
+      min = 0,
+      max = age - 0.001)
+  ),
+  decreasing = TRUE)
+  new_tree <- raz_combine_brts_and_topology(
+      brts = brts,
+      tree = tree
+  )
+  testthat::expect_equal(
+    new_tree$edge, tree$edge
+  )
+  testthat::expect_equal(
+    new_tree$Nnode, tree$Nnode
+  )
+  testthat::expect_equal(
+    new_tree$root.edge, tree$root.edge
+  )
+  testthat::expect_equal(
+    new_tree$tip.label, tree$tip.label
+  )
 })

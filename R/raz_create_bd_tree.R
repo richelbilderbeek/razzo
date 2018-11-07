@@ -30,7 +30,6 @@ raz_create_bd_tree <- function(
     } else {
       sink(rappdirs::user_cache_dir())
     }
-    # TODO and NOTE: Issue #32: should cond be 1 or 2? @richel: I think Rampal told us to use cond=2. If you agree clean all the shit here so lint doesn't complain anymore. May he burn in hell # nolint
     # TODO: Issue #52: check the quality of inference of lambda and mu provided by bd_ML # nolint
     bd_pars <- DDD::bd_ML( # nolint
       brts = sort(mbd_brts, decreasing = TRUE),

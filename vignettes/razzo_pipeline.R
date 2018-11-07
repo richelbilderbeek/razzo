@@ -13,7 +13,7 @@ library(razzo)
 
 ## ------------------------------------------------------------------------
 super_folder_name <- tempdir()
-project_folder_name <- file.path(super_folder_name, "razzo_project") 
+project_folder_name <- file.path(super_folder_name, "razzo_project")
 dir.create(path = project_folder_name, recursive = TRUE)
 
 ## ------------------------------------------------------------------------
@@ -75,7 +75,7 @@ if (1 == 2) {
   # Do the inference. It doesn't work on Windows.
   mbd_alignment_filenames <- list() # Search the folder
   for (i in seq_along(parameters_filenames)) {
-    parameter_filename <- parameters_filenames[i] 
+    parameter_filename <- parameters_filenames[i]
     mbd_alignment_filenames[[i]] <- raz_create_mbd_posterior_files(
       parameter_filename
     )
@@ -95,7 +95,7 @@ if (1 == 2) {
   for (trees_filename in trees_filenames)
   {
     if (1 == 2) {
-      # TODO: Issue 5
+      # TODO: Issue #5
       nltt_filename <- raz_create_nltt_file(trees_filename)
       testit::assert("1a_nltts.csv" %in% nltt_filename)
     }
