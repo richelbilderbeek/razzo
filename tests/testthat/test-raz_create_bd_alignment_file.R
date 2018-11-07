@@ -4,6 +4,7 @@ test_that("use", {
 
   parameters_filename <- raz_create_tempfile("parameters.csv")
   bd_tree_filename <- raz_create_tempfile("bd.tree")
+  mbd_tree_filename <- raz_create_tempfile("mbd.tree")
   testit::assert(file.exists(parameters_filename))
   testit::assert(file.exists(bd_tree_filename))
 

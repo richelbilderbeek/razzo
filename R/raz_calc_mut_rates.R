@@ -13,7 +13,7 @@ raz_calc_mut_rates <- function(
   bd_crown_age <- max(ape::branching.times(bd_tree))
   mbd_crown_age <- max(ape::branching.times(mbd_tree))
   testit::assert(
-    bd_crown_age == mbd_crown_age
+    all.equal(bd_crown_age, mbd_crown_age)
   )
   bd_tot_branch_length <- sum(bd_tree$edge.length)
   mbd_tot_branch_length <- sum(mbd_tree$edge.length)

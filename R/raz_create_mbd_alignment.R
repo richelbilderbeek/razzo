@@ -21,7 +21,10 @@ raz_create_mbd_alignment <- function(
   # Found:
   #  * BD_mutation_rate <-  MBD_mutation_rate * (sum(MBD_tree$edge.length)/sum(BD_tree$edge.length)); # nolint
   #  * mbd_total_branch_length <- sum(mbd_tree$edge.length)
-  mbd_mutation_rate <- raz_calc_mut_rates$mbd_mut_rate
+  mbd_mutation_rate <- raz_calc_mut_rates(
+    bd_tree = bd_tree,
+    mbd_tree = mbd_tree
+  )$mbd_mut_rate
   testit::assert(!is.null(mbd_mutation_rate))
 
   # Root sequence is e.g. AAACCCGGGTTT

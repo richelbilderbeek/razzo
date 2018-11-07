@@ -41,7 +41,7 @@ test_that("check usage with brts coming from the same tree", {
 
 test_that("all the tree features (but the branching times) are preserved", {
 
-set.seed(1)
+  set.seed(1)
   age <- 10
   sim <- mbd::mbd_sim(
     pars = c(0.3, 0.1, 2, 0.1),
@@ -77,12 +77,4 @@ set.seed(1)
   testthat::expect_true(
     all(test$root.edge == tree$root.edge)
   )
-  testthat::expect_true(
-    max(unname(test$edge.length) - tree$edge.length) <
-      max(tree$edge.length * 1e-6)
-  )
-
-  # sum(unname(test$edge.length))
-  # sum(tree$edge.length)
-
 })
