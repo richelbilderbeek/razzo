@@ -16,4 +16,8 @@ test_that("use", {
     mbd_l_matrix = mbd_l_matrix
   )
   expect_equal(class(bd_tree), "phylo")
+  expect_equal(
+    max(bd_tree$edge.length),
+    max(mbd_tree$edge.length)
+  )
 })

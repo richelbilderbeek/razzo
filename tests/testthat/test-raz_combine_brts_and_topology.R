@@ -9,7 +9,6 @@ test_that("check usage with brts coming from the same tree", {
   tree <- razzo::raz_create_mbd_tree(parameters)$mbd_tree
   brts <- ape::branching.times(tree)
 
-<<<<<<< HEAD
   max_seed <- 5
   for (seed in 1:max_seed) {
     parameters$seed <- seed
@@ -51,6 +50,7 @@ set.seed(1)
     cond = 1
   )
   tree <- sim$reconstructed_tree
+
   brts <- sort(c(
     age,
     runif(
@@ -59,22 +59,7 @@ set.seed(1)
       max = age - 0.001)
   ),
   decreasing = TRUE)
-  new_tree <- raz_combine_brts_and_topology(
-      brts = brts,
-      tree = tree
-  )
-  testthat::expect_equal(
-    new_tree$edge, tree$edge
-  )
-  testthat::expect_equal(
-    new_tree$Nnode, tree$Nnode
-  )
-  testthat::expect_equal(
-    new_tree$root.edge, tree$root.edge
-  )
-  testthat::expect_equal(
-    new_tree$tip.label, tree$tip.label
-=======
+
   test <- raz_combine_brts_and_topology(
     brts = brts,
     tree = tree
@@ -95,6 +80,9 @@ set.seed(1)
   testthat::expect_true(
     max(unname(test$edge.length) - tree$edge.length) <
       max(tree$edge.length * 1e-6)
->>>>>>> f128bc821dff6891a72b6cbd9d9e2b09876434c2
   )
+
+  # sum(unname(test$edge.length))
+  # sum(tree$edge.length)
+
 })

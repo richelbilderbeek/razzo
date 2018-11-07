@@ -50,8 +50,7 @@ raz_create_bd_tree <- function(
   testit::assert(!is.null(mu_bd))
   testit::assert(is.numeric(mu_bd))
 
-  # generate bd branching times from the inferred
-  # parameters
+  # generate bd branching times from the inferred parameters
   set.seed(seed)
   bd_tree0 <- TESS::tess.sim.taxa.age(
     n = 1,
