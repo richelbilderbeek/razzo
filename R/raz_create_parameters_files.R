@@ -19,8 +19,8 @@ raz_create_parameters_files <- function(
   sample_interval <- 1000
   chain_length <- 3000 # Testing
   sub_chain_length <- 1000
-  clock_model <- "strict"
-  site_model <- "jc69"
+  clock_model_interval <- c("strict", "rln")
+  site_model_interval <- c("jc69", "gtr")
 
   lambda_interval <- unique(lambda_interval)
   mu_interval     <- unique(mu_interval)
@@ -51,31 +51,46 @@ raz_create_parameters_files <- function(
                                parsettings_name),
                      showWarnings = FALSE)
           for (seed in seed_interval) {
-            seedfolder <- file.path(project_folder_name,
-                                    data_folder_name,
-                                    parsettings_name,
-                                    seed)
-            dir.create(file.path(seedfolder),
-                       showWarnings = FALSE)
-
-            parameters <- raz_create_params(
-              lambda = lambda,
-              mu = mu,
-              nu = nu,
-              q = q,
-              seed = seed,
-              crown_age = crown_age,
-              sequence_length = sequence_length,
-              sample_interval = sample_interval,
-              chain_length = chain_length,
-              sub_chain_length = sub_chain_length,
-              clock_model = clock_model,
-              site_model = site_model
+            seed_folder <- file.path(
+              project_folder_name,
+              data_folder_name,
+              parsettings_name,
+              seed
             )
+            dir.create(file.path(seed_folder),
+                           showWarnings = FALSE)
+            for (clock_model in clock_model_interval) {
+              for (site_model in site_model_interval) {
+                model_folder <- file.path(
+                  seed_folder,
+                  paste0(clock_model, "-", site_model)
+                )
+                dir.create(file.path(model_folder),
+                           showWarnings = FALSE)
 
-            parameters_filenames[i] <- file.path(seedfolder, "parameters.csv")
-            utils::write.csv(parameters, file = parameters_filenames[i])
-            i <- i + 1
+                parameters <- raz_create_params(
+                  lambda = lambda,
+                  mu = mu,
+                  nu = nu,
+                  q = q,
+                  seed = seed,
+                  crown_age = crown_age,
+                  sequence_length = sequence_length,
+                  sample_interval = sample_interval,
+                  chain_length = chain_length,
+                  sub_chain_length = sub_chain_length,
+                  clock_model = clock_model,
+                  site_model = site_model
+                )
+
+                parameters_filenames[i] <- file.path(
+                  model_folder,
+                  "parameters.csv"
+                )
+                utils::write.csv(parameters, file = parameters_filenames[i])
+                i <- i + 1
+              }
+            }
           }
         }
       }
