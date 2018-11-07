@@ -4,10 +4,13 @@
 \alias{raz_create_mbd_alignment}
 \title{Create an MBD alignment from a parameters file in the same folder}
 \usage{
-raz_create_mbd_alignment(parameters, mbd_tree)
+raz_create_mbd_alignment(parameters, bd_tree, mbd_tree)
 }
 \arguments{
 \item{parameters}{the razzo parameters}
+
+\item{bd_tree}{a phylogent of class \code{phylo}, created by a Birth Death
+process}
 
 \item{mbd_tree}{an MBD tree}
 }
