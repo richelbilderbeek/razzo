@@ -33,7 +33,10 @@ test_that("must have as much multiple bursts as predicted by nu", {
     nu_events = exp_n_spec_events
   )
   mbd_tree <- mbd_sim$mbd_tree
-  mbd_brts <- DDD:::L2brts(mbd_sim$mbd_l_matrix, dropextinct = TRUE)
+  mbd_brts <- DDD:::L2brts(
+    unname(mbd_sim$mbd_l_matrix),
+    dropextinct = TRUE
+  )
 
   skip(
     "TODO: Issue #24: Create trees with expected number of speciation events"

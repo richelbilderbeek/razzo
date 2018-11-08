@@ -48,14 +48,12 @@ Filename|Description|Created by
 Update our dependencies:
 
 ```{r message=FALSE}
-if (rappdirs::app_dir()$os != "win") {
-  devtools::install_github("Giappo/mbd", quiet = TRUE)
-  devtools::install_github("richelbilderbeek/beautier", quiet = TRUE)
-  devtools::install_github("richelbilderbeek/tracerer", quiet = TRUE)
-  devtools::install_github("richelbilderbeek/beastier", quiet = TRUE)
-  devtools::install_github("richelbilderbeek/mauricer", quiet = TRUE)
-  devtools::install_github("richelbilderbeek/babette", quiet = TRUE)
-}
+devtools::install_github("Giappo/mbd", quiet = TRUE)
+devtools::install_github("richelbilderbeek/beautier", quiet = TRUE)
+devtools::install_github("richelbilderbeek/tracerer", quiet = TRUE)
+devtools::install_github("richelbilderbeek/beastier", quiet = TRUE)
+devtools::install_github("richelbilderbeek/mauricer", quiet = TRUE)
+devtools::install_github("richelbilderbeek/babette", quiet = TRUE)
 ```
 
 Load the libraries needed:

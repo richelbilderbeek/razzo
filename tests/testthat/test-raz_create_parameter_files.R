@@ -54,8 +54,10 @@ test_that("can read", {
 test_that("must contain both site models", {
 
   # Create parameter files from fresh
-  filenames <- raz_create_parameters_files(
-    project_folder_name = tempdir()
+  filenames <- suppressWarnings(
+    raz_create_parameters_files(
+      project_folder_name = tempdir()
+    )
   )
 
   # Collect the site models
@@ -74,8 +76,10 @@ test_that("must contain both site models", {
 test_that("must contain both clock models", {
 
   # Create parameter files from fresh
-  filenames <- raz_create_parameters_files(
-    project_folder_name = tempdir()
+  filenames <- suppressWarnings(
+    raz_create_parameters_files(
+      project_folder_name = tempdir()
+    )
   )
 
   # Collect the site models
