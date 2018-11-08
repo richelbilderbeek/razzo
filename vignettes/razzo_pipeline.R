@@ -1,8 +1,6 @@
 ## ----message=FALSE-------------------------------------------------------
+devtools::install_github("Giappo/mbd", quiet = TRUE)
 if (1 == 2) {
-  devtools::install_github("Giappo/mbd", 
-    ref = "d1b85b44cbcc28c20376708d8b6dee87298fa43d", quiet = TRUE
-  )
   devtools::install_github("richelbilderbeek/beautier", quiet = TRUE)
   devtools::install_github("richelbilderbeek/tracerer", quiet = TRUE)
   devtools::install_github("richelbilderbeek/beastier", quiet = TRUE)
