@@ -16,7 +16,7 @@ library(ggplot2)
 
 ## ------------------------------------------------------------------------
 super_folder_name <- tempdir()
-project_folder_name <- file.path(super_folder_name, "razzo_project")
+project_folder_name <- file.path(super_folder_name, "razzo_project") 
 dir.create(path = project_folder_name, recursive = TRUE)
 
 ## ------------------------------------------------------------------------
@@ -73,19 +73,11 @@ for (i in seq_along(parameters_filenames)) {
 image(ape::read.FASTA(file = bd_alignment_filenames[1]))
 
 ## ------------------------------------------------------------------------
-<<<<<<< HEAD
-if (1 == 2) {
-  # Do the inference. It doesn't work on Windows.
-  mbd_alignment_filenames <- list() # Search the folder
-  for (i in seq_along(parameters_filenames)) {
-    parameter_filename <- parameters_filenames[i]
-=======
 mbd_alignment_filenames <- list()
 for (i in seq_along(parameters_filenames)) {
 
   if (rappdirs::app_dir()$os != "win") {
     # Do the inference
->>>>>>> f128bc821dff6891a72b6cbd9d9e2b09876434c2
     mbd_alignment_filenames[[i]] <- raz_create_mbd_posterior_files(
       parameters_filenames[i]
     )
@@ -106,18 +98,6 @@ for (i in seq_along(parameters_filenames)) {
 }
 
 ## ------------------------------------------------------------------------
-<<<<<<< HEAD
-if (1 == 2) {
-  # Create the nLTT distribution
-  trees_filenames <- c("1a.trees") # Search the folder
-  for (trees_filename in trees_filenames)
-  {
-    if (1 == 2) {
-      # TODO: Issue #5
-      nltt_filename <- raz_create_nltt_file(trees_filename)
-      testit::assert("1a_nltts.csv" %in% nltt_filename)
-    }
-=======
 babette::plot_densitree(ape::read.tree(mbd_alignment_filenames[[1]][1]))
 
 ## ------------------------------------------------------------------------
@@ -147,7 +127,6 @@ for (i in seq_along(parameters_filenames)) {
       raz_get_path("bd.log"),
       raz_get_path("bd_mar_log_lik.csv")
     )
->>>>>>> f128bc821dff6891a72b6cbd9d9e2b09876434c2
   }
   # Posterior trees
   testit::assert(any(stringr::str_detect(bd_alignment_filenames[[i]], ".*/bd\\.trees")))
@@ -172,32 +151,73 @@ knitr::kable(
 )
 
 ## ------------------------------------------------------------------------
-mbd_nltt_filenames <- rep(NA, length(parameters_filenames))
-for (i in seq_along(parameters_filenames)) {
-  mbd_nltt_filenames[i] <- raz_create_mbd_nltts_file(
-    parameters_filenames[i]
-  )
+if (rappdirs::app_dir()$os != "win") {
+  mbd_nltt_filenames <- rep(NA, length(parameters_filenames))
+  for (i in seq_along(parameters_filenames)) {
+    mbd_nltt_filenames[i] <- raz_create_mbd_nltts_file(
+      parameters_filenames[i]
+    )
+  }
 }
 
 ## ------------------------------------------------------------------------
-ggplot(
-  data = data.frame(nltt = utils::read.csv(mbd_nltt_filenames[1])$x),
-  aes(x = nltt)
-) + geom_histogram(binwidth = 0.01) + 
-  ggplot2::scale_x_continuous(limits = c(0.0, 1.0))
-
-## ------------------------------------------------------------------------
-bd_nltt_filenames <- rep(NA, length(parameters_filenames))
-for (i in seq_along(parameters_filenames)) {
-  bd_nltt_filenames[i] <- raz_create_bd_nltts_file(
-    parameters_filenames[i]
-  )
+if (rappdirs::app_dir()$os != "win") {
+  ggplot(
+    data = data.frame(nltt = utils::read.csv(mbd_nltt_filenames[1])$x),
+    aes(x = nltt)
+  ) + geom_histogram(binwidth = 0.01) + 
+    ggplot2::scale_x_continuous(limits = c(0.0, 1.0))
 }
 
 ## ------------------------------------------------------------------------
-ggplot(
-  data = data.frame(nltt = utils::read.csv(bd_nltt_filenames[1])$x),
-  aes(x = nltt)
-) + geom_histogram(binwidth = 0.01) + 
-  ggplot2::scale_x_continuous(limits = c(0.0, 1.0))
+if (rappdirs::app_dir()$os != "win") {
+  bd_nltt_filenames <- rep(NA, length(parameters_filenames))
+  for (i in seq_along(parameters_filenames)) {
+    bd_nltt_filenames[i] <- raz_create_bd_nltts_file(
+      parameters_filenames[i]
+    )
+  }
+}
+
+## ------------------------------------------------------------------------
+if (rappdirs::app_dir()$os != "win") {
+  ggplot(
+    data = data.frame(nltt = utils::read.csv(bd_nltt_filenames[1])$x),
+    aes(x = nltt)
+  ) + geom_histogram(binwidth = 0.01) + 
+    ggplot2::scale_x_continuous(limits = c(0.0, 1.0))
+}
+
+## ------------------------------------------------------------------------
+if (1 == 2) {
+  esses_filename <- raz_create_esses_file(parameters_filenames)
+  knitr::kable(utils::read.csv(esses_filename)[-1])
+}
+
+## ------------------------------------------------------------------------
+# Do after #65
+if (1 == 2) {
+  marg_log_lik_filename <- raz_create_marg_log_lik_file(parameters_filenames)
+  knitr::kable(utils::read.csv(marg_log_lik_filename)[-1])
+}
+
+## ------------------------------------------------------------------------
+if (rappdirs::app_dir()$os != "win") {
+  mbd_nltts <- utils::read.csv(mbd_nltt_filenames[1])$x
+  bd_nltts <- utils::read.csv(bd_nltt_filenames[1])$x
+  
+  df <- data.frame(
+    model = c(rep("MBD", length(mbd_nltts)), rep("BD", length(bd_nltts))),
+    nltt = c(mbd_nltts, bd_nltts),
+    stringsAsFactors = TRUE  
+  )
+  
+  plot <- ggplot(
+    data = df,
+    aes(x = nltt, fill = model)
+  ) + ggplot2::scale_x_continuous(limits = c(0.0, 1.0))
+  
+  plot + geom_histogram(binwidth = 0.01, alpha = 0.5)
+  plot + geom_density(alpha = 0.5)
+}
 
