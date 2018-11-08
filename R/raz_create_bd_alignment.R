@@ -7,13 +7,17 @@
 #' @export
 raz_create_bd_alignment <- function(
   parameters,
-  bd_tree
+  bd_tree,
+  mbd_tree
 ) {
   sequence_length <- parameters$sequence_length
   testit::assert(!is.null(sequence_length))
 
   # Calculate the mutation rate from the tree
-  bd_mutation_rate <- 1 / parameters$crown_age
+  bd_mutation_rate <- raz_calc_mut_rates(
+    bd_tree = bd_tree,
+    mbd_tree = mbd_tree
+  )$bd_mut_rate
   testit::assert(!is.null(bd_mutation_rate))
   testit::assert(is.numeric(bd_mutation_rate))
 

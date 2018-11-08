@@ -23,6 +23,8 @@
 #' @param mu per-species extinction rate
 #' @param mutation_rate something
 #' @param nu the rate at which a multiple-birth specation is triggered
+#' @param nu_events the number of nu-triggered events that have to be
+#'  present in the simulated tree
 #' @param parameters the razzo parameters
 #' @param parameter_filename full path to a 'parameters.csv' file
 #' @param parameters_filename full path to a 'parameters.csv' file
@@ -71,6 +73,7 @@ default_params_doc <- function(
   mu,
   mutation_rate,
   nu,
+  nu_events,
   parameters,
   parameter_filename,
   parameters_filename,

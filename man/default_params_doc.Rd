@@ -8,8 +8,8 @@ documentation.}
 default_params_doc(alignment, bd_mutation_rate, bd_tree, bd_tree_filename,
   brts, chain_length, clock_model, crown_age, fasta_filename, folder_name,
   init_speciation_rate, init_extinction_rate, lambda, mbd_l_matrix,
-  mbd_mutation_rate, mbd_tree, mu, mutation_rate, nu, parameters,
-  parameter_filename, parameters_filename, posterior_trees,
+  mbd_mutation_rate, mbd_tree, mu, mutation_rate, nu, nu_events,
+  parameters, parameter_filename, parameters_filename, posterior_trees,
   project_folder_name, q, sample_interval, seed, sequence_length, sim_pars,
   sim_phylo, site_model, sub_chain_length, tree, tree_filename,
   trees_filename, verbose)
@@ -56,6 +56,9 @@ from a MBD tree}
 \item{mutation_rate}{something}
 
 \item{nu}{the rate at which a multiple-birth specation is triggered}
+
+\item{nu_events}{the number of nu-triggered events that have to be
+present in the simulated tree}
 
 \item{parameters}{the razzo parameters}
 

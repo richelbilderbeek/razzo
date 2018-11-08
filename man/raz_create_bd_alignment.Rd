@@ -4,13 +4,15 @@
 \alias{raz_create_bd_alignment}
 \title{Create a BD alignment from a BD tree}
 \usage{
-raz_create_bd_alignment(parameters, bd_tree)
+raz_create_bd_alignment(parameters, bd_tree, mbd_tree)
 }
 \arguments{
 \item{parameters}{the razzo parameters}
 
 \item{bd_tree}{a phylogent of class \code{phylo}, created by a Birth Death
 process}
+
+\item{mbd_tree}{an MBD tree}
 }
 \value{
 an alignment

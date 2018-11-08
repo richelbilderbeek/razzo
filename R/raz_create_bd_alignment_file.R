@@ -14,10 +14,13 @@ raz_create_bd_alignment_file <- function(
   raz_check_file_exists(parameters_filename) # nolint internal function
   bd_tree_filename <- file.path(dirname(parameters_filename), "bd.tree")
   raz_check_file_exists(bd_tree_filename) # nolint internal function
+  mbd_tree_filename <- file.path(dirname(parameters_filename), "mbd.tree")
+  raz_check_file_exists(mbd_tree_filename) # nolint internal function
 
   alignment <- raz_create_bd_alignment(
     parameters = raz_open_parameters_file(parameters_filename),
-    bd_tree = ape::read.tree(bd_tree_filename)
+    bd_tree = ape::read.tree(bd_tree_filename),
+    mbd_tree = ape::read.tree(mbd_tree_filename)
   )
 
   # Save the alignment

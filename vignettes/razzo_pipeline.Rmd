@@ -2,7 +2,7 @@
 title: "razzo pipeline"
 author: "Giovanni Laudanno and Richel J.C. Bilderbeek"
 date: "`r Sys.Date()`"
-output: rmarkdown::pdf_document
+output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{razzo pipeline}
   %\VignetteEngine{knitr::rmarkdown}
@@ -48,10 +48,8 @@ Filename|Description|Created by
 Update our dependencies:
 
 ```{r message=FALSE}
+devtools::install_github("Giappo/mbd", quiet = TRUE)
 if (1 == 2) {
-  devtools::install_github("Giappo/mbd", 
-    ref = "d1b85b44cbcc28c20376708d8b6dee87298fa43d", quiet = TRUE
-  )
   devtools::install_github("richelbilderbeek/beautier", quiet = TRUE)
   devtools::install_github("richelbilderbeek/tracerer", quiet = TRUE)
   devtools::install_github("richelbilderbeek/beastier", quiet = TRUE)
@@ -281,20 +279,24 @@ Finally we calculate the nLTT statistics for the MBD posteriors
 related to the original trees.
 
 ```{r}
-mbd_nltt_filenames <- rep(NA, length(parameters_filenames))
-for (i in seq_along(parameters_filenames)) {
-  mbd_nltt_filenames[i] <- raz_create_mbd_nltts_file(
-    parameters_filenames[i]
-  )
+if (rappdirs::app_dir()$os != "win") {
+  mbd_nltt_filenames <- rep(NA, length(parameters_filenames))
+  for (i in seq_along(parameters_filenames)) {
+    mbd_nltt_filenames[i] <- raz_create_mbd_nltts_file(
+      parameters_filenames[i]
+    )
+  }
 }
 ```
 
 ```{r}
-ggplot(
-  data = data.frame(nltt = utils::read.csv(mbd_nltt_filenames[1])$x),
-  aes(x = nltt)
-) + geom_histogram(binwidth = 0.01) + 
-  ggplot2::scale_x_continuous(limits = c(0.0, 1.0))
+if (rappdirs::app_dir()$os != "win") {
+  ggplot(
+    data = data.frame(nltt = utils::read.csv(mbd_nltt_filenames[1])$x),
+    aes(x = nltt)
+  ) + geom_histogram(binwidth = 0.01) + 
+    ggplot2::scale_x_continuous(limits = c(0.0, 1.0))
+}
 ```
 
 
@@ -304,20 +306,24 @@ Finally we calculate the nLTT statistics for the BD posteriors
 related to the original trees.
 
 ```{r}
-bd_nltt_filenames <- rep(NA, length(parameters_filenames))
-for (i in seq_along(parameters_filenames)) {
-  bd_nltt_filenames[i] <- raz_create_bd_nltts_file(
-    parameters_filenames[i]
-  )
+if (rappdirs::app_dir()$os != "win") {
+  bd_nltt_filenames <- rep(NA, length(parameters_filenames))
+  for (i in seq_along(parameters_filenames)) {
+    bd_nltt_filenames[i] <- raz_create_bd_nltts_file(
+      parameters_filenames[i]
+    )
+  }
 }
 ```
 
 ```{r}
-ggplot(
-  data = data.frame(nltt = utils::read.csv(bd_nltt_filenames[1])$x),
-  aes(x = nltt)
-) + geom_histogram(binwidth = 0.01) + 
-  ggplot2::scale_x_continuous(limits = c(0.0, 1.0))
+if (rappdirs::app_dir()$os != "win") {
+  ggplot(
+    data = data.frame(nltt = utils::read.csv(bd_nltt_filenames[1])$x),
+    aes(x = nltt)
+  ) + geom_histogram(binwidth = 0.01) + 
+    ggplot2::scale_x_continuous(limits = c(0.0, 1.0))
+}
 ```
 
 ## Step 10: measure Effective Sample Sizes
@@ -357,20 +363,22 @@ The nLTT statistics of the BD tree shows the baseline error:
 the Bayesian analysis assumes BD, and that tree *is* BD.
 
 ```{r}
-mbd_nltts <- utils::read.csv(mbd_nltt_filenames[1])$x
-bd_nltts <- utils::read.csv(bd_nltt_filenames[1])$x
-
-df <- data.frame(
-  model = c(rep("MBD", length(mbd_nltts)), rep("BD", length(bd_nltts))),
-  nltt = c(mbd_nltts, bd_nltts),
-  stringsAsFactors = TRUE  
-)
-
-plot <- ggplot(
-  data = df,
-  aes(x = nltt, fill = model)
-) + ggplot2::scale_x_continuous(limits = c(0.0, 1.0))
-
-plot + geom_histogram(binwidth = 0.01, alpha = 0.5)
-plot + geom_density(alpha = 0.5)
+if (rappdirs::app_dir()$os != "win") {
+  mbd_nltts <- utils::read.csv(mbd_nltt_filenames[1])$x
+  bd_nltts <- utils::read.csv(bd_nltt_filenames[1])$x
+  
+  df <- data.frame(
+    model = c(rep("MBD", length(mbd_nltts)), rep("BD", length(bd_nltts))),
+    nltt = c(mbd_nltts, bd_nltts),
+    stringsAsFactors = TRUE  
+  )
+  
+  plot <- ggplot(
+    data = df,
+    aes(x = nltt, fill = model)
+  ) + ggplot2::scale_x_continuous(limits = c(0.0, 1.0))
+  
+  plot + geom_histogram(binwidth = 0.01, alpha = 0.5)
+  plot + geom_density(alpha = 0.5)
+}
 ```
