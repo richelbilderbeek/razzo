@@ -60,7 +60,7 @@ raz_create_bd_tree <- function(
     age = age,
     MRCA = TRUE
   )[[1]]
-  bd_brts0 <- raz_tree2brts(bd_tree0)
+  bd_brts0 <- raz_tree2brts(bd_tree0) # nolint internal function
 
   bd_tree <- raz_combine_brts_and_topology(
     brts = bd_brts0,
