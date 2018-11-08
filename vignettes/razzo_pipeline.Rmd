@@ -2,7 +2,7 @@
 title: "razzo pipeline"
 author: "Giovanni Laudanno and Richel J.C. Bilderbeek"
 date: "`r Sys.Date()`"
-output: rmarkdown::pdf_document
+output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{razzo pipeline}
   %\VignetteEngine{knitr::rmarkdown}
@@ -210,18 +210,6 @@ babette::plot_densitree(ape::read.tree(mbd_alignment_filenames[[1]][1]))
 Plot the Effective Sample Sizes (must be at least 200 in manuscript):
 
 ```{r}
-<<<<<<< HEAD
-if (1 == 2) {
-  # Create the nLTT distribution
-  trees_filenames <- c("1a.trees") # Search the folder
-  for (trees_filename in trees_filenames)
-  {
-    if (1 == 2) {
-      # TODO: Issue #5
-      nltt_filename <- raz_create_nltt_file(trees_filename)
-      testit::assert("1a_nltts.csv" %in% nltt_filename)
-    }
-=======
 knitr::kable(
   tracerer::calc_esses(
     # -1 to drop first column
@@ -257,7 +245,6 @@ for (i in seq_along(parameters_filenames)) {
       raz_get_path("bd.log"),
       raz_get_path("bd_mar_log_lik.csv")
     )
->>>>>>> f128bc821dff6891a72b6cbd9d9e2b09876434c2
   }
   # Posterior trees
   testit::assert(any(stringr::str_detect(bd_alignment_filenames[[i]], ".*/bd\\.trees")))

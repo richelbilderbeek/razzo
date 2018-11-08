@@ -22,9 +22,10 @@ raz_create_mbd_tree <- function(
   testit::assert(!is.null(cond))
 
   set.seed(seed)
-  # Use 'soc' argument until after mbd overhaul
   mbd_sim <- mbd::mbd_sim(pars = mbd_pars, n_0 = n_0, age = age, cond = cond)
 
-  # Use 'tes' argument until after mbd overhaul
-  list(mbd_tree = mbd_sim$reconstructed_tree, mbd_l_matrix = mbd_sim$l_matrix)
+  list(
+    mbd_tree = mbd_sim$reconstructed_tree,
+    mbd_l_matrix = mbd_sim$l_matrix
+  )
 }
