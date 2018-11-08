@@ -7,13 +7,13 @@ test_that("check usage with brts coming from the same tree", {
   )
   parameters$seed <- 1
   tree <- razzo::raz_create_mbd_tree(parameters)$mbd_tree
-  brts <- ape::branching.times(tree)
+  brts <- raz_tree2brts(tree)
 
   max_seed <- 5
   for (seed in 1:max_seed) {
     parameters$seed <- seed
     tree <- razzo::raz_create_mbd_tree(parameters)$mbd_tree
-    brts <- ape::branching.times(tree)
+    brts <- raz_tree2brts(tree)
 
     test <- raz_combine_brts_and_topology(
       brts = brts,

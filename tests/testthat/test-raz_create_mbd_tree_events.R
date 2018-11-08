@@ -22,7 +22,7 @@ test_that("creates a tree", {
 
 })
 
-test_that("must have as much multiple bursts as predicted by nu", {
+test_that("tree must have a predefined number of nu events", {
 
   parameters <- razzo::raz_open_parameters_file(raz_get_path("parameters.csv"))
   # Calculate the number of expected triggered speciation events
@@ -38,9 +38,6 @@ test_that("must have as much multiple bursts as predicted by nu", {
     dropextinct = TRUE
   )
 
-  skip(
-    "TODO: Issue #24: Create trees with expected number of speciation events"
-  )
   # Count the number of actual triggered speciation events
   n_spec_events <- mbd::mbd_count_n_spec_events(mbd_brts)
 

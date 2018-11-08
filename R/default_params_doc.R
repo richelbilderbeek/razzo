@@ -30,6 +30,7 @@
 #' @param parameters_filename full path to a 'parameters.csv' file
 #' @param posterior_trees phylogenetic trees in a BEAST2 posterior,
 #'   of class \code{multiphylo}
+#' @param precision define the precision of the approximation.
 #' @param project_folder_name project folder name,
 #'   will be the full path to \code{razzo_project}
 #' @param q something
@@ -78,6 +79,7 @@ default_params_doc <- function(
   parameter_filename,
   parameters_filename,
   posterior_trees,
+  precision,
   project_folder_name,
   q,
   sample_interval,

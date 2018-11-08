@@ -25,3 +25,20 @@ raz_make_tempdir <- function(...) {
   testit::assert(dir.exists(folder_name))
   return(folder_name)
 }
+
+#' @title Convert a tree into branching times
+#' @description Convert a tree into branching times. Differently from the ape's
+#'  function, it will keep the multiple events. Since the units are million
+#'  years, a precision of 8 means that the approximation goes up to the 8-th
+#'  digits. With such approximation we consider events happening within an
+#'  interval of 4 days (1 million years / 10^8 = 1 year / 100) as simultaneous.
+#' @inheritParams default_params_doc
+#' @return the branching times
+#' @author Giovanni Laudanno
+raz_tree2brts <- function(tree, precision = 8) {
+
+  brts0 <- ape::branching.times(tree)
+  brts <- DDD::roundn(brts0, digits = precision)
+
+  brts
+}

@@ -34,6 +34,10 @@ test_that("creates a tree", {
 
 test_that("must have as much multiple bursts as predicted by nu", {
 
+  skip(
+    "see 'context('raz_create_mbd_tree_events')'"
+  )
+
   parameters <- razzo::raz_open_parameters_file(raz_get_path("parameters.csv"))
 
   mbd_sim <- razzo::raz_create_mbd_tree(parameters)
@@ -42,9 +46,7 @@ test_that("must have as much multiple bursts as predicted by nu", {
   # Calculate the number of expected triggered speciation events
   exp_n_spec_events <- parameters$crown_age / parameters$nu
 
-  skip(
-    "TODO: Issue #24: Create trees with expected number of speciation events"
-  )
+
   # Count the number of actual triggered speciation events
   n_spec_events <- mbd::mbd_count_n_spec_events(mbd_tree)
 

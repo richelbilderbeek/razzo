@@ -21,7 +21,7 @@ raz_create_bd_tree <- function(
   testit::assert(!is.null(age))
   testit::assert(!is.null(soc))
 
-  mbd_brts     <- abs(ape::branching.times(mbd_tree))
+  mbd_brts <- DDD::L2brts(unname(mbd_l_matrix))
   set.seed(seed)
   { # nolint indeed bracket incorrect, is to scope the sink, which is thanks to DDD
     # Suppress output
@@ -60,7 +60,7 @@ raz_create_bd_tree <- function(
     age = age,
     MRCA = TRUE
   )[[1]]
-  bd_brts0 <- ape::branching.times(bd_tree0)
+  bd_brts0 <- raz_tree2brts(bd_tree0)
 
   bd_tree <- raz_combine_brts_and_topology(
     brts = bd_brts0,
