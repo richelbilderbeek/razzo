@@ -18,7 +18,8 @@ r_github_packages:
   - richelbilderbeek/tracerer
   - richelbilderbeek/babette
   - richelbilderbeek/pirouette
-  - Giappo/mbd # Don't use before overhaul is finished
+  - richelbilderbeek/ribir
+  - Giappo/mbd
 
 before_script:
   - sudo apt-get install -qq oracle-java8-installer # Java 8

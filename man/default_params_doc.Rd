@@ -10,9 +10,9 @@ default_params_doc(alignment, bd_mutation_rate, bd_tree, bd_tree_filename,
   init_speciation_rate, init_extinction_rate, lambda, mbd_l_matrix,
   mbd_mutation_rate, mbd_tree, mu, mutation_rate, nu, nu_events,
   parameters, parameter_filename, parameters_filename, posterior_trees,
-  project_folder_name, q, sample_interval, seed, sequence_length, sim_pars,
-  sim_phylo, site_model, sub_chain_length, tree, tree_filename,
-  trees_filename, verbose)
+  precision, project_folder_name, q, sample_interval, seed,
+  sequence_length, sim_pars, sim_phylo, site_model, sub_chain_length, tree,
+  tree_filename, trees_filename, verbose)
 }
 \arguments{
 \item{alignment}{a DNA alignment}
@@ -68,6 +68,8 @@ present in the simulated tree}
 
 \item{posterior_trees}{phylogenetic trees in a BEAST2 posterior,
 of class \code{multiphylo}}
+
+\item{precision}{define the precision of the approximation.}
 
 \item{project_folder_name}{project folder name,
 will be the full path to \code{razzo_project}}

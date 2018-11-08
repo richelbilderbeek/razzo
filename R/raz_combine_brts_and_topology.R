@@ -15,13 +15,17 @@ raz_combine_brts_and_topology <- function(
   # if(!is.null(tree$edge.lengths)){
   #   message("Warning: input tree has $edge.lengths present, these
   #           will be replaced")}
-  tree$edge.length <- NULL #nolint
+  tree$edge.length <- NULL # nolint
+
   #add zero ages for tips
   all_ages <- c(rep(0, ape::Ntip(tree)), brts)
+
   # get mother node age for each edge
   mom_ages <- all_ages[tree$edge[, 1]]
+
   # get node ages for child nodes of each edge
   child_ages <- all_ages[tree$edge[, 2]]
+
   #edge lengths = mom - child
   edge_lengths <- mom_ages - child_ages
   tree$edge.length <- edge_lengths #nolint
