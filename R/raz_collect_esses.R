@@ -62,7 +62,11 @@ raz_collect_esses <- function(
     for (s in seed_folders) {
       model_folders <- file.path(s, list.files(s))
       for (m in model_folders) {
+        gen_model[i] <- i
+        clock_model[i] <- i
+        site_model[i] <- i
 
+        i <- i + 1
       }
     }
   }
