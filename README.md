@@ -46,9 +46,6 @@ Done|Create MBD posterior files|`raz_create_mbd_posterior_files`
 Done|Create twin BD posterior files|`raz_create_bd_posterior_files`
 Done|Create MBD nLTT file|`raz_create_mbd_nltt_file`
 Done|Create twin BD nLTT file|`raz_create_bd_nltt_file`
-?|Create marginal likelihood file|`raz_create_mar_lik_file`
-?|Create figure 1|`raz_create_fig_1`
-?|Create figure 2|`raz_create_fig_2`
 
 ### Data handling functions
 
@@ -64,7 +61,18 @@ Done|Create twin BD tree|`raz_create_bd_tree`
 Done|Create BD alignment|`raz_create_bd_alignment`
 Done|Create posterior|`raz_create_posterior`
 Done|Create nLTT|`raz_create_nltt`
-?|Create marginal likelihoods|`raz_create_mar_lik`
+
+### Processing functions
+
+These functions process the output created.
+
+All these functions take the project folder's name as an argument.
+reading the file from `data` subfolder, writing to the `results` subfolder.
+
+?|Collect marginal likelihoods|`raz_collect_mar_liks`
+?|Collect effective sample sizes|`raz_collect_esses`
+?|Create figure 1|`raz_create_fig_1`
+?|Create figure 2|`raz_create_fig_2`
 
 ## Installation
 
