@@ -61,6 +61,7 @@ if (1 == 2) {
 Load the libraries needed:
 
 ```{r}
+library(mbd)
 library(razzo)
 library(ggplot2)
 ```
