@@ -69,7 +69,7 @@ These functions process the output created.
 All these functions take the project folder's name as an argument.
 reading the file from `data` subfolder, writing to the `results` subfolder.
 
-?|Collect marginal likelihoods|`raz_collect_mar_liks`
+?|Collect marginal likelihoods|`raz_collect_mar_log_liks`
 ?|Collect effective sample sizes|`raz_collect_esses`
 ?|Create figure 1|`raz_create_fig_1`
 ?|Create figure 2|`raz_create_fig_2`

@@ -1,4 +1,4 @@
-context("test-raz_collect_mar_liks")
+context("test-raz_collect_mar_log_liks")
 
 test_that("use", {
   skip("TODO. Issue 77, #77")
@@ -21,4 +21,12 @@ test_that("use", {
   expect_true(is.factor(df$clock_model))
   expect_true(is.factor(df$site_model))
 
+})
+
+test_that("abuse", {
+  skip("TODO. Issue 77, #77")
+  expect_error(
+    raz_collect_mar_log_liks("nonsense"),
+    "'folder_name' must end with 'razzo_project'"
+  )
 })
