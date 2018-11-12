@@ -1,4 +1,4 @@
-context("test-raz_calc_mut_rates")
+context("raz_calc_mut_rates")
 
 test_that("identical trees", {
 

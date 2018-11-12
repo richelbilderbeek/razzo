@@ -1,5 +1,5 @@
 #' Get the full path of a file in the \code{inst/extdata} folder
-#' @param filename the file's name, without the path
+#' @inheritParams default_params_doc
 #' @return the full path of the filename, if and only if
 #'   the file is present. Will stop otherwise.
 #' @author Richel J.C. Bilderbeek

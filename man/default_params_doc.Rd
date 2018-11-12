@@ -6,13 +6,13 @@
 documentation.}
 \usage{
 default_params_doc(alignment, bd_mutation_rate, bd_tree, bd_tree_filename,
-  brts, chain_length, clock_model, crown_age, fasta_filename, folder_name,
-  init_speciation_rate, init_extinction_rate, lambda, mbd_l_matrix,
-  mbd_mutation_rate, mbd_tree, mu, mutation_rate, nu, nu_events,
-  parameters, parameter_filename, parameters_filename, posterior_trees,
-  precision, project_folder_name, q, sample_interval, seed,
-  sequence_length, sim_pars, sim_phylo, site_model, sub_chain_length, tree,
-  tree_filename, trees_filename, verbose)
+  brts, chain_length, clock_model, crown_age, fasta_filename, filename,
+  folder_name, init_speciation_rate, init_extinction_rate, lambda,
+  mbd_l_matrix, mbd_mutation_rate, mbd_tree, mu, mutation_rate, nu,
+  nu_events, parameters, parameter_filename, parameters_filename,
+  posterior_trees, precision, project_folder_name, q, sample_interval,
+  seed, sequence_length, sim_pars, sim_phylo, site_model, sub_chain_length,
+  tree, tree_filename, trees_filename, verbose)
 }
 \arguments{
 \item{alignment}{a DNA alignment}
@@ -35,6 +35,8 @@ to be used for the inference. Valid names are 'strict' and 'rln'.}
 \item{crown_age}{The crown age of the tree.}
 
 \item{fasta_filename}{name of a FASTA file}
+
+\item{filename}{the file's name, without the path}
 
 \item{folder_name}{name of the main folder}
 

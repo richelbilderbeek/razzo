@@ -50,11 +50,16 @@ raz_create_params <- function(
   if (sub_chain_length <= 0) {
     stop("sub_chain_length has to be a positive number!")
   }
-  if (!(clock_model == "strict" || clock_model == "rln")) {
-    stop("'clock_model' must be either 'strict' or 'rln'")
+  if (!(clock_model %in% raz_clock_models())) { # nolint internal function
+    stop(
+      "'clock_model' must be among the following: ",
+      paste(raz_clock_models(), collapse = ", ") # nolint internal function
+    )
   }
-  if (!(site_model == "jc69" || site_model == "gtr")) {
-    stop("'site_model' must be either 'jc69' or 'gtr'")
+  if (!(site_model %in% raz_site_models())) { # nolint internal function
+    stop("'site_model' must be among the following: ",
+         paste(raz_site_models(), collapse = ", ") # nolint internal function
+    )
   }
 
   params <- list(

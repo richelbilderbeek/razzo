@@ -42,3 +42,30 @@ raz_tree2brts <- function(tree, precision = 8) {
 
   brts
 }
+
+#' @title Site models in Razzo
+#' @description Site models in Razzo
+#' @inheritParams default_params_doc
+#' @return the site models
+#' @author Giovanni Laudanno
+raz_site_models <- function() {
+ c("jc69", "gtr")
+}
+
+#' @title Clock models in Razzo
+#' @description Clock models in Razzo
+#' @inheritParams default_params_doc
+#' @return the clock models
+#' @author Giovanni Laudanno
+raz_clock_models <- function() {
+ c("strict", "rln")
+}
+
+#' @title Generative models in Razzo
+#' @description Generative models in Razzo
+#' @inheritParams default_params_doc
+#' @return the generative models
+#' @author Giovanni Laudanno
+raz_gen_models <- function() {
+ c("bd", "mbd")
+}

@@ -167,7 +167,10 @@ test_that("clock model", {
     raz_create_params(
       clock_model = "nonsense"
     ),
-    "'clock_model' must be either 'strict' or 'rln'"
+    paste0(
+      "'clock_model' must be among the following: ",
+      paste(raz_clock_models(), collapse = ", ")
+    )
   )
 
   # Retrieve strict clock from parameters
@@ -205,7 +208,10 @@ test_that("site model", {
     raz_create_params(
       site_model = "nonsense"
     ),
-    "'site_model' must be either 'jc69' or 'gtr'"
+    paste0(
+      "'site_model' must be among the following: ",
+      paste(raz_site_models(), collapse = ", ")
+    )
   )
 
   # Retrieve JC69 site model from parameters
