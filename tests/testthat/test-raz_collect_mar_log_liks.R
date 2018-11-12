@@ -14,13 +14,18 @@ test_that("use", {
   expect_true("site_model" %in% names(df))
   expect_true("clock_model" %in% names(df))
 
+  # gen_model is the generative model,
+  # can be 'mbd' (the MBD tree)
+  # or 'bd' (for the twin BD tree)
+  expect_true("gen_model" %in% names(df))
+
   # The collected marginal log-likelihood
   expect_true("mar_log_lik" %in% names(df))
 
   # Data must be tidy
+  expect_true(is.factor(df$gen_model))
   expect_true(is.factor(df$clock_model))
   expect_true(is.factor(df$site_model))
-
 })
 
 test_that("abuse", {
