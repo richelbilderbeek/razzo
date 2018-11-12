@@ -12,6 +12,7 @@
 #' to be used for the inference. Valid names are 'strict' and 'rln'.
 #' @param crown_age The crown age of the tree.
 #' @param fasta_filename name of a FASTA file
+#' @param filename the file's name, without the path
 #' @param folder_name name of the main folder
 #' @param init_speciation_rate a speciation rate
 #' @param init_extinction_rate an extinction rate
@@ -64,6 +65,7 @@ default_params_doc <- function(
   clock_model,
   crown_age,
   fasta_filename,
+  filename,
   folder_name,
   init_speciation_rate,
   init_extinction_rate,

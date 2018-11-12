@@ -1,6 +1,7 @@
 ## ----message=FALSE-------------------------------------------------------
-devtools::install_github("Giappo/mbd", quiet = TRUE)
 if (1 == 2) {
+  if (!require(ape)) {install.packages("ape")}
+  if (!require(mbd)) {devtools::install_github("Giappo/mbd", quiet = TRUE)}
   devtools::install_github("richelbilderbeek/beautier", quiet = TRUE)
   devtools::install_github("richelbilderbeek/tracerer", quiet = TRUE)
   devtools::install_github("richelbilderbeek/beastier", quiet = TRUE)
@@ -9,6 +10,7 @@ if (1 == 2) {
 }
 
 ## ------------------------------------------------------------------------
+library(mbd)
 library(razzo)
 library(ggplot2)
 

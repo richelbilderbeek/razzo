@@ -1,4 +1,4 @@
-context("test-raz_check_file_exists")
+context("raz_check_file_exists")
 
 test_that("use", {
 

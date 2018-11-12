@@ -19,8 +19,8 @@ raz_create_parameters_files <- function(
   sample_interval <- 1000
   chain_length <- 3000 # Testing
   sub_chain_length <- 1000
-  clock_model_interval <- c("strict", "rln")
-  site_model_interval <- c("jc69", "gtr")
+  clock_model_interval <- raz_clock_models() # nolint internal function
+  site_model_interval <- raz_site_models() # nolint internal function
 
   lambda_interval <- unique(lambda_interval)
   mu_interval     <- unique(mu_interval)

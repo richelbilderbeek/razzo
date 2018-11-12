@@ -37,8 +37,11 @@ raz_create_posterior <- function(
   testit::assert(!is.null(clock_model))
   testit::assert(!is.null(site_model))
 
-  if (!(clock_model == "strict" || clock_model == "rln")) {
-    stop("'clock_model' must be either 'strict' or 'rln'")
+  if (!(clock_model %in% raz_clock_models())) { # nolint internal function
+    stop(
+      "'clock_model' must be among the following: ",
+      paste(raz_clock_models(), collapse = ", ") # nolint internal function
+    )
   }
   if (clock_model == "strict") {
     clock_model_function <- beautier::create_clock_model_strict
@@ -47,8 +50,10 @@ raz_create_posterior <- function(
     clock_model_function <- beautier::create_clock_model_rln
   }
 
-  if (!(site_model == "jc69" || site_model == "gtr")) {
-    stop("'site_model' must be either 'jc69' or 'gtr'")
+  if (!(site_model %in% raz_site_models())) { # nolint internal function
+    stop("'site_model' must be among the following: ",
+         paste(raz_site_models(), collapse = ", ") # nolint internal function
+    )
   }
   # Up the site model from a character vector to a data structure
   if (site_model == "jc69") {

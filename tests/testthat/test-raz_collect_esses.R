@@ -1,4 +1,4 @@
-context("test-raz_collect_esses")
+context("raz_collect_esses")
 
 test_that("use", {
   skip("TODO. Issue 78, #78")
