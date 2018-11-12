@@ -3,13 +3,14 @@
 #' @inheritParams default_params_doc
 #' @return a dataframe with parameters and marginal likelihoods
 #' @author Giovanni Laudanno
+#' @aliases raz_collect_mar_log_liks
 #' @export
-raz_collect_mar_log_liks <- function(
+raz_collect_marg_log_liks <- function(
   filename
 ) {
 
   if (basename(filename) != "razzo_project") {
-   stop("'folder_name' must end with 'razzo_project'")
+    stop("'folder_name' must end with 'razzo_project'")
   }
 
   data_folder <- file.path(
@@ -39,18 +40,18 @@ raz_collect_mar_log_liks <- function(
   len_par_num <- length(par_num)
   len_par_mar <- length(par_mar)
 
-  res1 <- data.frame(matrix(
+  par_data <- data.frame(matrix(
     NA,
     ncol = len_par_num,
     nrow = 2 * df_length
   ))
-  colnames(res1) <- par_names[!grepl("model", par_names)]
-  res2 <- data.frame(matrix(
+  colnames(par_data) <- par_names[!grepl("model", par_names)]
+  mar_data <- data.frame(matrix(
     NA,
     ncol = len_par_mar / 2,
     nrow = 2 * df_length
   ))
-  colnames(res2) <- mar_names
+  colnames(mar_data) <- mar_names
   gen_model <- clock_model <- site_model <- rep("blank", 2 * df_length)
 
   i <- 1
@@ -65,16 +66,16 @@ raz_collect_mar_log_liks <- function(
         par_num <- parameters[!grepl("model", names(parameters))]
 
         # save bd results
-        res1[i, ] <- data.frame(par_num)
-        res2[i, ] <- unname(data.frame(bd_mar))
+        par_data[i, ] <- data.frame(par_num)
+        mar_data[i, ] <- unname(data.frame(bd_mar))
         site_model[i] <- levels(droplevels(parameters$site_model))
         clock_model[i] <- levels(droplevels(parameters$clock_model))
         gen_model[i] <- "bd"
         i <- i + 1
 
         # save mbd results
-        res1[i, ] <- data.frame(par_num)
-        res2[i, ] <- unname(data.frame(mbd_mar))
+        par_data[i, ] <- data.frame(par_num)
+        mar_data[i, ] <- unname(data.frame(mbd_mar))
         site_model[i] <- levels(droplevels(parameters$site_model))
         clock_model[i] <- levels(droplevels(parameters$clock_model))
         gen_model[i] <- "mbd"
@@ -83,6 +84,6 @@ raz_collect_mar_log_liks <- function(
       }
     }
   }
-  results <- cbind(res1, gen_model, site_model, clock_model, res2)
+  results <- cbind(par_data, gen_model, site_model, clock_model, mar_data)
   results
 }
