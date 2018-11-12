@@ -29,7 +29,16 @@ The research project uses three GitHub repo's:
  * `Flight`: running the experiment, maintaining the process
  * `Land`: write down results
 
-### File handling functions
+## Function overview
+
+ * Data creation: produces parameter files and output
+ * Results creation: creates figures and tables from the data
+
+### Data creation
+
+Produces parameter files and output
+
+#### File handling functions
 
 All functions that end with `_file` or `_files`.
 These functions are friendly to scripted use and
@@ -47,10 +56,10 @@ Done|Create twin BD posterior files|`raz_create_bd_posterior_files`
 Done|Create MBD nLTT file|`raz_create_mbd_nltt_file`
 Done|Create twin BD nLTT file|`raz_create_bd_nltt_file`
 
-### Data handling functions
+#### Data handling functions
 
-These functions do the actual work. The work on parsed data
-and are not intended to be called from a script
+These functions do the actual work. 
+They work on parsed data and are not intended to be called from a script
 
 Status|Description|Function name
 ---|---|---
@@ -62,17 +71,35 @@ Done|Create BD alignment|`raz_create_bd_alignment`
 Done|Create posterior|`raz_create_posterior`
 Done|Create nLTT|`raz_create_nltt`
 
-### Processing functions
+### Results creation
 
-These functions process the output created.
+Creates figures and tables from the data.
 
-All these functions take the project folder's name as an argument.
-reading the file from `data` subfolder, writing to the `results` subfolder.
+#### Data handling
 
+All these functions take the project folder's name as an argument
+and return a tidy data frame or figure.
+They are not intended to be called from a script
+
+Status|Description|Function name
+---|---|---
 ?|Collect marginal likelihoods|`raz_collect_mar_log_liks`
 ?|Collect effective sample sizes|`raz_collect_esses`
 ?|Create figure 1|`raz_create_fig_1`
 ?|Create figure 2|`raz_create_fig_2`
+
+#### File handling
+
+All functions that end with `_file` or `_files`.
+These functions are friendly to scripted use and
+require only the project folder's name as an argument.
+
+Status|Description|Function name
+---|---|---
+?|Collect marginal likelihoods|`raz_create_mar_log_liks_file`
+?|Collect effective sample sizes|`raz_create_esses_file`
+?|Create figure 1|`raz_create_fig_1_file`
+?|Create figure 2|`raz_create_fig_2_file`
 
 ## Installation
 
