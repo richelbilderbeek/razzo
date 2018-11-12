@@ -6,16 +6,16 @@ test_that("use", {
   df <- raz_collect_mar_log_liks(raz_get_path("razzo_project"))
 
   # Experimental parameters that vary
-  expect_true("lambda" %in% names(parameters))
-  expect_true("mu" %in% names(parameters))
-  expect_true("nu" %in% names(parameters))
-  expect_true("q" %in% names(parameters))
-  expect_true("seed" %in% names(parameters))
-  expect_true("site_model" %in% names(parameters))
-  expect_true("clock_model" %in% names(parameters))
+  expect_true("lambda" %in% names(df))
+  expect_true("mu" %in% names(df))
+  expect_true("nu" %in% names(df))
+  expect_true("q" %in% names(df))
+  expect_true("seed" %in% names(df))
+  expect_true("site_model" %in% names(df))
+  expect_true("clock_model" %in% names(df))
 
   # The collected marginal log-likelihood
-  expect_true("mar_log_lik" %in% names(parameters))
+  expect_true("mar_log_lik" %in% names(df))
 
   # Data must be tidy
   expect_true(is.factor(df$clock_model))
