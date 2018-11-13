@@ -1,7 +1,6 @@
 context("test-raz_collect_nltt_stats")
 
 test_that("use", {
-  skip("TODO. Issue 84, #84")
 
   df <- raz_collect_nltt_stats(
     project_folder_name = raz_get_path("razzo_project")
@@ -29,10 +28,24 @@ test_that("use", {
   expect_true(is.factor(df$gen_model))
   expect_true(is.factor(df$clock_model))
   expect_true(is.factor(df$site_model))
+
+  # Data must make sense
+  expect_true(all(df$lambda >= 0))
+  expect_true(all(df$mu >= 0))
+  expect_true(all(df$nu >= 0))
+  expect_true(all(df$q >= 0 & df$q <= 1))
+  expect_true(all(df$crown_age >= 0))
+  expect_true(all(df$sequence_length >= 0))
+  expect_true(all(df$sample_interval >= 0))
+  expect_true(all(df$chain_length >= 0))
+  expect_true(all(df$sub_chain_length >= 0))
+  expect_true(all(df$gen_model %in% raz_gen_models())) # nolint internal function
+  expect_true(all(df$site_model %in% raz_site_models())) # nolint internal function
+  expect_true(all(df$close_model %in% raz_clock_models())) # nolint internal function
+  expect_true(all(df$nltt_1 >= 0))
 })
 
 test_that("abuse", {
-  skip("TODO. Issue 84, #84")
   expect_error(
     raz_collect_nltt_stats(
       project_folder_name = "nonsense"

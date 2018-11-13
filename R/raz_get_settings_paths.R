@@ -5,15 +5,15 @@
 #' @author Giovanni Laudanno
 #' @export
 raz_get_settings_paths <- function(
-  filename
+  project_folder_name
 ) {
 
-    if (basename(filename) != "razzo_project") {
-      stop("'folder_name' must end with 'razzo_project'")
+    if (basename(project_folder_name) != "razzo_project") {
+      stop("'project_folder_name' must end with 'razzo_project'")
     }
 
   data_folder <- file.path(
-    filename,
+    project_folder_name,
     "data"
   )
 

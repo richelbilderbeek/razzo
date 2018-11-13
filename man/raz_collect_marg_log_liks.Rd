@@ -5,10 +5,11 @@
 \alias{raz_collect_mar_log_liks}
 \title{Collect marginal loglikelihoods}
 \usage{
-raz_collect_marg_log_liks(filename)
+raz_collect_marg_log_liks(project_folder_name)
 }
 \arguments{
-\item{filename}{the file's name, without the path}
+\item{project_folder_name}{project folder name,
+will be the full path to \code{razzo_project}}
 }
 \value{
 a dataframe with parameters and marginal likelihoods

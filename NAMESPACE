@@ -3,6 +3,7 @@
 export(raz_calc_mut_rates)
 export(raz_collect_esses)
 export(raz_collect_marg_log_liks)
+export(raz_collect_nltt_stats)
 export(raz_combine_brts_and_topology)
 export(raz_create_bd_alignment)
 export(raz_create_bd_alignment_file)

@@ -4,10 +4,11 @@
 \alias{raz_get_settings_paths}
 \title{Get paths for all the settings}
 \usage{
-raz_get_settings_paths(filename)
+raz_get_settings_paths(project_folder_name)
 }
 \arguments{
-\item{filename}{the file's name, without the path}
+\item{project_folder_name}{project folder name,
+will be the full path to \code{razzo_project}}
 }
 \value{
 the paths of all the parameter settings
