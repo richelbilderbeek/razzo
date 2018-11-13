@@ -26,7 +26,7 @@ raz_create_bd_tree <- function(
   { # nolint indeed bracket incorrect, is to scope the sink, which is thanks to DDD
     sink(file.path(rappdirs::user_cache_dir(), "ddd_output"))
     # TODO: Issue #52: check the quality of inference of lambda and mu provided by bd_ML # nolint
-    bd_pars <- DDD::bd_ML( # nolint
+    bd_pars <- DDD::bd_ML(
       brts = sort(mbd_brts, decreasing = TRUE),
       cond = 2, #conditioning on stem or crown age and on the total number of extant taxa (including missing species) # nolint
       initparsopt = c(lambda, mu),
@@ -51,7 +51,7 @@ raz_create_bd_tree <- function(
     n = 1,
     lambda = lambda_bd,
     mu     = mu_bd,
-    nTaxa = ((soc - 1) + length(mbd_brts)),
+    nTaxa = ((soc - 1) + length(mbd_brts)), # nolint
     age = age,
     MRCA = TRUE
   )[[1]]

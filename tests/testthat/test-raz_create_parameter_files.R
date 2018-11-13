@@ -27,11 +27,13 @@ test_that("use", {
       )
     ) > 0
   )
-  # OK: there is a data folder
+  # OK: there is a data folder that is a subfolder of razzo_project'
+  # Use ..? to indicate one or two back- or normal slashes
   testthat::expect_true(
     length(
       grep(
-        pattern = "/data/", filenames[1], perl = TRUE, value = TRUE
+        pattern = "razzo_project..?data",
+        filenames[1], perl = TRUE, value = TRUE
       )
     ) > 0
   )

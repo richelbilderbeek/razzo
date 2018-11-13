@@ -26,8 +26,14 @@ test_that("creates a tree", {
       write.csv(x = mbd_sim$mbd_l_matrix,
                 file = raz_get_path("mbd_l_matrix.csv"))
     } else {
-      ape::write.tree(phy = mbd_sim$mbd_tree, file = "~/mbd.tree")
-      write.csv(x = mbd_sim$mbd_l_matrix, file = "~/mbd_l_matrix.csv")
+      ape::write.tree(
+        phy = mbd_sim$mbd_tree,
+        file = system.path(rappdirs::user_data_dir(), "mbd.tree")
+      )
+      write.csv(
+        x = mbd_sim$mbd_l_matrix,
+        file = system.path(rappdirs::user_data_dir(), "mbd_l_matrix.csv")
+      )
     }
   }
 })
