@@ -9,6 +9,8 @@ test_that("use", {
     # file?'. Spoiler: because BEAST2.exe does not allow scripted use
   }
 
+  if (!ribir::is_on_travis()) return()
+
   parameters_filename <- raz_create_tempfile("parameters.csv")
   bd_alignment_filename <- raz_create_tempfile("bd.fasta")
   testit::assert(file.exists(parameters_filename))
