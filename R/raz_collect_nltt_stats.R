@@ -1,25 +1,26 @@
-#' @title Collect marginal loglikelihoods
-#' @description Collect marginal loglikelihoods
+#' @title Collect nltt statistics
+#' @description Collect nltt statistics
 #' @inheritParams default_params_doc
-#' @return a dataframe with parameters and marginal likelihoods
+#' @return a dataframe with parameters and nltt statistics
 #' @author Giovanni Laudanno
-#' @aliases raz_collect_mar_log_liks
 #' @export
-raz_collect_marg_log_liks <- function(
+raz_collect_nltt_stats <- function(
   project_folder_name
 ) {
 
   # retrieve information from files
   paths <- raz_get_settings_paths(project_folder_name)
   parameters <- raz_open_parameters_file(file.path(paths[1], "parameters.csv")) # nolint internal function
-  bd_mar <- utils::read.csv(file.path(paths[1], "bd_mar_log_lik.csv"))[-1]
-  mbd_mar <- utils::read.csv(file.path(paths[1], "mbd_mar_log_lik.csv"))[-1]
+  len_nltt <- 0
+  for (p in paths) {
+    bd_nltt <- utils::read.csv(file.path(p, "bd_nltts.csv"))[, 2]
+    mbd_nltt <- utils::read.csv(file.path(p, "mbd_nltts.csv"))[, 2]
+    len_nltt <- pmax(len_nltt, length(bd_nltt), length(mbd_nltt))
+  }
   pars <- parameters[!grepl("model", names(parameters))]
-  mars <- c(bd_mar, mbd_mar)
   par_names <- names(parameters)
-  mar_names <- names(bd_mar)
+  nltt_names <- paste0("nltt_", (1:len_nltt))
   len_pars <- length(pars)
-  len_mars <- length(mars)
   n_settings <- length(paths)
 
   # initialize dataframe components
@@ -29,39 +30,42 @@ raz_collect_marg_log_liks <- function(
     nrow = 2 * n_settings
   ))
   colnames(par_data) <- par_names[!grepl("model", par_names)]
-  mar_data <- data.frame(matrix(
+  nltt_data <- data.frame(matrix(
     NA,
-    ncol = len_mars / 2,
+    ncol = len_nltt,
     nrow = 2 * n_settings
   ))
-  colnames(mar_data) <- mar_names
+  colnames(nltt_data) <- nltt_names
   gen_model <- clock_model <- site_model <- rep("blank", 2 * n_settings)
 
   # collect data
   i <- 1
   for (p in paths) {
     parameters <- raz_open_parameters_file(file.path(p, "parameters.csv")) # nolint internal function
-    bd_mar <- utils::read.csv(file.path(p, "bd_mar_log_lik.csv"))[-1]
-    mbd_mar <- utils::read.csv(file.path(p, "mbd_mar_log_lik.csv"))[-1]
+    bd_temp <- utils::read.csv(file.path(p, "bd_nltts.csv"))[, 2]
+    mbd_temp <- utils::read.csv(file.path(p, "mbd_nltts.csv"))[, 2]
+    mbd_nltt <- bd_nltt <- rep(NA, len_nltt)
+    bd_nltt[1:length(bd_temp)] <- bd_temp
+    mbd_nltt[1:length(mbd_temp)] <- mbd_temp
     par_num <- parameters[!grepl("model", names(parameters))]
 
     # save bd results
     par_data[i, ] <- data.frame(par_num)
-    mar_data[i, ] <- unname(data.frame(bd_mar))
+    nltt_data[i, ] <- unlist(unname(data.frame(bd_nltt)))
     site_model[i] <- levels(droplevels(parameters$site_model))
     clock_model[i] <- levels(droplevels(parameters$clock_model))
     gen_model[i] <- "bd"
     i <- i + 1
 
-    # save mbd results
+    # # save mbd results
     par_data[i, ] <- data.frame(par_num)
-    mar_data[i, ] <- unname(data.frame(mbd_mar))
+    nltt_data[i, ] <- unlist(unname(data.frame(mbd_nltt)))
     site_model[i] <- levels(droplevels(parameters$site_model))
     clock_model[i] <- levels(droplevels(parameters$clock_model))
     gen_model[i] <- "mbd"
     i <- i + 1
   }
 
-  results <- cbind(par_data, gen_model, site_model, clock_model, mar_data)
+  results <- cbind(par_data, gen_model, site_model, clock_model, nltt_data)
   results
 }
