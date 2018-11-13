@@ -24,5 +24,7 @@ raz_create_mar_log_liks_file <- function(
     "mar_log_liks.csv"
   )
   utils::write.csv(x = mar_log_liks, file = mar_log_liks_filename)
+
+  # return file name
   mar_log_liks_filename
 }
