@@ -8,6 +8,7 @@ raz_collect_esses <- function(
   filename
 ) {
 
+  # TODO #78
   return() #STUB
 
   if (basename(filename) != "razzo_project") {
