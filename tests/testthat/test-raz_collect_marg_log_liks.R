@@ -3,7 +3,7 @@ context("raz_collect_marg_log_liks")
 test_that("use", {
 
   df <- raz_collect_marg_log_liks(
-      project_folder_name = raz_get_path("razzo_project")
+    project_folder_name = raz_get_path("razzo_project")
   )
 
   # Experimental parameters that vary
@@ -46,9 +46,10 @@ test_that("use", {
 })
 
 test_that("abuse", {
-
   expect_error(
-    raz_collect_marg_log_liks("nonsense"),
+    raz_collect_marg_log_liks(
+      project_folder_name = "nonsense"
+    ),
     "'project_folder_name' must end with 'razzo_project'"
   )
 })
