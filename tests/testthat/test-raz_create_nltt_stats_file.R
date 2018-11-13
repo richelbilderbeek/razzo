@@ -11,11 +11,11 @@ test_that("use", {
   # File should be created
   expect_true(file.exists(filename))
 
-  # OK: filename must end with 'esses.csv'
+  # OK: filename must end with 'nltt_stats.csv'
   testthat::expect_true(
     length(
       grep(
-        pattern = "esses\\.csv$", filename, perl = TRUE, value = TRUE
+        pattern = "nltt_stats\\.csv$", filename, perl = TRUE, value = TRUE
       )
     ) > 0
   )
