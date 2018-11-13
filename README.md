@@ -96,7 +96,7 @@ require only the project folder's name as an argument.
 
 Status|Description|Function name
 ---|---|---
-?|Collect marginal likelihoods|`raz_create_mar_log_liks_file`
+Issue|Collect marginal likelihoods|`raz_create_mar_log_liks_file`
 ?|Collect effective sample sizes|`raz_create_esses_file`
 ?|Create nLTT statistics file|`raz_collect_nltt_stats_file`
 Issue|Create figure 1|`raz_create_fig_1_file`
