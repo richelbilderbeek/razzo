@@ -25,7 +25,7 @@ raz_collect_marg_log_liks <- function(
       seed_len <- length(list.files(s))
       model_folders <- file.path(s, list.files(s))
       for (m in model_folders[1]) {
-        parameters <- raz_open_parameters_file(file.path(m, "parameters.csv"))
+        parameters <- raz_open_parameters_file(file.path(m, "parameters.csv")) # nolint internal function
         bd_mar <- utils::read.csv(file.path(m, "bd_mar_log_lik.csv"))[-1]
         mbd_mar <- utils::read.csv(file.path(m, "mbd_mar_log_lik.csv"))[-1]
 
@@ -60,7 +60,7 @@ raz_collect_marg_log_liks <- function(
     for (s in seed_folders) {
       model_folders <- file.path(s, list.files(s))
       for (m in model_folders) {
-        parameters <- raz_open_parameters_file(file.path(m, "parameters.csv"))
+        parameters <- raz_open_parameters_file(file.path(m, "parameters.csv")) # nolint internal function
         bd_mar <- utils::read.csv(file.path(m, "bd_mar_log_lik.csv"))[-1]
         mbd_mar <- utils::read.csv(file.path(m, "mbd_mar_log_lik.csv"))[-1]
         par_num <- parameters[!grepl("model", names(parameters))]

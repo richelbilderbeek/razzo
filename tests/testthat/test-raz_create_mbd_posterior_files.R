@@ -9,6 +9,8 @@ test_that("use", {
     # file?'. Spoiler: because BEAST2.exe does not allow scripted use
   }
 
+  if (!ribir::is_on_travis()) return()
+
   # Create input files
   parameters_filename <- raz_create_tempfile("parameters.csv") # nolint internal function
   mbd_alignment_filename <- raz_create_tempfile("mbd.fasta") # nolint internal function

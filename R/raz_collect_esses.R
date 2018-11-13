@@ -26,7 +26,7 @@ raz_collect_esses <- function(
       seed_len <- length(list.files(s))
       model_folders <- file.path(s, list.files(s))
       for (m in model_folders[1]) {
-        parameters <- raz_open_parameters_file(file.path(m, "parameters.csv"))
+        parameters <- raz_open_parameters_file(file.path(m, "parameters.csv")) # nolint internal function
         bd_mar <- utils::read.csv(file.path(m, "bd.log"))[-1]
         mbd_mar <- utils::read.csv(file.path(m, "mbd.log"))[-1]
 
