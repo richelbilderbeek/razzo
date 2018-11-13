@@ -24,12 +24,7 @@ raz_create_bd_tree <- function(
   mbd_brts <- DDD::L2brts(unname(mbd_l_matrix))
   set.seed(seed)
   { # nolint indeed bracket incorrect, is to scope the sink, which is thanks to DDD
-    # Suppress output
-    if (rappdirs::app_dir()$os != "win") {
-      sink("/dev/null")
-    } else {
-      sink(rappdirs::user_cache_dir())
-    }
+    sink(rappdirs::user_cache_dir())
     # TODO: Issue #52: check the quality of inference of lambda and mu provided by bd_ML # nolint
     bd_pars <- DDD::bd_ML( # nolint
       brts = sort(mbd_brts, decreasing = TRUE),
