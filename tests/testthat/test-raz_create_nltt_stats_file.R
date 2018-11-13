@@ -1,21 +1,21 @@
-context("test-raz_create_fig_1_file")
+context("test-raz_create_nltt_stats_file")
 
 test_that("use", {
-  skip("TODO. Issue 85, #85")
+  skip("TODO. Issue 88, #88")
 
-  # Should create 'results/fig_1.png'
-  filename <- raz_creat_fig_1_file(
+  # Should create 'results/nltt_stats.csv'
+  filename <- raz_create_nltt_stats_file(
     project_folder_name = raz_get_path("razzo_project")
   )
 
   # File should be created
   expect_true(file.exists(filename))
 
-  # OK: filename must end with 'fig_1.png'
+  # OK: filename must end with 'esses.csv'
   testthat::expect_true(
     length(
       grep(
-        pattern = "figure_1\\.png$", filename, perl = TRUE, value = TRUE
+        pattern = "esses\\.csv$", filename, perl = TRUE, value = TRUE
       )
     ) > 0
   )
@@ -33,9 +33,9 @@ test_that("use", {
 })
 
 test_that("abuse", {
-  skip("TODO. Issue 85, #85")
+  skip("TODO. Issue 88, #88")
   expect_error(
-    raz_creat_fig_1_file(
+    raz_create_nltt_stats_file(
       project_folder_name = "nonsense"
     ),
     "'project_folder_name' must end with 'razzo_project'"

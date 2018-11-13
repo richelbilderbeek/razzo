@@ -3,7 +3,9 @@ context("test-raz_collect_nltt_stats")
 test_that("use", {
   skip("TODO. Issue 84, #84")
 
-  df <- raz_collect_nltt_stats(raz_get_path("razzo_project"))
+  df <- raz_collect_nltt_stats(
+    project_folder_name = raz_get_path("razzo_project")
+  )
 
   # Experimental parameters that vary
   expect_true("lambda" %in% names(df))
@@ -32,7 +34,9 @@ test_that("use", {
 test_that("abuse", {
   skip("TODO. Issue 84, #84")
   expect_error(
-    raz_collect_nltt_stats("nonsense"),
-    "'folder_name' must end with 'razzo_project'"
+    raz_collect_nltt_stats(
+      project_folder_name = "nonsense"
+    ),
+    "'project_folder_name' must end with 'razzo_project'"
   )
 })
