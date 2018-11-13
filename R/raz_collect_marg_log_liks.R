@@ -6,15 +6,15 @@
 #' @aliases raz_collect_mar_log_liks
 #' @export
 raz_collect_marg_log_liks <- function(
-  filename
+  project_folder_name
 ) {
 
-  if (basename(filename) != "razzo_project") {
+  if (basename(project_folder_name) != "razzo_project") {
     stop("'folder_name' must end with 'razzo_project'")
   }
 
   data_folder <- file.path(
-    filename,
+    project_folder_name,
     "data"
   )
 
