@@ -8,7 +8,9 @@ raz_create_filename_mbd_tree <- function( # nolint internal function
   folder_name
 ) {
   parameters_folder <- razzo::raz_get_parameters_path(
-    parameters, folder_name = folder_name)
+    parameters = parameters,
+    folder_name = folder_name
+  )
   mbd_tree_filename <- file.path(parameters_folder, "mbd.tree")
   return(mbd_tree_filename)
 }
@@ -23,7 +25,9 @@ raz_create_filename_bd_tree <- function( # nolint internal function
   folder_name
 ) {
   parameters_folder <- razzo::raz_get_parameters_path(
-    parameters, folder_name = folder_name)
+    parameters = parameters,
+    folder_name = folder_name
+  )
   bd_tree_filename <- file.path(parameters_folder, "bd.tree")
   return(bd_tree_filename)
 }
@@ -38,7 +42,9 @@ raz_create_filename_mbd_alignment <- function( # nolint internal function
   folder_name
 ) {
   parameters_folder <- razzo::raz_get_parameters_path(
-    parameters, folder_name = folder_name)
+    parameters = parameters,
+    folder_name = folder_name
+  )
   mbd_fasta_filename <- file.path(parameters_folder, "mbd.fasta")
   return(mbd_fasta_filename)
 }
@@ -53,7 +59,9 @@ raz_create_filename_bd_alignment <- function( # nolint internal function
   folder_name
 ) {
   parameters_folder <- razzo::raz_get_parameters_path(
-    parameters, folder_name = folder_name)
+    parameters = parameters,
+    folder_name = folder_name
+  )
   bd_fasta_filename <- file.path(parameters_folder, "bd.fasta")
   return(bd_fasta_filename)
 }
