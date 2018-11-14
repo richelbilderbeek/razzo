@@ -212,8 +212,7 @@ Plot the Effective Sample Sizes (must be at least 200 in manuscript):
 ```{r}
 knitr::kable(
   tracerer::calc_esses(
-    # -1 to drop first column
-    utils::read.csv(mbd_alignment_filenames[[1]][2])[-1], 
+    tracerer::parse_beast_log(mbd_alignment_filenames[[1]][2]), 
     sample_interval = raz_open_parameters_file(
       parameters_filename[1]
     )$sample_interval
@@ -266,8 +265,7 @@ Plot the Effective Sample Sizes (must be at least 200 in manuscript):
 ```{r}
 knitr::kable(
   tracerer::calc_esses(
-    # -1 to drop first column
-    utils::read.csv(bd_alignment_filenames[[1]][2])[-1], 
+    tracerer::parse_beast_log(bd_alignment_filenames[[1]][2]), 
     sample_interval = raz_open_parameters_file(
       parameters_filename[1]
     )$sample_interval

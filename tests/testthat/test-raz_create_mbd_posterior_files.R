@@ -39,4 +39,12 @@ test_that("use", {
     mbd_posterior_filenames, perl = TRUE, value = TRUE))
     > 0
   )
+
+  log_filename <- grep(
+    pattern = "mbd\\.log$",
+    mbd_posterior_filenames, perl = TRUE, value = TRUE
+  )
+
+  estimates <- tracerer::parse_beast_log(log_filename)
+  expect_equal("data.frame", class(estimates))
 })
