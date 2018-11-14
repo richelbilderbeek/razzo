@@ -52,7 +52,8 @@ if (1 == 2) {
   if (!require(ape)) {install.packages("ape")}
   if (!require(mbd)) {devtools::install_github("Giappo/mbd", quiet = TRUE)}
   devtools::install_github("richelbilderbeek/beautier", quiet = TRUE)
-  devtools::install_github("richelbilderbeek/tracerer", quiet = TRUE)
+  devtools::install_github("richelbilderbeek/tracerer", 
+    ref = "develop", quiet = TRUE)
   devtools::install_github("richelbilderbeek/beastier", quiet = TRUE)
   devtools::install_github("richelbilderbeek/mauricer", quiet = TRUE)
   devtools::install_github("richelbilderbeek/babette", quiet = TRUE)
@@ -210,13 +211,14 @@ babette::plot_densitree(ape::read.tree(mbd_alignment_filenames[[1]][1]))
 Plot the Effective Sample Sizes (must be at least 200 in manuscript):
 
 ```{r}
-mbd_estimates <- tracerer::parse_beast_log(mbd_alignment_filenames[[1]][2])
-sample_interval <- raz_open_parameters_file(parameters_filename[1])$sample_interval
-mbd_esses <- tracerer::calc_esses(
-  traces = mbd_estimates, 
-  sample_interval = sample_interval 
+knitr::kable(
+  tracerer::calc_esses(
+    tracerer::parse_beast_log(mbd_alignment_filenames[[1]][2]), 
+    sample_interval = raz_open_parameters_file(
+      parameters_filename[1]
+    )$sample_interval
+  )
 )
-knitr::kable(mbd_esses)
 ```
 
 
