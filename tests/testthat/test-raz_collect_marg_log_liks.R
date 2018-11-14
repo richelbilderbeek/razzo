@@ -46,9 +46,8 @@ test_that("use", {
 })
 
 test_that("abuse", {
-  skip("TODO. Issue 77, #77")
   expect_error(
-    raz_collect_mar_log_liks(
+    raz_collect_marg_log_liks(
       project_folder_name = "nonsense"
     ),
     "'project_folder_name' must end with 'razzo_project'"
