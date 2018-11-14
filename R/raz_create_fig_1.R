@@ -18,7 +18,12 @@ raz_create_fig_1 <- function(
     df0$clock_model
   )
 
-  df <- tidyr::gather(df0, "i", "nltt", (1:ncol(df0))[grepl("nltt", names(df0))])
+  df <- tidyr::gather(
+    df0,
+    "i",
+    "nltt",
+    (1:ncol(df0))[grepl("nltt", names(df0))]
+  )
   xlabels <- unique(paste0(
     df0$lambda,
     "\n",
@@ -42,7 +47,8 @@ raz_create_fig_1 <- function(
     ggplot2::facet_grid(. ~ gen_model
     ) +
     ggplot2::xlab(bquote(
-      "Parameter setting" ~ "(" ~ lambda ~ "," ~ mu ~ "," ~ nu ~ "," ~ q ~ "," ~ site ~ "," ~ clock ~ ")"
+      "Parameter setting" ~ "(" ~ lambda ~ "," ~ mu ~ ","
+      ~ nu ~ "," ~ q ~ "," ~ site ~ "," ~ clock ~ ")"
     )) +
     ggplot2::ylab(bquote(
       nLTT
