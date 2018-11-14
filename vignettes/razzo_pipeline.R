@@ -72,3 +72,31 @@ for (i in seq_along(parameters_filenames)) {
 ## ------------------------------------------------------------------------
 image(ape::read.FASTA(file = bd_alignment_filenames[1]))
 
+## ------------------------------------------------------------------------
+mbd_alignment_filenames <- list()
+for (i in seq_along(parameters_filenames)) {
+
+  if (rappdirs::app_dir()$os != "win") {
+    # Do the inference
+    mbd_alignment_filenames[[i]] <- raz_create_mbd_posterior_files(
+      parameters_filenames[i]
+    )
+  } else {
+    # Use fakes, Nested Sampling does not work under Windows
+    mbd_alignment_filenames[[i]] <- c(
+      raz_get_path("mbd.trees"),
+      raz_get_path("mbd.log"),
+      raz_get_path("mbd_mar_log_lik.csv")
+    )
+  }
+  # Posterior trees
+  testit::assert(any(stringr::str_detect(mbd_alignment_filenames[[i]], ".*/mbd\\.trees")))
+  # Trace of MCMC, to estimate the Effective Sample Sizes
+  testit::assert(any(stringr::str_detect(mbd_alignment_filenames[[i]], ".*/mbd\\.log")))
+  # Marginal likelihood
+  testit::assert(any(stringr::str_detect(mbd_alignment_filenames[[i]], ".*/mbd_mar_log_lik\\.csv")))
+}
+
+## ------------------------------------------------------------------------
+babette::plot_densitree(ape::read.tree(mbd_alignment_filenames[[1]][1]))
+
