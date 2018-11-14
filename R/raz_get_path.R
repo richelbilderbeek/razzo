@@ -10,7 +10,7 @@ raz_get_path <- function(filename) {
 
   if (grepl("P274829", system.file(package = "razzo"))) {
     file.copy(
-      from = file.path("F:/Dropbox",
+      from = file.path("F:/Dropbox", # nolint
                        "University",
                        "Progress",
                        "RQ3-razzo",
