@@ -1,0 +1,33 @@
+#' @title Save nllt figure
+#' @description Save nllt figure
+#' @inheritParams default_params_doc
+#' @return the file name of the plot
+#' @author Giovanni Laudanno
+#' @export
+raz_create_fig_1_file <- function(
+  project_folder_name
+) {
+
+  # create figure 1
+  fig_1 <- raz_create_fig_1(project_folder_name)
+
+  # save output
+  results_folder <- file.path(
+    project_folder_name,
+    "results_folder"
+  )
+  if (!dir.exists(results_folder)) {
+    dir.create(results_folder)
+  }
+  fig_1_filename <- file.path(
+    results_folder,
+    "figure_1.png"
+  )
+
+  png(filename = fig_1_filename)
+  fig_1
+  dev.off()
+
+  # return file name
+  fig_1_filename
+}
