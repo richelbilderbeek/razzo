@@ -35,4 +35,12 @@ test_that("use", {
     bd_posterior_filenames, perl = TRUE, value = TRUE))
     > 0
   )
+
+  log_filename <- grep(
+    pattern = "bd\\.log$",
+    bd_posterior_filenames, perl = TRUE, value = TRUE
+  )
+
+  estimates <- tracerer::parse_beast_log(log_filename)
+  expect_equal("data.frame", class(estimates))
 })

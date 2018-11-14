@@ -30,7 +30,11 @@ raz_create_bd_posterior_files <- function(
     dirname(parameters_filename), "bd_mar_log_lik.csv")
 
   ape::write.tree(phy = bd_posterior$trees, file = bd_trees_filename)
-  utils::write.csv(x = bd_posterior$estimates, file = bd_log_filename)
+  utils::write.table(
+    x = bd_posterior$estimates,
+    file = bd_log_filename,
+    sep = "\t"
+  )
   utils::write.csv(x = bd_posterior$ns, file = bd_mar_log_lik_filename)
 
   # Return the filenames
