@@ -48,3 +48,23 @@ test_that("use", {
   estimates <- tracerer::parse_beast_log(log_filename)
   expect_equal("data.frame", class(estimates))
 })
+
+test_that("posteriors must have the same number of trees", {
+
+  skip("TODO: Issue 59, #59")
+
+  mbd_trees_filenames <- list.files(
+    path = raz_get_path("razzo_project"),
+    pattern = "mbd\\.trees",
+    recursive = TRUE,
+    full.names = TRUE
+  )
+  # Gollumese: collection of number of trees
+  n_treeses <- rep(NA, length(mbd_trees_filenames))
+  for (i in seq_along(mbd_trees_filenames)) {
+    n_treeses[i] <- length(ape::read.tree(file = mbd_trees_filenames[i]))
+
+  }
+  # All should have the same amount of posterior trees
+  expect_true(n_treeses == sort(n_treeses))
+})
