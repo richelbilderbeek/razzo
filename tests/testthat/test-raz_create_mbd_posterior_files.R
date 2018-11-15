@@ -68,3 +68,26 @@ test_that("posteriors must have the same number of trees", {
   # All should have the same amount of posterior trees
   expect_true(n_treeses == sort(n_treeses))
 })
+
+test_that("posteriors must have the same number of estimates", {
+
+  skip("TODO: Issue 59, #59")
+
+  mbd_log_filenames <- list.files(
+    path = raz_get_path("razzo_project"),
+    pattern = "mbd\\.log",
+    recursive = TRUE,
+    full.names = TRUE
+  )
+  n_trace_lengths <- rep(NA, length(mbd_log_filenames))
+  for (i in seq_along(mbd_log_filenames)) {
+    n_trace_lengths[i] <- nrow(
+      tracerer::parse_beast_log(
+        filename = mbd_log_filenames[i]
+      )
+    )
+
+  }
+  # All should have the same amount of posterior trees
+  expect_true(n_trace_lengths == sort(n_trace_lengths))
+})
