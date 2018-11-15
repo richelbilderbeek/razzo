@@ -21,7 +21,7 @@ test_that("use", {
     class(posterior$trees[[1]]) == "phylo"
   )
   expect_true(
-    max(posterior$estimates$Sample == parameters$chain_length) # nolint internal function
+    max(posterior$estimates$Sample) == parameters$chain_length # nolint internal function
   )
   expect_true(
     all(posterior$estimates$likelihood <= 0) # nolint internal function
@@ -31,9 +31,6 @@ test_that("use", {
   )
   expect_true(
     all(posterior$estimates$TreeHeight >= 0) # nolint internal function
-  )
-  expect_true(
-    max(posterior$estimates$Sample == parameters$chain_length) # nolint internal function
   )
   expect_true(
     all(posterior$estimates$BDBirthRate >= 0) # nolint internal function
@@ -66,7 +63,7 @@ test_that("use", {
     class(posterior$trees[[1]]) == "phylo"
   )
   expect_true(
-    max(posterior$estimates$Sample == parameters$chain_length) # nolint internal function
+    max(posterior$estimates$Sample) == parameters$chain_length # nolint internal function
   )
   expect_true(
     all(posterior$estimates$likelihood <= 0) # nolint internal function
@@ -76,9 +73,6 @@ test_that("use", {
   )
   expect_true(
     all(posterior$estimates$TreeHeight >= 0) # nolint internal function
-  )
-  expect_true(
-    max(posterior$estimates$Sample == parameters$chain_length) # nolint internal function
   )
   expect_true(
     all(posterior$estimates$BDBirthRate >= 0) # nolint internal function
@@ -111,7 +105,7 @@ test_that("use", {
     class(posterior$trees[[1]]) == "phylo"
   )
   expect_true(
-    max(posterior$estimates$Sample == parameters$chain_length) # nolint internal function
+    max(posterior$estimates$Sample) == parameters$chain_length # nolint internal function
   )
   expect_true(
     all(posterior$estimates$likelihood <= 0) # nolint internal function
@@ -121,9 +115,6 @@ test_that("use", {
   )
   expect_true(
     all(posterior$estimates$TreeHeight >= 0) # nolint internal function
-  )
-  expect_true(
-    max(posterior$estimates$Sample == parameters$chain_length) # nolint internal function
   )
   expect_true(
     all(posterior$estimates$BDBirthRate >= 0) # nolint internal function
