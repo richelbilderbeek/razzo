@@ -23,12 +23,25 @@ test_that("use", {
   )
 
   # Check
+  # All files exist
   expect_true(all(file.exists(mbd_posterior_filenames)))
-  expect_true(length(grep(
+
+  # MBD treees
+  mbd_trees_filename <- grep(
     pattern = "mbd\\.trees$",
-    mbd_posterior_filenames, perl = TRUE, value = TRUE))
-    > 0
+    mbd_posterior_filenames, perl = TRUE, value = TRUE
   )
+  expect_true(length(mbd_trees_filename) > 0)
+
+  # TODO: Issue 35, #35
+  # tracerer must be able to read the posterior trees
+  if (1 == 2) {
+    # Current error: Error in value[[3L]](cond) : invalid file
+    expect_silent(
+      tracerer::parse_beast_trees(mbd_trees_filename)
+    )
+  }
+
   expect_true(length(grep(
     pattern = "mbd\\.log$",
     mbd_posterior_filenames, perl = TRUE, value = TRUE))
