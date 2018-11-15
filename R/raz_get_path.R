@@ -2,7 +2,7 @@
 #' @inheritParams default_params_doc
 #' @return the full path of the filename, if and only if
 #'   the file is present. Will stop otherwise.
-#' @author Richel J.C. Bilderbeek
+#' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @examples
 #'   testit::assert(is.character(raz_get_path("parameters.csv")))
 #' @export

@@ -8,6 +8,8 @@ raz_create_fig_1 <- function(
   project_folder_name
 ) {
 
+  par_setting <- nltt <- gen_model <- NULL
+
   df0 <- raz_collect_nltt_stats(project_folder_name)
   df0$par_setting <- interaction(
     df0$lambda,
@@ -51,7 +53,7 @@ raz_create_fig_1 <- function(
       ~ nu ~ "," ~ q ~ "," ~ site ~ "," ~ clock ~ ")"
     )) +
     ggplot2::ylab(bquote(
-      nLTT
+      nltt
     )) +
     ggplot2::theme(
       axis.line = ggplot2::element_line(

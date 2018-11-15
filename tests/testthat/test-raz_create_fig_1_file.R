@@ -32,6 +32,7 @@ test_that("use", {
 })
 
 test_that("abuse", {
+
   expect_error(
     raz_create_fig_1_file(
       project_folder_name = "nonsense"

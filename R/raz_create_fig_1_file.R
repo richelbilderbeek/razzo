@@ -24,9 +24,9 @@ raz_create_fig_1_file <- function(
     "figure_1.png"
   )
 
-  png(filename = fig_1_filename)
-  fig_1
-  dev.off()
+  ggplot2::ggsave(filename = fig_1_filename,
+                  plot = fig_1
+  )
 
   # return file name
   fig_1_filename

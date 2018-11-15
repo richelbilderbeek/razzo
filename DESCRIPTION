@@ -22,6 +22,7 @@ Imports:
   DDD,
   devtools,
   ggplot2,
+  grDevices,
   mauricer,
   mbd,
   nLTT,
@@ -37,5 +38,6 @@ Suggests:
   lintr,
   knitr,
   rmarkdown,
+  cli,
   ribir
 VignetteBuilder: knitr
