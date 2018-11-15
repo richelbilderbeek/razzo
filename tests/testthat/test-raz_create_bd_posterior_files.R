@@ -29,7 +29,7 @@ test_that("use", {
   )
   expect_true(length(bd_trees_filename) > 0)
 
-  # TODO: Issue 35, #35
+  # TODO: Issue 100, #100
   # tracerer must be able to read the posterior trees
   if (1 == 2) {
     # Current error: Error in value[[3L]](cond) : invalid file
