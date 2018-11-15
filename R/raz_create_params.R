@@ -3,7 +3,7 @@
 #' @inheritParams default_params_doc
 #' @return a list of parameters
 #' @export
-#' @author Richel J.C. Bilderbeek
+#' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 raz_create_params <- function(
   lambda = 0.1,
   mu = 0.05,

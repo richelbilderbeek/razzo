@@ -21,7 +21,7 @@ raz_convert_tree2brts <- function(tree, precision = 8) {
 #' @return the site models
 #' @author Giovanni Laudanno
 raz_get_site_models <- function() {
- c("jc69", "gtr")
+  c("jc69", "gtr")
 }
 
 #' @title Clock models in Razzo
@@ -30,7 +30,7 @@ raz_get_site_models <- function() {
 #' @return the clock models
 #' @author Giovanni Laudanno
 raz_get_clock_models <- function() {
- c("strict", "rln")
+  c("strict", "rln")
 }
 
 #' @title Generative models in Razzo
@@ -39,5 +39,5 @@ raz_get_clock_models <- function() {
 #' @return the generative models
 #' @author Giovanni Laudanno
 raz_get_gen_models <- function() {
- c("bd", "mbd")
+  c("bd", "mbd")
 }
