@@ -40,11 +40,6 @@ test_that("use", {
     mbd_posterior_filenames, perl = TRUE, value = TRUE))
     > 0
   )
-  expect_true(length(grep(
-    pattern = "mbd_mar_log_lik\\.csv$",
-    mbd_posterior_filenames, perl = TRUE, value = TRUE))
-    > 0
-  )
 
   log_filename <- grep(
     pattern = "mbd\\.log$",
