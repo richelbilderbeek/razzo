@@ -78,3 +78,21 @@ test_that("all the tree features (but the branching times) are preserved", {
     all(test$root.edge == tree$root.edge)
   )
 })
+
+test_that("abuse", {
+
+  parameters <- razzo::raz_open_parameters_file(
+    razzo::raz_get_path("parameters.csv")
+  )
+  tree <- razzo::raz_create_mbd_tree(parameters)$mbd_tree
+  brts0 <- raz_convert_tree2brts(tree)
+  brts <- brts0[1:floor(length(brts0) / 2)]
+
+  testthat::expect_error(
+    raz_combine_brts_and_topology(
+      brts = brts,
+      tree = tree
+    ),
+    "brts must be same length as number of nodes on input tree"
+  )
+})
