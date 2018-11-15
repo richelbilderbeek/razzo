@@ -178,7 +178,6 @@ This means that there are no simultaneous branching events.
 ```{r create_mbd_posterior}
 mbd_alignment_filenames <- list()
 for (i in seq_along(parameters_filenames)) {
-
   if (rappdirs::app_dir()$os != "win") {
     # Do the inference
     mbd_alignment_filenames[[i]] <- raz_create_mbd_posterior_files(
@@ -228,7 +227,6 @@ of the total branch lenghts of the trees simulated with the two models.
 ```{r create_bd_posterior_files}
 bd_alignment_filenames <- list()
 for (i in seq_along(parameters_filenames)) {
-
   if (rappdirs::app_dir()$os != "win") {
     # Do the inference
     bd_alignment_filenames[[i]] <- raz_create_bd_posterior_files(

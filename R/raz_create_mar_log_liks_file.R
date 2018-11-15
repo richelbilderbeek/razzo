@@ -8,7 +8,7 @@ raz_create_mar_log_liks_file <- function(
   project_folder_name
 ) {
 
-  # retrieve information from files
+  # create the dataframe
   mar_log_liks <- raz_collect_marg_log_liks(project_folder_name)
 
   # save output

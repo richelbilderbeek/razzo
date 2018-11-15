@@ -1,31 +1,3 @@
-#' @title Create a temporary folder
-#' @description The function removes all the pre-existing temporary folders
-#'   and creates a new temporary folder.
-#' Mainly used to run tests.
-#' @inheritParams default_params_doc
-#' @param ... options for \code{tempdir}
-#' @return the address of the temporary folder
-#' @author Giovanni Laudanno
-raz_make_tempdir <- function(...) {
-
-  folder_name <- tempdir(...)
-  suppressWarnings(dir.create(folder_name))
-
-  x <- unlink(
-    file.path(temp_dir <- dirname(folder_name),
-              list.files(temp_dir, pattern = "Rtmp")
-    ), recursive = TRUE, force = TRUE
-  ); list.files(temp_dir, pattern = "Rtmp")
-
-  rm(folder_name)
-  folder_name <- tempdir(...)
-  if (!dir.exists(folder_name)) {
-    dir.create(folder_name)
-  }
-  testit::assert(dir.exists(folder_name))
-  return(folder_name)
-}
-
 #' @title Convert a tree into branching times
 #' @description Convert a tree into branching times. Differently from the ape's
 #'  function, it will keep the multiple events. Since the units are million
@@ -35,7 +7,7 @@ raz_make_tempdir <- function(...) {
 #' @inheritParams default_params_doc
 #' @return the branching times
 #' @author Giovanni Laudanno
-raz_tree2brts <- function(tree, precision = 8) {
+raz_convert_tree2brts <- function(tree, precision = 8) {
 
   brts0 <- ape::branching.times(tree)
   brts <- DDD::roundn(brts0, digits = precision)
@@ -48,8 +20,8 @@ raz_tree2brts <- function(tree, precision = 8) {
 #' @inheritParams default_params_doc
 #' @return the site models
 #' @author Giovanni Laudanno
-raz_site_models <- function() {
- c("jc69", "gtr")
+raz_get_site_models <- function() {
+  c("jc69", "gtr")
 }
 
 #' @title Clock models in Razzo
@@ -57,8 +29,8 @@ raz_site_models <- function() {
 #' @inheritParams default_params_doc
 #' @return the clock models
 #' @author Giovanni Laudanno
-raz_clock_models <- function() {
- c("strict", "rln")
+raz_get_clock_models <- function() {
+  c("strict", "rln")
 }
 
 #' @title Generative models in Razzo
@@ -66,6 +38,6 @@ raz_clock_models <- function() {
 #' @inheritParams default_params_doc
 #' @return the generative models
 #' @author Giovanni Laudanno
-raz_gen_models <- function() {
- c("bd", "mbd")
+raz_get_gen_models <- function() {
+  c("bd", "mbd")
 }
