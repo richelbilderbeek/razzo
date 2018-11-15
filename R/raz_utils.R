@@ -7,7 +7,7 @@
 #' @inheritParams default_params_doc
 #' @return the branching times
 #' @author Giovanni Laudanno
-raz_tree2brts <- function(tree, precision = 8) {
+raz_convert_tree2brts <- function(tree, precision = 8) {
 
   brts0 <- ape::branching.times(tree)
   brts <- DDD::roundn(brts0, digits = precision)
@@ -20,7 +20,7 @@ raz_tree2brts <- function(tree, precision = 8) {
 #' @inheritParams default_params_doc
 #' @return the site models
 #' @author Giovanni Laudanno
-raz_site_models <- function() {
+raz_get_site_models <- function() {
  c("jc69", "gtr")
 }
 
@@ -29,7 +29,7 @@ raz_site_models <- function() {
 #' @inheritParams default_params_doc
 #' @return the clock models
 #' @author Giovanni Laudanno
-raz_clock_models <- function() {
+raz_get_clock_models <- function() {
  c("strict", "rln")
 }
 
@@ -38,6 +38,6 @@ raz_clock_models <- function() {
 #' @inheritParams default_params_doc
 #' @return the generative models
 #' @author Giovanni Laudanno
-raz_gen_models <- function() {
+raz_get_gen_models <- function() {
  c("bd", "mbd")
 }

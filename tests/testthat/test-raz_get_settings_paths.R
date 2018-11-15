@@ -7,7 +7,7 @@ test_that("use", {
   )
   expect_true(
     length(all_paths) %%
-      (length(raz_site_models()) * length(raz_clock_models)) == 0 # nolint internal function
+      (length(raz_get_site_models()) * length(raz_get_clock_models)) == 0 # nolint internal function
   )
   expect_true(
    is.character(all_paths)
