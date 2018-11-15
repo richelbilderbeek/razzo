@@ -37,5 +37,5 @@ raz_create_mbd_posterior_files <- function(
   )
 
   # Return the filenames
-  c(mbd_trees_filename, mbd_log_filename, mbd_mar_log_lik_filename)
+  c(mbd_trees_filename, mbd_log_filename)
 }
