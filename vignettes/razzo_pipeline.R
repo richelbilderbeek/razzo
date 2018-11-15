@@ -276,7 +276,87 @@ knitr::kable(
 Finally we calculate the nLTT statistics for the MBD posteriors 
 related to the original trees.
 
+<<<<<<< HEAD
 ```{r}
+=======
+## ------------------------------------------------------------------------
+mbd_alignment_filenames <- list()
+for (i in seq_along(parameters_filenames)) {
+
+  if (rappdirs::app_dir()$os != "win") {
+    # Do the inference
+    mbd_alignment_filenames[[i]] <- raz_create_mbd_posterior_files(
+      parameters_filenames[i]
+    )
+  } else {
+    # Use fakes, Nested Sampling does not work under Windows
+    mbd_alignment_filenames[[i]] <- c(
+      raz_get_path("mbd.trees"),
+      raz_get_path("mbd.log"),
+      raz_get_path("mbd_mar_log_lik.csv")
+    )
+  }
+  # Posterior trees
+  testit::assert(any(stringr::str_detect(mbd_alignment_filenames[[i]], ".*/mbd\\.trees")))
+  # Trace of MCMC, to estimate the Effective Sample Sizes
+  testit::assert(any(stringr::str_detect(mbd_alignment_filenames[[i]], ".*/mbd\\.log")))
+  # Marginal likelihood
+  testit::assert(any(stringr::str_detect(mbd_alignment_filenames[[i]], ".*/mbd_mar_log_lik\\.csv")))
+}
+
+## ------------------------------------------------------------------------
+babette::plot_densitree(ape::read.tree(mbd_alignment_filenames[[1]][1]))
+
+## ------------------------------------------------------------------------
+knitr::kable(
+  tracerer::calc_esses(
+    tracerer::parse_beast_log(mbd_alignment_filenames[[1]][2]), 
+    sample_interval = raz_open_parameters_file(
+      parameters_filename[1]
+    )$sample_interval
+  )
+)
+
+## ------------------------------------------------------------------------
+bd_alignment_filenames <- list()
+for (i in seq_along(parameters_filenames)) {
+
+  if (rappdirs::app_dir()$os != "win") {
+    # Do the inference
+    bd_alignment_filenames[[i]] <- raz_create_bd_posterior_files(
+      parameters_filenames[i]
+    )
+  } else {
+    # Use fakes, Nested Sampling does not work under Windows
+    bd_alignment_filenames[[i]] <- c(
+      raz_get_path("bd.trees"),
+      raz_get_path("bd.log"),
+      raz_get_path("bd_mar_log_lik.csv")
+    )
+  }
+  # Posterior trees
+  testit::assert(any(stringr::str_detect(bd_alignment_filenames[[i]], ".*/bd\\.trees")))
+  # Trace of MCMC, to estimate the Effective Sample Sizes
+  testit::assert(any(stringr::str_detect(bd_alignment_filenames[[i]], ".*/bd\\.log")))
+  # Marginal likelihood
+  testit::assert(any(stringr::str_detect(bd_alignment_filenames[[i]], ".*/bd_mar_log_lik\\.csv")))
+}
+
+## ------------------------------------------------------------------------
+babette::plot_densitree(ape::read.tree(bd_alignment_filenames[[1]][1]))
+
+## ------------------------------------------------------------------------
+knitr::kable(
+  tracerer::calc_esses(
+    tracerer::parse_beast_log(bd_alignment_filenames[[1]][2]), 
+    sample_interval = raz_open_parameters_file(
+      parameters_filename[1]
+    )$sample_interval
+  )
+)
+
+## ------------------------------------------------------------------------
+>>>>>>> richel
 if (rappdirs::app_dir()$os != "win") {
   mbd_nltt_filenames <- rep(NA, length(parameters_filenames))
   for (i in seq_along(parameters_filenames)) {
@@ -285,9 +365,14 @@ if (rappdirs::app_dir()$os != "win") {
     )
   }
 }
+<<<<<<< HEAD
 ```
 
 ```{r}
+=======
+
+## ------------------------------------------------------------------------
+>>>>>>> richel
 if (rappdirs::app_dir()$os != "win") {
   ggplot(
     data = data.frame(nltt = utils::read.csv(mbd_nltt_filenames[1])$x),
@@ -295,6 +380,7 @@ if (rappdirs::app_dir()$os != "win") {
   ) + geom_histogram(binwidth = 0.01) + 
     ggplot2::scale_x_continuous(limits = c(0.0, 1.0))
 }
+<<<<<<< HEAD
 ```
 
 
@@ -304,6 +390,10 @@ Finally we calculate the nLTT statistics for the BD posteriors
 related to the original trees.
 
 ```{r}
+=======
+
+## ------------------------------------------------------------------------
+>>>>>>> richel
 if (rappdirs::app_dir()$os != "win") {
   bd_nltt_filenames <- rep(NA, length(parameters_filenames))
   for (i in seq_along(parameters_filenames)) {
@@ -312,9 +402,14 @@ if (rappdirs::app_dir()$os != "win") {
     )
   }
 }
+<<<<<<< HEAD
 ```
 
 ```{r}
+=======
+
+## ------------------------------------------------------------------------
+>>>>>>> richel
 if (rappdirs::app_dir()$os != "win") {
   ggplot(
     data = data.frame(nltt = utils::read.csv(bd_nltt_filenames[1])$x),
@@ -322,6 +417,7 @@ if (rappdirs::app_dir()$os != "win") {
   ) + geom_histogram(binwidth = 0.01) + 
     ggplot2::scale_x_continuous(limits = c(0.0, 1.0))
 }
+<<<<<<< HEAD
 ```
 
 ## Step 10: measure Effective Sample Sizes
@@ -331,10 +427,15 @@ In this step, we measure the ESSes of all files and
 combine it into one file:
 
 ```{r}
+=======
+
+## ------------------------------------------------------------------------
+>>>>>>> richel
 if (1 == 2) {
   esses_filename <- raz_create_esses_file(parameters_filenames)
   knitr::kable(utils::read.csv(esses_filename)[-1])
 }
+<<<<<<< HEAD
 ```
 
 ## Step 11: compare marginal likelihoods
@@ -347,11 +448,16 @@ does this also show when using the Bayes factor?
 
 
 ```{r}
+=======
+
+## ------------------------------------------------------------------------
+>>>>>>> richel
 # Do after #65
 if (1 == 2) {
   marg_log_lik_filename <- raz_create_marg_log_lik_file(parameters_filenames)
   knitr::kable(utils::read.csv(marg_log_lik_filename)[-1])
 }
+<<<<<<< HEAD
 ```
 
 
@@ -361,6 +467,10 @@ The nLTT statistics of the BD tree shows the baseline error:
 the Bayesian analysis assumes BD, and that tree *is* BD.
 
 ```{r}
+=======
+
+## ------------------------------------------------------------------------
+>>>>>>> richel
 if (rappdirs::app_dir()$os != "win") {
   mbd_nltts <- utils::read.csv(mbd_nltt_filenames[1])$x
   bd_nltts <- utils::read.csv(bd_nltt_filenames[1])$x
@@ -379,4 +489,8 @@ if (rappdirs::app_dir()$os != "win") {
   plot + geom_histogram(binwidth = 0.01, alpha = 0.5)
   plot + geom_density(alpha = 0.5)
 }
+<<<<<<< HEAD
 ```
+=======
+
+>>>>>>> richel
