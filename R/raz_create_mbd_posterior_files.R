@@ -35,7 +35,6 @@ raz_create_mbd_posterior_files <- function(
     file = mbd_log_filename,
     sep = "\t"
   )
-  utils::write.csv(x = mbd_posterior$ns, file = mbd_mar_log_lik_filename)
 
   # Return the filenames
   c(mbd_trees_filename, mbd_log_filename, mbd_mar_log_lik_filename)

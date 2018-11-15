@@ -63,20 +63,11 @@ raz_create_posterior <- function(
     site_model <- beautier::create_gtr_site_model()
   }
 
-  # Install maurices if needed
-  try(mauricer::mrc_install("NS"), silent = TRUE)
-
-  # Need the Linux executable
-  # Windows executable won't work, as it does not load BEAST2 packages
-  # Jar files won't work, as these does not load BEAST2 packages
-  beast2_path <- beastier::get_default_beast2_bin_path()
-
   posterior <- babette::bbt_run(
     fasta_filenames = fasta_filename,
-    mcmc = beautier::create_mcmc_nested_sampling(
+    mcmc = beautier::create_mcmc(
       chain_length = chain_length,
-      store_every = sample_interval,
-      sub_chain_length = sub_chain_length
+      store_every = sample_interval
     ),
     site_models = site_model,
     clock_models = clock_model_function(),
@@ -90,8 +81,7 @@ raz_create_posterior <- function(
         sigma = beautier::create_sigma_param(value = 0.001)
       )
     ),
-    rng_seed = rng_seed,
-    beast2_path = beast2_path
+    rng_seed = rng_seed
   )
 
   # Find the names that ends with 'trees' and replace it with trees

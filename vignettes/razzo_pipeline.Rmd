@@ -175,7 +175,7 @@ a posterior distribution of trees.
 These trees are obtained using a BD prior. 
 This means that there are no simultaneous branching events.
 
-```{r}
+```{r create_mbd_posterior}
 mbd_alignment_filenames <- list()
 for (i in seq_along(parameters_filenames)) {
 
@@ -188,28 +188,25 @@ for (i in seq_along(parameters_filenames)) {
     # Use fakes, Nested Sampling does not work under Windows
     mbd_alignment_filenames[[i]] <- c(
       raz_get_path("mbd.trees"),
-      raz_get_path("mbd.log"),
-      raz_get_path("mbd_mar_log_lik.csv")
+      raz_get_path("mbd.log")
     )
   }
   # Posterior trees
   testit::assert(any(stringr::str_detect(mbd_alignment_filenames[[i]], ".*/mbd\\.trees")))
   # Trace of MCMC, to estimate the Effective Sample Sizes
   testit::assert(any(stringr::str_detect(mbd_alignment_filenames[[i]], ".*/mbd\\.log")))
-  # Marginal likelihood
-  testit::assert(any(stringr::str_detect(mbd_alignment_filenames[[i]], ".*/mbd_mar_log_lik\\.csv")))
 }
 ```
 
 Plot the densitree:
 
-```{r}
+```{r plot_mbd_densitree}
 babette::plot_densitree(ape::read.tree(mbd_alignment_filenames[[1]][1]))
 ```
 
 Plot the Effective Sample Sizes (must be at least 200 in manuscript):
 
-```{r}
+```{r show_mbd_esses}
 knitr::kable(
   tracerer::calc_esses(
     tracerer::parse_beast_log(mbd_alignment_filenames[[1]][2]), 
@@ -228,7 +225,7 @@ We want to have, in principle, the same amount of substitutions;
 to do so we modify the mutation rate according to the ratio 
 of the total branch lenghts of the trees simulated with the two models.
 
-```{r}
+```{r create_bd_posterior_files}
 bd_alignment_filenames <- list()
 for (i in seq_along(parameters_filenames)) {
 
@@ -241,28 +238,25 @@ for (i in seq_along(parameters_filenames)) {
     # Use fakes, Nested Sampling does not work under Windows
     bd_alignment_filenames[[i]] <- c(
       raz_get_path("bd.trees"),
-      raz_get_path("bd.log"),
-      raz_get_path("bd_mar_log_lik.csv")
+      raz_get_path("bd.log")
     )
   }
   # Posterior trees
   testit::assert(any(stringr::str_detect(bd_alignment_filenames[[i]], ".*/bd\\.trees")))
   # Trace of MCMC, to estimate the Effective Sample Sizes
   testit::assert(any(stringr::str_detect(bd_alignment_filenames[[i]], ".*/bd\\.log")))
-  # Marginal likelihood
-  testit::assert(any(stringr::str_detect(bd_alignment_filenames[[i]], ".*/bd_mar_log_lik\\.csv")))
 }
 ```
 
 Plot the densitree:
 
-```{r}
+```{r plot_bd_densitree}
 babette::plot_densitree(ape::read.tree(bd_alignment_filenames[[1]][1]))
 ```
 
 Plot the Effective Sample Sizes (must be at least 200 in manuscript):
 
-```{r}
+```{r show_bd_esses}
 knitr::kable(
   tracerer::calc_esses(
     tracerer::parse_beast_log(bd_alignment_filenames[[1]][2]), 
@@ -278,7 +272,7 @@ knitr::kable(
 Finally we calculate the nLTT statistics for the MBD posteriors 
 related to the original trees.
 
-```{r}
+```{r calc_mbd_nltts}
 if (rappdirs::app_dir()$os != "win") {
   mbd_nltt_filenames <- rep(NA, length(parameters_filenames))
   for (i in seq_along(parameters_filenames)) {
