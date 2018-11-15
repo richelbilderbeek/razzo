@@ -35,8 +35,6 @@ raz_create_bd_posterior_files <- function(
     file = bd_log_filename,
     sep = "\t"
   )
-  utils::write.csv(x = bd_posterior$ns, file = bd_mar_log_lik_filename)
-
   # Return the filenames
-  c(bd_trees_filename, bd_log_filename, bd_mar_log_lik_filename)
+  c(bd_trees_filename, bd_log_filename)
 }
