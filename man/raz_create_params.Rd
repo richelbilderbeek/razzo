@@ -48,5 +48,5 @@ Creates a list of parameters,
 after checking the arguments for their validity
 }
 \author{
-Richel J.C. Bilderbeek
+Richel J.C. Bilderbeek, Giovanni Laudanno
 }
