@@ -83,10 +83,10 @@ They are not intended to be called from a script
 
 Status|Description|Function name
 ---|---|---
-?|Collect marginal likelihoods|`raz_collect_mar_log_liks`
-?|Collect effective sample sizes|`raz_collect_esses`
-?|Create figure 1|`raz_create_fig_1`
-?|Create figure 2|`raz_create_fig_2`
+Issue|Collect marginal likelihoods|`raz_collect_mar_log_liks`
+Issue|Collect effective sample sizes|`raz_collect_esses`
+Issue|Collect nLTT statistics|`raz_collect_nltt_stats`
+Issue|Create figure 1|`raz_create_fig_1`
 
 #### File handling
 
@@ -96,10 +96,10 @@ require only the project folder's name as an argument.
 
 Status|Description|Function name
 ---|---|---
-?|Collect marginal likelihoods|`raz_create_mar_log_liks_file`
-?|Collect effective sample sizes|`raz_create_esses_file`
-?|Create figure 1|`raz_create_fig_1_file`
-?|Create figure 2|`raz_create_fig_2_file`
+Issue|Collect marginal likelihoods|`raz_create_mar_log_liks_file`
+Issue|Collect effective sample sizes|`raz_create_esses_file`
+Issue|Create nLTT statistics file|`raz_create_nltt_stats_file`
+Issue|Create figure 1|`raz_create_fig_1_file`
 
 ## Installation
 

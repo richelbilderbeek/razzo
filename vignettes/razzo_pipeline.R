@@ -72,7 +72,7 @@ for (i in seq_along(parameters_filenames)) {
 ## ------------------------------------------------------------------------
 image(ape::read.FASTA(file = bd_alignment_filenames[1]))
 
-## ------------------------------------------------------------------------
+## ----create_mbd_posterior------------------------------------------------
 mbd_alignment_filenames <- list()
 for (i in seq_along(parameters_filenames)) {
 
@@ -85,33 +85,29 @@ for (i in seq_along(parameters_filenames)) {
     # Use fakes, Nested Sampling does not work under Windows
     mbd_alignment_filenames[[i]] <- c(
       raz_get_path("mbd.trees"),
-      raz_get_path("mbd.log"),
-      raz_get_path("mbd_mar_log_lik.csv")
+      raz_get_path("mbd.log")
     )
   }
   # Posterior trees
   testit::assert(any(stringr::str_detect(mbd_alignment_filenames[[i]], ".*/mbd\\.trees")))
   # Trace of MCMC, to estimate the Effective Sample Sizes
   testit::assert(any(stringr::str_detect(mbd_alignment_filenames[[i]], ".*/mbd\\.log")))
-  # Marginal likelihood
-  testit::assert(any(stringr::str_detect(mbd_alignment_filenames[[i]], ".*/mbd_mar_log_lik\\.csv")))
 }
 
-## ------------------------------------------------------------------------
+## ----plot_mbd_densitree--------------------------------------------------
 babette::plot_densitree(ape::read.tree(mbd_alignment_filenames[[1]][1]))
 
-## ------------------------------------------------------------------------
+## ----show_mbd_esses------------------------------------------------------
 knitr::kable(
   tracerer::calc_esses(
-    # -1 to drop first column
-    utils::read.csv(mbd_alignment_filenames[[1]][2])[-1], 
+    tracerer::parse_beast_log(mbd_alignment_filenames[[1]][2]), 
     sample_interval = raz_open_parameters_file(
       parameters_filename[1]
     )$sample_interval
   )
 )
 
-## ------------------------------------------------------------------------
+## ----create_bd_posterior_files-------------------------------------------
 bd_alignment_filenames <- list()
 for (i in seq_along(parameters_filenames)) {
 
@@ -124,33 +120,29 @@ for (i in seq_along(parameters_filenames)) {
     # Use fakes, Nested Sampling does not work under Windows
     bd_alignment_filenames[[i]] <- c(
       raz_get_path("bd.trees"),
-      raz_get_path("bd.log"),
-      raz_get_path("bd_mar_log_lik.csv")
+      raz_get_path("bd.log")
     )
   }
   # Posterior trees
   testit::assert(any(stringr::str_detect(bd_alignment_filenames[[i]], ".*/bd\\.trees")))
   # Trace of MCMC, to estimate the Effective Sample Sizes
   testit::assert(any(stringr::str_detect(bd_alignment_filenames[[i]], ".*/bd\\.log")))
-  # Marginal likelihood
-  testit::assert(any(stringr::str_detect(bd_alignment_filenames[[i]], ".*/bd_mar_log_lik\\.csv")))
 }
 
-## ------------------------------------------------------------------------
+## ----plot_bd_densitree---------------------------------------------------
 babette::plot_densitree(ape::read.tree(bd_alignment_filenames[[1]][1]))
 
-## ------------------------------------------------------------------------
+## ----show_bd_esses-------------------------------------------------------
 knitr::kable(
   tracerer::calc_esses(
-    # -1 to drop first column
-    utils::read.csv(bd_alignment_filenames[[1]][2])[-1], 
+    tracerer::parse_beast_log(bd_alignment_filenames[[1]][2]), 
     sample_interval = raz_open_parameters_file(
       parameters_filename[1]
     )$sample_interval
   )
 )
 
-## ------------------------------------------------------------------------
+## ----calc_mbd_nltts------------------------------------------------------
 if (rappdirs::app_dir()$os != "win") {
   mbd_nltt_filenames <- rep(NA, length(parameters_filenames))
   for (i in seq_along(parameters_filenames)) {

@@ -24,14 +24,14 @@ raz_create_bd_tree <- function(
   mbd_brts <- DDD::L2brts(unname(mbd_l_matrix))
   set.seed(seed)
   { # nolint indeed bracket incorrect, is to scope the sink, which is thanks to DDD
-    # Suppress output
+    # Suppress output of DDD
     if (rappdirs::app_dir()$os != "win") {
-      sink("/dev/null")
+      sink(file.path(rappdirs::user_cache_dir(), "ddd"))
     } else {
       sink(rappdirs::user_cache_dir())
     }
     # TODO: Issue #52: check the quality of inference of lambda and mu provided by bd_ML # nolint
-    bd_pars <- DDD::bd_ML( # nolint
+    bd_pars <- DDD::bd_ML(
       brts = sort(mbd_brts, decreasing = TRUE),
       cond = 2, #conditioning on stem or crown age and on the total number of extant taxa (including missing species) # nolint
       initparsopt = c(lambda, mu),
@@ -56,11 +56,11 @@ raz_create_bd_tree <- function(
     n = 1,
     lambda = lambda_bd,
     mu     = mu_bd,
-    nTaxa = ((soc - 1) + length(mbd_brts)),
+    nTaxa = ((soc - 1) + length(mbd_brts)), # nolint
     age = age,
     MRCA = TRUE
   )[[1]]
-  bd_brts0 <- raz_tree2brts(bd_tree0) # nolint internal function
+  bd_brts0 <- raz_convert_tree2brts(bd_tree0) # nolint internal function
 
   bd_tree <- raz_combine_brts_and_topology(
     brts = bd_brts0,

@@ -2,7 +2,9 @@ context("raz_collect_marg_log_liks")
 
 test_that("use", {
 
-  df <- raz_collect_marg_log_liks(raz_get_path("razzo_project"))
+  df <- raz_collect_marg_log_liks(
+    project_folder_name = raz_get_path("razzo_project")
+  )
 
   # Experimental parameters that vary
   expect_true("lambda" %in% names(df))
@@ -36,17 +38,18 @@ test_that("use", {
   expect_true(all(df$sample_interval >= 0))
   expect_true(all(df$chain_length >= 0))
   expect_true(all(df$sub_chain_length >= 0))
-  expect_true(all(df$gen_model %in% raz_gen_models())) # nolint internal function
-  expect_true(all(df$site_model %in% raz_site_models())) # nolint internal function
-  expect_true(all(df$close_model %in% raz_clock_models())) # nolint internal function
+  expect_true(all(df$gen_model %in% raz_get_gen_models())) # nolint internal function
+  expect_true(all(df$site_model %in% raz_get_site_models())) # nolint internal function
+  expect_true(all(df$close_model %in% raz_get_clock_models())) # nolint internal function
   expect_true(all(df$marg_log_lik <= 0))
   expect_true(all(df$marg_log_lik_sd >= 0))
 })
 
 test_that("abuse", {
-
   expect_error(
-    raz_collect_marg_log_liks("nonsense"),
-    "'folder_name' must end with 'razzo_project'"
+    raz_collect_marg_log_liks(
+      project_folder_name = "nonsense"
+    ),
+    "'project_folder_name' must end with 'razzo_project'"
   )
 })

@@ -20,5 +20,5 @@ Get the full path of a file in the \code{inst/extdata} folder
   testit::assert(is.character(raz_get_path("parameters.csv")))
 }
 \author{
-Richel J.C. Bilderbeek
+Richel J.C. Bilderbeek, Giovanni Laudanno
 }

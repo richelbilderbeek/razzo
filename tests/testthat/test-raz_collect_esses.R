@@ -3,7 +3,9 @@ context("raz_collect_esses")
 test_that("use", {
   skip("TODO. Issue 78, #78")
 
-  df <- raz_collect_esses(raz_get_path("razzo_project"))
+  df <- raz_collect_esses(
+    project_folder_name = raz_get_path("razzo_project")
+  )
 
   # Experimental parameters that vary
   expect_true("lambda" %in% names(df))
@@ -44,7 +46,9 @@ test_that("use", {
 test_that("abuse", {
   skip("TODO. Issue 78, #78")
   expect_error(
-    raz_collect_esses("nonsense"),
-    "'folder_name' must end with 'razzo_project'"
+    raz_collect_esses(
+      project_folder_name = "nonsense"
+    ),
+    "'project_folder_name' must end with 'razzo_project'"
   )
 })
