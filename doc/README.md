@@ -26,8 +26,8 @@ Done|Create MBD posterior files|`raz_create_mbd_posterior_files`
 Done|Create twin BD posterior files|`raz_create_bd_posterior_files`
 Done|Create MBD nLTT file|`raz_create_mbd_nltt_file`
 Done|Create twin BD nLTT file|`raz_create_bd_nltt_file`
-.   |Create MBD marginal likelihood estimation file|`raz_create_mbd_marg_lik_file`
-.   |Create twin BD marginal likelihood estimation file|`raz_create_bd_marg_lik_file`
+.   |Create MBD marginal likelihood estimation files|`raz_create_mbd_marg_lik_files`
+.   |Create twin BD marginal likelihood estimation files|`raz_create_bd_marg_lik_files`
 
 #### Data handling functions
 
@@ -62,7 +62,7 @@ They are not intended to be called from a script
 
 Status|Description|Function name
 ---|---|---
-Issue|Collect marginal likelihoods|`raz_collect_mar_log_liks`
+Issue|Collect marginal likelihoods|`raz_collect_marg_log_liks`
 Issue|Collect effective sample sizes|`raz_collect_esses`
 Issue|Collect nLTT statistics|`raz_collect_nltt_stats`
 Issue|Create figure 1|`raz_create_fig_1`
