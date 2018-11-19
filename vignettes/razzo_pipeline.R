@@ -75,7 +75,6 @@ image(ape::read.FASTA(file = bd_alignment_filenames[1]))
 ## ----create_mbd_posterior------------------------------------------------
 mbd_alignment_filenames <- list()
 for (i in seq_along(parameters_filenames)) {
-
   if (rappdirs::app_dir()$os != "win") {
     # Do the inference
     mbd_alignment_filenames[[i]] <- raz_create_mbd_posterior_files(
@@ -110,7 +109,6 @@ knitr::kable(
 ## ----create_bd_posterior_files-------------------------------------------
 bd_alignment_filenames <- list()
 for (i in seq_along(parameters_filenames)) {
-
   if (rappdirs::app_dir()$os != "win") {
     # Do the inference
     bd_alignment_filenames[[i]] <- raz_create_bd_posterior_files(
