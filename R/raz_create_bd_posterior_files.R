@@ -26,8 +26,6 @@ raz_create_bd_posterior_files <- function(
 
   bd_trees_filename <- file.path(dirname(parameters_filename), "bd.trees")
   bd_log_filename <- file.path(dirname(parameters_filename), "bd.log")
-  bd_mar_log_lik_filename <- file.path(
-    dirname(parameters_filename), "bd_mar_log_lik.csv")
 
   ape::write.tree(phy = bd_posterior$trees, file = bd_trees_filename)
   utils::write.table(
