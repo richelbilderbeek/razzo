@@ -9,7 +9,7 @@ raz_collect_nltt_stats <- function(
 ) {
 
   # retrieve information from files
-  paths <- raz_get_settings_paths(project_folder_name)
+  paths <- raz_get_settings_paths(project_folder_name) # nolint internal function
   parameters <- raz_open_parameters_file(file.path(paths[1], "parameters.csv")) # nolint internal function
   len_nltt <- 0
   for (p in paths) {

@@ -9,7 +9,7 @@ raz_create_fig_1_file <- function(
 ) {
 
   # create figure 1
-  fig_1 <- raz_create_fig_1(project_folder_name)
+  fig_1 <- raz_create_fig_1(project_folder_name) # nolint internal function
 
   # save output
   results_folder <- file.path(

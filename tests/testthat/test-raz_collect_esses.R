@@ -21,17 +21,6 @@ test_that("use", {
   # or 'bd' (for the twin BD tree)
   expect_true("gen_model" %in% names(df))
 
-  # The collected effective sample sizes
-
-  if (1 == 2) {
-    # Here one can see the ESSes from one file
-    example_log_file <- raz_get_path(
-      "razzo_project/data/0.2-0.15-1-0.1/1/rln-gtr/mbd.log"
-    )
-    examples_esses <- tracerer::calc_esses(
-      tracerer::parse_beast_log(example_log_file), sample_interval = 1000
-    )
-  }
   # I (@richelbilderbeek) suggest to take the ESS of the likelihood,
   # and that one only. We'll see if that idea changes in the future.
   expect_true("ess_likelihood" %in% names(df))

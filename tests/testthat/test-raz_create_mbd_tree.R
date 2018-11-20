@@ -16,26 +16,6 @@ test_that("creates a tree", {
   nrow(mbd_sim$mbd_l_matrix)
   # Should preferably be a data.frame or tibble
   expect_equal(class(mbd_sim$mbd_l_matrix), "matrix")
-
-  if (1 == 2) {
-    # To re-create the files in inst/extdata
-    ape::plot.phylo(mbd_sim$mbd_tree)
-    if (rappdirs::app_dir()$os == "win") {
-      ape::write.tree(phy = mbd_sim$mbd_tree,
-                      file = raz_get_path("mbd.tree"))
-      write.csv(x = mbd_sim$mbd_l_matrix,
-                file = raz_get_path("mbd_l_matrix.csv"))
-    } else {
-      ape::write.tree(
-        phy = mbd_sim$mbd_tree,
-        file = system.path(rappdirs::user_data_dir(), "mbd.tree")
-      )
-      write.csv(
-        x = mbd_sim$mbd_l_matrix,
-        file = system.path(rappdirs::user_data_dir(), "mbd_l_matrix.csv")
-      )
-    }
-  }
 })
 
 test_that("must have as much multiple bursts as predicted by nu", {
