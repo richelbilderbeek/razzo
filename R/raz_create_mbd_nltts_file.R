@@ -17,7 +17,7 @@ raz_create_mbd_nltts_file <- function(
 
   # Read input
   mbd_tree <- ape::read.tree(file = mbd_tree_filename)
-  mbd_trees <- ape::read.tree(file = mbd_trees_filename)
+  mbd_trees <- tracerer::parse_beast_trees(file = mbd_trees_filename)
 
   # Produce nLTTs
   nltts <- raz_create_nltts(tree = mbd_tree, posterior_trees = mbd_trees) # nolint internal function

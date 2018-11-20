@@ -63,7 +63,9 @@ test_that("posteriors must have the same number of trees", {
   # Gollumese: collection of number of trees
   n_treeses <- rep(NA, length(mbd_trees_filenames))
   for (i in seq_along(mbd_trees_filenames)) {
-    n_treeses[i] <- length(ape::read.tree(file = mbd_trees_filenames[i]))
+    n_treeses[i] <- length(
+      tracerer::parse_beast_trees(file = mbd_trees_filenames[i])
+    )
 
   }
   # All should have the same amount of posterior trees

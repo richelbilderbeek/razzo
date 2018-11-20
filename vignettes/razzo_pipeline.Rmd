@@ -19,52 +19,27 @@ nLTT|normalized lineages through time
 BD|Birth Death Model
 MBD|Multiple Birth Death Model
 
-This is the pipeline to follow for the Razzo project. Our aim is to compare two nLTT distributions related to two tree posteriors: one descending from MBD alignments and another one from BD alignments. Both posteriors are generated using a BD prior in BEAST.
+This is the pipeline to follow for the Razzo project. 
 
-## Folder structure
-
-In `razzo_project`, there is a folder called `data`.
-In `data`, there are folders named after their parameters, e.g. `0.2-0.15-1-0.1`.
-In each of these folders, there are folders named after their seeds, e.g. `1`.
-In each of these folders, there are:
-
-Filename|Description|Created by
--------------|---------------------------------------|--------------------------
-`parameters.csv`|the parameter file|`raz_create_parameter_files`
-`mbd.tree`|the true MBD tree|`raz_create_mbd_tree_file`
-`mbd.fasta`|the true MBD alignment|`raz_create_mbd_alignment_file`
-`bd.tree`|the twin BD tree|`raz_create_bd_tree_file`
-`bd.fasta`|the twin BD alignment|`raz_create_bd_alignment_file`
-`mbd.trees`|the posterior trees from `mbd.tree`|`raz_create_mbd_posterior_files`
-`mbd.log`|the posterior parameter estimates from `mbd.tree`|`raz_create_mbd_posterior_files`
-`mbd_mar_lik.csv`|the posterior's marginal likelihood from `mbd.tree`|`raz_create_mbd_posterior_files`
-`bd.trees`|the posterior trees from `bd.tree`|`raz_create_bd_posterior_files`
-`bd.log`|the posterior parameter estimates from `bd.tree`|`raz_create_bd_posterior_files`
-`bd_mar_lik.csv`|the posterior's marginal likelihood from `bd.tree`|`raz_create_mb_posterior_files`
-`mbd_nltts.csv`|the nLTT statistic distribution between `mbd.tree` and `mbd.trees`|`raz_create_mbd_nltt_file`
-`bd_nltts.csv`|the nLTT statistic distribution between `bd.tree` and `bd.trees`|`raz_create_bd_nltt_file`
+Our aim is to compare two nLTT distributions related to two tree posteriors: one descending from MBD alignments and another one from BD alignments. Both posteriors are generated using a BD prior in BEAST.
 
 ## Overview
 
-![Pipeline](pipeline.png)
-
 Update our dependencies:
 
-```{r message=FALSE}
-if (1 == 2) {
-  if (!require(ape)) {install.packages("ape")}
-  if (!require(mbd)) {devtools::install_github("Giappo/mbd", quiet = TRUE)}
-  devtools::install_github("richelbilderbeek/beautier", quiet = TRUE)
-  devtools::install_github("richelbilderbeek/tracerer", quiet = TRUE)
-  devtools::install_github("richelbilderbeek/beastier", quiet = TRUE)
-  devtools::install_github("richelbilderbeek/mauricer", quiet = TRUE)
-  devtools::install_github("richelbilderbeek/babette", quiet = TRUE)
-}
+```{r message=FALSE, install_dependencies}
+if (!require(ape)) {install.packages("ape")}
+if (!require(mbd)) {devtools::install_github("Giappo/mbd", quiet = TRUE)}
+devtools::install_github("richelbilderbeek/beautier", quiet = TRUE)
+devtools::install_github("richelbilderbeek/tracerer", quiet = TRUE)
+devtools::install_github("richelbilderbeek/beastier", quiet = TRUE)
+devtools::install_github("richelbilderbeek/mauricer", quiet = TRUE)
+devtools::install_github("richelbilderbeek/babette", quiet = TRUE)
 ```
 
 Load the libraries needed:
 
-```{r}
+```{r load_libraries}
 library(mbd)
 library(razzo)
 library(ggplot2)
@@ -72,7 +47,7 @@ library(ggplot2)
 
 We will work in this folder:
 
-```{r}
+```{r create_working_folder}
 super_folder_name <- tempdir()
 project_folder_name <- file.path(super_folder_name, "razzo_project") 
 dir.create(path = project_folder_name, recursive = TRUE)
@@ -82,7 +57,7 @@ dir.create(path = project_folder_name, recursive = TRUE)
 
 Here we create all parameter files:
 
-```{r}
+```{r create_parameter_files}
 parameters_filenames <- raz_create_parameters_files(
   project_folder_name = project_folder_name
 )
@@ -90,7 +65,7 @@ parameters_filenames <- raz_create_parameters_files(
 
 To speed things up, we'll be keeping only two parameter files:
 
-```{r}
+```{r keep_only_few_parameter_files}
 parameters_filenames <- parameters_filenames[c(1, 2)]
 knitr::kable(parameters_filenames)
 ```
@@ -195,7 +170,7 @@ for (i in seq_along(parameters_filenames)) {
 Plot the densitree:
 
 ```{r plot_mbd_densitree}
-babette::plot_densitree(ape::read.tree(mbd_alignment_filenames[[1]][1]))
+babette::plot_densitree(tracerer::parse_beast_trees(mbd_alignment_filenames[[1]][1]))
 ```
 
 Plot the Effective Sample Sizes (must be at least 200 in manuscript):
@@ -236,7 +211,7 @@ for (i in seq_along(parameters_filenames)) {
 Plot the densitree:
 
 ```{r plot_bd_densitree}
-babette::plot_densitree(ape::read.tree(bd_alignment_filenames[[1]][1]))
+babette::plot_densitree(tracerer::parse_beast_trees(bd_alignment_filenames[[1]][1]))
 ```
 
 Plot the Effective Sample Sizes (must be at least 200 in manuscript):
@@ -261,7 +236,7 @@ related to the original trees.
 mbd_nltt_filenames <- rep(NA, length(parameters_filenames))
 for (i in seq_along(parameters_filenames)) {
   mbd_nltt_filenames[i] <- raz_create_mbd_nltts_file(
-    parameters_filenames[i]
+    parameters_filename = parameters_filenames[i]
   )
 }
 ```
