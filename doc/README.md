@@ -90,7 +90,7 @@ They are not intended to be called from a script
 
 Status|Description|Function name
 ---|---|---
-Issue|Collect marginal likelihoods|`raz_collect_marg_log_liks`
+Issue|Collect marginal likelihoods|`raz_collect_marg_liks`
 Issue|Collect effective sample sizes|`raz_collect_esses`
 Issue|Collect nLTT statistics|`raz_collect_nltt_stats`
 Issue|Create figure 1|`raz_create_fig_1`
@@ -103,7 +103,7 @@ require only the project folder's name as an argument.
 
 Status|Description|Function name
 ---|---|---
-Issue|Collect marginal likelihoods|`raz_create_marg_log_liks_file`
+Issue|Collect marginal likelihoods|`raz_create_marg_liks_file`
 Issue|Collect effective sample sizes|`raz_create_esses_file`
 Issue|Create nLTT statistics file|`raz_create_nltt_stats_file`
 Issue|Create figure 1|`raz_create_fig_1_file`
