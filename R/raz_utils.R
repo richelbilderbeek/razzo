@@ -69,35 +69,35 @@ bd_phylo2L <- function(
   }
   # number of species including extinct species.
   num.species <- phylo$Nnode + 1
-  brt_pre_l <- c(brt[phylo$edge[, 1] - length(phylo$tip.label)])
+  brt_pre_l <- c(brt[phylo$edge[, 1] - length(phylo$tip.label)]) # nolint
   # check if the relative branching times are equal to the real branching times.
   # if not correct it to the real branching times.
   if (min(brt_pre_l) == 0) {
-    correction <- max(phylo$edge.length[which(brt_pre_l == 0)])
+    correction <- max(phylo$edge.length[which(brt_pre_l == 0)]) # nolint
     brt_pre_l <- brt_pre_l + correction
   }
   # preliminary L table
-  pre.l_table <- cbind(
+  pre_l_table <- cbind(
     brt_pre_l,
     phylo$edge,
-    phylo$edge.length,
-    brt_pre_l - phylo$edge.length
+    phylo$edge.length, # nolint
+    brt_pre_l - phylo$edge.length # nolint
   )
   # identify the extant species and the extinct species
-  extantspecies.index <- pre.l_table[which(pre.l_table[, 5] <= 1e-10), 3]
+  extantspecies_index <- pre_l_table[which(pre_l_table[, 5] <= 1e-10), 3]
   tipsindex <- c(1:num.species)
-  extinct.index3 <- subset(tipsindex, !(tipsindex %in% extantspecies.index))
+  extinct_index3 <- subset(tipsindex, !(tipsindex %in% extantspecies_index))
   # assigen the extinct species with extinct times;
   # the extant species with -1 and the internal nodes with 0.
-  eeindicator <- matrix(0, length(phylo$edge.length), 1)
-  eeindicator[match(extantspecies.index, pre.l_table[, 3])] <- -1
-  ext.pos <- match(extinct.index3, pre.l_table[, 3])
-  eeindicator[ext.pos] <- pre.l_table[ext.pos, 5]
-  pre.l_table <- cbind(pre.l_table, eeindicator)
+  eeindicator <- matrix(0, length(phylo$edge.length), 1) # nolint
+  eeindicator[match(extantspecies_index, pre_l_table[, 3])] <- -1
+  ext_pos <- match(extinct_index3, pre_l_table[, 3])
+  eeindicator[ext_pos] <- pre_l_table[ext_pos, 5]
+  pre_l_table <- cbind(pre_l_table, eeindicator)
 
-  sort.L <- pre.l_table[order(pre.l_table[, 1], decreasing = TRUE), ]
+  sort_l_table <- pre_l_table[order(pre_l_table[, 1], decreasing = TRUE), ]
   nodesindex <- unique(phylo$edge[, 1])
-  L <- sort.L
+  L <- sort_l_table
   real_l <- NULL
   do <- 0
   while (do == 0) {
@@ -129,13 +129,13 @@ bd_phylo2L <- function(
   real_l <- real_l[order(real_l[, 1], decreasing = T), ]
   L <- real_l[, c(1, 2, 3, 6)]
 
-  daughter.index <- L[, 3]
-  daughter.realindex <- c(1:nrow(L))
-  parent.index <- L[, 2]
-  parent.realindex <- match(parent.index, daughter.index)
+  daughter_index <- L[, 3]
+  daughter_realindex <- c(1:nrow(L))
+  parent_index <- L[, 2]
+  parent_realindex <- match(parent_index, daughter_index)
 
-  L[, 2] <- parent.realindex
-  L[, 3] <- daughter.realindex
+  L[, 2] <- parent_realindex
+  L[, 3] <- daughter_realindex
   L[1, 2] <- 0
   L[1, 3] <- -1
   L[2, 2] <- -1
