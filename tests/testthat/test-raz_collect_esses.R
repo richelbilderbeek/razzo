@@ -1,7 +1,6 @@
 context("raz_collect_esses")
 
 test_that("use", {
-  skip("TODO. Issue 78, #78")
 
   df <- raz_collect_esses(
     project_folder_name = raz_get_path("razzo_project")
@@ -33,7 +32,6 @@ test_that("use", {
 })
 
 test_that("abuse", {
-  skip("TODO. Issue 78, #78")
   expect_error(
     raz_collect_esses(
       project_folder_name = "nonsense"

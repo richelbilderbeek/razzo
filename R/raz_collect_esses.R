@@ -8,10 +8,8 @@ raz_collect_esses <- function(
   project_folder_name
 ) {
 
-  return() # STUB
-
   if (basename(project_folder_name) != "razzo_project") {
-    stop("'folder_name' must end with 'razzo_project'")
+    stop("'project_folder_name' must end with 'razzo_project'")
   }
 
   data_folder <- file.path(
@@ -22,8 +20,8 @@ raz_collect_esses <- function(
   # retrieve information from files
   paths <- raz_get_settings_paths(project_folder_name) # nolint internal function
   parameters <- raz_open_parameters_file(file.path(paths[1], "parameters.csv")) # nolint internal function
-  x <- read.table(file.path(paths[1], "mbd.log"))
-  y <- read.table(file.path(paths[1], "bd.log"))
+  x <- utils::read.delim(file.path(paths[1], "mbd.log"))
+
   esses <- tracerer::calc_esses(
     traces = tracerer::remove_burn_ins(
       traces = x,
@@ -31,6 +29,7 @@ raz_collect_esses <- function(
     ),
     sample_interval = parameters$sample_interval
   )
+
   pars <- parameters[!grepl("model", names(parameters))]
   par_names <- names(parameters)
   esses_names <- paste0("ess_", names(esses))
@@ -64,7 +63,7 @@ raz_collect_esses <- function(
     site_model[i] <- levels(droplevels(parameters$site_model))
     clock_model[i] <- levels(droplevels(parameters$clock_model))
     gen_model[i] <- "bd"
-    bd_log <- read.table(file.path(p, "bd.log"))
+    bd_log <- utils::read.delim(file.path(p, "bd.log"))
     esses_data[i, ] <- tracerer::calc_esses(
       traces = tracerer::remove_burn_ins(
         traces = bd_log,
@@ -79,7 +78,7 @@ raz_collect_esses <- function(
     site_model[i] <- levels(droplevels(parameters$site_model))
     clock_model[i] <- levels(droplevels(parameters$clock_model))
     gen_model[i] <- "mbd"
-    mbd_log <- read.table(file.path(p, "mbd.log"))
+    mbd_log <- utils::read.delim(file.path(p, "mbd.log"))
     esses_data[i, ] <- tracerer::calc_esses(
       traces = tracerer::remove_burn_ins(
         traces = mbd_log,
@@ -90,6 +89,12 @@ raz_collect_esses <- function(
     i <- i + 1
   }
 
-  results <- cbind(par_data, gen_model, site_model, clock_model, esses_data)
+  results <- cbind(
+    par_data,
+    gen_model,
+    site_model,
+    clock_model,
+    esses_data[, -ncol(esses_data)]
+  )
   results
 }

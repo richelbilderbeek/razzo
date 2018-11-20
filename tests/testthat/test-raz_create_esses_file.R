@@ -1,7 +1,6 @@
 context("test-raz_create_esses_file")
 
 test_that("use", {
-  skip("TODO. Issue 87, #87")
 
   # Should create 'results/esses.csv'
   filename <- raz_create_esses_file(
@@ -33,7 +32,6 @@ test_that("use", {
 })
 
 test_that("abuse", {
-  skip("TODO. Issue 87, #87")
   expect_error(
     raz_create_esses_file(
       project_folder_name = "nonsense"

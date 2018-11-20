@@ -8,8 +8,6 @@ raz_create_esses_file <- function(
   project_folder_name
 ) {
 
-  return() # STUB
-
   # create the dataframe
   df_esses <- raz_collect_esses(project_folder_name) # nolint internal function
 
