@@ -17,7 +17,7 @@ raz_create_bd_nltts_file <- function(
 
   # Read input
   bd_tree <- ape::read.tree(file = bd_tree_filename)
-  bd_trees <- ape::read.tree(file = bd_trees_filename)
+  bd_trees <- tracerer::parse_beast_trees(filename = bd_trees_filename)
 
   # Produce nLTTs
   nltts <- raz_create_nltts(tree = bd_tree, posterior_trees = bd_trees) # nolint internal function

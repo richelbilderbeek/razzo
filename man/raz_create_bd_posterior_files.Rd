@@ -8,7 +8,7 @@ function will create:
 \itemize{
   \item '/my_folder/bd.trees' BEAST2 posterior trees
   \item '/my_folder/bd.log' BEAST2 parameter estimates
-  \item '/my_folder/bd_mar_lik.csv' BEAST2 marginal likelihood estimate
+  \item '/my_folder/bd_marg_lik.csv' BEAST2 marginal likelihood estimate
 }
 Assumes, for a FASTA file named '/my_folder/bd.fasta', this
   that there is a parameters file named '/my_folder/parameters.csv'}
@@ -28,7 +28,7 @@ function will create:
 \itemize{
   \item '/my_folder/bd.trees' BEAST2 posterior trees
   \item '/my_folder/bd.log' BEAST2 parameter estimates
-  \item '/my_folder/bd_mar_lik.csv' BEAST2 marginal likelihood estimate
+  \item '/my_folder/bd_marg_lik.csv' BEAST2 marginal likelihood estimate
 }
 Assumes, for a FASTA file named '/my_folder/bd.fasta', this
   that there is a parameters file named '/my_folder/parameters.csv'

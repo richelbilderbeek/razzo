@@ -4,7 +4,7 @@
 #' \itemize{
 #'   \item '/my_folder/mbd.trees' BEAST2 posterior trees
 #'   \item '/my_folder/mbd.log' BEAST2 parameter estimates
-#'   \item '/my_folder/mbd_mar_lik.csv' BEAST2 marginal likelihood estimate
+#'   \item '/my_folder/mbd_marg_lik.csv' BEAST2 marginal likelihood estimate
 #' }
 #' Assumes, for a FASTA file named '/my_folder/mbd.fasta', this
 #'   that there is a parameters file named '/my_folder/parameters.csv'
@@ -26,14 +26,14 @@ raz_create_mbd_posterior_files <- function(
 
   mbd_trees_filename <- file.path(dirname(parameters_filename), "mbd.trees")
   mbd_log_filename <- file.path(dirname(parameters_filename), "mbd.log")
-  mbd_mar_log_lik_filename <- file.path(
-    dirname(parameters_filename), "mbd_mar_log_lik.csv")
 
-  ape::write.tree(phy = mbd_posterior$trees, file = mbd_trees_filename)
-  utils::write.table(
-    x = mbd_posterior$estimates,
-    file = mbd_log_filename,
-    sep = "\t"
+  tracerer::save_beast_trees(
+    trees = mbd_posterior$trees,
+    filename = mbd_trees_filename
+  )
+  tracerer::save_beast_estimates(
+    estimates = mbd_posterior$estimates,
+    filename = mbd_log_filename
   )
 
   # Return the filenames

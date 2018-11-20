@@ -3,6 +3,7 @@
 ^\.Rproj\.user$
 ^\.travis\.yml$
 ^pics$
+^doc$
 ^CONTRIBUTING\.md$
 ^NEWS\.md$
 ^cluster_scripts$
