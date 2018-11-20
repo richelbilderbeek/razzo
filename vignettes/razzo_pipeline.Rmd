@@ -279,8 +279,10 @@ In this step, we measure the ESSes of all files and
 combine it into one file:
 
 ```{r}
-esses_filename <- raz_create_esses_file(parameters_filenames)
-knitr::kable(utils::read.csv(esses_filename)[-1])
+if (1 == 2) {
+  esses_filename <- raz_create_esses_file(parameters_filenames)
+  knitr::kable(utils::read.csv(esses_filename)[-1])
+}
 ```
 
 ## Step 11: compare marginal likelihoods
