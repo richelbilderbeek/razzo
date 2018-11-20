@@ -9,7 +9,7 @@ raz_create_marg_liks_file <- function(
 ) {
 
   # create the dataframe
-  marg_liks <- raz_collect_marg_liks(project_folder_name)
+  marg_liks <- raz_collect_marg_liks(project_folder_name) # nolint internal function
 
   # save output
   results_folder <- file.path(

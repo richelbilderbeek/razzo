@@ -9,7 +9,7 @@ raz_collect_marg_liks <- function(
 ) {
 
   # retrieve information from files
-  paths <- raz_get_settings_paths(project_folder_name)
+  paths <- raz_get_settings_paths(project_folder_name) # nolint internal function
   parameters <- raz_open_parameters_file(file.path(paths[1], "parameters.csv")) # nolint internal function
   bd_mar <- utils::read.csv(file.path(paths[1], "bd_marg_lik.csv"))[-1]
   mbd_mar <- utils::read.csv(file.path(paths[1], "mbd_marg_lik.csv"))[-1]

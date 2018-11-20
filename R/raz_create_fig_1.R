@@ -10,7 +10,7 @@ raz_create_fig_1 <- function(
 
   par_setting <- nltt <- gen_model <- NULL
 
-  df0 <- raz_collect_nltt_stats(project_folder_name)
+  df0 <- raz_collect_nltt_stats(project_folder_name) # nolint internal function
   df0$par_setting <- interaction(
     df0$lambda,
     df0$mu,
