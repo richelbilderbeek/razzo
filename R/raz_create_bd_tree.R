@@ -67,7 +67,7 @@ raz_create_bd_tree <- function(
     tree = mbd_tree
   )
 
-  bd_l_matrix <- bd_phylo2L(bd_tree)
+  bd_l_matrix <- bd_phylo_2_l_table(bd_tree)
 
   list(
     bd_tree = bd_tree,

@@ -48,7 +48,7 @@ raz_get_gen_models <- function() {
 #' @return the L table
 #' @author Xu Liang
 #' @export
-bd_phylo2L <- function(
+bd_phylo_2_l_table <- function(
   phylo
 ) {
   # get L names
@@ -76,7 +76,7 @@ bd_phylo2L <- function(
     correction <- max(phylo$edge.length[which(brt_pre_l == 0)]) # nolint
     brt_pre_l <- brt_pre_l + correction
   }
-  # preliminary L table
+  # preliminary l_table table
   pre_l_table <- cbind(
     brt_pre_l,
     phylo$edge,
@@ -97,56 +97,56 @@ bd_phylo2L <- function(
 
   sort_l_table <- pre_l_table[order(pre_l_table[, 1], decreasing = TRUE), ]
   nodesindex <- unique(phylo$edge[, 1])
-  L <- sort_l_table
+  l_table <- sort_l_table
   real_l <- NULL
   do <- 0
   while (do == 0) {
-    j <- which.min(L[, 3])
-    daughter <- L[j, 3]
-    parent <- L[j, 2]
+    j <- which.min(l_table[, 3])
+    daughter <- l_table[j, 3]
+    parent <- l_table[j, 2]
     if (parent %in% nodesindex) {
-      L[which(L[, 2] == parent), 2] <- daughter
-      if (length(which(L[, 3] == parent)) == 0) {
-        real_l <- rbind(real_l, L[j, ], row.names = NULL)
-        L <- L[-j,
+      l_table[which(l_table[, 2] == parent), 2] <- daughter
+      if (length(which(l_table[, 3] == parent)) == 0) {
+        real_l <- rbind(real_l, l_table[j, ], row.names = NULL)
+        l_table <- l_table[-j,
                , drop = FALSE]
       } else {
-        L[which(L[, 3] == parent), 6] <- L[j, 6]
-        L[which(L[, 3] == parent), 3] <- daughter
-        L <- L[-j,
+        l_table[which(l_table[, 3] == parent), 6] <- l_table[j, 6]
+        l_table[which(l_table[, 3] == parent), 3] <- daughter
+        l_table <- l_table[-j,
                , drop = FALSE]
       }
     } else {
-      real_l <- rbind(real_l, L[j, ], row.names = NULL)
-      L <- L[-j,
+      real_l <- rbind(real_l, l_table[j, ], row.names = NULL)
+      l_table <- l_table[-j,
              , drop = FALSE]
     }
 
-    if (nrow(L) == 0) {
+    if (nrow(l_table) == 0) {
       do <- 1
     }
   }
   real_l <- real_l[order(real_l[, 1], decreasing = T), ]
-  L <- real_l[, c(1, 2, 3, 6)]
+  l_table <- real_l[, c(1, 2, 3, 6)]
 
-  daughter_index <- L[, 3]
-  daughter_realindex <- c(1:nrow(L))
-  parent_index <- L[, 2]
+  daughter_index <- l_table[, 3]
+  daughter_realindex <- c(1:nrow(l_table))
+  parent_index <- l_table[, 2]
   parent_realindex <- match(parent_index, daughter_index)
 
-  L[, 2] <- parent_realindex
-  L[, 3] <- daughter_realindex
-  L[1, 2] <- 0
-  L[1, 3] <- -1
-  L[2, 2] <- -1
-  for (i in c(2:nrow(L))) {
-    if (L[i - 1, 3] < 0) {
-      mrows <- which(L[, 2] == abs(L[i - 1, 3]))
-      L[mrows, 2] <- L[i - 1, 3]
-      L[mrows, 3] <- -1 * L[mrows, 3]
+  l_table[, 2] <- parent_realindex
+  l_table[, 3] <- daughter_realindex
+  l_table[1, 2] <- 0
+  l_table[1, 3] <- -1
+  l_table[2, 2] <- -1
+  for (i in c(2:nrow(l_table))) {
+    if (l_table[i - 1, 3] < 0) {
+      mrows <- which(l_table[, 2] == abs(l_table[i - 1, 3]))
+      l_table[mrows, 2] <- l_table[i - 1, 3]
+      l_table[mrows, 3] <- -1 * l_table[mrows, 3]
     }
   }
-  dimnames(L) <- NULL
-  colnames(L) <- l_names
-  return(L)
+  dimnames(l_table) <- NULL
+  colnames(l_table) <- l_names
+  return(l_table)
 }

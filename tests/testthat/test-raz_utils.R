@@ -27,7 +27,7 @@ test_that("raz_get_gen_models", {
   )
 })
 
-test_that("bd_phylo2L", {
+test_that("bd_phylo_2_l_table", {
   max_seed <- 10
   parameters <- raz_open_parameters_file(raz_get_path("parameters.csv"))
   for (seed in 1:max_seed) {
@@ -48,7 +48,10 @@ test_that("bd_phylo2L", {
     bd_l_matrix <- bd_sim$bd_l_matrix
 
     # test phylo -> L -> phylo
-    bd_test_tree <- DDD::L2phylo(bd_phylo2L(bd_tree), dropextinct = FALSE)
+    bd_test_tree <- DDD::L2phylo(
+      bd_phylo_2_l_table(bd_tree),
+      dropextinct = FALSE
+    )
     expect_equal(
       bd_test_tree$edge,
       bd_tree$edge
@@ -67,7 +70,7 @@ test_that("bd_phylo2L", {
     )
 
     # test L -> phylo -> L
-    test_bd_l_matrix <- bd_phylo2L(DDD::L2phylo(
+    test_bd_l_matrix <- bd_phylo_2_l_table(DDD::L2phylo(
       bd_l_matrix,
       dropextinct = FALSE))
     expect_equal(
