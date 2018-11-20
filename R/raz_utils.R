@@ -68,7 +68,7 @@ bd_phylo_2_l_table <- function(
     brt <- brt + abs(min(brt))
   }
   # number of species including extinct species.
-  num.species <- phylo$Nnode + 1
+  num_species <- phylo$Nnode + 1
   brt_pre_l <- c(brt[phylo$edge[, 1] - length(phylo$tip.label)]) # nolint
   # check if the relative branching times are equal to the real branching times.
   # if not correct it to the real branching times.
@@ -85,7 +85,7 @@ bd_phylo_2_l_table <- function(
   )
   # identify the extant species and the extinct species
   extantspecies_index <- pre_l_table[which(pre_l_table[, 5] <= 1e-10), 3]
-  tipsindex <- c(1:num.species)
+  tipsindex <- c(1:num_species)
   extinct_index3 <- subset(tipsindex, !(tipsindex %in% extantspecies_index))
   # assigen the extinct species with extinct times;
   # the extant species with -1 and the internal nodes with 0.
