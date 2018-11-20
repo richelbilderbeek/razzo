@@ -292,11 +292,29 @@ Jukes-Cantor site model and a strict clock model,
 does this also show when using the Bayes factor?
 
 
-```{r}
-marg_log_lik_filename <- raz_create_marg_log_lik_file(parameters_filenames)
-knitr::kable(utils::read.csv(marg_log_lik_filename)[-1])
+```{r create_mbd_marg_lik_files}
+if (1 == 2) {
+  mbd_marg_lik_filenames <- rep(NA, length(parameters_filenames))
+  for (i in seq_along(parameters_filenames)) {
+    mbd_marg_lik_filenames[i] <- raz_create_mbd_marg_lik_file(
+      parameters_filename = parameters_filenames[i]
+    )
+  }
+  knitr::kable(utils::read.csv(mbd_marg_lik_filenames[1])[-1])
+}
 ```
 
+```{r create_bd_marg_lik_files}
+if (1 == 2) {
+  bd_marg_lik_filenames <- rep(NA, length(parameters_filenames))
+  for (i in seq_along(parameters_filenames)) {
+    bd_marg_lik_filenames[i] <- raz_create_bd_marg_lik_file(
+      parameters_filename = parameters_filenames[i]
+    )
+  }
+  knitr::kable(utils::read.csv(bd_marg_lik_filenames[1])[-1])
+}
+```
 
 ## Step 12: what is the effect of MBD on the error?
 

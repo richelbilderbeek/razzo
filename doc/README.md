@@ -54,8 +54,8 @@ Done|Create MBD posterior files|`raz_create_mbd_posterior_files`
 Done|Create twin BD posterior files|`raz_create_bd_posterior_files`
 Done|Create MBD nLTT file|`raz_create_mbd_nltt_file`
 Done|Create twin BD nLTT file|`raz_create_bd_nltt_file`
-.   |Create MBD marginal likelihood estimation files|`raz_create_mbd_marg_lik_files`
-.   |Create twin BD marginal likelihood estimation files|`raz_create_bd_marg_lik_files`
+.   |Create MBD marginal likelihood estimation file|`raz_create_mbd_marg_lik_file`
+.   |Create twin BD marginal likelihood estimation file|`raz_create_bd_marg_lik_file`
 
 #### Data handling functions
 
