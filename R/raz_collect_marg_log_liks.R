@@ -3,17 +3,16 @@
 #' @inheritParams default_params_doc
 #' @return a dataframe with parameters and marginal likelihoods
 #' @author Giovanni Laudanno
-#' @aliases raz_collect_marg_log_liks
 #' @export
-raz_collect_marg_log_liks <- function(
+raz_collect_marg_liks <- function(
   project_folder_name
 ) {
 
   # retrieve information from files
   paths <- raz_get_settings_paths(project_folder_name)
   parameters <- raz_open_parameters_file(file.path(paths[1], "parameters.csv")) # nolint internal function
-  bd_mar <- utils::read.csv(file.path(paths[1], "bd_marg_log_lik.csv"))[-1]
-  mbd_mar <- utils::read.csv(file.path(paths[1], "mbd_marg_log_lik.csv"))[-1]
+  bd_mar <- utils::read.csv(file.path(paths[1], "bd_marg_lik.csv"))[-1]
+  mbd_mar <- utils::read.csv(file.path(paths[1], "mbd_marg_lik.csv"))[-1]
   pars <- parameters[!grepl("model", names(parameters))]
   mars <- c(bd_mar, mbd_mar)
   par_names <- names(parameters)
@@ -41,8 +40,8 @@ raz_collect_marg_log_liks <- function(
   i <- 1
   for (p in paths) {
     parameters <- raz_open_parameters_file(file.path(p, "parameters.csv")) # nolint internal function
-    bd_mar <- utils::read.csv(file.path(p, "bd_marg_log_lik.csv"))[-1]
-    mbd_mar <- utils::read.csv(file.path(p, "mbd_marg_log_lik.csv"))[-1]
+    bd_mar <- utils::read.csv(file.path(p, "bd_marg_lik.csv"))[-1]
+    mbd_mar <- utils::read.csv(file.path(p, "mbd_marg_lik.csv"))[-1]
     par_num <- parameters[!grepl("model", names(parameters))]
 
     # save bd results

@@ -1,22 +1,22 @@
-context("test-raz_create_marg_log_liks_file")
+context("test-raz_create_marg_liks_file")
 
 test_that("use", {
 
   skip("TODO. Issue 86, #86")
 
-  # Should create 'results/'marg_log_liks.csv'
-  filename <- raz_create_marg_log_liks_file(
+  # Should create 'results/'marg_liks.csv'
+  filename <- raz_create_marg_liks_file(
     project_folder_name = raz_get_path("razzo_project")
   )
 
   # File should be created
   expect_true(file.exists(filename))
 
-  # OK: filename must end with 'marg_log_liks.csv'
+  # OK: filename must end with 'marg_liks.csv'
   testthat::expect_true(
     length(
       grep(
-        pattern = "marg_log_liks\\.csv$", filename, perl = TRUE, value = TRUE
+        pattern = "marg_liks\\.csv$", filename, perl = TRUE, value = TRUE
       )
     ) > 0
   )
@@ -35,7 +35,7 @@ test_that("use", {
 
 test_that("abuse", {
   expect_error(
-    raz_create_marg_log_liks_file(project_folder_name = "nonsense"),
+    raz_create_marg_liks_file(project_folder_name = "nonsense"),
     "'project_folder_name' must end with 'razzo_project'"
   )
 })

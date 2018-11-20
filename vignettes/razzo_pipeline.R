@@ -158,11 +158,26 @@ if (1 == 2) {
   knitr::kable(utils::read.csv(esses_filename)[-1])
 }
 
-## ------------------------------------------------------------------------
-# Do after #65
+## ----create_mbd_marg_lik_files-------------------------------------------
 if (1 == 2) {
-  marg_log_lik_filename <- raz_create_marg_log_lik_file(parameters_filenames)
-  knitr::kable(utils::read.csv(marg_log_lik_filename)[-1])
+  mbd_marg_lik_filenames <- rep(NA, length(parameters_filenames))
+  for (i in seq_along(parameters_filenames)) {
+    mbd_marg_lik_filenames[i] <- raz_create_mbd_marg_lik_file(
+      parameters_filename = parameters_filenames[i]
+    )
+  }
+  knitr::kable(utils::read.csv(mbd_marg_lik_filenames[1])[-1])
+}
+
+## ----create_bd_marg_lik_files--------------------------------------------
+if (1 == 2) {
+  bd_marg_lik_filenames <- rep(NA, length(parameters_filenames))
+  for (i in seq_along(parameters_filenames)) {
+    bd_marg_lik_filenames[i] <- raz_create_bd_marg_lik_file(
+      parameters_filename = parameters_filenames[i]
+    )
+  }
+  knitr::kable(utils::read.csv(bd_marg_lik_filenames[1])[-1])
 }
 
 ## ------------------------------------------------------------------------
