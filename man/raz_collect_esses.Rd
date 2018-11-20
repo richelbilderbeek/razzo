@@ -4,10 +4,11 @@
 \alias{raz_collect_esses}
 \title{Collect esses}
 \usage{
-raz_collect_esses(filename)
+raz_collect_esses(project_folder_name)
 }
 \arguments{
-\item{filename}{the file's name, without the path}
+\item{project_folder_name}{project folder name,
+will be the full path to \code{razzo_project}}
 }
 \value{
 a dataframe with parameters and esses

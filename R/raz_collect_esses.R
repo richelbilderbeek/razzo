@@ -5,70 +5,96 @@
 #' @author Giovanni Laudanno
 #' @export
 raz_collect_esses <- function(
-  filename
+  project_folder_name
 ) {
 
-  # TODO #78
-  return() #STUB
-
-  if (basename(filename) != "razzo_project") {
-    stop("'folder_name' must end with 'razzo_project'")
+  if (basename(project_folder_name) != "razzo_project") {
+    stop("'project_folder_name' must end with 'razzo_project'")
   }
 
   data_folder <- file.path(
-    filename,
+    project_folder_name,
     "data"
   )
 
-  par_settings_folders <- file.path(data_folder, list.files(data_folder))
-  for (p in par_settings_folders[1]) {
-    seed_folders <- file.path(p, list.files(p))
-    for (s in seed_folders[1]) {
-      seed_len <- length(list.files(s))
-      model_folders <- file.path(s, list.files(s))
-      for (m in model_folders[1]) {
-        parameters <- raz_open_parameters_file(file.path(m, "parameters.csv")) # nolint internal function
-        bd_mar <- utils::read.csv(file.path(m, "bd.log"))[-1]
-        mbd_mar <- utils::read.csv(file.path(m, "mbd.log"))[-1]
+  # retrieve information from files
+  paths <- raz_get_settings_paths(project_folder_name) # nolint internal function
+  parameters <- raz_open_parameters_file(file.path(paths[1], "parameters.csv")) # nolint internal function
+  x <- utils::read.delim(file.path(paths[1], "mbd.log"))
 
-        par_num <- parameters[!grepl("model", names(parameters))]
-        par_mar <- c(bd_mar, mbd_mar)
-      }
-    }
-  }
+  esses <- tracerer::calc_esses(
+    traces = tracerer::remove_burn_ins(
+      traces = x,
+      burn_in_fraction = 0.1
+    ),
+    sample_interval = parameters$sample_interval
+  )
 
+  pars <- parameters[!grepl("model", names(parameters))]
   par_names <- names(parameters)
-  marg_names <- names(bd_mar)
-  df_length <- seed_len * length(par_settings_folders)
-  len_par_num <- length(par_num)
-  len_par_mar <- length(par_mar)
+  esses_names <- paste0("ess_", names(esses))
+  len_pars <- length(pars)
+  len_esses <- length(esses)
+  n_settings <- length(paths)
 
+  # initialize dataframe components
   par_data <- data.frame(matrix(
     NA,
-    ncol = len_par_num,
-    nrow = 2 * df_length
+    ncol = len_pars,
+    nrow = 2 * n_settings
   ))
   colnames(par_data) <- par_names[!grepl("model", par_names)]
-  res2 <- data.frame(matrix(
+  esses_data <- data.frame(matrix(
     NA,
-    ncol = len_par_mar / 2,
-    nrow = 2 * df_length
+    ncol = len_esses,
+    nrow = 2 * n_settings
   ))
-  colnames(res2) <- marg_names
-  gen_model <- clock_model <- site_model <- rep("blank", 2 * df_length)
+  colnames(esses_data) <- esses_names
+  gen_model <- clock_model <- site_model <- rep("blank", 2 * n_settings)
 
+  # collect data
   i <- 1
-  for (p in par_settings_folders) {
-    seed_folders <- file.path(p, list.files(p))
-    for (s in seed_folders) {
-      model_folders <- file.path(s, list.files(s))
-      for (m in model_folders) {
-        gen_model[i] <- i
-        clock_model[i] <- i
-        site_model[i] <- i
+  for (p in paths) {
+    parameters <- raz_open_parameters_file(file.path(p, "parameters.csv")) # nolint internal function
+    par_num <- parameters[!grepl("model", names(parameters))]
 
-        i <- i + 1
-      }
-    }
+    # save bd results
+    par_data[i, ] <- data.frame(par_num)
+    site_model[i] <- levels(droplevels(parameters$site_model))
+    clock_model[i] <- levels(droplevels(parameters$clock_model))
+    gen_model[i] <- "bd"
+    bd_log <- utils::read.delim(file.path(p, "bd.log"))
+    esses_data[i, ] <- tracerer::calc_esses(
+      traces = tracerer::remove_burn_ins(
+        traces = bd_log,
+        burn_in_fraction = 0.1
+      ),
+      sample_interval = parameters$sample_interval
+    )
+    i <- i + 1
+
+    # save mbd results
+    par_data[i, ] <- data.frame(par_num)
+    site_model[i] <- levels(droplevels(parameters$site_model))
+    clock_model[i] <- levels(droplevels(parameters$clock_model))
+    gen_model[i] <- "mbd"
+    mbd_log <- utils::read.delim(file.path(p, "mbd.log"))
+    esses_data[i, ] <- tracerer::calc_esses(
+      traces = tracerer::remove_burn_ins(
+        traces = mbd_log,
+        burn_in_fraction = 0.1
+      ),
+      sample_interval = parameters$sample_interval
+    )
+    i <- i + 1
   }
+
+  results <- cbind(
+    par_data,
+    gen_model,
+    site_model,
+    clock_model,
+    esses_data[, -ncol(esses_data)]
+  )
+  results
 }

@@ -27,22 +27,32 @@ parameters_filenames <- parameters_filenames[c(1, 2)]
 knitr::kable(parameters_filenames)
 
 ## ------------------------------------------------------------------------
-mbd_tree_filenames <- parameters_filenames
+mbd_l_matrix_filenames <- mbd_tree_filenames <- parameters_filenames
 # Create all true trees, true alignments and their twins
 for (i in seq_along(parameters_filenames)) {
   parameters_filename <- parameters_filenames[i]
-  mbd_tree_filenames[i] <- raz_create_mbd_tree_file(parameters_filename)
+  mbd_tree_filenames[i] <- raz_create_mbd_tree_files(
+    parameters_filename
+  )$mbd_tree_filename
+  mbd_l_matrix_filenames[i] <- raz_create_mbd_tree_files(
+    parameters_filename
+  )$mbd_l_matrix_filename
 }
 
 ## ------------------------------------------------------------------------
 ape::plot.phylo(ape::read.tree(file = mbd_tree_filenames[2]))
 
 ## ------------------------------------------------------------------------
-bd_tree_filenames <- parameters_filenames
+bd_l_matrix_filenames <- bd_tree_filenames <- parameters_filenames
 # Create all BD twin trees, true alignments and their twins
 for (i in seq_along(parameters_filenames)) {
   parameters_filename <- parameters_filenames[i]
-  bd_tree_filenames[i] <- raz_create_bd_tree_file(parameters_filename)
+  bd_tree_filenames[i] <- raz_create_bd_tree_files(
+    parameters_filename
+  )$bd_tree_filename
+  bd_l_matrix_filenames[i] <- raz_create_bd_tree_files(
+    parameters_filename
+  )$bd_l_matrix_filename
 }
 
 ## ------------------------------------------------------------------------

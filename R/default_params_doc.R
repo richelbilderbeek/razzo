@@ -29,6 +29,7 @@
 #' @param parameters the razzo parameters
 #' @param parameter_filename full path to a 'parameters.csv' file
 #' @param parameters_filename full path to a 'parameters.csv' file
+#' @param phylo a phylogeny
 #' @param posterior_trees phylogenetic trees in a BEAST2 posterior,
 #'   of class \code{multiphylo}
 #' @param precision define the precision of the approximation.
@@ -80,6 +81,7 @@ default_params_doc <- function(
   parameters,
   parameter_filename,
   parameters_filename,
+  phylo,
   posterior_trees,
   precision,
   project_folder_name,

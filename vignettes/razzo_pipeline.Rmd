@@ -73,11 +73,16 @@ knitr::kable(parameters_filenames)
 ## Step 2: create MBD trees
 
 ```{r}
-mbd_tree_filenames <- parameters_filenames
+mbd_l_matrix_filenames <- mbd_tree_filenames <- parameters_filenames
 # Create all true trees, true alignments and their twins
 for (i in seq_along(parameters_filenames)) {
   parameters_filename <- parameters_filenames[i]
-  mbd_tree_filenames[i] <- raz_create_mbd_tree_file(parameters_filename)
+  mbd_tree_filenames[i] <- raz_create_mbd_tree_files(
+    parameters_filename
+  )$mbd_tree_filename
+  mbd_l_matrix_filenames[i] <- raz_create_mbd_tree_files(
+    parameters_filename
+  )$mbd_l_matrix_filename
 }
 ```
 
@@ -97,11 +102,16 @@ We also want to condition on the same amount of tips and on the survival of the 
 We then plug these branching times in the l_table coming from the original MBD tree to be sure that the topology is the same.
 
 ```{r}
-bd_tree_filenames <- parameters_filenames
+bd_l_matrix_filenames <- bd_tree_filenames <- parameters_filenames
 # Create all BD twin trees, true alignments and their twins
 for (i in seq_along(parameters_filenames)) {
   parameters_filename <- parameters_filenames[i]
-  bd_tree_filenames[i] <- raz_create_bd_tree_file(parameters_filename)
+  bd_tree_filenames[i] <- raz_create_bd_tree_files(
+    parameters_filename
+  )$bd_tree_filename
+  bd_l_matrix_filenames[i] <- raz_create_bd_tree_files(
+    parameters_filename
+  )$bd_l_matrix_filename
 }
 ```
 
