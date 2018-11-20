@@ -54,8 +54,8 @@ Done|Create MBD posterior files|`raz_create_mbd_posterior_files`
 Done|Create twin BD posterior files|`raz_create_bd_posterior_files`
 Done|Create MBD nLTT file|`raz_create_mbd_nltt_file`
 Done|Create twin BD nLTT file|`raz_create_bd_nltt_file`
-.   |Create MBD marginal likelihood estimation file|`raz_create_mbd_marg_lik_file`
-.   |Create twin BD marginal likelihood estimation file|`raz_create_bd_marg_lik_file`
+110|Create MBD marginal likelihood estimation file|`raz_create_mbd_marg_lik_file`
+110|Create twin BD marginal likelihood estimation file|`raz_create_bd_marg_lik_file`
 
 #### Data handling functions
 
@@ -75,8 +75,8 @@ Done|Create MBD posterior|`raz_mbd_create_posterior`
 Done|Create BD posterior|`raz_bd_create_posterior`
 Done|Create MBD nLTT|`raz_create_mbd_nltt`
 Done|Create BD nLTT|`raz_create_bd_nltt`
-.   |Estimate MBD marginal likelihood|`raz_est_mbd_marg_lik`
-.   |Estimate BD marginal likelihood|`raz_est_bd_marg_lik`
+36|Estimate MBD marginal likelihood|`raz_est_marg_lik`
+36|Estimate BD marginal likelihood|`raz_est_marg_lik`
 
 ### Results creation
 
@@ -90,10 +90,10 @@ They are not intended to be called from a script
 
 Status|Description|Function name
 ---|---|---
-Issue|Collect marginal likelihoods|`raz_collect_marg_liks`
-Issue|Collect effective sample sizes|`raz_collect_esses`
-Issue|Collect nLTT statistics|`raz_collect_nltt_stats`
-Issue|Create figure 1|`raz_create_fig_1`
+77|Collect marginal likelihoods|`raz_collect_marg_liks`
+78|Collect effective sample sizes|`raz_collect_esses`
+Done|Collect nLTT statistics|`raz_collect_nltt_stats`
+Done|Create figure 1|`raz_create_fig_1`
 
 #### File handling
 
@@ -103,7 +103,7 @@ require only the project folder's name as an argument.
 
 Status|Description|Function name
 ---|---|---
-Issue|Collect marginal likelihoods|`raz_create_marg_liks_file`
-Issue|Collect effective sample sizes|`raz_create_esses_file`
-Issue|Create nLTT statistics file|`raz_create_nltt_stats_file`
-Issue|Create figure 1|`raz_create_fig_1_file`
+86|Collect marginal likelihoods|`raz_create_marg_liks_file`
+87|Collect effective sample sizes|`raz_create_esses_file`
+88|Create nLTT statistics file|`raz_create_nltt_stats_file`
+Done|Create figure 1|`raz_create_fig_1_file`
