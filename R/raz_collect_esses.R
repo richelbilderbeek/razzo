@@ -38,7 +38,7 @@ raz_collect_esses <- function(
   }
 
   par_names <- names(parameters)
-  mar_names <- names(bd_mar)
+  marg_names <- names(bd_mar)
   df_length <- seed_len * length(par_settings_folders)
   len_par_num <- length(par_num)
   len_par_mar <- length(par_mar)
@@ -54,7 +54,7 @@ raz_collect_esses <- function(
     ncol = len_par_mar / 2,
     nrow = 2 * df_length
   ))
-  colnames(res2) <- mar_names
+  colnames(res2) <- marg_names
   gen_model <- clock_model <- site_model <- rep("blank", 2 * df_length)
 
   i <- 1

@@ -2,7 +2,6 @@
 % Please edit documentation in R/raz_collect_marg_log_liks.R
 \name{raz_collect_marg_log_liks}
 \alias{raz_collect_marg_log_liks}
-\alias{raz_collect_mar_log_liks}
 \title{Collect marginal loglikelihoods}
 \usage{
 raz_collect_marg_log_liks(project_folder_name)

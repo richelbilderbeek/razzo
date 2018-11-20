@@ -18,10 +18,10 @@ Filename|Description|Created by
 `bd.fasta`|the twin BD alignment|`raz_create_bd_alignment_file`
 `mbd.trees`|the posterior trees from `mbd.tree`|`raz_create_mbd_posterior_files`
 `mbd.log`|the posterior parameter estimates from `mbd.tree`|`raz_create_mbd_posterior_files`
-`mbd_mar_lik.csv`|the posterior's marginal likelihood from `mbd.tree`|`raz_create_mbd_posterior_files`
+`mbd_marg_lik.csv`|the posterior's marginal likelihood from `mbd.tree`|`raz_create_mbd_posterior_files`
 `bd.trees`|the posterior trees from `bd.tree`|`raz_create_bd_posterior_files`
 `bd.log`|the posterior parameter estimates from `bd.tree`|`raz_create_bd_posterior_files`
-`bd_mar_lik.csv`|the posterior's marginal likelihood from `bd.tree`|`raz_create_mb_posterior_files`
+`bd_marg_lik.csv`|the posterior's marginal likelihood from `bd.tree`|`raz_create_mb_posterior_files`
 `mbd_nltts.csv`|the nLTT statistic distribution between `mbd.tree` and `mbd.trees`|`raz_create_mbd_nltt_file`
 `bd_nltts.csv`|the nLTT statistic distribution between `bd.tree` and `bd.trees`|`raz_create_bd_nltt_file`
 
@@ -103,7 +103,7 @@ require only the project folder's name as an argument.
 
 Status|Description|Function name
 ---|---|---
-Issue|Collect marginal likelihoods|`raz_create_mar_log_liks_file`
+Issue|Collect marginal likelihoods|`raz_create_marg_log_liks_file`
 Issue|Collect effective sample sizes|`raz_create_esses_file`
 Issue|Create nLTT statistics file|`raz_create_nltt_stats_file`
 Issue|Create figure 1|`raz_create_fig_1_file`
