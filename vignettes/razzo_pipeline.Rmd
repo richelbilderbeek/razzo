@@ -279,10 +279,8 @@ In this step, we measure the ESSes of all files and
 combine it into one file:
 
 ```{r}
-if (1 == 2) {
-  esses_filename <- raz_create_esses_file(parameters_filenames)
-  knitr::kable(utils::read.csv(esses_filename)[-1])
-}
+esses_filename <- raz_create_esses_file(parameters_filenames)
+knitr::kable(utils::read.csv(esses_filename)[-1])
 ```
 
 ## Step 11: compare marginal likelihoods
@@ -295,11 +293,8 @@ does this also show when using the Bayes factor?
 
 
 ```{r}
-# Do after #65
-if (1 == 2) {
-  marg_log_lik_filename <- raz_create_marg_log_lik_file(parameters_filenames)
-  knitr::kable(utils::read.csv(marg_log_lik_filename)[-1])
-}
+marg_log_lik_filename <- raz_create_marg_log_lik_file(parameters_filenames)
+knitr::kable(utils::read.csv(marg_log_lik_filename)[-1])
 ```
 
 
