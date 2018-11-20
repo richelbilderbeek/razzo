@@ -20,16 +20,23 @@ raz_create_bd_tree_files <- function(
   mbd_tree <- ape::read.tree(file = mbd_tree_filename)
   mbd_l_matrix <- as.matrix(utils::read.csv(file = mbd_l_matrix_filename))[, -1]
 
-  bd_tree <- raz_create_bd_tree( # nolint internal function
+  bd_sim <- raz_create_bd_tree( # nolint internal function
     parameters = parameters,
     mbd_tree = mbd_tree,
     mbd_l_matrix = mbd_l_matrix
   )
+
+  # Tree
   bd_tree_filename <- file.path(dirname(parameters_filename), "bd.tree")
-  ape::write.tree(phy = bd_tree, file = bd_tree_filename)
+  ape::write.tree(phy = bd_sim$bd_tree, file = bd_tree_filename)
+
+  # L matrix
+  bd_l_matrix_filename <- file.path(
+    dirname(parameters_filename), "bd_l_matrix.csv")
+  utils::write.csv(x = bd_sim$bd_l_matrix, file = bd_l_matrix_filename)
 
   list(
-    tree_filename = bd_tree_filename,
-    l_matrix_filename = bd_l_matrix_filename
+    bd_tree_filename = bd_tree_filename,
+    bd_l_matrix_filename = bd_l_matrix_filename
   )
 }

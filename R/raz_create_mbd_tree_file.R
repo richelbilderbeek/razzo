@@ -22,7 +22,7 @@ raz_create_mbd_tree_files <- function(
   utils::write.csv(x = mbd_sim$mbd_l_matrix, file = mbd_l_matrix_filename)
 
   list(
-    tree_filename = mbd_tree_filename,
-    l_matrix_filename = mbd_l_matrix_filename
+    mbd_tree_filename = mbd_tree_filename,
+    mbd_l_matrix_filename = mbd_l_matrix_filename
   )
 }

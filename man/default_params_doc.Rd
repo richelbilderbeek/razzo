@@ -9,7 +9,7 @@ default_params_doc(alignment, bd_mutation_rate, bd_tree, bd_tree_filename,
   brts, chain_length, clock_model, crown_age, fasta_filename, filename,
   folder_name, init_speciation_rate, init_extinction_rate, lambda,
   mbd_l_matrix, mbd_mutation_rate, mbd_tree, mu, mutation_rate, nu,
-  nu_events, parameters, parameter_filename, parameters_filename,
+  nu_events, parameters, parameter_filename, parameters_filename, phylo,
   posterior_trees, precision, project_folder_name, q, sample_interval,
   seed, sequence_length, sim_pars, sim_phylo, site_model, sub_chain_length,
   tree, tree_filename, trees_filename, verbose)
@@ -67,6 +67,8 @@ present in the simulated tree}
 \item{parameter_filename}{full path to a 'parameters.csv' file}
 
 \item{parameters_filename}{full path to a 'parameters.csv' file}
+
+\item{phylo}{a phylogeny}
 
 \item{posterior_trees}{phylogenetic trees in a BEAST2 posterior,
 of class \code{multiphylo}}
