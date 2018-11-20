@@ -28,11 +28,11 @@ raz_create_bd_posterior_files <- function(
   bd_log_filename <- file.path(dirname(parameters_filename), "bd.log")
 
   ape::write.tree(phy = bd_posterior$trees, file = bd_trees_filename)
-  utils::write.table(
-    x = bd_posterior$estimates,
-    file = bd_log_filename,
-    sep = "\t"
+  tracerer::save_beast_estimates(
+    estimates = bd_posterior$estimates,
+    filename = bd_log_filename
   )
+
   # Return the filenames
   c(bd_trees_filename, bd_log_filename)
 }

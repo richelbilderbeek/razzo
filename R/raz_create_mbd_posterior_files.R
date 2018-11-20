@@ -28,10 +28,9 @@ raz_create_mbd_posterior_files <- function(
   mbd_log_filename <- file.path(dirname(parameters_filename), "mbd.log")
 
   ape::write.tree(phy = mbd_posterior$trees, file = mbd_trees_filename)
-  utils::write.table(
-    x = mbd_posterior$estimates,
-    file = mbd_log_filename,
-    sep = "\t"
+  tracerer::save_beast_estimates(
+    estimates = mbd_posterior$estimates,
+    filename = mbd_log_filename
   )
 
   # Return the filenames
