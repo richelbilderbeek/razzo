@@ -6,7 +6,7 @@
 #'   The file will be saved in the same folder as the parameter file.
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
-raz_create_mbd_tree_file <- function(
+raz_create_mbd_tree_files <- function(
   parameters_filename
 ) {
   parameters <- raz_open_parameters_file(parameters_filename) # nolint internal function
@@ -20,5 +20,9 @@ raz_create_mbd_tree_file <- function(
   mbd_l_matrix_filename <- file.path(
     dirname(parameters_filename), "mbd_l_matrix.csv")
   utils::write.csv(x = mbd_sim$mbd_l_matrix, file = mbd_l_matrix_filename)
-  mbd_tree_filename
+
+  list(
+    tree_filename = mbd_tree_filename,
+    l_matrix_filename = mbd_l_matrix_filename
+  )
 }

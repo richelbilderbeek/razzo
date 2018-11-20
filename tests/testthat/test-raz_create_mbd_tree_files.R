@@ -1,4 +1,4 @@
-context("raz_create_mbd_tree_file")
+context("raz_create_mbd_tree_files")
 
 test_that("use", {
   mbd_tree_filename <- raz_create_mbd_tree_file(

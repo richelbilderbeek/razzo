@@ -1,4 +1,4 @@
-context("raz_create_bd_tree_file")
+context("raz_create_bd_tree_files")
 
 test_that("use", {
 
