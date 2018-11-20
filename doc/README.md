@@ -1,5 +1,33 @@
 # razzo
 
+## Folder structure
+
+In `razzo_project`, there is a folder called `data`.
+In `data`, there are folders named after their parameters, e.g. `0.2-0.15-1-0.1`.
+In each of these folders, there are folders named after their seeds, e.g. `1`.
+In each of these folders, there are folders named after their site and clock models, e.g. `strict-jc69`.
+
+In each of these folders, there are:
+
+Filename|Description|Created by
+-------------|---------------------------------------|--------------------------
+`parameters.csv`|the parameter file|`raz_create_parameter_files`
+`mbd.tree`|the true MBD tree|`raz_create_mbd_tree_file`
+`mbd.fasta`|the true MBD alignment|`raz_create_mbd_alignment_file`
+`bd.tree`|the twin BD tree|`raz_create_bd_tree_file`
+`bd.fasta`|the twin BD alignment|`raz_create_bd_alignment_file`
+`mbd.trees`|the posterior trees from `mbd.tree`|`raz_create_mbd_posterior_files`
+`mbd.log`|the posterior parameter estimates from `mbd.tree`|`raz_create_mbd_posterior_files`
+`mbd_mar_lik.csv`|the posterior's marginal likelihood from `mbd.tree`|`raz_create_mbd_posterior_files`
+`bd.trees`|the posterior trees from `bd.tree`|`raz_create_bd_posterior_files`
+`bd.log`|the posterior parameter estimates from `bd.tree`|`raz_create_bd_posterior_files`
+`bd_mar_lik.csv`|the posterior's marginal likelihood from `bd.tree`|`raz_create_mb_posterior_files`
+`mbd_nltts.csv`|the nLTT statistic distribution between `mbd.tree` and `mbd.trees`|`raz_create_mbd_nltt_file`
+`bd_nltts.csv`|the nLTT statistic distribution between `bd.tree` and `bd.trees`|`raz_create_bd_nltt_file`
+
+See [a razzo_project build log](https://travis-ci.org/richelbilderbeek/razzo_project/jobs/457099656#L1789)
+to see such a `data` folder.
+
 ## Function overview
 
  * Data creation: produces parameter files and output
