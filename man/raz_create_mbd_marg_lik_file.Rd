@@ -7,6 +7,9 @@ of an MBD alignment}
 \usage{
 raz_create_mbd_marg_lik_file(parameters_filename)
 }
+\arguments{
+\item{parameters_filename}{full path to a 'parameters.csv' file}
+}
 \value{
 name of the created file
 }

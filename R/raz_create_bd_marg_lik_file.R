@@ -1,5 +1,6 @@
 #' Create a file that stores the results of a marginal likelihood estimation
 #' of an BD alignment
+#' @inheritParams default_params_doc
 #' @return name of the created file
 #' @author Richel J.C. Bilderbeek
 #' @export
