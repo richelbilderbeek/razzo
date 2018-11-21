@@ -56,7 +56,7 @@ raz_create_bd_tree <- function(
     n = 1,
     lambda = lambda_bd,
     mu     = mu_bd,
-    nTaxa = ((soc - 1) + length(mbd_brts)), # nolint
+    nTaxa = ((soc - 1) + length(mbd_brts)), # nolint TESS uses camelCase names
     age = age,
     MRCA = TRUE
   )[[1]]
@@ -67,7 +67,7 @@ raz_create_bd_tree <- function(
     tree = mbd_tree
   )
 
-  bd_l_matrix <- bd_phylo_2_l_table(bd_tree)
+  bd_l_matrix <- bd_phylo_2_l_table(bd_tree) # nolint internal function
 
   list(
     bd_tree = bd_tree,
