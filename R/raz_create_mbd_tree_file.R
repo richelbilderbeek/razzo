@@ -6,11 +6,11 @@
 #'   The file will be saved in the same folder as the parameter file.
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
-raz_create_mbd_tree_files <- function(
+create_mbd_tree_files <- function(
   parameters_filename
 ) {
-  parameters <- raz_open_parameters_file(parameters_filename) # nolint internal function
-  mbd_sim <- raz_create_mbd_tree(parameters) # nolint internal function
+  parameters <- open_parameters_file(parameters_filename) # nolint internal function
+  mbd_sim <- create_mbd_tree(parameters) # nolint internal function
 
   # Tree
   mbd_tree_filename <- file.path(dirname(parameters_filename), "mbd.tree")

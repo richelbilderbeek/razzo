@@ -1,11 +1,11 @@
-context("raz_create_mbd_tree_events")
+context("create_mbd_tree_events")
 
 test_that("creates a tree", {
 
-  parameters <- raz_open_parameters_file(raz_get_path("parameters.csv"))
+  parameters <- open_parameters_file(get_path("parameters.csv"))
   parameters$seed <- 1
   nu_events <- 5
-  mbd_sim <- raz_create_mbd_tree_events(
+  mbd_sim <- create_mbd_tree_events(
     parameters = parameters,
     nu_events = nu_events
   )
@@ -27,13 +27,13 @@ test_that("tree must have a predefined number of nu events", {
   if (!ribir::is_on_travis()) {
     skip("This is slow")
   } else {
-    parameters <- razzo::raz_open_parameters_file(
-      raz_get_path("parameters.csv")
+    parameters <- razzo::open_parameters_file(
+      get_path("parameters.csv")
     )
     # Calculate the number of expected triggered speciation events
     exp_n_spec_events <- round(parameters$crown_age * parameters$nu) / 5
 
-    mbd_sim <- raz_create_mbd_tree_events(
+    mbd_sim <- create_mbd_tree_events(
       parameters = parameters,
       nu_events = exp_n_spec_events
     )

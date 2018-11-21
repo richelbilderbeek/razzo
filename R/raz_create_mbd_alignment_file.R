@@ -8,23 +8,23 @@
 #' @return full path to the created file
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
-raz_create_mbd_alignment_file <- function(
+create_mbd_alignment_file <- function(
   parameters_filename
 ) {
   # Load input
-  raz_check_file_exists(parameters_filename) # nolint internal function
+  check_file_exists(parameters_filename) # nolint internal function
   mbd_tree_filename <- file.path(dirname(parameters_filename), "mbd.tree")
-  raz_check_file_exists(mbd_tree_filename) # nolint internal function
+  check_file_exists(mbd_tree_filename) # nolint internal function
   mbd_alignment_filename <- file.path(dirname(parameters_filename), "mbd.fasta")
   bd_tree_filename <- file.path(dirname(parameters_filename), "bd.tree")
-  raz_check_file_exists(bd_tree_filename) # nolint internal function
+  check_file_exists(bd_tree_filename) # nolint internal function
 
-  parameters <- raz_open_parameters_file(parameters_filename) # nolint internal function
+  parameters <- open_parameters_file(parameters_filename) # nolint internal function
   mbd_tree <- ape::read.tree(file = mbd_tree_filename)
   bd_tree <- ape::read.tree(file = bd_tree_filename)
 
   # Create the alignment
-  alignment <- raz_create_mbd_alignment( # nolint internal function
+  alignment <- create_mbd_alignment( # nolint internal function
     parameters = parameters,
     mbd_tree = mbd_tree,
     bd_tree = bd_tree

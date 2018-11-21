@@ -1,15 +1,15 @@
-context("raz_create_bd_posterior_files")
+context("create_bd_posterior_files")
 
 test_that("use", {
 
   if (!ribir::is_on_travis()) return()
 
-  parameters_filename <- raz_create_tempfile("parameters.csv")
-  bd_alignment_filename <- raz_create_tempfile("bd.fasta")
+  parameters_filename <- create_tempfile("parameters.csv")
+  bd_alignment_filename <- create_tempfile("bd.fasta")
   testit::assert(file.exists(parameters_filename))
   testit::assert(file.exists(bd_alignment_filename))
 
-  bd_posterior_filenames <- raz_create_bd_posterior_files(
+  bd_posterior_filenames <- create_bd_posterior_files(
     parameters_filename = parameters_filename
   )
 

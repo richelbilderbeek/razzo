@@ -1,6 +1,6 @@
 #' Create an MBD tree from the razzo parameters
 #' @inheritParams default_params_doc
-#' @description This works like raz_create_mbd_tree but instead of specifying
+#' @description This works like create_mbd_tree but instead of specifying
 #' the parameter nu, the user has to specify the number of nu-events in
 #' the simulated process
 #' @return a list with elements that resulted from a
@@ -11,7 +11,7 @@
 #' }
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
-raz_create_mbd_tree_events <- function(
+create_mbd_tree_events <- function(
   parameters,
   nu_events
 ) {

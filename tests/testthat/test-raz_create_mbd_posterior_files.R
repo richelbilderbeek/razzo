@@ -1,17 +1,17 @@
-context("raz_create_mbd_posterior_files")
+context("create_mbd_posterior_files")
 
 test_that("use", {
 
   if (!ribir::is_on_travis()) return()
 
   # Create input files
-  parameters_filename <- raz_create_tempfile("parameters.csv") # nolint internal function
-  mbd_alignment_filename <- raz_create_tempfile("mbd.fasta") # nolint internal function
+  parameters_filename <- create_tempfile("parameters.csv") # nolint internal function
+  mbd_alignment_filename <- create_tempfile("mbd.fasta") # nolint internal function
   testit::assert(file.exists(parameters_filename))
   testit::assert(file.exists(mbd_alignment_filename))
 
   # Run
-  mbd_posterior_filenames <- raz_create_mbd_posterior_files( # nolint internal function
+  mbd_posterior_filenames <- create_mbd_posterior_files( # nolint internal function
     parameters_filename = parameters_filename
   )
 
@@ -50,7 +50,7 @@ test_that("posteriors must have the same number of trees", {
   skip("TODO: Issue 59, #59")
 
   mbd_trees_filenames <- list.files(
-    path = raz_get_path("razzo_project"),
+    path = get_path("razzo_project"),
     pattern = "mbd\\.trees",
     recursive = TRUE,
     full.names = TRUE
@@ -72,7 +72,7 @@ test_that("posteriors must have the same number of estimates", {
   skip("TODO: Issue 59, #59")
 
   mbd_log_filenames <- list.files(
-    path = raz_get_path("razzo_project"),
+    path = get_path("razzo_project"),
     pattern = "mbd\\.log",
     recursive = TRUE,
     full.names = TRUE

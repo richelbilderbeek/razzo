@@ -1,4 +1,4 @@
-context("raz_calc_mut_rates")
+context("calc_mut_rates")
 
 test_that("identical trees", {
 
@@ -13,7 +13,7 @@ test_that("identical trees", {
   #   +---------------- D                                                       # nolint this is no code
   tree <- ape::read.tree(text = "((A:9, B:9):1, (C:9, D:9):1);")
 
-  mut_rates <- raz_calc_mut_rates(mbd_tree = tree, bd_tree = tree)
+  mut_rates <- calc_mut_rates(mbd_tree = tree, bd_tree = tree)
 
   # Identical trees must have same mutation rate
   expect_equal(mut_rates$mbd_mut_rate, mut_rates$bd_mut_rate)
@@ -54,7 +54,7 @@ test_that("late tree vs early tree", {
   #                  +- D                                                       # nolint this is no code
   late_tree <- ape::read.tree(text = "((A:1, B:1):9, (C:1, D:1):9);")
 
-  mut_rates <- raz_calc_mut_rates(mbd_tree = early_tree, bd_tree = late_tree)
+  mut_rates <- calc_mut_rates(mbd_tree = early_tree, bd_tree = late_tree)
 
   # Mutation rate so to maximize information
   crown_age <- 10.0

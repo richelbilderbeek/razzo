@@ -1,17 +1,17 @@
-context("raz_create_bd_nltts_file")
+context("create_bd_nltts_file")
 
 test_that("use", {
 
   # Create input files
-  parameters_filename <- raz_create_tempfile("parameters.csv")
-  bd_tree_filename <- raz_create_tempfile("bd.tree")
-  bd_trees_filename <- raz_create_tempfile("bd.trees")
+  parameters_filename <- create_tempfile("parameters.csv")
+  bd_tree_filename <- create_tempfile("bd.tree")
+  bd_trees_filename <- create_tempfile("bd.trees")
   testit::assert(file.exists(parameters_filename))
   testit::assert(file.exists(bd_tree_filename))
   testit::assert(file.exists(bd_trees_filename))
 
   # Run
-  bd_nltts_filename <- raz_create_bd_nltts_file(
+  bd_nltts_filename <- create_bd_nltts_file(
     parameters_filename = parameters_filename
   )
 

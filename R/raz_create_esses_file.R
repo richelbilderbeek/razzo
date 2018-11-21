@@ -4,12 +4,12 @@
 #' @return the esses
 #' @author Giovanni Laudanno
 #' @export
-raz_create_esses_file <- function(
+create_esses_file <- function(
   project_folder_name
 ) {
 
   # create the dataframe
-  df_esses <- raz_collect_esses(project_folder_name) # nolint internal function
+  df_esses <- collect_esses(project_folder_name) # nolint internal function
 
   # save output
   results_folder <- file.path(

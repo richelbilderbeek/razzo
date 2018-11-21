@@ -1,45 +1,45 @@
-context("raz_utils")
+context("utils")
 
-test_that("raz_get_site_models", {
+test_that("get_site_models", {
   expect_true(
-    length(raz_get_site_models()) > 0 # nolint internal function
+    length(get_site_models()) > 0 # nolint internal function
   )
   expect_true(
-    is.character(raz_get_site_models()) # nolint internal function
+    is.character(get_site_models()) # nolint internal function
   )
 })
 
-test_that("raz_get_clock_models", {
+test_that("get_clock_models", {
   expect_true(
-    length(raz_get_clock_models()) > 0 # nolint internal function
+    length(get_clock_models()) > 0 # nolint internal function
   )
   expect_true(
-    is.character(raz_get_clock_models()) # nolint internal function
+    is.character(get_clock_models()) # nolint internal function
   )
 })
 
-test_that("raz_get_gen_models", {
+test_that("get_gen_models", {
   expect_true(
-    length(raz_get_gen_models()) > 0 # nolint internal function
+    length(get_gen_models()) > 0 # nolint internal function
   )
   expect_true(
-    is.character(raz_get_gen_models()) # nolint internal function
+    is.character(get_gen_models()) # nolint internal function
   )
 })
 
 test_that("bd_phylo_2_l_table", {
   max_seed <- 10
-  parameters <- raz_open_parameters_file(raz_get_path("parameters.csv"))
+  parameters <- open_parameters_file(get_path("parameters.csv"))
   for (seed in 1:max_seed) {
 
     # create data
     parameters$seed <- seed
-    mbd_sim <- raz_create_mbd_tree(
+    mbd_sim <- create_mbd_tree(
       parameters = parameters
     )
     mbd_tree <- mbd_sim$mbd_tree
     mbd_l_matrix <- mbd_sim$mbd_l_matrix
-    bd_sim <- raz_create_bd_tree(
+    bd_sim <- create_bd_tree(
       parameters = parameters,
       mbd_tree = mbd_tree,
       mbd_l_matrix = mbd_l_matrix

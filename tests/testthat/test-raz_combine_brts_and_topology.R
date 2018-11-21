@@ -1,21 +1,21 @@
-context("raz_combine_brts_and_topology")
+context("combine_brts_and_topology")
 
 test_that("check usage with brts coming from the same tree", {
 
-  parameters <- razzo::raz_open_parameters_file(
-    razzo::raz_get_path("parameters.csv")
+  parameters <- razzo::open_parameters_file(
+    razzo::get_path("parameters.csv")
   )
   parameters$seed <- 1
-  tree <- razzo::raz_create_mbd_tree(parameters)$mbd_tree
-  brts <- raz_convert_tree2brts(tree)
+  tree <- razzo::create_mbd_tree(parameters)$mbd_tree
+  brts <- convert_tree2brts(tree)
 
   max_seed <- 5
   for (seed in 1:max_seed) {
     parameters$seed <- seed
-    tree <- razzo::raz_create_mbd_tree(parameters)$mbd_tree
-    brts <- raz_convert_tree2brts(tree)
+    tree <- razzo::create_mbd_tree(parameters)$mbd_tree
+    brts <- convert_tree2brts(tree)
 
-    test <- raz_combine_brts_and_topology(
+    test <- combine_brts_and_topology(
       brts = brts,
       tree = tree
     )
@@ -60,7 +60,7 @@ test_that("all the tree features (but the branching times) are preserved", {
   ),
   decreasing = TRUE)
 
-  test <- raz_combine_brts_and_topology(
+  test <- combine_brts_and_topology(
     brts = brts,
     tree = tree
   )
@@ -81,15 +81,15 @@ test_that("all the tree features (but the branching times) are preserved", {
 
 test_that("abuse", {
 
-  parameters <- razzo::raz_open_parameters_file(
-    razzo::raz_get_path("parameters.csv")
+  parameters <- razzo::open_parameters_file(
+    razzo::get_path("parameters.csv")
   )
-  tree <- razzo::raz_create_mbd_tree(parameters)$mbd_tree
-  brts0 <- raz_convert_tree2brts(tree)
+  tree <- razzo::create_mbd_tree(parameters)$mbd_tree
+  brts0 <- convert_tree2brts(tree)
   brts <- brts0[1:floor(length(brts0) / 2)]
 
   testthat::expect_error(
-    raz_combine_brts_and_topology(
+    combine_brts_and_topology(
       brts = brts,
       tree = tree
     ),

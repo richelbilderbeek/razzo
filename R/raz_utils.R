@@ -7,7 +7,7 @@
 #' @inheritParams default_params_doc
 #' @return the branching times
 #' @author Giovanni Laudanno
-raz_convert_tree2brts <- function(tree, precision = 8) {
+convert_tree2brts <- function(tree, precision = 8) {
 
   brts0 <- ape::branching.times(tree)
   brts <- DDD::roundn(brts0, digits = precision)
@@ -20,7 +20,7 @@ raz_convert_tree2brts <- function(tree, precision = 8) {
 #' @inheritParams default_params_doc
 #' @return the site models
 #' @author Giovanni Laudanno
-raz_get_site_models <- function() {
+get_site_models <- function() {
   c("jc69", "gtr")
 }
 
@@ -29,7 +29,7 @@ raz_get_site_models <- function() {
 #' @inheritParams default_params_doc
 #' @return the clock models
 #' @author Giovanni Laudanno
-raz_get_clock_models <- function() {
+get_clock_models <- function() {
   c("strict", "rln")
 }
 
@@ -38,7 +38,7 @@ raz_get_clock_models <- function() {
 #' @inheritParams default_params_doc
 #' @return the generative models
 #' @author Giovanni Laudanno
-raz_get_gen_models <- function() {
+get_gen_models <- function() {
   c("bd", "mbd")
 }
 
@@ -62,7 +62,7 @@ bd_phylo_2_l_table <- function(
   )
 
   # compute the relative branching times
-  brt <- raz_convert_tree2brts(phylo)
+  brt <- convert_tree2brts(phylo)
 
   if (min(brt) < 0) {
     brt <- brt + abs(min(brt))

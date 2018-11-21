@@ -6,7 +6,7 @@
 #' @return mutation rates
 #' @author Giovanni Laudanno
 #' @export
-raz_calc_mut_rates <- function(
+calc_mut_rates <- function(
   bd_tree,
   mbd_tree
 ) {

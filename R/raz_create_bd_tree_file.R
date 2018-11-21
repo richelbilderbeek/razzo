@@ -6,21 +6,21 @@
 #'   in the folder relative to the chosen parameters
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
-raz_create_bd_tree_files <- function(
+create_bd_tree_files <- function(
   parameters_filename
 ) {
-  raz_check_file_exists(parameters_filename) # nolint internal function
+  check_file_exists(parameters_filename) # nolint internal function
   mbd_tree_filename <- file.path(dirname(parameters_filename), "mbd.tree")
-  raz_check_file_exists(mbd_tree_filename) # nolint internal function
+  check_file_exists(mbd_tree_filename) # nolint internal function
   mbd_l_matrix_filename <- file.path(
     dirname(parameters_filename), "mbd_l_matrix.csv")
-  raz_check_file_exists(mbd_l_matrix_filename) # nolint internal function
+  check_file_exists(mbd_l_matrix_filename) # nolint internal function
 
-  parameters <- raz_open_parameters_file(parameters_filename) # nolint internal function
+  parameters <- open_parameters_file(parameters_filename) # nolint internal function
   mbd_tree <- ape::read.tree(file = mbd_tree_filename)
   mbd_l_matrix <- as.matrix(utils::read.csv(file = mbd_l_matrix_filename))[, -1]
 
-  bd_sim <- raz_create_bd_tree( # nolint internal function
+  bd_sim <- create_bd_tree( # nolint internal function
     parameters = parameters,
     mbd_tree = mbd_tree,
     mbd_l_matrix = mbd_l_matrix

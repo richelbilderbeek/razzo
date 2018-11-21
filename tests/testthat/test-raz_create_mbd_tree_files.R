@@ -1,8 +1,8 @@
-context("raz_create_mbd_tree_files")
+context("create_mbd_tree_files")
 
 test_that("use", {
-  mbd_filenames <- raz_create_mbd_tree_files(
-    parameters_filename = raz_create_tempfile("parameters.csv")
+  mbd_filenames <- create_mbd_tree_files(
+    parameters_filename = create_tempfile("parameters.csv")
   )
   mbd_tree_filename <- mbd_filenames$mbd_tree_filename
   mbd_l_matrix_filename <- mbd_filenames$mbd_l_matrix_filename

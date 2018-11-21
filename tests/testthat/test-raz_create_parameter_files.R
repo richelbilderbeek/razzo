@@ -1,4 +1,4 @@
-context("raz_create_parameters_files")
+context("create_parameters_files")
 
 test_that("use", {
 
@@ -7,7 +7,7 @@ test_that("use", {
   project_folder_name <- file.path(super_folder_name, "razzo_project")
   dir.create(path = project_folder_name)
 
-  filenames <- raz_create_parameters_files(
+  filenames <- create_parameters_files(
     project_folder_name = project_folder_name
   )
 
@@ -43,13 +43,13 @@ test_that("use", {
 test_that("can read", {
 
   # Create parameter files from fresh
-  filenames <- raz_create_parameters_files(
+  filenames <- create_parameters_files(
     project_folder_name = tempdir()
   )
 
   # Load the first one
   expect_silent(
-    raz_open_parameters_file(parameters_filename = filenames[1])
+    open_parameters_file(parameters_filename = filenames[1])
   )
 })
 
@@ -57,7 +57,7 @@ test_that("must contain both site models", {
 
   # Create parameter files from fresh
   filenames <- suppressWarnings(
-    raz_create_parameters_files(
+    create_parameters_files(
       project_folder_name = tempdir()
     )
   )
@@ -66,7 +66,7 @@ test_that("must contain both site models", {
   site_models <- rep(NA, length(filenames))
   for (i in seq_along(filenames)) {
     site_models[i] <- as.character(
-      raz_open_parameters_file(filenames[i])$site_model
+      open_parameters_file(filenames[i])$site_model
     )
   }
 
@@ -79,7 +79,7 @@ test_that("must contain both clock models", {
 
   # Create parameter files from fresh
   filenames <- suppressWarnings(
-    raz_create_parameters_files(
+    create_parameters_files(
       project_folder_name = tempdir()
     )
   )
@@ -88,7 +88,7 @@ test_that("must contain both clock models", {
   clock_models <- rep(NA, length(filenames))
   for (i in seq_along(filenames)) {
     clock_models[i] <- as.character(
-      raz_open_parameters_file(filenames[i])$clock_model
+      open_parameters_file(filenames[i])$clock_model
     )
   }
 

@@ -1,10 +1,10 @@
-context("test-raz_create_esses_file")
+context("test-create_esses_file")
 
 test_that("use", {
 
   # Should create 'results/esses.csv'
-  filename <- raz_create_esses_file(
-    project_folder_name = raz_get_path("razzo_project")
+  filename <- create_esses_file(
+    project_folder_name = get_path("razzo_project")
   )
 
   # File should be created
@@ -33,7 +33,7 @@ test_that("use", {
 
 test_that("abuse", {
   expect_error(
-    raz_create_esses_file(
+    create_esses_file(
       project_folder_name = "nonsense"
     ),
     "'project_folder_name' must end with 'razzo_project'"

@@ -1,16 +1,16 @@
-context("raz_create_bd_tree")
+context("create_bd_tree")
 
 test_that("use", {
 
-  parameters <- raz_open_parameters_file(raz_get_path("parameters.csv"))
+  parameters <- open_parameters_file(get_path("parameters.csv"))
   parameters$seed <- 1
-  mbd_tree <- ape::read.tree(file = raz_get_path("mbd.tree"))
+  mbd_tree <- ape::read.tree(file = get_path("mbd.tree"))
   mbd_l_matrix <- as.matrix(
-    utils::read.csv(file = raz_get_path("mbd_l_matrix.csv")))
+    utils::read.csv(file = get_path("mbd_l_matrix.csv")))
   # Remove the first column?
   mbd_l_matrix <- mbd_l_matrix[, -1]
 
-  bd_sim <- raz_create_bd_tree(
+  bd_sim <- create_bd_tree(
     parameters = parameters,
     mbd_tree = mbd_tree,
     mbd_l_matrix = mbd_l_matrix

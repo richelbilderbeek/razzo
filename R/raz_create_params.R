@@ -4,7 +4,7 @@
 #' @return a list of parameters
 #' @export
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
-raz_create_params <- function(
+create_params <- function(
   lambda = 0.1,
   mu = 0.05,
   nu = 1,
@@ -50,15 +50,15 @@ raz_create_params <- function(
   if (sub_chain_length <= 0) {
     stop("sub_chain_length has to be a positive number!")
   }
-  if (!(clock_model %in% raz_get_clock_models())) { # nolint internal function
+  if (!(clock_model %in% get_clock_models())) { # nolint internal function
     stop(
       "'clock_model' must be among the following: ",
-      paste(raz_get_clock_models(), collapse = ", ") # nolint internal function
+      paste(get_clock_models(), collapse = ", ") # nolint internal function
     )
   }
-  if (!(site_model %in% raz_get_site_models())) { # nolint internal function
+  if (!(site_model %in% get_site_models())) { # nolint internal function
     stop("'site_model' must be among the following: ",
-         paste(raz_get_site_models(), collapse = ", ") # nolint internal function
+         paste(get_site_models(), collapse = ", ") # nolint internal function
     )
   }
 

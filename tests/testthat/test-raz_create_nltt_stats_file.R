@@ -1,11 +1,11 @@
-context("test-raz_create_nltt_stats_file")
+context("test-create_nltt_stats_file")
 
 test_that("use", {
   skip("TODO. Issue 88, #88")
 
   # Should create 'results/nltt_stats.csv'
-  filename <- raz_create_nltt_stats_file(
-    project_folder_name = raz_get_path("razzo_project")
+  filename <- create_nltt_stats_file(
+    project_folder_name = get_path("razzo_project")
   )
 
   # File should be created
@@ -35,7 +35,7 @@ test_that("use", {
 test_that("abuse", {
   skip("TODO. Issue 88, #88")
   expect_error(
-    raz_create_nltt_stats_file(
+    create_nltt_stats_file(
       project_folder_name = "nonsense"
     ),
     "'project_folder_name' must end with 'razzo_project'"

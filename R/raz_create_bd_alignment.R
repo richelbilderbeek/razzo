@@ -5,7 +5,7 @@
 #' @return an alignment
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
-raz_create_bd_alignment <- function(
+create_bd_alignment <- function(
   parameters,
   bd_tree,
   mbd_tree
@@ -14,7 +14,7 @@ raz_create_bd_alignment <- function(
   testit::assert(!is.null(sequence_length))
 
   # Calculate the mutation rate from the tree
-  bd_mutation_rate <- raz_calc_mut_rates(
+  bd_mutation_rate <- calc_mut_rates(
     bd_tree = bd_tree,
     mbd_tree = mbd_tree
   )$bd_mut_rate

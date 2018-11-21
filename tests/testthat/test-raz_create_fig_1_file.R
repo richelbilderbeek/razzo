@@ -1,10 +1,10 @@
-context("test-raz_create_fig_1_file")
+context("test-create_fig_1_file")
 
 test_that("use", {
 
   # Should create 'results/fig_1.png'
-  filename <- raz_create_fig_1_file(
-    project_folder_name = raz_get_path("razzo_project")
+  filename <- create_fig_1_file(
+    project_folder_name = get_path("razzo_project")
   )
 
   # File should be created
@@ -34,7 +34,7 @@ test_that("use", {
 test_that("abuse", {
 
   expect_error(
-    raz_create_fig_1_file(
+    create_fig_1_file(
       project_folder_name = "nonsense"
     ),
     "'project_folder_name' must end with 'razzo_project'"

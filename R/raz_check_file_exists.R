@@ -5,7 +5,7 @@
 #'   with a proper error message
 #' @author Richel J.C. Bilderbeek
 #' @noRd
-raz_check_file_exists <- function(filename) {
+check_file_exists <- function(filename) {
   if (!file.exists(filename)) {
     stop(
       "File not found. Could not find file with path '",

@@ -12,15 +12,15 @@
 #' @return names of the files created
 #' @author Richel J.C. Bilderbeek
 #' @export
-raz_create_mbd_posterior_files <- function(
+create_mbd_posterior_files <- function(
   parameters_filename
 ) {
-  raz_check_file_exists(parameters_filename) # nolint internal function
+  check_file_exists(parameters_filename) # nolint internal function
   mbd_alignment_filename <- file.path(dirname(parameters_filename), "mbd.fasta")
-  raz_check_file_exists(mbd_alignment_filename) # nolint internal function
+  check_file_exists(mbd_alignment_filename) # nolint internal function
 
-  mbd_posterior <- raz_create_posterior(
-    parameters = raz_open_parameters_file(parameters_filename),
+  mbd_posterior <- create_posterior(
+    parameters = open_parameters_file(parameters_filename),
     alignment = ape::read.FASTA(mbd_alignment_filename)
   )
 

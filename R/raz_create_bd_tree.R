@@ -5,7 +5,7 @@
 #'   obtained from the corresponding MBD tree.
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
-raz_create_bd_tree <- function(
+create_bd_tree <- function(
   parameters,
   mbd_tree,
   mbd_l_matrix
@@ -60,9 +60,9 @@ raz_create_bd_tree <- function(
     age = age,
     MRCA = TRUE
   )[[1]]
-  bd_brts0 <- raz_convert_tree2brts(bd_tree0) # nolint internal function
+  bd_brts0 <- convert_tree2brts(bd_tree0) # nolint internal function
 
-  bd_tree <- raz_combine_brts_and_topology(
+  bd_tree <- combine_brts_and_topology(
     brts = bd_brts0,
     tree = mbd_tree
   )

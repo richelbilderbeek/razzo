@@ -6,13 +6,13 @@
 #'   \code{inst/extdata} file to that temporary folder.
 #' @author Richel J.C. Bilderbeek
 #' @examples
-#'   filename <- raz_create_tempfile("parameters.csv")
+#'   filename <- create_tempfile("parameters.csv")
 #'   testthat::expect_true(file.exists(filename))
 #' @export
-raz_create_tempfile <- function(filename) {
+create_tempfile <- function(filename) {
   to <- file.path(tempdir(), filename)
   file.copy(
-    from = raz_get_path(filename),
+    from = get_path(filename),
     to = to
   )
   to

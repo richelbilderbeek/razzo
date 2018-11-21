@@ -1,17 +1,17 @@
-context("raz_create_mbd_nltts_file")
+context("create_mbd_nltts_file")
 
 test_that("use", {
 
   # Create input files
-  parameters_filename <- raz_create_tempfile("parameters.csv")
-  mbd_tree_filename <- raz_create_tempfile("mbd.tree")
-  mbd_trees_filename <- raz_create_tempfile("mbd.trees")
+  parameters_filename <- create_tempfile("parameters.csv")
+  mbd_tree_filename <- create_tempfile("mbd.tree")
+  mbd_trees_filename <- create_tempfile("mbd.trees")
   testit::assert(file.exists(parameters_filename))
   testit::assert(file.exists(mbd_tree_filename))
   testit::assert(file.exists(mbd_trees_filename))
 
   # Run
-  mbd_nltts_filename <- raz_create_mbd_nltts_file( # nolint internal function
+  mbd_nltts_filename <- create_mbd_nltts_file( # nolint internal function
     parameters_filename = parameters_filename
   )
 

@@ -1,9 +1,9 @@
-context("raz_collect_esses")
+context("collect_esses")
 
 test_that("use", {
 
-  df <- raz_collect_esses(
-    project_folder_name = raz_get_path("razzo_project")
+  df <- collect_esses(
+    project_folder_name = get_path("razzo_project")
   )
 
   # Experimental parameters that vary
@@ -33,7 +33,7 @@ test_that("use", {
 
 test_that("abuse", {
   expect_error(
-    raz_collect_esses(
+    collect_esses(
       project_folder_name = "nonsense"
     ),
     "'project_folder_name' must end with 'razzo_project'"

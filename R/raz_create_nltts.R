@@ -5,7 +5,7 @@
 #' @return nltt statistics
 #' @author Richel J.C. Bilderbeek
 #' @export
-raz_create_nltts <- function(
+create_nltts <- function(
   tree,
   posterior_trees
 ) {

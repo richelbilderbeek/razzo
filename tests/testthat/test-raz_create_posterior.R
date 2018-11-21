@@ -1,14 +1,14 @@
-context("raz_create_posterior")
+context("create_posterior")
 
 test_that("use", {
 
   if (!ribir::is_on_travis()) return()
 
-  parameters <- raz_open_parameters_file(raz_get_path("parameters.csv"))
-  alignment <- ape::read.FASTA(raz_get_path("mbd.fasta"))
+  parameters <- open_parameters_file(get_path("parameters.csv"))
+  alignment <- ape::read.FASTA(get_path("mbd.fasta"))
   parameters$chain_length <- 10000
 
-  posterior <- raz_create_posterior(
+  posterior <- create_posterior(
     parameters = parameters,
     alignment = alignment
   )
@@ -45,12 +45,12 @@ test_that("use", {
     !is.null(posterior$operators) # nolint internal function
   )
 
-  parameters <- raz_open_parameters_file(raz_get_path("parameters.csv"))
-  alignment <- ape::read.FASTA(raz_get_path("mbd.fasta"))
+  parameters <- open_parameters_file(get_path("parameters.csv"))
+  alignment <- ape::read.FASTA(get_path("mbd.fasta"))
   parameters$chain_length <- 2000
   parameters$clock_model <- "rln"
 
-  posterior <- raz_create_posterior(
+  posterior <- create_posterior(
     parameters = parameters,
     alignment = alignment
   )
@@ -87,12 +87,12 @@ test_that("use", {
     !is.null(posterior$operators) # nolint internal function
   )
 
-  parameters <- raz_open_parameters_file(raz_get_path("parameters.csv"))
-  alignment <- ape::read.FASTA(raz_get_path("mbd.fasta"))
+  parameters <- open_parameters_file(get_path("parameters.csv"))
+  alignment <- ape::read.FASTA(get_path("mbd.fasta"))
   parameters$chain_length <- 2000
   parameters$site_model <- "gtr"
 
-  posterior <- raz_create_posterior(
+  posterior <- create_posterior(
     parameters = parameters,
     alignment = alignment
   )
@@ -134,35 +134,35 @@ test_that("abuse", {
 
   if (!ribir::is_on_travis()) return()
 
-  parameters <- raz_open_parameters_file(raz_get_path("parameters.csv"))
-  alignment <- ape::read.FASTA(raz_get_path("mbd.fasta"))
+  parameters <- open_parameters_file(get_path("parameters.csv"))
+  alignment <- ape::read.FASTA(get_path("mbd.fasta"))
   parameters$chain_length <- 2000
   parameters$clock_model <- "nonsense"
 
   expect_error(
-    posterior <- raz_create_posterior(
+    posterior <- create_posterior(
       parameters = parameters,
       alignment = alignment
     ),
     paste0(
       "'clock_model' must be among the following: ",
-      paste(raz_get_clock_models(), collapse = ", ")
+      paste(get_clock_models(), collapse = ", ")
     )
   )
 
-  parameters <- raz_open_parameters_file(raz_get_path("parameters.csv"))
-  alignment <- ape::read.FASTA(raz_get_path("mbd.fasta"))
+  parameters <- open_parameters_file(get_path("parameters.csv"))
+  alignment <- ape::read.FASTA(get_path("mbd.fasta"))
   parameters$chain_length <- 2000
   parameters$site_model <- "nonsense"
 
   expect_error(
-    posterior <- raz_create_posterior(
+    posterior <- create_posterior(
       parameters = parameters,
       alignment = alignment
     ),
     paste0(
       "'site_model' must be among the following: ",
-      paste(raz_get_site_models(), collapse = ", ")
+      paste(get_site_models(), collapse = ", ")
     )
   )
 })

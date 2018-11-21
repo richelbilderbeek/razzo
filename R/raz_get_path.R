@@ -4,19 +4,20 @@
 #'   the file is present. Will stop otherwise.
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @examples
-#'   testit::assert(is.character(raz_get_path("parameters.csv")))
+#'   testit::assert(is.character(get_path("parameters.csv")))
 #' @export
-raz_get_path <- function(filename) {
+get_path <- function(filename) {
 
   if (grepl("P274829", system.file(package = "razzo"))) {
     file.copy(
-      from = file.path("F:/Dropbox", # nolint
-                       "University",
-                       "Progress",
-                       "RQ3-razzo",
-                       "razzo",
-                       "inst",
-                       "extdata"
+      from = file.path(
+        "F:/Dropbox", # nolint
+        "University",
+        "Progress",
+        "RQ3-razzo",
+        "razzo",
+        "inst",
+        "extdata"
       ),
       to = system.file("extdata", package = "razzo"),
       overwrite = TRUE,

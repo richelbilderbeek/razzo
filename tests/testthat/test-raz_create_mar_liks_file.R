@@ -1,12 +1,12 @@
-context("test-raz_create_marg_liks_file")
+context("test-create_marg_liks_file")
 
 test_that("use", {
 
   skip("TODO. Issue 86, #86")
 
   # Should create 'results/'marg_liks.csv'
-  filename <- raz_create_marg_liks_file(
-    project_folder_name = raz_get_path("razzo_project")
+  filename <- create_marg_liks_file(
+    project_folder_name = get_path("razzo_project")
   )
 
   # File should be created
@@ -35,7 +35,7 @@ test_that("use", {
 
 test_that("abuse", {
   expect_error(
-    raz_create_marg_liks_file(project_folder_name = "nonsense"),
+    create_marg_liks_file(project_folder_name = "nonsense"),
     "'project_folder_name' must end with 'razzo_project'"
   )
 })

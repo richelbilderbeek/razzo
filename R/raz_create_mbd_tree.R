@@ -8,7 +8,7 @@
 #' }
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
-raz_create_mbd_tree <- function(
+create_mbd_tree <- function(
   parameters
 ) {
   mbd_pars <- c(parameters$lambda, parameters$mu, parameters$nu, parameters$q)

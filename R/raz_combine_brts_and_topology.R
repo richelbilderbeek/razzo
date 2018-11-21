@@ -5,7 +5,7 @@
 #' @return a tree
 #' @author Giovanni Laudanno, David Bapst
 #' @export
-raz_combine_brts_and_topology <- function(
+combine_brts_and_topology <- function(
   brts,
   tree
 ) {

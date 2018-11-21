@@ -4,7 +4,7 @@
 #' @return a dataframe with parameters and esses
 #' @author Giovanni Laudanno
 #' @export
-raz_collect_esses <- function(
+collect_esses <- function(
   project_folder_name
 ) {
 
@@ -18,8 +18,8 @@ raz_collect_esses <- function(
   )
 
   # retrieve information from files
-  paths <- raz_get_settings_paths(project_folder_name) # nolint internal function
-  parameters <- raz_open_parameters_file(file.path(paths[1], "parameters.csv")) # nolint internal function
+  paths <- get_settings_paths(project_folder_name) # nolint internal function
+  parameters <- open_parameters_file(file.path(paths[1], "parameters.csv")) # nolint internal function
   x <- utils::read.delim(file.path(paths[1], "mbd.log"))
 
   esses <- tracerer::calc_esses(
@@ -55,7 +55,7 @@ raz_collect_esses <- function(
   # collect data
   i <- 1
   for (p in paths) {
-    parameters <- raz_open_parameters_file(file.path(p, "parameters.csv")) # nolint internal function
+    parameters <- open_parameters_file(file.path(p, "parameters.csv")) # nolint internal function
     par_num <- parameters[!grepl("model", names(parameters))]
 
     # save bd results

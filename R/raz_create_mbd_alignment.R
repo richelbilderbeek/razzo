@@ -8,7 +8,7 @@
 #' @return nothing
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
-raz_create_mbd_alignment <- function(
+create_mbd_alignment <- function(
   parameters,
   bd_tree,
   mbd_tree
@@ -21,7 +21,7 @@ raz_create_mbd_alignment <- function(
   # Found:
   #  * BD_mutation_rate <-  MBD_mutation_rate * (sum(MBD_tree$edge.length)/sum(BD_tree$edge.length)); # nolint
   #  * mbd_total_branch_length <- sum(mbd_tree$edge.length)
-  mbd_mutation_rate <- raz_calc_mut_rates(
+  mbd_mutation_rate <- calc_mut_rates(
     bd_tree = bd_tree,
     mbd_tree = mbd_tree
   )$mbd_mut_rate

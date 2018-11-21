@@ -5,7 +5,7 @@
 #'   and saves each setting in a file within the corresponding folder.
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
-raz_create_parameters_files <- function(
+create_parameters_files <- function(
   project_folder_name = getwd()
 ) {
   # Just use the parameter combinations in the article
@@ -19,8 +19,8 @@ raz_create_parameters_files <- function(
   sample_interval <- 1000
   chain_length <- 3000 # Testing
   sub_chain_length <- 1000
-  clock_model_interval <- raz_get_clock_models() # nolint internal function
-  site_model_interval <- raz_get_site_models() # nolint internal function
+  clock_model_interval <- get_clock_models() # nolint internal function
+  site_model_interval <- get_site_models() # nolint internal function
 
   lambda_interval <- unique(lambda_interval)
   mu_interval     <- unique(mu_interval)
@@ -68,7 +68,7 @@ raz_create_parameters_files <- function(
                 dir.create(file.path(model_folder),
                            showWarnings = FALSE)
 
-                parameters <- raz_create_params(
+                parameters <- create_params(
                   lambda = lambda,
                   mu = mu,
                   nu = nu,

@@ -1,14 +1,14 @@
-context("test-raz_create_bd_marg_lik_file")
+context("test-create_bd_marg_lik_file")
 
 test_that("must create file", {
 
-  skip("TODO: raz_create_bd_marg_lik_file, Issue 110, #110")
-  parameters_filename <- raz_create_tempfile("parameters.csv")
-  bd_alignment_filename <- raz_create_tempfile("mbd.fasta")
+  skip("TODO: create_bd_marg_lik_file, Issue 110, #110")
+  parameters_filename <- create_tempfile("parameters.csv")
+  bd_alignment_filename <- create_tempfile("mbd.fasta")
   testit::assert(file.exists(parameters_filename))
   testit::assert(file.exists(bd_alignment_filename))
 
-  bd_marg_lik_filename <- raz_create_bd_marg_lik_file( # nolint internal function
+  bd_marg_lik_filename <- create_bd_marg_lik_file( # nolint internal function
     parameters_filename = parameters_filename
   )
   expect_true(file.exists(bd_marg_lik_filename))

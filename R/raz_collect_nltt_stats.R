@@ -4,13 +4,13 @@
 #' @return a dataframe with parameters and nltt statistics
 #' @author Giovanni Laudanno
 #' @export
-raz_collect_nltt_stats <- function(
+collect_nltt_stats <- function(
   project_folder_name
 ) {
 
   # retrieve information from files
-  paths <- raz_get_settings_paths(project_folder_name) # nolint internal function
-  parameters <- raz_open_parameters_file(file.path(paths[1], "parameters.csv")) # nolint internal function
+  paths <- get_settings_paths(project_folder_name) # nolint internal function
+  parameters <- open_parameters_file(file.path(paths[1], "parameters.csv")) # nolint internal function
   len_nltt <- 0
   for (p in paths) {
     bd_nltt <- utils::read.csv(file.path(p, "bd_nltts.csv"))[, 2]
@@ -41,7 +41,7 @@ raz_collect_nltt_stats <- function(
   # collect data
   i <- 1
   for (p in paths) {
-    parameters <- raz_open_parameters_file(file.path(p, "parameters.csv")) # nolint internal function
+    parameters <- open_parameters_file(file.path(p, "parameters.csv")) # nolint internal function
     bd_temp <- utils::read.csv(file.path(p, "bd_nltts.csv"))[, 2]
     mbd_temp <- utils::read.csv(file.path(p, "mbd_nltts.csv"))[, 2]
     mbd_nltt <- bd_nltt <- rep(NA, len_nltt)

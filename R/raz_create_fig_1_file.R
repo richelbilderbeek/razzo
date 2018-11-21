@@ -4,12 +4,12 @@
 #' @return the file name of the plot
 #' @author Giovanni Laudanno
 #' @export
-raz_create_fig_1_file <- function(
+create_fig_1_file <- function(
   project_folder_name
 ) {
 
   # create figure 1
-  fig_1 <- raz_create_fig_1(project_folder_name) # nolint internal function
+  fig_1 <- create_fig_1(project_folder_name) # nolint internal function
 
   # save output
   results_folder <- file.path(
