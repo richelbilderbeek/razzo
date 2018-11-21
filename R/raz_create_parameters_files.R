@@ -4,9 +4,10 @@
 #' @return Create folders for each parameter setting
 #'   and saves each setting in a file within the corresponding folder.
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
+#' @note Uses \code{getwd()} to be script-friendly
 #' @export
 raz_create_parameters_files <- function(
-  project_folder_name
+  project_folder_name = getwd()
 ) {
   check_project_folder_name(project_folder_name) # nolint internal function
 
