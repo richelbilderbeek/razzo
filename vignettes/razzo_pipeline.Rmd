@@ -51,7 +51,6 @@ We will work in this folder:
 super_folder_name <- tempdir()
 project_folder_name <- file.path(super_folder_name, "razzo_project") 
 dir.create(path = project_folder_name, recursive = TRUE)
-
 ```
 
 ## Step 1: Create parameter files
@@ -59,9 +58,16 @@ dir.create(path = project_folder_name, recursive = TRUE)
 Here we create all parameter files:
 
 ```{r create_parameter_files}
-parameters_filenames <- raz_create_parameters_files(
+parameters_filenames <- create_parameters_files(
   project_folder_name = project_folder_name
 )
+```
+
+To speed things up, we'll be keeping only two parameter files:
+
+```{r keep_only_few_parameter_files}
+parameters_filenames <- parameters_filenames[c(1, 2)]
+knitr::kable(parameters_filenames)
 ```
 
 ## Step 2: create MBD trees
@@ -71,10 +77,10 @@ mbd_l_matrix_filenames <- mbd_tree_filenames <- parameters_filenames
 # Create all true trees, true alignments and their twins
 for (i in seq_along(parameters_filenames)) {
   parameters_filename <- parameters_filenames[i]
-  mbd_tree_filenames[i] <- raz_create_mbd_tree_files(
+  mbd_tree_filenames[i] <- create_mbd_tree_files(
     parameters_filename
   )$mbd_tree_filename
-  mbd_l_matrix_filenames[i] <- raz_create_mbd_tree_files(
+  mbd_l_matrix_filenames[i] <- create_mbd_tree_files(
     parameters_filename
   )$mbd_l_matrix_filename
 }
@@ -82,7 +88,7 @@ for (i in seq_along(parameters_filenames)) {
 
 Taking a look at the first MBD tree:
 
-```{r fig.width=7}
+```{r}
 ape::plot.phylo(ape::read.tree(file = mbd_tree_filenames[2]))
 ```
 
@@ -100,10 +106,10 @@ bd_l_matrix_filenames <- bd_tree_filenames <- parameters_filenames
 # Create all BD twin trees, true alignments and their twins
 for (i in seq_along(parameters_filenames)) {
   parameters_filename <- parameters_filenames[i]
-  bd_tree_filenames[i] <- raz_create_bd_tree_files(
+  bd_tree_filenames[i] <- create_bd_tree_files(
     parameters_filename
   )$bd_tree_filename
-  bd_l_matrix_filenames[i] <- raz_create_bd_tree_files(
+  bd_l_matrix_filenames[i] <- create_bd_tree_files(
     parameters_filename
   )$bd_l_matrix_filename
 }
@@ -111,7 +117,7 @@ for (i in seq_along(parameters_filenames)) {
 
 Taking a look at the first MBD tree:
 
-```{r fig.width=7}
+```{r}
 ape::plot.phylo(ape::read.tree(file = bd_tree_filenames[2]))
 ```
 
@@ -122,13 +128,13 @@ mbd_alignment_filenames <- parameters_filenames
 # Create all true trees, true alignments and their twins
 for (i in seq_along(parameters_filenames)) {
   parameters_filename <- parameters_filenames[i]
-  mbd_alignment_filenames[i] <- raz_create_mbd_alignment_file(parameters_filename)
+  mbd_alignment_filenames[i] <- create_mbd_alignment_file(parameters_filename)
 }
 ```
 
 Taking a look at the first MBD alignment:
 
-```{r fig.width=7}
+```{r}
 image(ape::read.FASTA(file = mbd_alignment_filenames[1]))
 ```
 
@@ -139,13 +145,13 @@ bd_alignment_filenames <- parameters_filenames
 # Create all true trees, true alignments and their twins
 for (i in seq_along(parameters_filenames)) {
   parameters_filename <- parameters_filenames[i]
-  bd_alignment_filenames[i] <- raz_create_bd_alignment_file(parameters_filename)
+  bd_alignment_filenames[i] <- create_bd_alignment_file(parameters_filename)
 }
 ```
 
 Taking a look at the first MBD alignment:
 
-```{r fig.width=7}
+```{r}
 image(ape::read.FASTA(file = bd_alignment_filenames[1]))
 ```
 
@@ -161,7 +167,7 @@ This means that there are no simultaneous branching events.
 mbd_alignment_filenames <- list()
 for (i in seq_along(parameters_filenames)) {
   # Do the inference
-  mbd_alignment_filenames[[i]] <- raz_create_mbd_posterior_files(
+  mbd_alignment_filenames[[i]] <- create_mbd_posterior_files(
     parameters_filenames[i]
   )
   # Posterior trees
@@ -173,7 +179,7 @@ for (i in seq_along(parameters_filenames)) {
 
 Plot the densitree:
 
-```{r  fig.width=7,plot_mbd_densitree}
+```{r plot_mbd_densitree}
 babette::plot_densitree(tracerer::parse_beast_trees(mbd_alignment_filenames[[1]][1]))
 ```
 
@@ -183,7 +189,7 @@ Plot the Effective Sample Sizes (must be at least 200 in manuscript):
 knitr::kable(
   tracerer::calc_esses(
     tracerer::parse_beast_log(mbd_alignment_filenames[[1]][2]), 
-    sample_interval = raz_open_parameters_file(
+    sample_interval = open_parameters_file(
       parameters_filename[1]
     )$sample_interval
   )
@@ -202,7 +208,7 @@ of the total branch lenghts of the trees simulated with the two models.
 bd_alignment_filenames <- list()
 for (i in seq_along(parameters_filenames)) {
   # Do the inference
-  bd_alignment_filenames[[i]] <- raz_create_bd_posterior_files(
+  bd_alignment_filenames[[i]] <- create_bd_posterior_files(
     parameters_filenames[i]
   )
   # Posterior trees
@@ -214,7 +220,7 @@ for (i in seq_along(parameters_filenames)) {
 
 Plot the densitree:
 
-```{r fig.width=7,plot_bd_densitree}
+```{r plot_bd_densitree}
 babette::plot_densitree(tracerer::parse_beast_trees(bd_alignment_filenames[[1]][1]))
 ```
 
@@ -224,7 +230,7 @@ Plot the Effective Sample Sizes (must be at least 200 in manuscript):
 knitr::kable(
   tracerer::calc_esses(
     tracerer::parse_beast_log(bd_alignment_filenames[[1]][2]), 
-    sample_interval = raz_open_parameters_file(
+    sample_interval = open_parameters_file(
       parameters_filename[1]
     )$sample_interval
   )
@@ -239,13 +245,13 @@ related to the original trees.
 ```{r calc_mbd_nltts}
 mbd_nltt_filenames <- rep(NA, length(parameters_filenames))
 for (i in seq_along(parameters_filenames)) {
-  mbd_nltt_filenames[i] <- raz_create_mbd_nltts_file(
+  mbd_nltt_filenames[i] <- create_mbd_nltts_file(
     parameters_filename = parameters_filenames[i]
   )
 }
 ```
 
-```{r fig.width=7}
+```{r}
 ggplot(
   data = data.frame(nltt = utils::read.csv(mbd_nltt_filenames[1])$x),
   aes(x = nltt)
@@ -262,13 +268,13 @@ related to the original trees.
 ```{r}
 bd_nltt_filenames <- rep(NA, length(parameters_filenames))
 for (i in seq_along(parameters_filenames)) {
-  bd_nltt_filenames[i] <- raz_create_bd_nltts_file(
+  bd_nltt_filenames[i] <- create_bd_nltts_file(
     parameters_filenames[i]
   )
 }
 ```
 
-```{r fig.width=7}
+```{r}
 ggplot(
   data = data.frame(nltt = utils::read.csv(bd_nltt_filenames[1])$x),
   aes(x = nltt)
@@ -276,27 +282,20 @@ ggplot(
   ggplot2::scale_x_continuous(limits = c(0.0, 1.0))
 ```
 
-## Step 10: figure 1
-
-```{r fig.width=7}
-raz_create_fig_1(project_folder_name = project_folder_name)
-```
-
-
-## Step 11: measure Effective Sample Sizes
+## Step 10: measure Effective Sample Sizes
 
 We already had a sneak-peek at the ESSes.
 In this step, we measure the ESSes of all files and
 combine it into one file:
 
 ```{r}
-esses_filename <- raz_create_esses_file(
-  project_folder_name = project_folder_name
-)
-knitr::kable(utils::read.csv(esses_filename)[-1])
+if (1 == 2) {
+  esses_filename <- create_esses_file(parameters_filenames)
+  knitr::kable(utils::read.csv(esses_filename)[-1])
+}
 ```
 
-## Step 12: compare marginal likelihoods
+## Step 11: compare marginal likelihoods
 
 For each biological parameter setting, 
 we use two site models and two clock models in our inference.
@@ -304,12 +303,11 @@ Although we know the generative model follows a
 Jukes-Cantor site model and a strict clock model, 
 does this also show when using the Bayes factor?
 
-
 ```{r create_mbd_marg_lik_files}
 if (1 == 2) {
   mbd_marg_lik_filenames <- rep(NA, length(parameters_filenames))
   for (i in seq_along(parameters_filenames)) {
-    mbd_marg_lik_filenames[i] <- raz_create_mbd_marg_lik_file(
+    mbd_marg_lik_filenames[i] <- create_mbd_marg_lik_file(
       parameters_filename = parameters_filenames[i]
     )
   }
@@ -321,7 +319,7 @@ if (1 == 2) {
 if (1 == 2) {
   bd_marg_lik_filenames <- rep(NA, length(parameters_filenames))
   for (i in seq_along(parameters_filenames)) {
-    bd_marg_lik_filenames[i] <- raz_create_bd_marg_lik_file(
+    bd_marg_lik_filenames[i] <- create_bd_marg_lik_file(
       parameters_filename = parameters_filenames[i]
     )
   }
@@ -329,12 +327,12 @@ if (1 == 2) {
 }
 ```
 
-## Step 13: what is the effect of MBD on the error?
+## Step 12: what is the effect of MBD on the error?
 
 The nLTT statistics of the BD tree shows the baseline error:
 the Bayesian analysis assumes BD, and that tree *is* BD.
 
-```{r fig.width=7}
+```{r}
 mbd_nltts <- utils::read.csv(mbd_nltt_filenames[1])$x
 bd_nltts <- utils::read.csv(bd_nltt_filenames[1])$x
 
