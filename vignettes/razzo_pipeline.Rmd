@@ -163,7 +163,7 @@ a posterior distribution of trees.
 These trees are obtained using a BD prior. 
 This means that there are no simultaneous branching events.
 
-```{r create_mbd_posterior}
+```{r cache=TRUE,create_mbd_posterior}
 mbd_alignment_filenames <- list()
 for (i in seq_along(parameters_filenames)) {
   # Do the inference
@@ -204,7 +204,7 @@ We want to have, in principle, the same amount of substitutions;
 to do so we modify the mutation rate according to the ratio 
 of the total branch lenghts of the trees simulated with the two models.
 
-```{r create_bd_posterior_files}
+```{r cache=TRUE,create_bd_posterior_files}
 bd_alignment_filenames <- list()
 for (i in seq_along(parameters_filenames)) {
   # Do the inference
@@ -290,7 +290,9 @@ combine it into one file:
 
 ```{r}
 if (1 == 2) {
-  esses_filename <- raz_create_esses_file(parameters_filenames)
+  esses_filename <- raz_create_esses_file(
+    project_folder_name = project_folder_name
+  )
   knitr::kable(utils::read.csv(esses_filename)[-1])
 }
 ```
