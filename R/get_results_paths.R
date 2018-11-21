@@ -17,9 +17,8 @@ get_results_paths <- function(
 
   results_folder <- file.path(
     project_folder_name,
-    "results_folder"
+    "results"
   )
-
   if (!(dir.exists(results_folder))) {
     stop("'results' folder does not exist!")
   }

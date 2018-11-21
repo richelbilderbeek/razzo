@@ -14,7 +14,7 @@ create_marg_liks_file <- function(
   # save output
   results_folder <- file.path(
     project_folder_name,
-    "results_folder"
+    "results"
   )
   if (!dir.exists(results_folder)) {
     dir.create(results_folder)
