@@ -51,6 +51,7 @@ We will work in this folder:
 super_folder_name <- tempdir()
 project_folder_name <- file.path(super_folder_name, "razzo_project") 
 dir.create(path = project_folder_name, recursive = TRUE)
+
 ```
 
 ## Step 1: Create parameter files
@@ -163,7 +164,7 @@ a posterior distribution of trees.
 These trees are obtained using a BD prior. 
 This means that there are no simultaneous branching events.
 
-```{r cache=TRUE,create_mbd_posterior}
+```{r create_mbd_posterior}
 mbd_alignment_filenames <- list()
 for (i in seq_along(parameters_filenames)) {
   # Do the inference
@@ -204,7 +205,7 @@ We want to have, in principle, the same amount of substitutions;
 to do so we modify the mutation rate according to the ratio 
 of the total branch lenghts of the trees simulated with the two models.
 
-```{r cache=TRUE,create_bd_posterior_files}
+```{r create_bd_posterior_files}
 bd_alignment_filenames <- list()
 for (i in seq_along(parameters_filenames)) {
   # Do the inference
@@ -282,7 +283,14 @@ ggplot(
   ggplot2::scale_x_continuous(limits = c(0.0, 1.0))
 ```
 
-## Step 10: measure Effective Sample Sizes
+## Step 10: figure 1
+
+```{r}
+raz_create_fig_1(project_folder_name = project_folder_name)
+```
+
+
+## Step 11: measure Effective Sample Sizes
 
 We already had a sneak-peek at the ESSes.
 In this step, we measure the ESSes of all files and
@@ -297,7 +305,7 @@ if (1 == 2) {
 }
 ```
 
-## Step 11: compare marginal likelihoods
+## Step 12: compare marginal likelihoods
 
 For each biological parameter setting, 
 we use two site models and two clock models in our inference.

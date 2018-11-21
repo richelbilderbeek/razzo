@@ -7,6 +7,7 @@
 raz_create_marg_liks_file <- function(
   project_folder_name
 ) {
+  check_project_folder_name(project_folder_name) # nolint internal function
 
   # create the dataframe
   marg_liks <- raz_collect_marg_liks(project_folder_name) # nolint internal function

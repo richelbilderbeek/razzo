@@ -5,7 +5,7 @@
 \title{Create all parameter files  in
   \code{project_folder_name/data/[settings]/seed}}
 \usage{
-raz_create_parameters_files(project_folder_name = getwd())
+raz_create_parameters_files(project_folder_name)
 }
 \arguments{
 \item{project_folder_name}{project folder name,

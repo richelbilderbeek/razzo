@@ -7,6 +7,7 @@
 raz_create_esses_file <- function(
   project_folder_name
 ) {
+  check_project_folder_name(project_folder_name) # nolint internal function
 
   # create the dataframe
   df_esses <- raz_collect_esses(project_folder_name) # nolint internal function

@@ -6,8 +6,10 @@
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
 raz_create_parameters_files <- function(
-  project_folder_name = getwd()
+  project_folder_name
 ) {
+  check_project_folder_name(project_folder_name) # nolint internal function
+
   # Just use the parameter combinations in the article
   lambda_interval <- c(0.2, 0.2)
   mu_interval <- c(0.15, 0.15)

@@ -7,6 +7,7 @@
 raz_create_fig_1_file <- function(
   project_folder_name
 ) {
+  check_project_folder_name(project_folder_name) # nolint internal function
 
   # create figure 1
   fig_1 <- raz_create_fig_1(project_folder_name) # nolint internal function
