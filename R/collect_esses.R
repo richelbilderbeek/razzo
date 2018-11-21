@@ -18,7 +18,7 @@ collect_esses <- function(
   )
 
   # retrieve information from files
-  paths <- get_settings_paths(project_folder_name) # nolint internal function
+  paths <- get_data_paths(project_folder_name) # nolint internal function
   parameters <- open_parameters_file(file.path(paths[1], "parameters.csv")) # nolint internal function
   x <- utils::read.delim(file.path(paths[1], "mbd.log"))
 

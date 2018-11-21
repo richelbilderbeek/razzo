@@ -1,7 +1,6 @@
 context("test-create_nltt_stats_file")
 
 test_that("use", {
-  skip("TODO. Issue 88, #88")
 
   # Should create 'results/nltt_stats.csv'
   filename <- create_nltt_stats_file(
@@ -33,7 +32,6 @@ test_that("use", {
 })
 
 test_that("abuse", {
-  skip("TODO. Issue 88, #88")
   expect_error(
     create_nltt_stats_file(
       project_folder_name = "nonsense"

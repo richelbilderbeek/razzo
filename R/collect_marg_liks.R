@@ -8,14 +8,11 @@ collect_marg_liks <- function(
   project_folder_name
 ) {
 
-  # mar_log_liks <- read.delim(file.path(results_folder, "mar_log_liks.csv")) #work on this
-
   # retrieve information from files
   data_paths <- get_data_paths(project_folder_name) # nolint internal function
-  # results_path <- get_results_paths(project_folder_name) # nolint internal function
   parameters <- open_parameters_file(file.path(data_paths[1], "parameters.csv")) # nolint internal function
-  bd_mar <- utils::read.csv(file.path(results_path, "bd_marg_lik.csv"))[-1]
-  mbd_mar <- utils::read.csv(file.path(results_path, "mbd_marg_lik.csv"))[-1]
+  bd_mar <- utils::read.csv(file.path(data_paths[1], "bd_marg_lik.csv"))[-1]
+  mbd_mar <- utils::read.csv(file.path(data_paths[1], "mbd_marg_lik.csv"))[-1]
   pars <- parameters[!grepl("model", names(parameters))]
   mars <- c(bd_mar, mbd_mar)
   par_names <- names(parameters)
