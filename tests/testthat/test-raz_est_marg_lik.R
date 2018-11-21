@@ -29,7 +29,7 @@ test_that("abuse", {
   parameters$clock_model <- "nonsense"
 
   expect_error(
-    posterior <- raz_est_marg_lik(
+    raz_est_marg_lik(
       parameters = parameters,
       alignment = alignment
     ),
@@ -44,7 +44,7 @@ test_that("abuse", {
   parameters$site_model <- "nonsense"
 
   expect_error(
-    posterior <- raz_est_marg_lik(
+    raz_est_marg_lik(
       parameters = parameters,
       alignment = alignment
     ),

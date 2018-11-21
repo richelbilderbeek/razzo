@@ -2,7 +2,6 @@ context("test-raz_create_mbd_marg_lik_file")
 
 test_that("must create file", {
 
-  skip("TODO: raz_create_mbd_marg_lik_file, Issue 110, #110")
   parameters_filename <- raz_create_tempfile("parameters.csv")
   mbd_alignment_filename <- raz_create_tempfile("mbd.fasta")
   testit::assert(file.exists(parameters_filename))
