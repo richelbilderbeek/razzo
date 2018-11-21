@@ -2,6 +2,9 @@ context("test-raz_create_mbd_marg_lik_file")
 
 test_that("must create file", {
 
+  # Cannot use Nested Sampling on Windows
+  if (rappdirs::app_dir()$os == "win") return()
+
   parameters_filename <- raz_create_tempfile("parameters.csv")
   mbd_alignment_filename <- raz_create_tempfile("mbd.fasta")
   testit::assert(file.exists(parameters_filename))
