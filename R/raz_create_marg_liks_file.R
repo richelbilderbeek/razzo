@@ -5,8 +5,9 @@
 #' @author Giovanni Laudanno
 #' @export
 raz_create_marg_liks_file <- function(
-  project_folder_name
+  project_folder_name = getwd()
 ) {
+  check_project_folder_name(project_folder_name) # nolint internal function
 
   # create the dataframe
   marg_liks <- raz_collect_marg_liks(project_folder_name) # nolint internal function
@@ -14,7 +15,7 @@ raz_create_marg_liks_file <- function(
   # save output
   results_folder <- file.path(
     project_folder_name,
-    "results_folder"
+    "results"
   )
   if (!dir.exists(results_folder)) {
     dir.create(results_folder)

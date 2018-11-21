@@ -4,7 +4,7 @@
 \alias{raz_collect_marg_liks}
 \title{Collect marginal loglikelihoods}
 \usage{
-raz_collect_marg_liks(project_folder_name)
+raz_collect_marg_liks(project_folder_name = getwd())
 }
 \arguments{
 \item{project_folder_name}{project folder name,

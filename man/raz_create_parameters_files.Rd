@@ -19,6 +19,9 @@ Create folders for each parameter setting
 Create all parameter files  in
   \code{project_folder_name/data/[settings]/seed}
 }
+\note{
+Uses \code{getwd()} to be script-friendly
+}
 \author{
 Giovanni Laudanno, Richel J.C. Bilderbeek
 }

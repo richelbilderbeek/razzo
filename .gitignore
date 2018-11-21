@@ -37,3 +37,4 @@ tests/testthat/*.trees
 vignettes/*.log
 vignettes/*.trees
 example.nex
+vignettes/razzo_pipeline_cache/

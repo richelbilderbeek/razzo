@@ -5,8 +5,9 @@
 #' @author Giovanni Laudanno
 #' @export
 raz_create_esses_file <- function(
-  project_folder_name
+  project_folder_name = getwd()
 ) {
+  check_project_folder_name(project_folder_name) # nolint internal function
 
   # create the dataframe
   df_esses <- raz_collect_esses(project_folder_name) # nolint internal function
@@ -14,7 +15,7 @@ raz_create_esses_file <- function(
   # save output
   results_folder <- file.path(
     project_folder_name,
-    "results_folder"
+    "results"
   )
   if (!dir.exists(results_folder)) {
     dir.create(results_folder)

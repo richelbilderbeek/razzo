@@ -5,12 +5,13 @@
 #' @author Giovanni Laudanno
 #' @export
 raz_create_fig_1 <- function(
-  project_folder_name
+  project_folder_name = getwd()
 ) {
-
-  par_setting <- nltt <- gen_model <- NULL
+  check_project_folder_name(project_folder_name) # nolint internal function
 
   df0 <- raz_collect_nltt_stats(project_folder_name) # nolint internal function
+
+  par_setting <- nltt <- gen_model <- NULL
   df0$par_setting <- interaction(
     df0$lambda,
     df0$mu,

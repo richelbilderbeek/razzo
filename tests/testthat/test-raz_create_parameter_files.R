@@ -2,10 +2,10 @@ context("raz_create_parameters_files")
 
 test_that("use", {
 
-  # Put files in temporary folder
+  # Fixture
   super_folder_name <- tempdir()
   project_folder_name <- file.path(super_folder_name, "razzo_project")
-  dir.create(path = project_folder_name)
+  dir.create(path = project_folder_name, showWarnings = FALSE)
 
   filenames <- raz_create_parameters_files(
     project_folder_name = project_folder_name
@@ -42,9 +42,14 @@ test_that("use", {
 
 test_that("can read", {
 
+  # Fixture
+  super_folder_name <- tempdir()
+  project_folder_name <- file.path(super_folder_name, "razzo_project")
+  dir.create(path = project_folder_name, showWarnings = FALSE)
+
   # Create parameter files from fresh
   filenames <- raz_create_parameters_files(
-    project_folder_name = tempdir()
+    project_folder_name = project_folder_name
   )
 
   # Load the first one
@@ -55,10 +60,15 @@ test_that("can read", {
 
 test_that("must contain both site models", {
 
+  # Fixture
+  super_folder_name <- tempdir()
+  project_folder_name <- file.path(super_folder_name, "razzo_project")
+  dir.create(path = project_folder_name, showWarnings = FALSE)
+
   # Create parameter files from fresh
   filenames <- suppressWarnings(
     raz_create_parameters_files(
-      project_folder_name = tempdir()
+      project_folder_name = project_folder_name
     )
   )
 
@@ -77,10 +87,15 @@ test_that("must contain both site models", {
 
 test_that("must contain both clock models", {
 
+  # Fixture
+  super_folder_name <- tempdir()
+  project_folder_name <- file.path(super_folder_name, "razzo_project")
+  dir.create(path = project_folder_name, showWarnings = FALSE)
+
   # Create parameter files from fresh
   filenames <- suppressWarnings(
     raz_create_parameters_files(
-      project_folder_name = tempdir()
+      project_folder_name = project_folder_name
     )
   )
 

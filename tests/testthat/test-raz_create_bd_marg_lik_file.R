@@ -2,9 +2,14 @@ context("test-raz_create_bd_marg_lik_file")
 
 test_that("must create file", {
 
-  skip("TODO: raz_create_bd_marg_lik_file, Issue 110, #110")
+  # Takes too long locally
+  if (!ribir::is_on_travis()) return()
+
+  # Cannot use Nested Sampling on Windows
+  if (rappdirs::app_dir()$os == "win") return()
+
   parameters_filename <- raz_create_tempfile("parameters.csv")
-  bd_alignment_filename <- raz_create_tempfile("mbd.fasta")
+  bd_alignment_filename <- raz_create_tempfile("bd.fasta")
   testit::assert(file.exists(parameters_filename))
   testit::assert(file.exists(bd_alignment_filename))
 
