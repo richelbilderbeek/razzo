@@ -21,12 +21,11 @@ test_that("use", {
 
 test_that("abuse", {
 
-  skip("TODO: add 'raz_est_marg_lik'. Issue 36, #36")
-  if (!ribir::is_on_travis()) return()
+  # Cannot use Nested Sampling on Windows
+  if (rappdirs::app_dir()$os == "win") return()
 
   parameters <- raz_open_parameters_file(raz_get_path("parameters.csv"))
   alignment <- ape::read.FASTA(raz_get_path("mbd.fasta"))
-  parameters$chain_length <- 2000
   parameters$clock_model <- "nonsense"
 
   expect_error(
@@ -42,7 +41,6 @@ test_that("abuse", {
 
   parameters <- raz_open_parameters_file(raz_get_path("parameters.csv"))
   alignment <- ape::read.FASTA(raz_get_path("mbd.fasta"))
-  parameters$chain_length <- 2000
   parameters$site_model <- "nonsense"
 
   expect_error(
