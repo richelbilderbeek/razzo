@@ -2,8 +2,13 @@ context("test-raz_est_marg_lik")
 
 test_that("use", {
 
-  skip("TODO: add 'raz_est_marg_lik'. Issue 36, #36")
+  # Too long to run locally
   if (!ribir::is_on_travis()) return()
+
+  # Cannot use Nested Sampling on Windows
+  if (rappdirs::app_dir()$os == "win") return()
+
+  skip("TODO: add 'raz_est_marg_lik'. Issue 36, #36")
 
   parameters <- raz_open_parameters_file(raz_get_path("parameters.csv"))
   alignment <- ape::read.FASTA(raz_get_path("mbd.fasta"))
@@ -14,8 +19,7 @@ test_that("use", {
     alignment = alignment
   )
   expect_true("log_lik" %in% names(marg_lik))
-  expect_true("log_error" %in% names(posterior))
-  expect_true("ess" %in% names(posterior))
+  expect_true("log_error" %in% names(marg_lik))
 })
 
 test_that("abuse", {
