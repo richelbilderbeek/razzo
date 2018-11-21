@@ -9,7 +9,6 @@ raz_create_fig_1 <- function(
 ) {
   check_project_folder_name(project_folder_name) # nolint internal function
 
-  # Also checks the inputs
   df0 <- raz_collect_nltt_stats(project_folder_name) # nolint internal function
 
   par_setting <- nltt <- gen_model <- NULL

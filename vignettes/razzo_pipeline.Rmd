@@ -286,9 +286,7 @@ ggplot(
 ## Step 10: figure 1
 
 ```{r}
-if (1 == 2) {
-  raz_create_fig_1(project_folder_name = project_folder_name)
-}
+raz_create_fig_1(project_folder_name = project_folder_name)
 ```
 
 
