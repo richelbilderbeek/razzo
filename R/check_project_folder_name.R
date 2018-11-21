@@ -11,7 +11,7 @@ check_project_folder_name <- function(project_folder_name) {
   }
   if (!dir.exists(project_folder_name)) {
     stop(
-      "'project_folder_name' is absent. ",
+      "'project_folder_name' absent. ",
       "Folder with path '", project_folder_name, "' not found"
     )
   }
