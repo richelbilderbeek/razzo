@@ -17,8 +17,8 @@ raz_collect_nltt_stats <- function(
   for (p in paths) {
     bd_nltt_filename <- file.path(p, "bd_nltts.csv")
     mbd_nltt_filename <- file.path(p, "mbd_nltts.csv")
-    testit::assert(file.exists(bd_nltt_filename))
-    testit::assert(file.exists(mbd_nltt_filename))
+    raz_check_file_exists(bd_nltt_filename) # nolint internal function
+    raz_check_file_exists(mbd_nltt_filename) # nolint internal function
     bd_nltt <- utils::read.csv(bd_nltt_filename)[, 2]
     mbd_nltt <- utils::read.csv(mbd_nltt_filename)[, 2]
     len_nltt <- pmax(len_nltt, length(bd_nltt), length(mbd_nltt))
@@ -50,8 +50,8 @@ raz_collect_nltt_stats <- function(
     parameters <- raz_open_parameters_file(file.path(p, "parameters.csv")) # nolint internal function
     bd_nltt_filename <- file.path(p, "bd_nltts.csv")
     mbd_nltt_filename <- file.path(p, "mbd_nltts.csv")
-    testit::assert(file.exists(bd_nltt_filename))
-    testit::assert(file.exists(mbd_nltt_filename))
+    raz_check_file_exists(bd_nltt_filename) # nolint internal function
+    raz_check_file_exists(mbd_nltt_filename) # nolint internal function
     bd_temp <- utils::read.csv(bd_nltt_filename)[, 2]
     mbd_temp <- utils::read.csv(mbd_nltt_filename)[, 2]
     mbd_nltt <- bd_nltt <- rep(NA, len_nltt)
