@@ -2,6 +2,9 @@ context("test-raz_create_bd_marg_lik_file")
 
 test_that("must create file", {
 
+  # Takes too long locally
+  if (!ribir::is_on_travis()) return()
+
   # Cannot use Nested Sampling on Windows
   if (rappdirs::app_dir()$os == "win") return()
 

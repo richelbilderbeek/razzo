@@ -14,7 +14,7 @@ raz_create_bd_marg_lik_file <- function(
 
   # Check input
   parameters <- raz_open_parameters_file(parameters_filename) # nolint internal function
-  bd_alignment_filename <- file.path(dirname(parameters_filename), "mbd.fasta")
+  bd_alignment_filename <- file.path(dirname(parameters_filename), "bd.fasta")
   testit::assert(file.exists(bd_alignment_filename))
 
   # Create
