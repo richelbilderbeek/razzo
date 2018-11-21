@@ -10,17 +10,13 @@ test_that("use", {
 
   parameters <- raz_open_parameters_file(raz_get_path("parameters.csv"))
   alignment <- ape::read.FASTA(raz_get_path("mbd.fasta"))
-  parameters$chain_length <- 10000
 
   marg_lik <- raz_est_marg_lik(
     parameters = parameters,
     alignment = alignment
   )
-  expect_true("log_lik" %in% names(marg_lik))
-  expect_true("log_error" %in% names(marg_lik))
-
-  skip("TODO: add 'raz_est_marg_lik'. Issue 36, #36")
-
+  expect_true("marg_log_lik" %in% names(marg_lik))
+  expect_true("marg_log_lik_sd" %in% names(marg_lik))
 })
 
 test_that("abuse", {

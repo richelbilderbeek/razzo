@@ -16,8 +16,8 @@ raz_est_marg_lik(parameters, alignment)
 \value{
 a list with the following elements:
 \itemize{
-  \item log_lik the log of the estimated marginal likelihood
-  \item log_error the ?log of the error in that estimation
+  \item marg_log_lik the log of the estimated marginal likelihood
+  \item marg_log_lik_sd the ?log of the error in that estimation
 }
 }
 \description{
