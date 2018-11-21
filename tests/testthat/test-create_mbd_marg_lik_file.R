@@ -8,7 +8,7 @@ test_that("must create file", {
   testit::assert(file.exists(parameters_filename))
   testit::assert(file.exists(mbd_alignment_filename))
 
-  mbd_marg_lik_filename <- create_mbd_marg_lik_file( # nolint internal function
+  mbd_marg_lik_filename <- create_mbd_marg_lik_file(# nolint internal function
     parameters_filename = parameters_filename
   )
   expect_true(file.exists(mbd_marg_lik_filename))

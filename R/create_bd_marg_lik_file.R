@@ -4,7 +4,7 @@
 #' @return name of the created file
 #' @author Richel J.C. Bilderbeek
 #' @export
-raz_create_bd_marg_lik_file <- function(
+create_bd_marg_lik_file <- function(
   parameters_filename
 ) {
   # Check environment
@@ -13,12 +13,12 @@ raz_create_bd_marg_lik_file <- function(
   testit::assert(rappdirs::app_dir()$os != "win")
 
   # Check input
-  parameters <- raz_open_parameters_file(parameters_filename) # nolint internal function
+  parameters <- open_parameters_file(parameters_filename) # nolint internal function
   bd_alignment_filename <- file.path(dirname(parameters_filename), "bd.fasta")
   testit::assert(file.exists(bd_alignment_filename))
 
   # Create
-  marg_lik <- raz_est_marg_lik( # nolint internal function
+  marg_lik <- est_marg_lik( # nolint internal function
     parameters = parameters,
     alignment = ape::read.FASTA(bd_alignment_filename)
   )

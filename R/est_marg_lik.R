@@ -9,7 +9,7 @@
 #' }
 #' @author Richel J.C. Bilderbeek
 #' @export
-raz_est_marg_lik <- function(
+est_marg_lik <- function(
   parameters,
   alignment
 ) {
@@ -40,10 +40,10 @@ raz_est_marg_lik <- function(
   testit::assert(!is.null(clock_model))
   testit::assert(!is.null(site_model))
 
-  if (!(clock_model %in% raz_get_clock_models())) { # nolint internal function
+  if (!(clock_model %in% get_clock_models())) { # nolint internal function
     stop(
       "'clock_model' must be among the following: ",
-      paste(raz_get_clock_models(), collapse = ", ") # nolint internal function
+      paste(get_clock_models(), collapse = ", ") # nolint internal function
     )
   }
   if (clock_model == "strict") {
@@ -53,9 +53,9 @@ raz_est_marg_lik <- function(
     clock_model_function <- beautier::create_clock_model_rln
   }
 
-  if (!(site_model %in% raz_get_site_models())) { # nolint internal function
+  if (!(site_model %in% get_site_models())) { # nolint internal function
     stop("'site_model' must be among the following: ",
-         paste(raz_get_site_models(), collapse = ", ") # nolint internal function
+         paste(get_site_models(), collapse = ", ") # nolint internal function
     )
   }
   # Up the site model from a character vector to a data structure

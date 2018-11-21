@@ -11,6 +11,9 @@ get_settings_paths <- function(
   if (basename(project_folder_name) != "razzo_project") {
     stop("'project_folder_name' must end with 'razzo_project'")
   }
+  if (!dir.exists(project_folder_name)) {
+    stop("'project_folder_name' absent")
+  }
 
   data_folder <- file.path(
     project_folder_name,
