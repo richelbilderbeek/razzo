@@ -64,13 +64,6 @@ parameters_filenames <- raz_create_parameters_files(
 )
 ```
 
-To speed things up, we'll be keeping only two parameter files:
-
-```{r keep_only_few_parameter_files}
-parameters_filenames <- parameters_filenames[c(1, 2)]
-knitr::kable(parameters_filenames)
-```
-
 ## Step 2: create MBD trees
 
 ```{r}
@@ -89,7 +82,7 @@ for (i in seq_along(parameters_filenames)) {
 
 Taking a look at the first MBD tree:
 
-```{r}
+```{r fig.width=7}
 ape::plot.phylo(ape::read.tree(file = mbd_tree_filenames[2]))
 ```
 
@@ -118,7 +111,7 @@ for (i in seq_along(parameters_filenames)) {
 
 Taking a look at the first MBD tree:
 
-```{r}
+```{r fig.width=7}
 ape::plot.phylo(ape::read.tree(file = bd_tree_filenames[2]))
 ```
 
@@ -135,7 +128,7 @@ for (i in seq_along(parameters_filenames)) {
 
 Taking a look at the first MBD alignment:
 
-```{r}
+```{r fig.width=7}
 image(ape::read.FASTA(file = mbd_alignment_filenames[1]))
 ```
 
@@ -152,7 +145,7 @@ for (i in seq_along(parameters_filenames)) {
 
 Taking a look at the first MBD alignment:
 
-```{r}
+```{r fig.width=7}
 image(ape::read.FASTA(file = bd_alignment_filenames[1]))
 ```
 
@@ -180,7 +173,7 @@ for (i in seq_along(parameters_filenames)) {
 
 Plot the densitree:
 
-```{r plot_mbd_densitree}
+```{r  fig.width=7,plot_mbd_densitree}
 babette::plot_densitree(tracerer::parse_beast_trees(mbd_alignment_filenames[[1]][1]))
 ```
 
@@ -221,7 +214,7 @@ for (i in seq_along(parameters_filenames)) {
 
 Plot the densitree:
 
-```{r plot_bd_densitree}
+```{r fig.width=7,plot_bd_densitree}
 babette::plot_densitree(tracerer::parse_beast_trees(bd_alignment_filenames[[1]][1]))
 ```
 
@@ -252,7 +245,7 @@ for (i in seq_along(parameters_filenames)) {
 }
 ```
 
-```{r}
+```{r fig.width=7}
 ggplot(
   data = data.frame(nltt = utils::read.csv(mbd_nltt_filenames[1])$x),
   aes(x = nltt)
@@ -275,7 +268,7 @@ for (i in seq_along(parameters_filenames)) {
 }
 ```
 
-```{r}
+```{r fig.width=7}
 ggplot(
   data = data.frame(nltt = utils::read.csv(bd_nltt_filenames[1])$x),
   aes(x = nltt)
@@ -285,7 +278,7 @@ ggplot(
 
 ## Step 10: figure 1
 
-```{r}
+```{r fig.width=7}
 raz_create_fig_1(project_folder_name = project_folder_name)
 ```
 
@@ -297,12 +290,10 @@ In this step, we measure the ESSes of all files and
 combine it into one file:
 
 ```{r}
-if (1 == 2) {
-  esses_filename <- raz_create_esses_file(
-    project_folder_name = project_folder_name
-  )
-  knitr::kable(utils::read.csv(esses_filename)[-1])
-}
+esses_filename <- raz_create_esses_file(
+  project_folder_name = project_folder_name
+)
+knitr::kable(utils::read.csv(esses_filename)[-1])
 ```
 
 ## Step 12: compare marginal likelihoods
@@ -338,12 +329,12 @@ if (1 == 2) {
 }
 ```
 
-## Step 12: what is the effect of MBD on the error?
+## Step 13: what is the effect of MBD on the error?
 
 The nLTT statistics of the BD tree shows the baseline error:
 the Bayesian analysis assumes BD, and that tree *is* BD.
 
-```{r}
+```{r fig.width=7}
 mbd_nltts <- utils::read.csv(mbd_nltt_filenames[1])$x
 bd_nltts <- utils::read.csv(bd_nltt_filenames[1])$x
 
