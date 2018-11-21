@@ -107,13 +107,3 @@ Done|Collect marginal likelihoods|`raz_create_marg_liks_file`
 Done|Collect effective sample sizes|`raz_create_esses_file`
 Done|Create nLTT statistics file|`raz_create_nltt_stats_file`
 Done|Create figure 1|`raz_create_fig_1_file`
-
-## FAQ
-
-### Why do some error messages do and some don't end with an exclamation mark?
-
- * Richel: It reflects the authors' personalities
- * Giovanni: It reflects the authors' personalities!
-
-
-

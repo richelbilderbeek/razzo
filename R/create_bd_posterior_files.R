@@ -1,0 +1,41 @@
+#' Create the inference files from a FASTA file.
+#' For example, for a FASTA file named '/my_folder/mbd.fasta', this
+#' function will create:
+#' \itemize{
+#'   \item '/my_folder/bd.trees' BEAST2 posterior trees
+#'   \item '/my_folder/bd.log' BEAST2 parameter estimates
+#'   \item '/my_folder/bd_marg_lik.csv' BEAST2 marginal likelihood estimate
+#' }
+#' Assumes, for a FASTA file named '/my_folder/bd.fasta', this
+#'   that there is a parameters file named '/my_folder/parameters.csv'
+#' @inheritParams default_params_doc
+#' @return names of the files created
+#' @author Richel J.C. Bilderbeek
+#' @export
+create_bd_posterior_files <- function(
+  parameters_filename
+) {
+  check_file_exists(parameters_filename) # nolint internal function
+  bd_alignment_filename <- file.path(dirname(parameters_filename), "bd.fasta")
+  check_file_exists(bd_alignment_filename) # nolint internal function
+
+  bd_posterior <- create_posterior(
+    parameters = open_parameters_file(parameters_filename),
+    alignment = ape::read.FASTA(bd_alignment_filename)
+  )
+
+  bd_trees_filename <- file.path(dirname(parameters_filename), "bd.trees")
+  bd_log_filename <- file.path(dirname(parameters_filename), "bd.log")
+
+  tracerer::save_beast_trees(
+    trees = bd_posterior$trees,
+    filename = bd_trees_filename
+  )
+  tracerer::save_beast_estimates(
+    estimates = bd_posterior$estimates,
+    filename = bd_log_filename
+  )
+
+  # Return the filenames
+  c(bd_trees_filename, bd_log_filename)
+}
