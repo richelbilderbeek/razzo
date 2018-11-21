@@ -303,7 +303,6 @@ Although we know the generative model follows a
 Jukes-Cantor site model and a strict clock model, 
 does this also show when using the Bayes factor?
 
-
 ```{r create_mbd_marg_lik_files}
 if (1 == 2) {
   mbd_marg_lik_filenames <- rep(NA, length(parameters_filenames))

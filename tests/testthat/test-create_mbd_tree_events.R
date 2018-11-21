@@ -25,7 +25,7 @@ test_that("creates a tree", {
 test_that("tree must have a predefined number of nu events", {
 
   if (!ribir::is_on_travis()) {
-    skip("This is slow")
+    skip("It runs only on travis")
   } else {
     parameters <- razzo::open_parameters_file(
       get_path("parameters.csv")

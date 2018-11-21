@@ -2,7 +2,6 @@ context("collect_marg_liks")
 
 test_that("use", {
 
-  skip("TODO: Issue #77, #77")
   df <- collect_marg_liks(
     project_folder_name = get_path("razzo_project")
   )

@@ -4,7 +4,7 @@
 #' @return the paths of all the parameter settings
 #' @author Giovanni Laudanno
 #' @export
-get_settings_paths <- function(
+get_data_paths <- function(
   project_folder_name
 ) {
 

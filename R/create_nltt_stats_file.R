@@ -1,15 +1,15 @@
-#' @title Creates file containing marginal loglikelihoods
-#' @description Creates file containing marginal loglikelihoods
+#' @title Creates file containing nltt stats
+#' @description Creates file containing nltt stats
 #' @inheritParams default_params_doc
 #' @return the name of the saved file
 #' @author Giovanni Laudanno
 #' @export
-create_marg_liks_file <- function(
+create_nltt_stats_file <- function(
   project_folder_name
 ) {
 
   # create the dataframe
-  marg_liks <- collect_marg_liks(project_folder_name) # nolint internal function
+  nltt_stats <- collect_nltt_stats(project_folder_name) # nolint internal function
 
   # save output
   results_folder <- file.path(
@@ -19,12 +19,12 @@ create_marg_liks_file <- function(
   if (!dir.exists(results_folder)) {
     dir.create(results_folder)
   }
-  marg_liks_filename <- file.path(
+  nltt_stats_filename <- file.path(
     results_folder,
-    "marg_liks.csv"
+    "nltt_stats.csv"
   )
-  utils::write.csv(x = marg_liks, file = marg_liks_filename)
+  utils::write.csv(x = nltt_stats, file = nltt_stats_filename)
 
   # return file name
-  marg_liks_filename
+  nltt_stats_filename
 }

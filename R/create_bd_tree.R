@@ -33,7 +33,7 @@ create_bd_tree <- function(
     # TODO: Issue #52: check the quality of inference of lambda and mu provided by bd_ML # nolint
     bd_pars <- DDD::bd_ML(
       brts = sort(mbd_brts, decreasing = TRUE),
-      cond = 1, #conditioning on stem or crown age and on the total number of extant taxa (including missing species) # nolint
+      cond = 1, #conditioning on stem or crown age # nolint
       initparsopt = c(lambda, mu),
       idparsopt = 1:2,
       missnumspec = 0,
