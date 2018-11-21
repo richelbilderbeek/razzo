@@ -5,7 +5,7 @@
 #' @author Giovanni Laudanno
 #' @export
 raz_collect_nltt_stats <- function(
-  project_folder_name
+  project_folder_name = getwd()
 ) {
   check_project_folder_name(project_folder_name) # nolint internal function
 

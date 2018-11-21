@@ -4,7 +4,7 @@
 \alias{raz_create_fig_1}
 \title{Create nllt figure}
 \usage{
-raz_create_fig_1(project_folder_name)
+raz_create_fig_1(project_folder_name = getwd())
 }
 \arguments{
 \item{project_folder_name}{project folder name,

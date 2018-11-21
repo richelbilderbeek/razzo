@@ -23,10 +23,6 @@ parameters_filenames <- raz_create_parameters_files(
   project_folder_name = project_folder_name
 )
 
-## ----keep_only_few_parameter_files---------------------------------------
-parameters_filenames <- parameters_filenames[c(1, 2)]
-knitr::kable(parameters_filenames)
-
 ## ------------------------------------------------------------------------
 mbd_l_matrix_filenames <- mbd_tree_filenames <- parameters_filenames
 # Create all true trees, true alignments and their twins
@@ -40,7 +36,7 @@ for (i in seq_along(parameters_filenames)) {
   )$mbd_l_matrix_filename
 }
 
-## ------------------------------------------------------------------------
+## ----fig.width=7---------------------------------------------------------
 ape::plot.phylo(ape::read.tree(file = mbd_tree_filenames[2]))
 
 ## ------------------------------------------------------------------------
@@ -56,7 +52,7 @@ for (i in seq_along(parameters_filenames)) {
   )$bd_l_matrix_filename
 }
 
-## ------------------------------------------------------------------------
+## ----fig.width=7---------------------------------------------------------
 ape::plot.phylo(ape::read.tree(file = bd_tree_filenames[2]))
 
 ## ------------------------------------------------------------------------
@@ -67,7 +63,7 @@ for (i in seq_along(parameters_filenames)) {
   mbd_alignment_filenames[i] <- raz_create_mbd_alignment_file(parameters_filename)
 }
 
-## ------------------------------------------------------------------------
+## ----fig.width=7---------------------------------------------------------
 image(ape::read.FASTA(file = mbd_alignment_filenames[1]))
 
 ## ------------------------------------------------------------------------
@@ -78,7 +74,7 @@ for (i in seq_along(parameters_filenames)) {
   bd_alignment_filenames[i] <- raz_create_bd_alignment_file(parameters_filename)
 }
 
-## ------------------------------------------------------------------------
+## ----fig.width=7---------------------------------------------------------
 image(ape::read.FASTA(file = bd_alignment_filenames[1]))
 
 ## ----create_mbd_posterior------------------------------------------------
@@ -94,7 +90,7 @@ for (i in seq_along(parameters_filenames)) {
   testit::assert(any(stringr::str_detect(mbd_alignment_filenames[[i]], ".*/mbd\\.log")))
 }
 
-## ----plot_mbd_densitree--------------------------------------------------
+## ----fig.width=7,plot_mbd_densitree--------------------------------------
 babette::plot_densitree(tracerer::parse_beast_trees(mbd_alignment_filenames[[1]][1]))
 
 ## ----show_mbd_esses------------------------------------------------------
@@ -120,7 +116,7 @@ for (i in seq_along(parameters_filenames)) {
   testit::assert(any(stringr::str_detect(bd_alignment_filenames[[i]], ".*/bd\\.log")))
 }
 
-## ----plot_bd_densitree---------------------------------------------------
+## ----fig.width=7,plot_bd_densitree---------------------------------------
 babette::plot_densitree(tracerer::parse_beast_trees(bd_alignment_filenames[[1]][1]))
 
 ## ----show_bd_esses-------------------------------------------------------
@@ -141,7 +137,7 @@ for (i in seq_along(parameters_filenames)) {
   )
 }
 
-## ------------------------------------------------------------------------
+## ----fig.width=7---------------------------------------------------------
 ggplot(
   data = data.frame(nltt = utils::read.csv(mbd_nltt_filenames[1])$x),
   aes(x = nltt)
@@ -156,10 +152,59 @@ for (i in seq_along(parameters_filenames)) {
   )
 }
 
-## ------------------------------------------------------------------------
+## ----fig.width=7---------------------------------------------------------
 ggplot(
   data = data.frame(nltt = utils::read.csv(bd_nltt_filenames[1])$x),
   aes(x = nltt)
 ) + geom_histogram(binwidth = 0.01) + 
   ggplot2::scale_x_continuous(limits = c(0.0, 1.0))
+
+## ----fig.width=7---------------------------------------------------------
+raz_create_fig_1(project_folder_name = project_folder_name)
+
+## ------------------------------------------------------------------------
+esses_filename <- raz_create_esses_file(
+  project_folder_name = project_folder_name
+)
+knitr::kable(utils::read.csv(esses_filename)[-1])
+
+## ----create_mbd_marg_lik_files-------------------------------------------
+if (1 == 2) {
+  mbd_marg_lik_filenames <- rep(NA, length(parameters_filenames))
+  for (i in seq_along(parameters_filenames)) {
+    mbd_marg_lik_filenames[i] <- raz_create_mbd_marg_lik_file(
+      parameters_filename = parameters_filenames[i]
+    )
+  }
+  knitr::kable(utils::read.csv(mbd_marg_lik_filenames[1])[-1])
+}
+
+## ----create_bd_marg_lik_files--------------------------------------------
+if (1 == 2) {
+  bd_marg_lik_filenames <- rep(NA, length(parameters_filenames))
+  for (i in seq_along(parameters_filenames)) {
+    bd_marg_lik_filenames[i] <- raz_create_bd_marg_lik_file(
+      parameters_filename = parameters_filenames[i]
+    )
+  }
+  knitr::kable(utils::read.csv(bd_marg_lik_filenames[1])[-1])
+}
+
+## ----fig.width=7---------------------------------------------------------
+mbd_nltts <- utils::read.csv(mbd_nltt_filenames[1])$x
+bd_nltts <- utils::read.csv(bd_nltt_filenames[1])$x
+
+df <- data.frame(
+  model = c(rep("MBD", length(mbd_nltts)), rep("BD", length(bd_nltts))),
+  nltt = c(mbd_nltts, bd_nltts),
+  stringsAsFactors = TRUE  
+)
+
+plot <- ggplot(
+  data = df,
+  aes(x = nltt, fill = model)
+) + ggplot2::scale_x_continuous(limits = c(0.0, 1.0))
+
+plot + geom_histogram(binwidth = 0.01, alpha = 0.5)
+plot + geom_density(alpha = 0.5)
 
