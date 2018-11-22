@@ -4,7 +4,7 @@
 #' @return the paths of the results
 #' @author Giovanni Laudanno
 #' @export
-get_results_paths <- function(
+get_results_path <- function(
   project_folder_name
 ) {
 
@@ -14,9 +14,6 @@ get_results_paths <- function(
     project_folder_name,
     "results"
   )
-  if (!(dir.exists(results_folder))) {
-    stop("'results' folder does not exist!")
-  }
 
   results_folder
 }

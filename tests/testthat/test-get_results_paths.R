@@ -1,7 +1,7 @@
-context("get_results_paths")
+context("get_results_path")
 
 test_that("use", {
-  results_path <- get_results_paths(get_path("razzo_project"))
+  results_path <- get_results_path(get_path("razzo_project"))
   expect_true(
     length(results_path) > 0
   )
