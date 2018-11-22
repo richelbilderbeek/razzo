@@ -4,7 +4,7 @@
 \alias{collect_esses}
 \title{Collect esses}
 \usage{
-collect_esses(project_folder_name)
+collect_esses(project_folder_name = getwd())
 }
 \arguments{
 \item{project_folder_name}{project folder name,

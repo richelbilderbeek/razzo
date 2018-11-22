@@ -70,10 +70,10 @@ est_marg_lik <- function(
   ns <- babette::bbt_run(
     fasta_filenames = fasta_filename,
     mcmc = beautier::create_mcmc_nested_sampling(
-      chain_length = 10000,
-      store_every = -1,
+      chain_length = chain_length,
+      store_every = -sample_interval,
       particle_count = 1,
-      sub_chain_length = 5000,
+      sub_chain_length = sub_chain_length,
       epsilon = 1e+07
     ),
     site_models = site_model,

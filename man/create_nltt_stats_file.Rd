@@ -4,7 +4,7 @@
 \alias{create_nltt_stats_file}
 \title{Creates file containing nltt stats}
 \usage{
-create_nltt_stats_file(project_folder_name)
+create_nltt_stats_file(project_folder_name = getwd())
 }
 \arguments{
 \item{project_folder_name}{project folder name,

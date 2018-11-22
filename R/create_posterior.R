@@ -25,7 +25,6 @@ create_posterior <- function(
   crown_age <- parameters$crown_age
   rng_seed <- parameters$seed
   chain_length <- parameters$chain_length
-  sub_chain_length <- parameters$sub_chain_length
   clock_model <- parameters$clock_model
   site_model <- parameters$site_model
 
@@ -33,7 +32,6 @@ create_posterior <- function(
   testit::assert(!is.null(crown_age))
   testit::assert(!is.null(rng_seed))
   testit::assert(!is.null(chain_length))
-  testit::assert(!is.null(sub_chain_length))
   testit::assert(!is.null(clock_model))
   testit::assert(!is.null(site_model))
 

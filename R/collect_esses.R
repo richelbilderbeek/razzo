@@ -5,7 +5,7 @@
 #' @author Giovanni Laudanno
 #' @export
 collect_esses <- function(
-  project_folder_name
+  project_folder_name = getwd()
 ) {
 
   check_project_folder_name(project_folder_name)
