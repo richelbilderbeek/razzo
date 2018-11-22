@@ -8,9 +8,7 @@ collect_esses <- function(
   project_folder_name
 ) {
 
-  if (basename(project_folder_name) != "razzo_project") {
-    stop("'project_folder_name' must end with 'razzo_project'")
-  }
+  check_project_folder_name(project_folder_name)
 
   data_folder <- file.path(
     project_folder_name,

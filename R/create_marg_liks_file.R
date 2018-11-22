@@ -12,10 +12,7 @@ create_marg_liks_file <- function(
   marg_liks <- collect_marg_liks(project_folder_name) # nolint internal function
 
   # save output
-  results_folder <- file.path(
-    project_folder_name,
-    "results"
-  )
+  results_folder <- get_results_path(project_folder_name)
   if (!dir.exists(results_folder)) {
     dir.create(results_folder)
   }
