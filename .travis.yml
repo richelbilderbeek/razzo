@@ -31,6 +31,10 @@ before_script:
   - sudo pip install proselint
   - Rscript -e 'devtools::install_github("Giappo/mbd")'
 
+script:
+  - travis_wait 50 R CMD build .
+  - travis_wait 50 R CMD check *tar.gz
+
 after_success:
   - Rscript -e 'lintr::lint_package()'
   - Rscript -e 'covr::codecov()'
