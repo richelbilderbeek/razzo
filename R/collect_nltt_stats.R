@@ -5,7 +5,7 @@
 #' @author Giovanni Laudanno
 #' @export
 collect_nltt_stats <- function(
-  project_folder_name
+  project_folder_name = getwd()
 ) {
 
   # retrieve information from files

@@ -13,6 +13,18 @@ est_marg_lik <- function(
   parameters,
   alignment
 ) {
+  if (!(parameters$clock_model %in% get_clock_models())) { # nolint internal function
+    stop(
+      "'clock_model' must be among the following: ",
+      paste(get_clock_models(), collapse = ", ") # nolint internal function
+    )
+  }
+  if (!(parameters$site_model %in% get_site_models())) { # nolint internal function
+    stop("'site_model' must be among the following: ",
+         paste(get_site_models(), collapse = ", ") # nolint internal function
+    )
+  }
+
   testit::assert(beastier::is_beast2_installed())
   testit::assert(mauricer::mrc_is_installed("NS"))
   testit::assert(rappdirs::app_dir()$os != "win")
@@ -40,12 +52,6 @@ est_marg_lik <- function(
   testit::assert(!is.null(clock_model))
   testit::assert(!is.null(site_model))
 
-  if (!(clock_model %in% get_clock_models())) { # nolint internal function
-    stop(
-      "'clock_model' must be among the following: ",
-      paste(get_clock_models(), collapse = ", ") # nolint internal function
-    )
-  }
   if (clock_model == "strict") {
     clock_model_function <- beautier::create_clock_model_strict
   }
@@ -53,11 +59,6 @@ est_marg_lik <- function(
     clock_model_function <- beautier::create_clock_model_rln
   }
 
-  if (!(site_model %in% get_site_models())) { # nolint internal function
-    stop("'site_model' must be among the following: ",
-         paste(get_site_models(), collapse = ", ") # nolint internal function
-    )
-  }
   # Up the site model from a character vector to a data structure
   if (site_model == "jc69") {
     site_model <- beautier::create_jc69_site_model()
@@ -69,10 +70,10 @@ est_marg_lik <- function(
   ns <- babette::bbt_run(
     fasta_filenames = fasta_filename,
     mcmc = beautier::create_mcmc_nested_sampling(
-      chain_length = 1e+07,
-      store_every = -1,
+      chain_length = chain_length,
+      store_every = sample_interval,
       particle_count = 1,
-      sub_chain_length = 5000,
+      sub_chain_length = sub_chain_length,
       epsilon = 1e+07
     ),
     site_models = site_model,

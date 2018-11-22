@@ -25,13 +25,16 @@ before_script:
   - sudo apt-get install -qq oracle-java8-installer # Java 8
   - sudo apt-get install oracle-java8-set-default
   - Rscript -e "beastier::install_beast2()"
+  - Rscript -e 'mauricer::mrc_install("NS")'
   - if [ -f ".lintr" ]; then echo "Do use Hadley Wickham's style guide"; exit 1; fi
   # proselint
   - sudo pip install proselint
   - Rscript -e 'devtools::install_github("Giappo/mbd")'
 
+script:
+  - travis_wait 50 R CMD build .
+  - travis_wait 50 R CMD check *tar.gz
+
 after_success:
-  - Rscript -e 'lintr::lint_package()'
   - Rscript -e 'covr::codecov()'
-  - travis_wait 20 Rscript -e 'goodpractice::gp()'
   - proselint *.md | egrep -v "typography\.symbols\.curly_quotes"

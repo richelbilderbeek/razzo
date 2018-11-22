@@ -4,7 +4,7 @@
 \alias{create_fig_1_file}
 \title{Save nllt figure}
 \usage{
-create_fig_1_file(project_folder_name)
+create_fig_1_file(project_folder_name = getwd())
 }
 \arguments{
 \item{project_folder_name}{project folder name,
