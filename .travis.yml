@@ -36,7 +36,6 @@ script:
   - travis_wait 50 R CMD check *tar.gz
 
 after_success:
-  - Rscript -e 'lintr::lint_package()'
   - Rscript -e 'covr::codecov()'
   - travis_wait 20 Rscript -e 'goodpractice::gp()'
   - proselint *.md | egrep -v "typography\.symbols\.curly_quotes"
