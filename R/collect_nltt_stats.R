@@ -9,7 +9,7 @@ collect_nltt_stats <- function(
 ) {
 
   # retrieve information from files
-  paths <- get_settings_paths(project_folder_name) # nolint internal function
+  paths <- get_data_paths(project_folder_name) # nolint internal function
   parameters <- open_parameters_file(file.path(paths[1], "parameters.csv")) # nolint internal function
   len_nltt <- 0
   for (p in paths) {

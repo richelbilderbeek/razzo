@@ -2,8 +2,6 @@ context("test-create_marg_liks_file")
 
 test_that("use", {
 
-  skip("TODO. Issue 86, #86")
-
   # Should create 'results/'marg_liks.csv'
   filename <- create_marg_liks_file(
     project_folder_name = get_path("razzo_project")

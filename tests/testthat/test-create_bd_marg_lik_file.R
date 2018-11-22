@@ -2,19 +2,23 @@ context("test-create_bd_marg_lik_file")
 
 test_that("must create file", {
 
-  skip("TODO: create_bd_marg_lik_file, Issue 110, #110")
-  parameters_filename <- create_tempfile("parameters.csv")
-  bd_alignment_filename <- create_tempfile("mbd.fasta")
-  testit::assert(file.exists(parameters_filename))
-  testit::assert(file.exists(bd_alignment_filename))
+  if (!ribir::is_on_travis()) {
+    skip("It runs only on travis")
+  } else {
+    skip("Test fails. ISSUE: #119")
+    parameters_filename <- create_tempfile("parameters.csv")
+    bd_alignment_filename <- create_tempfile("mbd.fasta")
+    testit::assert(file.exists(parameters_filename))
+    testit::assert(file.exists(bd_alignment_filename))
 
-  bd_marg_lik_filename <- create_bd_marg_lik_file(# nolint internal function
-    parameters_filename = parameters_filename
-  )
-  expect_true(file.exists(bd_marg_lik_filename))
-  expect_true(length(grep(
-    pattern = "bd_marg_lik\\.csv$",
-    bd_marg_lik_filename, perl = TRUE, value = TRUE))
-    > 0
-  )
+    bd_marg_lik_filename <- create_bd_marg_lik_file(# nolint internal function
+      parameters_filename = parameters_filename
+    )
+    expect_true(file.exists(bd_marg_lik_filename))
+    expect_true(length(grep(
+      pattern = "bd_marg_lik\\.csv$",
+      bd_marg_lik_filename, perl = TRUE, value = TRUE))
+      > 0
+    )
+  }
 })

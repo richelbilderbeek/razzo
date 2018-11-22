@@ -8,9 +8,7 @@ collect_esses <- function(
   project_folder_name
 ) {
 
-  if (basename(project_folder_name) != "razzo_project") {
-    stop("'project_folder_name' must end with 'razzo_project'")
-  }
+  check_project_folder_name(project_folder_name)
 
   data_folder <- file.path(
     project_folder_name,
@@ -18,7 +16,7 @@ collect_esses <- function(
   )
 
   # retrieve information from files
-  paths <- get_settings_paths(project_folder_name) # nolint internal function
+  paths <- get_data_paths(project_folder_name) # nolint internal function
   parameters <- open_parameters_file(file.path(paths[1], "parameters.csv")) # nolint internal function
   x <- utils::read.delim(file.path(paths[1], "mbd.log"))
 

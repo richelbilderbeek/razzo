@@ -144,6 +144,45 @@ test_that("abuse", {
     ),
     "sequence_length has to be a positive integer number"
   )
+  expect_error(
+    create_params(
+      lambda = lambda,
+      mu = mu,
+      nu = nu,
+      q = q,
+      seed = seed,
+      crown_age = crown_age,
+      sequence_length = sequence_length,
+      sample_interval = -1
+    ),
+    "sample_interval has to be a positive number!"
+  )
+  expect_error(
+    create_params(
+      lambda = lambda,
+      mu = mu,
+      nu = nu,
+      q = q,
+      seed = seed,
+      crown_age = crown_age,
+      sequence_length = sequence_length,
+      chain_length = -1
+    ),
+    "chain_length has to be a positive number!"
+  )
+  expect_error(
+    create_params(
+      lambda = lambda,
+      mu = mu,
+      nu = nu,
+      q = q,
+      seed = seed,
+      crown_age = crown_age,
+      sequence_length = sequence_length,
+      sub_chain_length = -1
+    ),
+    "sub_chain_length has to be a positive number!"
+  )
 })
 
 test_that("clock model", {
