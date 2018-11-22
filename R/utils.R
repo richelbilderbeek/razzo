@@ -62,7 +62,7 @@ bd_phylo_2_l_table <- function(
   )
 
   # compute the relative branching times
-  brt <- convert_tree2brts(phylo)
+  brt <- convert_tree2brts(phylo) # nolint
 
   if (min(brt) < 0) {
     brt <- brt + abs(min(brt))

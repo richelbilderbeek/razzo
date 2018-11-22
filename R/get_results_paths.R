@@ -8,7 +8,7 @@ get_results_path <- function(
   project_folder_name
 ) {
 
-  check_project_folder_name(project_folder_name)
+  check_project_folder_name(project_folder_name) # nolint
 
   results_folder <- file.path(
     project_folder_name,

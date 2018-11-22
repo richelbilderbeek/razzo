@@ -12,7 +12,7 @@ create_esses_file <- function(
   df_esses <- collect_esses(project_folder_name) # nolint internal function
 
   # save output
-  results_folder <- get_results_path(project_folder_name)
+  results_folder <- get_results_path(project_folder_name) # nolint
   if (!dir.exists(results_folder)) {
     dir.create(results_folder)
   }
