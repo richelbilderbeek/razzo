@@ -5,7 +5,6 @@ test_that("use", {
   if (!ribir::is_on_travis()) return()
   if (rappdirs::app_dir()$os == "win") return()
 
-  skip("Test fails. ISSUE: #119")
   parameters <- open_parameters_file(get_path("parameters.csv"))
   alignment <- ape::read.FASTA(get_path("mbd.fasta"))
 
