@@ -71,7 +71,7 @@ est_marg_lik <- function(
     fasta_filenames = fasta_filename,
     mcmc = beautier::create_mcmc_nested_sampling(
       chain_length = chain_length,
-      store_every = -sample_interval,
+      store_every = sample_interval,
       particle_count = 1,
       sub_chain_length = sub_chain_length,
       epsilon = 1e+07
