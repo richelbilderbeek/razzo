@@ -5,7 +5,7 @@
 \title{Create the dataframe with esses data
 and save it as a file}
 \usage{
-create_esses_file(project_folder_name)
+create_esses_file(project_folder_name = getwd())
 }
 \arguments{
 \item{project_folder_name}{project folder name,

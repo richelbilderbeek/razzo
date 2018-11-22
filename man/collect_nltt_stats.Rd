@@ -4,7 +4,7 @@
 \alias{collect_nltt_stats}
 \title{Collect nltt statistics}
 \usage{
-collect_nltt_stats(project_folder_name)
+collect_nltt_stats(project_folder_name = getwd())
 }
 \arguments{
 \item{project_folder_name}{project folder name,

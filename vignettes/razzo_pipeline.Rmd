@@ -63,13 +63,6 @@ parameters_filenames <- create_parameters_files(
 )
 ```
 
-To speed things up, we'll be keeping only two parameter files:
-
-```{r keep_only_few_parameter_files}
-parameters_filenames <- parameters_filenames[c(1, 2)]
-knitr::kable(parameters_filenames)
-```
-
 ## Step 2: create MBD trees
 
 ```{r}
@@ -282,20 +275,8 @@ ggplot(
   ggplot2::scale_x_continuous(limits = c(0.0, 1.0))
 ```
 
-## Step 10: measure Effective Sample Sizes
 
-We already had a sneak-peek at the ESSes.
-In this step, we measure the ESSes of all files and
-combine it into one file:
-
-```{r}
-if (1 == 2) {
-  esses_filename <- create_esses_file(parameters_filenames)
-  knitr::kable(utils::read.csv(esses_filename)[-1])
-}
-```
-
-## Step 11: compare marginal likelihoods
+## Step 10: estimate marginal likelihoods
 
 For each biological parameter setting, 
 we use two site models and two clock models in our inference.
@@ -304,7 +285,7 @@ Jukes-Cantor site model and a strict clock model,
 does this also show when using the Bayes factor?
 
 ```{r create_mbd_marg_lik_files}
-if (1 == 2) {
+if (rappdirs::app_dir()$os != "win") {
   mbd_marg_lik_filenames <- rep(NA, length(parameters_filenames))
   for (i in seq_along(parameters_filenames)) {
     mbd_marg_lik_filenames[i] <- create_mbd_marg_lik_file(
@@ -316,7 +297,7 @@ if (1 == 2) {
 ```
 
 ```{r create_bd_marg_lik_files}
-if (1 == 2) {
+if (rappdirs::app_dir()$os != "win") {
   bd_marg_lik_filenames <- rep(NA, length(parameters_filenames))
   for (i in seq_along(parameters_filenames)) {
     bd_marg_lik_filenames[i] <- create_bd_marg_lik_file(
@@ -325,6 +306,13 @@ if (1 == 2) {
   }
   knitr::kable(utils::read.csv(bd_marg_lik_filenames[1])[-1])
 }
+```
+
+
+## Step 11: figure 1
+
+```{r create_figure_1}
+create_fig_1(project_folder_name = project_folder_name)
 ```
 
 ## Step 12: what is the effect of MBD on the error?
@@ -350,3 +338,30 @@ plot <- ggplot(
 plot + geom_histogram(binwidth = 0.01, alpha = 0.5)
 plot + geom_density(alpha = 0.5)
 ```
+
+## Step 13: measure Effective Sample Sizes
+
+We already had a sneak-peek at the ESSes.
+In this step, we measure the ESSes of all files and
+combine it into one file:
+
+```{r}
+esses_filename <- create_esses_file(project_folder_name = project_folder_name)
+knitr::kable(utils::read.csv(esses_filename)[-1])
+```
+
+## Step 14: compare marginal likelihoods
+
+We already had a sneak-peek at the ESSes.
+In this step, we measure the ESSes of all files and
+combine it into one file:
+
+```{r}
+if (rappdirs::app_dir()$os != "win") {
+  marg_liks_file <- create_marg_liks_file(
+    project_folder_name = project_folder_name
+  )
+  knitr::kable(utils::read.csv(marg_liks_file)[-1])
+}
+```
+

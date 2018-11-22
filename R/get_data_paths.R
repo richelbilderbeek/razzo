@@ -8,7 +8,7 @@ get_data_paths <- function(
   project_folder_name
 ) {
 
-  check_project_folder_name(project_folder_name)
+  check_project_folder_name(project_folder_name) # nolint
 
   data_folder <- file.path(
     project_folder_name,

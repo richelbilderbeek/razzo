@@ -4,7 +4,7 @@
 \alias{create_marg_liks_file}
 \title{Creates file containing marginal loglikelihoods}
 \usage{
-create_marg_liks_file(project_folder_name)
+create_marg_liks_file(project_folder_name = getwd())
 }
 \arguments{
 \item{project_folder_name}{project folder name,
