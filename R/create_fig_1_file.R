@@ -5,7 +5,7 @@
 #' @author Giovanni Laudanno
 #' @export
 create_fig_1_file <- function(
-  project_folder_name
+  project_folder_name = getwd()
 ) {
 
   # create figure 1

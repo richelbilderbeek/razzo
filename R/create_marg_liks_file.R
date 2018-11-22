@@ -5,7 +5,7 @@
 #' @author Giovanni Laudanno
 #' @export
 create_marg_liks_file <- function(
-  project_folder_name
+  project_folder_name = getwd()
 ) {
 
   # create the dataframe
