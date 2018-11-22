@@ -37,5 +37,4 @@ script:
 
 after_success:
   - Rscript -e 'covr::codecov()'
-  - travis_wait 20 Rscript -e 'goodpractice::gp()'
   - proselint *.md | egrep -v "typography\.symbols\.curly_quotes"
