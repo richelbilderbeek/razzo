@@ -93,7 +93,7 @@ Status|Description|Function name
 Done|Collect marginal likelihoods|`raz_collect_marg_liks`
 Done|Collect effective sample sizes|`raz_collect_esses`
 Done|Collect nLTT statistics|`raz_collect_nltt_stats`
-Done|Create figure 1|`raz_create_fig_1`
+Draft|12. Create figure 1|`raz_create_fig_1`
 
 #### File handling
 
