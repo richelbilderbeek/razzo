@@ -16,6 +16,51 @@ test_that("use", {
   expect_true("marg_log_lik_sd" %in% names(marg_lik))
 })
 
+test_that("use for other 3 models", {
+
+  if (!ribir::is_on_travis()) return()
+  if (rappdirs::app_dir()$os == "win") return()
+
+  alignment <- ape::read.FASTA(get_path("mbd.fasta"))
+  parameters <- open_parameters_file(get_path("parameters.csv"))
+
+  parameters$site_model <- "jc69"
+  parameters$clock_model <- "strict"
+  expect_silent(
+    est_marg_lik(
+      parameters = parameters,
+      alignment = alignment
+    )
+  )
+
+  parameters$site_model <- "jc69"
+  parameters$clock_model <- "rln"
+  expect_silent(
+    est_marg_lik(
+      parameters = parameters,
+      alignment = alignment
+    )
+  )
+
+  parameters$site_model <- "gtr"
+  parameters$clock_model <- "strict"
+  expect_silent(
+    est_marg_lik(
+      parameters = parameters,
+      alignment = alignment
+    )
+  )
+
+  parameters$site_model <- "gtr"
+  parameters$clock_model <- "rln"
+  expect_silent(
+    est_marg_lik(
+      parameters = parameters,
+      alignment = alignment
+    )
+  )
+})
+
 test_that("abuse", {
 
   # Fixture

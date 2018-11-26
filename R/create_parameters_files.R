@@ -1,11 +1,28 @@
 #' Create all parameter files  in
-#'   \code{project_folder_name/data/[settings]/seed}
+#'   \code{project_folder_name/data/[settings]/seed/[models]}
 #' @inheritParams default_params_doc
+#' @param experiment_type the type of experiment,
+#'   can be either \code{test} or \code{full}
 #' @return Create folders for each parameter setting
 #'   and saves each setting in a file within the corresponding folder.
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
 create_parameters_files <- function(
+  project_folder_name = getwd(),
+  experiment_type = "test"
+) {
+  testit::assert(experiment_type == "test" || experiment_type == "full")
+  create_test_parameters_files(project_folder_name = project_folder_name) # nolint internal function
+}
+
+#' Create all testing parameter files in
+#'   \code{project_folder_name/data/[settings]/seed/[models]}
+#' @inheritParams default_params_doc
+#' @return Create folders for each parameter setting
+#'   and saves each setting in a file within the corresponding folder.
+#' @author Giovanni Laudanno, Richel J.C. Bilderbeek
+#' @export
+create_test_parameters_files <- function(
   project_folder_name = getwd()
 ) {
   # Just use the parameter combinations in the article
@@ -58,7 +75,7 @@ create_parameters_files <- function(
               seed
             )
             dir.create(file.path(seed_folder),
-                           showWarnings = FALSE)
+                       showWarnings = FALSE)
             for (clock_model in clock_model_interval) {
               for (site_model in site_model_interval) {
                 model_folder <- file.path(

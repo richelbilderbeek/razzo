@@ -13,9 +13,9 @@ create_marg_liks_file <- function(
 
   # save output
   results_folder <- get_results_path(project_folder_name) # nolint
-  if (!dir.exists(results_folder)) {
-    dir.create(results_folder)
-  }
+  # No warning if folder already exists
+  dir.create(results_folder, showWarnings = FALSE)
+
   marg_liks_filename <- file.path(
     results_folder,
     "marg_liks.csv"

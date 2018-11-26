@@ -13,9 +13,10 @@ create_nltt_stats_file <- function(
 
   # save output
   results_folder <- get_results_path(project_folder_name) # nolint
-  if (!dir.exists(results_folder)) {
-    dir.create(results_folder)
-  }
+
+  # No warning if folder already exists
+  dir.create(results_folder, showWarnings = FALSE)
+
   nltt_stats_filename <- file.path(
     results_folder,
     "nltt_stats.csv"

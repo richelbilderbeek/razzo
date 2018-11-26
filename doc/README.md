@@ -45,7 +45,7 @@ require only filenames as arguments.
 
 Status|Description|Function name
 ---|---|---
-Done|Done|Create parameter files|`raz_create_parameters_files`
+Done|Create parameter files|`raz_create_parameters_files`
 Done|Create MBD tree file|`raz_create_mbd_tree_file`
 Done|Create MBD alignment file|`raz_create_mbd_alignment_file`
 Done|Create twin BD tree file|`raz_create_bd_tree_file`
@@ -66,17 +66,17 @@ They work on parsed data and are not intended to be called from a script
 
 Status|Description|Function name
 ---|---|---
-Done|Create parameter|`raz_create_parameters`
-Done|Create MBD tree|`raz_create_mbd_tree`
-Done|Create BD tree|`raz_create_bd_tree`
-Done|Create MBD alignment|`raz_create_mbd_alignment`
-Done|Create BD alignment|`raz_create_bd_alignment`
-Done|Create MBD posterior|`raz_mbd_create_posterior`
-Done|Create BD posterior|`raz_bd_create_posterior`
-Done|Create MBD nLTT|`raz_create_mbd_nltt`
-Done|Create BD nLTT|`raz_create_bd_nltt`
-Done|Estimate MBD marginal likelihood|`raz_est_marg_lik`
-Done|Estimate BD marginal likelihood|`raz_est_marg_lik`
+Draft|1. Create parameters|`raz_create_parameters`
+Draft|2. Create MBD tree|`raz_create_mbd_tree`
+Draft|3. Create BD tree|`raz_create_bd_tree`
+Draft|4. Create MBD alignment|`raz_create_mbd_alignment`
+Draft|5. Create BD alignment|`raz_create_bd_alignment`
+Draft|6. Create MBD posterior|`raz_mbd_create_posterior`
+Draft|7. Create BD posterior|`raz_bd_create_posterior`
+Draft|8. Create MBD nLTT|`raz_create_mbd_nltt`
+Draft|9. Create BD nLTT|`raz_create_bd_nltt`
+Draft|10. Estimate MBD marginal likelihood|`raz_est_marg_lik`
+Draft|11. Estimate BD marginal likelihood|`raz_est_marg_lik`
 
 ### Results creation
 
@@ -93,7 +93,7 @@ Status|Description|Function name
 Done|Collect marginal likelihoods|`raz_collect_marg_liks`
 Done|Collect effective sample sizes|`raz_collect_esses`
 Done|Collect nLTT statistics|`raz_collect_nltt_stats`
-Done|Create figure 1|`raz_create_fig_1`
+Draft|12. Create figure 1|`raz_create_fig_1`
 
 #### File handling
 
