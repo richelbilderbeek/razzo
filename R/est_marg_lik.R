@@ -74,7 +74,7 @@ est_marg_lik <- function(
       store_every = sample_interval,
       particle_count = 1,
       sub_chain_length = sub_chain_length,
-      epsilon = 1e+07
+      epsilon = 1e-13
     ),
     site_models = site_model,
     clock_models = clock_model_function(),
