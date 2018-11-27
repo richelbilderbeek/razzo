@@ -42,7 +42,11 @@ est_marg_lik <- function(
   sub_chain_length <- parameters$sub_chain_length
   clock_model <- parameters$clock_model
   site_model <- parameters$site_model
-  sample_interval <- chain_length / 100 # to reach 100 active points
+
+
+  # for the full experiment, we use 100 active points, sampling every 10k
+  # for the test, we use 3 active points, sampling every 1k
+  sample_interval <- max(1000, chain_length / 100)
 
   testit::assert(!is.null(sample_interval))
   testit::assert(!is.null(crown_age))
