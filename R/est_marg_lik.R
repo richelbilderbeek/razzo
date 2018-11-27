@@ -36,13 +36,13 @@ est_marg_lik <- function(
     file = fasta_filename
   )
 
-  sample_interval <- parameters$sample_interval
   crown_age <- parameters$crown_age
   rng_seed <- parameters$seed
   chain_length <- parameters$chain_length
   sub_chain_length <- parameters$sub_chain_length
   clock_model <- parameters$clock_model
   site_model <- parameters$site_model
+  sample_interval <- chain_length / 100 # to reach 100 active points
 
   testit::assert(!is.null(sample_interval))
   testit::assert(!is.null(crown_age))
@@ -72,9 +72,9 @@ est_marg_lik <- function(
     mcmc = beautier::create_mcmc_nested_sampling(
       chain_length = chain_length,
       store_every = sample_interval,
-      particle_count = 1,
+      particle_count = 1, # 1 particle
       sub_chain_length = sub_chain_length,
-      epsilon = 1e-13
+      epsilon = 1e-13 # epsilon
     ),
     site_models = site_model,
     clock_models = clock_model_function(),
