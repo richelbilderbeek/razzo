@@ -13,7 +13,12 @@ create_fig_2 <- function(
   )
   testit::assert(file.exists(marg_liks_filename))
 
-  df <- read.csv(marg_liks_filename)[, -1]
+  df <- read.csv(utils::marg_liks_filename)[, -1]
+
+
+  # Satisfy R CMD check
+  marg_log_lik <- NULL; rm(marg_log_lik) # nolint, fixes warning: no visible binding for global variable
+  gen_model <- NULL; rm(gen_model) # nolint, fixes warning: no visible binding for global variable
 
   pl <- ggplot2::ggplot(
     df,
