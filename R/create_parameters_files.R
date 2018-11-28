@@ -55,9 +55,10 @@ create_full_parameters_files <- function(
 
   data_folder_name <- "data"
 
+  # Do not warn if the folder already exists
   dir.create(
     file.path(project_folder_name, data_folder_name),
-    showWarnings = TRUE
+    showWarnings = FALSE
   )
   testit::assert(dir.exists(file.path(project_folder_name, data_folder_name)))
   parameters_filenames <- rep(NA, l_pars)
@@ -156,9 +157,10 @@ create_test_parameters_files <- function(
 
   data_folder_name <- "data"
 
+  # Do not warn if the folder already exists
   dir.create(
     file.path(project_folder_name, data_folder_name),
-    showWarnings = TRUE
+    showWarnings = FALSE
   )
   testit::assert(dir.exists(file.path(project_folder_name, data_folder_name)))
   parameters_filenames <- rep(NA, l_pars)

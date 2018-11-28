@@ -2,8 +2,10 @@ context("create_mbd_posterior_files")
 
 test_that("use", {
 
+  expect_true(1 + 1 == 2) # to get a non-empty test
+
   if (!ribir::is_on_travis()) {
-    skip("It runs only on travis")
+    return ()
   } else {
 
     # Create input files

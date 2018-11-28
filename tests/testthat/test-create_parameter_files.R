@@ -5,7 +5,9 @@ test_that("use", {
   # Put files in temporary folder
   super_folder_name <- tempdir()
   project_folder_name <- file.path(super_folder_name, "razzo_project")
-  dir.create(path = project_folder_name)
+
+  # Do not warn if the folder already exists
+  dir.create(path = project_folder_name, showWarnings = FALSE)
 
   filenames <- create_parameters_files(
     project_folder_name = project_folder_name
@@ -45,7 +47,9 @@ test_that("use, full", {
   # Put files in temporary folder
   super_folder_name <- tempdir()
   project_folder_name <- file.path(super_folder_name, "razzo_project")
-  dir.create(path = project_folder_name)
+
+  # Do not warn if the folder already exists
+  dir.create(path = project_folder_name, showWarnings = FALSE)
 
   filenames <- create_parameters_files(
     project_folder_name = project_folder_name,
