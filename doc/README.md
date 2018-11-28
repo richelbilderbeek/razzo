@@ -2,7 +2,13 @@
 
 ## Folder structure
 
-In `razzo_project`, there is a folder called `data`.
+In `razzo_project`, there are two folders:
+
+ * `data`: the simulated data
+ * `results`: the interpreted data, e.g. tables and figures
+
+### The `data` folder
+
 In `data`, there are folders named after their parameters, e.g. `0.2-0.15-1-0.1`.
 In each of these folders, there are folders named after their seeds, e.g. `1`.
 In each of these folders, there are folders named after their site and clock models, e.g. `strict-jc69`.
@@ -11,22 +17,37 @@ In each of these folders, there are:
 
 Filename|Description|Created by
 -------------|---------------------------------------|--------------------------
-`parameters.csv`|the parameter file|`raz_create_parameter_files`
-`mbd.tree`|the true MBD tree|`raz_create_mbd_tree_file`
-`mbd.fasta`|the true MBD alignment|`raz_create_mbd_alignment_file`
-`bd.tree`|the twin BD tree|`raz_create_bd_tree_file`
-`bd.fasta`|the twin BD alignment|`raz_create_bd_alignment_file`
-`mbd.trees`|the posterior trees from `mbd.tree`|`raz_create_mbd_posterior_files`
-`mbd.log`|the posterior parameter estimates from `mbd.tree`|`raz_create_mbd_posterior_files`
-`mbd_marg_lik.csv`|the posterior's marginal likelihood from `mbd.tree`|`raz_create_mbd_posterior_files`
-`bd.trees`|the posterior trees from `bd.tree`|`raz_create_bd_posterior_files`
-`bd.log`|the posterior parameter estimates from `bd.tree`|`raz_create_bd_posterior_files`
-`bd_marg_lik.csv`|the posterior's marginal likelihood from `bd.tree`|`raz_create_mb_posterior_files`
-`mbd_nltts.csv`|the nLTT statistic distribution between `mbd.tree` and `mbd.trees`|`raz_create_mbd_nltt_file`
-`bd_nltts.csv`|the nLTT statistic distribution between `bd.tree` and `bd.trees`|`raz_create_bd_nltt_file`
+`parameters.csv`|the parameter file|`create_parameter_files`
+`mbd.tree`|the true MBD tree|`create_mbd_tree_file`
+`mbd.fasta`|the true MBD alignment|`create_mbd_alignment_file`
+`bd.tree`|the twin BD tree|`create_bd_tree_file`
+`bd.fasta`|the twin BD alignment|`create_bd_alignment_file`
+`mbd.trees`|the posterior trees from `mbd.tree`|`create_mbd_posterior_files`
+`mbd.log`|the posterior parameter estimates from `mbd.tree`|`create_mbd_posterior_files`
+`mbd_marg_lik.csv`|the posterior's marginal likelihood from `mbd.tree`|`create_mbd_posterior_files`
+`bd.trees`|the posterior trees from `bd.tree`|`create_bd_posterior_files`
+`bd.log`|the posterior parameter estimates from `bd.tree`|`create_bd_posterior_files`
+`bd_marg_lik.csv`|the posterior's marginal likelihood from `bd.tree`|`create_mb_posterior_files`
+`mbd_nltts.csv`|the nLTT statistic distribution between `mbd.tree` and `mbd.trees`|`create_mbd_nltt_file`
+`bd_nltts.csv`|the nLTT statistic distribution between `bd.tree` and `bd.trees`|`create_bd_nltt_file`
 
 See [a razzo_project build log](https://travis-ci.org/richelbilderbeek/razzo_project/jobs/457099656#L1789)
 to see such a `data` folder.
+
+### The `results` folder
+
+In `results`, there are only files:
+
+Filename|Description|Created by
+-------------|---------------------------------------|--------------------------
+`esses.csv`|all ESSes|`create_esses_file`
+`marg_liks.csv`|all marginal likelihoods|`create_marg_liks_file`
+`nltt_stats.csv`|all nLTT statistics, in short form|`create_esses_file`
+`figure_1.png`|figure 1|`create_fig_1_file`
+`figure_2.png`|figure 2|`create_fig_2_file`
+
+See [a razzo_project build log](https://travis-ci.org/richelbilderbeek/razzo_project/builds/458324105#L2074)
+to see such a `results` folder.
 
 ## Function overview
 
@@ -45,17 +66,17 @@ require only filenames as arguments.
 
 Status|Description|Function name
 ---|---|---
-Done|Create parameter files|`raz_create_parameters_files`
-Done|Create MBD tree file|`raz_create_mbd_tree_file`
-Done|Create MBD alignment file|`raz_create_mbd_alignment_file`
-Done|Create twin BD tree file|`raz_create_bd_tree_file`
-Done|Create twin BD alignment file|`raz_create_bd_alignment_file`
-Done|Create MBD posterior files|`raz_create_mbd_posterior_files`
-Done|Create twin BD posterior files|`raz_create_bd_posterior_files`
-Done|Create MBD nLTT file|`raz_create_mbd_nltt_file`
-Done|Create twin BD nLTT file|`raz_create_bd_nltt_file`
-Done|Create MBD marginal likelihood estimation file|`raz_create_mbd_marg_lik_file`
-Done|Create twin BD marginal likelihood estimation file|`raz_create_bd_marg_lik_file`
+Done|Create parameter files|`create_parameters_files`
+Done|Create MBD tree file|`create_mbd_tree_file`
+Done|Create MBD alignment file|`create_mbd_alignment_file`
+Done|Create twin BD tree file|`create_bd_tree_file`
+Done|Create twin BD alignment file|`create_bd_alignment_file`
+Done|Create MBD posterior files|`create_mbd_posterior_files`
+Done|Create twin BD posterior files|`create_bd_posterior_files`
+Done|Create MBD nLTT file|`create_mbd_nltt_file`
+Done|Create twin BD nLTT file|`create_bd_nltt_file`
+Done|Create MBD marginal likelihood estimation file|`create_mbd_marg_lik_file`
+Done|Create twin BD marginal likelihood estimation file|`create_bd_marg_lik_file`
 
 #### Data handling functions
 
@@ -66,17 +87,17 @@ They work on parsed data and are not intended to be called from a script
 
 Status|Description|Function name
 ---|---|---
-Draft|1. Create parameters|`raz_create_parameters`
-Draft|2. Create MBD tree|`raz_create_mbd_tree`
-Draft|3. Create BD tree|`raz_create_bd_tree`
-Draft|4. Create MBD alignment|`raz_create_mbd_alignment`
-Draft|5. Create BD alignment|`raz_create_bd_alignment`
-Draft|6. Create MBD posterior|`raz_mbd_create_posterior`
-Draft|7. Create BD posterior|`raz_bd_create_posterior`
-Draft|8. Create MBD nLTT|`raz_create_mbd_nltt`
-Draft|9. Create BD nLTT|`raz_create_bd_nltt`
-Draft|10. Estimate MBD marginal likelihood|`raz_est_marg_lik`
-Draft|11. Estimate BD marginal likelihood|`raz_est_marg_lik`
+Draft|1. Create parameters|`create_parameters`
+Draft|2. Create MBD tree|`create_mbd_tree`
+Draft|3. Create BD tree|`create_bd_tree`
+Draft|4. Create MBD alignment|`create_mbd_alignment`
+Draft|5. Create BD alignment|`create_bd_alignment`
+Draft|6. Create MBD posterior|`mbd_create_posterior`
+Draft|7. Create BD posterior|`bd_create_posterior`
+Draft|8. Create MBD nLTT|`create_mbd_nltt`
+Draft|9. Create BD nLTT|`create_bd_nltt`
+Draft|10. Estimate MBD marginal likelihood|`est_marg_lik`
+Draft|11. Estimate BD marginal likelihood|`est_marg_lik`
 
 ### Results creation
 
@@ -90,10 +111,10 @@ They are not intended to be called from a script
 
 Status|Description|Function name
 ---|---|---
-Done|Collect marginal likelihoods|`raz_collect_marg_liks`
-Done|Collect effective sample sizes|`raz_collect_esses`
-Done|Collect nLTT statistics|`raz_collect_nltt_stats`
-Draft|12. Create figure 1|`raz_create_fig_1`
+Done|Collect marginal likelihoods|`collect_marg_liks`
+Done|Collect effective sample sizes|`collect_esses`
+Done|Collect nLTT statistics|`collect_nltt_stats`
+Draft|12. Create figure 1|`create_fig_1`
 
 #### File handling
 
@@ -103,7 +124,7 @@ require only the project folder's name as an argument.
 
 Status|Description|Function name
 ---|---|---
-Done|Collect marginal likelihoods|`raz_create_marg_liks_file`
-Done|Collect effective sample sizes|`raz_create_esses_file`
-Done|Create nLTT statistics file|`raz_create_nltt_stats_file`
-Done|Create figure 1|`raz_create_fig_1_file`
+Done|Collect marginal likelihoods|`create_marg_liks_file`
+Done|Collect effective sample sizes|`create_esses_file`
+Done|Create nLTT statistics file|`create_nltt_stats_file`
+Done|Create figure 1|`create_fig_1_file`
