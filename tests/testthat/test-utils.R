@@ -77,5 +77,8 @@ test_that("bd_phylo_2_l_table", {
       test_bd_l_matrix,
       bd_l_matrix
     )
+    created_col_names <- colnames(test_bd_l_matrix)
+    expected_col_names <- c("birth_time", "parent", "id", "death_time")
+    expect_equal(created_col_names, expected_col_names)
   }
 })
