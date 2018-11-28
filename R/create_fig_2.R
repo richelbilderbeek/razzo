@@ -13,7 +13,7 @@ create_fig_2 <- function(
   )
   testit::assert(file.exists(marg_liks_filename))
 
-  df <- read.csv(utils::marg_liks_filename)[, -1]
+  df <- utils::read.csv(marg_liks_filename)[, -1]
 
 
   # Satisfy R CMD check
