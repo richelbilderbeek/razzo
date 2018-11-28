@@ -37,3 +37,28 @@ test_that("abuse", {
     "'project_folder_name' must end with 'razzo_project'"
   )
 })
+
+test_that("marginal likelihood estimates must differ", {
+
+  skip("TODO: Issue 145, #145")
+  first_params_file_path <- list.files(
+    path = get_path("razzo_project"),
+    pattern = "parameters.csv",
+    recursive = TRUE,
+    full.names = TRUE
+  )[1]
+
+  mbd_marg_lik_file <- file.path(
+    dirname(first_params_file_path),
+    "mbd_marg_lik.csv"
+  )
+  bd_marg_lik_file <- file.path(
+    dirname(first_params_file_path),
+    "bd_marg_lik.csv"
+  )
+  testit::assert(file.exists(mbd_marg_lik_file))
+  testit::assert(file.exists(bd_marg_lik_file))
+  mbd_marg_lik <- utils::read.csv(mbd_marg_lik_file)$marg_log_lik
+  bd_marg_lik <- utils::read.csv(bd_marg_lik_file)$marg_log_lik
+  expect_true(mbd_marg_lik != bd_marg_lik)
+})
