@@ -33,10 +33,11 @@ Imports:
   tidyr,
   tracerer
 Suggests:
-  testthat,
-  lintr,
-  knitr,
-  rmarkdown,
   cli,
-  ribir
+  devtools,
+  knitr,
+  lintr,
+  ribir,
+  rmarkdown,
+  testthat
 VignetteBuilder: knitr
