@@ -43,8 +43,6 @@ test_that("use", {
   expect_true(all(df$close_model %in% get_clock_models())) # nolint internal function
   expect_true(all(df$marg_log_lik <= 0))
   expect_true(all(df$marg_log_lik_sd >= 0))
-
-  skip("TODO: Issue 145, #145")
   expect_true(df$marg_log_lik[1] != df$marg_log_lik[2])
 })
 

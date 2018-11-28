@@ -44,10 +44,7 @@ collect_marg_liks <- function(
     mbd_mar <- utils::read.csv(file.path(p, "mbd_marg_lik.csv"))[-1]
 
     # Marginal likelihoods should differ, as the alignments differ
-    # Caused by bug in #145
-    if (1 == 2) {
-      testit::assert(bd_mar$marg_log_lik != mbd_mar$marg_log_lik)
-    }
+    testit::assert(bd_mar$marg_log_lik != mbd_mar$marg_log_lik)
 
     par_num <- parameters[!grepl("model", names(parameters))]
 

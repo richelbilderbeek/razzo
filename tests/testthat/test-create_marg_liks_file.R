@@ -40,7 +40,6 @@ test_that("abuse", {
 
 test_that("marginal likelihood estimates must differ", {
 
-  skip("TODO: Issue 145, #145")
   first_params_file_path <- list.files(
     path = get_path("razzo_project"),
     pattern = "parameters.csv",
