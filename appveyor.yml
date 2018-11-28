@@ -32,7 +32,7 @@ build_script:
   - travis-tool.sh install_github Giappo/mbd
   - travis-tool.sh install_github richelbilderbeek/becosys
   - travis-tool.sh install_github richelbilderbeek/razzo
-  - travis-tool.sh install_github richelbilderbeek/dododo
+  - travis-tool.sh install_github xl0418/dododo
   - travis-tool.sh install_deps
   - Rscript -e "beastier::install_beast2()"
   - Rscript -e 'mauricer::mrc_install("NS")'
