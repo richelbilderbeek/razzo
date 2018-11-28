@@ -21,6 +21,7 @@ Imports:
   beautier,
   DDD,
   devtools,
+  dododo,
   ggplot2,
   grDevices,
   mauricer,
