@@ -28,54 +28,53 @@ test_that("get_gen_models", {
 })
 
 test_that("bd_phylo_2_l_table", {
-  max_seed <- 10
+
   parameters <- open_parameters_file(get_path("parameters.csv"))
-  for (seed in 1:max_seed) {
 
-    # create data
-    parameters$seed <- seed
-    mbd_sim <- create_mbd_tree(
-      parameters = parameters
-    )
-    mbd_tree <- mbd_sim$mbd_tree
-    mbd_l_matrix <- mbd_sim$mbd_l_matrix
-    bd_sim <- create_bd_tree(
-      parameters = parameters,
-      mbd_tree = mbd_tree,
-      mbd_l_matrix = mbd_l_matrix
-    )
-    bd_tree <- bd_sim$bd_tree
-    bd_l_matrix <- bd_sim$bd_l_matrix
+  mbd_sim <- create_mbd_tree(
+    parameters = parameters
+  )
+  mbd_tree <- mbd_sim$mbd_tree
+  mbd_l_matrix <- mbd_sim$mbd_l_matrix
+  bd_sim <- create_bd_tree(
+    parameters = parameters,
+    mbd_tree = mbd_tree,
+    mbd_l_matrix = mbd_l_matrix
+  )
+  bd_tree <- bd_sim$bd_tree
+  bd_l_matrix <- bd_sim$bd_l_matrix
 
-    # test phylo -> L -> phylo
-    bd_test_tree <- DDD::L2phylo(
-      bd_phylo_2_l_table(bd_tree),
-      dropextinct = FALSE
-    )
-    expect_equal(
-      bd_test_tree$edge,
-      bd_tree$edge
-    )
-    expect_equal(
-      bd_test_tree$edge.length,
-      unname(bd_tree$edge.length)
-    )
-    expect_equal(
-      bd_test_tree$Nnode,
-      bd_tree$Nnode
-    )
-    expect_equal(
-      bd_test_tree$root.edge,
-      bd_tree$root.edge
-    )
+  # test phylo -> L -> phylo
+  bd_test_tree <- DDD::L2phylo(
+    bd_phylo_2_l_table(bd_tree),
+    dropextinct = FALSE
+  )
+  expect_equal(
+    bd_test_tree$edge,
+    bd_tree$edge
+  )
+  expect_equal(
+    bd_test_tree$edge.length,
+    unname(bd_tree$edge.length)
+  )
+  expect_equal(
+    bd_test_tree$Nnode,
+    bd_tree$Nnode
+  )
+  expect_equal(
+    bd_test_tree$root.edge,
+    bd_tree$root.edge
+  )
 
-    # test L -> phylo -> L
-    test_bd_l_matrix <- bd_phylo_2_l_table(DDD::L2phylo(
-      bd_l_matrix,
-      dropextinct = FALSE))
-    expect_equal(
-      test_bd_l_matrix,
-      bd_l_matrix
-    )
-  }
+  # test L -> phylo -> L
+  test_bd_l_matrix <- bd_phylo_2_l_table(DDD::L2phylo(
+    bd_l_matrix,
+    dropextinct = FALSE))
+  expect_equal(
+    test_bd_l_matrix,
+    bd_l_matrix
+  )
+  created_col_names <- colnames(test_bd_l_matrix)
+  expected_col_names <- c("birth_time", "parent", "id", "death_time")
+  expect_equal(created_col_names, expected_col_names)
 })

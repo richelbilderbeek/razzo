@@ -42,6 +42,10 @@ collect_marg_liks <- function(
     parameters <- open_parameters_file(file.path(p, "parameters.csv")) # nolint internal function
     bd_mar <- utils::read.csv(file.path(p, "bd_marg_lik.csv"))[-1]
     mbd_mar <- utils::read.csv(file.path(p, "mbd_marg_lik.csv"))[-1]
+
+    # Marginal likelihoods should differ, as the alignments differ
+    testit::assert(bd_mar$marg_log_lik != mbd_mar$marg_log_lik)
+
     par_num <- parameters[!grepl("model", names(parameters))]
 
     # save bd results

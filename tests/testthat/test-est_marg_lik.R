@@ -2,6 +2,8 @@ context("test-est_marg_lik")
 
 test_that("use", {
 
+  expect_true(1 + 1 == 2) # to get a non-empty test
+
   if (!ribir::is_on_travis()) return()
   if (rappdirs::app_dir()$os == "win") return()
 
@@ -17,6 +19,8 @@ test_that("use", {
 })
 
 test_that("use for other 3 models", {
+
+  expect_true(1 + 1 == 2) # to get a non-empty test
 
   if (!ribir::is_on_travis()) return()
   if (rappdirs::app_dir()$os == "win") return()
