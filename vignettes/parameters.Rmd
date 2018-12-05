@@ -167,12 +167,13 @@ Or plotting it in Maxima:
 
 ```
 f(n, N) := rhs(solve(N = 2 * ((1 + q) ^ n), q)[1]); plot3d(f(n, N), [n, 1, 4], [N, 2, 4], [zlabel, "q"]);
+f(n, N) := rhs(solve(N = 2 * ((1 + q) ^ n), q)[1]); plot3d(f(n, N), [n, 9, 16], [N, 15, 500], [zlabel, "q"]);
 ```
 
 results in:
 
 $$
-q = \frac{2^{1/n_{\nu}} - N_{\mathbb{M}}^{1/n_{\nu}}}{2^{1/n_{\nu}}}
+q = - \frac{2^{1/n_{\nu}} - N_{\mathbb{M}}^{1/n_{\nu}}}{2^{1/n_{\nu}}}
 $$
 
 ```{r}
@@ -182,11 +183,13 @@ calc_q <- function(n_nu_events, n_mb_taxa) {
   if (n_mb_taxa < 2) {
     return (0.0)
   }
-  q <- (2.0 ^ (1.0 / n_nu_events)) - (n_mb_taxa ^ (1.0 / n_nu_events)) /
+  
+  q <- - ((2.0 ^ (1.0 / n_nu_events)) - (n_mb_taxa ^ (1.0 / n_nu_events))) /
   (2.0 ^ (1.0 / n_nu_events))
-  if (q < 0.0) {
-    print(paste(n_nu_events, n_mb_taxa))
-  }
+  # if (q < 0.0) {
+  #   print(paste(n_nu_events, n_mb_taxa))
+  #   q <- 0.0
+  # }
   testit::assert(q >= 0.0)
   testit::assert(q <= 1.0)
   q
@@ -209,6 +212,7 @@ df$n_mb_taxa <- df$f_mb * df$n_taxa
 Calculating the $q$s:
 
 ```{r}
+calc_q(n_nu_events = 9, n_mb_taxa = 15)
 df$q <- NA
 for (i in seq_along(df$q)) {
   df$q[i] <- calc_q(n_nu_events = df$n_nu_events[i], n_mb_taxa = df$n_mb_taxa[i])
