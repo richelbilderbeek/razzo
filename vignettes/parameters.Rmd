@@ -4,7 +4,7 @@ author: "Richel J.C. Bilderbeek"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Parameters}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -18,21 +18,33 @@ knitr::opts_chunk$set(
 
 This vignette creates the parameter sets used in the razzo project.
 
+```{r}
+library(ggplot2)
+```
+
 ## Symbols
 
 Symbol|Code|Description
----|-----|----------------------------------------------------------------------
+---|--------------|-------------------------------------------------------------
 $n$|`n_taxa`|Number of extant and extinct taxa
 $N$|`n_extant_taxa`|Number of extant taxa
 $f_{\star}$|`f_extant`|Fraction of taxa that survives and remains extant
 $f_{\dagger}$|`f_extinct`|Fraction of taxa that become extinct
-$f_{\mathbb{M}}$|`f_mb`|Fraction of extinct and extant taxa formed by the BD process
+$f_{\mathbb{M}}$|`f_mb`|Fraction of extinct and extant taxa formed by the MB process
+$f_{\mathbb{B}}$|`f_bd`|Fraction of extinct and extant taxa formed by the single-birth process
 $N_{\mathbb{M}}$|`n_mb_taxa`|Number of extant and extinct taxa formed by the MB process
+$N_{\mathbb{B}}$|`n_bd_taxa`|Number of extant and extinct taxa formed by the single-birth process
 $n_{\mathbb{M}}$|`n_extant_mb_taxa`|Number of extant taxa formed by the MB process
 $q$|`q`|Fraction of taxa that speciate during a triggered co-occuring speciation event
 $\nu$|`nu`|Rate at which co-occurent speciation events are triggered
 $n_{\nu}$|`n_nu_events`|Number of triggered co-occurent speciation events
+$\lambda$|`lambda`|Per-lineage (single-birth) speciation rate
+$\mu$|`mu`|Per-lineage extinction rate
+$T$|`crown_age`|Crown age
 
+```{r}
+crown_age <- 15
+```
 
 ## 1. number of extant taxa
 
@@ -42,7 +54,7 @@ We pick phylogenies on the number of extant taxa $n$
 n_extant_taxas <- c(60, 120, 240)
 ```
 
-## 3. fraction of the taxa extinct
+## 2. fraction of the taxa extinct
 
 Instead of using an extinction rate, we use a fraction of the 
 taxa that went extinct before the reaching the present $f_{\dagger}$
@@ -67,15 +79,13 @@ df$n_extinct_taxa <- df$n_taxa - df$n_extant_taxa
 knitr::kable(df)
 ```
 
-## 2. fraction of the taxa created by the MB process
+## 3. fraction of the taxa created by the MB process
 
 ```{r}
 f_mbs <- c(0.0, 0.25, 0.50, 0.75, 1.0)
 ```
 
 As we know the number of (extinct and extant) taxa $N$, we can calculate this:
-
-
 
 ```{r}
 df <- expand.grid(
@@ -88,7 +98,7 @@ df$n_mb_taxa <- df$f_mb * df$n_taxa
 knitr::kable(df)
 ```
 
-## 3. MB regimes
+## 4. MB regimes: calculate $q$
 
 There are three MB regimes, in which the co-occuring speciation events are:
 
@@ -141,6 +151,7 @@ $$
 N_{\mathbb{M}} = 2 (1.0 + q)^{n_{\nu}}
 $$
 
+Because we start with two taxa, $N_{\mathbb{M}}$ can never become less than 2.
 This equation is reasonable, for known values of $q$ and number of 
 co-occurring speciation events $n_{\nu}$:
 
@@ -163,33 +174,34 @@ This we can solve this analytically in Maxima:
 solve(N  = 2 * ((1 + q) ^ n), q);
 ```
 
-Or plotting it in Maxima:
-
-```
-f(n, N) := rhs(solve(N = 2 * ((1 + q) ^ n), q)[1]); plot3d(f(n, N), [n, 1, 4], [N, 2, 4], [zlabel, "q"]);
-f(n, N) := rhs(solve(N = 2 * ((1 + q) ^ n), q)[1]); plot3d(f(n, N), [n, 9, 16], [N, 15, 500], [zlabel, "q"]);
-```
-
 results in:
 
 $$
 q = - \frac{2^{1/n_{\nu}} - N_{\mathbb{M}}^{1/n_{\nu}}}{2^{1/n_{\nu}}}
 $$
 
+Or plotting it in Maxima:
+
+```
+f(n, N) := rhs(solve(N = 2 * ((1 + q) ^ n), q)[1]); plot3d(f(n, N), [n, 9, 16], [N, 15, 500], [zlabel, "q"]);
+```
+
+![q plotted in Maxima](parameters_q.png)
+
+Converting this to an R function:
+
 ```{r}
 calc_q <- function(n_nu_events, n_mb_taxa) {
   testit::assert(n_nu_events >= 0)
   testit::assert(n_mb_taxa >= 0)
+  # From the equation, zero MB taxa results in strange values for q.
+  # Just use q == zero instead
   if (n_mb_taxa < 2) {
     return (0.0)
   }
   
   q <- - ((2.0 ^ (1.0 / n_nu_events)) - (n_mb_taxa ^ (1.0 / n_nu_events))) /
   (2.0 ^ (1.0 / n_nu_events))
-  # if (q < 0.0) {
-  #   print(paste(n_nu_events, n_mb_taxa))
-  #   q <- 0.0
-  # }
   testit::assert(q >= 0.0)
   testit::assert(q <= 1.0)
   q
@@ -220,14 +232,174 @@ for (i in seq_along(df$q)) {
 knitr::kable(df)
 ```
 
-NOTE: at the moment, the table shows the calculation of q is incorrect.
-Or in a fancy tile plot:
+Or display the $q$ as a tile plot:
 
-```{r}
-library(ggplot2)
+```{r fig.width=7}
 ggplot(df) + 
   geom_tile(aes(as.factor(n_nu_events), as.factor(n_mb_taxa), fill = q)) +
-  scale_fill_gradient(low="red", high="green")
+  scale_fill_gradientn(colours = rainbow(100), limits = c(0.0, 1.0))
 ```
 
-NOTE: At the moment, the tile plot shows the calculation of $q$ is incorrect.  
+
+## 4. fraction of the taxa created by the BD process
+
+The number of taxa created by the BD process is simply:
+
+$$
+N = N_{\mathbb{M}} + N_{\mathbb{B}} \\
+N_{\mathbb{B}} = N - N_{\mathbb{M}}
+$$
+
+So the number of (extinct and extant) species $N_{\mathbb{B}}$ created is:
+
+```{r}
+df$n_bd_taxa <- df$n_taxa - df$n_mb_taxa
+knitr::kable(df)
+```
+
+## 5. speciation rate $\lambda$
+
+The number of (extinct and extant) species $N_{\mathbb{B}}$ created is 
+dependent on the initial number of lineages (which is two),
+the crown age $T$ and per-lineage speciation rate $\lambda$:
+
+$$
+N_{\mathbb{B}} = 2 \cdot T^{\lambda}
+$$
+
+Solving this for per-lineage speciation rate $\lambda$:
+
+$$
+log(\frac{N_{\mathbb{B}}}{2}) = \lambda \cdot log(T) \\
+\frac{log(\frac{N_{\mathbb{B}}}{2})}{log(T)} = \lambda \\
+\lambda = \log_T(\frac{N_{\mathbb{B}}}{2})
+$$
+
+```{r}
+calc_lambda <- function(n_bd_taxa, crown_age) {
+  testit::assert(n_bd_taxa >= 0)
+  testit::assert(crown_age >= 0)
+  # From the equation, zero BD taxa results in strange values for lambda.
+  # Just use lambda == zero instead
+  if (n_bd_taxa < 2) {
+    return (0.0)
+  }
+  lambda <- log(n_bd_taxa / 2, base = crown_age)
+  testit::assert(lambda >= 0.0)
+  lambda
+}
+```
+
+
+```{r}
+df$lambda <- NA
+for (i in seq_along(df$lambda)) {
+  df$lambda[i] <- calc_lambda(n_bd_taxa = df$n_bd_taxa[i], crown_age = crown_age)
+}
+knitr::kable(df)
+```
+
+
+
+## 6. number of extinct taxa
+
+The number of taxa gone extinct is simply:
+
+$$
+N = N_{\star} + N_{\dagger} \\
+N_{\dagger} = N - N_{\star}
+$$
+
+So the number of extinct taxa $N_{\dagger}$ is:
+
+```{r}
+df$n_extinct_taxa <- df$n_taxa - df$n_extant_taxa
+knitr::kable(df)
+```
+
+
+## 7. extinction rate $\mu$
+
+The number of extinct species $N_{\dagger}$ created is 
+dependent on the initial number of lineages (which is two),
+the crown age $T$ and per-lineage extinction rate $\mu$:
+
+$$
+N_{\dagger} = 2 \cdot T^{\mu}
+$$
+
+Solving this for per-lineage speciation rate $\mu$:
+
+$$
+log(\frac{N_{\dagger}}{2}) = \mu \cdot log(T) \\
+\frac{log(\frac{N_{\dagger}}{2})}{log(T)} = \mu \\
+\mu = \log_T(\frac{N_{\dagger}}{2})
+$$
+
+```{r}
+calc_mu <- function(n_extinct_taxa, crown_age) {
+  testit::assert(n_extinct_taxa >= 0)
+  testit::assert(crown_age >= 0)
+  # From the equation, zero extinct taxa results in strange values for mu.
+  # Just use mu == zero instead
+  if (n_extinct_taxa < 2) {
+    return (0.0)
+  }
+  mu <- log(n_extinct_taxa / 2, base = crown_age)
+  testit::assert(mu >= 0.0)
+  mu
+}
+```
+
+
+```{r}
+df$mu <- NA
+for (i in seq_along(df$mu)) {
+  df$mu[i] <- calc_mu(n_extinct_taxa = df$n_extinct_taxa[i], crown_age = crown_age)
+}
+knitr::kable(df)
+```
+
+
+## 8. calculating $\nu$
+
+$nu$ must have such a value that the desired number of MB events $n_{\nu}$
+is attained.
+
+There is a simple relation between the rate at which a co-occuring
+speciation event is trigger $nu$ and crown age $T$:
+
+$$
+n_{\nu} = \nu \cdot T
+$$
+
+Solving this for co-occuring speciation rate $\nu$:
+
+$$
+n_{\nu} = \nu \cdot T \\
+\nu = \frac{n_{\nu}}{T} 
+$$
+
+```{r}
+df$nu <- NA
+for (i in seq_along(df$nu)) {
+  df$nu[i] <- df$n_nu_events[i] / crown_age
+}
+knitr::kable(df)
+```
+
+## Conclusion
+
+There you have it, all simulation parameters!
+
+```{r}
+knitr::kable(
+  dplyr::select(df, c("n_extant_taxa", "f_extinct", "f_mb", "n_nu_events", "lambda", "mu", "nu", "q"))
+)
+```
+
+## Data verification
+
+```{r}
+testit::assert(all(df$n_taxa == df$n_extant_taxa + df$n_extinct_taxa))
+```
