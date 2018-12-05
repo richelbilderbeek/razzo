@@ -1,0 +1,203 @@
+---
+title: "Parameters"
+author: "Richel J.C. Bilderbeek"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This vignette creates the parameter sets used in the razzo project.
+
+## Symbols
+
+Symbol|Code|Description
+---|---|---
+$n$|`n_taxa`|Number of extant and extinct taxa
+
+## 1. number of extant taxa
+
+We pick phylogenies on the number of extant taxa $n$
+
+```{r}
+n_extant_taxas <- c(60, 120, 240)
+```
+
+## 3. fraction of the taxa extinct
+
+Instead of using an extinction rate, we use a fraction of the 
+taxa that went extinct before the reaching the present $f_{\dagger}$
+
+```{r}
+f_exinctses <- c(0.0, 0.25, 0.5) # Gollumese plural
+```
+
+Now we can derive the total number of (extant and extinct) taxa $N$,
+using survival fraction $f_{\star}$:
+
+$$
+f_{\star} = 1 - f_{\dagger} \\
+n = N f_{\star} \\
+N = \frac{n}{f_{\star}} = \frac{n}{1 - f_{\dagger}}
+$$
+
+```{r}
+df <- expand.grid(n_extant_taxa = n_extant_taxas, f_extinct = f_exinctses)
+df$n_taxa <- df$n_extant_taxa / (1.0 - df$f_extinct)
+df$n_extinct_taxa <- df$n_taxa - df$n_extant_taxa 
+knitr::kable(df)
+```
+
+## 2. fraction of the taxa created by the MB process
+
+```{r}
+f_mbs <- c(0.0, 0.25, 0.50, 0.75, 1.0)
+```
+
+As we know the number of (extinct and extant) taxa $N$, we can calculate this:
+
+
+
+```{r}
+df <- expand.grid(
+  n_extant_taxa = n_extant_taxas, 
+  f_extinct = f_exinctses,
+  f_mb = f_mbs
+)
+df$n_taxa <- df$n_extant_taxa / (1.0 - df$f_extinct)
+df$n_mb_taxa <- df$f_mb * df$n_taxa
+knitr::kable(df)
+```
+
+## 3. MB regimes
+
+There are three MB regimes, in which the co-occuring speciation events are:
+
+
+ * few events of strong intensity
+ * some events of intermediate intensity
+ * many events of modest intensity
+
+Starting from two lineages and $q = 1$, the number 
+of (extant and extinct) lineages $N$ will be
+
+$$
+N = 2^{n_{\nu}}
+$$
+
+As we know the highest number of taxa $N$ we need:
+
+```{r}
+max_n <- max(df$n_mb_taxa)
+max_n
+```
+
+We can calculate the minimal number of events we need, rounded up to
+the nearest integer:
+
+$$
+N = 2^{n_{\nu}} \\
+n_{\nu} = \left \lceil{\frac{log(N)}{log(2)}}\right \rceil
+$$
+
+```{r}
+min_n_events <- ceiling(log(max_n) / log(2))
+min_n_events
+```
+
+So, to be able to arrive at the highest needed number of taxa,
+one needs at least `r min_n_events` events.
+
+We set the number of co-occurring speciation events, $n_{\nu}$, as:
+
+```{r}
+n_nu_eventses <- c(min_n_events, min_n_events * 2, min_n_events * 4) # Gollumese plural
+```
+
+Now we know the amount of taxa created by the MB process $N_{\mathbb{M}}$, 
+the number of nu events, and that we start with two taxa,
+we can calculate the intensity of an MB event $q$:
+
+$$
+N_{\mathbb{M}} = 2 (1.0 + q)^{n_{\nu}}
+$$
+
+This equation is reasonable, for known values of $q$ and number of 
+co-occurring speciation events $n_{\nu}$:
+
+```{r}
+df <- expand.grid(q = c(0.0, 0.5, 1.0), n_nu_events = c(1, 4, 16))
+df$n_mb_taxa <- NA
+for (i in seq_along(df$n_mb_taxa)) {
+  df$n_mb_taxa[i] <- as.integer(2.0 * ((1.0 + df$q[i]) ^ df$n_nu_events[i]))
+}
+knitr::kable(df)
+```
+
+In the current context, we known the number of MB taxa that must be
+generated $N_{\mathbb{M}}$ and the number of co-occurring speciation events $n_{\nu}$.
+All we need to do is calculate $q$.
+
+This we can solve this analytically in Maxima:
+
+```
+solve(N  = 2 * ((1 + q) ^ n), q);
+```
+
+results in:
+
+$$
+q = \frac{2^{1/n_{\nu}} - N_{\mathbb{M}}^{1/n_{\nu}}}{2^{1/n_{\nu}}}
+$$
+
+```{r}
+calc_q <- function(n_nu_events, n_mb_taxa) {
+  q <- (2.0 ^ (1.0 / n_nu_events)) - (n_mb_taxa ^ (1.0 / n_nu_events)) /
+  (2.0 ^ (1.0 / n_nu_events))
+  if (1 == 2) {
+    testit::assert(q >= 0.0)
+    testit::assert(q <= 1.0)
+  }
+  q
+}
+```
+
+As we know the number of (extinct and extant) taxa $N$, we can calculate this:
+
+```{r}
+df <- expand.grid(
+  n_extant_taxa = n_extant_taxas, 
+  f_extinct = f_exinctses,
+  f_mb = f_mbs,
+  n_nu_events = n_nu_eventses
+)
+df$n_taxa <- df$n_extant_taxa / (1.0 - df$f_extinct)
+df$n_mb_taxa <- df$f_mb * df$n_taxa
+
+df$q <- NA
+for (i in seq_along(df$q)) {
+  df$q[i] <- calc_q(n_nu_events = df$n_nu_events[i], n_mb_taxa = df$n_mb_taxa[i])
+}
+knitr::kable(df)
+```
+
+NOTE: at the moment, the table shows the calculation of q is incorrect.
+Or in a fancy tile plot:
+
+```{r}
+library(ggplot2)
+ggplot(df) + 
+  geom_tile(aes(as.factor(n_nu_events), as.factor(n_mb_taxa), fill = q)) +
+  scale_fill_gradient(low="red", high="green")
+```
+
+NOTE: At the moment, the tile plot shows the calculation of $q$ is incorrect.  
