@@ -16,11 +16,23 @@ knitr::opts_chunk$set(
 )
 ```
 
+# Goal
+
 This vignette creates the parameter sets used in the razzo project.
 
-```{r}
-library(ggplot2)
-```
+ * Symbols
+ * Setup
+ 1. number of extant taxa
+ 2. fraction of the taxa extinct
+ 3. fraction of the taxa created by the MB process
+ 4. MB regimes: calculate $q$
+ 5. fraction of the taxa created by the BD process
+ 6. speciation rate $\lambda$
+ 7. number of extinct taxa
+ 8. extinction rate $\mu$
+ 9. calculating $\nu$
+ * Conclusion
+ * Data verification
 
 ## Symbols
 
@@ -41,6 +53,12 @@ $n_{\nu}$|`n_nu_events`|Number of triggered co-occurent speciation events
 $\lambda$|`lambda`|Per-lineage (single-birth) speciation rate
 $\mu$|`mu`|Per-lineage extinction rate
 $T$|`crown_age`|Crown age
+
+## Setup
+
+```{r}
+library(ggplot2)
+```
 
 ```{r}
 crown_age <- 15
@@ -67,8 +85,14 @@ Now we can derive the total number of (extant and extinct) taxa $N$,
 using survival fraction $f_{\star}$:
 
 $$
-f_{\star} = 1 - f_{\dagger} \\
-n = N f_{\star} \\
+f_{\star} = 1 - f_{\dagger}
+$$
+
+$$
+n = N f_{\star}
+$$
+
+$$
 N = \frac{n}{f_{\star}} = \frac{n}{1 - f_{\dagger}}
 $$
 
@@ -76,7 +100,7 @@ $$
 df <- expand.grid(n_extant_taxa = n_extant_taxas, f_extinct = f_exinctses)
 df$n_taxa <- df$n_extant_taxa / (1.0 - df$f_extinct)
 df$n_extinct_taxa <- df$n_taxa - df$n_extant_taxa 
-knitr::kable(df)
+knitr::kable(head(df))
 ```
 
 ## 3. fraction of the taxa created by the MB process
@@ -95,7 +119,7 @@ df <- expand.grid(
 )
 df$n_taxa <- df$n_extant_taxa / (1.0 - df$f_extinct)
 df$n_mb_taxa <- df$f_mb * df$n_taxa
-knitr::kable(df)
+knitr::kable(head(df))
 ```
 
 ## 4. MB regimes: calculate $q$
@@ -125,7 +149,10 @@ We can calculate the minimal number of events we need, rounded up to
 the nearest integer:
 
 $$
-N = 2^{n_{\nu}} \\
+N = 2^{n_{\nu}}
+$$
+
+$$
 n_{\nu} = \left \lceil{\frac{log(N)}{log(2)}}\right \rceil
 $$
 
@@ -152,17 +179,6 @@ N_{\mathbb{M}} = 2 (1.0 + q)^{n_{\nu}}
 $$
 
 Because we start with two taxa, $N_{\mathbb{M}}$ can never become less than 2.
-This equation is reasonable, for known values of $q$ and number of 
-co-occurring speciation events $n_{\nu}$:
-
-```{r}
-df <- expand.grid(q = c(0.0, 0.5, 1.0), n_nu_events = c(1, 2, 3, 4, 16))
-df$n_mb_taxa <- NA
-for (i in seq_along(df$n_mb_taxa)) {
-  df$n_mb_taxa[i] <- as.integer(2.0 * ((1.0 + df$q[i]) ^ df$n_nu_events[i]))
-}
-knitr::kable(df)
-```
 
 In the current context, we known the number of MB taxa that must be
 generated $N_{\mathbb{M}}$ and the number of co-occurring speciation events $n_{\nu}$.
@@ -183,7 +199,8 @@ $$
 Or plotting it in Maxima:
 
 ```
-f(n, N) := rhs(solve(N = 2 * ((1 + q) ^ n), q)[1]); plot3d(f(n, N), [n, 9, 16], [N, 15, 500], [zlabel, "q"]);
+f(n, N) := rhs(solve(N = 2 * ((1 + q) ^ n), q)[1]);
+plot3d(f(n, N), [n, 9, 16], [N, 15, 500], [zlabel, "q"]);
 ```
 
 ![q plotted in Maxima](parameters_q.png)
@@ -229,7 +246,7 @@ df$q <- NA
 for (i in seq_along(df$q)) {
   df$q[i] <- calc_q(n_nu_events = df$n_nu_events[i], n_mb_taxa = df$n_mb_taxa[i])
 }
-knitr::kable(df)
+knitr::kable(head(df))
 ```
 
 Or display the $q$ as a tile plot:
@@ -241,12 +258,17 @@ ggplot(df) +
 ```
 
 
-## 4. fraction of the taxa created by the BD process
+## 5. fraction of the taxa created by the BD process
 
-The number of taxa created by the BD process is simply:
+The number of taxa created by the BD process $N_{\mathbb{B}}$ has a simple
+relation with the the total number of (extinct and extant) taxa $N$
+and the number of taxa created by the MB process $N_{\mathbb{M}}$:
 
 $$
-N = N_{\mathbb{M}} + N_{\mathbb{B}} \\
+N = N_{\mathbb{M}} + N_{\mathbb{B}}
+$$
+
+$$
 N_{\mathbb{B}} = N - N_{\mathbb{M}}
 $$
 
@@ -254,10 +276,10 @@ So the number of (extinct and extant) species $N_{\mathbb{B}}$ created is:
 
 ```{r}
 df$n_bd_taxa <- df$n_taxa - df$n_mb_taxa
-knitr::kable(df)
+knitr::kable(head(df))
 ```
 
-## 5. speciation rate $\lambda$
+## 6. speciation rate $\lambda$
 
 The number of (extinct and extant) species $N_{\mathbb{B}}$ created is 
 dependent on the initial number of lineages (which is two),
@@ -270,8 +292,14 @@ $$
 Solving this for per-lineage speciation rate $\lambda$:
 
 $$
-log(\frac{N_{\mathbb{B}}}{2}) = \lambda \cdot log(T) \\
-\frac{log(\frac{N_{\mathbb{B}}}{2})}{log(T)} = \lambda \\
+log(\frac{N_{\mathbb{B}}}{2}) = \lambda \cdot log(T)
+$$
+
+$$
+\frac{log(\frac{N_{\mathbb{B}}}{2})}{log(T)} = \lambda
+$$
+
+$$
 \lambda = \log_T(\frac{N_{\mathbb{B}}}{2})
 $$
 
@@ -290,23 +318,27 @@ calc_lambda <- function(n_bd_taxa, crown_age) {
 }
 ```
 
+Calculate the $\lambda$s:
 
 ```{r}
 df$lambda <- NA
 for (i in seq_along(df$lambda)) {
   df$lambda[i] <- calc_lambda(n_bd_taxa = df$n_bd_taxa[i], crown_age = crown_age)
 }
-knitr::kable(df)
+knitr::kable(head(df))
 ```
 
+## 7. number of extinct taxa
 
-
-## 6. number of extinct taxa
-
-The number of taxa gone extinct is simply:
+The number of taxa gone extinct $N_{\dagger}$ has a simple
+ralationship to the total number of (extinct and extant) taxa $N$ 
+and the extant taxa $N_{\star}:
 
 $$
-N = N_{\star} + N_{\dagger} \\
+N = N_{\star} + N_{\dagger}
+$$
+
+$$
 N_{\dagger} = N - N_{\star}
 $$
 
@@ -314,11 +346,11 @@ So the number of extinct taxa $N_{\dagger}$ is:
 
 ```{r}
 df$n_extinct_taxa <- df$n_taxa - df$n_extant_taxa
-knitr::kable(df)
+knitr::kable(head(df))
 ```
 
 
-## 7. extinction rate $\mu$
+## 8. extinction rate $\mu$
 
 The number of extinct species $N_{\dagger}$ created is 
 dependent on the initial number of lineages (which is two),
@@ -331,8 +363,14 @@ $$
 Solving this for per-lineage speciation rate $\mu$:
 
 $$
-log(\frac{N_{\dagger}}{2}) = \mu \cdot log(T) \\
-\frac{log(\frac{N_{\dagger}}{2})}{log(T)} = \mu \\
+log(\frac{N_{\dagger}}{2}) = \mu \cdot log(T)
+$$
+
+$$
+\frac{log(\frac{N_{\dagger}}{2})}{log(T)} = \mu
+$$
+
+$$
 \mu = \log_T(\frac{N_{\dagger}}{2})
 $$
 
@@ -357,13 +395,13 @@ df$mu <- NA
 for (i in seq_along(df$mu)) {
   df$mu[i] <- calc_mu(n_extinct_taxa = df$n_extinct_taxa[i], crown_age = crown_age)
 }
-knitr::kable(df)
+knitr::kable(head(df))
 ```
 
 
-## 8. calculating $\nu$
+## 9. calculating $\nu$
 
-$nu$ must have such a value that the desired number of MB events $n_{\nu}$
+$\nu$ must have such a value that the desired number of MB events $n_{\nu}$
 is attained.
 
 There is a simple relation between the rate at which a co-occuring
@@ -376,7 +414,6 @@ $$
 Solving this for co-occuring speciation rate $\nu$:
 
 $$
-n_{\nu} = \nu \cdot T \\
 \nu = \frac{n_{\nu}}{T} 
 $$
 
@@ -385,7 +422,7 @@ df$nu <- NA
 for (i in seq_along(df$nu)) {
   df$nu[i] <- df$n_nu_events[i] / crown_age
 }
-knitr::kable(df)
+knitr::kable(head(df))
 ```
 
 ## Conclusion
@@ -394,7 +431,13 @@ There you have it, all simulation parameters!
 
 ```{r}
 knitr::kable(
-  dplyr::select(df, c("n_extant_taxa", "f_extinct", "f_mb", "n_nu_events", "lambda", "mu", "nu", "q"))
+  dplyr::select(
+    df, 
+    c(
+      "n_extant_taxa", "f_extinct", "f_mb", "n_nu_events", 
+      "lambda", "mu", "nu", "q"
+    )
+  )
 )
 ```
 
