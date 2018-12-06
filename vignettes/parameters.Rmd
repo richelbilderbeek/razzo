@@ -18,7 +18,21 @@ knitr::opts_chunk$set(
 
 # Goal
 
-This vignette creates the parameter sets used in the razzo project.
+From
+
+ * a desired number of extant taxa ($n$)
+ * a desired fraction of taxa that goes extinct ($f_{\dagger}$)
+ * a desired fraction of taxa formed by the MB process ($f_{\mathbb{M}}$)
+ * a desired MB regime ($n_{\nu}$)
+
+To derive the MBD parameters
+
+ * speciation rate $\lambda$ 
+ * extinction rate $\mu$ 
+ * rate at which a co-occuring speciation event in triggered $\nu$
+ * fraction of species that speciate during such a co-occurring speciation event $q$
+
+## Overview
 
  * Symbols
  * Setup
@@ -27,6 +41,7 @@ This vignette creates the parameter sets used in the razzo project.
  3. fraction of the taxa created by the MB process
  4. MB regimes: calculate $q$
  5. fraction of the taxa created by the BD process
+ * Further derivation of the MBD parameters
  6. speciation rate $\lambda$
  7. number of extinct taxa
  8. extinction rate $\mu$
@@ -41,7 +56,7 @@ Symbol|Code|Description
 $n$|`n_taxa`|Number of extant and extinct taxa
 $N$|`n_extant_taxa`|Number of extant taxa
 $f_{\star}$|`f_extant`|Fraction of taxa that survives and remains extant
-$f_{\dagger}$|`f_extinct`|Fraction of taxa that become extinct
+$f_{\dagger}$|`f_extinct`|Fraction of taxa that goes extinct
 $f_{\mathbb{M}}$|`f_mb`|Fraction of extinct and extant taxa formed by the MB process
 $f_{\mathbb{B}}$|`f_bd`|Fraction of extinct and extant taxa formed by the single-birth process
 $N_{\mathbb{M}}$|`n_mb_taxa`|Number of extant and extinct taxa formed by the MB process
@@ -66,16 +81,24 @@ crown_age <- 15
 
 ## 1. number of extant taxa
 
-We pick phylogenies on the number of extant taxa $n$
+From the biological parameters derived here,
+we will simulate phylogenies and only keep those
+with the desired number of extant taxa $n$.
 
 ```{r}
 n_extant_taxas <- c(60, 120, 240)
 ```
 
+These are values close to 50, 100, 200, 
+yet these play better with the next sections, 
+in which the fractions of extinction $f_{\dagger}$ and
+MB-generated taxa $f_{\mathbb{M}}$ are chosen.
+
 ## 2. fraction of the taxa extinct
 
-Instead of using an extinction rate, we use a fraction of the 
-taxa that went extinct before the reaching the present $f_{\dagger}$
+We pick a desired strength of extinction.
+Instead of using an extinction rate, 
+we use a fraction of the taxa that went extinct before the reaching the present $f_{\dagger}$.
 
 ```{r}
 f_exinctses <- c(0.0, 0.25, 0.5) # Gollumese plural
@@ -105,6 +128,9 @@ knitr::kable(head(df))
 
 ## 3. fraction of the taxa created by the MB process
 
+We pick a desired strength of MB-ness.
+To do so, we set a desired fraction of taxa created by the MB process $f_{\mathbb{M}}$.
+
 ```{r}
 f_mbs <- c(0.0, 0.25, 0.50, 0.75, 1.0)
 ```
@@ -124,6 +150,7 @@ knitr::kable(head(df))
 
 ## 4. MB regimes: calculate $q$
 
+We pick a desired MB regime. 
 There are three MB regimes, in which the co-occuring speciation events are:
 
 
@@ -257,6 +284,12 @@ ggplot(df) +
   scale_fill_gradientn(colours = rainbow(100), limits = c(0.0, 1.0))
 ```
 
+## Further derivation of the MBD parameters
+
+Up until now, we determined the simulations' setups.
+From there, we can derive the rest of the MBD parameters.
+
+The order in which this is done is unimportant.
 
 ## 5. fraction of the taxa created by the BD process
 
@@ -332,7 +365,7 @@ knitr::kable(head(df))
 
 The number of taxa gone extinct $N_{\dagger}$ has a simple
 ralationship to the total number of (extinct and extant) taxa $N$ 
-and the extant taxa $N_{\star}:
+and the extant taxa $N_{\star}$:
 
 $$
 N = N_{\star} + N_{\dagger}
@@ -346,7 +379,14 @@ So the number of extinct taxa $N_{\dagger}$ is:
 
 ```{r}
 df$n_extinct_taxa <- df$n_taxa - df$n_extant_taxa
-knitr::kable(head(df))
+
+knitr::kable(
+  head(
+    dplyr::select(
+      df, c("n_extant_taxa", "n_taxa", "f_extinct", "n_extinct_taxa")
+    )
+  )
+)
 ```
 
 
@@ -395,7 +435,14 @@ df$mu <- NA
 for (i in seq_along(df$mu)) {
   df$mu[i] <- calc_mu(n_extinct_taxa = df$n_extinct_taxa[i], crown_age = crown_age)
 }
-knitr::kable(head(df))
+
+knitr::kable(
+  head(
+    dplyr::select(
+      df, c("n_extant_taxa", "n_taxa", "f_extinct", "n_extinct_taxa", "mu")
+    )
+  )
+)
 ```
 
 
@@ -422,12 +469,32 @@ df$nu <- NA
 for (i in seq_along(df$nu)) {
   df$nu[i] <- df$n_nu_events[i] / crown_age
 }
-knitr::kable(head(df))
+knitr::kable(
+  head(
+    dplyr::select(
+      df, c("n_extant_taxa", "n_mb_taxa", "n_nu_events", "q", "nu")
+    )
+  )
+)
 ```
 
 ## Conclusion
 
 There you have it, all simulation parameters!
+
+From
+
+ * a desired number of extant taxa ($n$)
+ * a desired fraction of taxa that goes extinct ($f_{\dagger}$)
+ * a desired fraction of taxa formed by the MB process ($f_{\mathbb{M}}$)
+ * a desired MB regime ($n_{\nu}$)
+
+we derive the MBD parameters
+
+ * speciation rate $\lambda$ 
+ * extinction rate $\mu$ 
+ * rate at which a co-occuring speciation event in triggered $\nu$
+ * fraction of species that speciate during such a co-occurring speciation event $q$
 
 ```{r}
 knitr::kable(
