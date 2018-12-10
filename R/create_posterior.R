@@ -67,7 +67,7 @@ create_posterior <- function(
       chain_length = chain_length,
       store_every = sample_interval
     ),
-    site_models = site_model,
+    site_model = site_model,
     clock_model = clock_model_function(),
     tree_prior = beautier::create_bd_tree_prior(),
     mrca_prior = beautier::create_mrca_prior(
