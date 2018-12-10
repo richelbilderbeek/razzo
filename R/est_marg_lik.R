@@ -72,7 +72,7 @@ est_marg_lik <- function(
   }
 
   ns <- babette::bbt_run(
-    fasta_filenames = fasta_filename,
+    fasta_filename = fasta_filename,
     mcmc = beautier::create_mcmc_nested_sampling(
       chain_length = chain_length,
       store_every = sample_interval,
@@ -80,10 +80,10 @@ est_marg_lik <- function(
       sub_chain_length = sub_chain_length,
       epsilon = 1e-13 # epsilon
     ),
-    site_models = site_model,
-    clock_models = clock_model_function(),
-    tree_priors = beautier::create_bd_tree_prior(),
-    mrca_priors = beautier::create_mrca_prior(
+    site_model = site_model,
+    clock_model = clock_model_function(),
+    tree_prior = beautier::create_bd_tree_prior(),
+    mrca_prior = beautier::create_mrca_prior(
       alignment_id = beautier::get_alignment_id(fasta_filename),
       taxa_names = beautier::get_taxa_names(fasta_filename),
       is_monophyletic = TRUE,
