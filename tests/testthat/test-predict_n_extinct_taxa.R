@@ -9,17 +9,22 @@ test_that("use", {
   q <- 0.4
   crown_age <- 15.0
 
-  n_baseline <- predict_n_extinct_taxa(pars = c(lambda, mu, nu, q), crown_age = crown_age)
+  n_baseline <- predict_n_extinct_taxa(
+    pars = c(lambda, mu, nu, q), crown_age = crown_age)
 
   # Expect more extinct taxa for higher speciation rate
-  testit::assert(baseline < predict_n_extinct_taxa(pars = c(lambda * 2.0, mu, nu, q), crown_age = crown_age))
+  testit::assert(baseline < predict_n_extinct_taxa(
+    pars = c(lambda * 2.0, mu, nu, q), crown_age = crown_age))
 
   # Expect more extinct taxa for lower extinction rate
-  testit::assert(baseline < predict_n_extinct_taxa(pars = c(lambda, mu * 2.0, nu, q), crown_age = crown_age))
+  testit::assert(baseline < predict_n_extinct_taxa(
+    pars = c(lambda, mu * 2.0, nu, q), crown_age = crown_age))
 
   # Expect more extinct taxa for higher number of MBD events
-  testit::assert(baseline < predict_n_extinct_taxa(pars = c(lambda, mu, nu * 2.0, q), crown_age = crown_age))
+  testit::assert(baseline < predict_n_extinct_taxa(
+    pars = c(lambda, mu, nu * 2.0, q), crown_age = crown_age))
 
   # Expect more extinct taxa for more intense MBD events
-  testit::assert(baseline < predict_n_extinct_taxa(pars = c(lambda, mu, nu, q * 2.0), crown_age = crown_age))
+  testit::assert(baseline < predict_n_extinct_taxa(
+    pars = c(lambda, mu, nu, q * 2.0), crown_age = crown_age))
 })

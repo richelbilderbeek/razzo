@@ -7,8 +7,7 @@
 #' time there were only two lineages
 #' @return the expected number of extinct taxa
 #' @author Richel J.C. Bilderbeek
-predict_n_extinct_taxa <- function(pars, crown_age)
-{
+predict_n_extinct_taxa <- function(pars, crown_age) {
   testit::assert(length(pars) == 4)
   lambda <- pars[1]
   mu <- pars[2]
