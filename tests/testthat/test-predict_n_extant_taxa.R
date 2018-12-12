@@ -2,7 +2,7 @@ context("test-predict_n_extant_taxa")
 
 test_that("use", {
 
-  wkip("WIP")
+  skip("WIP")
 
   # Use MBD default interface
   lambda <- 0.5

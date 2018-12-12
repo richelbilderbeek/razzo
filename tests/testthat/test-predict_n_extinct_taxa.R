@@ -2,7 +2,7 @@ context("test-predict_n_extinct_taxa")
 
 test_that("use", {
 
-  wkip("WIP")
+  skip("WIP")
   lambda <- 0.5
   mu <- 0.2
   nu <- 0.5
