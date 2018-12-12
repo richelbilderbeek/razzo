@@ -11,7 +11,7 @@ predict_n_extant_taxa(pars, crown_age)
 \item{pars}{numeric vector of length four, with values for
 MBD parameters of lambda, mu, nu and q respectively}
 
-\item{the}{crown age, time between the present and the
+\item{crown_age}{the crown age, time between the present and the
 time there were only two lineages}
 }
 \value{

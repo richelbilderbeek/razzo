@@ -2,7 +2,7 @@
 #' at the present from the MBD parameters
 #' @param pars numeric vector of length four, with values for
 #' MBD parameters of lambda, mu, nu and q respectively
-#' @param the crown age, time between the present and the
+#' @param crown_age the crown age, time between the present and the
 #' time there were only two lineages
 #' @return the expected number of extant taxa
 #' @author Richel J.C. Bilderbeek
