@@ -38,3 +38,6 @@ vignettes/*.trees
 example.nex
 vignettes/razzo_pipeline_cache/
 inst/extdata/razzo_project/results/
+vignettes/*.R
+vignettes/*.html
+vignettes/*.pdf
