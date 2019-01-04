@@ -34,7 +34,7 @@ devtools::install_github("ropensci/beautier", quiet = TRUE)
 devtools::install_github("ropensci/tracerer", quiet = TRUE)
 devtools::install_github("ropensci/beastier", quiet = TRUE)
 devtools::install_github("ropensci/mauricer", quiet = TRUE)
-devtools::install_github("richelbilderbeek/babette", quiet = TRUE)
+devtools::install_github("ropensci/babette", quiet = TRUE)
 ```
 
 Load the libraries needed:
