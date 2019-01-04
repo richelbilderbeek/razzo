@@ -33,7 +33,7 @@ if (!require(mbd)) {devtools::install_github("Giappo/mbd", quiet = TRUE)}
 devtools::install_github("ropensci/beautier", quiet = TRUE)
 devtools::install_github("ropensci/tracerer", quiet = TRUE)
 devtools::install_github("ropensci/beastier", quiet = TRUE)
-devtools::install_github("richelbilderbeek/mauricer", quiet = TRUE)
+devtools::install_github("ropensci/mauricer", quiet = TRUE)
 devtools::install_github("richelbilderbeek/babette", quiet = TRUE)
 ```
 
