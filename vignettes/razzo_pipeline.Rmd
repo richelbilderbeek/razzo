@@ -30,7 +30,7 @@ Update our dependencies:
 ```{r message=FALSE, install_dependencies}
 if (!require(ape)) {install.packages("ape")}
 if (!require(mbd)) {devtools::install_github("Giappo/mbd", quiet = TRUE)}
-devtools::install_github("richelbilderbeek/beautier", quiet = TRUE)
+devtools::install_github("ropensci/beautier", quiet = TRUE)
 devtools::install_github("richelbilderbeek/tracerer", quiet = TRUE)
 devtools::install_github("richelbilderbeek/beastier", quiet = TRUE)
 devtools::install_github("richelbilderbeek/mauricer", quiet = TRUE)
