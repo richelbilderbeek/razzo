@@ -35,7 +35,7 @@ build_script:
   - travis-tool.sh install_github xl0418/dododo
   - travis-tool.sh install_deps
   - Rscript -e "beastier::install_beast2()"
-  - Rscript -e 'mauricer::mrc_install("NS")'
+  - Rscript -e 'mauricer::install_beast2_pkg("NS")'
 
 test_script:
   - travis-tool.sh run_tests
