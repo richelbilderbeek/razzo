@@ -9,7 +9,7 @@ create_mbd_marg_lik_file <- function(
 ) {
   # Check environment
   testit::assert(beastier::is_beast2_installed())
-  testit::assert(mauricer::mrc_is_installed("NS"))
+  testit::assert(mauricer::is_beast2_pkg_installed("NS"))
   testit::assert(rappdirs::app_dir()$os != "win")
 
   # Check input

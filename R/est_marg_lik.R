@@ -26,7 +26,7 @@ est_marg_lik <- function(
   }
 
   testit::assert(beastier::is_beast2_installed())
-  testit::assert(mauricer::mrc_is_installed("NS"))
+  testit::assert(mauricer::is_beast2_pkg_installed("NS"))
   testit::assert(rappdirs::app_dir()$os != "win")
 
   # Save the alignment to file
