@@ -19,9 +19,9 @@ r_github_packages:
   - ropensci/babette
   - richelbilderbeek/ribir
   - richelbilderbeek/mcbette
+  - Giappo/mbd
   - richelbilderbeek/becosys
   - richelbilderbeek/pirouette
-  - Giappo/mbd
   - xl0418/dododo
 
 before_install:
