@@ -13,11 +13,13 @@ r_github_packages:
   - MangoTheCat/goodpractice
   - ropensci/spelling
   - ropensci/beautier
+  - ropensci/tracerer
   - ropensci/beastier
   - ropensci/mauricer
-  - ropensci/tracerer
   - ropensci/babette
   - richelbilderbeek/ribir
+  - richelbilderbeek/mcbette
+  - richelbilderbeek/becosys
   - richelbilderbeek/pirouette
   - Giappo/mbd
   - xl0418/dododo
@@ -26,6 +28,7 @@ before_install:
   - sudo add-apt-repository -y ppa:opencpu/imagemagick
   - sudo apt-get update
   - sudo apt-get install -y libmagick++-dev
+  - sudo apt install -qq libmpfr-dev
 
 before_script:
   - Rscript -e "beastier::install_beast2()"
