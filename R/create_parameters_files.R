@@ -36,29 +36,35 @@ create_full_parameters_files <- function(
   q_interval <- c(0.10, 0.10) # Testing
   seed_interval <- 1:2
   crown_age <- 15
-  sequence_length <- 100 # Testing
-  sample_interval <- 1000
-  chain_length <- 1e+6 # parameter L_c
-  sub_chain_length <- 1000 # parameter L_sc
-  clock_model_interval <- get_clock_models() # nolint internal function
-  site_model_interval <- get_site_models() # nolint internal function
+  twinning_params <- pirouette::create_twinning_params()
+  alignment_params <- pirouette::create_alignment_params(
+    mutation_rate = 0.01
+  )
+  model_select_params <- pirouette::create_gen_model_select_param(
+    alignment_params = alignment_params
+  )
+  inference_params <- pirouette::create_inference_params(
+    mcmc = beautier::create_mcmc(chain_length = 5000, store_every = 1000)
+  )
 
   lambda_interval <- unique(lambda_interval)
   mu_interval     <- unique(mu_interval)
   nu_interval     <- unique(nu_interval)
   q_interval      <- unique(q_interval)
+  cond_interval   <- unique(cond_interval)
 
   l_pars <- length(lambda_interval) *
     length(mu_interval) *
     length(nu_interval) *
-    length(q_interval)
+    length(q_interval) *
+    length(cond_interval)
 
   data_folder_name <- "data"
 
   # Do not warn if the folder already exists
   dir.create(
     file.path(project_folder_name, data_folder_name),
-    showWarnings = FALSE
+    showWarnings = TRUE
   )
   testit::assert(dir.exists(file.path(project_folder_name, data_folder_name)))
   parameters_filenames <- rep(NA, l_pars)
@@ -67,51 +73,49 @@ create_full_parameters_files <- function(
     for (mu in mu_interval) {
       for (nu in nu_interval) {
         for (q in q_interval) {
-          parsettings_name <- paste0(lambda, "-", mu, "-", nu, "-", q)
-          dir.create(file.path(project_folder_name,
-                               data_folder_name,
-                               parsettings_name),
-                     showWarnings = FALSE)
-          for (seed in seed_interval) {
-            seed_folder <- file.path(
-              project_folder_name,
-              data_folder_name,
-              parsettings_name,
-              seed
+          for (cond in cond_interval) {
+            parsettings_name <- paste0(lambda, "-", mu, "-", nu, "-", q)
+            dir.create(
+              file.path(
+                project_folder_name,
+                data_folder_name,
+                parsettings_name
+              ),
+              showWarnings = FALSE
             )
-            dir.create(file.path(seed_folder),
-                       showWarnings = FALSE)
-            for (clock_model in clock_model_interval) {
-              for (site_model in site_model_interval) {
-                model_folder <- file.path(
-                  seed_folder,
-                  paste0(clock_model, "-", site_model)
-                )
-                dir.create(file.path(model_folder),
-                           showWarnings = FALSE)
-
-                parameters <- create_params(
-                  lambda = lambda,
-                  mu = mu,
-                  nu = nu,
-                  q = q,
-                  seed = seed,
-                  crown_age = crown_age,
-                  sequence_length = sequence_length,
-                  sample_interval = sample_interval,
-                  chain_length = chain_length,
-                  sub_chain_length = sub_chain_length,
-                  clock_model = clock_model,
-                  site_model = site_model
-                )
-
-                parameters_filenames[i] <- file.path(
-                  model_folder,
-                  "parameters.csv"
-                )
-                utils::write.csv(parameters, file = parameters_filenames[i])
-                i <- i + 1
-              }
+            for (seed in seed_interval) {
+              seed_folder <- file.path(
+                project_folder_name,
+                data_folder_name,
+                parsettings_name,
+                seed
+              )
+              dir.create(
+                file.path(seed_folder),
+                showWarnings = FALSE
+              )
+              mbd_params <- create_mbd_params(
+                lambda = lambda,
+                mu = mu,
+                nu = nu,
+                q = q,
+                cond = cond,
+                crown_age = crown_age,
+                seed = seed
+              )
+              parameters <- create_razzo_params(
+                mbd_params = mbd_params,
+                twinning_params = twinning_params,
+                alignment_params = alignment_params,
+                inference_params = inference_params,
+                model_select_params = model_select_params
+              )
+              parameters_filenames[i] <- file.path(
+                seed_folder,
+                "parameters.csv"
+              )
+              utils::write.csv(parameters, file = parameters_filenames[i])
+              i <- i + 1
             }
           }
         }
@@ -136,31 +140,38 @@ create_test_parameters_files <- function(
   mu_interval <- c(0.15, 0.15)
   nu_interval <- c(1.0, 1.0) # Testing
   q_interval <- c(0.10, 0.10) # Testing
+  cond_interval <- 1
   seed_interval <- 1:2
   crown_age <- 15
-  sequence_length <- 100 # Testing
-  sample_interval <- 1000
-  chain_length <- 3000 # Testing
-  sub_chain_length <- 1000
-  clock_model_interval <- get_clock_models() # nolint internal function
-  site_model_interval <- get_site_models() # nolint internal function
+  twinning_params <- pirouette::create_twinning_params()
+  alignment_params <- pirouette::create_alignment_params(
+    mutation_rate = 0.01
+  )
+  model_select_params <- pirouette::create_gen_model_select_param(
+    alignment_params = alignment_params
+  )
+  inference_params <- pirouette::create_inference_params(
+    mcmc = beautier::create_mcmc(chain_length = 5000, store_every = 1000)
+  )
 
   lambda_interval <- unique(lambda_interval)
   mu_interval     <- unique(mu_interval)
   nu_interval     <- unique(nu_interval)
   q_interval      <- unique(q_interval)
+  cond_interval   <- unique(cond_interval)
 
   l_pars <- length(lambda_interval) *
     length(mu_interval) *
     length(nu_interval) *
-    length(q_interval)
+    length(q_interval) *
+    length(cond_interval)
 
   data_folder_name <- "data"
 
   # Do not warn if the folder already exists
   dir.create(
     file.path(project_folder_name, data_folder_name),
-    showWarnings = FALSE
+    showWarnings = TRUE
   )
   testit::assert(dir.exists(file.path(project_folder_name, data_folder_name)))
   parameters_filenames <- rep(NA, l_pars)
@@ -169,51 +180,49 @@ create_test_parameters_files <- function(
     for (mu in mu_interval) {
       for (nu in nu_interval) {
         for (q in q_interval) {
-          parsettings_name <- paste0(lambda, "-", mu, "-", nu, "-", q)
-          dir.create(file.path(project_folder_name,
-                               data_folder_name,
-                               parsettings_name),
-                     showWarnings = FALSE)
-          for (seed in seed_interval) {
-            seed_folder <- file.path(
-              project_folder_name,
-              data_folder_name,
-              parsettings_name,
-              seed
+          for (cond in cond_interval) {
+            parsettings_name <- paste0(lambda, "-", mu, "-", nu, "-", q)
+            dir.create(
+              file.path(
+                project_folder_name,
+                data_folder_name,
+                parsettings_name
+              ),
+              showWarnings = FALSE
             )
-            dir.create(file.path(seed_folder),
-                       showWarnings = FALSE)
-            for (clock_model in clock_model_interval) {
-              for (site_model in site_model_interval) {
-                model_folder <- file.path(
-                  seed_folder,
-                  paste0(clock_model, "-", site_model)
-                )
-                dir.create(file.path(model_folder),
-                           showWarnings = FALSE)
-
-                parameters <- create_params(
-                  lambda = lambda,
-                  mu = mu,
-                  nu = nu,
-                  q = q,
-                  seed = seed,
-                  crown_age = crown_age,
-                  sequence_length = sequence_length,
-                  sample_interval = sample_interval,
-                  chain_length = chain_length,
-                  sub_chain_length = sub_chain_length,
-                  clock_model = clock_model,
-                  site_model = site_model
-                )
-
-                parameters_filenames[i] <- file.path(
-                  model_folder,
-                  "parameters.csv"
-                )
-                utils::write.csv(parameters, file = parameters_filenames[i])
-                i <- i + 1
-              }
+            for (seed in seed_interval) {
+              seed_folder <- file.path(
+                project_folder_name,
+                data_folder_name,
+                parsettings_name,
+                seed
+              )
+              dir.create(
+                file.path(seed_folder),
+                showWarnings = FALSE
+              )
+              mbd_params <- create_mbd_params(
+                lambda = lambda,
+                mu = mu,
+                nu = nu,
+                q = q,
+                cond = cond,
+                crown_age = crown_age,
+                seed = seed
+              )
+              parameters <- create_razzo_params(
+                mbd_params = mbd_params,
+                twinning_params = twinning_params,
+                alignment_params = alignment_params,
+                inference_params = inference_params,
+                model_select_params = model_select_params
+              )
+              parameters_filenames[i] <- file.path(
+                seed_folder,
+                "parameters.csv"
+              )
+              utils::write.csv(parameters, file = parameters_filenames[i])
+              i <- i + 1
             }
           }
         }
