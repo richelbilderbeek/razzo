@@ -13,13 +13,21 @@ run_razzo <- function(
   testit::assert(beastier::is_beast2_installed())
 
   # Simulate incipient species tree
-  # Note: if speciation rates are zero, PBD::mbd_sim will last forever
-  set.seed(razzo_params$tree_sim_rng_seed)
+  if (1 == 2) {
+    # Set MBD tree generation seed, #153
+    set.seed(razzo_params$misc_params$tree_sim_rng_seed)
+  }
   mbd_output <- becosys::bco_mbd_sim(
     mbd_params = razzo_params$mbd_params,
     crown_age = razzo_params$inference_params$mrca_prior$mrca_distr$mean$value
   )
   phylogeny <- mbd_output$reconstructed_tree
+  # Save phylogeny here, #152
+  if (1 == 2) {
+    ape::write.tree(
+      phy = phylogeny, file = razzo_params$misc_params$tree_filename
+    )
+  }
 
   # Let pirouette measure the error
   pirouette::pir_run(

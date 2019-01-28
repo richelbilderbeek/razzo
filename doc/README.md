@@ -66,17 +66,8 @@ require only filenames as arguments.
 
 Status|Description|Function name
 ---|---|---
-Done|Create parameter files|`create_parameters_files`
-Done|Create MBD tree file|`create_mbd_tree_file`
-Done|Create MBD alignment file|`create_mbd_alignment_file`
-Done|Create twin BD tree file|`create_bd_tree_file`
-Done|Create twin BD alignment file|`create_bd_alignment_file`
-Done|Create MBD posterior files|`create_mbd_posterior_files`
-Done|Create twin BD posterior files|`create_bd_posterior_files`
-Done|Create MBD nLTT file|`create_mbd_nltt_file`
-Done|Create twin BD nLTT file|`create_bd_nltt_file`
-Done|Create MBD marginal likelihood estimation file|`create_mbd_marg_lik_file`
-Done|Create twin BD marginal likelihood estimation file|`create_bd_marg_lik_file`
+?|Create parameter files|`create_parameters_files`
+?|Create all output files|`run_razzo_from_file`
 
 #### Data handling functions
 
@@ -87,17 +78,8 @@ They work on parsed data and are not intended to be called from a script
 
 Status|Description|Function name
 ---|---|---
-Draft|1. Create parameters|`create_parameters`
-Draft|2. Create MBD tree|`create_mbd_tree`
-Draft|3. Create BD tree|`create_bd_tree`
-Draft|4. Create MBD alignment|`create_mbd_alignment`
-Draft|5. Create BD alignment|`create_bd_alignment`
-Draft|6. Create MBD posterior|`mbd_create_posterior`
-Draft|7. Create BD posterior|`bd_create_posterior`
-Draft|8. Create MBD nLTT|`create_mbd_nltt`
-Draft|9. Create BD nLTT|`create_bd_nltt`
-Draft|10. Estimate MBD marginal likelihood|`est_marg_lik`
-Draft|11. Estimate BD marginal likelihood|`est_marg_lik`
+?|1. Create parameters|`create_parameters`
+?|2. Run the experiment|`run_razzo`
 
 ### Results creation
 
@@ -111,10 +93,10 @@ They are not intended to be called from a script
 
 Status|Description|Function name
 ---|---|---
-Done|Collect marginal likelihoods|`collect_marg_liks`
-Done|Collect effective sample sizes|`collect_esses`
-Done|Collect nLTT statistics|`collect_nltt_stats`
-Draft|12. Create figure 1|`create_fig_1`
+?|Collect marginal likelihoods|`collect_marg_liks`
+?|Collect effective sample sizes|`collect_esses`
+?|Collect nLTT statistics|`collect_nltt_stats`
+?|12. Create figure 1|`create_fig_1`
 
 #### File handling
 
@@ -124,7 +106,7 @@ require only the project folder's name as an argument.
 
 Status|Description|Function name
 ---|---|---
-Done|Collect marginal likelihoods|`create_marg_liks_file`
-Done|Collect effective sample sizes|`create_esses_file`
-Done|Create nLTT statistics file|`create_nltt_stats_file`
-Done|Create figure 1|`create_fig_1_file`
+?|Collect marginal likelihoods|`create_marg_liks_file`
+?|Collect effective sample sizes|`create_esses_file`
+?|Create nLTT statistics file|`create_nltt_stats_file`
+?|Create figure 1|`create_fig_1_file`

@@ -198,6 +198,15 @@ create_test_parameters_files <- function(
         seed
       )
       dir.create(file.path(seed_folder), showWarnings = FALSE)
+      alignment_params$fasta_filename <- file.path(
+        seed_folder, "mbd.fasta"
+      )
+      twinning_params$twin_tree_filename <- file.path(seed_folder, "bd.tree")
+      twinning_params$twin_alignment_filename <- file.path(
+        seed_folder, "bd.fasta"
+      )
+
+
       razzo_params <- create_razzo_params(
         mbd_params = mbd_params,
         twinning_params = twinning_params,
