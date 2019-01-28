@@ -22,7 +22,6 @@ r_github_packages:
   - Giappo/mbd
   - richelbilderbeek/becosys
   - richelbilderbeek/pirouette
-  - xl0418/dododo
 
 before_install:
   - sudo add-apt-repository -y ppa:opencpu/imagemagick
