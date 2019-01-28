@@ -17,8 +17,8 @@ In each of these folders, there are:
 
 Filename|Description|Created by
 -------------|---------------------------------------|--------------------------
-`parameters.csv`|the parameter file|`create_parameter_files`
-`mbd.tree`|the true MBD tree|`create_mbd_tree_file`
+`parameters.RDa`|the parameter file|`create_parameter_files`
+[TODO]`mbd.tree`|the true MBD tree|`create_mbd_tree_file`
 `mbd.fasta`|the true MBD alignment|`create_mbd_alignment_file`
 `bd.tree`|the twin BD tree|`create_bd_tree_file`
 `bd.fasta`|the twin BD alignment|`create_bd_alignment_file`
