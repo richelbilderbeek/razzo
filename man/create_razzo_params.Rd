@@ -7,7 +7,13 @@ Run one point of the experiment}
 \usage{
 create_razzo_params(mbd_params,
   twinning_params = pirouette::create_twinning_params(),
-  alignment_params, inference_params, model_select_params)
+  alignment_params, gen_model_select_params, best_model_select_params,
+  inference_params, sampling_method, misc_params)
+}
+\arguments{
+\item{misc_params}{additional parameters for razzo. They contain
+tree_filename to store the original given tree and mbd_sim_rng_seed for
+when an mbd tree is simulated}
 }
 \description{
 Create the parameters for one experiment.

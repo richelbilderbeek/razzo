@@ -20,7 +20,11 @@
 #' @param mbd_l_matrix the L matrix of an MBD tree
 #' @param mbd_mutation_rate the mutation rate when creating an alignment
 #'   from a MBD tree
+#' @param mbd_sim_rng_seed rng seed to simulate a mbd tree
 #' @param mbd_tree an MBD tree
+#' @param misc_params additional parameters for razzo. They contain
+#'   tree_filename to store the original given tree and mbd_sim_rng_seed for
+#'   when an mbd tree is simulated
 #' @param mu per-species extinction rate
 #' @param mutation_rate something
 #' @param nu the rate at which a multiple-birth specation is triggered
@@ -73,7 +77,9 @@ default_params_doc <- function(
   lambda,
   mbd_l_matrix,
   mbd_mutation_rate,
+  mbd_sim_rng_seed,
   mbd_tree,
+  misc_params,
   mu,
   mutation_rate,
   nu,

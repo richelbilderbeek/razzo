@@ -12,7 +12,7 @@ create_mbd_params <- function(
   crown_age,
   seed
 ) {
-  list(
+  mbd_params <- list(
     lambda = lambda,
     mu = mu,
     nu = nu,
@@ -21,4 +21,6 @@ create_mbd_params <- function(
     crown_age = crown_age,
     seed = seed
   )
+  becosys::check_mbd_params(mbd_params) # nolint razzo function
+  mbd_params
 }

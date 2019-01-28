@@ -8,11 +8,12 @@ documentation.}
 default_params_doc(alignment, bd_mutation_rate, bd_tree, bd_tree_filename,
   brts, chain_length, clock_model, crown_age, fasta_filename, filename,
   folder_name, init_speciation_rate, init_extinction_rate, lambda,
-  mbd_l_matrix, mbd_mutation_rate, mbd_tree, mu, mutation_rate, nu,
-  nu_events, parameters, parameter_filename, parameters_filename, phylo,
-  posterior_trees, precision, project_folder_name, q, sample_interval,
-  seed, sequence_length, sim_pars, sim_phylo, site_model, sub_chain_length,
-  tree, tree_filename, trees_filename, verbose)
+  mbd_l_matrix, mbd_mutation_rate, mbd_sim_rng_seed, mbd_tree, misc_params,
+  mu, mutation_rate, nu, nu_events, parameters, parameter_filename,
+  parameters_filename, phylo, posterior_trees, precision,
+  project_folder_name, q, sample_interval, seed, sequence_length, sim_pars,
+  sim_phylo, site_model, sub_chain_length, tree, tree_filename,
+  trees_filename, verbose)
 }
 \arguments{
 \item{alignment}{a DNA alignment}
@@ -51,7 +52,13 @@ to be used for the inference. Valid names are 'strict' and 'rln'.}
 \item{mbd_mutation_rate}{the mutation rate when creating an alignment
 from a MBD tree}
 
+\item{mbd_sim_rng_seed}{rng seed to simulate a mbd tree}
+
 \item{mbd_tree}{an MBD tree}
+
+\item{misc_params}{additional parameters for razzo. They contain
+tree_filename to store the original given tree and mbd_sim_rng_seed for
+when an mbd tree is simulated}
 
 \item{mu}{per-species extinction rate}
 
