@@ -1,0 +1,250 @@
+---
+title: "razzo pipeline"
+author: "Giovanni Laudanno and Richel J.C. Bilderbeek"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{razzo pipeline}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+  \usepackage[T1]{fontenc}
+  \usepackage{lmodern}
+---
+
+## Legend
+
+Abbreviation|Full
+---|---
+nLTT|normalized lineages through time
+BD|Birth Death Model
+MBD|Multiple Birth Death Model
+
+This is the pipeline to follow for the Razzo project. 
+
+Our aim is to compare two nLTT distributions related to two tree posteriors: one descending from MBD alignments and another one from BD alignments. Both posteriors are generated using a BD prior in BEAST.
+
+## Overview
+
+Update our dependencies:
+
+```{r message=FALSE, install_dependencies}
+if (!require(ape)) {install.packages("ape")}
+if (!require(mbd)) {devtools::install_github("Giappo/mbd", quiet = TRUE)}
+devtools::install_github("ropensci/beautier", quiet = TRUE)
+devtools::install_github("ropensci/tracerer", quiet = TRUE)
+devtools::install_github("ropensci/beastier", quiet = TRUE)
+devtools::install_github("ropensci/mauricer", quiet = TRUE)
+devtools::install_github("ropensci/babette", quiet = TRUE)
+devtools::install_github("richelbilderbeek/mcbette", quiet = TRUE)
+devtools::install_github("richelbilderbeek/pirouette", quiet = TRUE)
+```
+
+Load the libraries needed:
+
+```{r load_libraries}
+library(mbd)
+library(razzo)
+library(ggplot2)
+```
+
+We will work in this folder:
+
+```{r create_working_folder}
+super_folder_name <- tempdir()
+project_folder_name <- file.path(super_folder_name, "razzo_project") 
+dir.create(path = project_folder_name, recursive = TRUE, showWarnings = FALSE)
+```
+
+## Step 1: Create parameter files
+
+Here we create all testing parameter files, which are only a few:
+
+```{r create_parameter_files}
+parameters_filenames <- create_parameters_files(
+  project_folder_name = project_folder_name
+)
+```
+
+## Step 2: Run the parameter files
+
+```{r}
+for (i in seq_along(parameters_filenames)) {
+  parameters_filename <- parameters_filenames[i]
+  razzo::run_razzo_from_file(parameters_filename)
+}
+```
+
+## Step 3: figure 1
+
+```
+create_fig_1(project_folder_name = project_folder_name)
+```
+
+## Step 4: what is the effect of MBD on the error?
+
+The nLTT statistics of the BD tree shows the baseline error:
+the Bayesian analysis assumes BD, and that tree *is* BD.
+
+```
+mbd_nltts <- utils::read.csv(mbd_nltt_filenames[1])$x
+bd_nltts <- utils::read.csv(bd_nltt_filenames[1])$x
+
+df <- data.frame(
+  model = c(rep("MBD", length(mbd_nltts)), rep("BD", length(bd_nltts))),
+  nltt = c(mbd_nltts, bd_nltts),
+  stringsAsFactors = TRUE  
+)
+
+plot <- ggplot(
+  data = df,
+  aes(x = nltt, fill = model)
+) + ggplot2::scale_x_continuous(limits = c(0.0, 1.0))
+
+plot + geom_histogram(binwidth = 0.01, alpha = 0.5)
+plot + geom_density(alpha = 0.5)
+```
+
+
+## Step 5: measure Effective Sample Sizes
+
+We already had a sneak-peek at the ESSes.
+In this step, we measure the ESSes of all files and
+combine it into one file:
+
+```
+esses_filename <- create_esses_file(project_folder_name = project_folder_name)
+knitr::kable(utils::read.csv(esses_filename)[-1])
+```
+
+## Step 6: compare marginal likelihoods
+
+We already had a sneak-peek at the ESSes.
+In this step, we measure the ESSes of all files and
+combine it into one file:
+
+```
+if (rappdirs::app_dir()$os != "win") {
+  marg_liks_file <- create_marg_liks_file(
+    project_folder_name = project_folder_name
+  )
+  knitr::kable(utils::read.csv(marg_liks_file)[-1])
+}
+```
+
+# Appendix
+
+### First MBD tree:
+
+```
+ape::plot.phylo(ape::read.tree(file = mbd_tree_filenames[2]))
+```
+
+
+### First BD tree:
+
+```
+ape::plot.phylo(ape::read.tree(file = bd_tree_filenames[2]))
+```
+
+### First MBD alignment
+
+```
+image(ape::read.FASTA(file = mbd_alignment_filenames[1]))
+```
+
+### First BD alignment
+
+```
+image(ape::read.FASTA(file = bd_alignment_filenames[1]))
+```
+
+### First MBD posterior's trees
+
+```
+babette::plot_densitree(tracerer::parse_beast_trees(mbd_alignment_filenames[[1]][1]))
+```
+
+### First MBD posterior's ESSes
+
+```
+knitr::kable(
+  tracerer::calc_esses(
+    tracerer::parse_beast_log(mbd_alignment_filenames[[1]][2]), 
+    sample_interval = open_parameters_file(
+      parameters_filename[1]
+    )$sample_interval
+  )
+)
+```
+
+
+### First BD posterior's trees
+
+```
+babette::plot_densitree(tracerer::parse_beast_trees(bd_alignment_filenames[[1]][1]))
+```
+
+### First BD posterior's ESSes
+
+Plot the Effective Sample Sizes (must be at least 200 in manuscript):
+
+```
+knitr::kable(
+  tracerer::calc_esses(
+    tracerer::parse_beast_log(bd_alignment_filenames[[1]][2]), 
+    sample_interval = open_parameters_file(
+      parameters_filename[1]
+    )$sample_interval
+  )
+)
+```
+
+### First MBD errors
+
+```
+ggplot(
+  data = data.frame(nltt = utils::read.csv(mbd_nltt_filenames[1])$x),
+  aes(x = nltt)
+) + geom_histogram(binwidth = 0.01) + 
+  ggplot2::scale_x_continuous(limits = c(0.0, 1.0))
+```
+
+
+### First BD errors
+
+```
+ggplot(
+  data = data.frame(nltt = utils::read.csv(bd_nltt_filenames[1])$x),
+  aes(x = nltt)
+) + geom_histogram(binwidth = 0.01) + 
+  ggplot2::scale_x_continuous(limits = c(0.0, 1.0))
+```
+
+### First MBD marginal likelihoods
+
+```
+if (rappdirs::app_dir()$os != "win") {
+  bd_marg_lik_filenames <- rep(NA, length(parameters_filenames))
+  for (i in seq_along(parameters_filenames)) {
+    bd_marg_lik_filenames[i] <- create_bd_marg_lik_file(
+      parameters_filename = parameters_filenames[i]
+    )
+  }
+  knitr::kable(utils::read.csv(bd_marg_lik_filenames[1])[-1])
+}
+```
+
+### First BD marginal likelihoods
+
+```
+if (rappdirs::app_dir()$os != "win") {
+  bd_marg_lik_filenames <- rep(NA, length(parameters_filenames))
+  for (i in seq_along(parameters_filenames)) {
+    bd_marg_lik_filenames[i] <- create_bd_marg_lik_file(
+      parameters_filename = parameters_filenames[i]
+    )
+  }
+  knitr::kable(utils::read.csv(bd_marg_lik_filenames[1])[-1])
+}
+```
+

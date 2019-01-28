@@ -1,7 +1,7 @@
 context("create_mbd_alignment_file")
 
 test_that("must create file", {
-
+  skip("Not anymore")
   parameters_filename <- create_tempfile("parameters.csv")
   mbd_tree_filename <- create_tempfile("mbd.tree")
   testit::assert(file.exists(parameters_filename))
