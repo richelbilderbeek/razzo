@@ -2,6 +2,7 @@ context("create_razzo_params")
 
 test_that("use", {
 
+  skip("Issue #127")
   crown_age <- 15
   crown_age_sigma <- 0.01
   mbd_params <- becosys::create_mbd_params(
