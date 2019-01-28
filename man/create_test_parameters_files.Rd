@@ -5,11 +5,43 @@
 \title{Create all testing parameter files in
   \code{project_folder_name/data/[settings]/seed/[models]}}
 \usage{
-create_test_parameters_files(project_folder_name = getwd())
+create_test_parameters_files(project_folder_name = getwd(),
+  n_replicates = 2, twinning_params = create_twinning_params(),
+  alignment_params = create_alignment_params(root_sequence =
+  "aaaaccccggggttt", mutation_rate = 0.5/15),
+  model_select_params = list(list(create_gen_model_select_param(alignment_params
+  = alignment_params, tree_prior = beautier::create_bd_tree_prior())),
+  list(create_best_model_select_param(tree_priors =
+  list(beautier::create_yule_tree_prior(),
+  beautier::create_bd_tree_prior())))),
+  inference_params = create_inference_params(mcmc =
+  create_mcmc(chain_length = 2000, store_every = 1000), mrca_prior =
+  create_mrca_prior(is_monophyletic = TRUE, mrca_distr =
+  create_normal_distr(mean = 15, sigma = 0.01))),
+  error_measure_params = create_error_measure_params())
 }
 \arguments{
 \item{project_folder_name}{project folder name,
 will be the full path to \code{razzo_project}}
+
+\item{n_replicates}{number of replicates}
+
+\item{twinning_params}{parameters for creating a twin tree,
+as can be created by \code{\link[pirouette]{create_twinning_params}}}
+
+\item{alignment_params}{parameters for creating an alignment,
+as can be created by \code{\link[pirouette]{create_alignment_params}}}
+
+\item{model_select_params}{a parameter set to specify how to pick
+an inference model,
+as can be created by \code{\link[pirouette]{create_model_select_param}}}
+
+\item{inference_params}{the parameters used in all Bayesian inference,
+as created by \link[pirouette]{create_inference_params}}
+
+\item{error_measure_params}{parameters to set how the error
+between given tree and inferred trees in measure,
+as can be created by \code{\link[pirouette]{create_error_measure_params}}}
 }
 \value{
 Create folders for each parameter setting

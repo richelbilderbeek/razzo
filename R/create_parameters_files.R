@@ -131,8 +131,35 @@ create_full_parameters_files <- function(
 create_test_parameters_files <- function(
   project_folder_name = getwd(),
   n_replicates = 2,
-  dna_alignment_length = 100,
-  mcmc_chain_length = 2000
+  twinning_params = create_twinning_params(),
+  alignment_params = create_alignment_params(
+    root_sequence = "aaaaccccggggttt",
+    mutation_rate = 0.5 / 15.0
+  ),
+  model_select_params = list(
+    list(
+      create_gen_model_select_param(
+      alignment_params = alignment_params,
+      tree_prior = beautier::create_bd_tree_prior()
+      )
+    ),
+    list(
+      create_best_model_select_param(
+        tree_priors = list(
+          beautier::create_yule_tree_prior(),
+          beautier::create_bd_tree_prior()
+        )
+      )
+    )
+  ),
+  inference_params = create_inference_params(
+    mcmc = create_mcmc(chain_length = 2000, store_every = 1000),
+    mrca_prior = create_mrca_prior(
+      is_monophyletic = TRUE,
+      mrca_distr = create_normal_distr(mean = 15.0, sigma = 0.01)
+    )
+  ),
+  error_measure_params = create_error_measure_params()
 ) {
   # Must start at one, as the BEAST2 RNG seed must be at least one.
   params_set <- list()
@@ -143,6 +170,7 @@ create_test_parameters_files <- function(
     nu = 1.0,
     q = 0.1
   )
+
 
   # Create data folder
   data_folder_name <- "data"

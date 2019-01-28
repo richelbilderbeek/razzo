@@ -73,6 +73,7 @@ $T$|`crown_age`|Crown age
 
 ```{r}
 library(ggplot2)
+library(dplyr)
 ```
 
 ```{r}

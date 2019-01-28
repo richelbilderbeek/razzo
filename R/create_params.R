@@ -1,6 +1,7 @@
 #' Creates a list of parameters,
 #' after checking the arguments for their validity
 #' @inheritParams default_params_doc
+#' @param q stub
 #' @return a list of parameters
 #' @export
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno

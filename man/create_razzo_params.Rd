@@ -14,6 +14,27 @@ create_razzo_params(mbd_params,
   inference_params = pirouette::create_inference_params(),
   error_measure_params = pirouette::create_error_measure_params())
 }
+\arguments{
+\item{mbd_params}{MBD parameter set,
+as created by \link[becosys]{create_mbd_params}}
+
+\item{twinning_params}{parameters for creating a twin tree,
+as can be created by \code{\link[pirouette]{create_twinning_params}}}
+
+\item{alignment_params}{parameters for creating an alignment,
+as can be created by \code{\link[pirouette]{create_alignment_params}}}
+
+\item{model_select_params}{a parameter set to specify how to pick
+an inference model,
+as can be created by \code{\link[pirouette]{create_model_select_param}}}
+
+\item{inference_params}{the parameters used in all Bayesian inference,
+as created by \link[pirouette]{create_inference_params}}
+
+\item{error_measure_params}{parameters to set how the error
+between given tree and inferred trees in measure,
+as can be created by \code{\link[pirouette]{create_error_measure_params}}}
+}
 \description{
 Create the parameters for one experiment.
 Run one point of the experiment

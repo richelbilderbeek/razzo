@@ -41,17 +41,3 @@ get_clock_models <- function() {
 get_gen_models <- function() {
   c("bd", "mbd")
 }
-
-#' @title Convert bd phylo to L table
-#' @description Convert bd phylo to L table. Don't use for mbd.
-#' @inheritParams default_params_doc
-#' @return the L table
-#' @author Xu Liang, Giovanni Laudanno, Richel J.C. Bilderbeek
-#' @export
-bd_phylo_2_l_table <- function(
-  phylo
-) {
-  l_table <- dododo::phylo2L(phylo) # nolint
-  colnames(l_table) <- c("birth_time", "parent", "id", "death_time")
-  return(l_table)
-}

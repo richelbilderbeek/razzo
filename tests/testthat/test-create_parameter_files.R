@@ -25,7 +25,7 @@ test_that("use", {
   testthat::expect_true(
     length(
       grep(
-        pattern = "parameters\\.csv$", filenames[1], perl = TRUE, value = TRUE
+        pattern = "parameters\\.RDa$", filenames[1], perl = TRUE, value = TRUE
       )
     ) > 0
   )
@@ -95,48 +95,4 @@ test_that("can read", {
   expect_silent(
     open_parameters_file(parameters_filename = filenames[1])
   )
-})
-
-test_that("must contain both site models", {
-
-  # Create parameter files from fresh
-  filenames <- suppressWarnings(
-    create_parameters_files(
-      project_folder_name = tempdir()
-    )
-  )
-
-  # Collect the site models
-  site_models <- rep(NA, length(filenames))
-  for (i in seq_along(filenames)) {
-    site_models[i] <- as.character(
-      open_parameters_file(filenames[i])$site_model
-    )
-  }
-
-  # Expect both to be present
-  expect_true("jc69" %in% site_models)
-  expect_true("gtr" %in% site_models)
-})
-
-test_that("must contain both clock models", {
-
-  # Create parameter files from fresh
-  filenames <- suppressWarnings(
-    create_parameters_files(
-      project_folder_name = tempdir()
-    )
-  )
-
-  # Collect the site models
-  clock_models <- rep(NA, length(filenames))
-  for (i in seq_along(filenames)) {
-    clock_models[i] <- as.character(
-      open_parameters_file(filenames[i])$clock_model
-    )
-  }
-
-  # Expect both to be present
-  expect_true("strict" %in% clock_models)
-  expect_true("rln" %in% clock_models)
 })

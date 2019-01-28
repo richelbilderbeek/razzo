@@ -18,7 +18,7 @@ create_params(lambda = 0.1, mu = 0.05, nu = 1, q = 0.1,
 
 \item{nu}{the rate at which a multiple-birth specation is triggered}
 
-\item{q}{something}
+\item{q}{stub}
 
 \item{seed}{a random number generator seed}
 

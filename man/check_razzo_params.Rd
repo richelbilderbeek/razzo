@@ -6,6 +6,11 @@
 \usage{
 check_razzo_params(razzo_params)
 }
+\arguments{
+\item{razzo_params}{a parameter set for one \code{razzo} experiment,
+as created by \link{create_razzo_params}
+and used by \link{run_razzo}}
+}
 \description{
 Will \link{stop} if the \code{razzo_params} are invalid,
 else will do nothing
