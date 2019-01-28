@@ -12,19 +12,26 @@ r_github_packages:
   - jimhester/lintr
   - MangoTheCat/goodpractice
   - ropensci/spelling
-  - richelbilderbeek/beautier
-  - richelbilderbeek/beastier
-  - richelbilderbeek/mauricer
-  - richelbilderbeek/tracerer
-  - richelbilderbeek/babette
-  - richelbilderbeek/pirouette
+  - ropensci/beautier
+  - ropensci/tracerer
+  - ropensci/beastier
+  - ropensci/mauricer
+  - ropensci/babette
   - richelbilderbeek/ribir
+  - richelbilderbeek/mcbette
   - Giappo/mbd
-  - xl0418/dododo
+  - richelbilderbeek/becosys
+  - richelbilderbeek/pirouette
+
+before_install:
+  - sudo add-apt-repository -y ppa:opencpu/imagemagick
+  - sudo apt-get update
+  - sudo apt-get install -y libmagick++-dev
+  - sudo apt install -qq libmpfr-dev
 
 before_script:
   - Rscript -e "beastier::install_beast2()"
-  - Rscript -e 'mauricer::mrc_install("NS")'
+  - Rscript -e 'mauricer::install_beast2_pkg("NS")'
   - if [ -f ".lintr" ]; then echo "Do use Hadley Wickham's style guide"; exit 1; fi
   # proselint
   - sudo pip install proselint
