@@ -222,7 +222,7 @@ create_test_parameters_files <- function(
       )
       saveRDS(object = razzo_params, file = parameters_filenames[index])
       testthat::expect_silent(
-        check_razzo_params(readRDS(parameters_filenames[index])  )
+        check_razzo_params(readRDS(parameters_filenames[index]))
       )
       index <- index + 1
     }
