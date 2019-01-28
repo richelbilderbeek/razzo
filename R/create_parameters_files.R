@@ -162,7 +162,6 @@ create_test_parameters_files <- function(
   error_measure_params = create_error_measure_params()
 ) {
   # Must start at one, as the BEAST2 RNG seed must be at least one.
-  params_set <- list()
   index <- 1
   bio_params <- expand.grid(
     lambda = 0.2,
@@ -189,7 +188,7 @@ create_test_parameters_files <- function(
     mu <- bio_params$mu
     nu <- bio_params$nu
     q <- bio_params$q
-    mbd_params = becosys::create_mbd_params(
+    mbd_params <- becosys::create_mbd_params(
       lambda = lambda,
       mu = mu,
       nu = nu,

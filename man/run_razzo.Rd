@@ -12,12 +12,14 @@ as created by \link{create_razzo_params}
 and used by \link{run_razzo}}
 }
 \value{
-nothing, but it does create a lot of files
+a data frame with errors,
+  with as many rows as model selection parameter sets.
+  Tip: use \link[pirouette]{pir_plot} to display it.
+  More important are the files it creates.
 }
 \description{
 Runs one \code{razzo} experiment
 }
 \author{
 Richel J.C. Bilderbeek
-export
 }
