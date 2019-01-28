@@ -67,10 +67,10 @@ parameters_filenames <- create_parameters_files(
 
 ## Step 2: Run the parameter files
 
-```{r}
+```
 for (i in seq_along(parameters_filenames)) {
   parameters_filename <- parameters_filenames[i]
-  razzo::razzo_run(parameters_filename)
+  razzo::run_razzo(parameters_filename)
 }
 ```
 
