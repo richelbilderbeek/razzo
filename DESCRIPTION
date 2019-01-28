@@ -35,6 +35,7 @@ Imports:
 Suggests:
   cli,
   devtools,
+  dplyr,
   knitr,
   lintr,
   ribir,
