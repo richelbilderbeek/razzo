@@ -2,6 +2,7 @@ context("create_bd_alignment_file")
 
 test_that("use", {
 
+  skip("Not anymore")
   parameters_filename <- create_tempfile("parameters.csv")
   bd_tree_filename <- create_tempfile("bd.tree")
   mbd_tree_filename <- create_tempfile("mbd.tree")
