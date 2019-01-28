@@ -8,7 +8,8 @@ create_razzo_params <- function(
   twinning_params = pirouette::create_twinning_params(),
   alignment_params,
   inference_params,
-  model_select_params
+  model_select_params,
+  misc_params
   # gen_model_select_params,
   # best_model_select_params,
   # sampling_method
@@ -18,7 +19,8 @@ create_razzo_params <- function(
     twinning_params = twinning_params,
     alignment_params = alignment_params,
     inference_params = inference_params,
-    model_select_params = model_select_params
+    model_select_params = model_select_params,
+    misc_params
     # gen_model_select_params = gen_model_select_params,
     # best_model_select_params = best_model_select_params,
     # sampling_method = sampling_method
