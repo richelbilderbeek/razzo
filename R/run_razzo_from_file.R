@@ -1,7 +1,7 @@
 #' Run a razzo experiment from a filename
 #' @param razzo_input_filename name of a file that contains
 #'   a \code{raket_params},
-#'   as can be created by \link{create_raket_params}
+#'   as can be created by \link{create_razzo_params}
 #' @author Richel J.C. Bilderbeek
 #' @export
 run_razzo_from_file <- function(razzo_input_filename) {
