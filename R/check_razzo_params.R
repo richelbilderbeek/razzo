@@ -23,8 +23,7 @@ check_razzo_params <- function(
   # becosys::check_mbd_params(razzo_params$mbd_params) # nolint Issue #150
   pirouette:::check_twinning_params(razzo_params$twinning_params) # nolint internal pirouette function, will be exported in pirouette v1.1
   pirouette:::check_alignment_params(razzo_params$alignment_params) # nolint internal pirouette function, will be exported in pirouette v1.1
-  pirouette:::check_model_select_params(razzo_params$model_select_params[[1]]) # nolint internal pirouette function, will be exported in pirouette v1.1
-  pirouette:::check_model_select_params(razzo_params$model_select_params[[2]]) # nolint internal pirouette function, will be exported in pirouette v1.1
+  pirouette:::check_model_select_params(razzo_params$model_select_params) # nolint internal pirouette function, will be exported in pirouette v1.1
   pirouette:::check_inference_params(razzo_params$inference_params) # nolint internal pirouette function, will be exported in pirouette v1.1
   pirouette:::check_error_measure_params(razzo_params$error_measure_params) # nolint internal pirouette function, will be exported in pirouette v1.1
 }

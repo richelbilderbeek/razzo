@@ -9,11 +9,11 @@ create_test_parameters_files(project_folder_name = getwd(),
   n_replicates = 2, twinning_params = create_twinning_params(),
   alignment_params = create_alignment_params(root_sequence =
   "aaaaccccggggttt", mutation_rate = 0.5/15),
-  model_select_params = list(list(create_gen_model_select_param(alignment_params
-  = alignment_params, tree_prior = beautier::create_bd_tree_prior())),
-  list(create_best_model_select_param(tree_priors =
+  model_select_params = list(create_gen_model_select_param(alignment_params
+  = alignment_params, tree_prior = beautier::create_bd_tree_prior()),
+  create_best_model_select_param(tree_priors =
   list(beautier::create_yule_tree_prior(),
-  beautier::create_bd_tree_prior())))),
+  beautier::create_bd_tree_prior()))),
   inference_params = create_inference_params(mcmc =
   create_mcmc(chain_length = 2000, store_every = 1000), mrca_prior =
   create_mrca_prior(is_monophyletic = TRUE, mrca_distr =

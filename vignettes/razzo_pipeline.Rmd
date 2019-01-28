@@ -52,12 +52,12 @@ We will work in this folder:
 ```{r create_working_folder}
 super_folder_name <- tempdir()
 project_folder_name <- file.path(super_folder_name, "razzo_project") 
-dir.create(path = project_folder_name, recursive = TRUE)
+dir.create(path = project_folder_name, recursive = TRUE, showWarnings = FALSE)
 ```
 
 ## Step 1: Create parameter files
 
-Here we create all parameter files:
+Here we create all testing parameter files, which are only a few:
 
 ```{r create_parameter_files}
 parameters_filenames <- create_parameters_files(
@@ -67,10 +67,10 @@ parameters_filenames <- create_parameters_files(
 
 ## Step 2: Run the parameter files
 
-```
+```{r}
 for (i in seq_along(parameters_filenames)) {
   parameters_filename <- parameters_filenames[i]
-  razzo::run_razzo(parameters_filename)
+  razzo::run_razzo_from_file(parameters_filename)
 }
 ```
 
