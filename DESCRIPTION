@@ -39,5 +39,6 @@ Suggests:
   knitr,
   lintr,
   rmarkdown,
-  testthat
+  testthat,
+  tidyverse
 VignetteBuilder: knitr
