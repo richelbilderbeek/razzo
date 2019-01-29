@@ -4,7 +4,7 @@ test_that("use", {
 
   expect_true(1 + 1 == 2) # to get a non-empty test
 
-  if (!ribir::is_on_travis()) return()
+  if (!beastier::is_on_travis()) return()
   if (rappdirs::app_dir()$os == "win") return()
 
   parameters <- open_parameters_file(get_path("parameters.csv"))
@@ -22,7 +22,7 @@ test_that("use for other 3 models", {
 
   expect_true(1 + 1 == 2) # to get a non-empty test
 
-  if (!ribir::is_on_travis()) return()
+  if (!beastier::is_on_travis()) return()
   if (rappdirs::app_dir()$os == "win") return()
 
   alignment <- ape::read.FASTA(get_path("mbd.fasta"))

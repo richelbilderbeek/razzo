@@ -29,7 +29,11 @@
 #'   as created by \link[becosys]{create_mbd_params}
 #' @param mbd_mutation_rate the mutation rate when creating an alignment
 #'   from a MBD tree
+#' @param mbd_sim_rng_seed rng seed to simulate a mbd tree
 #' @param mbd_tree an MBD tree
+#' @param misc_params additional parameters for razzo. They contain
+#'   tree_filename to store the original given tree and mbd_sim_rng_seed for
+#'   when an mbd tree is simulated
 #' @param model_select_params a parameter set to specify how to pick
 #'   an inference model,
 #'   as can be created by \code{\link[pirouette]{create_model_select_param}}
@@ -94,7 +98,9 @@ default_params_doc <- function(
   mbd_l_matrix,
   mbd_mutation_rate,
   mbd_params,
+  mbd_sim_rng_seed,
   mbd_tree,
+  misc_params,
   model_select_params,
   mu,
   mutation_rate,

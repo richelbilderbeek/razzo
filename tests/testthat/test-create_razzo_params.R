@@ -41,6 +41,8 @@ test_that("use", {
   )
 
   error_measure_params <- create_error_measure_params(burn_in_fraction = 0.12)
+  misc_params <- list()
+  misc_params$tree_filename <- "mbd.tree"
 
   razzo_params <- create_razzo_params(
     mbd_params = mbd_params,
@@ -48,7 +50,8 @@ test_that("use", {
     alignment_params = alignment_params,
     model_select_params = model_select_params,
     inference_params = inference_params,
-    error_measure_params = error_measure_params
+    error_measure_params = error_measure_params,
+    misc_params = misc_params
   )
 
   expect_equal(mbd_params, razzo_params$mbd_params)

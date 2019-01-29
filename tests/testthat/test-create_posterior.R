@@ -4,7 +4,7 @@ test_that("use", {
 
   expect_true(1 + 1 == 2) # to get a non-empty test
 
-  if (!ribir::is_on_travis()) {
+  if (!beastier::is_on_travis()) {
     return()
   } else {
 
@@ -139,7 +139,7 @@ test_that("abuse", {
 
   expect_true(1 + 1 == 2) # to get a non-empty test
 
-  if (!ribir::is_on_travis()) {
+  if (!beastier::is_on_travis()) {
     return()
   } else {
 

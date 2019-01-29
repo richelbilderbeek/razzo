@@ -1,7 +1,7 @@
 #' Create the parameters for one experiment.
 #' Run one point of the experiment
 #' @inheritParams default_params_doc
-#' @author Richel J.C. Bilderbeek
+#' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
 create_razzo_params <- function(
   mbd_params,
@@ -14,7 +14,8 @@ create_razzo_params <- function(
     pirouette::create_best_model_select_param()
   ),
   inference_params = pirouette::create_inference_params(),
-  error_measure_params = pirouette::create_error_measure_params()
+  error_measure_params = pirouette::create_error_measure_params(),
+  misc_params
 ) {
   razzo_params <- list(
     mbd_params = mbd_params,
@@ -22,7 +23,8 @@ create_razzo_params <- function(
     alignment_params = alignment_params,
     model_select_params = model_select_params,
     inference_params = inference_params,
-    error_measure_params = error_measure_params
+    error_measure_params = error_measure_params,
+    misc_params = misc_params
   )
   check_razzo_params(razzo_params) # nolint raket function
   razzo_params

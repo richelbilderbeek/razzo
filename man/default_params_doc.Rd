@@ -9,9 +9,9 @@ default_params_doc(alignment, alignment_params, bd_mutation_rate, bd_tree,
   bd_tree_filename, brts, chain_length, clock_model, crown_age,
   error_measure_params, fasta_filename, filename, folder_name,
   init_speciation_rate, init_extinction_rate, inference_params, lambda,
-  mbd_l_matrix, mbd_mutation_rate, mbd_params, mbd_tree,
-  model_select_params, mu, mutation_rate, n_replicates, nu, nu_events,
-  parameters, parameter_filename, parameters_filename, phylo,
+  mbd_l_matrix, mbd_mutation_rate, mbd_params, mbd_sim_rng_seed, mbd_tree,
+  misc_params, model_select_params, mu, mutation_rate, n_replicates, nu,
+  nu_events, parameters, parameter_filename, parameters_filename, phylo,
   posterior_trees, precision, project_folder_name, razzo_params,
   sample_interval, seed, sequence_length, sim_pars, sim_phylo, site_model,
   sub_chain_length, tree, tree_filename, trees_filename, twinning_params,
@@ -67,7 +67,13 @@ from a MBD tree}
 \item{mbd_params}{MBD parameter set,
 as created by \link[becosys]{create_mbd_params}}
 
+\item{mbd_sim_rng_seed}{rng seed to simulate a mbd tree}
+
 \item{mbd_tree}{an MBD tree}
+
+\item{misc_params}{additional parameters for razzo. They contain
+tree_filename to store the original given tree and mbd_sim_rng_seed for
+when an mbd tree is simulated}
 
 \item{model_select_params}{a parameter set to specify how to pick
 an inference model,

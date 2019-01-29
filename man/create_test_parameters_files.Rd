@@ -6,14 +6,15 @@
   \code{project_folder_name/data/[settings]/seed/[models]}}
 \usage{
 create_test_parameters_files(project_folder_name = getwd(),
-  n_replicates = 2, twinning_params = create_twinning_params(),
-  alignment_params = create_alignment_params(root_sequence =
+  n_replicates = 2,
+  twinning_params = pirouette::create_twinning_params(),
+  alignment_params = pirouette::create_alignment_params(root_sequence =
   "aaaaccccggggttt", mutation_rate = 0.5/15),
-  inference_params = create_inference_params(mcmc =
-  create_mcmc(chain_length = 2000, store_every = 1000), mrca_prior =
-  create_mrca_prior(is_monophyletic = TRUE, mrca_distr =
-  create_normal_distr(mean = 15, sigma = 0.01))),
-  error_measure_params = create_error_measure_params())
+  inference_params = pirouette::create_inference_params(mcmc =
+  beautier::create_mcmc(chain_length = 2000, store_every = 1000),
+  mrca_prior = beautier::create_mrca_prior(is_monophyletic = TRUE,
+  mrca_distr = beautier::create_normal_distr(mean = 15, sigma = 0.01))),
+  error_measure_params = pirouette::create_error_measure_params())
 }
 \arguments{
 \item{project_folder_name}{project folder name,

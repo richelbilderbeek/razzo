@@ -26,7 +26,7 @@ test_that("tree must have a predefined number of nu events", {
 
   expect_true(1 + 1 == 2) # to get a non-empty test
 
-  if (!ribir::is_on_travis()) {
+  if (!beastier::is_on_travis()) {
     return()
   } else {
     parameters <- razzo::open_parameters_file(

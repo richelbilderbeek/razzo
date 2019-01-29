@@ -4,7 +4,7 @@ test_that("must create file", {
 
   expect_true(1 + 1 == 2) # to get a non-empty test
 
-  if (!ribir::is_on_travis()) return()
+  if (!beastier::is_on_travis()) return()
   if (rappdirs::app_dir()$os == "win") return()
 
   parameters_filename <- create_tempfile("parameters.csv")
@@ -27,7 +27,7 @@ test_that("mbd and bd differ", {
 
   expect_true(1 + 1 == 2) # to get a non-empty test
 
-  if (!ribir::is_on_travis()) return()
+  if (!beastier::is_on_travis()) return()
   if (rappdirs::app_dir()$os == "win") return()
 
   parameters_filename <- create_tempfile("parameters.csv")

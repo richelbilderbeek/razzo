@@ -12,7 +12,8 @@ create_razzo_params(mbd_params,
   model_select_params = list(pirouette::create_gen_model_select_param(alignment_params),
   pirouette::create_best_model_select_param()),
   inference_params = pirouette::create_inference_params(),
-  error_measure_params = pirouette::create_error_measure_params())
+  error_measure_params = pirouette::create_error_measure_params(),
+  misc_params)
 }
 \arguments{
 \item{mbd_params}{MBD parameter set,
@@ -34,11 +35,15 @@ as created by \link[pirouette]{create_inference_params}}
 \item{error_measure_params}{parameters to set how the error
 between given tree and inferred trees in measure,
 as can be created by \code{\link[pirouette]{create_error_measure_params}}}
+
+\item{misc_params}{additional parameters for razzo. They contain
+tree_filename to store the original given tree and mbd_sim_rng_seed for
+when an mbd tree is simulated}
 }
 \description{
 Create the parameters for one experiment.
 Run one point of the experiment
 }
 \author{
-Richel J.C. Bilderbeek
+Richel J.C. Bilderbeek, Giovanni Laudanno
 }

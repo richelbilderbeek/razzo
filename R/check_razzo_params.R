@@ -9,8 +9,13 @@ check_razzo_params <- function(
   razzo_params
 ) {
   argument_names <- c(
-    "mbd_params", "twinning_params", "alignment_params", "model_select_params",
-    "inference_params", "error_measure_params"
+    "mbd_params",
+    "twinning_params",
+    "alignment_params",
+    "model_select_params",
+    "inference_params",
+    "error_measure_params",
+    "misc_params"
   )
   for (arg_name in argument_names) {
     if (!arg_name %in% names(razzo_params)) {
@@ -26,4 +31,5 @@ check_razzo_params <- function(
   pirouette:::check_model_select_params(razzo_params$model_select_params) # nolint internal pirouette function, will be exported in pirouette v1.1
   pirouette:::check_inference_params(razzo_params$inference_params) # nolint internal pirouette function, will be exported in pirouette v1.1
   pirouette:::check_error_measure_params(razzo_params$error_measure_params) # nolint internal pirouette function, will be exported in pirouette v1.1
+  check_misc_params(razzo_params$misc_params)
 }
