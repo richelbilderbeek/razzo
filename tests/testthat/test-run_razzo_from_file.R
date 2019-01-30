@@ -11,5 +11,15 @@ test_that("use", {
     project_folder_name = project_folder_name
   )
   parameters_filename <- parameters_filenames[1]
-  razzo::run_razzo_from_file(razzo_input_filename = parameters_filename)
+  expect_silent(
+    razzo::run_razzo_from_file(razzo_input_filename = parameters_filename)
+  )
+})
+
+test_that("abuse", {
+
+  parameters_filename <- "neverland"
+  expect_error(
+    razzo::run_razzo_from_file(razzo_input_filename = parameters_filename)
+  )
 })
