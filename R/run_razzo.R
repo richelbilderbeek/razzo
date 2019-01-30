@@ -13,21 +13,29 @@ run_razzo <- function(
   testit::assert(beastier::is_beast2_installed())
 
   # Simulate incipient species tree
-  if (1 == 2) {
-    # Set MBD tree generation seed, #153
-    set.seed(razzo_params$misc_params$tree_sim_rng_seed)
-  }
-  mbd_output <- becosys::bco_mbd_sim(
-    mbd_params = razzo_params$mbd_params,
-    crown_age = razzo_params$inference_params$mrca_prior$mrca_distr$mean$value
+  mbd_output <- mbd::mbd_sim(
+    pars = c(
+      razzo_params$mbd_params$lambda,
+      razzo_params$mbd_params$mu,
+      razzo_params$mbd_params$nu,
+      razzo_params$mbd_params$q
+    ),
+    n_0 = 2,
+    age = razzo_params$mbd_params$crown_age,
+    cond = razzo_params$mbd_params$cond,
+    seed = razzo_params$mbd_params$seed
   )
   phylogeny <- mbd_output$reconstructed_tree
-  # Save phylogeny here, #152
-  if (1 == 2) {
-    ape::write.tree(
-      phy = phylogeny, file = razzo_params$misc_params$tree_filename
-    )
-  }
+
+  directory <- dirname(razzo_params$twinning_params$twin_tree_filename)
+  tree_filename <- file.path(
+    directory,
+    razzo_params$misc_params$tree_filename
+  )
+  ape::write.tree(
+    phy = phylogeny, file = tree_filename
+  )
+  testit::assert(file.exists(tree_filename))
 
   # Let pirouette measure the error
   pirouette::pir_run(
