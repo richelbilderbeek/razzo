@@ -1,4 +1,4 @@
-context("create_parameters_files")
+context("test-create_parameters_files")
 
 test_that("use", {
 
@@ -68,7 +68,7 @@ test_that("use, full", {
   testthat::expect_true(
     length(
       grep(
-        pattern = "parameters\\.csv$", filenames[1], perl = TRUE, value = TRUE
+        pattern = "parameters\\.RDa$", filenames[1], perl = TRUE, value = TRUE
       )
     ) > 0
   )

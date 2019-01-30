@@ -1,15 +1,17 @@
-context("create_razzo_params")
+context("test-create_razzo_params")
 
 test_that("use", {
 
   skip("Issue #127")
   crown_age <- 15
   crown_age_sigma <- 0.01
-  mbd_params <- becosys::create_mbd_params(
+  mbd_params <- create_mbd_params(
     lambda = 0.1,
     mu = 0.15,
     nu = 0.2,
-    q = 0.01
+    q = 0.01,
+    crown_age = crown_age,
+    cond = 1
   )
   twinning_params <- create_twinning_params(rng_seed = 123)
   alignment_params <- pirouette::create_alignment_params(
@@ -41,6 +43,8 @@ test_that("use", {
   )
 
   error_measure_params <- create_error_measure_params(burn_in_fraction = 0.12)
+  misc_params <- list()
+  misc_params$tree_filename <- "mbd.tree"
 
   razzo_params <- create_razzo_params(
     mbd_params = mbd_params,
@@ -48,7 +52,8 @@ test_that("use", {
     alignment_params = alignment_params,
     model_select_params = model_select_params,
     inference_params = inference_params,
-    error_measure_params = error_measure_params
+    error_measure_params = error_measure_params,
+    misc_params = misc_params
   )
 
   expect_equal(mbd_params, razzo_params$mbd_params)

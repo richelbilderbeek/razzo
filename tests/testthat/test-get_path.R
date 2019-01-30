@@ -1,4 +1,4 @@
-context("get_path")
+context("test-get_path")
 
 test_that("use", {
 
