@@ -7,26 +7,6 @@
 #'   testit::assert(is.character(get_path("parameters.csv")))
 #' @export
 get_path <- function(filename) {
-
-  if (grepl("P274829", system.file(package = "razzo"))) {
-    file.copy(
-      from = file.path(
-        "F:/Dropbox", # nolint
-        "University",
-        "Progress",
-        "RQ3-razzo",
-        "razzo",
-        "inst",
-        "extdata"
-      ),
-      to = system.file("extdata", package = "razzo"),
-      overwrite = TRUE,
-      recursive = FALSE,
-      copy.mode = TRUE,
-      copy.date = FALSE
-    )
-  }
-
   full <- system.file("extdata", filename, package = "razzo")
   if (!file.exists(full)) {
     stop("'filename' must be the name of a file in 'inst/extdata'")

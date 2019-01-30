@@ -16,8 +16,7 @@ create_razzo_params(mbd_params,
   misc_params)
 }
 \arguments{
-\item{mbd_params}{MBD parameter set,
-as created by \link[becosys]{create_mbd_params}}
+\item{mbd_params}{MBD parameter set}
 
 \item{twinning_params}{parameters for creating a twin tree,
 as can be created by \code{\link[pirouette]{create_twinning_params}}}

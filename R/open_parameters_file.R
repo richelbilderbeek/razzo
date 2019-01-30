@@ -8,7 +8,6 @@ open_parameters_file <- function(
 ) {
   check_file_exists(parameters_filename) # nolint internal function
 
-
   parameters <- NULL
   if (tools::file_ext(parameters_filename) == "RDa") {
     parameters <- readRDS(parameters_filename)

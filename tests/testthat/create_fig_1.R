@@ -8,28 +8,38 @@ create_fig_1 <- function(
   project_folder_name
 ) {
 
-  # ISSUE #138 STUB
+  par_setting <- nltt <- gen_model <- NULL
 
-  lambda <- 0.2
-  mu <- 0.1
-  nu <- 2
-  q <- 0.1
-
-  df <- data.frame(
-   par_setting = c(1, 2),
-   nltt = c(0.1, 0.2),
-   gen_model = c("1", "2")
+  df0 <- collect_nltt_stats(project_folder_name) # nolint internal function
+  df0$par_setting <- interaction(
+    df0$lambda,
+    df0$mu,
+    df0$nu,
+    df0$q,
+    df0$site_model,
+    df0$clock_model
   )
-  if (1) {
-    # need to call these variables to avoid notes in check
-    df2 <- df
-    df2$nltt <- df$nltt
-    df2$par_setting <- df$par_setting
-    df2$gen_model <- df$gen_model
-    lambda + mu + q + nu +
-      length(df2$par_setting) + length(df2$nltt)  + length(df2$gen_model) > 0
-  }
-  xlabels <- c("1", "2")
+
+  df <- tidyr::gather(
+    df0,
+    "i",
+    "nltt",
+    (1:ncol(df0))[grepl("nltt", names(df0))]
+  )
+  xlabels <- unique(paste0(
+    df0$lambda,
+    "\n",
+    df$mu,
+    "\n",
+    df$nu,
+    "\n",
+    df$q,
+    "\n",
+    df$site_model,
+    "\n",
+    df$clock_model
+  ))
+
   pl <- ggplot2::ggplot(df) +
     ggplot2::geom_boxplot(ggplot2::aes(
       x = par_setting,
@@ -40,7 +50,7 @@ create_fig_1 <- function(
     ) +
     ggplot2::xlab(bquote(
       "Parameter setting" ~ "(" ~ lambda ~ "," ~ mu ~ ","
-      ~ nu ~ "," ~ q ~ ")"
+      ~ nu ~ "," ~ q ~ "," ~ site ~ "," ~ clock ~ ")"
     )) +
     ggplot2::ylab(bquote(
       nltt

@@ -5,11 +5,13 @@ test_that("use", {
   skip("Issue #127")
   crown_age <- 15
   crown_age_sigma <- 0.01
-  mbd_params <- becosys::create_mbd_params(
+  mbd_params <- create_mbd_params(
     lambda = 0.1,
     mu = 0.15,
     nu = 0.2,
-    q = 0.01
+    q = 0.01,
+    crown_age = crown_age,
+    cond = 1
   )
   twinning_params <- create_twinning_params(rng_seed = 123)
   alignment_params <- pirouette::create_alignment_params(

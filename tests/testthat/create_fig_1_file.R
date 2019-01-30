@@ -20,9 +20,8 @@ create_fig_1_file <- function(
     "figure_1.png"
   )
 
-  ggplot2::ggsave(
-    filename = fig_1_filename,
-    plot = fig_1
+  ggplot2::ggsave(filename = fig_1_filename,
+                  plot = fig_1
   )
 
   # return file name

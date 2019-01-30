@@ -42,6 +42,7 @@ if (!require(mbd)) {devtools::install_github("Giappo/mbd", quiet = TRUE)}
 Load the libraries needed:
 
 ```{r load_libraries}
+library(mbd)
 library(razzo)
 ```
 
@@ -66,7 +67,8 @@ parameters_filenames <- create_parameters_files(
 ## Step 2: Run the parameter files
 
 ```{r}
-for (i in seq_along(parameters_filenames)) {
+# longer version: for (i in seq_along(parameters_filenames)) {
+for (i in 1:2) {
   parameters_filename <- parameters_filenames[i]
   razzo::run_razzo_from_file(razzo_input_filename = parameters_filename)
 }

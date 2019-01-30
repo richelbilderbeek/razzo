@@ -12,6 +12,7 @@
 #' @param chain_length something
 #' @param clock_model Name of the clock model that has
 #' to be used for the inference. Valid names are 'strict' and 'rln'.
+#' @param cond conditioning as specified in \code{\link[mbd]{mbd_sim}}
 #' @param crown_age The crown age of the tree.
 #' @param error_measure_params parameters to set how the error
 #'   between given tree and inferred trees in measure,
@@ -23,10 +24,10 @@
 #'   as created by \link[pirouette]{create_inference_params}
 #' @param init_speciation_rate a speciation rate
 #' @param init_extinction_rate an extinction rate
-#' @param lambda per-lineage speciation rate
+#' @param lambda per-lineage speciation rate. See \code{\link[mbd]{mbd_sim}}
 #' @param mbd_l_matrix the L matrix of an MBD tree
-#' @param mbd_params MBD parameter set,
-#'   as created by \link[becosys]{create_mbd_params}
+#' @param mbd_params MBD parameter set
+#' @param mbd_params_interval MBD parameter set interval
 #' @param mbd_mutation_rate the mutation rate when creating an alignment
 #'   from a MBD tree
 #' @param mbd_sim_rng_seed rng seed to simulate a mbd tree
@@ -37,12 +38,13 @@
 #' @param model_select_params a parameter set to specify how to pick
 #'   an inference model,
 #'   as can be created by \code{\link[pirouette]{create_model_select_param}}
-#' @param mu per-species extinction rate
+#' @param mu per-species extinction rate. See \code{\link[mbd]{mbd_sim}}
 #' @param mutation_rate something
 #' @param n_replicates number of replicates
-#' @param nu the rate at which a multiple-birth specation is triggered
+#' @param nu the rate at which a multiple-birth specation is triggered.
+#'   See \code{\link[mbd]{mbd_sim}}
 #' @param nu_events the number of nu-triggered events that have to be
-#'  present in the simulated tree
+#'   present in the simulated tree
 #' @param parameters the razzo parameters
 #' @param parameter_filename full path to a 'parameters.csv' file
 #' @param parameters_filename full path to a 'parameters.csv' file
@@ -52,6 +54,8 @@
 #' @param precision define the precision of the approximation.
 #' @param project_folder_name project folder name,
 #'   will be the full path to \code{razzo_project}
+#' @param q per-species speciation probability in case of occurrance of
+#'   a multiple event. See \code{\link[mbd]{mbd_sim}}
 #' @param razzo_params a parameter set for one \code{razzo} experiment,
 #'   as created by \link{create_razzo_params}
 #'   and used by \link{run_razzo}
@@ -86,6 +90,7 @@ default_params_doc <- function(
   brts,
   chain_length,
   clock_model,
+  cond,
   crown_age,
   error_measure_params,
   fasta_filename,
@@ -98,6 +103,7 @@ default_params_doc <- function(
   mbd_l_matrix,
   mbd_mutation_rate,
   mbd_params,
+  mbd_params_interval,
   mbd_sim_rng_seed,
   mbd_tree,
   misc_params,
@@ -114,6 +120,7 @@ default_params_doc <- function(
   posterior_trees,
   precision,
   project_folder_name,
+  q,
   razzo_params,
   sample_interval,
   seed,
