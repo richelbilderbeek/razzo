@@ -26,6 +26,7 @@ create_fig_1 <- function(
     df2$nltt <- df$nltt
     df2$par_setting <- df$par_setting
     df2$gen_model <- df$gen_model
+    par_setting <- nltt <- gen_model <- 0
     lambda + mu + q + nu +
       length(df2$par_setting) + length(df2$nltt)  + length(df2$gen_model) > 0
   }
