@@ -7,6 +7,7 @@
 create_fig_1 <- function(
   project_folder_name
 ) {
+  check_project_folder_name(project_folder_name)
 
   # ISSUE #138 STUB
 
