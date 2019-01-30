@@ -1,4 +1,4 @@
-context("get_results_path")
+context("test-get_results_path")
 
 test_that("use", {
   results_path <- get_results_path(get_path("razzo_project"))

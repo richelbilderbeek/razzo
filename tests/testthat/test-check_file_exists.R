@@ -1,4 +1,4 @@
-context("check_file_exists")
+context("test-check_file_exists")
 
 test_that("use", {
 
