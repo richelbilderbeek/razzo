@@ -11,8 +11,12 @@ test_that("use", {
     project_folder_name = project_folder_name
   )
   parameters_filename <- parameters_filenames[1]
+  experiments <- pirouette::create_experiment()
   expect_silent(
-    razzo::run_razzo_from_file(parameters_filename = parameters_filename)
+    razzo::run_razzo_from_file(
+      parameters_filename = parameters_filename,
+      experiments = experiments
+    )
   )
 })
 
@@ -20,6 +24,9 @@ test_that("abuse", {
 
   parameters_filename <- "neverland"
   expect_error(
-    razzo::run_razzo_from_file(parameters_filename = parameters_filename)
+    razzo::run_razzo_from_file(
+      parameters_filename = parameters_filename,
+      experiments = experiments
+    )
   )
 })
