@@ -7,7 +7,7 @@ documentation.}
 \usage{
 default_params_doc(alignment, alignment_params, bd_mutation_rate, bd_tree,
   bd_tree_filename, brts, chain_length, clock_model, cond, crown_age,
-  error_measure_params, fasta_filename, filename, folder_name,
+  error_measure_params, experiments, fasta_filename, filename, folder_name,
   init_speciation_rate, init_extinction_rate, inference_params, lambda,
   mbd_l_matrix, mbd_mutation_rate, mbd_params, mbd_params_interval,
   mbd_sim_rng_seed, mbd_tree, misc_params, model_select_params, mu,
@@ -45,6 +45,9 @@ to be used for the inference. Valid names are 'strict' and 'rln'.}
 \item{error_measure_params}{parameters to set how the error
 between given tree and inferred trees in measure,
 as can be created by \code{\link[pirouette]{create_error_measure_params}}}
+
+\item{experiments}{provides information on how the experiment has to be set
+up. To create it use \code{\link[pirouette]{create_experiment}}}
 
 \item{fasta_filename}{name of a FASTA file}
 

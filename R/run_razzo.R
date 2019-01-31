@@ -4,12 +4,13 @@
 #'   with as many rows as model selection parameter sets.
 #'   Tip: use \link[pirouette]{pir_plot} to display it.
 #'   More important are the files it creates.
-#' @author Richel J.C. Bilderbeek
+#' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
 run_razzo <- function(
-  razzo_params
+  razzo_params,
+  experiments = pirouette::create_experiment()
 ) {
-  check_razzo_params(razzo_params) # nolint raket function
+  check_razzo_params(razzo_params) # nolint razzo function
   testit::assert(beastier::is_beast2_installed())
 
   # Simulate incipient species tree
@@ -44,6 +45,7 @@ run_razzo <- function(
     alignment_params = razzo_params$alignment_params,
     model_select_params = razzo_params$model_select_params,
     inference_params = razzo_params$inference_params,
-    error_measure_params = razzo_params$error_measure_params
+    error_measure_params = razzo_params$error_measure_params,
+    experiments = experiments
   )
 }

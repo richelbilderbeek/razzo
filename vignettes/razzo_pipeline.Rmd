@@ -66,11 +66,22 @@ parameters_filenames <- create_parameters_files(
 
 ## Step 2: Run the parameter files
 
+First we decide what experiment we want to run
+
+```{r}
+experiments <- pirouette::create_experiment()
+```
+
+Then we run razzo for each parameter setting
+
 ```{r}
 # longer version: for (i in seq_along(parameters_filenames)) {
 for (i in 1:2) {
   parameters_filename <- parameters_filenames[i]
-  razzo::run_razzo_from_file(razzo_input_filename = parameters_filename)
+  razzo::run_razzo_from_file(
+    parameters_filename = parameters_filename,
+    experiments = list(experiments)
+  )
 }
 ```
 

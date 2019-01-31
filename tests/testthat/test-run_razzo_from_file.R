@@ -12,7 +12,7 @@ test_that("use", {
   )
   parameters_filename <- parameters_filenames[1]
   expect_silent(
-    razzo::run_razzo_from_file(razzo_input_filename = parameters_filename)
+    razzo::run_razzo_from_file(parameters_filename = parameters_filename)
   )
 })
 
@@ -20,6 +20,6 @@ test_that("abuse", {
 
   parameters_filename <- "neverland"
   expect_error(
-    razzo::run_razzo_from_file(razzo_input_filename = parameters_filename)
+    razzo::run_razzo_from_file(parameters_filename = parameters_filename)
   )
 })
