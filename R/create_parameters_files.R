@@ -77,7 +77,8 @@ create_full_parameters_files <- function(
     mrca_prior = beautier::create_mrca_prior(
       is_monophyletic = TRUE,
       mrca_distr = beautier::create_normal_distr(mean = unique(mbd_params_interval$crown_age), sigma = 0.01)
-    )
+    ),
+    rng_seed = 314159265 # secret trick to activate new interface
   ),
   error_measure_params = pirouette::create_error_measure_params()
 ) {
