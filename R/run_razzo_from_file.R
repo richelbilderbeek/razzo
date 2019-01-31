@@ -7,7 +7,7 @@
 #' @export
 run_razzo_from_file <- function(
   parameters_filename,
-  experiments = pirouette::create_experiment()
+  experiments = list(pirouette::create_experiment())
 ) {
   if (!file.exists(parameters_filename)) {
     stop(

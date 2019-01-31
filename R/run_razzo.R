@@ -8,7 +8,7 @@
 #' @export
 run_razzo <- function(
   razzo_params,
-  experiments = pirouette::create_experiment()
+  experiments = list(pirouette::create_experiment())
 ) {
   check_razzo_params(razzo_params) # nolint razzo function
   testit::assert(beastier::is_beast2_installed())
