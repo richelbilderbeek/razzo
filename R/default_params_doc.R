@@ -17,6 +17,8 @@
 #' @param error_measure_params parameters to set how the error
 #'   between given tree and inferred trees in measure,
 #'   as can be created by \code{\link[pirouette]{create_error_measure_params}}
+#' @param experiments provides information on how the experiment has to be set
+#'   up. To create it use \code{\link[pirouette]{create_experiment}}
 #' @param fasta_filename name of a FASTA file
 #' @param filename the file's name, without the path
 #' @param folder_name name of the main folder
@@ -93,6 +95,7 @@ default_params_doc <- function(
   cond,
   crown_age,
   error_measure_params,
+  experiments,
   fasta_filename,
   filename,
   folder_name,
