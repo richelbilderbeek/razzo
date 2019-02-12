@@ -85,11 +85,6 @@ create_full_parameters_files <- function(
   # Must start at one, as the BEAST2 RNG seed must be at least one.
   index <- 1
 
-  model_select_param <- pirouette::create_gen_model_select_param(
-    alignment_params = alignment_params,
-    tree_prior = beautier::create_bd_tree_prior()
-  )
-
   # Create data folder
   data_folder_name <- "data"
   dir.create(
@@ -122,11 +117,12 @@ create_full_parameters_files <- function(
         ),
         showWarnings = FALSE
       )
+      seed <- mbd_params$seed
       seed_folder <- file.path(
         project_folder_name,
         data_folder_name,
         parsettings_name,
-        mbd_params$seed
+        seed
       )
       dir.create(file.path(seed_folder), showWarnings = FALSE)
       alignment_params$fasta_filename <- file.path(
@@ -143,6 +139,11 @@ create_full_parameters_files <- function(
         mrca_distr = create_normal_distr(mean = 15.0, sigma = 0.0001)
       )
 
+      mcmc <- create_mcmc(chain_length = 3000, store_every = 1000)
+      mrca_prior <- create_mrca_prior(
+        is_monophyletic = TRUE,
+        mrca_distr = create_normal_distr(mean = 15.0, sigma = 0.0001)
+      )
       # name                |model_type | run_if         | measure  | inference  # nolint this is no commented code
       #                     |           |                | evidence | model
       # --------------------|-----------|----------------|----------|-----------
