@@ -219,12 +219,12 @@ create_full_parameters_files <- function(
         experiment_gtr_bd # candidate
       )
 
-      pir_params <- create_pir_params(
+      pir_params <- pirouette::create_pir_params(
         alignment_params = alignment_params,
         twinning_params = twinning_params,
         experiments = experiments,
         error_measure_params = error_measure_params,
-        evidence_filename = file.path(seed_folder, "mbd_marg_lik.csv"),
+        evidence_filename = file.path(seed_folder, "mbd_marg_lik.csv")
       )
       razzo_params <- create_razzo_params(
         mbd_params = mbd_params,
