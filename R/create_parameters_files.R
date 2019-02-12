@@ -237,10 +237,8 @@ create_test_parameters_files <- function(
           mcmc = create_mcmc(chain_length = 3000, store_every = 1000)
         ),
         beast2_options = create_beast2_options(
-          input_filename = file.path(seed_folder, "mbd_best.xml"),
           output_log_filename = file.path(seed_folder, "mbd_best.log"),
           output_trees_filenames = file.path(seed_folder, "mbd_best.trees"),
-          output_state_filename = file.path(seed_folder, "mbd_best.xml.state"),
           rng_seed = seed,
           overwrite = TRUE
         ),
@@ -256,10 +254,8 @@ create_test_parameters_files <- function(
           mcmc = create_mcmc(chain_length = 3000, store_every = 1000)
         ),
         beast2_options = create_beast2_options(
-          input_filename = file.path(seed_folder, "mbd_best.xml"),
           output_log_filename = file.path(seed_folder, "mbd_best.log"),
           output_trees_filenames = file.path(seed_folder, "mbd_best.trees"),
-          output_state_filename = file.path(seed_folder, "mbd_best.xml.state"),
           rng_seed = seed,
           overwrite = TRUE
         ),
@@ -270,12 +266,15 @@ create_test_parameters_files <- function(
         experiment_jc69_yule, # candidate
         experiment_gtr_bd # candidate
       )
+      # TODO: add filename of .csv file, see
+      # https://github.com/richelbilderbeek/pirouette/issues/115
+      error_measure_params <- create_error_measure_params()
 
       pir_params <- create_pir_params(
         alignment_params = alignment_params,
         twinning_params = twinning_params,
         experiments = experiments,
-        error_measure_params = create_error_measure_params(),
+        error_measure_params = error_measure_params,
         evidence_filename = file.path(seed_folder, "mbd_marg_lik.csv"),
         verbose = verbose
       )
