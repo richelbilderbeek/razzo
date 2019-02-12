@@ -153,7 +153,7 @@ create_full_parameters_files <- function(
       #
       # Sure, a fourth model (gtr_yule) would finish the pattern,
       # but this woul also needlessly slow down our tests
-      experiment_jc69_bd <- create_experiment(
+      experiment_jc69_bd <- pirouette::create_experiment(
         model_type = "generative",
         run_if = "always",
         do_measure_evidence = TRUE,
@@ -173,7 +173,7 @@ create_full_parameters_files <- function(
         ),
         est_evidence_mcmc = create_nested_sampling_mcmc(epsilon = 100.0)
       )
-      experiment_jc69_yule <- create_experiment(
+      experiment_jc69_yule <- pirouette::create_experiment(
         model_type = "candidate",
         run_if = "best_candidate",
         do_measure_evidence = TRUE,
@@ -193,7 +193,7 @@ create_full_parameters_files <- function(
         ),
         est_evidence_mcmc = create_nested_sampling_mcmc(epsilon = 100.0)
       )
-      experiment_gtr_bd <- create_experiment(
+      experiment_gtr_bd <- pirouette::create_experiment(
         model_type = "candidate",
         run_if = "best_candidate",
         do_measure_evidence = TRUE,
