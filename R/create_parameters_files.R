@@ -131,19 +131,8 @@ create_full_parameters_files <- function(
 create_test_parameters_files <- function(
   project_folder_name = getwd(),
   n_replicates = 2,
-  twinning_params = create_twinning_params(),
-  alignment_params = create_alignment_params(
-    root_sequence = "aaaaccccggggttt",
-    mutation_rate = 0.5 / 15.0
-  ),
-  inference_params = create_inference_params(
-    mcmc = create_mcmc(chain_length = 2000, store_every = 1000),
-    mrca_prior = create_mrca_prior(
-      is_monophyletic = TRUE,
-      mrca_distr = create_normal_distr(mean = 15.0, sigma = 0.01)
-    )
-  ),
-  error_measure_params = create_error_measure_params()
+  root_sequence = "acgt",
+  verbose = FALSE
 ) {
   # Must start at one, as the BEAST2 RNG seed must be at least one.
   index <- 1
@@ -152,11 +141,6 @@ create_test_parameters_files <- function(
     mu = 0.15,
     nu = 1.0,
     q = 0.1
-  )
-
-  model_select_param <- create_gen_model_select_param(
-    alignment_params = alignment_params,
-    tree_prior = beautier::create_bd_tree_prior()
   )
 
   # Create data folder
@@ -198,22 +182,106 @@ create_test_parameters_files <- function(
         seed
       )
       dir.create(file.path(seed_folder), showWarnings = FALSE)
-      alignment_params$fasta_filename <- file.path(
-        seed_folder, "mbd.fasta"
+      alignment_params <- create_alignment_params(
+        root_sequence = root_sequence,
+        mutation_rate = pirouette::create_standard_mutation_rate,
+        site_model = beautier::create_jc69_site_model(),
+        clock_model = beautier::create_strict_clock_model(),
+        rng_seed = seed,
+        fasta_filename = file.path(seed_folder, "mbd.fasta")
       )
-      twinning_params$twin_tree_filename <- file.path(seed_folder, "bd.tree")
-      twinning_params$twin_alignment_filename <- file.path(
-        seed_folder, "bd.fasta"
+      twinning_params <- create_twinning_params(
+        rng_seed = seed,
+        twin_model = "bd",
+        method = "max_clade_cred",
+        n_replicas = n_replicates,
+        twin_tree_filename = file.path(seed_folder, "bd.tree"),
+        twin_alignment_filename = file.path(seed_folder, "bd.fasta"),
+        twin_evidence_filename = file.path(seed_folder, "mbd_marg_lik.csv")
+      )
+      # name                |model_type | run_if         | measure  | inference  # nolint this is no commented code
+      #                     |           |                | evidence | model
+      # --------------------|-----------|----------------|----------|-----------
+      # experiment_jc69_bd  |generative | always         |TRUE      |JC69, BD   # nolint this is no commented code
+      # experiment_jc69_yule|candidate  | best_candidate |TRUE      |JC69, Yule # nolint this is no commented code
+      # experiment_gtr_bd   |candidate  | best_candidate |TRUE      |GTR, BD    # nolint this is no commented code
+      #
+      # Sure, a fourth model (gtr_yule) would finish the pattern,
+      # but this woul also needlessly slow down our tests
+      experiment_jc69_bd <- create_experiment(
+        model_type = "generative",
+        run_if = "always",
+        do_measure_evidence = TRUE,
+        inference_model = create_inference_model(
+          site_model = create_jc69_site_model(),
+          tree_prior = create_bd_tree_prior(),
+          mcmc = create_mcmc(chain_length = 3000, store_every = 1000)
+        ),
+        beast2_options = create_beast2_options(
+          input_filename = file.path(seed_folder, "mbd_gen.xml"),
+          output_log_filename = file.path(seed_folder, "mbd_gen.log"),
+          output_trees_filenames = file.path(seed_folder, "mbd_gen.trees"),
+          output_state_filename = file.path(seed_folder, "mbd_gen.xml.state"),
+          rng_seed = seed,
+          overwrite = TRUE
+        ),
+        est_evidence_mcmc = create_nested_sampling_mcmc(epsilon = 100.0)
+      )
+      experiment_jc69_yule <- create_experiment(
+        model_type = "candidate",
+        run_if = "best_candidate",
+        do_measure_evidence = TRUE,
+        inference_model = create_inference_model(
+          site_model = create_jc69_site_model(),
+          tree_prior = create_yule_tree_prior(),
+          mcmc = create_mcmc(chain_length = 3000, store_every = 1000)
+        ),
+        beast2_options = create_beast2_options(
+          input_filename = file.path(seed_folder, "mbd_best.xml"),
+          output_log_filename = file.path(seed_folder, "mbd_best.log"),
+          output_trees_filenames = file.path(seed_folder, "mbd_best.trees"),
+          output_state_filename = file.path(seed_folder, "mbd_best.xml.state"),
+          rng_seed = seed,
+          overwrite = TRUE
+        ),
+        est_evidence_mcmc = create_nested_sampling_mcmc(epsilon = 100.0)
+      )
+      experiment_gtr_bd <- create_experiment(
+        model_type = "candidate",
+        run_if = "best_candidate",
+        do_measure_evidence = TRUE,
+        inference_model = create_inference_model(
+          site_model = create_gtr_site_model(),
+          tree_prior = create_bd_tree_prior(),
+          mcmc = create_mcmc(chain_length = 3000, store_every = 1000)
+        ),
+        beast2_options = create_beast2_options(
+          input_filename = file.path(seed_folder, "mbd_best.xml"),
+          output_log_filename = file.path(seed_folder, "mbd_best.log"),
+          output_trees_filenames = file.path(seed_folder, "mbd_best.trees"),
+          output_state_filename = file.path(seed_folder, "mbd_best.xml.state"),
+          rng_seed = seed,
+          overwrite = TRUE
+        ),
+        est_evidence_mcmc = create_nested_sampling_mcmc(epsilon = 100.0)
+      )
+      experiments <- list(
+        experiment_jc69_bd, # generative
+        experiment_jc69_yule, # candidate
+        experiment_gtr_bd # candidate
       )
 
-
+      pir_params <- create_pir_params(
+        alignment_params = alignment_params,
+        twinning_params = twinning_params,
+        experiments = experiments,
+        error_measure_params = create_error_measure_params(),
+        evidence_filename = file.path(seed_folder, "mbd_marg_lik.csv"),
+        verbose = verbose
+      )
       razzo_params <- create_razzo_params(
         mbd_params = mbd_params,
-        twinning_params = twinning_params,
-        alignment_params = alignment_params,
-        model_select_params = list(model_select_param),
-        inference_params = inference_params,
-        error_measure_params = error_measure_params
+        pir_params = pir_params
       )
       check_razzo_params(razzo_params)
       parameters_filenames[index] <- file.path(
