@@ -15,26 +15,6 @@ In each of these folders, there are folders named after their site and clock mod
 
 In each of these folders, there are:
 
-Traditional:
-
-Filename|Description
--------------|---------------------------------------
-`parameters.RDa`|the parameter file
-[TODO]`mbd.tree`|the true MBD tree
-`mbd.fasta`|the true MBD alignment
-`mbd.trees`|the posterior trees from `mbd.tree`
-`mbd.log`|the posterior parameter estimates from `mbd.tree`
-`mbd_marg_lik.csv`|the posterior's marginal likelihood from `mbd.tree`
-`mbd_nltts.csv`|the nLTT statistic distribution between `mbd.tree` and `mbd.trees`
-`bd.tree`|the twin BD tree
-`bd.fasta`|the twin BD alignment
-`bd.trees`|the posterior trees from `bd.tree`
-`bd.log`|the posterior parameter estimates from `bd.tree`
-`bd_marg_lik.csv`|the posterior's marginal likelihood from `bd.tree`
-`bd_nltts.csv`|the nLTT statistic distribution between `bd.tree` and `bd.trees`
-
-New skool:
-
 Filename|Description
 -------------|---------------------------------------
 `parameters.RDa`|the parameter file
