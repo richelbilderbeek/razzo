@@ -29,111 +29,6 @@ create_parameters_files <- function(
       mbd_params_interval = mbd_params_interval
     )
   } else {
-<<<<<<< HEAD
-    create_full_parameters_files(project_folder_name = project_folder_name) # nolint internal function
-  }
-}
-
-#' Create the parameter files as used in the experiment
-#'   \code{project_folder_name/data/[settings]/seed/[models]}
-#' @inheritParams default_params_doc
-#' @return Create folders for each parameter setting
-#'   and saves each setting in a file within the corresponding folder.
-#' @author Giovanni Laudanno, Richel J.C. Bilderbeek
-#' @export
-create_full_parameters_files <- function(
-  project_folder_name = getwd()
-) {
-  stop("Won't work, see 'create_test_parameters_files'")
-  # Just use the parameter combinations in the article
-  lambda_interval <- c(0.2, 0.2)
-  mu_interval <- c(0.15, 0.15)
-  nu_interval <- c(1.0, 1.0) # Testing
-  q_interval <- c(0.10, 0.10) # Testing
-  seed_interval <- 1:2
-  crown_age <- 15
-  sequence_length <- 100 # Testing
-  sample_interval <- 1000
-  chain_length <- 1e+6 # parameter L_c
-  sub_chain_length <- 1000 # parameter L_sc
-  clock_model_interval <- get_clock_models() # nolint internal function
-  site_model_interval <- get_site_models() # nolint internal function
-
-  lambda_interval <- unique(lambda_interval)
-  mu_interval     <- unique(mu_interval)
-  nu_interval     <- unique(nu_interval)
-  q_interval      <- unique(q_interval)
-
-  l_pars <- length(lambda_interval) *
-    length(mu_interval) *
-    length(nu_interval) *
-    length(q_interval)
-
-  data_folder_name <- "data"
-
-  # Do not warn if the folder already exists
-  dir.create(
-    file.path(project_folder_name, data_folder_name),
-    showWarnings = FALSE
-  )
-  testit::assert(dir.exists(file.path(project_folder_name, data_folder_name)))
-  parameters_filenames <- rep(NA, l_pars)
-  i <- 1
-  for (lambda in lambda_interval) {
-    for (mu in mu_interval) {
-      for (nu in nu_interval) {
-        for (q in q_interval) {
-          parsettings_name <- paste0(lambda, "-", mu, "-", nu, "-", q)
-          dir.create(file.path(project_folder_name,
-                               data_folder_name,
-                               parsettings_name),
-                     showWarnings = FALSE)
-          for (seed in seed_interval) {
-            seed_folder <- file.path(
-              project_folder_name,
-              data_folder_name,
-              parsettings_name,
-              seed
-            )
-            dir.create(file.path(seed_folder),
-                       showWarnings = FALSE)
-            for (clock_model in clock_model_interval) {
-              for (site_model in site_model_interval) {
-                model_folder <- file.path(
-                  seed_folder,
-                  paste0(clock_model, "-", site_model)
-                )
-                dir.create(file.path(model_folder),
-                           showWarnings = FALSE)
-
-                parameters <- create_params(
-                  lambda = lambda,
-                  mu = mu,
-                  nu = nu,
-                  q = q,
-                  seed = seed,
-                  crown_age = crown_age,
-                  sequence_length = sequence_length,
-                  sample_interval = sample_interval,
-                  chain_length = chain_length,
-                  sub_chain_length = sub_chain_length,
-                  clock_model = clock_model,
-                  site_model = site_model
-                )
-
-                parameters_filenames[i] <- file.path(
-                  model_folder,
-                  "parameters.csv"
-                )
-                utils::write.csv(parameters, file = parameters_filenames[i])
-                i <- i + 1
-              }
-            }
-          }
-        }
-      }
-    }
-=======
     n_replicates <- 10
     mbd_params_interval <- create_mbd_params_interval(
       lambda = 0.2,
@@ -149,7 +44,6 @@ create_full_parameters_files <- function(
       n_replicates = n_replicates,
       mbd_params_interval = mbd_params_interval
     )
->>>>>>> develop
   }
   parameters_filenames
 }
@@ -163,11 +57,6 @@ create_full_parameters_files <- function(
 #' @export
 create_full_parameters_files <- function(
   project_folder_name = getwd(),
-<<<<<<< HEAD
-  n_replicates = 2,
-  root_sequence = "acgt",
-  verbose = FALSE
-=======
   n_replicates = 10,
   mbd_params_interval = create_mbd_params_interval(
     lambda = 0.2,
@@ -192,19 +81,15 @@ create_full_parameters_files <- function(
     rng_seed = 314159265 # secret trick to activate new interface
   ),
   error_measure_params = pirouette::create_error_measure_params()
->>>>>>> develop
 ) {
   # Must start at one, as the BEAST2 RNG seed must be at least one.
   index <- 1
 
-<<<<<<< HEAD
-=======
   model_select_param <- pirouette::create_gen_model_select_param(
     alignment_params = alignment_params,
     tree_prior = beautier::create_bd_tree_prior()
   )
 
->>>>>>> develop
   # Create data folder
   data_folder_name <- "data"
   dir.create(
@@ -244,26 +129,15 @@ create_full_parameters_files <- function(
         mbd_params$seed
       )
       dir.create(file.path(seed_folder), showWarnings = FALSE)
-      alignment_params <- create_alignment_params(
-        root_sequence = root_sequence,
-        mutation_rate = pirouette::create_standard_mutation_rate,
-        site_model = beautier::create_jc69_site_model(),
-        clock_model = beautier::create_strict_clock_model(),
-        rng_seed = seed,
-        fasta_filename = file.path(seed_folder, "mbd.fasta")
+      alignment_params$fasta_filename <- file.path(
+        seed_folder, "mbd.fasta"
       )
-      twinning_params <- create_twinning_params(
-        rng_seed = seed,
-        twin_model = "bd",
-        method = "max_clade_cred",
-        n_replicas = n_replicates,
-        twin_tree_filename = file.path(seed_folder, "bd.tree"),
-        twin_alignment_filename = file.path(seed_folder, "bd.fasta"),
-        twin_evidence_filename = file.path(seed_folder, "mbd_marg_lik.csv")
+      twinning_params$twin_tree_filename <- file.path(seed_folder, "bd.tree")
+      twinning_params$twin_alignment_filename <- file.path(
+        seed_folder, "bd.fasta"
       )
-<<<<<<< HEAD
-
-      mcmc <- create_mcmc(chain_length = 3000, store_every = 1000)
+      misc_params <- list()
+      misc_params$tree_filename <- "mbd.tree"
       mrca_prior <- create_mrca_prior(
         is_monophyletic = TRUE,
         mrca_distr = create_normal_distr(mean = 15.0, sigma = 0.0001)
@@ -343,9 +217,6 @@ create_full_parameters_files <- function(
         experiment_jc69_yule, # candidate
         experiment_gtr_bd # candidate
       )
-      # TODO: add filename of .csv file, see
-      # https://github.com/richelbilderbeek/pirouette/issues/115
-      error_measure_params <- create_error_measure_params()
 
       pir_params <- create_pir_params(
         alignment_params = alignment_params,
@@ -353,23 +224,11 @@ create_full_parameters_files <- function(
         experiments = experiments,
         error_measure_params = error_measure_params,
         evidence_filename = file.path(seed_folder, "mbd_marg_lik.csv"),
-        verbose = verbose
       )
       razzo_params <- create_razzo_params(
         mbd_params = mbd_params,
-        pir_params = pir_params
-=======
-      misc_params <- list()
-      misc_params$tree_filename <- "mbd.tree"
-      razzo_params <- create_razzo_params(
-        mbd_params = mbd_params,
-        twinning_params = twinning_params,
-        alignment_params = alignment_params,
-        model_select_params = list(model_select_param),
-        inference_params = inference_params,
-        error_measure_params = error_measure_params,
+        pir_params = pir_params,
         misc_params = misc_params
->>>>>>> develop
       )
       check_razzo_params(razzo_params)
       parameters_filenames[index] <- file.path(
@@ -385,3 +244,4 @@ create_full_parameters_files <- function(
   }
   parameters_filenames
 }
+

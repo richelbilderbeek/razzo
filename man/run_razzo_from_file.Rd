@@ -5,7 +5,7 @@
 \title{Run a razzo experiment from a filename}
 \usage{
 run_razzo_from_file(parameters_filename,
-  experiments = pirouette::create_experiment())
+  experiments = list(pirouette::create_experiment()))
 }
 \arguments{
 \item{parameters_filename}{name of a file that contains

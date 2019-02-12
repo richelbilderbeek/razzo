@@ -4,7 +4,8 @@
 \alias{run_razzo}
 \title{Runs one \code{razzo} experiment}
 \usage{
-run_razzo(razzo_params, experiments = pirouette::create_experiment())
+run_razzo(razzo_params,
+  experiments = list(pirouette::create_experiment()))
 }
 \arguments{
 \item{razzo_params}{a parameter set for one \code{razzo} experiment,

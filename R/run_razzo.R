@@ -14,15 +14,6 @@ run_razzo <- function(
   testit::assert(beastier::is_beast2_installed())
 
   # Simulate incipient species tree
-<<<<<<< HEAD
-  if (1 == 2) {
-    # Set MBD tree generation seed, #153
-    set.seed(razzo_params$misc_params$tree_sim_rng_seed)
-  }
-  mbd_output <- becosys::bco_mbd_sim(
-    mbd_params = razzo_params$mbd_params,
-    crown_age = razzo_params$pir_params$experiments[[1]]$inference_model$mrca_prior$mrca_distr$mean$value
-=======
   mbd_output <- mbd::mbd_sim(
     pars = c(
       razzo_params$mbd_params$lambda,
@@ -34,7 +25,6 @@ run_razzo <- function(
     age = razzo_params$mbd_params$crown_age,
     cond = razzo_params$mbd_params$cond,
     seed = razzo_params$mbd_params$seed
->>>>>>> develop
   )
   phylogeny <- mbd_output$reconstructed_tree
 
@@ -51,15 +41,6 @@ run_razzo <- function(
   # Let pirouette measure the error
   pirouette::pir_run(
     phylogeny = phylogeny,
-<<<<<<< HEAD
     pir_params = razzo_params$pir_params
-=======
-    twinning_params = razzo_params$twinning_params,
-    alignment_params = razzo_params$alignment_params,
-    model_select_params = razzo_params$model_select_params,
-    inference_params = razzo_params$inference_params,
-    error_measure_params = razzo_params$error_measure_params,
-    experiments = experiments
->>>>>>> develop
   )
 }
