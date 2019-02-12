@@ -38,7 +38,7 @@ New skool:
 Filename|Description
 -------------|---------------------------------------
 `parameters.RDa`|the parameter file
-[TODO]`mbd.tree`|the true MBD tree
+`mbd.tree`|the true MBD tree
 `mbd.fasta`|the true MBD alignment
 `mbd_gen.trees`|the posterior trees from the true alignment, using the generative model
 `mbd_gen.log`|the posterior parameter estimates from the true tree, using the generative model
@@ -47,7 +47,7 @@ Filename|Description
 `mbd_marg_lik.csv`|the evidences (aka marginal likelihoods) all models have for the true alignment 
 `mbd_nltts_gen.csv`|the error between true tree and its posterior for the generative model
 `mbd_nltts_best.csv`|the error between true tree and its posterior for the best candidate model
-[TODO]`mbd_twin.tree`|the twin MBD tree
+`mbd_twin.tree`|the twin MBD tree
 `mbd_twin.fasta`|the twin MBD alignment
 `mbd_gen_twin.trees`|the posterior trees from the twin alignment, using the generative model
 `mbd_gen_twin.log`|the posterior parameter estimates from the twin tree, using the generative model
