@@ -37,7 +37,7 @@ test_that("use", {
         pattern = "razzo_project..?data",
         filenames[1], perl = TRUE, value = TRUE
       )
-    # ) > 0
+    ) > 0
   )
 
 })
