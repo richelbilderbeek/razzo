@@ -18,7 +18,7 @@ In each of these folders, there are:
 Traditional:
 
 Filename|Description
--------------|---------------------------------------|--------------------------
+-------------|---------------------------------------
 `parameters.RDa`|the parameter file
 [TODO]`mbd.tree`|the true MBD tree
 `mbd.fasta`|the true MBD alignment
@@ -36,7 +36,7 @@ Filename|Description
 New skool:
 
 Filename|Description
--------------|---------------------------------------|--------------------------
+-------------|---------------------------------------
 `parameters.RDa`|the parameter file
 [TODO]`mbd.tree`|the true MBD tree
 `mbd.fasta`|the true MBD alignment
