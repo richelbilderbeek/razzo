@@ -6,16 +6,16 @@
 documentation.}
 \usage{
 default_params_doc(alignment, alignment_params, bd_mutation_rate, bd_tree,
-  bd_tree_filename, brts, chain_length, clock_model, crown_age,
-  error_measure_params, fasta_filename, filename, folder_name,
+  bd_tree_filename, brts, chain_length, clock_model, cond, crown_age,
+  error_measure_params, experiments, fasta_filename, filename, folder_name,
   init_speciation_rate, init_extinction_rate, inference_params, lambda,
-  mbd_l_matrix, mbd_mutation_rate, mbd_params, mbd_tree,
-  model_select_params, mu, mutation_rate, n_replicates, nu, nu_events,
-  parameters, parameter_filename, parameters_filename, phylo,
-  posterior_trees, precision, project_folder_name, razzo_params,
-  sample_interval, seed, sequence_length, sim_pars, sim_phylo, site_model,
-  sub_chain_length, tree, tree_filename, trees_filename, twinning_params,
-  verbose)
+  mbd_l_matrix, mbd_mutation_rate, mbd_params, mbd_params_interval,
+  mbd_sim_rng_seed, mbd_tree, misc_params, model_select_params, mu,
+  mutation_rate, n_replicates, nu, nu_events, parameters,
+  parameter_filename, parameters_filename, phylo, posterior_trees,
+  precision, project_folder_name, q, razzo_params, sample_interval, seed,
+  sequence_length, sim_pars, sim_phylo, site_model, sub_chain_length, tree,
+  tree_filename, trees_filename, twinning_params, verbose)
 }
 \arguments{
 \item{alignment}{a DNA alignment}
@@ -38,11 +38,16 @@ process}
 \item{clock_model}{Name of the clock model that has
 to be used for the inference. Valid names are 'strict' and 'rln'.}
 
+\item{cond}{conditioning as specified in \code{\link[mbd]{mbd_sim}}}
+
 \item{crown_age}{The crown age of the tree.}
 
 \item{error_measure_params}{parameters to set how the error
 between given tree and inferred trees in measure,
 as can be created by \code{\link[pirouette]{create_error_measure_params}}}
+
+\item{experiments}{provides information on how the experiment has to be set
+up. To create it use \code{\link[pirouette]{create_experiment}}}
 
 \item{fasta_filename}{name of a FASTA file}
 
@@ -57,29 +62,37 @@ as can be created by \code{\link[pirouette]{create_error_measure_params}}}
 \item{inference_params}{the parameters used in all Bayesian inference,
 as created by \link[pirouette]{create_inference_params}}
 
-\item{lambda}{per-lineage speciation rate}
+\item{lambda}{per-lineage speciation rate. See \code{\link[mbd]{mbd_sim}}}
 
 \item{mbd_l_matrix}{the L matrix of an MBD tree}
 
 \item{mbd_mutation_rate}{the mutation rate when creating an alignment
 from a MBD tree}
 
-\item{mbd_params}{MBD parameter set,
-as created by \link[becosys]{create_mbd_params}}
+\item{mbd_params}{MBD parameter set}
+
+\item{mbd_params_interval}{MBD parameter set interval}
+
+\item{mbd_sim_rng_seed}{rng seed to simulate a mbd tree}
 
 \item{mbd_tree}{an MBD tree}
+
+\item{misc_params}{additional parameters for razzo. They contain
+tree_filename to store the original given tree and mbd_sim_rng_seed for
+when an mbd tree is simulated}
 
 \item{model_select_params}{a parameter set to specify how to pick
 an inference model,
 as can be created by \code{\link[pirouette]{create_model_select_param}}}
 
-\item{mu}{per-species extinction rate}
+\item{mu}{per-species extinction rate. See \code{\link[mbd]{mbd_sim}}}
 
 \item{mutation_rate}{something}
 
 \item{n_replicates}{number of replicates}
 
-\item{nu}{the rate at which a multiple-birth specation is triggered}
+\item{nu}{the rate at which a multiple-birth specation is triggered.
+See \code{\link[mbd]{mbd_sim}}}
 
 \item{nu_events}{the number of nu-triggered events that have to be
 present in the simulated tree}
@@ -99,6 +112,9 @@ of class \code{multiphylo}}
 
 \item{project_folder_name}{project folder name,
 will be the full path to \code{razzo_project}}
+
+\item{q}{per-species speciation probability in case of occurrance of
+a multiple event. See \code{\link[mbd]{mbd_sim}}}
 
 \item{razzo_params}{a parameter set for one \code{razzo} experiment,
 as created by \link{create_razzo_params}

@@ -30,13 +30,13 @@ Update our dependencies:
 ```{r message=FALSE, install_dependencies}
 if (!require(ape)) {install.packages("ape")}
 if (!require(mbd)) {devtools::install_github("Giappo/mbd", quiet = TRUE)}
-devtools::install_github("ropensci/beautier", quiet = TRUE)
-devtools::install_github("ropensci/tracerer", quiet = TRUE)
-devtools::install_github("ropensci/beastier", quiet = TRUE)
-devtools::install_github("ropensci/mauricer", quiet = TRUE)
-devtools::install_github("ropensci/babette", quiet = TRUE)
-devtools::install_github("richelbilderbeek/mcbette", quiet = TRUE)
-devtools::install_github("richelbilderbeek/pirouette", quiet = TRUE)
+# devtools::install_github("ropensci/beautier", quiet = TRUE)
+# devtools::install_github("ropensci/tracerer", quiet = TRUE)
+# devtools::install_github("ropensci/beastier", quiet = TRUE)
+# devtools::install_github("ropensci/mauricer", quiet = TRUE)
+# devtools::install_github("ropensci/babette", quiet = TRUE)
+# devtools::install_github("richelbilderbeek/mcbette", quiet = TRUE)
+# devtools::install_github("richelbilderbeek/pirouette", quiet = TRUE)
 ```
 
 Load the libraries needed:
@@ -44,7 +44,6 @@ Load the libraries needed:
 ```{r load_libraries}
 library(mbd)
 library(razzo)
-library(ggplot2)
 ```
 
 We will work in this folder:
@@ -68,10 +67,22 @@ parameters_filenames <- create_parameters_files(
 
 ## Step 2: Run the parameter files
 
+First we decide what experiment we want to run
+
 ```{r}
-for (i in seq_along(parameters_filenames)) {
+experiments <- pirouette::create_experiment()
+```
+
+Then we run razzo for each parameter setting
+
+```{r}
+# longer version: for (i in seq_along(parameters_filenames)) {
+for (i in 1:2) {
   parameters_filename <- parameters_filenames[i]
-  razzo::run_razzo_from_file(parameters_filename)
+  razzo::run_razzo_from_file(
+    parameters_filename = parameters_filename,
+    experiments = list(experiments)
+  )
 }
 ```
 

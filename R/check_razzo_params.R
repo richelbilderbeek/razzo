@@ -9,7 +9,17 @@ check_razzo_params <- function(
   razzo_params
 ) {
   argument_names <- c(
+<<<<<<< HEAD
     "mbd_params", "pir_params"
+=======
+    "mbd_params",
+    "twinning_params",
+    "alignment_params",
+    "model_select_params",
+    "inference_params",
+    "error_measure_params",
+    "misc_params"
+>>>>>>> develop
   )
   for (arg_name in argument_names) {
     if (!arg_name %in% names(razzo_params)) {
@@ -19,6 +29,7 @@ check_razzo_params <- function(
     }
   }
 
+<<<<<<< HEAD
   # becosys::check_mbd_params(razzo_params$mbd_params) # nolint Issue #150
   pirouette::check_pir_params(razzo_params$pir_params) # nolint internal pirouette function, will be exported in pirouette v1.1
 
@@ -50,4 +61,17 @@ check_razzo_params <- function(
       )
     }
   }
+=======
+  check_mbd_params(razzo_params$mbd_params)
+  pirouette:::check_twinning_params(razzo_params$twinning_params) # nolint internal pirouette function, will be exported in pirouette v1.1
+  pirouette:::check_alignment_params(razzo_params$alignment_params) # nolint internal pirouette function, will be exported in pirouette v1.1
+  pirouette:::check_model_select_params(razzo_params$model_select_params) # nolint internal pirouette function, will be exported in pirouette v1.1
+  pirouette:::check_inference_params(razzo_params$inference_params) # nolint internal pirouette function, will be exported in pirouette v1.1
+  pirouette:::check_error_measure_params(razzo_params$error_measure_params) # nolint internal pirouette function, will be exported in pirouette v1.1
+  check_misc_params(razzo_params$misc_params)
+  testit::assert(
+    razzo_params$mbd_params$crown_age ==
+      razzo_params$inference_params$mrca_prior$mrca_distr$mean$value
+  )
+>>>>>>> develop
 }

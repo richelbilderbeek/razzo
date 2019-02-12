@@ -1,4 +1,4 @@
-context("open_parameters_file")
+context("test-open_parameters_file")
 
 test_that("use", {
 

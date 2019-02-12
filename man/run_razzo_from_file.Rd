@@ -4,16 +4,20 @@
 \alias{run_razzo_from_file}
 \title{Run a razzo experiment from a filename}
 \usage{
-run_razzo_from_file(razzo_input_filename)
+run_razzo_from_file(parameters_filename,
+  experiments = pirouette::create_experiment())
 }
 \arguments{
-\item{razzo_input_filename}{name of a file that contains
-a \code{raket_params},
+\item{parameters_filename}{name of a file that contains
+a \code{razzo_params},
 as can be created by \link{create_razzo_params}}
+
+\item{experiments}{provides information on how the experiment has to be set
+up. To create it use \code{\link[pirouette]{create_experiment}}}
 }
 \description{
 Run a razzo experiment from a filename
 }
 \author{
-Richel J.C. Bilderbeek
+Richel J.C. Bilderbeek, Giovanni Laudanno
 }

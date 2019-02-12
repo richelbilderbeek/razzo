@@ -38,7 +38,7 @@ Suggests:
   dplyr,
   knitr,
   lintr,
-  ribir,
   rmarkdown,
-  testthat
+  testthat,
+  tidyverse
 VignetteBuilder: knitr

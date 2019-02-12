@@ -4,12 +4,15 @@
 \alias{run_razzo}
 \title{Runs one \code{razzo} experiment}
 \usage{
-run_razzo(razzo_params)
+run_razzo(razzo_params, experiments = pirouette::create_experiment())
 }
 \arguments{
 \item{razzo_params}{a parameter set for one \code{razzo} experiment,
 as created by \link{create_razzo_params}
 and used by \link{run_razzo}}
+
+\item{experiments}{provides information on how the experiment has to be set
+up. To create it use \code{\link[pirouette]{create_experiment}}}
 }
 \value{
 a data frame with errors,
@@ -21,5 +24,5 @@ a data frame with errors,
 Runs one \code{razzo} experiment
 }
 \author{
-Richel J.C. Bilderbeek
+Richel J.C. Bilderbeek, Giovanni Laudanno
 }

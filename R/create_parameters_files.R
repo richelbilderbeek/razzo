@@ -13,8 +13,23 @@ create_parameters_files <- function(
 ) {
   testit::assert(experiment_type == "test" || experiment_type == "full")
   if (experiment_type == "test") {
-    create_test_parameters_files(project_folder_name = project_folder_name) # nolint internal function
+    n_replicates <- 2
+    mbd_params_interval <- create_mbd_params_interval(
+      lambda = 0.2,
+      mu = 0.15,
+      nu = 1.0,
+      q = 0.1,
+      seed = seq(from = 1, to = n_replicates, by = 1),
+      crown_age = 15.0,
+      cond = 1
+    )
+    parameters_filenames <- create_full_parameters_files(
+      project_folder_name = project_folder_name,
+      n_replicates = n_replicates,
+      mbd_params_interval = mbd_params_interval
+    )
   } else {
+<<<<<<< HEAD
     create_full_parameters_files(project_folder_name = project_folder_name) # nolint internal function
   }
 }
@@ -118,32 +133,78 @@ create_full_parameters_files <- function(
         }
       }
     }
+=======
+    n_replicates <- 10
+    mbd_params_interval <- create_mbd_params_interval(
+      lambda = 0.2,
+      mu = 0.15,
+      nu = c(1.0, 1.5, 2.0),
+      q = c(0.1, 0.15, 0.2),
+      seed = seq(from = 1, to = n_replicates, by = 1),
+      crown_age = 15.0,
+      cond = 1
+    )
+    parameters_filenames <- create_full_parameters_files(
+      project_folder_name = project_folder_name,
+      n_replicates = n_replicates,
+      mbd_params_interval = mbd_params_interval
+    )
+>>>>>>> develop
   }
   parameters_filenames
 }
 
-#' Create all testing parameter files in
+#' Create the parameter files according to the specified arguments
 #'   \code{project_folder_name/data/[settings]/seed/[models]}
 #' @inheritParams default_params_doc
 #' @return Create folders for each parameter setting
 #'   and saves each setting in a file within the corresponding folder.
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
-create_test_parameters_files <- function(
+create_full_parameters_files <- function(
   project_folder_name = getwd(),
+<<<<<<< HEAD
   n_replicates = 2,
   root_sequence = "acgt",
   verbose = FALSE
+=======
+  n_replicates = 10,
+  mbd_params_interval = create_mbd_params_interval(
+    lambda = 0.2,
+    mu = 0.15,
+    nu = c(1.0, 1.5, 2.0),
+    q = c(0.1, 0.15, 0.2),
+    seed = seq(from = 1, to = n_replicates, by = 1),
+    crown_age = 15.0,
+    cond = 1
+  ),
+  twinning_params = pirouette::create_twinning_params(),
+  alignment_params = pirouette::create_alignment_params(
+    root_sequence = "aaaaccccggggttt",
+    mutation_rate = 0.5 / unique(mbd_params_interval$crown_age)
+  ),
+  inference_params = pirouette::create_inference_params(
+    mcmc = beautier::create_mcmc(chain_length = 2000, store_every = 1000),
+    mrca_prior = beautier::create_mrca_prior(
+      is_monophyletic = TRUE,
+      mrca_distr = beautier::create_normal_distr(mean = unique(mbd_params_interval$crown_age), sigma = 0.01)
+    ),
+    rng_seed = 314159265 # secret trick to activate new interface
+  ),
+  error_measure_params = pirouette::create_error_measure_params()
+>>>>>>> develop
 ) {
   # Must start at one, as the BEAST2 RNG seed must be at least one.
   index <- 1
-  bio_params <- expand.grid(
-    lambda = 0.2,
-    mu = 0.15,
-    nu = 1.0,
-    q = 0.1
+
+<<<<<<< HEAD
+=======
+  model_select_param <- pirouette::create_gen_model_select_param(
+    alignment_params = alignment_params,
+    tree_prior = beautier::create_bd_tree_prior()
   )
 
+>>>>>>> develop
   # Create data folder
   data_folder_name <- "data"
   dir.create(
@@ -153,34 +214,34 @@ create_test_parameters_files <- function(
   testit::assert(dir.exists(file.path(project_folder_name, data_folder_name)))
 
   # Go through all biological parameters
-  n_rows <- nrow(bio_params)
+  n_rows <- nrow(mbd_params_interval)
   parameters_filenames <- rep(NA, n_rows * n_replicates)
   for (row_index in seq(1:n_rows)) {
-    # Extract the biological parameters and create a folder for them
-    lambda <- bio_params$lambda
-    mu <- bio_params$mu
-    nu <- bio_params$nu
-    q <- bio_params$q
-    mbd_params <- becosys::create_mbd_params(
-      lambda = lambda,
-      mu = mu,
-      nu = nu,
-      q = q
-    )
-    parsettings_name <- paste0(lambda, "-", mu, "-", nu, "-", q)
-    dir.create(
-      file.path(project_folder_name,
-      data_folder_name,
-      parsettings_name),
-      showWarnings = FALSE
-    )
     for (replicate in seq(1, n_replicates)) {
-      seed <- index
+      # Extract the biological parameters and create a folder for them
+      mbd_params <- mbd_params_interval[row_index, ]
+      parsettings_name <- paste0(
+        mbd_params$lambda,
+        "-",
+        mbd_params$mu,
+        "-",
+        mbd_params$nu,
+        "-",
+        mbd_params$q
+      )
+      dir.create(
+        file.path(
+          project_folder_name,
+          data_folder_name,
+          parsettings_name
+        ),
+        showWarnings = FALSE
+      )
       seed_folder <- file.path(
         project_folder_name,
         data_folder_name,
         parsettings_name,
-        seed
+        mbd_params$seed
       )
       dir.create(file.path(seed_folder), showWarnings = FALSE)
       alignment_params <- create_alignment_params(
@@ -200,6 +261,7 @@ create_test_parameters_files <- function(
         twin_alignment_filename = file.path(seed_folder, "bd.fasta"),
         twin_evidence_filename = file.path(seed_folder, "mbd_marg_lik.csv")
       )
+<<<<<<< HEAD
 
       mcmc <- create_mcmc(chain_length = 3000, store_every = 1000)
       mrca_prior <- create_mrca_prior(
@@ -296,6 +358,18 @@ create_test_parameters_files <- function(
       razzo_params <- create_razzo_params(
         mbd_params = mbd_params,
         pir_params = pir_params
+=======
+      misc_params <- list()
+      misc_params$tree_filename <- "mbd.tree"
+      razzo_params <- create_razzo_params(
+        mbd_params = mbd_params,
+        twinning_params = twinning_params,
+        alignment_params = alignment_params,
+        model_select_params = list(model_select_param),
+        inference_params = inference_params,
+        error_measure_params = error_measure_params,
+        misc_params = misc_params
+>>>>>>> develop
       )
       check_razzo_params(razzo_params)
       parameters_filenames[index] <- file.path(

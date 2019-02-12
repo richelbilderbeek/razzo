@@ -2,21 +2,53 @@
 % Please edit documentation in R/create_parameters_files.R
 \name{create_full_parameters_files}
 \alias{create_full_parameters_files}
-\title{Create the parameter files as used in the experiment
+\title{Create the parameter files according to the specified arguments
   \code{project_folder_name/data/[settings]/seed/[models]}}
 \usage{
-create_full_parameters_files(project_folder_name = getwd())
+create_full_parameters_files(project_folder_name = getwd(),
+  n_replicates = 10,
+  mbd_params_interval = create_mbd_params_interval(lambda = 0.2, mu =
+  0.15, nu = c(1, 1.5, 2), q = c(0.1, 0.15, 0.2), seed = seq(from = 1, to =
+  n_replicates, by = 1), crown_age = 15, cond = 1),
+  twinning_params = pirouette::create_twinning_params(),
+  alignment_params = pirouette::create_alignment_params(root_sequence =
+  "aaaaccccggggttt", mutation_rate =
+  0.5/unique(mbd_params_interval$crown_age)),
+  inference_params = pirouette::create_inference_params(mcmc =
+  beautier::create_mcmc(chain_length = 2000, store_every = 1000),
+  mrca_prior = beautier::create_mrca_prior(is_monophyletic = TRUE,
+  mrca_distr = beautier::create_normal_distr(mean =
+  unique(mbd_params_interval$crown_age), sigma = 0.01)), rng_seed =
+  314159265),
+  error_measure_params = pirouette::create_error_measure_params())
 }
 \arguments{
 \item{project_folder_name}{project folder name,
 will be the full path to \code{razzo_project}}
+
+\item{n_replicates}{number of replicates}
+
+\item{mbd_params_interval}{MBD parameter set interval}
+
+\item{twinning_params}{parameters for creating a twin tree,
+as can be created by \code{\link[pirouette]{create_twinning_params}}}
+
+\item{alignment_params}{parameters for creating an alignment,
+as can be created by \code{\link[pirouette]{create_alignment_params}}}
+
+\item{inference_params}{the parameters used in all Bayesian inference,
+as created by \link[pirouette]{create_inference_params}}
+
+\item{error_measure_params}{parameters to set how the error
+between given tree and inferred trees in measure,
+as can be created by \code{\link[pirouette]{create_error_measure_params}}}
 }
 \value{
 Create folders for each parameter setting
   and saves each setting in a file within the corresponding folder.
 }
 \description{
-Create the parameter files as used in the experiment
+Create the parameter files according to the specified arguments
   \code{project_folder_name/data/[settings]/seed/[models]}
 }
 \author{
