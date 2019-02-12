@@ -29,6 +29,7 @@ create_parameters_files <- function(
 create_full_parameters_files <- function(
   project_folder_name = getwd()
 ) {
+  stop("Won't work, see 'create_test_parameters_files'")
   # Just use the parameter combinations in the article
   lambda_interval <- c(0.2, 0.2)
   mu_interval <- c(0.15, 0.15)
@@ -199,6 +200,13 @@ create_test_parameters_files <- function(
         twin_alignment_filename = file.path(seed_folder, "bd.fasta"),
         twin_evidence_filename = file.path(seed_folder, "mbd_marg_lik.csv")
       )
+
+      mcmc <- create_mcmc(chain_length = 3000, store_every = 1000)
+      mrca_prior <- create_mrca_prior(
+        is_monophyletic = TRUE,
+        mrca_distr = create_normal_distr(mean = 15.0, sigma = 0.0001)
+      )
+
       # name                |model_type | run_if         | measure  | inference  # nolint this is no commented code
       #                     |           |                | evidence | model
       # --------------------|-----------|----------------|----------|-----------
@@ -215,7 +223,8 @@ create_test_parameters_files <- function(
         inference_model = create_inference_model(
           site_model = create_jc69_site_model(),
           tree_prior = create_bd_tree_prior(),
-          mcmc = create_mcmc(chain_length = 3000, store_every = 1000)
+          mcmc = mcmc,
+          mrca_prior = mrca_prior
         ),
         beast2_options = create_beast2_options(
           input_filename = file.path(seed_folder, "mbd_gen.xml"),
@@ -234,11 +243,14 @@ create_test_parameters_files <- function(
         inference_model = create_inference_model(
           site_model = create_jc69_site_model(),
           tree_prior = create_yule_tree_prior(),
-          mcmc = create_mcmc(chain_length = 3000, store_every = 1000)
+          mcmc = mcmc,
+          mrca_prior = mrca_prior
         ),
         beast2_options = create_beast2_options(
+          input_filename = file.path(seed_folder, "mbd_best.xml"),
           output_log_filename = file.path(seed_folder, "mbd_best.log"),
           output_trees_filenames = file.path(seed_folder, "mbd_best.trees"),
+          output_state_filename = file.path(seed_folder, "mbd_best.xml.state"),
           rng_seed = seed,
           overwrite = TRUE
         ),
@@ -251,11 +263,14 @@ create_test_parameters_files <- function(
         inference_model = create_inference_model(
           site_model = create_gtr_site_model(),
           tree_prior = create_bd_tree_prior(),
-          mcmc = create_mcmc(chain_length = 3000, store_every = 1000)
+          mcmc = mcmc,
+          mrca_prior = mrca_prior
         ),
         beast2_options = create_beast2_options(
+          input_filename = file.path(seed_folder, "mbd_best.xml"),
           output_log_filename = file.path(seed_folder, "mbd_best.log"),
           output_trees_filenames = file.path(seed_folder, "mbd_best.trees"),
+          output_state_filename = file.path(seed_folder, "mbd_best.xml.state"),
           rng_seed = seed,
           overwrite = TRUE
         ),

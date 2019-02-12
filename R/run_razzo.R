@@ -19,7 +19,7 @@ run_razzo <- function(
   }
   mbd_output <- becosys::bco_mbd_sim(
     mbd_params = razzo_params$mbd_params,
-    crown_age = razzo_params$inference_params$mrca_prior$mrca_distr$mean$value
+    crown_age = razzo_params$pir_params$experiments[[1]]$inference_model$mrca_prior$mrca_distr$mean$value
   )
   phylogeny <- mbd_output$reconstructed_tree
   # Save phylogeny here, #152
@@ -32,10 +32,6 @@ run_razzo <- function(
   # Let pirouette measure the error
   pirouette::pir_run(
     phylogeny = phylogeny,
-    twinning_params = razzo_params$twinning_params,
-    alignment_params = razzo_params$alignment_params,
-    model_select_params = razzo_params$model_select_params,
-    inference_params = razzo_params$inference_params,
-    error_measure_params = razzo_params$error_measure_params
+    pir_params = razzo_params$pir_params
   )
 }

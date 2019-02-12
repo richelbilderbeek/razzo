@@ -44,6 +44,7 @@ test_that("use", {
 
 test_that("use, full", {
 
+  skip("Issue 127, #127")
   # Put files in temporary folder
   super_folder_name <- tempdir()
   project_folder_name <- file.path(super_folder_name, "razzo_project")
