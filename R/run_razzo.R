@@ -28,7 +28,9 @@ run_razzo <- function(
   )
   phylogeny <- mbd_output$reconstructed_tree
 
-  directory <- dirname(razzo_params$twinning_params$twin_tree_filename)
+  directory <- dirname(
+    razzo_params$pir_params$twinning_params$twin_tree_filename
+  )
   tree_filename <- file.path(
     directory,
     razzo_params$misc_params$tree_filename

@@ -12,7 +12,7 @@ test_that("use", {
     crown_age = crown_age,
     cond = 1
   )
-  experiment <- create_experiment(
+  experiment <- pirouette::create_experiment(
     model_type = "generative",
     run_if = "always",
     do_measure_evidence = FALSE,
@@ -26,7 +26,7 @@ test_that("use", {
 
   experiments <- list(experiment)
   pir_params <- pirouette::create_pir_params(
-    alignment_params = create_test_alignment_params(),
+    alignment_params = pirouette::create_test_alignment_params(),
     experiments = experiments
 
   )
