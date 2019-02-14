@@ -246,3 +246,20 @@ create_full_parameters_files <- function(
   parameters_filenames
 }
 
+#' Create parameter files to be used for testing in
+#'   \code{project_folder_name/data/[settings]/seed/[models]}
+#' @inheritParams default_params_doc
+#' @param experiment_type the type of experiment,
+#'   can be either \code{test} or \code{full}
+#' @return Create folders for each parameter setting
+#'   and saves each setting in a file within the corresponding folder.
+#' @author Richel J.C. Bilderbeek
+#' @export
+create_test_parameters_files <- function(
+  project_folder_name = getwd()
+) {
+  create_parameters_files(
+    project_folder_name,
+    experiment_type = "test"
+  )
+}
