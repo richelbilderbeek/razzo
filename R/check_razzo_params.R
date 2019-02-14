@@ -21,12 +21,25 @@ check_razzo_params <- function(
 
   check_mbd_params(razzo_params$mbd_params)
   check_misc_params(razzo_params$misc_params)
-  testit::assert(
-    razzo_params$mbd_params$crown_age ==
-      razzo_params$pir_params$experiments[[1]]$inference_model$mrca_prior$mrca_distr$mean$value # nolint yep, its's long
-  )
+  pirouette::check_pir_params(razzo_params$pir_params)
+  if (!beautier::has_mrca_prior(
+      razzo_params$pir_params$experiments[[1]]$inference_model
+    )
+  ) {
+    "An inference model must have an MRCA prior"
+  }
+  first_experiment <- razzo_params$pir_params$experiments[[1]]
+  first_mrca_prior <- first_experiment$inference_model$mrca_prior
+  if (razzo_params$mbd_params$crown_age !=
+      first_mrca_prior$mrca_distr$mean$value
+  ) {
+    stop(
+      "Crown ages in MBD param (", razzo_params$mbd_params$crown_age,
+      ") and inference model's MRCA prior (",
+      first_mrca_prior$mrca_distr$mean$value, ") must be equal"
+    )
+  }
 
-  pirouette::check_pir_params(razzo_params$pir_params) # nolint internal pirouette function, will be exported in pirouette v1.1
 
   for (experiment in razzo_params$pir_params$experiments) {
     mrca_prior <- experiment$inference_model$mrca_prior

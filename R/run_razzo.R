@@ -7,8 +7,7 @@
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
 run_razzo <- function(
-  razzo_params,
-  experiments = list(pirouette::create_experiment())
+  razzo_params
 ) {
   check_razzo_params(razzo_params) # nolint razzo function
   testit::assert(beastier::is_beast2_installed())
