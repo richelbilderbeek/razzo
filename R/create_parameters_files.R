@@ -1,8 +1,6 @@
 #' Create all parameter files  in
 #'   \code{project_folder_name/data/[settings]/seed/[models]}
 #' @inheritParams default_params_doc
-#' @param experiment_type the type of experiment,
-#'   can be either \code{test} or \code{full}
 #' @return Create folders for each parameter setting
 #'   and saves each setting in a file within the corresponding folder.
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
@@ -72,23 +70,10 @@ create_full_parameters_files <- function(
     root_sequence = "aaaaccccggggttt",
     mutation_rate = 0.5 / unique(mbd_params_interval$crown_age)
   ),
-  inference_params = pirouette::create_inference_params(
-    mcmc = beautier::create_mcmc(chain_length = 2000, store_every = 1000),
-    mrca_prior = beautier::create_mrca_prior(
-      is_monophyletic = TRUE,
-      mrca_distr = beautier::create_normal_distr(mean = unique(mbd_params_interval$crown_age), sigma = 0.01)
-    ),
-    rng_seed = 314159265 # secret trick to activate new interface
-  ),
   error_measure_params = pirouette::create_error_measure_params()
 ) {
   # Must start at one, as the BEAST2 RNG seed must be at least one.
   index <- 1
-
-  model_select_param <- pirouette::create_gen_model_select_param(
-    alignment_params = alignment_params,
-    tree_prior = beautier::create_bd_tree_prior()
-  )
 
   # Create data folder
   data_folder_name <- "data"
@@ -122,11 +107,12 @@ create_full_parameters_files <- function(
         ),
         showWarnings = FALSE
       )
+      seed <- mbd_params$seed
       seed_folder <- file.path(
         project_folder_name,
         data_folder_name,
         parsettings_name,
-        mbd_params$seed
+        seed
       )
       dir.create(file.path(seed_folder), showWarnings = FALSE)
       alignment_params$fasta_filename <- file.path(
@@ -138,13 +124,101 @@ create_full_parameters_files <- function(
       )
       misc_params <- list()
       misc_params$tree_filename <- "mbd.tree"
+      mrca_prior <- beautier::create_mrca_prior(
+        is_monophyletic = TRUE,
+        mrca_distr = beautier::create_normal_distr(mean = 15.0, sigma = 0.0001)
+      )
+
+      mcmc <- beautier::create_mcmc(chain_length = 3000, store_every = 1000)
+      mrca_prior <- beautier::create_mrca_prior(
+        is_monophyletic = TRUE,
+        mrca_distr = beautier::create_normal_distr(mean = 15.0, sigma = 0.0001)
+      )
+      # name                |model_type | run_if         | measure  | inference  # nolint this is no commented code
+      #                     |           |                | evidence | model
+      # --------------------|-----------|----------------|----------|-----------
+      # experiment_jc69_bd  |generative | always         |TRUE      |JC69, BD   # nolint this is no commented code
+      # experiment_jc69_yule|candidate  | best_candidate |TRUE      |JC69, Yule # nolint this is no commented code
+      # experiment_gtr_bd   |candidate  | best_candidate |TRUE      |GTR, BD    # nolint this is no commented code
+      #
+      # Sure, a fourth model (gtr_yule) would finish the pattern,
+      # but this woul also needlessly slow down our tests
+      experiment_jc69_bd <- pirouette::create_experiment(
+        model_type = "generative",
+        run_if = "always",
+        do_measure_evidence = TRUE,
+        inference_model = beautier::create_inference_model(
+          site_model = beautier::create_jc69_site_model(),
+          tree_prior = beautier::create_bd_tree_prior(),
+          mcmc = mcmc,
+          mrca_prior = mrca_prior
+        ),
+        beast2_options = beastier::create_beast2_options(
+          input_filename = file.path(seed_folder, "mbd_gen.xml"),
+          output_log_filename = file.path(seed_folder, "mbd_gen.log"),
+          output_trees_filenames = file.path(seed_folder, "mbd_gen.trees"),
+          output_state_filename = file.path(seed_folder, "mbd_gen.xml.state"),
+          rng_seed = seed,
+          overwrite = TRUE
+        ),
+        est_evidence_mcmc = beautier::create_nested_sampling_mcmc(epsilon = 100.0)
+      )
+      experiment_jc69_yule <- pirouette::create_experiment(
+        model_type = "candidate",
+        run_if = "best_candidate",
+        do_measure_evidence = TRUE,
+        inference_model = beautier::create_inference_model(
+          site_model = beautier::create_jc69_site_model(),
+          tree_prior = beautier::create_yule_tree_prior(),
+          mcmc = mcmc,
+          mrca_prior = mrca_prior
+        ),
+        beast2_options = beastier::create_beast2_options(
+          input_filename = file.path(seed_folder, "mbd_best.xml"),
+          output_log_filename = file.path(seed_folder, "mbd_best.log"),
+          output_trees_filenames = file.path(seed_folder, "mbd_best.trees"),
+          output_state_filename = file.path(seed_folder, "mbd_best.xml.state"),
+          rng_seed = seed,
+          overwrite = TRUE
+        ),
+        est_evidence_mcmc = beautier::create_nested_sampling_mcmc(epsilon = 100.0)
+      )
+      experiment_gtr_bd <- pirouette::create_experiment(
+        model_type = "candidate",
+        run_if = "best_candidate",
+        do_measure_evidence = TRUE,
+        inference_model = beautier::create_inference_model(
+          site_model = beautier::create_gtr_site_model(),
+          tree_prior = beautier::create_bd_tree_prior(),
+          mcmc = mcmc,
+          mrca_prior = mrca_prior
+        ),
+        beast2_options = beastier::create_beast2_options(
+          input_filename = file.path(seed_folder, "mbd_best.xml"),
+          output_log_filename = file.path(seed_folder, "mbd_best.log"),
+          output_trees_filenames = file.path(seed_folder, "mbd_best.trees"),
+          output_state_filename = file.path(seed_folder, "mbd_best.xml.state"),
+          rng_seed = seed,
+          overwrite = TRUE
+        ),
+        est_evidence_mcmc = beautier::create_nested_sampling_mcmc(epsilon = 100.0)
+      )
+      experiments <- list(
+        experiment_jc69_bd, # generative
+        experiment_jc69_yule, # candidate
+        experiment_gtr_bd # candidate
+      )
+
+      pir_params <- pirouette::create_pir_params(
+        alignment_params = alignment_params,
+        twinning_params = twinning_params,
+        experiments = experiments,
+        error_measure_params = error_measure_params,
+        evidence_filename = file.path(seed_folder, "mbd_marg_lik.csv")
+      )
       razzo_params <- create_razzo_params(
         mbd_params = mbd_params,
-        twinning_params = twinning_params,
-        alignment_params = alignment_params,
-        model_select_params = list(model_select_param),
-        inference_params = inference_params,
-        error_measure_params = error_measure_params,
+        pir_params = pir_params,
         misc_params = misc_params
       )
       check_razzo_params(razzo_params)
@@ -160,4 +234,22 @@ create_full_parameters_files <- function(
     }
   }
   parameters_filenames
+}
+
+#' Create parameter files to be used for testing in
+#'   \code{project_folder_name/data/[settings]/seed/[models]}
+#' @inheritParams default_params_doc
+#' @param experiment_type the type of experiment,
+#'   can be either \code{test} or \code{full}
+#' @return Create folders for each parameter setting
+#'   and saves each setting in a file within the corresponding folder.
+#' @author Richel J.C. Bilderbeek
+#' @export
+create_test_parameters_files <- function(
+  project_folder_name = getwd()
+) {
+  create_parameters_files(
+    project_folder_name,
+    experiment_type = "test"
+  )
 }

@@ -5,35 +5,13 @@
 \title{Create the parameters for one experiment.
 Run one point of the experiment}
 \usage{
-create_razzo_params(mbd_params,
-  twinning_params = pirouette::create_twinning_params(),
-  alignment_params = pirouette::create_alignment_params(root_sequence =
-  "acgt", mutation_rate = 0.1),
-  model_select_params = list(pirouette::create_gen_model_select_param(alignment_params),
-  pirouette::create_best_model_select_param()),
-  inference_params = pirouette::create_inference_params(),
-  error_measure_params = pirouette::create_error_measure_params(),
-  misc_params)
+create_razzo_params(mbd_params, pir_params, misc_params)
 }
 \arguments{
 \item{mbd_params}{MBD parameter set}
 
-\item{twinning_params}{parameters for creating a twin tree,
-as can be created by \code{\link[pirouette]{create_twinning_params}}}
-
-\item{alignment_params}{parameters for creating an alignment,
-as can be created by \code{\link[pirouette]{create_alignment_params}}}
-
-\item{model_select_params}{a parameter set to specify how to pick
-an inference model,
-as can be created by \code{\link[pirouette]{create_model_select_param}}}
-
-\item{inference_params}{the parameters used in all Bayesian inference,
-as created by \link[pirouette]{create_inference_params}}
-
-\item{error_measure_params}{parameters to set how the error
-between given tree and inferred trees in measure,
-as can be created by \code{\link[pirouette]{create_error_measure_params}}}
+\item{pir_params}{a parameter set for one \code{pirouette} run,
+as created by \link[pirouette]{create_pir_params}}
 
 \item{misc_params}{additional parameters for razzo. They contain
 tree_filename to store the original given tree and mbd_sim_rng_seed for

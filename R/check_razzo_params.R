@@ -9,13 +9,7 @@ check_razzo_params <- function(
   razzo_params
 ) {
   argument_names <- c(
-    "mbd_params",
-    "twinning_params",
-    "alignment_params",
-    "model_select_params",
-    "inference_params",
-    "error_measure_params",
-    "misc_params"
+    "mbd_params", "pir_params", "misc_params"
   )
   for (arg_name in argument_names) {
     if (!arg_name %in% names(razzo_params)) {
@@ -26,14 +20,59 @@ check_razzo_params <- function(
   }
 
   check_mbd_params(razzo_params$mbd_params)
-  pirouette:::check_twinning_params(razzo_params$twinning_params) # nolint internal pirouette function, will be exported in pirouette v1.1
-  pirouette:::check_alignment_params(razzo_params$alignment_params) # nolint internal pirouette function, will be exported in pirouette v1.1
-  pirouette:::check_model_select_params(razzo_params$model_select_params) # nolint internal pirouette function, will be exported in pirouette v1.1
-  pirouette:::check_inference_params(razzo_params$inference_params) # nolint internal pirouette function, will be exported in pirouette v1.1
-  pirouette:::check_error_measure_params(razzo_params$error_measure_params) # nolint internal pirouette function, will be exported in pirouette v1.1
   check_misc_params(razzo_params$misc_params)
-  testit::assert(
-    razzo_params$mbd_params$crown_age ==
-      razzo_params$inference_params$mrca_prior$mrca_distr$mean$value
-  )
+  pirouette::check_pir_params(razzo_params$pir_params)
+  if (!beautier::has_mrca_prior(
+      razzo_params$pir_params$experiments[[1]]$inference_model
+    )
+  ) {
+    "An inference model must have a valid MRCA prior"
+  }
+  pir_params <- razzo_params$pir_params
+  if (beautier::is_one_na(pir_params$twinning_params)) {
+    stop("'twinning_params' must have a valid non-NA value")
+  }
+
+  first_experiment <- pir_params$experiments[[1]]
+  first_mrca_prior <- first_experiment$inference_model$mrca_prior
+  if (beautier::is_one_na(first_mrca_prior)) {
+    stop("An inference model must have a valid MRCA prior that is not NA")
+  }
+  if (razzo_params$mbd_params$crown_age !=
+      first_mrca_prior$mrca_distr$mean$value
+  ) {
+    stop(
+      "Crown ages in MBD param (", razzo_params$mbd_params$crown_age,
+      ") and inference model's MRCA prior (",
+      first_mrca_prior$mrca_distr$mean$value, ") must be equal"
+    )
+  }
+  for (experiment in razzo_params$pir_params$experiments) {
+    mrca_prior <- experiment$inference_model$mrca_prior
+    if (beautier::is_one_na(mrca_prior)) {
+      stop("Must use an MRCA prior")
+    }
+    if (beautier::is_one_na(mrca_prior$mrca_distr)) {
+      stop("Must use an MRCA prior with a distribution")
+    }
+    if (beautier::is_one_na(mrca_prior$mrca_distr$mean)) {
+      stop("Must use an MRCA prior with a distribution that has a mean")
+    }
+    if (beautier::is_one_na(mrca_prior$mrca_distr$mean$value)) {
+      stop(
+        "Must use an MRCA prior with a distribution that has a mean with a value"
+      )
+    }
+    if (length(mrca_prior$mrca_distr$mean$value) == 0) {
+      stop(
+        "Must use an MRCA prior with a distribution that has a mean with a value"
+      )
+    }
+    if (mrca_prior$mrca_distr$mean$value <= 0.0) {
+      stop(
+        "Must use an MRCA prior with a distribution that has a mean ",
+        "with a non-zero and positive value"
+      )
+    }
+  }
 }

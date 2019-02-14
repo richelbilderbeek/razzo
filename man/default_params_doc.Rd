@@ -7,15 +7,15 @@ documentation.}
 \usage{
 default_params_doc(alignment, alignment_params, bd_mutation_rate, bd_tree,
   bd_tree_filename, brts, chain_length, clock_model, cond, crown_age,
-  error_measure_params, experiments, fasta_filename, filename, folder_name,
-  init_speciation_rate, init_extinction_rate, inference_params, lambda,
-  mbd_l_matrix, mbd_mutation_rate, mbd_params, mbd_params_interval,
-  mbd_sim_rng_seed, mbd_tree, misc_params, model_select_params, mu,
-  mutation_rate, n_replicates, nu, nu_events, parameters,
-  parameter_filename, parameters_filename, phylo, posterior_trees,
-  precision, project_folder_name, q, razzo_params, sample_interval, seed,
-  sequence_length, sim_pars, sim_phylo, site_model, sub_chain_length, tree,
-  tree_filename, trees_filename, twinning_params, verbose)
+  error_measure_params, experiment_type, experiments, fasta_filename,
+  filename, folder_name, init_speciation_rate, init_extinction_rate,
+  lambda, mbd_l_matrix, mbd_mutation_rate, mbd_params, mbd_params_interval,
+  mbd_sim_rng_seed, mbd_tree, misc_params, mu, mutation_rate, n_replicates,
+  nu, nu_events, parameters, parameter_filename, parameters_filename,
+  phylo, pir_params, posterior_trees, precision, project_folder_name, q,
+  razzo_params, sample_interval, seed, sequence_length, sim_pars,
+  sim_phylo, site_model, sub_chain_length, tree, tree_filename,
+  trees_filename, twinning_params, verbose)
 }
 \arguments{
 \item{alignment}{a DNA alignment}
@@ -46,6 +46,9 @@ to be used for the inference. Valid names are 'strict' and 'rln'.}
 between given tree and inferred trees in measure,
 as can be created by \code{\link[pirouette]{create_error_measure_params}}}
 
+\item{experiment_type}{the type of experiment,
+can be either \code{test} or \code{full}}
+
 \item{experiments}{provides information on how the experiment has to be set
 up. To create it use \code{\link[pirouette]{create_experiment}}}
 
@@ -58,9 +61,6 @@ up. To create it use \code{\link[pirouette]{create_experiment}}}
 \item{init_speciation_rate}{a speciation rate}
 
 \item{init_extinction_rate}{an extinction rate}
-
-\item{inference_params}{the parameters used in all Bayesian inference,
-as created by \link[pirouette]{create_inference_params}}
 
 \item{lambda}{per-lineage speciation rate. See \code{\link[mbd]{mbd_sim}}}
 
@@ -81,10 +81,6 @@ from a MBD tree}
 tree_filename to store the original given tree and mbd_sim_rng_seed for
 when an mbd tree is simulated}
 
-\item{model_select_params}{a parameter set to specify how to pick
-an inference model,
-as can be created by \code{\link[pirouette]{create_model_select_param}}}
-
 \item{mu}{per-species extinction rate. See \code{\link[mbd]{mbd_sim}}}
 
 \item{mutation_rate}{something}
@@ -104,6 +100,9 @@ present in the simulated tree}
 \item{parameters_filename}{full path to a 'parameters.csv' file}
 
 \item{phylo}{a phylogeny}
+
+\item{pir_params}{a parameter set for one \code{pirouette} run,
+as created by \link[pirouette]{create_pir_params}}
 
 \item{posterior_trees}{phylogenetic trees in a BEAST2 posterior,
 of class \code{multiphylo}}

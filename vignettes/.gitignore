@@ -2,3 +2,6 @@
 *.R
 *.log
 *.trees
+*.tree
+*.xml
+*.xml.state

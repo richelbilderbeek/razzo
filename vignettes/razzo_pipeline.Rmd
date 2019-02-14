@@ -28,21 +28,22 @@ Our aim is to compare two nLTT distributions related to two tree posteriors: one
 Update our dependencies:
 
 ```{r message=FALSE, install_dependencies}
-if (!require(ape)) {install.packages("ape")}
-if (!require(mbd)) {devtools::install_github("Giappo/mbd", quiet = TRUE)}
-# devtools::install_github("ropensci/beautier", quiet = TRUE)
-# devtools::install_github("ropensci/tracerer", quiet = TRUE)
-# devtools::install_github("ropensci/beastier", quiet = TRUE)
-# devtools::install_github("ropensci/mauricer", quiet = TRUE)
-# devtools::install_github("ropensci/babette", quiet = TRUE)
-# devtools::install_github("richelbilderbeek/mcbette", quiet = TRUE)
-# devtools::install_github("richelbilderbeek/pirouette", quiet = TRUE)
+if (1 == 2) {
+  if (!require(ape)) {install.packages("ape")}
+  if (!require(mbd)) {devtools::install_github("Giappo/mbd", quiet = TRUE)}
+  devtools::install_github("ropensci/beautier", quiet = TRUE)
+  devtools::install_github("ropensci/tracerer", quiet = TRUE)
+  devtools::install_github("ropensci/beastier", quiet = TRUE)
+  devtools::install_github("ropensci/mauricer", quiet = TRUE)
+  devtools::install_github("ropensci/babette", quiet = TRUE)
+  devtools::install_github("richelbilderbeek/mcbette", quiet = TRUE)
+  devtools::install_github("richelbilderbeek/pirouette", quiet = TRUE)
+}
 ```
 
 Load the libraries needed:
 
 ```{r load_libraries}
-library(mbd)
 library(razzo)
 ```
 
@@ -59,39 +60,31 @@ dir.create(path = project_folder_name, recursive = TRUE, showWarnings = FALSE)
 Here we create all testing parameter files, which are only a few:
 
 ```{r create_parameter_files}
-parameters_filenames <- create_parameters_files(
-  project_folder_name = project_folder_name
-)
+parameters_filenames <- create_test_parameters_files(project_folder_name)
 ```
 
 ## Step 2: Run the parameter files
 
-First we decide what experiment we want to run
-
-```{r}
-experiments <- pirouette::create_experiment()
-```
-
 Then we run razzo for each parameter setting
 
 ```{r}
-# longer version: for (i in seq_along(parameters_filenames)) {
-for (i in 1:2) {
-  parameters_filename <- parameters_filenames[i]
-  razzo::run_razzo_from_file(
-    parameters_filename = parameters_filename,
-    experiments = list(experiments)
-  )
+for (parameters_filename in parameters_filenames) {
+  razzo::run_razzo_from_file(parameters_filename)
 }
 ```
 
 ## Step 3: figure 1
 
-```
-create_fig_1(project_folder_name = project_folder_name)
+```{r}
+# create_fig_1(project_folder_name)
 ```
 
 ## Step 4: what is the effect of MBD on the error?
+
+```{r}
+# create_fig_2(project_folder_name)
+```
+
 
 The nLTT statistics of the BD tree shows the baseline error:
 the Bayesian analysis assumes BD, and that tree *is* BD.
@@ -144,68 +137,117 @@ if (rappdirs::app_dir()$os != "win") {
 
 # Appendix
 
+Here we show the results of the first experiment only:
+
+```{r}
+parameters_filename <- parameters_filenames[1]
+razzo_params <- readRDS(parameters_filename)
+```
 ### First MBD tree:
 
-```
-ape::plot.phylo(ape::read.tree(file = mbd_tree_filenames[2]))
+```{r}
+ape::plot.phylo(ape::read.tree(file = razzo_params$misc_params$tree_filename))
 ```
 
 
-### First BD tree:
+### First twin tree:
 
-```
-ape::plot.phylo(ape::read.tree(file = bd_tree_filenames[2]))
+```{r}
+
+ape::plot.phylo(
+  ape::read.tree(
+    file = razzo_params$pir_params$twinning_params$twin_tree_filename
+  )
+)
 ```
 
 ### First MBD alignment
 
-```
-image(ape::read.FASTA(file = mbd_alignment_filenames[1]))
-```
-
-### First BD alignment
-
-```
-image(ape::read.FASTA(file = bd_alignment_filenames[1]))
+```{r}
+image(
+  ape::read.FASTA(
+    file = razzo_params$pir_params$alignment_params$fasta_filename
+  )
+)
 ```
 
-### First MBD posterior's trees
+### First twin alignment
 
+```{r}
+image(
+  ape::read.FASTA(
+    file = razzo_params$pir_params$twinning_params$twin_alignment_filename
+  )
+)
 ```
-babette::plot_densitree(tracerer::parse_beast_trees(mbd_alignment_filenames[[1]][1]))
+
+### First MBD posterior's trees of generative model
+
+```{r}
+babette::plot_densitree(
+  tracerer::parse_beast_trees(
+    razzo_params$pir_params$experiments[[1]]$beast2_options$output_trees_filenames
+  )
+)
+```
+
+### First MBD posterior's trees of best candidate model
+
+```{r}
+babette::plot_densitree(
+  tracerer::parse_beast_trees(
+    razzo_params$pir_params$experiments[[2]]$beast2_options$output_trees_filenames
+  )
+)
 ```
 
 ### First MBD posterior's ESSes
 
-```
+```{r}
 knitr::kable(
   tracerer::calc_esses(
-    tracerer::parse_beast_log(mbd_alignment_filenames[[1]][2]), 
-    sample_interval = open_parameters_file(
-      parameters_filename[1]
-    )$sample_interval
+    tracerer::parse_beast_log(razzo_params$pir_params$experiments[[1]]$beast2_options$output_log_filename), 
+    sample_interval = razzo_params$pir_params$experiments[[1]]$inference_model$mcmc$store_every
   )
 )
 ```
 
 
-### First BD posterior's trees
+### First twin posterior's trees of generative model
 
-```
-babette::plot_densitree(tracerer::parse_beast_trees(bd_alignment_filenames[[1]][1]))
+```{r}
+babette::plot_densitree(
+  tracerer::parse_beast_trees(
+    pirouette::to_twin_filename(
+      razzo_params$pir_params$experiments[[1]]$beast2_options$output_trees_filenames
+    )
+  )
+)
 ```
 
+### First twin posterior's trees of best candidate model
+
+```{r}
+babette::plot_densitree(
+  tracerer::parse_beast_trees(
+    pirouette::to_twin_filename(
+      razzo_params$pir_params$experiments[[2]]$beast2_options$output_trees_filenames
+    )
+  )
+)
+```
 ### First BD posterior's ESSes
 
 Plot the Effective Sample Sizes (must be at least 200 in manuscript):
 
-```
+```{r}
 knitr::kable(
   tracerer::calc_esses(
-    tracerer::parse_beast_log(bd_alignment_filenames[[1]][2]), 
-    sample_interval = open_parameters_file(
-      parameters_filename[1]
-    )$sample_interval
+    tracerer::parse_beast_log(
+      pirouette::to_twin_filename(
+        razzo_params$pir_params$experiments[[2]]$beast2_options$output_log_filename)
+    ), 
+    sample_interval = razzo_params$pir_params$experiments[[2]]$inference_model$mcmc$store_every
   )
 )
 ```
