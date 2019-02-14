@@ -3,7 +3,7 @@ context("test-run_razzo_from_file")
 test_that("use", {
 
   if (!beastier::is_on_travis()) return()
-
+  skip("Not like this")
   super_folder_name <- tempdir()
   project_folder_name <- file.path(super_folder_name, "razzo_project")
   dir.create(path = project_folder_name, recursive = TRUE, showWarnings = FALSE)
@@ -11,11 +11,9 @@ test_that("use", {
     project_folder_name = project_folder_name
   )
   parameters_filename <- parameters_filenames[1]
-  experiments <- list(pirouette::create_experiment())
   expect_silent(
     razzo::run_razzo_from_file(
-      parameters_filename = parameters_filename,
-      experiments = experiments
+      parameters_filename = parameters_filename
     )
   )
 })
@@ -23,11 +21,9 @@ test_that("use", {
 test_that("abuse", {
 
   parameters_filename <- "neverland"
-  experiments <- list(pirouette::create_experiment())
   expect_error(
     razzo::run_razzo_from_file(
-      parameters_filename = parameters_filename,
-      experiments = experiments
+      parameters_filename = parameters_filename
     )
   )
 })
