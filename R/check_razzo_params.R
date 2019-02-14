@@ -26,10 +26,18 @@ check_razzo_params <- function(
       razzo_params$pir_params$experiments[[1]]$inference_model
     )
   ) {
-    "An inference model must have an MRCA prior"
+    "An inference model must have a valid MRCA prior"
   }
-  first_experiment <- razzo_params$pir_params$experiments[[1]]
+  pir_params <- razzo_params$pir_params
+  if (beautier:::is_one_na(pir_params$twinning_params)) {
+    stop("'twinning_params' must have a valid non-NA value")
+  }
+
+  first_experiment <- pir_params$experiments[[1]]
   first_mrca_prior <- first_experiment$inference_model$mrca_prior
+  if (beautier:::is_one_na(first_mrca_prior)) {
+    stop("An inference model must have a valid MRCA prior that is not NA")
+  }
   if (razzo_params$mbd_params$crown_age !=
       first_mrca_prior$mrca_distr$mean$value
   ) {
@@ -39,8 +47,6 @@ check_razzo_params <- function(
       first_mrca_prior$mrca_distr$mean$value, ") must be equal"
     )
   }
-
-
   for (experiment in razzo_params$pir_params$experiments) {
     mrca_prior <- experiment$inference_model$mrca_prior
     if (beautier:::is_one_na(mrca_prior)) {

@@ -27,13 +27,10 @@ run_razzo <- function(
   )
   phylogeny <- mbd_output$reconstructed_tree
 
-  directory <- dirname(
-    razzo_params$pir_params$twinning_params$twin_tree_filename
-  )
-  tree_filename <- file.path(
-    directory,
-    razzo_params$misc_params$tree_filename
-  )
+  testit::assert(!beautier:::is_one_na(razzo_params$pir_params$twinning_params))
+
+  tree_filename <- razzo_params$misc_params$tree_filename
+
   ape::write.tree(
     phy = phylogeny, file = tree_filename
   )

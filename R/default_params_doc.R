@@ -115,6 +115,7 @@ default_params_doc <- function(
   parameter_filename,
   parameters_filename,
   phylo,
+  pir_params,
   posterior_trees,
   precision,
   project_folder_name,

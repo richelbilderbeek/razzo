@@ -72,14 +72,6 @@ create_full_parameters_files <- function(
     root_sequence = "aaaaccccggggttt",
     mutation_rate = 0.5 / unique(mbd_params_interval$crown_age)
   ),
-  inference_params = pirouette::create_inference_params(
-    mcmc = beautier::create_mcmc(chain_length = 2000, store_every = 1000),
-    mrca_prior = beautier::create_mrca_prior(
-      is_monophyletic = TRUE,
-      mrca_distr = beautier::create_normal_distr(mean = unique(mbd_params_interval$crown_age), sigma = 0.01)
-    ),
-    rng_seed = 314159265 # secret trick to activate new interface
-  ),
   error_measure_params = pirouette::create_error_measure_params()
 ) {
   # Must start at one, as the BEAST2 RNG seed must be at least one.
