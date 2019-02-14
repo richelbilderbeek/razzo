@@ -1,8 +1,6 @@
 #' Create all parameter files  in
 #'   \code{project_folder_name/data/[settings]/seed/[models]}
 #' @inheritParams default_params_doc
-#' @param experiment_type the type of experiment,
-#'   can be either \code{test} or \code{full}
 #' @return Create folders for each parameter setting
 #'   and saves each setting in a file within the corresponding folder.
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek

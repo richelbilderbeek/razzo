@@ -7,15 +7,15 @@ documentation.}
 \usage{
 default_params_doc(alignment, alignment_params, bd_mutation_rate, bd_tree,
   bd_tree_filename, brts, chain_length, clock_model, cond, crown_age,
-  error_measure_params, experiments, fasta_filename, filename, folder_name,
-  init_speciation_rate, init_extinction_rate, lambda, mbd_l_matrix,
-  mbd_mutation_rate, mbd_params, mbd_params_interval, mbd_sim_rng_seed,
-  mbd_tree, misc_params, mu, mutation_rate, n_replicates, nu, nu_events,
-  parameters, parameter_filename, parameters_filename, phylo,
-  posterior_trees, precision, project_folder_name, q, razzo_params,
-  sample_interval, seed, sequence_length, sim_pars, sim_phylo, site_model,
-  sub_chain_length, tree, tree_filename, trees_filename, twinning_params,
-  verbose)
+  error_measure_params, experiment_type, experiments, fasta_filename,
+  filename, folder_name, init_speciation_rate, init_extinction_rate,
+  lambda, mbd_l_matrix, mbd_mutation_rate, mbd_params, mbd_params_interval,
+  mbd_sim_rng_seed, mbd_tree, misc_params, mu, mutation_rate, n_replicates,
+  nu, nu_events, parameters, parameter_filename, parameters_filename,
+  phylo, pir_params, posterior_trees, precision, project_folder_name, q,
+  razzo_params, sample_interval, seed, sequence_length, sim_pars,
+  sim_phylo, site_model, sub_chain_length, tree, tree_filename,
+  trees_filename, twinning_params, verbose)
 }
 \arguments{
 \item{alignment}{a DNA alignment}
@@ -45,6 +45,9 @@ to be used for the inference. Valid names are 'strict' and 'rln'.}
 \item{error_measure_params}{parameters to set how the error
 between given tree and inferred trees in measure,
 as can be created by \code{\link[pirouette]{create_error_measure_params}}}
+
+\item{experiment_type}{the type of experiment,
+can be either \code{test} or \code{full}}
 
 \item{experiments}{provides information on how the experiment has to be set
 up. To create it use \code{\link[pirouette]{create_experiment}}}
@@ -98,6 +101,9 @@ present in the simulated tree}
 
 \item{phylo}{a phylogeny}
 
+\item{pir_params}{a parameter set for one \code{pirouette} run,
+as created by \link[pirouette]{create_pir_params}}
+
 \item{posterior_trees}{phylogenetic trees in a BEAST2 posterior,
 of class \code{multiphylo}}
 
@@ -140,9 +146,6 @@ algorithm to estimate the marginal likelihood}
 as can be created by \code{\link[pirouette]{create_twinning_params}}}
 
 \item{verbose}{give more output}
-
-\item{pir_params}{a parameter set for one \code{pirouette} run,
-as created by \link[pirouette]{create_pir_params}}
 }
 \description{
 This function does nothing. It is intended to inherit is parameters'

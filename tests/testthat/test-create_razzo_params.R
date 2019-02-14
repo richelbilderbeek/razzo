@@ -30,11 +30,10 @@ test_that("use", {
   experiments <- list(experiment)
   pir_params <- pirouette::create_pir_params(
     alignment_params = pirouette::create_test_alignment_params(),
-    experiments = experiments
-
+    experiments = experiments,
+    twinning_params = pirouette::create_twinning_params()
   )
-  misc_params <- list()
-  misc_params$tree_filename <- "mbd.tree"
+  misc_params <- create_misc_params()
 
   razzo_params <- create_razzo_params(
     mbd_params = mbd_params,
