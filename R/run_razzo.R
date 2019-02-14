@@ -27,7 +27,7 @@ run_razzo <- function(
   )
   phylogeny <- mbd_output$reconstructed_tree
 
-  testit::assert(!beautier:::is_one_na(razzo_params$pir_params$twinning_params))
+  testit::assert(!beautier::is_one_na(razzo_params$pir_params$twinning_params))
 
   tree_filename <- razzo_params$misc_params$tree_filename
 
