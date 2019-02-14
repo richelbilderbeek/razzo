@@ -1,10 +1,8 @@
 context("test-check_misc_params")
 
 test_that("use", {
-  misc_params <- list()
-  misc_params$tree_filename <- "mbd.tree"
   expect_silent(
-    check_misc_params(misc_params)
+    check_misc_params(create_misc_params())
   )
 })
 

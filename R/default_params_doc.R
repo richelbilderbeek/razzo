@@ -22,8 +22,6 @@
 #' @param fasta_filename name of a FASTA file
 #' @param filename the file's name, without the path
 #' @param folder_name name of the main folder
-#' @param inference_params the parameters used in all Bayesian inference,
-#'   as created by \link[pirouette]{create_inference_params}
 #' @param init_speciation_rate a speciation rate
 #' @param init_extinction_rate an extinction rate
 #' @param lambda per-lineage speciation rate. See \code{\link[mbd]{mbd_sim}}
@@ -37,9 +35,6 @@
 #' @param misc_params additional parameters for razzo. They contain
 #'   tree_filename to store the original given tree and mbd_sim_rng_seed for
 #'   when an mbd tree is simulated
-#' @param model_select_params a parameter set to specify how to pick
-#'   an inference model,
-#'   as can be created by \code{\link[pirouette]{create_model_select_param}}
 #' @param mu per-species extinction rate. See \code{\link[mbd]{mbd_sim}}
 #' @param mutation_rate something
 #' @param n_replicates number of replicates
@@ -51,6 +46,8 @@
 #' @param parameter_filename full path to a 'parameters.csv' file
 #' @param parameters_filename full path to a 'parameters.csv' file
 #' @param phylo a phylogeny
+#' @param pir_params a parameter set for one \code{pirouette} run,
+#'   as created by \link[pirouette]{create_pir_params}
 #' @param posterior_trees phylogenetic trees in a BEAST2 posterior,
 #'   of class \code{multiphylo}
 #' @param precision define the precision of the approximation.
@@ -101,7 +98,6 @@ default_params_doc <- function(
   folder_name,
   init_speciation_rate,
   init_extinction_rate,
-  inference_params,
   lambda,
   mbd_l_matrix,
   mbd_mutation_rate,
@@ -110,7 +106,6 @@ default_params_doc <- function(
   mbd_sim_rng_seed,
   mbd_tree,
   misc_params,
-  model_select_params,
   mu,
   mutation_rate,
   n_replicates,

@@ -36,9 +36,6 @@ as can be created by \code{\link[pirouette]{create_twinning_params}}}
 \item{alignment_params}{parameters for creating an alignment,
 as can be created by \code{\link[pirouette]{create_alignment_params}}}
 
-\item{inference_params}{the parameters used in all Bayesian inference,
-as created by \link[pirouette]{create_inference_params}}
-
 \item{error_measure_params}{parameters to set how the error
 between given tree and inferred trees in measure,
 as can be created by \code{\link[pirouette]{create_error_measure_params}}}

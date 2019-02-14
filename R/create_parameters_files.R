@@ -134,15 +134,15 @@ create_full_parameters_files <- function(
       )
       misc_params <- list()
       misc_params$tree_filename <- "mbd.tree"
-      mrca_prior <- create_mrca_prior(
+      mrca_prior <- beautier::create_mrca_prior(
         is_monophyletic = TRUE,
-        mrca_distr = create_normal_distr(mean = 15.0, sigma = 0.0001)
+        mrca_distr = beautier::create_normal_distr(mean = 15.0, sigma = 0.0001)
       )
 
-      mcmc <- create_mcmc(chain_length = 3000, store_every = 1000)
-      mrca_prior <- create_mrca_prior(
+      mcmc <- beautier::create_mcmc(chain_length = 3000, store_every = 1000)
+      mrca_prior <- beautier::create_mrca_prior(
         is_monophyletic = TRUE,
-        mrca_distr = create_normal_distr(mean = 15.0, sigma = 0.0001)
+        mrca_distr = beautier::create_normal_distr(mean = 15.0, sigma = 0.0001)
       )
       # name                |model_type | run_if         | measure  | inference  # nolint this is no commented code
       #                     |           |                | evidence | model
@@ -157,13 +157,13 @@ create_full_parameters_files <- function(
         model_type = "generative",
         run_if = "always",
         do_measure_evidence = TRUE,
-        inference_model = create_inference_model(
-          site_model = create_jc69_site_model(),
-          tree_prior = create_bd_tree_prior(),
+        inference_model = beautier::create_inference_model(
+          site_model = beautier::create_jc69_site_model(),
+          tree_prior = beautier::create_bd_tree_prior(),
           mcmc = mcmc,
           mrca_prior = mrca_prior
         ),
-        beast2_options = create_beast2_options(
+        beast2_options = beastier::create_beast2_options(
           input_filename = file.path(seed_folder, "mbd_gen.xml"),
           output_log_filename = file.path(seed_folder, "mbd_gen.log"),
           output_trees_filenames = file.path(seed_folder, "mbd_gen.trees"),
@@ -171,19 +171,19 @@ create_full_parameters_files <- function(
           rng_seed = seed,
           overwrite = TRUE
         ),
-        est_evidence_mcmc = create_nested_sampling_mcmc(epsilon = 100.0)
+        est_evidence_mcmc = beautier::create_nested_sampling_mcmc(epsilon = 100.0)
       )
       experiment_jc69_yule <- pirouette::create_experiment(
         model_type = "candidate",
         run_if = "best_candidate",
         do_measure_evidence = TRUE,
-        inference_model = create_inference_model(
-          site_model = create_jc69_site_model(),
-          tree_prior = create_yule_tree_prior(),
+        inference_model = beautier::create_inference_model(
+          site_model = beautier::create_jc69_site_model(),
+          tree_prior = beautier::create_yule_tree_prior(),
           mcmc = mcmc,
           mrca_prior = mrca_prior
         ),
-        beast2_options = create_beast2_options(
+        beast2_options = beastier::create_beast2_options(
           input_filename = file.path(seed_folder, "mbd_best.xml"),
           output_log_filename = file.path(seed_folder, "mbd_best.log"),
           output_trees_filenames = file.path(seed_folder, "mbd_best.trees"),
@@ -191,19 +191,19 @@ create_full_parameters_files <- function(
           rng_seed = seed,
           overwrite = TRUE
         ),
-        est_evidence_mcmc = create_nested_sampling_mcmc(epsilon = 100.0)
+        est_evidence_mcmc = beautier::create_nested_sampling_mcmc(epsilon = 100.0)
       )
       experiment_gtr_bd <- pirouette::create_experiment(
         model_type = "candidate",
         run_if = "best_candidate",
         do_measure_evidence = TRUE,
-        inference_model = create_inference_model(
-          site_model = create_gtr_site_model(),
-          tree_prior = create_bd_tree_prior(),
+        inference_model = beautier::create_inference_model(
+          site_model = beautier::create_gtr_site_model(),
+          tree_prior = beautier::create_bd_tree_prior(),
           mcmc = mcmc,
           mrca_prior = mrca_prior
         ),
-        beast2_options = create_beast2_options(
+        beast2_options = beastier::create_beast2_options(
           input_filename = file.path(seed_folder, "mbd_best.xml"),
           output_log_filename = file.path(seed_folder, "mbd_best.log"),
           output_trees_filenames = file.path(seed_folder, "mbd_best.trees"),
@@ -211,7 +211,7 @@ create_full_parameters_files <- function(
           rng_seed = seed,
           overwrite = TRUE
         ),
-        est_evidence_mcmc = create_nested_sampling_mcmc(epsilon = 100.0)
+        est_evidence_mcmc = beautier::create_nested_sampling_mcmc(epsilon = 100.0)
       )
       experiments <- list(
         experiment_jc69_bd, # generative

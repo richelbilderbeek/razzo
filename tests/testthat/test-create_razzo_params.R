@@ -16,9 +16,12 @@ test_that("use", {
     model_type = "generative",
     run_if = "always",
     do_measure_evidence = FALSE,
-    inference_model = create_inference_model(
-      mrca_prior = create_mrca_prior(
-        mrca_distr = create_normal_distr(mean = crown_age, sigma = crown_age_sigma),
+    inference_model = beautier::create_inference_model(
+      mrca_prior = beautier::create_mrca_prior(
+        mrca_distr = beautier::create_normal_distr(
+          mean = crown_age,
+          sigma = crown_age_sigma
+        ),
         is_monophyletic = TRUE
       )
     )
