@@ -2,8 +2,7 @@
 % Please edit documentation in R/create_razzo_params.R
 \name{create_razzo_params}
 \alias{create_razzo_params}
-\title{Create the parameters for one experiment.
-Run one point of the experiment}
+\title{Create the parameters for one experiment.}
 \usage{
 create_razzo_params(mbd_params, pir_params, misc_params)
 }
@@ -18,7 +17,6 @@ tree_filename to store the original given tree and mbd_sim_rng_seed for
 when an mbd tree is simulated}
 }
 \description{
-Create the parameters for one experiment.
 Run one point of the experiment
 }
 \author{

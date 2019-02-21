@@ -71,7 +71,9 @@ from a MBD tree}
 
 \item{mbd_params}{MBD parameter set}
 
-\item{mbd_params_interval}{MBD parameter set interval}
+\item{mbd_params_interval}{data frame with one MBD parameter set per row.
+If a simulation with one MBD parameter set has 10 replicates,
+this data frame will hold 10 rows, each with different seeds}
 
 \item{mbd_sim_rng_seed}{rng seed to simulate a mbd tree}
 
