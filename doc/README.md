@@ -15,26 +15,29 @@ In each of these folders, there are folders named after their site and clock mod
 
 In each of these folders, there are:
 
-Filename|Description
--------------|---------------------------------------
-`parameters.RDa`|the parameter file
-`mbd.tree`|the true MBD tree
-`mbd.fasta`|the true MBD alignment
-`mbd_gen.trees`|the posterior trees from the true alignment, using the generative model
-`mbd_gen.log`|the posterior parameter estimates from the true tree, using the generative model
-`mbd_best.trees`|the posterior trees from the true tree, using best candidate model
-`mbd_best.log`|the posterior parameter estimates from the true tree, using the best candidate model
-`mbd_marg_lik.csv`|the evidences (aka marginal likelihoods) all models have for the true alignment 
-`mbd_nltts_gen.csv`|the error between true tree and its posterior for the generative model
+Filename            |Description
+--------------------|---------------------------------------
+`parameters.RDa`    |the parameter file
+`mbd.tree`          |the true MBD tree
+`mbd.fasta`         |the true MBD alignment
+`mbd_gen.trees`     |the posterior trees from the true alignment, using the generative model
+`mbd_gen.log`       |the posterior parameter estimates from the true tree, using the generative model
+`mbd_best.trees`    |the posterior trees from the true tree, using best candidate model
+`mbd_best.log`      |the posterior parameter estimates from the true tree, using the best candidate model
+`mbd_marg_lik.csv`  |the evidences (aka marginal likelihoods) all models have for the true alignment 
+`mbd_nltts_gen.csv` |the error between true tree and its posterior for the generative model
 `mbd_nltts_best.csv`|the error between true tree and its posterior for the best candidate model
-`mbd_twin.tree`|the twin MBD tree
-`mbd_twin.fasta`|the twin MBD alignment
-`mbd_gen_twin.trees`|the posterior trees from the twin alignment, using the generative model
-`mbd_gen_twin.log`|the posterior parameter estimates from the twin tree, using the generative model
-`mbd_best_twin.trees`|the posterior trees from the twin tree, using best candidate model
-`mbd_best_twin.log`|the posterior parameter estimates from the twin tree, using the best candidate model
-`mbd_marg_lik_twin.csv`|the evidences (aka marginal likelihoods) all models have for the twin alignment 
-`mbd_nltts_gen_twin.csv`|the error between twin tree and its posterior for the generative model
+
+Filename                 |Description
+-------------------------|---------------------------------------
+`mbd_twin.tree`          |the twin MBD tree
+`mbd_twin.fasta`         |the twin MBD alignment
+`mbd_gen_twin.trees`     |the posterior trees from the twin alignment, using the generative model
+`mbd_gen_twin.log`       |the posterior parameter estimates from the twin tree, using the generative model
+`mbd_best_twin.trees`    |the posterior trees from the twin tree, using best candidate model
+`mbd_best_twin.log`      |the posterior parameter estimates from the twin tree, using the best candidate model
+`mbd_marg_lik_twin.csv`  |the evidences (aka marginal likelihoods) all models have for the twin alignment 
+`mbd_nltts_gen_twin.csv` |the error between twin tree and its posterior for the generative model
 `mbd_nltts_best_twin.csv`|the error between twin tree and its posterior for the best candidate model
 
 See [a razzo_project build log](https://travis-ci.org/richelbilderbeek/razzo_project/jobs/457099656#L1789)
