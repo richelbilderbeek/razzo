@@ -219,6 +219,12 @@ create_full_parameters_files <- function(
       experiment_gtr_bd # candidate
     )
 
+    # Stub
+    error_measure_params$errors_filename <- file.path(
+      seed_folder, "mbd_nltt.csv"
+    )
+
+
     pir_params <- pirouette::create_pir_params(
       alignment_params = alignment_params,
       twinning_params = twinning_params,
