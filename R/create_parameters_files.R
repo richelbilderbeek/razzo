@@ -123,7 +123,9 @@ create_full_parameters_files <- function(
     alignment_params$fasta_filename <- file.path(
       seed_folder, "mbd.fasta"
     )
-    twinning_params$twin_tree_filename <- file.path(seed_folder, "mbd_twin.tree")
+    twinning_params$twin_tree_filename <- file.path(
+      seed_folder, "mbd_twin.tree"
+    )
     twinning_params$twin_alignment_filename <- file.path(
       seed_folder, "mbd_twin.fasta"
     )
