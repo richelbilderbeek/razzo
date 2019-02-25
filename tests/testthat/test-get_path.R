@@ -3,8 +3,8 @@ context("test-get_path")
 test_that("use", {
 
   expect_equal(
-    system.file("extdata", "parameters.csv", package = "razzo"),
-    get_path("parameters.csv")
+    system.file("extdata", "parameters.RDa", package = "razzo"),
+    get_path("parameters.RDa")
   )
 })
 

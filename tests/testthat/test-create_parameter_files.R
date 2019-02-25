@@ -24,7 +24,7 @@ test_that("use", {
   #       * folder named after seed, e.g. '1'
   #   * figures
 
-  # OK: Parameter filenames end with 'parameters.csv'
+  # OK: Parameter filenames end with 'parameters.RDa'
   testthat::expect_true(
     length(
       grep(
@@ -68,7 +68,7 @@ test_that("use, full", {
   #       * folder named after seed, e.g. '1'
   #   * figures
 
-  # OK: Parameter filenames end with 'parameters.csv'
+  # OK: Parameter filenames end with 'parameters.RDa'
   testthat::expect_true(
     length(
       grep(

@@ -47,8 +47,8 @@
 #' @param nu_events the number of nu-triggered events that have to be
 #'   present in the simulated tree
 #' @param parameters the razzo parameters
-#' @param parameter_filename full path to a 'parameters.csv' file
-#' @param parameters_filename full path to a 'parameters.csv' file
+#' @param parameter_filename full path to a \code{parameters.RDa} file
+#' @param parameters_filename full path to a \code{parameters.RDa} file
 #' @param phylo a phylogeny
 #' @param pir_params a parameter set for one \code{pirouette} run,
 #'   as created by \link[pirouette]{create_pir_params}

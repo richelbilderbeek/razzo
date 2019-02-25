@@ -3,7 +3,7 @@ context("test-open_parameters_file")
 test_that("use", {
 
   parameters <- open_parameters_file(
-    parameters_filename = get_path("parameters.csv")
+    parameters_filename = get_path("parameters.RDa")
   )
   expect_true(parameters$lambda > 0.0)
   expect_true(parameters$mu >= 0.0)

@@ -97,9 +97,9 @@ present in the simulated tree}
 
 \item{parameters}{the razzo parameters}
 
-\item{parameter_filename}{full path to a 'parameters.csv' file}
+\item{parameter_filename}{full path to a \code{parameters.RDa} file}
 
-\item{parameters_filename}{full path to a 'parameters.csv' file}
+\item{parameters_filename}{full path to a \code{parameters.RDa} file}
 
 \item{phylo}{a phylogeny}
 

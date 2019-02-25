@@ -7,7 +7,7 @@
 open_parameters_file(parameters_filename)
 }
 \arguments{
-\item{parameters_filename}{full path to a 'parameters.csv' file}
+\item{parameters_filename}{full path to a \code{parameters.RDa} file}
 }
 \value{
 the razzo parameters
