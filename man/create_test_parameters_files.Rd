@@ -10,9 +10,6 @@ create_test_parameters_files(project_folder_name = getwd())
 \arguments{
 \item{project_folder_name}{project folder name,
 will be the full path to \code{razzo_project}}
-
-\item{experiment_type}{the type of experiment,
-can be either \code{test} or \code{full}}
 }
 \value{
 Create folders for each parameter setting
