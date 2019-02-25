@@ -23,6 +23,7 @@ Imports:
   pirouette,
   testit
 Suggests:
+  babette,
   cli,
   devtools,
   dplyr,
@@ -30,5 +31,6 @@ Suggests:
   lintr,
   rmarkdown,
   testthat,
-  tidyverse
+  tidyverse,
+  tracerer
 VignetteBuilder: knitr

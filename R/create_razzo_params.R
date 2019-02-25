@@ -36,7 +36,7 @@ create_test_razzo_params <- function(
           do_measure_evidence = FALSE,
           inference_model = beautier::create_inference_model(
             mrca_prior = beautier::create_mrca_prior(
-              mrca_distr = create_normal_distr(
+              mrca_distr = beautier::create_normal_distr(
                 mean = 15.0, sigma = 0.001
               ),
               is_monophyletic = TRUE
