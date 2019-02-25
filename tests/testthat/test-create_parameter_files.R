@@ -13,6 +13,9 @@ test_that("use", {
     project_folder_name = project_folder_name
   )
 
+  # All filenames must be unique, Issue 170, #170
+  expect_equal(length(filenames), length(unique(filenames)))
+
   # The folder structure created:
   # * razzo_project (the name of the GitHub containing the scripts)
   #   * scripts

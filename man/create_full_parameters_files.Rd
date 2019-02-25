@@ -6,10 +6,9 @@
   \code{project_folder_name/data/[settings]/seed/[models]}}
 \usage{
 create_full_parameters_files(project_folder_name = getwd(),
-  n_replicates = 10,
   mbd_params_interval = create_mbd_params_interval(lambda = 0.2, mu =
   0.15, nu = c(1, 1.5, 2), q = c(0.1, 0.15, 0.2), seed = seq(from = 1, to =
-  n_replicates, by = 1), crown_age = 15, cond = 1),
+  2, by = 1), crown_age = 15, cond = 1),
   twinning_params = pirouette::create_twinning_params(),
   alignment_params = pirouette::create_alignment_params(root_sequence =
   "aaaaccccggggttt", mutation_rate =
@@ -20,9 +19,9 @@ create_full_parameters_files(project_folder_name = getwd(),
 \item{project_folder_name}{project folder name,
 will be the full path to \code{razzo_project}}
 
-\item{n_replicates}{number of replicates}
-
-\item{mbd_params_interval}{MBD parameter set interval}
+\item{mbd_params_interval}{data frame with one MBD parameter set per row.
+If a simulation with one MBD parameter set has 10 replicates,
+this data frame will hold 10 rows, each with different seeds}
 
 \item{twinning_params}{parameters for creating a twin tree,
 as can be created by \code{\link[pirouette]{create_twinning_params}}}

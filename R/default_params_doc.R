@@ -29,7 +29,9 @@
 #' @param lambda per-lineage speciation rate. See \code{\link[mbd]{mbd_sim}}
 #' @param mbd_l_matrix the L matrix of an MBD tree
 #' @param mbd_params MBD parameter set
-#' @param mbd_params_interval MBD parameter set interval
+#' @param mbd_params_interval data frame with one MBD parameter set per row.
+#'   If a simulation with one MBD parameter set has 10 replicates,
+#'   this data frame will hold 10 rows, each with different seeds
 #' @param mbd_mutation_rate the mutation rate when creating an alignment
 #'   from a MBD tree
 #' @param mbd_sim_rng_seed rng seed to simulate a mbd tree
