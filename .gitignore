@@ -43,3 +43,5 @@ vignettes/*.html
 vignettes/*.pdf
 doc/.~lock.choices.odp#
 data/
+*.log
+*.trees

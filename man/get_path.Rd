@@ -17,7 +17,7 @@ the full path of the filename, if and only if
 Get the full path of a file in the \code{inst/extdata} folder
 }
 \examples{
-  testit::assert(is.character(get_path("parameters.csv")))
+  testit::assert(is.character(get_path("parameters.RDa")))
 }
 \author{
 Richel J.C. Bilderbeek, Giovanni Laudanno

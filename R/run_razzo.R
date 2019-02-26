@@ -7,8 +7,7 @@
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
 run_razzo <- function(
-  razzo_params,
-  experiments = list(pirouette::create_experiment())
+  razzo_params
 ) {
   check_razzo_params(razzo_params) # nolint razzo function
   testit::assert(beastier::is_beast2_installed())
@@ -28,11 +27,10 @@ run_razzo <- function(
   )
   phylogeny <- mbd_output$reconstructed_tree
 
-  directory <- dirname(razzo_params$twinning_params$twin_tree_filename)
-  tree_filename <- file.path(
-    directory,
-    razzo_params$misc_params$tree_filename
-  )
+  testit::assert(!beautier::is_one_na(razzo_params$pir_params$twinning_params))
+
+  tree_filename <- razzo_params$misc_params$tree_filename
+
   ape::write.tree(
     phy = phylogeny, file = tree_filename
   )
@@ -41,11 +39,6 @@ run_razzo <- function(
   # Let pirouette measure the error
   pirouette::pir_run(
     phylogeny = phylogeny,
-    twinning_params = razzo_params$twinning_params,
-    alignment_params = razzo_params$alignment_params,
-    model_select_params = razzo_params$model_select_params,
-    inference_params = razzo_params$inference_params,
-    error_measure_params = razzo_params$error_measure_params,
-    experiments = experiments
+    pir_params = razzo_params$pir_params
   )
 }

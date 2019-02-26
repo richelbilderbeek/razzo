@@ -40,7 +40,7 @@ check_project_folder_name <- function(project_folder_name) {
 #'   the file is present. Will stop otherwise.
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @examples
-#'   testit::assert(is.character(get_path("parameters.csv")))
+#'   testit::assert(is.character(get_path("parameters.RDa")))
 #' @export
 get_path <- function(filename) {
   full <- system.file("extdata", filename, package = "razzo")

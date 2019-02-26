@@ -13,6 +13,9 @@ test_that("use", {
     project_folder_name = project_folder_name
   )
 
+  # All filenames must be unique, Issue 170, #170
+  expect_equal(length(filenames), length(unique(filenames)))
+
   # The folder structure created:
   # * razzo_project (the name of the GitHub containing the scripts)
   #   * scripts
@@ -21,7 +24,7 @@ test_that("use", {
   #       * folder named after seed, e.g. '1'
   #   * figures
 
-  # OK: Parameter filenames end with 'parameters.csv'
+  # OK: Parameter filenames end with 'parameters.RDa'
   testthat::expect_true(
     length(
       grep(
@@ -44,6 +47,7 @@ test_that("use", {
 
 test_that("use, full", {
 
+  skip("Issue 127, #127")
   # Put files in temporary folder
   super_folder_name <- tempdir()
   project_folder_name <- file.path(super_folder_name, "razzo_project")
@@ -64,7 +68,7 @@ test_that("use, full", {
   #       * folder named after seed, e.g. '1'
   #   * figures
 
-  # OK: Parameter filenames end with 'parameters.csv'
+  # OK: Parameter filenames end with 'parameters.RDa'
   testthat::expect_true(
     length(
       grep(

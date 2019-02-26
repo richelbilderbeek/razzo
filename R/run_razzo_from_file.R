@@ -6,8 +6,7 @@
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
 run_razzo_from_file <- function(
-  parameters_filename,
-  experiments = list(pirouette::create_experiment())
+  parameters_filename
 ) {
   if (!file.exists(parameters_filename)) {
     stop(
@@ -18,7 +17,6 @@ run_razzo_from_file <- function(
   razzo_params <- readRDS(parameters_filename)
   check_razzo_params(razzo_params)
   run_razzo(
-    razzo_params = razzo_params,
-    experiments = experiments
+    razzo_params = razzo_params
   )
 }

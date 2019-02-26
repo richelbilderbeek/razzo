@@ -17,19 +17,21 @@
 #' @param error_measure_params parameters to set how the error
 #'   between given tree and inferred trees in measure,
 #'   as can be created by \code{\link[pirouette]{create_error_measure_params}}
+#' @param experiment_type the type of experiment,
+#'   can be either \code{test} or \code{full}
 #' @param experiments provides information on how the experiment has to be set
 #'   up. To create it use \code{\link[pirouette]{create_experiment}}
 #' @param fasta_filename name of a FASTA file
 #' @param filename the file's name, without the path
 #' @param folder_name name of the main folder
-#' @param inference_params the parameters used in all Bayesian inference,
-#'   as created by \link[pirouette]{create_inference_params}
 #' @param init_speciation_rate a speciation rate
 #' @param init_extinction_rate an extinction rate
 #' @param lambda per-lineage speciation rate. See \code{\link[mbd]{mbd_sim}}
 #' @param mbd_l_matrix the L matrix of an MBD tree
 #' @param mbd_params MBD parameter set
-#' @param mbd_params_interval MBD parameter set interval
+#' @param mbd_params_interval data frame with one MBD parameter set per row.
+#'   If a simulation with one MBD parameter set has 10 replicates,
+#'   this data frame will hold 10 rows, each with different seeds
 #' @param mbd_mutation_rate the mutation rate when creating an alignment
 #'   from a MBD tree
 #' @param mbd_sim_rng_seed rng seed to simulate a mbd tree
@@ -37,9 +39,6 @@
 #' @param misc_params additional parameters for razzo. They contain
 #'   tree_filename to store the original given tree and mbd_sim_rng_seed for
 #'   when an mbd tree is simulated
-#' @param model_select_params a parameter set to specify how to pick
-#'   an inference model,
-#'   as can be created by \code{\link[pirouette]{create_model_select_param}}
 #' @param mu per-species extinction rate. See \code{\link[mbd]{mbd_sim}}
 #' @param mutation_rate something
 #' @param n_replicates number of replicates
@@ -48,9 +47,11 @@
 #' @param nu_events the number of nu-triggered events that have to be
 #'   present in the simulated tree
 #' @param parameters the razzo parameters
-#' @param parameter_filename full path to a 'parameters.csv' file
-#' @param parameters_filename full path to a 'parameters.csv' file
+#' @param parameter_filename full path to a \code{parameters.RDa} file
+#' @param parameters_filename full path to a \code{parameters.RDa} file
 #' @param phylo a phylogeny
+#' @param pir_params a parameter set for one \code{pirouette} run,
+#'   as created by \link[pirouette]{create_pir_params}
 #' @param posterior_trees phylogenetic trees in a BEAST2 posterior,
 #'   of class \code{multiphylo}
 #' @param precision define the precision of the approximation.
@@ -95,13 +96,13 @@ default_params_doc <- function(
   cond,
   crown_age,
   error_measure_params,
+  experiment_type,
   experiments,
   fasta_filename,
   filename,
   folder_name,
   init_speciation_rate,
   init_extinction_rate,
-  inference_params,
   lambda,
   mbd_l_matrix,
   mbd_mutation_rate,
@@ -110,7 +111,6 @@ default_params_doc <- function(
   mbd_sim_rng_seed,
   mbd_tree,
   misc_params,
-  model_select_params,
   mu,
   mutation_rate,
   n_replicates,
@@ -120,6 +120,7 @@ default_params_doc <- function(
   parameter_filename,
   parameters_filename,
   phylo,
+  pir_params,
   posterior_trees,
   precision,
   project_folder_name,

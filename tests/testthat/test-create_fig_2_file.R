@@ -2,6 +2,8 @@ context("test-create_fig_2_file")
 
 test_that("use", {
 
+  skip("https://github.com/richelbilderbeek/pirouette/issues/145")
+
   # Should create 'results/fig_2.png'
   filename <- create_fig_2_file(
     project_folder_name = get_path("razzo_project")

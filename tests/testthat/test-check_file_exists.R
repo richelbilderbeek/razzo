@@ -4,7 +4,7 @@ test_that("use", {
 
   expect_silent(
     check_file_exists(
-      get_path("parameters.csv")
+      get_path("parameters.RDa")
     )
   )
   expect_error(

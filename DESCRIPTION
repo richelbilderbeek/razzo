@@ -16,23 +16,14 @@ LazyData: true
 RoxygenNote: 6.1.1
 Imports: 
   ape,
-  babette,
   beastier, 
   beautier,
-  becosys,
-  DDD,
   ggplot2,
-  mauricer,
   mbd,
-  nLTT,
   pirouette,
-  rappdirs,
-  stringr,
-  TESS,
-  testit,
-  tidyr,
-  tracerer
+  testit
 Suggests:
+  babette,
   cli,
   devtools,
   dplyr,
@@ -40,5 +31,6 @@ Suggests:
   lintr,
   rmarkdown,
   testthat,
-  tidyverse
+  tidyverse,
+  tracerer
 VignetteBuilder: knitr
