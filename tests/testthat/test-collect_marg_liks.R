@@ -2,6 +2,8 @@ context("collect_marg_liks")
 
 test_that("use", {
 
+  skip("https://github.com/richelbilderbeek/pirouette/issues/148, #148")
+
   df <- collect_marg_liks(
     project_folder_name = get_path("razzo_project")
   )

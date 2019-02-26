@@ -2,6 +2,8 @@ context("collect_esses")
 
 test_that("use", {
 
+  skip("https://github.com/richelbilderbeek/pirouette/issues/149, #149")
+
   df <- collect_esses(
     project_folder_name = get_path("razzo_project")
   )
