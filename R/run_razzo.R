@@ -32,7 +32,8 @@ run_razzo <- function(
   tree_filename <- razzo_params$misc_params$tree_filename
 
   ape::write.tree(
-    phy = phylogeny, file = tree_filename
+    phy = phylogeny,
+    file = tree_filename
   )
   testit::assert(file.exists(tree_filename))
 

@@ -22,7 +22,8 @@ create_parameters_files <- function(
       crown_age = 15.0,
       cond = 1
     )
-    testit::assert(nrow(unique(mbd_params_interval))
+    testit::assert(
+      nrow(unique(mbd_params_interval))
       == nrow(mbd_params_interval)
     )
     parameters_filenames <- create_full_parameters_files(
@@ -152,7 +153,7 @@ create_full_parameters_files <- function(
     # experiment_gtr_bd   |candidate  | best_candidate |TRUE      |GTR, BD    # nolint this is no commented code
     #
     # Sure, a fourth model (gtr_yule) would finish the pattern,
-    # but this woul also needlessly slow down our tests
+    # but this would also needlessly slow down our tests
     experiment_jc69_bd <- pirouette::create_experiment(
       model_type = "generative",
       run_if = "always",
@@ -173,8 +174,7 @@ create_full_parameters_files <- function(
       ),
       est_evidence_mcmc = beautier::create_nested_sampling_mcmc(
         epsilon = 100.0
-      ),
-      errors_filename = file.path(seed_folder, "mbd_nltts_gen.csv")
+      )
     )
     experiment_jc69_yule <- pirouette::create_experiment(
       model_type = "candidate",
@@ -196,8 +196,7 @@ create_full_parameters_files <- function(
       ),
       est_evidence_mcmc = beautier::create_nested_sampling_mcmc(
         epsilon = 100.0
-      ),
-      errors_filename = file.path(seed_folder, "mbd_nltts_best.csv")
+      )
     )
     experiment_gtr_bd <- pirouette::create_experiment(
       model_type = "candidate",
@@ -219,8 +218,7 @@ create_full_parameters_files <- function(
       ),
       est_evidence_mcmc = beautier::create_nested_sampling_mcmc(
         epsilon = 100.0
-      ),
-      errors_filename = file.path(seed_folder, "mbd_nltts_best.csv")
+      )
     )
     experiments <- list(
       experiment_jc69_bd, # generative
@@ -232,7 +230,6 @@ create_full_parameters_files <- function(
     error_measure_params$errors_filename <- file.path(
       seed_folder, "mbd_nltt.csv"
     )
-
 
     pir_params <- pirouette::create_pir_params(
       alignment_params = alignment_params,
