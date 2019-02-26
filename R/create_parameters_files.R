@@ -6,7 +6,7 @@
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
 create_parameters_files <- function(
-  project_folder_name = getwd(),
+  project_folder_name = get_path("razzo_project"),
   experiment_type = "test"
 ) {
   testit::assert(experiment_type == "test" || experiment_type == "full")
@@ -62,7 +62,7 @@ create_parameters_files <- function(
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
 create_full_parameters_files <- function(
-  project_folder_name = getwd(),
+  project_folder_name = get_path("razzo_project"),
   mbd_params_interval = create_mbd_params_interval(
     lambda = 0.2,
     mu = 0.15,
@@ -134,7 +134,9 @@ create_full_parameters_files <- function(
       seed_folder, "mbd_marg_lik_twin.csv"
     )
     misc_params <- list()
-    misc_params$tree_filename <- "mbd.tree"
+    misc_params$tree_filename <- file.path(
+      seed_folder, "mbd.tree"
+    )
     mrca_prior <- beautier::create_mrca_prior(
       is_monophyletic = TRUE,
       mrca_distr = beautier::create_normal_distr(mean = 15.0, sigma = 0.0001)
@@ -154,10 +156,17 @@ create_full_parameters_files <- function(
     #
     # Sure, a fourth model (gtr_yule) would finish the pattern,
     # but this would also needlessly slow down our tests
+
+    if (rappdirs::app_dir()$os != "win") {
+      do_measure_evidence <- TRUE
+    } else {
+      do_measure_evidence <- FALSE
+    }
+
     experiment_jc69_bd <- pirouette::create_experiment(
       model_type = "generative",
       run_if = "always",
-      do_measure_evidence = TRUE,
+      do_measure_evidence = do_measure_evidence,
       inference_model = beautier::create_inference_model(
         site_model = beautier::create_jc69_site_model(),
         tree_prior = beautier::create_bd_tree_prior(),
@@ -176,55 +185,59 @@ create_full_parameters_files <- function(
         epsilon = 100.0
       )
     )
-    experiment_jc69_yule <- pirouette::create_experiment(
-      model_type = "candidate",
-      run_if = "best_candidate",
-      do_measure_evidence = TRUE,
-      inference_model = beautier::create_inference_model(
-        site_model = beautier::create_jc69_site_model(),
-        tree_prior = beautier::create_yule_tree_prior(),
-        mcmc = mcmc,
-        mrca_prior = mrca_prior
-      ),
-      beast2_options = beastier::create_beast2_options(
-        input_filename = file.path(seed_folder, "mbd_best.xml"),
-        output_log_filename = file.path(seed_folder, "mbd_best.log"),
-        output_trees_filenames = file.path(seed_folder, "mbd_best.trees"),
-        output_state_filename = file.path(seed_folder, "mbd_best.xml.state"),
-        rng_seed = seed,
-        overwrite = TRUE
-      ),
-      est_evidence_mcmc = beautier::create_nested_sampling_mcmc(
-        epsilon = 100.0
+    if (rappdirs::app_dir()$os != "win") {
+      experiment_jc69_yule <- pirouette::create_experiment(
+        model_type = "candidate",
+        run_if = "best_candidate",
+        do_measure_evidence = do_measure_evidence,
+        inference_model = beautier::create_inference_model(
+          site_model = beautier::create_jc69_site_model(),
+          tree_prior = beautier::create_yule_tree_prior(),
+          mcmc = mcmc,
+          mrca_prior = mrca_prior
+        ),
+        beast2_options = beastier::create_beast2_options(
+          input_filename = file.path(seed_folder, "mbd_best.xml"),
+          output_log_filename = file.path(seed_folder, "mbd_best.log"),
+          output_trees_filenames = file.path(seed_folder, "mbd_best.trees"),
+          output_state_filename = file.path(seed_folder, "mbd_best.xml.state"),
+          rng_seed = seed,
+          overwrite = TRUE
+        ),
+        est_evidence_mcmc = beautier::create_nested_sampling_mcmc(
+          epsilon = 100.0
+        )
       )
-    )
-    experiment_gtr_bd <- pirouette::create_experiment(
-      model_type = "candidate",
-      run_if = "best_candidate",
-      do_measure_evidence = TRUE,
-      inference_model = beautier::create_inference_model(
-        site_model = beautier::create_gtr_site_model(),
-        tree_prior = beautier::create_bd_tree_prior(),
-        mcmc = mcmc,
-        mrca_prior = mrca_prior
-      ),
-      beast2_options = beastier::create_beast2_options(
-        input_filename = file.path(seed_folder, "mbd_best.xml"),
-        output_log_filename = file.path(seed_folder, "mbd_best.log"),
-        output_trees_filenames = file.path(seed_folder, "mbd_best.trees"),
-        output_state_filename = file.path(seed_folder, "mbd_best.xml.state"),
-        rng_seed = seed,
-        overwrite = TRUE
-      ),
-      est_evidence_mcmc = beautier::create_nested_sampling_mcmc(
-        epsilon = 100.0
+      experiment_gtr_bd <- pirouette::create_experiment(
+        model_type = "candidate",
+        run_if = "best_candidate",
+        do_measure_evidence = do_measure_evidence,
+        inference_model = beautier::create_inference_model(
+          site_model = beautier::create_gtr_site_model(),
+          tree_prior = beautier::create_bd_tree_prior(),
+          mcmc = mcmc,
+          mrca_prior = mrca_prior
+        ),
+        beast2_options = beastier::create_beast2_options(
+          input_filename = file.path(seed_folder, "mbd_best.xml"),
+          output_log_filename = file.path(seed_folder, "mbd_best.log"),
+          output_trees_filenames = file.path(seed_folder, "mbd_best.trees"),
+          output_state_filename = file.path(seed_folder, "mbd_best.xml.state"),
+          rng_seed = seed,
+          overwrite = TRUE
+        ),
+        est_evidence_mcmc = beautier::create_nested_sampling_mcmc(
+          epsilon = 100.0
+        )
       )
-    )
-    experiments <- list(
-      experiment_jc69_bd, # generative
-      experiment_jc69_yule, # candidate
-      experiment_gtr_bd # candidate
-    )
+      experiments <- list(
+        experiment_jc69_bd, # generative
+        experiment_jc69_yule, # candidate
+        experiment_gtr_bd # candidate
+      )
+    } else {
+      experiments <- list(experiment_jc69_bd)
+    }
 
     # Stub
     error_measure_params$errors_filename <- file.path(

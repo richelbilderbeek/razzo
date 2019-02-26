@@ -38,8 +38,9 @@ run_razzo <- function(
   testit::assert(file.exists(tree_filename))
 
   # Let pirouette measure the error
-  pirouette::pir_run(
+  output <- pirouette::pir_run(
     phylogeny = phylogeny,
     pir_params = razzo_params$pir_params
   )
+  output
 }

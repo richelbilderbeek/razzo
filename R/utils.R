@@ -80,7 +80,10 @@ open_parameters_file <- function(
   check_file_exists(parameters_filename) # nolint internal function
 
   parameters <- NULL
-  if (tools::file_ext(parameters_filename) == "RDa") {
+  if (
+    tools::file_ext(parameters_filename) == "Rda" ||
+    tools::file_ext(parameters_filename) == "RDa"
+  ) {
     parameters <- readRDS(parameters_filename)
     check_razzo_params(parameters)
   } else {
@@ -94,4 +97,13 @@ open_parameters_file <- function(
     testit::assert(parameters$q <= 1)
   }
   parameters
+}
+
+#' @title Generative models
+#' @description Generative models
+#' @inheritParams default_params_doc
+#' @return the generative models
+#' @author Giovanni Laudanno
+get_gen_models <- function() {
+  c("bd", "mbd")
 }

@@ -19,10 +19,7 @@ get_data_paths <- function(
   par_settings_folders <- file.path(data_folder, list.files(data_folder))
   for (p in par_settings_folders) {
     seed_folders <- file.path(p, list.files(p))
-    for (s in seed_folders) {
-      model_folders <- file.path(s, list.files(s))
-      all_settings <- c(all_settings, model_folders)
-    }
+    all_settings <- c(all_settings, seed_folders)
   }
   all_settings
 }

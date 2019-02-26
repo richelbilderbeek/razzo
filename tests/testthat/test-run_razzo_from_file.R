@@ -4,8 +4,9 @@ test_that("use", {
 
   if (!beastier::is_on_travis()) return()
 
-  super_folder_name <- tempdir()
-  project_folder_name <- file.path(super_folder_name, "razzo_project")
+  # super_folder_name <- tempdir()
+  # project_folder_name <- file.path(super_folder_name, "razzo_project")
+  project_folder_name <- get_path("razzo_project")
   dir.create(path = project_folder_name, recursive = TRUE, showWarnings = FALSE)
   parameters_filenames <- create_test_parameters_files(project_folder_name)
   # Only run the first

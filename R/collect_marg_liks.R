@@ -5,7 +5,7 @@
 #' @author Giovanni Laudanno
 #' @export
 collect_marg_liks <- function(
-  project_folder_name
+  project_folder_name = get_path("razzo_project")
 ) {
 
   # retrieve information from files
