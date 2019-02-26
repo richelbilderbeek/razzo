@@ -2,7 +2,6 @@ context("test-collect_nltt_stats")
 
 test_that("use", {
 
-  skip("https://github.com/richelbilderbeek/pirouette/issues/147, #147")
   df <- collect_nltt_stats(
     project_folder_name = get_path("razzo_project")
   )
@@ -29,6 +28,9 @@ test_that("use", {
   expect_true(is.factor(df$gen_model))
   expect_true(is.factor(df$clock_model))
   expect_true(is.factor(df$site_model))
+  expect_true(is.factor(df$inference_model))
+  expect_true(is.factor(df$inference_model_weight))
+  expect_true(is.factor(df$tree_prior))
 
   # Data must make sense
   expect_true(all(df$lambda >= 0))

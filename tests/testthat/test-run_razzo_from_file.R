@@ -10,7 +10,11 @@ test_that("use", {
   dir.create(path = project_folder_name, recursive = TRUE, showWarnings = FALSE)
   parameters_filenames <- create_test_parameters_files(project_folder_name)
   # Only run the first
-  expect_silent(run_razzo_from_file(parameters_filenames[1]))
+  for (i in seq_along(parameters_filenames)) {
+    expect_silent(run_razzo_from_file(
+      parameters_filename = parameters_filenames[i]
+    ))
+  }
 })
 
 test_that("abuse", {
