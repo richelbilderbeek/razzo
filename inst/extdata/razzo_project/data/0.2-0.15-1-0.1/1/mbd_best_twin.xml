@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><beast beautitemplate='Standard' beautistatus='' namespace="beast.core:beast.evolution.alignment:beast.evolution.tree.coalescent:beast.core.util:beast.evolution.nuc:beast.evolution.operators:beast.evolution.sitemodel:beast.evolution.substitutionmodel:beast.evolution.likelihood" required="" version="2.4">
+
+
+    <data
+id="mbd_twin"
+name="alignment">
+                    <sequence id="seq_t1" taxon="t1" totalcount="4" value="acatccccgtgaatt"/>
+                    <sequence id="seq_t13" taxon="t13" totalcount="4" value="gaaactccgggctat"/>
+                    <sequence id="seq_t14" taxon="t14" totalcount="4" value="gaaaccccagggtac"/>
+                    <sequence id="seq_t15" taxon="t15" totalcount="4" value="gaagccacagggttc"/>
+                    <sequence id="seq_t16" taxon="t16" totalcount="4" value="gaaagccagcacggt"/>
+                    <sequence id="seq_t22" taxon="t22" totalcount="4" value="gtaaacgcgcgcctt"/>
+                    <sequence id="seq_t27" taxon="t27" totalcount="4" value="gcaaccccgcggtca"/>
+                    <sequence id="seq_t28" taxon="t28" totalcount="4" value="acaacgccgagtttt"/>
+                    <sequence id="seq_t30" taxon="t30" totalcount="4" value="gaagccccagggttc"/>
+                    <sequence id="seq_t32" taxon="t32" totalcount="4" value="aaatcaccgtggttt"/>
+                    <sequence id="seq_t35" taxon="t35" totalcount="4" value="taaatcgcgggtttt"/>
+                    <sequence id="seq_t36" taxon="t36" totalcount="4" value="taagccccagggttc"/>
+                    <sequence id="seq_t38" taxon="t38" totalcount="4" value="taaacggcgggtttt"/>
+                    <sequence id="seq_t40" taxon="t40" totalcount="4" value="ctatcgcagggttgt"/>
+                    <sequence id="seq_t43" taxon="t43" totalcount="4" value="gacacccccggtttt"/>
+                    <sequence id="seq_t44" taxon="t44" totalcount="4" value="gaagccccagggttc"/>
+                    <sequence id="seq_t49" taxon="t49" totalcount="4" value="ggagccccgacacgg"/>
+                    <sequence id="seq_t52" taxon="t52" totalcount="4" value="gaagccccagggtcc"/>
+                    <sequence id="seq_t54" taxon="t54" totalcount="4" value="gaaaccccagggttc"/>
+                    <sequence id="seq_t56" taxon="t56" totalcount="4" value="gcagccccgagtttg"/>
+                    <sequence id="seq_t57" taxon="t57" totalcount="4" value="gaagccccagggttc"/>
+                    <sequence id="seq_t58" taxon="t58" totalcount="4" value="taacaccaaaggtgt"/>
+                    <sequence id="seq_t59" taxon="t59" totalcount="4" value="gaaatcccggggatt"/>
+                    <sequence id="seq_t62" taxon="t62" totalcount="4" value="aaatcgggggagttc"/>
+                    <sequence id="seq_t64" taxon="t64" totalcount="4" value="gaagccacagggttc"/>
+                    <sequence id="seq_t65" taxon="t65" totalcount="4" value="tcaacggctgggttt"/>
+                    <sequence id="seq_t68" taxon="t68" totalcount="4" value="gcaacaacgtgtctt"/>
+                    <sequence id="seq_t69" taxon="t69" totalcount="4" value="gataccccggggttt"/>
+                    <sequence id="seq_t70" taxon="t70" totalcount="4" value="acttcgtctggtgtt"/>
+                    <sequence id="seq_t71" taxon="t71" totalcount="4" value="gaagcccctcgctta"/>
+                    <sequence id="seq_t72" taxon="t72" totalcount="4" value="gaaatcctggggtct"/>
+                    <sequence id="seq_t73" taxon="t73" totalcount="4" value="gagtcgaggcgattt"/>
+                    <sequence id="seq_t74" taxon="t74" totalcount="4" value="gcaggtccctcgttt"/>
+                    <sequence id="seq_t75" taxon="t75" totalcount="4" value="gtagccccagggttc"/>
+                    <sequence id="seq_t76" taxon="t76" totalcount="4" value="gaagcacccagtttt"/>
+                    <sequence id="seq_t77" taxon="t77" totalcount="4" value="gaaaacgcgggttgt"/>
+                    <sequence id="seq_t78" taxon="t78" totalcount="4" value="gaagccacgggggtt"/>
+                    <sequence id="seq_t79" taxon="t79" totalcount="4" value="atagccacgggttgt"/>
+                    <sequence id="seq_t80" taxon="t80" totalcount="4" value="acgtccccgagttgc"/>
+                    <sequence id="seq_t81" taxon="t81" totalcount="4" value="gaaaccactgcgctc"/>
+                    <sequence id="seq_t82" taxon="t82" totalcount="4" value="gaagccccagggttc"/>
+                    <sequence id="seq_t83" taxon="t83" totalcount="4" value="tgatcccaggggatg"/>
+                    <sequence id="seq_t85" taxon="t85" totalcount="4" value="gaaaccaagggtttt"/>
+                    <sequence id="seq_t86" taxon="t86" totalcount="4" value="ggcaaccaggccttt"/>
+                    <sequence id="seq_t87" taxon="t87" totalcount="4" value="gaagccccagggttc"/>
+                </data>
+
+
+    
+
+
+    
+
+
+    
+<map name="Uniform" >beast.math.distributions.Uniform</map>
+<map name="Exponential" >beast.math.distributions.Exponential</map>
+<map name="LogNormal" >beast.math.distributions.LogNormalDistributionModel</map>
+<map name="Normal" >beast.math.distributions.Normal</map>
+<map name="Beta" >beast.math.distributions.Beta</map>
+<map name="Gamma" >beast.math.distributions.Gamma</map>
+<map name="LaplaceDistribution" >beast.math.distributions.LaplaceDistribution</map>
+<map name="prior" >beast.math.distributions.Prior</map>
+<map name="InverseGamma" >beast.math.distributions.InverseGamma</map>
+<map name="OneOnX" >beast.math.distributions.OneOnX</map>
+
+
+<run id="mcmc" spec="MCMC" chainLength="3000" storeEvery="1000">
+    <state id="state" storeEvery="5000">
+        <tree id="Tree.t:mbd_twin" name="stateNode">
+            <taxonset id="TaxonSet.mbd_twin" spec="TaxonSet">
+                <alignment idref="mbd_twin"/>
+            </taxonset>
+        </tree>
+        <parameter id="birthRate.t:mbd_twin" name="stateNode">1.0</parameter>
+        <parameter id="clockRate.c:mbd_twin" name="stateNode">1.0</parameter>
+    </state>
+
+    <init id="RandomTree.t:mbd_twin" spec="beast.evolution.tree.RandomTree" estimate="false" initial="@Tree.t:mbd_twin" taxa="@mbd_twin">
+        <populationModel id="ConstantPopulation0.t:mbd_twin" spec="ConstantPopulation">
+            <parameter id="randomPopSize.t:mbd_twin" name="popSize">1.0</parameter>
+        </populationModel>
+    </init>
+
+    <distribution id="posterior" spec="util.CompoundDistribution">
+        <distribution id="prior" spec="util.CompoundDistribution">
+            <distribution id="YuleModel.t:mbd_twin" spec="beast.evolution.speciation.YuleModel" birthDiffRate="@birthRate.t:mbd_twin" tree="@Tree.t:mbd_twin"/>
+            <prior id="YuleBirthRatePrior.t:mbd_twin" name="distribution" x="@birthRate.t:mbd_twin">
+                <Uniform id="Uniform.100" name="distr" upper="Infinity"/>
+            </prior>
+            <prior id="ClockPrior.c:mbd_twin" name="distribution" x="@clockRate.c:mbd_twin">
+                <Uniform id="Uniform.150" name="distr" upper="Infinity"/>
+            </prior>
+            <distribution id="auto_name_1.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:mbd_twin">
+                <taxonset id="auto_name_1" spec="TaxonSet">
+                    <taxon id="t1" spec="Taxon"/>
+                    <taxon id="t70" spec="Taxon"/>
+                    <taxon id="t62" spec="Taxon"/>
+                    <taxon id="t40" spec="Taxon"/>
+                    <taxon id="t83" spec="Taxon"/>
+                    <taxon id="t58" spec="Taxon"/>
+                    <taxon id="t32" spec="Taxon"/>
+                    <taxon id="t74" spec="Taxon"/>
+                    <taxon id="t16" spec="Taxon"/>
+                    <taxon id="t86" spec="Taxon"/>
+                    <taxon id="t81" spec="Taxon"/>
+                    <taxon id="t72" spec="Taxon"/>
+                    <taxon id="t27" spec="Taxon"/>
+                    <taxon id="t65" spec="Taxon"/>
+                    <taxon id="t43" spec="Taxon"/>
+                    <taxon id="t13" spec="Taxon"/>
+                    <taxon id="t69" spec="Taxon"/>
+                    <taxon id="t68" spec="Taxon"/>
+                    <taxon id="t73" spec="Taxon"/>
+                    <taxon id="t85" spec="Taxon"/>
+                    <taxon id="t38" spec="Taxon"/>
+                    <taxon id="t79" spec="Taxon"/>
+                    <taxon id="t22" spec="Taxon"/>
+                    <taxon id="t35" spec="Taxon"/>
+                    <taxon id="t77" spec="Taxon"/>
+                    <taxon id="t76" spec="Taxon"/>
+                    <taxon id="t28" spec="Taxon"/>
+                    <taxon id="t80" spec="Taxon"/>
+                    <taxon id="t56" spec="Taxon"/>
+                    <taxon id="t49" spec="Taxon"/>
+                    <taxon id="t59" spec="Taxon"/>
+                    <taxon id="t78" spec="Taxon"/>
+                    <taxon id="t71" spec="Taxon"/>
+                    <taxon id="t14" spec="Taxon"/>
+                    <taxon id="t54" spec="Taxon"/>
+                    <taxon id="t30" spec="Taxon"/>
+                    <taxon id="t44" spec="Taxon"/>
+                    <taxon id="t75" spec="Taxon"/>
+                    <taxon id="t82" spec="Taxon"/>
+                    <taxon id="t52" spec="Taxon"/>
+                    <taxon id="t87" spec="Taxon"/>
+                    <taxon id="t57" spec="Taxon"/>
+                    <taxon id="t36" spec="Taxon"/>
+                    <taxon id="t15" spec="Taxon"/>
+                    <taxon id="t64" spec="Taxon"/>
+                </taxonset>
+                <Normal id="Normal.151" name="distr">
+                    <parameter id="RealParameter.300" estimate="false" name="mean">15</parameter>
+                    <parameter id="RealParameter.301" estimate="false" name="sigma">0.0001</parameter>
+                </Normal>
+            </distribution>
+        </distribution>
+        <distribution id="likelihood" spec="util.CompoundDistribution" useThreads="true">
+            <distribution id="treeLikelihood.mbd_twin" spec="ThreadedTreeLikelihood" data="@mbd_twin" tree="@Tree.t:mbd_twin">
+                <siteModel id="SiteModel.s:mbd_twin" spec="SiteModel">
+                    <parameter id="mutationRate.s:mbd_twin" estimate="false" name="mutationRate">1.0</parameter>
+                    <parameter id="gammaShape.s:mbd_twin" estimate="false" name="shape">1.0</parameter>
+                    <parameter id="proportionInvariant.s:mbd_twin" estimate="false" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
+                    <substModel id="JC69.s:mbd_twin" spec="JukesCantor"/>
+                </siteModel>
+                <branchRateModel id="StrictClock.c:mbd_twin" spec="beast.evolution.branchratemodel.StrictClockModel" clock.rate="@clockRate.c:mbd_twin"/>
+            </distribution>
+        </distribution>
+    </distribution>
+
+    <operator id="YuleBirthRateScaler.t:mbd_twin" spec="ScaleOperator" parameter="@birthRate.t:mbd_twin" scaleFactor="0.75" weight="3.0"/>
+
+    <operator id="YuleModelTreeScaler.t:mbd_twin" spec="ScaleOperator" scaleFactor="0.5" tree="@Tree.t:mbd_twin" weight="3.0"/>
+
+    <operator id="YuleModelTreeRootScaler.t:mbd_twin" spec="ScaleOperator" rootOnly="true" scaleFactor="0.5" tree="@Tree.t:mbd_twin" weight="3.0"/>
+
+    <operator id="YuleModelUniformOperator.t:mbd_twin" spec="Uniform" tree="@Tree.t:mbd_twin" weight="30.0"/>
+
+    <operator id="YuleModelSubtreeSlide.t:mbd_twin" spec="SubtreeSlide" tree="@Tree.t:mbd_twin" weight="15.0"/>
+
+    <operator id="YuleModelNarrow.t:mbd_twin" spec="Exchange" tree="@Tree.t:mbd_twin" weight="15.0"/>
+
+    <operator id="YuleModelWide.t:mbd_twin" spec="Exchange" isNarrow="false" tree="@Tree.t:mbd_twin" weight="3.0"/>
+
+    <operator id="YuleModelWilsonBalding.t:mbd_twin" spec="WilsonBalding" tree="@Tree.t:mbd_twin" weight="3.0"/>
+
+    <operator id="StrictClockRateScaler.c:mbd_twin" spec="ScaleOperator" parameter="@clockRate.c:mbd_twin" scaleFactor="0.75" weight="3.0"/>
+
+    <operator id="strictClockUpDownOperator.c:mbd_twin" spec="UpDownOperator" scaleFactor="0.75" weight="3.0">
+        <up idref="clockRate.c:mbd_twin"/>
+        <down idref="Tree.t:mbd_twin"/>
+    </operator>
+
+    <logger id="tracelog" fileName="mbd_twin.log" logEvery="1000" model="@posterior" sanitiseHeaders="true" sort="smart">
+        <log idref="posterior"/>
+        <log idref="likelihood"/>
+        <log idref="prior"/>
+        <log idref="treeLikelihood.mbd_twin"/>
+        <log id="TreeHeight.t:mbd_twin" spec="beast.evolution.tree.TreeHeightLogger" tree="@Tree.t:mbd_twin"/>
+        <log idref="YuleModel.t:mbd_twin"/>
+        <log idref="birthRate.t:mbd_twin"/>
+        <log idref="auto_name_1.prior"/>
+        <log idref="clockRate.c:mbd_twin"/>
+    </logger>
+
+    <logger id="screenlog" logEvery="1000">
+        <log idref="posterior"/>
+        <log id="ESS.0" spec="util.ESS" arg="@posterior"/>
+        <log idref="likelihood"/>
+        <log idref="prior"/>
+    </logger>
+
+    <logger id="treelog.t:mbd_twin" fileName="$(tree).trees" logEvery="1000" mode="tree">
+        <log id="TreeWithMetaDataLogger.t:mbd_twin" spec="beast.evolution.tree.TreeWithMetaDataLogger" tree="@Tree.t:mbd_twin"/>
+    </logger>
+
+</run>
+
+</beast>
