@@ -1,0 +1,21 @@
+<itsabeastystatewerein version='2.0' sample='3000'>
+<statenode id='Tree.t:mbd_twin'>((((0:0.7303138143165471,5:0.7303138143165471)8:0.18091904351063104,7:0.9112328578271781)11:0.471120378076589,(((2:0.08175265032760494,3:0.08175265032760494)12:0.05348692700338169,4:0.13523957733098663)9:0.10311822450478092,6:0.23835780183576755)10:1.1439954340679996)13:13.58236638415408,1:14.964719620057847)14:0.0</statenode>
+<statenode id='BDBirthRate.t:mbd_twin'>BDBirthRate.t:mbd_twin[1 1] (0.0,10000.0): 0.15113544175405455 </statenode>
+<statenode id='BDDeathRate.t:mbd_twin'>BDDeathRate.t:mbd_twin[1 1] (0.0,1.0): 0.6336455849542354 </statenode>
+<statenode id='clockRate.c:mbd_twin'>clockRate.c:mbd_twin[1 1] (0.0,Infinity): 0.2550976546505509 </statenode>
+</itsabeastystatewerein>
+<!--
+{"operators":[
+{"id":"BirthRateScaler.t:mbd_twin","p":0.75,"accept":95,"reject":16,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"DeathRateScaler.t:mbd_twin","p":0.75,"accept":70,"reject":34,"acceptFC":0,"rejectFC":0,"rejectIv":13,"rejectOp":13},
+{"id":"BirthDeathTreeScaler.t:mbd_twin","p":0.5,"accept":7,"reject":110,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BirthDeathTreeRootScaler.t:mbd_twin","p":0.5,"accept":2,"reject":103,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BirthDeathUniformOperator.t:mbd_twin","p":"NaN","accept":511,"reject":546,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BirthDeathSubtreeSlide.t:mbd_twin","p":1,"accept":91,"reject":440,"acceptFC":0,"rejectFC":0,"rejectIv":181,"rejectOp":181},
+{"id":"BirthDeathNarrow.t:mbd_twin","p":"NaN","accept":266,"reject":274,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BirthDeathWide.t:mbd_twin","p":"NaN","accept":9,"reject":98,"acceptFC":0,"rejectFC":0,"rejectIv":45,"rejectOp":45},
+{"id":"BirthDeathWilsonBalding.t:mbd_twin","p":"NaN","accept":8,"reject":109,"acceptFC":0,"rejectFC":0,"rejectIv":40,"rejectOp":40},
+{"id":"StrictClockRateScaler.c:mbd_twin","p":0.75,"accept":76,"reject":33,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"strictClockUpDownOperator.c:mbd_twin","p":0.75,"accept":2,"reject":101,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0}
+]}
+-->

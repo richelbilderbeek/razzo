@@ -1,0 +1,91 @@
+#
+#model:
+#
+#<?xml version="1.0" encoding="UTF-8" standalone="no"?><input id="posterior" spec="beast.core.util.CompoundDistribution">
+#    <distribution id="prior" spec="beast.core.util.CompoundDistribution">
+#        <distribution id="YuleModel.t:mbd" spec="beast.evolution.speciation.YuleModel">
+#            <parameter id="birthRate.t:mbd" name="birthDiffRate">1.0</parameter>
+#            <tree id="Tree.t:mbd">
+#                <taxonset id="TaxonSet.mbd" spec="beast.evolution.alignment.TaxonSet">
+#                </taxonset>
+#            </tree>
+#        </distribution>
+#        <prior id="YuleBirthRatePrior.t:mbd" name="distribution" x="@birthRate.t:mbd">
+#            <Uniform id="Uniform.100" name="distr" upper="Infinity"/>
+#        </prior>
+#        <prior id="ClockPrior.c:mbd" name="distribution">
+#            <parameter id="clockRate.c:mbd" name="x">1.0</parameter>
+#            <Uniform id="Uniform.150" name="distr" upper="Infinity"/>
+#        </prior>
+#        <distribution id="auto_name_1.prior" monophyletic="true" spec="beast.math.distributions.MRCAPrior" tree="@Tree.t:mbd">
+#            <taxonset id="auto_name_1" spec="beast.evolution.alignment.TaxonSet">
+#                <taxon id="t1" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t70" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t62" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t40" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t83" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t58" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t32" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t74" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t16" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t86" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t81" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t72" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t27" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t65" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t43" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t13" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t69" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t68" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t73" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t85" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t38" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t79" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t22" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t35" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t77" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t76" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t28" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t80" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t56" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t49" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t59" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t78" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t71" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t14" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t54" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t30" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t44" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t75" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t82" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t52" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t87" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t57" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t36" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t15" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t64" spec="beast.evolution.alignment.Taxon"/>
+#            </taxonset>
+#            <Normal id="Normal.151" name="distr">
+#                <parameter estimate="false" id="RealParameter.300" name="mean">15.0</parameter>
+#                <parameter estimate="false" id="RealParameter.301" name="sigma">1.0E-4</parameter>
+#            </Normal>
+#        </distribution>
+#    </distribution>
+#    <distribution id="likelihood" spec="beast.core.util.CompoundDistribution" useThreads="true">
+#        <distribution data="@mbd" id="treeLikelihood.mbd" spec="beast.evolution.likelihood.ThreadedTreeLikelihood" tree="@Tree.t:mbd">
+#            <siteModel id="SiteModel.s:mbd" spec="beast.evolution.sitemodel.SiteModel">
+#                <parameter estimate="false" id="mutationRate.s:mbd" name="mutationRate">1.0</parameter>
+#                <parameter estimate="false" id="gammaShape.s:mbd" name="shape">1.0</parameter>
+#                <parameter estimate="false" id="proportionInvariant.s:mbd" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
+#                <substModel id="JC69.s:mbd" spec="beast.evolution.substitutionmodel.JukesCantor"/>
+#            </siteModel>
+#            <branchRateModel clock.rate="@clockRate.c:mbd" id="StrictClock.c:mbd" spec="beast.evolution.branchratemodel.StrictClockModel"/>
+#        </distribution>
+#    </distribution>
+#</input>
+#
+Sample	posterior	likelihood	prior	treeLikelihood	TreeHeight	YuleModel	birthRate	logP(mrca(auto_name_1))	mrcatime(auto_name_1)	clockRate
+0	-9.916772082536383E9	-1128.0869127990975	-9.91677095444947E9	-1128.0869127990975	0.9168391623645132	-3.8053785523881403	1.07715865412399	-9.916770950644093E9	0.9168391623645132	1.0
+1000	-197034.8329832506	-661.9499894684434	-196372.88299378217	-661.9499894684434	14.937336213562187	-43.667859427673775	1.0243044741007987	-196329.2151343545	14.937336213562187	1.206422329469813
+2000	-196970.7268841207	-598.6119496952	-196372.1149344255	-598.6119496952	14.937336213562187	-42.89980007100983	0.9865965151615317	-196329.2151343545	14.937336213562187	0.8667550026185742
+3000	-196912.08637801235	-538.5067256121356	-196373.57965240022	-538.5067256121356	14.937336213562187	-44.364518045711286	0.9932346065581317	-196329.2151343545	14.937336213562187	0.7062171225594798

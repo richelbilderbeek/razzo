@@ -1,0 +1,58 @@
+#
+#model:
+#
+#<?xml version="1.0" encoding="UTF-8" standalone="no"?><input id="posterior" spec="beast.core.util.CompoundDistribution">
+#    <distribution id="prior" spec="beast.core.util.CompoundDistribution">
+#        <distribution id="BirthDeath.t:mbd" spec="beast.evolution.speciation.BirthDeathGernhard08Model">
+#            <parameter id="BDDeathRate.t:mbd" lower="0.0" name="relativeDeathRate" upper="1.0">0.5</parameter>
+#            <parameter id="BDBirthRate.t:mbd" lower="0.0" name="birthDiffRate" upper="10000.0">1.0</parameter>
+#            <tree id="Tree.t:mbd">
+#                <taxonset id="TaxonSet.mbd" spec="beast.evolution.alignment.TaxonSet">
+#                </taxonset>
+#            </tree>
+#        </distribution>
+#        <prior id="BirthRatePrior.t:mbd" name="distribution" x="@BDBirthRate.t:mbd">
+#            <Uniform id="Uniform.100" name="distr" upper="Infinity"/>
+#        </prior>
+#        <prior id="DeathRatePrior.t:mbd" name="distribution" x="@BDDeathRate.t:mbd">
+#            <Uniform id="Uniform.101" name="distr" upper="Infinity"/>
+#        </prior>
+#        <prior id="ClockPrior.c:mbd" name="distribution">
+#            <parameter id="clockRate.c:mbd" name="x">1.0</parameter>
+#            <Uniform id="Uniform.150" name="distr" upper="Infinity"/>
+#        </prior>
+#        <distribution id="auto_name_1.prior" monophyletic="true" spec="beast.math.distributions.MRCAPrior" tree="@Tree.t:mbd">
+#            <taxonset id="auto_name_1" spec="beast.evolution.alignment.TaxonSet">
+#                <taxon id="t14" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t18" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t7" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t10" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t2" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t15" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t16" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t17" spec="beast.evolution.alignment.Taxon"/>
+#            </taxonset>
+#            <Normal id="Normal.151" name="distr">
+#                <parameter estimate="false" id="RealParameter.300" name="mean">15.0</parameter>
+#                <parameter estimate="false" id="RealParameter.301" name="sigma">1.0E-4</parameter>
+#            </Normal>
+#        </distribution>
+#    </distribution>
+#    <distribution id="likelihood" spec="beast.core.util.CompoundDistribution" useThreads="true">
+#        <distribution data="@mbd" id="treeLikelihood.mbd" spec="beast.evolution.likelihood.ThreadedTreeLikelihood" tree="@Tree.t:mbd">
+#            <siteModel id="SiteModel.s:mbd" spec="beast.evolution.sitemodel.SiteModel">
+#                <parameter estimate="false" id="mutationRate.s:mbd" name="mutationRate">1.0</parameter>
+#                <parameter estimate="false" id="gammaShape.s:mbd" name="shape">1.0</parameter>
+#                <parameter estimate="false" id="proportionInvariant.s:mbd" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
+#                <substModel id="JC69.s:mbd" spec="beast.evolution.substitutionmodel.JukesCantor"/>
+#            </siteModel>
+#            <branchRateModel clock.rate="@clockRate.c:mbd" id="StrictClock.c:mbd" spec="beast.evolution.branchratemodel.StrictClockModel"/>
+#        </distribution>
+#    </distribution>
+#</input>
+#
+Sample	posterior	likelihood	prior	treeLikelihood	TreeHeight	BirthDeath	BDBirthRate	BDDeathRate	logP(mrca(auto_name_1))	mrcatime(auto_name_1)	clockRate
+0	-8.533136900594914E9	-124.40252136745956	-8.533136776192393E9	-124.40252136745956	1.9362051625033354	-6.6735687619293245	1.0	0.5	-8.533136769518825E9	1.9362051625033354	1.0
+1000	-2387.7085018610337	-85.0399627161081	-2302.6685391449255	-85.0399627161081	15.006774533442227	-16.24477299086827	0.3284837470626929	0.6387245195982655	-2286.4237661540574	15.006774533442227	0.48713588029420013
+2000	-2385.7033380886587	-86.50916822736954	-2299.194169861289	-86.50916822736954	15.006774533442227	-12.770403707231804	0.08357795185167824	0.9620408460909953	-2286.4237661540574	15.006774533442227	0.4328995271079181
+3000	-2377.905567488573	-81.5930324018711	-2296.312535086702	-81.5930324018711	15.006774533442227	-9.888768932644869	0.05468287535649854	0.9842625995643306	-2286.4237661540574	15.006774533442227	0.2882441688861038

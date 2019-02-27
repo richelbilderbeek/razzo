@@ -1,0 +1,98 @@
+#
+#model:
+#
+#<?xml version="1.0" encoding="UTF-8" standalone="no"?><input id="posterior" spec="beast.core.util.CompoundDistribution">
+#    <distribution id="prior" spec="beast.core.util.CompoundDistribution">
+#        <distribution id="BirthDeath.t:mbd" spec="beast.evolution.speciation.BirthDeathGernhard08Model">
+#            <parameter id="BDDeathRate.t:mbd" lower="0.0" name="relativeDeathRate" upper="1.0">0.5</parameter>
+#            <parameter id="BDBirthRate.t:mbd" lower="0.0" name="birthDiffRate" upper="10000.0">1.0</parameter>
+#            <tree id="Tree.t:mbd">
+#                <taxonset id="TaxonSet.mbd" spec="beast.evolution.alignment.TaxonSet">
+#                </taxonset>
+#            </tree>
+#        </distribution>
+#        <prior id="BirthRatePrior.t:mbd" name="distribution" x="@BDBirthRate.t:mbd">
+#            <Uniform id="Uniform.100" name="distr" upper="Infinity"/>
+#        </prior>
+#        <prior id="DeathRatePrior.t:mbd" name="distribution" x="@BDDeathRate.t:mbd">
+#            <Uniform id="Uniform.101" name="distr" upper="Infinity"/>
+#        </prior>
+#        <prior id="RateACPrior.s:mbd" name="distribution">
+#            <parameter id="rateAC.s:mbd" lower="0.0" name="x">1.0</parameter>
+#            <Gamma id="Gamma.0" name="distr">
+#                <parameter estimate="false" id="RealParameter.0" name="alpha">0.05</parameter>
+#                <parameter estimate="false" id="RealParameter.1" name="beta">10.0</parameter>
+#            </Gamma>
+#        </prior>
+#        <prior id="RateAGPrior.s:mbd" name="distribution">
+#            <parameter id="rateAG.s:mbd" lower="0.0" name="x">1.0</parameter>
+#            <Gamma id="Gamma.1" name="distr">
+#                <parameter estimate="false" id="RealParameter.2" name="alpha">0.05</parameter>
+#                <parameter estimate="false" id="RealParameter.3" name="beta">20.0</parameter>
+#            </Gamma>
+#        </prior>
+#        <prior id="RateATPrior.s:mbd" name="distribution">
+#            <parameter id="rateAT.s:mbd" lower="0.0" name="x">1.0</parameter>
+#            <Gamma id="Gamma.2" name="distr">
+#                <parameter estimate="false" id="RealParameter.4" name="alpha">0.05</parameter>
+#                <parameter estimate="false" id="RealParameter.5" name="beta">10.0</parameter>
+#            </Gamma>
+#        </prior>
+#        <prior id="RateCGPrior.s:mbd" name="distribution">
+#            <parameter id="rateCG.s:mbd" lower="0.0" name="x">1.0</parameter>
+#            <Gamma id="Gamma.3" name="distr">
+#                <parameter estimate="false" id="RealParameter.6" name="alpha">0.05</parameter>
+#                <parameter estimate="false" id="RealParameter.7" name="beta">10.0</parameter>
+#            </Gamma>
+#        </prior>
+#        <prior id="RateGTPrior.s:mbd" name="distribution">
+#            <parameter id="rateGT.s:mbd" lower="0.0" name="x">1.0</parameter>
+#            <Gamma id="Gamma.4" name="distr">
+#                <parameter estimate="false" id="RealParameter.8" name="alpha">0.05</parameter>
+#                <parameter estimate="false" id="RealParameter.9" name="beta">10.0</parameter>
+#            </Gamma>
+#        </prior>
+#        <prior id="ClockPrior.c:mbd" name="distribution">
+#            <parameter id="clockRate.c:mbd" name="x">1.0</parameter>
+#            <Uniform id="Uniform.150" name="distr" upper="Infinity"/>
+#        </prior>
+#        <distribution id="auto_name_1.prior" monophyletic="true" spec="beast.math.distributions.MRCAPrior" tree="@Tree.t:mbd">
+#            <taxonset id="auto_name_1" spec="beast.evolution.alignment.TaxonSet">
+#                <taxon id="t14" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t18" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t7" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t10" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t2" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t15" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t16" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t17" spec="beast.evolution.alignment.Taxon"/>
+#            </taxonset>
+#            <Normal id="Normal.151" name="distr">
+#                <parameter estimate="false" id="RealParameter.300" name="mean">15.0</parameter>
+#                <parameter estimate="false" id="RealParameter.301" name="sigma">1.0E-4</parameter>
+#            </Normal>
+#        </distribution>
+#    </distribution>
+#    <distribution id="likelihood" spec="beast.core.util.CompoundDistribution" useThreads="true">
+#        <distribution data="@mbd" id="treeLikelihood.mbd" spec="beast.evolution.likelihood.ThreadedTreeLikelihood" tree="@Tree.t:mbd">
+#            <siteModel id="SiteModel.s:mbd" spec="beast.evolution.sitemodel.SiteModel">
+#                <parameter estimate="false" id="mutationRate.s:mbd" name="mutationRate">1.0</parameter>
+#                <parameter estimate="false" id="gammaShape.s:mbd" name="shape">1.0</parameter>
+#                <parameter estimate="false" id="proportionInvariant.s:mbd" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
+#                <substModel id="gtr.s:mbd" rateAC="@rateAC.s:mbd" rateAG="@rateAG.s:mbd" rateAT="@rateAT.s:mbd" rateCG="@rateCG.s:mbd" rateGT="@rateGT.s:mbd" spec="beast.evolution.substitutionmodel.GTR">
+#                    <parameter estimate="false" id="rateCT.s:mbd" lower="0.0" name="rateCT">1.0</parameter>
+#                    <frequencies id="estimatedFreqs.s:mbd" spec="beast.evolution.substitutionmodel.Frequencies">
+#                        <parameter dimension="4" id="freqParameter.s:mbd" lower="0.0" name="frequencies" upper="1.0">0.25</parameter>
+#                    </frequencies>
+#                </substModel>
+#            </siteModel>
+#            <branchRateModel clock.rate="@clockRate.c:mbd" id="StrictClock.c:mbd" spec="beast.evolution.branchratemodel.StrictClockModel"/>
+#        </distribution>
+#    </distribution>
+#</input>
+#
+Sample	posterior	likelihood	prior	treeLikelihood	TreeHeight	rateAC	rateAG	rateAT	rateCG	rateGT	freqParameter.1	freqParameter.2	freqParameter.3	freqParameter.4	BirthDeath	BDBirthRate	BDDeathRate	logP(mrca(auto_name_1))	mrcatime(auto_name_1)	clockRate
+0	-8.533136916499614E9	-124.40252136745943	-8.533136792097093E9	-124.40252136745943	1.9362051625033354	1.0	1.0	1.0	1.0	1.0	0.25	0.25	0.25	0.25	-6.6735687619293245	1.0	0.5	-8.533136769518825E9	1.9362051625033354	1.0
+1000	-300042.8017138143	-83.33218600208147	-299959.4695278122	-83.33218600208147	14.922548822466386	0.8506370607188461	1.3264361616361229	1.4791970038396662	0.5689187712867837	1.0	0.25	0.25	0.25	0.25	-17.654168334555358	0.22164533675848877	0.4186650404274027	-299925.95366533415	14.922548822466386	0.1694425618261188
+2000	-10442.007572796532	-83.65589088218552	-10358.351681914346	-83.65589088218552	15.014376076470993	0.6618259215805458	1.2313667032643745	1.139019195734437	0.5689187712867837	1.0	0.25	0.25	0.25	0.25	-17.817658591197855	0.14154338037853187	0.33279650195207877	-10325.287333153849	15.014376076470993	0.1029812342118141
+3000	-10441.961878758577	-79.65115057499756	-10362.31072818358	-79.65115057499756	15.014376076470993	0.7475445175068203	0.9369098264258401	1.139019195734437	0.5689187712867837	1.0	0.25	0.25	0.25	0.25	-21.92678239847471	0.11991462719690496	0.14441116359330192	-10325.287333153849	15.014376076470993	0.026486534733281157
