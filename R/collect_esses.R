@@ -16,12 +16,13 @@ collect_esses <- function(
   x <- utils::read.delim(file.path(paths[1], y[1]))
   x <- data.frame(x)
 
+  testit::assert(parameters$pir_params$experiments[[1]]$inference_model$mcmc$store_every != -1) # nolint
   esses <- tracerer::calc_esses(
     traces = data.frame(tracerer::remove_burn_ins(
       traces = x,
       burn_in_fraction = 0.1
     )),
-    sample_interval = parameters$pir_params$experiments[[1]]$est_evidence_mcmc$store_every # nolint
+    sample_interval = parameters$pir_params$experiments[[1]]$inference_model$mcmc$store_every # nolint
   )
 
   pars <- parameters[!grepl("model", names(parameters))]
