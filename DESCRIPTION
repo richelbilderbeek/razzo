@@ -20,6 +20,7 @@ Imports:
   beautier,
   ggplot2,
   mbd,
+  nLTT,
   pirouette,
   testit
 Suggests:
@@ -29,6 +30,8 @@ Suggests:
   dplyr,
   knitr,
   lintr,
+  plyr,
+  rappdirs,
   rmarkdown,
   testthat,
   tidyverse,

@@ -11,85 +11,75 @@ collect_esses <- function(
 
   # retrieve information from files
   paths <- get_data_paths(project_folder_name) # nolint internal function
-  parameters <- open_parameters_file(file.path(paths[1], "parameters.RDa")) # nolint internal function
-  y <- list.files(paths[1], pattern = "*.log")
-  x <- utils::read.delim(file.path(paths[1], y[1]))
-  x <- data.frame(x)
-
-  testit::assert(parameters$pir_params$experiments[[1]]$inference_model$mcmc$store_every != -1) # nolint
-  esses <- tracerer::calc_esses(
-    traces = data.frame(tracerer::remove_burn_ins(
-      traces = x,
-      burn_in_fraction = 0.1
-    )),
-    sample_interval = parameters$pir_params$experiments[[1]]$inference_model$mcmc$store_every # nolint
-  )
-
-  pars <- parameters[!grepl("model", names(parameters))]
-  par_names <- names(parameters)
-  esses_names <- paste0("ess_", names(esses))
-  len_pars <- length(pars)
-  len_esses <- length(esses)
-  n_settings <- length(paths)
-
-  # initialize dataframe components
-  par_data <- data.frame(matrix(
-    NA,
-    ncol = len_pars,
-    nrow = 2 * n_settings
-  ))
-  colnames(par_data) <- par_names[!grepl("model", par_names)]
-  esses_data <- data.frame(matrix(
-    NA,
-    ncol = len_esses,
-    nrow = 2 * n_settings
-  ))
-  colnames(esses_data) <- esses_names
-  gen_model <- clock_model <- site_model <- rep("blank", 2 * n_settings)
-
-  # collect data
-  i <- 1
-  for (p in paths) {
-    parameters <- open_parameters_file(file.path(p, "parameters.csv")) # nolint internal function
-    par_num <- parameters[!grepl("model", names(parameters))]
-
-    # save bd results
-    par_data[i, ] <- data.frame(par_num)
-    site_model[i] <- levels(droplevels(parameters$site_model))
-    clock_model[i] <- levels(droplevels(parameters$clock_model))
-    gen_model[i] <- "bd"
-    bd_log <- utils::read.delim(file.path(p, "bd.log"))
-    esses_data[i, ] <- tracerer::calc_esses(
-      traces = tracerer::remove_burn_ins(
-        traces = bd_log,
-        burn_in_fraction = 0.1
-      ),
-      sample_interval = parameters$sample_interval
-    )
-    i <- i + 1
-
-    # save mbd results
-    par_data[i, ] <- data.frame(par_num)
-    site_model[i] <- levels(droplevels(parameters$site_model))
-    clock_model[i] <- levels(droplevels(parameters$clock_model))
-    gen_model[i] <- "mbd"
-    mbd_log <- utils::read.delim(file.path(p, "mbd.log"))
-    esses_data[i, ] <- tracerer::calc_esses(
-      traces = tracerer::remove_burn_ins(
-        traces = mbd_log,
-        burn_in_fraction = 0.1
-      ),
-      sample_interval = parameters$sample_interval
-    )
-    i <- i + 1
+  best_esses <- gen_esses <- data.frame()
+  for (p in seq_along(paths)) {
+    parameters <- open_parameters_file(file.path(paths[p], "parameters.RDa")) # nolint internal function
+    pars <- parameters$mbd_params
+    files_log <- list.files(paths[p], pattern = "*.log")
+    for (f in seq_along(files_log)) {
+      is_twin <- grepl(files_log[f], pattern = "twin")
+      is_best <- grepl(files_log[f], pattern = "best")
+      is_generative <- grepl(files_log[f], pattern = "gen")
+      x <- utils::read.table(
+        file.path(paths[p], files_log[f]),
+        row.names = NULL
+      )
+      x1 <- x[1, ]
+      x2 <- x[-1, ]
+      colnames(x2) <- levels(droplevels(
+        unlist(
+          x1,
+          use.names = FALSE
+        )
+      ))
+      esses <- data.frame(x2, row.names = NULL)
+      if (is_twin == TRUE) {
+        esses$gen_model <- "bd"
+      } else {
+        esses$gen_model <- "mbd"
+      }
+      if (is_best == TRUE) {
+        esses$site_model <-
+          get_best_model(paths[p])[[esses$gen_model[1]]]$site_model
+        esses$clock_model <-
+          get_best_model(paths[p])[[esses$gen_model[1]]]$clock_model
+        esses$tree_prior <-
+          get_best_model(paths[p])[[esses$gen_model[1]]]$tree_prior
+        esses <- as.data.frame(esses, row.names = NULL)
+        best_esses <- suppressWarnings(plyr::rbind.fill(
+          best_esses,
+          cbind(pars, esses)
+        ))
+        best_esses <- as.data.frame(best_esses, row.names = NULL)
+      }
+      if (is_generative == TRUE) {
+        esses$site_model <-
+          get_generative_model(paths[p])[[esses$gen_model[1]]]$site_model
+        esses$clock_model <-
+          get_generative_model(paths[p])[[esses$gen_model[1]]]$clock_model
+        esses$tree_prior <-
+          get_generative_model(paths[p])[[esses$gen_model[1]]]$tree_prior
+        esses <- as.data.frame(esses, row.names = NULL)
+        gen_esses <- suppressWarnings(plyr::rbind.fill(
+          gen_esses,
+          cbind(pars, esses)
+        ))
+        gen_esses <- as.data.frame(gen_esses, row.names = NULL)
+      }
+    }
   }
-
-  results <- cbind(
-    par_data,
-    gen_model,
-    site_model,
-    clock_model,
-    esses_data[, -ncol(esses_data)]
+  best_esses$best_or_gen <- "best"
+  gen_esses$best_or_gen <- "gen"
+  all_esses <- plyr::rbind.fill(
+    best_esses,
+    gen_esses
   )
-  results
+  all_esses$gen_model <- as.factor(all_esses$gen_model)
+  all_esses$site_model <- as.factor(all_esses$site_model)
+  all_esses$clock_model <- as.factor(all_esses$clock_model)
+  all_esses$tree_prior <- as.factor(all_esses$tree_prior)
+  colnames(all_esses)[which(colnames(all_esses) == "likelihood")] <-
+    "ess_likelihood"
+  all_esses <- as.data.frame(all_esses, row.names = NULL)
+  all_esses
 }

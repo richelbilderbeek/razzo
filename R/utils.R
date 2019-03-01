@@ -107,3 +107,63 @@ open_parameters_file <- function(
 get_gen_models <- function() {
   c("bd", "mbd")
 }
+
+#' Retrieve the best candidates from the data
+#' @return list of models
+#' @author Giovanni Laudanno
+#' @noRd
+get_best_model <- function(seed_folder) {
+  p <- seed_folder
+  data_filename <- "mbd_marg_lik.csv"
+  twin_data_filename <- pirouette::to_twin_filename(data_filename)
+  bd_data <- utils::read.csv(file.path(p, twin_data_filename))[-1]
+  mbd_data <- utils::read.csv(file.path(p, data_filename))[-1]
+  bd_site_model <- bd_data[bd_data$weight == max(bd_data$weight), "site_model_name"]
+  bd_clock_model <- bd_data[bd_data$weight == max(bd_data$weight), "clock_model_name"]
+  bd_tree_prior <- bd_data[bd_data$weight == max(bd_data$weight), "tree_prior_name"]
+  mbd_site_model <- mbd_data[mbd_data$weight == max(mbd_data$weight), "site_model_name"]
+  mbd_clock_model <- mbd_data[mbd_data$weight == max(mbd_data$weight), "clock_model_name"]
+  mbd_tree_prior <- mbd_data[mbd_data$weight == max(mbd_data$weight), "tree_prior_name"]
+  list(
+    bd = list(
+      site_model = levels(droplevels(bd_site_model)),
+      clock_model = levels(droplevels(bd_clock_model)),
+      tree_prior = levels(droplevels(bd_tree_prior))
+    ),
+    mbd = list(
+      site_model = levels(droplevels(mbd_site_model)),
+      clock_model = levels(droplevels(mbd_clock_model)),
+      tree_prior = levels(droplevels(mbd_tree_prior))
+    )
+  )
+}
+
+#' Retrieve the generative model from the data
+#' @return list of models
+#' @author Giovanni Laudanno
+#' @noRd
+get_generative_model <- function(seed_folder) {
+  p <- seed_folder
+  data_filename <- "mbd_marg_lik.csv"
+  twin_data_filename <- pirouette::to_twin_filename(data_filename)
+  bd_data <- utils::read.csv(file.path(p, twin_data_filename))[-1]
+  mbd_data <- utils::read.csv(file.path(p, data_filename))[-1]
+  bd_site_model <- bd_data[1, "site_model_name"]
+  bd_clock_model <- bd_data[1, "clock_model_name"]
+  bd_tree_prior <- bd_data[1, "tree_prior_name"]
+  mbd_site_model <- mbd_data[1, "site_model_name"]
+  mbd_clock_model <- mbd_data[1, "clock_model_name"]
+  mbd_tree_prior <- mbd_data[1, "tree_prior_name"]
+  list(
+    bd = list(
+      site_model = levels(droplevels(bd_site_model)),
+      clock_model = levels(droplevels(bd_clock_model)),
+      tree_prior = levels(droplevels(bd_tree_prior))
+    ),
+    mbd = list(
+      site_model = levels(droplevels(mbd_site_model)),
+      clock_model = levels(droplevels(mbd_clock_model)),
+      tree_prior = levels(droplevels(mbd_tree_prior))
+    )
+  )
+}

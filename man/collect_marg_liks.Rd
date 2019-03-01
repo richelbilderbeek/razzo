@@ -4,7 +4,7 @@
 \alias{collect_marg_liks}
 \title{Collect marginal loglikelihoods}
 \usage{
-collect_marg_liks(project_folder_name)
+collect_marg_liks(project_folder_name = get_path("razzo_project"))
 }
 \arguments{
 \item{project_folder_name}{project folder name,

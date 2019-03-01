@@ -5,7 +5,8 @@
 \title{Create the parameter files according to the specified arguments
   \code{project_folder_name/data/[settings]/seed/[models]}}
 \usage{
-create_full_parameters_files(project_folder_name = getwd(),
+
+  create_full_parameters_files(project_folder_name = get_path("razzo_project"),
   mbd_params_interval = create_mbd_params_interval(lambda = 0.2, mu =
   0.15, nu = c(1, 1.5, 2), q = c(0.1, 0.15, 0.2), seed = seq(from = 1, to =
   2, by = 1), crown_age = 15, cond = 1),

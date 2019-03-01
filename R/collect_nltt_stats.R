@@ -11,93 +11,100 @@ collect_nltt_stats <- function(
 
   # retrieve information from files
   paths <- get_data_paths(project_folder_name) # nolint internal function
+  n_files <- 0
+  max_len_nltts <- 0
+  for (p in seq_along(paths)) {
+    files_nltt <- list.files(paths[p], pattern = "nltt")
+    n_files <- n_files + length(files_nltt)
+    for (f in seq_along(files_nltt)) {
+      len_nltts <- length(utils::read.csv(
+        file.path(paths[p], files_nltt[f]),
+        row.names = NULL
+      )[, -1])
+      max_len_nltts <- max(max_len_nltts, len_nltts)
+    }
+  }
+
+  # define matrices to store data
   parameters <- open_parameters_file(file.path(paths[1], "parameters.RDa")) # nolint internal function
-  len_nltt <- 0
-  for (p in paths) {
-    tab <- utils::read.csv(file.path(p, "mbd_nltt.csv"))[1, -1]
-    errors <- subset(tab, select = grepl("error", names(tab)))
-    len_nltt <- pmax(len_nltt, ncol(errors))
-  }
   pars <- parameters$mbd_params
-  par_names <- names(parameters$mbd_params)
-  nltt_names <- paste0("nltt_", (1:len_nltt))
-  len_pars <- length(pars)
-  n_settings <- length(paths)
-
-  # initialize dataframe components
-  par_data <- data.frame(matrix(
+  matrix_pars <- data.frame(matrix(
     NA,
-    ncol = len_pars,
-    nrow = 2 * n_settings
+    ncol = length(pars),
+    nrow = n_files
   ))
-  colnames(par_data) <- par_names[!grepl("model", par_names)]
-  nltt_data <- data.frame(matrix(
+  colnames(matrix_pars) <- names(pars)
+  names_string <- c(
+    "site_model",
+    "clock_model",
+    "tree_prior",
+    "gen_model",
+    "best_or_gen"
+  )
+  matrix_string <- data.frame(matrix(
     NA,
-    ncol = len_nltt,
-    nrow = 2 * n_settings
+    ncol = length(names_string),
+    nrow = n_files
   ))
-  colnames(nltt_data) <- nltt_names
-  gen_model <- clock_model <- site_model <- rep("blank", 2 * n_settings)
-  inference_model <- inference_model_weight <- tree_prior <- gen_model
+  colnames(matrix_string) <- names_string
+  matrix_nltts <- data.frame(matrix(
+    NA,
+    ncol = max_len_nltts,
+    nrow = n_files
+  ))
+  colnames(matrix_nltts) <- paste0("nltt_", 1:max_len_nltts)
 
-  # collect data
+  # loop over all files
   i <- 1
-  for (p in paths) {
-    parameters <- open_parameters_file(file.path(p, "parameters.RDa")) # nolint internal function
-    nltt <- utils::read.csv(file.path(p, "mbd_nltt.csv"))[, -1]
-    bd_nltt <- nltt[nltt$tree == "twin",]
-    mbd_nltt <- nltt[nltt$tree == "true",]
-    bd_errors <- subset(bd_nltt, select = grepl("error", names(bd_nltt)))
-    mbd_errors <- subset(mbd_nltt, select = grepl("error", names(mbd_nltt)))
-
-    # save bd results
-    par_data[i, ] <- parameters$mbd_params
-    nltt_data[i, ] <- unlist(unname(data.frame(
-      bd_errors
-    )))
-    site_model[i] <- levels(droplevels(bd_nltt$site_model))
-    clock_model[i] <- levels(droplevels(bd_nltt$clock_model))
-    gen_model[i] <- "bd"
-    inference_model[i] <- levels(droplevels(bd_nltt$inference_model))
-    tree_prior[i] <- levels(droplevels(bd_nltt$tree_prior))
-    if (is.na(bd_nltt$inference_model_weight)) {
-      inference_model_weight[i] <- NA
-    } else {
-      inference_model_weight[i] <- levels(droplevels(
-        bd_nltt$inference_model_weight
-      ))
+  for (p in seq_along(paths)) {
+    parameters <- open_parameters_file(file.path(paths[p], "parameters.RDa")) # nolint internal function
+    pars <- parameters$mbd_params
+    files_nltt <- list.files(paths[p], pattern = "nltt")
+    for (f in seq_along(files_nltt)) {
+      is_twin <- grepl(files_nltt[f], pattern = "twin")
+      is_best <- grepl(files_nltt[f], pattern = "best")
+      is_generative <- grepl(files_nltt[f], pattern = "gen")
+      matrix_nltts[i, ] <- utils::read.csv(
+        file.path(paths[p], files_nltt[f]),
+        row.names = NULL
+      )[, -1]
+      if (is_twin == TRUE) {
+        matrix_string$gen_model[i] <- "bd"
+      } else {
+        matrix_string$gen_model[i] <- "mbd"
+      }
+      if (is_best == TRUE) {
+        matrix_string$site_model[i] <-
+          get_best_model(paths[p])[[matrix_string$gen_model[i]]]$site_model
+        matrix_string$clock_model[i] <-
+          get_best_model(paths[p])[[matrix_string$gen_model[i]]]$clock_model
+        matrix_string$tree_prior[i] <-
+          get_best_model(paths[p])[[matrix_string$gen_model[i]]]$tree_prior
+        matrix_string$best_or_gen[i] <- "best"
+      }
+      if (is_generative == TRUE) {
+        matrix_string$site_model[i] <-
+          get_generative_model(paths[p])[[matrix_string$gen_model[i]]]$site_model
+        matrix_string$clock_model[i] <-
+          get_generative_model(paths[p])[[matrix_string$gen_model[i]]]$clock_model
+        matrix_string$tree_prior[i] <-
+          get_generative_model(paths[p])[[matrix_string$gen_model[i]]]$tree_prior
+        matrix_string$best_or_gen[i] <- "gen"
+      }
+      matrix_pars[i, ] <- pars
+      i <- i + 1
     }
-    i <- i + 1
-
-    # # save mbd results
-    par_data[i, ] <- parameters$mbd_params
-    nltt_data[i, ] <- unlist(unname(data.frame(
-      mbd_errors
-    )))
-    site_model[i] <- levels(droplevels(mbd_nltt$site_model))
-    clock_model[i] <- levels(droplevels(mbd_nltt$clock_model))
-    gen_model[i] <- "mbd"
-    inference_model[i] <- levels(droplevels(mbd_nltt$inference_model))
-    tree_prior[i] <- levels(droplevels(mbd_nltt$tree_prior))
-    if (is.na(mbd_nltt$inference_model_weight)) {
-      inference_model_weight[i] <- NA
-    } else {
-      inference_model_weight[i] <- levels(droplevels(
-        mbd_nltt$inference_model_weight
-      ))
-    }
-    i <- i + 1
   }
 
+  # combine results
+  matrix_string$gen_model <- as.factor(matrix_string$gen_model)
+  matrix_string$site_model <- as.factor(matrix_string$site_model)
+  matrix_string$clock_model <- as.factor(matrix_string$clock_model)
+  matrix_string$tree_prior <- as.factor(matrix_string$tree_prior)
   results <- cbind(
-    par_data,
-    gen_model,
-    site_model,
-    clock_model,
-    inference_model,
-    inference_model_weight,
-    tree_prior,
-    nltt_data
+    matrix_pars,
+    matrix_string,
+    matrix_nltts
   )
   results
 }
