@@ -4,7 +4,7 @@ test_that("use", {
 
   x <- get_data_paths(project_folder_name = get_path("razzo_project/"))
   parameters <- open_parameters_file(
-    parameters_filename = file.path(x[[1]], "parameters.RDa")
+    parameters_filename = file_path(x[[1]], "parameters.RDa")
   )
   expect_true(
     all(c("mbd_params", "pir_params", "misc_params") %in% names(parameters))
