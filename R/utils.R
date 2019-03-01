@@ -167,3 +167,8 @@ get_generative_model <- function(seed_folder) {
     )
   )
 }
+
+#' @noRd
+file_path <- function(..., fsep = .Platform$file.sep){
+  gsub("//", "/", file.path(..., fsep = fsep))
+}

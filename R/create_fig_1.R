@@ -28,17 +28,23 @@ create_fig_1 <- function(
       df00,
       "i",
       "nltt",
-      (1:ncol(df0))[grepl("nltt", names(df0))]
+      (1:ncol(df00))[grepl("nltt", names(df00))]
     )
     if (1) {
       # need to call these variables to avoid notes in check
       df2 <- df
+      lambda <- df2$lambda <- df$lambda
+      mu <- df2$mu <- df$mu
+      nu <- df2$nu <- df$nu
+      q <- df2$q <- df$q
       df2$nltt <- df$nltt
       df2$par_setting <- df$par_setting
       df2$gen_model <- df$gen_model
       par_setting <- nltt <- gen_model <- 0
+
       lambda + mu + q + nu +
         length(df2$par_setting) + length(df2$nltt)  + length(df2$gen_model) > 0
+      rm(lambda, mu, nu, q)
     }
     xlabels <- unique(paste0(
       df0$lambda,

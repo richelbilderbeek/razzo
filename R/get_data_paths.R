@@ -10,15 +10,15 @@ get_data_paths <- function(
 
   check_project_folder_name(project_folder_name) # nolint
 
-  data_folder <- file.path(
+  data_folder <- file_path(
     project_folder_name,
     "data"
   )
 
   all_settings <- c()
-  par_settings_folders <- file.path(data_folder, list.files(data_folder))
+  par_settings_folders <- file_path(data_folder, list.files(data_folder))
   for (p in par_settings_folders) {
-    seed_folders <- file.path(p, list.files(p))
+    seed_folders <- file_path(p, list.files(p))
     all_settings <- c(all_settings, seed_folders)
   }
   all_settings
