@@ -8,13 +8,7 @@ create_fig_2 <- function(
 ) {
   check_project_folder_name(project_folder_name)
 
-  marg_liks_filename <- file.path(
-    project_folder_name, "results", "marg_liks.csv"
-  )
-  testit::assert(file.exists(marg_liks_filename))
-
-  df <- utils::read.csv(marg_liks_filename)[, -1]
-
+  df <- collect_marg_liks(project_folder_name)
 
   # Satisfy R CMD check
   marg_log_lik <- NULL; rm(marg_log_lik) # nolint, fixes warning: no visible binding for global variable
