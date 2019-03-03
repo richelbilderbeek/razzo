@@ -1,7 +1,6 @@
-#' @title Create nllt figure
-#' @description Create nllt figure
+#' Create figure 1
 #' @inheritParams default_params_doc
-#' @return the nltt plot
+#' @return Figure 1 as a ggplot2 plot
 #' @author Giovanni Laudanno
 #' @export
 create_fig_1 <- function(
@@ -10,82 +9,53 @@ create_fig_1 <- function(
   check_project_folder_name(project_folder_name)
 
   df0 <- collect_nltt_stats(project_folder_name)
-  df0$par_setting <- interaction(
-    df0$lambda,
-    df0$mu,
-    df0$nu,
-    df0$q,
-    df0$site_model,
-    df0$clock_model,
-    df0$tree_prior
+  df00 <- tidyr::gather(
+    df0,
+    "i",
+    "nltt",
+    (1:ncol(df0))[grepl("nltt", names(df0))]
   )
-  experiments <- c("gen", "best")
-  real_names <- c("generative", "best candidate")
-  pl <- vector("list", length(experiments))
-  for (i in seq_along(experiments)) {
-    df00 <- df0[df0$best_or_gen == experiments[i], ]
-    df <- tidyr::gather(
-      df00,
-      "i",
-      "nltt",
-      (1:ncol(df00))[grepl("nltt", names(df00))]
-    )
-    if (1) {
-      # need to call these variables to avoid notes in check
-      df2 <- df
-      lambda <- df2$lambda <- df$lambda
-      mu <- df2$mu <- df$mu
-      nu <- df2$nu <- df$nu
-      q <- df2$q <- df$q
-      df2$nltt <- df$nltt
-      df2$par_setting <- df$par_setting
-      df2$gen_model <- df$gen_model
-      par_setting <- nltt <- gen_model <- 0
+  df <- df00[df00$best_or_gen == "gen" & df00$gen_model == "mbd", ]
 
-      lambda + mu + q + nu +
-        length(df2$par_setting) + length(df2$nltt)  + length(df2$gen_model) > 0
-      rm(lambda, mu, nu, q)
+  if (1) {
+      # need to call these variables to avoid notes in check
+      lambda <- df$lambda
+      mu <- df$mu
+      nu <- df$nu
+      q <- df$q
+      nltt <- df$nltt
+
+      rm(lambda, mu, nu, q, nltt)
     }
-    xlabels <- unique(paste0(
-      df0$lambda,
-      "\n",
-      df$mu,
-      "\n",
-      df$nu,
-      "\n",
-      df$q,
-      "\n",
-      df$site_model,
-      "\n",
-      df$clock_model,
-      "\n",
-      df$tree_prior
-    ))
-    pl[[i]] <- ggplot2::ggplot(df) +
-      ggplot2::geom_boxplot(ggplot2::aes(
-        x = par_setting,
-        y = nltt,
-        color = gen_model
-      )) +
-      ggplot2::facet_grid(. ~ gen_model
-      ) +
-      ggplot2::xlab(bquote(
-        "Parameter setting" ~ "(" ~ lambda ~ "," ~ mu ~ ","
-        ~ nu ~ "," ~ q ~ "," ~ site ~ "," ~ clock ~ "," ~ prior ~ ")"
-      )) +
-      ggplot2::ylab(bquote(
-        nltt
-      )) +
-      ggplot2::theme(
-        axis.line = ggplot2::element_line(
-          colour = "darkblue",
-          size = 1,
-          linetype = "solid"
-        )) +
-      ggplot2::scale_x_discrete(
-        labels = xlabels
-        ) +
-      ggplot2::ggtitle(real_names[i])
-  }
-  gridExtra::grid.arrange(pl[[1]], pl[[2]], nrow = 1)
+
+  pl_1 <- ggplot2::ggplot(
+    df,
+    ggplot2::aes(x = nu, y = nltt)
+  ) +
+    ggplot2::geom_point() +
+    ggplot2::xlab(bquote( ~ nu ~ "")) +
+    ggplot2::ggtitle("Figure 1a")
+  pl_1
+
+  pl_2 <- ggplot2::ggplot(
+    df,
+    ggplot2::aes(x = q, y = nltt)
+  ) +
+    ggplot2::geom_point() +
+    ggplot2::xlab(bquote( ~ q ~ "")) +
+    ggplot2::ggtitle("Figure 1b")
+  pl_2
+
+  pl_3 <- ggplot2::ggplot(
+    df,
+    ggplot2::aes(x = nu, y = nltt, colour = q)
+  ) +
+    ggplot2::geom_point() +
+    ggplot2::scale_color_gradientn(colours = grDevices::rainbow(5)) +
+    ggplot2::ylab("nLTT") +
+    ggplot2::xlab(bquote( ~ nu ~ "")) +
+    ggplot2::ggtitle(bquote("nLTT error vs " ~ nu ~ ", for different values of q")) # nolint
+  pl_3
+
+  return(pl_3)
 }

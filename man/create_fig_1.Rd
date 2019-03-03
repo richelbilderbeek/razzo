@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_fig_1.R
 \name{create_fig_1}
 \alias{create_fig_1}
-\title{Create nllt figure}
+\title{Create figure 1}
 \usage{
 create_fig_1(project_folder_name)
 }
@@ -11,10 +11,10 @@ create_fig_1(project_folder_name)
 will be the full path to \code{razzo_project}}
 }
 \value{
-the nltt plot
+Figure 1 as a ggplot2 plot
 }
 \description{
-Create nllt figure
+Create figure 1
 }
 \author{
 Giovanni Laudanno

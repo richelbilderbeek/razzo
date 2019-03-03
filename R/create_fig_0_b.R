@@ -1,9 +1,9 @@
-#' Create figure 2
+#' Create old figure 1: the marginal logliks plot
 #' @inheritParams default_params_doc
-#' @return Figure 2 as a ggplot2 plot
-#' @author Richel J.C. Bilderbeek
+#' @return the marginal logliks plot
+#' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
-create_fig_2 <- function(
+create_fig_0_b <- function(
   project_folder_name
 ) {
   check_project_folder_name(project_folder_name)

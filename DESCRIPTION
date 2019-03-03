@@ -20,6 +20,7 @@ Imports:
   beautier,
   ggplot2,
   gridExtra,
+  grDevices,
   mbd,
   nLTT,
   pirouette,
