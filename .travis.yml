@@ -46,3 +46,6 @@ script:
 after_success:
   - Rscript -e 'covr::codecov()'
   - proselint *.md | egrep -v "typography\.symbols\.curly_quotes"
+
+after_fail:
+  - cat /home/travis/build/richelbilderbeek/razzo/razzo.Rcheck/00check.log
