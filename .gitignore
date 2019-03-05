@@ -50,7 +50,4 @@ vignettes/*.log
 vignettes/*.posterior.log
 vignettes/pirouette_*.*
 vignettes/razzo_pipeline_cache/
-/*.trees
-*.posterior.log
-*.log
 results/
