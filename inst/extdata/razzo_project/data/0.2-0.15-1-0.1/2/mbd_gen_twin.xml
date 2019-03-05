@@ -4,14 +4,14 @@
     <data
 id="mbd_twin"
 name="alignment">
-                    <sequence id="seq_t10" taxon="t10" totalcount="4" value="agaactcttggttta"/>
-                    <sequence id="seq_t14" taxon="t14" totalcount="4" value="aaactcagtgggtgt"/>
-                    <sequence id="seq_t15" taxon="t15" totalcount="4" value="aaaagggcgggggtt"/>
-                    <sequence id="seq_t16" taxon="t16" totalcount="4" value="aaaagggcggggttt"/>
-                    <sequence id="seq_t17" taxon="t17" totalcount="4" value="aaaagggcggggttt"/>
-                    <sequence id="seq_t18" taxon="t18" totalcount="4" value="agacccatagggttt"/>
-                    <sequence id="seq_t2" taxon="t2" totalcount="4" value="acaagcgcggggttt"/>
-                    <sequence id="seq_t7" taxon="t7" totalcount="4" value="atttccgtgggtttt"/>
+                    <sequence id="seq_t10" taxon="t10" totalcount="4" value="tatagctggggggtc"/>
+                    <sequence id="seq_t14" taxon="t14" totalcount="4" value="taaattgggtgtttt"/>
+                    <sequence id="seq_t15" taxon="t15" totalcount="4" value="aaaagcgaggggatt"/>
+                    <sequence id="seq_t16" taxon="t16" totalcount="4" value="aaaagcgaggggatt"/>
+                    <sequence id="seq_t17" taxon="t17" totalcount="4" value="aaaagcgaggggatt"/>
+                    <sequence id="seq_t18" taxon="t18" totalcount="4" value="taaatttggggattt"/>
+                    <sequence id="seq_t2" taxon="t2" totalcount="4" value="acaagcgaggggatt"/>
+                    <sequence id="seq_t7" taxon="t7" totalcount="4" value="tatagctgaggggtt"/>
                 </data>
 
 
