@@ -228,7 +228,8 @@ create_full_parameters_files <- function(
         ),
         est_evidence_mcmc = beautier::create_nested_sampling_mcmc(
           epsilon = 100.0
-        )
+        ),
+        errors_filename = file.path(seed_folder, "mbd_nltt.csv")
       )
       experiments <- list(
         experiment_jc69_bd, # generative
@@ -238,11 +239,6 @@ create_full_parameters_files <- function(
     } else {
       experiments <- list(experiment_jc69_bd)
     }
-
-    # Stub
-    error_measure_params$errors_filename <- file.path(
-      seed_folder, "mbd_nltt.csv"
-    )
 
     pir_params <- pirouette::create_pir_params(
       alignment_params = alignment_params,
