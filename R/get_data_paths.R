@@ -2,6 +2,13 @@
 #' @description Get paths for all the settings
 #' @inheritParams default_params_doc
 #' @return the paths of all the parameter settings
+#' @examples
+#'   # Obtain the paths of all razzo testing folders
+#'   all_paths <- get_data_paths(get_path("razzo_project"))
+#'
+#'   # In each of these, there is a 'parameters.RDa' file
+#'   parameter_files <- file.path(all_paths, "parameters.RDa")
+#'   testthat::expect_true(all(file.exists(parameter_files)))
 #' @author Giovanni Laudanno
 #' @export
 get_data_paths <- function(
