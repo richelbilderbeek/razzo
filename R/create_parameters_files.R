@@ -6,7 +6,7 @@
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
 create_parameters_files <- function(
-  project_folder_name = get_path("razzo_project"),
+  project_folder_name = getwd(),
   experiment_type = "test"
 ) {
   testit::assert(experiment_type == "test" || experiment_type == "full")

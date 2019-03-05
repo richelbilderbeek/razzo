@@ -5,7 +5,7 @@
 \title{Create all parameter files  in
   \code{project_folder_name/data/[settings]/seed/[models]}}
 \usage{
-create_parameters_files(project_folder_name = get_path("razzo_project"),
+create_parameters_files(project_folder_name = getwd(),
   experiment_type = "test")
 }
 \arguments{
