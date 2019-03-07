@@ -3,21 +3,25 @@
 #
 #<?xml version="1.0" encoding="UTF-8" standalone="no"?><input id="posterior" spec="beast.core.util.CompoundDistribution">
 #    <distribution id="prior" spec="beast.core.util.CompoundDistribution">
-#        <distribution id="YuleModel.t:mbd_twin" spec="beast.evolution.speciation.YuleModel">
-#            <parameter id="birthRate.t:mbd_twin" name="birthDiffRate">1.0</parameter>
-#            <tree id="Tree.t:mbd_twin">
-#                <taxonset id="TaxonSet.mbd_twin" spec="beast.evolution.alignment.TaxonSet">
+#        <distribution id="BirthDeath.t:mbd" spec="beast.evolution.speciation.BirthDeathGernhard08Model">
+#            <parameter id="BDDeathRate.t:mbd" lower="0.0" name="relativeDeathRate" upper="1.0">0.5</parameter>
+#            <parameter id="BDBirthRate.t:mbd" lower="0.0" name="birthDiffRate" upper="10000.0">1.0</parameter>
+#            <tree id="Tree.t:mbd">
+#                <taxonset id="TaxonSet.mbd" spec="beast.evolution.alignment.TaxonSet">
 #                </taxonset>
 #            </tree>
 #        </distribution>
-#        <prior id="YuleBirthRatePrior.t:mbd_twin" name="distribution" x="@birthRate.t:mbd_twin">
+#        <prior id="BirthRatePrior.t:mbd" name="distribution" x="@BDBirthRate.t:mbd">
 #            <Uniform id="Uniform.100" name="distr" upper="Infinity"/>
 #        </prior>
-#        <prior id="ClockPrior.c:mbd_twin" name="distribution">
-#            <parameter id="clockRate.c:mbd_twin" name="x">1.0</parameter>
+#        <prior id="DeathRatePrior.t:mbd" name="distribution" x="@BDDeathRate.t:mbd">
+#            <Uniform id="Uniform.101" name="distr" upper="Infinity"/>
+#        </prior>
+#        <prior id="ClockPrior.c:mbd" name="distribution">
+#            <parameter id="clockRate.c:mbd" name="x">1.0</parameter>
 #            <Uniform id="Uniform.150" name="distr" upper="Infinity"/>
 #        </prior>
-#        <distribution id="auto_name_1.prior" monophyletic="true" spec="beast.math.distributions.MRCAPrior" tree="@Tree.t:mbd_twin">
+#        <distribution id="auto_name_1.prior" monophyletic="true" spec="beast.math.distributions.MRCAPrior" tree="@Tree.t:mbd">
 #            <taxonset id="auto_name_1" spec="beast.evolution.alignment.TaxonSet">
 #                <taxon id="t1" spec="beast.evolution.alignment.Taxon"/>
 #                <taxon id="t70" spec="beast.evolution.alignment.Taxon"/>
@@ -72,20 +76,20 @@
 #        </distribution>
 #    </distribution>
 #    <distribution id="likelihood" spec="beast.core.util.CompoundDistribution" useThreads="true">
-#        <distribution data="@mbd_twin" id="treeLikelihood.mbd_twin" spec="beast.evolution.likelihood.ThreadedTreeLikelihood" tree="@Tree.t:mbd_twin">
-#            <siteModel id="SiteModel.s:mbd_twin" spec="beast.evolution.sitemodel.SiteModel">
-#                <parameter estimate="false" id="mutationRate.s:mbd_twin" name="mutationRate">1.0</parameter>
-#                <parameter estimate="false" id="gammaShape.s:mbd_twin" name="shape">1.0</parameter>
-#                <parameter estimate="false" id="proportionInvariant.s:mbd_twin" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
-#                <substModel id="JC69.s:mbd_twin" spec="beast.evolution.substitutionmodel.JukesCantor"/>
+#        <distribution data="@mbd" id="treeLikelihood.mbd" spec="beast.evolution.likelihood.ThreadedTreeLikelihood" tree="@Tree.t:mbd">
+#            <siteModel id="SiteModel.s:mbd" spec="beast.evolution.sitemodel.SiteModel">
+#                <parameter estimate="false" id="mutationRate.s:mbd" name="mutationRate">1.0</parameter>
+#                <parameter estimate="false" id="gammaShape.s:mbd" name="shape">1.0</parameter>
+#                <parameter estimate="false" id="proportionInvariant.s:mbd" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
+#                <substModel id="JC69.s:mbd" spec="beast.evolution.substitutionmodel.JukesCantor"/>
 #            </siteModel>
-#            <branchRateModel clock.rate="@clockRate.c:mbd_twin" id="StrictClock.c:mbd_twin" spec="beast.evolution.branchratemodel.StrictClockModel"/>
+#            <branchRateModel clock.rate="@clockRate.c:mbd" id="StrictClock.c:mbd" spec="beast.evolution.branchratemodel.StrictClockModel"/>
 #        </distribution>
 #    </distribution>
 #</input>
 #
-Sample	posterior	likelihood	prior	treeLikelihood	TreeHeight	YuleModel	birthRate	logP(mrca(auto_name_1))	mrcatime(auto_name_1)	clockRate
-0	-9.916771708157608E9	-753.7081373569425	-9.91677095444947E9	-753.7081373569425	0.9168391623645132	-3.8053785523881403	1.07715865412399	-9.916770950644093E9	0.9168391623645132	1.0
-1000	-13962.291888969243	-525.6283171903553	-13436.663571778887	-525.6283171903553	15.016366310816018	-52.14848729240766	1.1791586464804478	-13384.515084486478	15.016366310816018	0.47775966215795584
-2000	-631.5474638926194	-490.28457947160274	-141.26288442101662	-490.28457947160274	15.001384472489631	-53.71608253250058	0.8515865197364151	-87.54680188851606	15.001384472489631	0.4111311274733128
-3000	-587.6815647385149	-445.71914630434355	-141.96241843417133	-445.71914630434355	15.001384472489631	-54.41561654565527	0.8016273485148006	-87.54680188851606	15.001384472489631	0.3265585368908097
+Sample	posterior	likelihood	prior	treeLikelihood	TreeHeight	BirthDeath	BDBirthRate	BDDeathRate	logP(mrca(auto_name_1))	mrcatime(auto_name_1)	clockRate
+0	-9.916772060817139E9	-1128.0869127990975	-9.916770932730227E9	-1128.0869127990975	0.9168391623645132	17.913865225606976	1.07715865412399	0.5	-9.916770950644093E9	0.9168391623645132	1.0
+1000	-1485963.3865274005	-678.3551725279634	-1485285.0313548725	-678.3551725279634	15.172350533563234	-58.001780134329906	0.5876333405984093	0.2364671802287037	-1485227.0295747381	15.172350533563234	0.4305363695641773
+2000	-55487.204212497476	-551.6765126045213	-54935.527699892955	-551.6765126045213	15.033130590875984	-62.01651213847428	0.6761812793776668	0.21800439264923974	-54873.511187754484	15.033130590875984	0.2808409833472488
+3000	-55429.89708611006	-497.9069352051667	-54931.990150904894	-497.9069352051667	15.033130590875984	-58.47896315041261	0.4146327022754043	0.5056107400012408	-54873.511187754484	15.033130590875984	0.21803294158353617

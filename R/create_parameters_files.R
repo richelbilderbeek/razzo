@@ -6,7 +6,7 @@
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
 create_parameters_files <- function(
-  project_folder_name = get_path("razzo_project"),
+  project_folder_name = getwd(),
   experiment_type = "test"
 ) {
   testit::assert(experiment_type == "test" || experiment_type == "full")
@@ -183,7 +183,8 @@ create_full_parameters_files <- function(
       ),
       est_evidence_mcmc = beautier::create_nested_sampling_mcmc(
         epsilon = 100.0
-      )
+      ),
+      errors_filename = file.path(seed_folder, "mbd_nltts_gen.csv")
     )
     if (rappdirs::app_dir()$os != "win") {
       experiment_jc69_yule <- pirouette::create_experiment(
@@ -206,7 +207,8 @@ create_full_parameters_files <- function(
         ),
         est_evidence_mcmc = beautier::create_nested_sampling_mcmc(
           epsilon = 100.0
-        )
+        ),
+        errors_filename = file.path(seed_folder, "mbd_nltts_best.csv")
       )
       experiment_gtr_bd <- pirouette::create_experiment(
         model_type = "candidate",
@@ -228,7 +230,8 @@ create_full_parameters_files <- function(
         ),
         est_evidence_mcmc = beautier::create_nested_sampling_mcmc(
           epsilon = 100.0
-        )
+        ),
+        errors_filename = file.path(seed_folder, "mbd_nltts_best.csv")
       )
       experiments <- list(
         experiment_jc69_bd, # generative
@@ -238,11 +241,6 @@ create_full_parameters_files <- function(
     } else {
       experiments <- list(experiment_jc69_bd)
     }
-
-    # Stub
-    error_measure_params$errors_filename <- file.path(
-      seed_folder, "mbd_nltt.csv"
-    )
 
     pir_params <- pirouette::create_pir_params(
       alignment_params = alignment_params,

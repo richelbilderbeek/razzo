@@ -1,5 +1,17 @@
 context("test-create_parameters_files")
 
+test_that("must be in working directory by default", {
+  # Reasons are among others
+  # * The scripts in razzo_project expects this
+  # * Writing to inst/extdata is a bad idea
+  #
+  filenames <- create_parameters_files()
+  expected_pattern <- paste0(getwd(), "/data/.*parameters\\.RDa")
+  expect_true(
+    all(length(grep(x = filenames, pattern = expected_pattern)) >= 1)
+  )
+})
+
 test_that("use", {
 
   # Put files in temporary folder
@@ -100,3 +112,4 @@ test_that("can read", {
     open_parameters_file(parameters_filename = filenames[1])
   )
 })
+

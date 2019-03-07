@@ -1,7 +1,6 @@
 # History files
 .Rhistory
 .Rapp.history
-
 # Session Data files
 .RData
 # Example code in package build process
@@ -12,9 +11,6 @@
 /*.Rcheck/
 # RStudio files
 .Rproj.user/
-# produced vignettes
-vignettes/*.html
-vignettes/*.pdf
 # OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
 .httr-oauth
 # knitr and R markdown default cache directories
@@ -23,25 +19,35 @@ vignettes/*.pdf
 # Temporary files created by R markdown
 *.utf8.md
 *.knit.md
+.Rproj.user
 # Shiny token, see https://shiny.rstudio.com/articles/shinyapps.html
 rsconnect/
-.Rproj.user
 inst/doc
-vignettes/pirouette_*.*
-vignettes/razzo_pipeline_files/
-tests/testthat/*.log
+/*.fasta
+/*.nex
+/*.xml
+/*.xml.state
+/*.trees
+/*.log
+/*.posterior.log
+data/
+tests/testthat/*.fasta
+tests/testthat/*.nex
+tests/testthat/*.xml
+tests/testthat/*.xml.state
 tests/testthat/*.trees
-*.posterior.log
-*.posterior.trees
-vignettes/*.log
-vignettes/*.trees
-example.nex
-vignettes/razzo_pipeline_cache/
-inst/extdata/razzo_project/results/
-vignettes/*.R
+tests/testthat/*.log
+tests/testthat/*.posterior.log
 vignettes/*.html
 vignettes/*.pdf
-doc/.~lock.choices.odp#
-data/
-*.log
-*.trees
+vignettes/*.R
+vignettes/*.fasta
+vignettes/*.nex
+vignettes/*.xml
+vignettes/*.xml.state
+vignettes/*.trees
+vignettes/*.log
+vignettes/*.posterior.log
+vignettes/pirouette_*.*
+vignettes/razzo_pipeline_cache/
+results/
