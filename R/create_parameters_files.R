@@ -164,9 +164,11 @@ create_full_parameters_files <- function(
     }
 
     experiment_jc69_bd <- pirouette::create_experiment(
-      model_type = "generative",
-      run_if = "always",
-      do_measure_evidence = do_measure_evidence,
+      inference_conditions = create_inference_conditions(
+        model_type = "generative",
+        run_if = "always",
+        do_measure_evidence = do_measure_evidence
+      ),
       inference_model = beautier::create_inference_model(
         site_model = beautier::create_jc69_site_model(),
         tree_prior = beautier::create_bd_tree_prior(),
@@ -183,13 +185,16 @@ create_full_parameters_files <- function(
       ),
       est_evidence_mcmc = beautier::create_nested_sampling_mcmc(
         epsilon = 100.0
-      )
+      ),
+      errors_filename = file.path(seed_folder, "mbd_nltts_gen.csv")
     )
     if (rappdirs::app_dir()$os != "win") {
       experiment_jc69_yule <- pirouette::create_experiment(
-        model_type = "candidate",
-        run_if = "best_candidate",
-        do_measure_evidence = do_measure_evidence,
+        inference_conditions = create_inference_conditions(
+          model_type = "candidate",
+          run_if = "best_candidate",
+          do_measure_evidence = do_measure_evidence
+        ),
         inference_model = beautier::create_inference_model(
           site_model = beautier::create_jc69_site_model(),
           tree_prior = beautier::create_yule_tree_prior(),
@@ -206,12 +211,15 @@ create_full_parameters_files <- function(
         ),
         est_evidence_mcmc = beautier::create_nested_sampling_mcmc(
           epsilon = 100.0
-        )
+        ),
+        errors_filename = file.path(seed_folder, "mbd_nltts_best.csv")
       )
       experiment_gtr_bd <- pirouette::create_experiment(
-        model_type = "candidate",
-        run_if = "best_candidate",
-        do_measure_evidence = do_measure_evidence,
+        inference_conditions = create_inference_conditions(
+          model_type = "candidate",
+          run_if = "best_candidate",
+          do_measure_evidence = do_measure_evidence
+        ),
         inference_model = beautier::create_inference_model(
           site_model = beautier::create_gtr_site_model(),
           tree_prior = beautier::create_bd_tree_prior(),
@@ -228,7 +236,8 @@ create_full_parameters_files <- function(
         ),
         est_evidence_mcmc = beautier::create_nested_sampling_mcmc(
           epsilon = 100.0
-        )
+        ),
+        errors_filename = file.path(seed_folder, "mbd_nltts_best.csv")
       )
       experiments <- list(
         experiment_jc69_bd, # generative
@@ -238,11 +247,6 @@ create_full_parameters_files <- function(
     } else {
       experiments <- list(experiment_jc69_bd)
     }
-
-    # Stub
-    error_measure_params$errors_filename <- file.path(
-      seed_folder, "mbd_nltt.csv"
-    )
 
     pir_params <- pirouette::create_pir_params(
       alignment_params = alignment_params,
