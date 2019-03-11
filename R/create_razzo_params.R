@@ -31,9 +31,11 @@ create_test_razzo_params <- function(
       alignment_params = pirouette::create_test_alignment_params(),
       experiments = list(
         pirouette::create_experiment(
-          model_type = "generative",
-          run_if = "always",
-          do_measure_evidence = FALSE,
+          inference_conditions = create_inference_conditions(
+            model_type = "generative",
+            run_if = "always",
+            do_measure_evidence = FALSE
+          ),
           inference_model = beautier::create_inference_model(
             mrca_prior = beautier::create_mrca_prior(
               mrca_distr = beautier::create_normal_distr(
