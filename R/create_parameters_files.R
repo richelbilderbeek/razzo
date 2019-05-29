@@ -164,9 +164,11 @@ create_full_parameters_files <- function(
     }
 
     experiment_jc69_bd <- pirouette::create_experiment(
-      model_type = "generative",
-      run_if = "always",
-      do_measure_evidence = do_measure_evidence,
+      inference_conditions = pirouette::create_inference_conditions(
+        model_type = "generative",
+        run_if = "always",
+        do_measure_evidence = do_measure_evidence
+      ),
       inference_model = beautier::create_inference_model(
         site_model = beautier::create_jc69_site_model(),
         tree_prior = beautier::create_bd_tree_prior(),
@@ -188,9 +190,11 @@ create_full_parameters_files <- function(
     )
     if (rappdirs::app_dir()$os != "win") {
       experiment_jc69_yule <- pirouette::create_experiment(
-        model_type = "candidate",
-        run_if = "best_candidate",
-        do_measure_evidence = do_measure_evidence,
+        inference_conditions = pirouette::create_inference_conditions(
+          model_type = "candidate",
+          run_if = "best_candidate",
+          do_measure_evidence = do_measure_evidence
+        ),
         inference_model = beautier::create_inference_model(
           site_model = beautier::create_jc69_site_model(),
           tree_prior = beautier::create_yule_tree_prior(),
@@ -211,9 +215,11 @@ create_full_parameters_files <- function(
         errors_filename = file.path(seed_folder, "mbd_nltts_best.csv")
       )
       experiment_gtr_bd <- pirouette::create_experiment(
-        model_type = "candidate",
-        run_if = "best_candidate",
-        do_measure_evidence = do_measure_evidence,
+        inference_conditions = pirouette::create_inference_conditions(
+          model_type = "candidate",
+          run_if = "best_candidate",
+          do_measure_evidence = do_measure_evidence
+        ),
         inference_model = beautier::create_inference_model(
           site_model = beautier::create_gtr_site_model(),
           tree_prior = beautier::create_bd_tree_prior(),
