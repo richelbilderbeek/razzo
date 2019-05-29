@@ -13,9 +13,11 @@ test_that("use", {
     cond = 1
   )
   experiment <- pirouette::create_experiment(
-    model_type = "generative",
-    run_if = "always",
-    do_measure_evidence = FALSE,
+    pirouette::create_inference_conditions(
+      model_type = "generative",
+      run_if = "always",
+      do_measure_evidence = FALSE
+    ),
     inference_model = beautier::create_inference_model(
       mrca_prior = beautier::create_mrca_prior(
         mrca_distr = beautier::create_normal_distr(

@@ -285,7 +285,7 @@ create_test_parameters_files <- function(
   project_folder_name = getwd()
 ) {
   create_parameters_files(
-    project_folder_name,
+    project_folder_name = project_folder_name,
     experiment_type = "test"
   )
 }
