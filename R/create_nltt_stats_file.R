@@ -5,20 +5,18 @@
 #' @author Giovanni Laudanno
 #' @export
 create_nltt_stats_file <- function(
-  project_folder_name
+  project_folder_name = getwd()
 ) {
 
   # create the dataframe
   nltt_stats <- collect_nltt_stats(project_folder_name) # nolint internal function
 
   # save output
-  results_folder <- file.path(
-    project_folder_name,
-    "results_folder"
-  )
-  if (!dir.exists(results_folder)) {
-    dir.create(results_folder)
-  }
+  results_folder <- get_results_path(project_folder_name) # nolint
+
+  # No warning if folder already exists
+  dir.create(results_folder, showWarnings = FALSE)
+
   nltt_stats_filename <- file.path(
     results_folder,
     "nltt_stats.csv"
