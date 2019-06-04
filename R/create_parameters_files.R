@@ -26,9 +26,11 @@ create_parameters_files <- function(
       nrow(unique(mbd_params_interval))
       == nrow(mbd_params_interval)
     )
+
     parameters_filenames <- create_full_parameters_files(
       project_folder_name = project_folder_name,
-      mbd_params_interval = mbd_params_interval
+      mbd_params_interval = mbd_params_interval,
+      mcmc_chain_length = 3000
     )
     testit::assert(nrow(mbd_params_interval) == length(parameters_filenames))
   } else {
@@ -77,7 +79,8 @@ create_full_parameters_files <- function(
     root_sequence = "aaaaccccggggttt",
     mutation_rate = 0.5 / unique(mbd_params_interval$crown_age)
   ),
-  error_measure_params = pirouette::create_error_measure_params()
+  error_measure_params = pirouette::create_error_measure_params(),
+  mcmc_chain_length = beautier::create_mcmc()$chain_length
 ) {
   # Must start at one, as the BEAST2 RNG seed must be at least one.
   index <- 1
@@ -142,7 +145,7 @@ create_full_parameters_files <- function(
       mrca_distr = beautier::create_normal_distr(mean = 15.0, sigma = 0.0001)
     )
 
-    mcmc <- beautier::create_mcmc(chain_length = 3000, store_every = 1000)
+    mcmc <- beautier::create_mcmc(chain_length = mcmc_chain_length, store_every = 1000)
     mrca_prior <- beautier::create_mrca_prior(
       is_monophyletic = TRUE,
       mrca_distr = beautier::create_normal_distr(mean = 15.0, sigma = 0.0001)
