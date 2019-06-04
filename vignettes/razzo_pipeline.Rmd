@@ -67,7 +67,7 @@ parameters_filenames <- create_test_parameters_files(project_folder_name)
 
 Then we run razzo for each parameter setting
 
-```{r}
+```{r run_files}
 for (parameters_filename in parameters_filenames) {
   razzo::run_razzo_from_file(parameters_filename)
 }
