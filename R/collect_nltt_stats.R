@@ -2,7 +2,7 @@
 #' @description Collect nltt statistics
 #' @inheritParams default_params_doc
 #' @return a dataframe with parameters and nltt statistics
-#' @author Giovanni Laudanno
+#' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
 collect_nltt_stats <- function(
   project_folder_name = get_path("razzo_project")
@@ -26,7 +26,10 @@ collect_nltt_stats <- function(
   }
 
   # define matrices to store data
-  parameters <- open_parameters_file(file.path(paths[1], "parameters.RDa")) # nolint internal function
+  first_filename <- file.path(paths[1], "parameters.RDa")
+  # Fails on '/tmp/RtmpitOdlW/razzo_project/data/0_twin.2-0.15-1-0.1/1/parameters.RDa' # nolint indeed a long path
+  testit::assert(file.exists(first_filename))
+  parameters <- open_parameters_file(first_filename) # nolint internal function
   pars <- parameters$mbd_params
   matrix_pars <- data.frame(matrix(
     NA,
