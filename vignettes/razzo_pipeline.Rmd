@@ -76,7 +76,7 @@ for (parameters_filename in parameters_filenames) {
 ## Step 3: figure 1
 
 ```{r}
-# create_fig_1(project_folder_name)
+create_fig_1(project_folder_name)
 ```
 
 ## Step 4: what is the effect of MBD on the error?

@@ -8,9 +8,10 @@ Run one point of the experiment}
 create_test_razzo_params(mbd_params = create_test_mbd_params(),
   pir_params = pirouette::create_test_pir_params(experiments =
   list(pirouette::create_test_gen_experiment(inference_model =
-  create_inference_model(mrca_prior = create_mrca_prior(mrca_distr =
-  create_normal_distr(mean = 15, sigma = 0.001), is_monophyletic =
-  TRUE)))), twinning_params = pirouette::create_twinning_params()),
+  beastier::create_inference_model(mrca_prior =
+  beastier::create_mrca_prior(mrca_distr =
+  beastier::create_normal_distr(mean = 15, sigma = 0.001), is_monophyletic
+  = TRUE)))), twinning_params = pirouette::create_twinning_params()),
   misc_params = create_misc_params())
 }
 \arguments{
