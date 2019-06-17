@@ -6,6 +6,9 @@
 \usage{
 is_pff(filename)
 }
+\arguments{
+\item{filename}{name of the file}
+}
 \description{
 Is the filename a Peregrine-friendly filename?
 }
