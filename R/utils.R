@@ -99,11 +99,17 @@ open_parameters_file <- function(
   parameters
 }
 
-#' @title Generative models
-#' @description Generative models
+#' Get the names of the supported generative models
 #' @inheritParams default_params_doc
 #' @return the generative models
-#' @author Giovanni Laudanno
+#' @author Giovanni Laudanno, Richel J.C. Bilderbeek
+#' @examples
+#' library(testthat)
+#'
+#' expect_true("bd" %in% get_gen_models())
+#' expect_true("mbd" %in% get_gen_models())
+#' expect_false("Jensen Ackles" %in% get_gen_models())
+#' @export
 get_gen_models <- function() {
   c("bd", "mbd")
 }

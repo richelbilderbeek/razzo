@@ -38,9 +38,9 @@ test_that("use", {
   expect_true(all(df$sample_interval >= 0))
   expect_true(all(df$chain_length >= 0))
   expect_true(all(df$sub_chain_length >= 0))
-  expect_true(all(df$gen_model %in% get_gen_models())) # nolint internal function
-  expect_true(all(df$site_model %in% pirouette:::get_site_models())) # nolint internal function
-  expect_true(all(df$close_model %in% pirouette:::get_clock_models())) # nolint internal function
+  expect_true(all(df$gen_model %in% razzo::get_gen_models()))
+  expect_true(all(df$site_model %in% beautier::get_site_model_names()))
+  expect_true(all(df$close_model %in% beautier::get_clock_model_names()))
   expect_true(all(df$marg_log_lik <= 0))
   expect_true(all(df$marg_log_lik_sd >= 0))
 })

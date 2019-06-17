@@ -11,7 +11,7 @@ test_that("use", {
   expect_true(file.exists(filename))
 
   # OK: filename must end with 'marg_liks.csv'
-  testthat::expect_true(
+  expect_true(
     length(
       grep(
         pattern = "marg_liks\\.csv$", filename, perl = TRUE, value = TRUE
@@ -20,7 +20,7 @@ test_that("use", {
   )
   # OK: should be in razzo_project/results folder
   # Use ..? to indicate one or two back- or normal slashes
-  testthat::expect_true(
+  expect_true(
     length(
       grep(
         pattern = "razzo_project..?results..?",
@@ -42,7 +42,7 @@ test_that("marginal likelihood estimates must differ", {
 
   first_params_file_path <- list.files(
     path = get_path("razzo_project"),
-    pattern = "parameters.csv",
+    pattern = "parameters.RDa",
     recursive = TRUE,
     full.names = TRUE
   )[1]
@@ -53,11 +53,11 @@ test_that("marginal likelihood estimates must differ", {
   )
   bd_marg_lik_file <- file.path(
     dirname(first_params_file_path),
-    "bd_marg_lik.csv"
+    "mbd_marg_lik_twin.csv"
   )
   testit::assert(file.exists(mbd_marg_lik_file))
   testit::assert(file.exists(bd_marg_lik_file))
   mbd_marg_lik <- utils::read.csv(mbd_marg_lik_file)$marg_log_lik
   bd_marg_lik <- utils::read.csv(bd_marg_lik_file)$marg_log_lik
-  expect_true(mbd_marg_lik != bd_marg_lik)
+  expect_true(!all(mbd_marg_lik == bd_marg_lik))
 })
