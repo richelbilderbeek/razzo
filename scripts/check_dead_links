@@ -4,7 +4,7 @@
 find . -name \*.md -exec markdown-link-check {} \; 2>/dev/null | egrep "[✖]" > broken.txt
 
 # Count the number of lines, extract only that number 
-n_broken=$(wc broken.txt --lines | cut -f 1 -d " ")
+n_broken=`wc broken.txt --lines | cut -f 1 -d " "`
 
 if [[ $n_broken > 0 ]] 
 then
