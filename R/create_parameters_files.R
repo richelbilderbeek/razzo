@@ -136,10 +136,11 @@ create_full_parameters_files <- function(
     twinning_params$twin_evidence_filename <- file.path(
       seed_folder, "mbd_marg_lik_twin.csv"
     )
-    misc_params <- list()
+    misc_params <- create_misc_params()
     misc_params$tree_filename <- file.path(
       seed_folder, "mbd.tree"
     )
+    check_misc_params(misc_params)
     mrca_prior <- beautier::create_mrca_prior(
       is_monophyletic = TRUE,
       mrca_distr = beautier::create_normal_distr(mean = 15.0, sigma = 0.0001)
