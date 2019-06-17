@@ -5,7 +5,7 @@
 \title{Create the parameters for one experiment.
 Run one point of the experiment}
 \usage{
-create_misc_params(tree_filename = tempfile(fileext = ".tree"))
+create_misc_params(tree_filename = get_pff_tempfile(fileext = ".tree"))
 }
 \arguments{
 \item{tree_filename}{name of the phylogeny file}

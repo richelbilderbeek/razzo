@@ -2,7 +2,9 @@ context("test-check_misc_params")
 
 test_that("use", {
   expect_silent(
-    check_misc_params(create_misc_params())
+    check_misc_params(
+      create_misc_params()
+    )
   )
 })
 
