@@ -16,4 +16,5 @@ check_misc_params <- function(
     }
   }
   testit::assert(is.character(misc_params$tree_filename))
+  testit::assert(is_pff(misc_params$tree_filename))
 }

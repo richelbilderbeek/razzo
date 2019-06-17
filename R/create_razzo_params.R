@@ -28,9 +28,9 @@ create_test_razzo_params <- function(
   pir_params = pirouette::create_test_pir_params(
     experiments = list(
       pirouette::create_test_gen_experiment(
-        inference_model = beastier::create_inference_model(
-          mrca_prior = beastier::create_mrca_prior(
-            mrca_distr = beastier::create_normal_distr(mean = 15.0, sigma = 0.001),
+        inference_model = beautier::create_inference_model(
+          mrca_prior = beautier::create_mrca_prior(
+            mrca_distr = beautier::create_normal_distr(mean = 15.0, sigma = 0.001),
             is_monophyletic = TRUE
           ),
           mcmc = beautier::create_mcmc(
