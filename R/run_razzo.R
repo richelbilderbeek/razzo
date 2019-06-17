@@ -31,6 +31,14 @@ run_razzo <- function(
 
   tree_filename <- razzo_params$misc_params$tree_filename
 
+  # Create the folder if needed, no warning when the folder is already present
+  dir.create(
+    path = dirname(tree_filename),
+    recursive = TRUE,
+    showWarnings = FALSE
+  )
+  testit::assert(is_pff(tree_filename))
+  testit::assert(beautier::is_phylo(phylogeny))
   ape::write.tree(
     phy = phylogeny,
     file = tree_filename
@@ -38,7 +46,23 @@ run_razzo <- function(
   testit::assert(file.exists(tree_filename))
 
   # Let pirouette measure the error
+
+  # Create the folder if needed, no warning when the folder is already present
+  dir.create(
+    path = dirname(razzo_params$pir_params$alignment_params$fasta_filename),
+    recursive = TRUE,
+    showWarnings = FALSE
+  )
+  dir.create(
+    path = dirname(razzo_params$pir_params$experiments[[1]]$beast2_options$output_log_filename), # nolint yup, it's a long beast. Demeter won't like it ...
+    recursive = TRUE,
+    showWarnings = FALSE
+  )
+
+
+  # Yup, debugging for now... remove next line when things work smoothly
   razzo_params$pir_params$verbose <- TRUE
+
   output <- pirouette::pir_run(
     phylogeny = phylogeny,
     pir_params = razzo_params$pir_params
