@@ -6,22 +6,7 @@ test_that("use", {
   )
 
   mbd_params <- create_test_mbd_params()
-  pir_params <- pirouette::create_test_pir_params(
-    experiments = list(
-      pirouette::create_test_gen_experiment(
-        inference_model = beautier::create_inference_model(
-          mrca_prior = beautier::create_mrca_prior(
-            mrca_distr = beautier::create_normal_distr(mean = 15.0, sigma = 0.001),
-            is_monophyletic = TRUE
-          ),
-          mcmc = beautier::create_mcmc(
-            chain_length = 2000, store_every = 1000
-          )
-        )
-      )
-    ),
-    twinning_params = pirouette::create_twinning_params()
-  )
+  pir_params <- create_test_pff_pir_params(
   misc_params <- create_misc_params()
 
   expect_silent(
@@ -49,5 +34,24 @@ test_that("use", {
     ),
     "'misc_params' must be an element of a 'razzo_params'"
   )
+
+  # Check mbd_params
+  # done by check_mbd_params
+
+  # Check pir_params
+  # Mostly done by check_pir_params
+  expect_true(is_pff(pir_params$twinning_params$twin_tree_filename))
+  expect_true(is_pff(pir_params$twinning_params$twin_alignment_filename))
+  expect_true(is_pff(pir_params$twinning_params$twin_evidence_filename))
+  expect_true(is_pff(pir_params$alignment_params$fasta_filename))
+  for (experiment in pir_params$experiments) {
+    expect_true(is_pff(experiment$beast2_options$input_filename))
+    expect_true(is_pff(experiment$beast2_options$output_log_filename))
+    expect_true(is_pff(experiment$beast2_options$output_trees_filenames))
+    expect_true(is_pff(experiment$beast2_options$output_state_filename))
+    expect_true(is_pff(experiment$beast2_options$beast2_working_dir))
+    expect_true(is_pff(experiment$beast2_options$beast2_path))
+  }
+  # Check misc_params
 
 })
