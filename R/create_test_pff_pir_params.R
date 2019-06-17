@@ -26,8 +26,14 @@ create_test_pff_pir_params <- function() {
     twinning_params = pirouette::create_twinning_params(
       twin_tree_filename = get_pff_tempfile(),
       twin_alignment_filename = get_pff_tempfile(),
-      twin_evidence_filename = get_pff_tempfile()
+      twin_evidence_filename = get_pff_tempfile(
+        pattern = "evidence_",
+        fileext = ".csv"
+      )
     ),
-    evidence_filename = get_pff_tempfile(pattern = "evidence_", fileext = ".csv")
+    evidence_filename = get_pff_tempfile(
+      pattern = "evidence_",
+      fileext = ".csv"
+    )
   )
 }
