@@ -3,28 +3,29 @@ Type: Package
 Title: The Error If Nature Is MBD
 Version: 0.1.0
 Authors@R: c(
-  person("Giovanni", "Laudanno", role = c("aut")),
-  person("Richel J.C.", "Bilderbeek", email = "richel@richelbilderbeek.nl", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1107-7049")))
+    person("Giovanni", "Laudanno", role = c("aut")),
+    person("Richel J.C.", "Bilderbeek", email = "richel@richelbilderbeek.nl", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1107-7049")))
 Maintainer: Richel J.C. Bilderbeek <richel@richelbilderbeek.nl>
 Description: The MBD model is a model that does stuff.
-  That stuff is important. That is why we use it. This
-  package measures the error BEAST2 makes if nature follow that model,
-  when we are only using contemporary priors.
+    That stuff is important. That is why we use it. This
+    package measures the error BEAST2 makes if nature follow that model,
+    when we are only using contemporary priors.
 License: GPL-3 | file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
 Imports: 
-  ape,
-  beastier, 
-  beautier,
-  ggplot2,
-  gridExtra,
-  grDevices,
-  mbd,
-  nLTT,
-  pirouette,
-  testit
+    ape,
+    beastier, 
+    beautier,
+    ggplot2,
+    gridExtra,
+    grDevices,
+    mbd,
+    nLTT,
+    pirouette,
+    stringr,
+    testit
 Suggests:
     babette,
     cli,
