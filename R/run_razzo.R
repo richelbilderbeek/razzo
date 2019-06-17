@@ -58,6 +58,16 @@ run_razzo <- function(
     recursive = TRUE,
     showWarnings = FALSE
   )
+  dir.create(
+    path = dirname(razzo_params$pir_params$experiments[[1]]$beast2_options$output_state_filename), # nolint yup, it's a long beast. Demeter won't like it ...
+    recursive = TRUE,
+    showWarnings = FALSE
+  )
+  dir.create(
+    path = dirname(razzo_params$pir_params$experiments[[1]]$beast2_options$output_trees_filename), # nolint yup, it's a long beast. Demeter won't like it ...
+    recursive = TRUE,
+    showWarnings = FALSE
+  )
 
 
   # Yup, debugging for now... remove next line when things work smoothly
