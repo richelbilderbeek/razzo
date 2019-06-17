@@ -26,17 +26,17 @@ Imports:
   pirouette,
   testit
 Suggests:
-  babette,
-  cli,
-  devtools,
-  dplyr,
-  knitr,
-  lintr,
-  plyr,
-  tidyr,
-  rappdirs,
-  rmarkdown,
-  testthat,
-  tidyverse,
-  tracerer
+    babette,
+    cli,
+    devtools,
+    dplyr,
+    knitr,
+    lintr,
+    plyr,
+    tidyr,
+    rappdirs,
+    rmarkdown,
+    testthat (>= 2.1.0),
+    tidyverse,
+    tracerer
 VignetteBuilder: knitr

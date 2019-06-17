@@ -6,6 +6,7 @@
 create_misc_params <- function(
   tree_filename = tempfile(fileext = ".tree")
 ) {
+  testit::assert(razzo::is_pff(tree_filename))
   misc_params <- list(
     tree_filename = tree_filename
   )

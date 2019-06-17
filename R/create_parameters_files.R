@@ -146,10 +146,7 @@ create_full_parameters_files <- function(
     )
 
     mcmc <- beautier::create_mcmc(chain_length = mcmc_chain_length, store_every = 1000)
-    mrca_prior <- beautier::create_mrca_prior(
-      is_monophyletic = TRUE,
-      mrca_distr = beautier::create_normal_distr(mean = 15.0, sigma = 0.0001)
-    )
+
     # name                |model_type | run_if         | measure  | inference  # nolint this is no commented code
     #                     |           |                | evidence | model
     # --------------------|-----------|----------------|----------|-----------
