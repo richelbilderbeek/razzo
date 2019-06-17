@@ -1,4 +1,22 @@
 #!/bin/bash
+#
+# Build razzo as if on CRAN
+#
+# Usage, locally:
+#
+# ./build_cran
+#
+# Usage, on Peregrine:
+#
+# sbatch build_cran
+#
+#SBATCH --time=1:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --ntasks=1
+#SBATCH --mem=1G
+#SBATCH --job-name=razzo_build_cran
+#SBATCH --output=razzo_build_cran.log
 
 mkdir build
 
