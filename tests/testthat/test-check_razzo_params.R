@@ -6,7 +6,7 @@ test_that("use", {
   )
 
   mbd_params <- create_test_mbd_params()
-  pir_params <- create_test_pff_pir_params(
+  pir_params <- create_test_pff_pir_params()
   misc_params <- create_misc_params()
 
   expect_silent(
@@ -53,5 +53,5 @@ test_that("use", {
     expect_true(is_pff(experiment$beast2_options$beast2_path))
   }
   # Check misc_params
-
+  expect_true(is_pff(misc_params$tree_filename))
 })

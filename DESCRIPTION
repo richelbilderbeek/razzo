@@ -22,7 +22,6 @@ Imports:
     gridExtra,
     grDevices,
     mbd,
-    nLTT,
     pirouette,
     stringr,
     testit
