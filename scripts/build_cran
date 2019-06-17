@@ -17,6 +17,7 @@
 #SBATCH --mem=1G
 #SBATCH --job-name=razzo_build_cran
 #SBATCH --output=razzo_build_cran.log
+module load Pandoc
 
 mkdir build
 
