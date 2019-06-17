@@ -38,7 +38,7 @@ create_test_razzo_params <- function(
           )
         )
       )
-    )
+    ),
     twinning_params = pirouette::create_twinning_params()
   ),
   misc_params = create_misc_params()

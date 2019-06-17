@@ -11,7 +11,8 @@ create_test_razzo_params(mbd_params = create_test_mbd_params(),
   beastier::create_inference_model(mrca_prior =
   beastier::create_mrca_prior(mrca_distr =
   beastier::create_normal_distr(mean = 15, sigma = 0.001), is_monophyletic
-  = TRUE)))), twinning_params = pirouette::create_twinning_params()),
+  = TRUE), mcmc = beautier::create_mcmc(chain_length = 2000, store_every =
+  1000)))), twinning_params = pirouette::create_twinning_params()),
   misc_params = create_misc_params())
 }
 \arguments{
