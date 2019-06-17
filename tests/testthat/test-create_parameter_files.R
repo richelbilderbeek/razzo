@@ -19,7 +19,7 @@ test_that("use", {
   project_folder_name <- file.path(super_folder_name, "razzo_project")
 
   # Do not warn if the folder already exists
-  dir.create(path = project_folder_name, showWarnings = FALSE)
+  dir.create(path = project_folder_name, recursive = TRUE, showWarnings = TRUE)
 
   filenames <- create_parameters_files(
     project_folder_name = project_folder_name
@@ -102,9 +102,16 @@ test_that("use, full", {
 })
 test_that("can read", {
 
+  # Put files in temporary folder
+  super_folder_name <- get_pff_tempdir()
+  project_folder_name <- file.path(super_folder_name, "razzo_project")
+
+  # Do not warn if the folder already exists
+  dir.create(path = project_folder_name, recursive = TRUE, showWarnings = TRUE)
+
   # Create parameter files from fresh
   filenames <- create_parameters_files(
-    project_folder_name = get_pff_tempdir()
+    project_folder_name = project_folder_name
   )
 
   # Load the first one
