@@ -5,13 +5,13 @@
 \title{Get a Peregrine-friendly temporary filename}
 \usage{
 get_pff_tempfile(pattern = "razzo_file_",
-  pff_tmpdir = rappdirs::user_cache_dir(), fileext = "")
+  pff_tmpdir = get_pff_tempdir(), fileext = "")
 }
 \arguments{
 \item{pattern}{see \link{tempfile}}
 
 \item{pff_tmpdir}{Peregrine-friendly temporary directory name,
-see \link{tempfile}}
+see \link{get_pff_tempdir}}
 
 \item{fileext}{see \link{tempfile}}
 }

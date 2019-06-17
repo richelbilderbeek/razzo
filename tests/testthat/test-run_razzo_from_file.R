@@ -4,7 +4,7 @@ test_that("use", {
 
   if (!beastier::is_on_travis()) return()
 
-  # super_folder_name <- tempdir()
+  # super_folder_name <- get_pff_tempdir()
   # project_folder_name <- file.path(super_folder_name, "razzo_project")
   project_folder_name <- get_path("razzo_project")
   dir.create(path = project_folder_name, recursive = TRUE, showWarnings = FALSE)

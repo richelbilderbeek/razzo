@@ -9,6 +9,7 @@ create_parameters_files <- function(
   project_folder_name = getwd(),
   experiment_type = "test"
 ) {
+  testit::assert(is_pff(project_folder_name))
   testit::assert(experiment_type == "test" || experiment_type == "full")
   if (experiment_type == "test") {
     n_replicates <- 2
@@ -82,6 +83,7 @@ create_full_parameters_files <- function(
   error_measure_params = pirouette::create_error_measure_params(),
   mcmc_chain_length = beautier::create_mcmc()$chain_length
 ) {
+  testit::assert(is_pff(project_folder_name))
   # Must start at one, as the BEAST2 RNG seed must be at least one.
   index <- 1
 
