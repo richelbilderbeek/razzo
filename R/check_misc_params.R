@@ -15,6 +15,10 @@ check_misc_params <- function(
       )
     }
   }
+  if (!is_pff(misc_params$tree_filename)) {
+    stop("Peregrine-unfriendly filename for '")
+  }
+
   testit::assert(is.character(misc_params$tree_filename))
   testit::assert(is_pff(misc_params$tree_filename))
 }
