@@ -188,6 +188,7 @@ create_full_parameters_files <- function(
         output_log_filename = file.path(seed_folder, "mbd_gen.log"),
         output_trees_filenames = file.path(seed_folder, "mbd_gen.trees"),
         output_state_filename = file.path(seed_folder, "mbd_gen.xml.state"),
+        beast2_working_dir = get_pff_tempdir(),
         rng_seed = seed,
         overwrite = TRUE
       ),
@@ -214,6 +215,7 @@ create_full_parameters_files <- function(
           output_log_filename = file.path(seed_folder, "mbd_best.log"),
           output_trees_filenames = file.path(seed_folder, "mbd_best.trees"),
           output_state_filename = file.path(seed_folder, "mbd_best.xml.state"),
+          beast2_working_dir = get_pff_tempdir(),
           rng_seed = seed,
           overwrite = TRUE
         ),
@@ -239,6 +241,7 @@ create_full_parameters_files <- function(
           output_log_filename = file.path(seed_folder, "mbd_best.log"),
           output_trees_filenames = file.path(seed_folder, "mbd_best.trees"),
           output_state_filename = file.path(seed_folder, "mbd_best.xml.state"),
+          beast2_working_dir = get_pff_tempdir(),
           rng_seed = seed,
           overwrite = TRUE
         ),
