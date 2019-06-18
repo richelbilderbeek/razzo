@@ -9,6 +9,7 @@ test_that("use", {
   project_folder_name <- get_path("razzo_project")
   dir.create(path = project_folder_name, recursive = TRUE, showWarnings = FALSE)
   parameters_filenames <- create_test_parameters_files(project_folder_name)
+
   # Only run the first
   for (i in seq_along(parameters_filenames)) {
     expect_silent(run_razzo_from_file(
