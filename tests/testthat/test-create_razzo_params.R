@@ -2,39 +2,8 @@ context("test-create_razzo_params")
 
 test_that("use", {
 
-  crown_age <- 15
-  crown_age_sigma <- 0.01
-  mbd_params <- create_mbd_params(
-    lambda = 0.1,
-    mu = 0.15,
-    nu = 0.2,
-    q = 0.01,
-    crown_age = crown_age,
-    cond = 1
-  )
-  experiment <- pirouette::create_experiment(
-    pirouette::create_inference_conditions(
-      model_type = "generative",
-      run_if = "always",
-      do_measure_evidence = FALSE
-    ),
-    inference_model = beautier::create_inference_model(
-      mrca_prior = beautier::create_mrca_prior(
-        mrca_distr = beautier::create_normal_distr(
-          mean = crown_age,
-          sigma = crown_age_sigma
-        ),
-        is_monophyletic = TRUE
-      )
-    )
-  )
-
-  experiments <- list(experiment)
-  pir_params <- pirouette::create_pir_params(
-    alignment_params = pirouette::create_test_alignment_params(),
-    experiments = experiments,
-    twinning_params = pirouette::create_twinning_params()
-  )
+  mbd_params <- create_test_mbd_params()
+  pir_params <- create_test_pff_pir_params()
   misc_params <- create_misc_params()
 
   razzo_params <- create_razzo_params(
