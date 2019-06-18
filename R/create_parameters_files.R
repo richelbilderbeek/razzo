@@ -75,10 +75,15 @@ create_full_parameters_files <- function(
     crown_age = 15.0,
     cond = 1
   ),
-  twinning_params = pirouette::create_twinning_params(),
+  twinning_params = pirouette::create_twinning_params(
+    twin_tree_filename = get_pff_tempfile(),
+    twin_alignment_filename = get_pff_tempfile(),
+    twin_evidence_filename = get_pff_tempfile()
+  ),
   alignment_params = pirouette::create_alignment_params(
     root_sequence = "aaaaccccggggttt",
-    mutation_rate = 0.5 / unique(mbd_params_interval$crown_age)
+    mutation_rate = 0.5 / unique(mbd_params_interval$crown_age),
+    fasta_filename = get_pff_tempfile(pattern = "alignment_", fileext = ".fasta")
   ),
   error_measure_params = pirouette::create_error_measure_params(),
   mcmc_chain_length = beautier::create_mcmc()$chain_length
