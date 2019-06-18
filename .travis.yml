@@ -45,8 +45,8 @@ script:
   - travis_wait 50 R CMD build .
   - travis_wait 50 R CMD check *tar.gz
   # Check dead links
-  - rm .travis.yml
-  - ./scripts/check_dead_links
+  - # rm .travis.yml
+  - # ./scripts/check_dead_links
 
 after_success:
   - Rscript -e 'covr::codecov()'
