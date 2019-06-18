@@ -31,9 +31,6 @@ Update our dependencies:
 if (1 == 2) {
   if (!require(ape)) {install.packages("ape")}
   if (!require(mbd)) {devtools::install_github("Giappo/mbd", quiet = TRUE)}
-  devtools::install_github("ropensci/beautier", quiet = TRUE)
-  devtools::install_github("ropensci/tracerer", quiet = TRUE)
-  devtools::install_github("ropensci/beastier", quiet = TRUE)
   devtools::install_github("ropensci/mauricer", quiet = TRUE)
   devtools::install_github("ropensci/babette", quiet = TRUE)
   devtools::install_github("richelbilderbeek/mcbette", quiet = TRUE)
@@ -50,7 +47,7 @@ library(razzo)
 We will work in this folder:
 
 ```{r create_working_folder}
-super_folder_name <- tempdir()
+super_folder_name <- rappdirs::user_cache_dir()
 project_folder_name <- file.path(super_folder_name, "razzo_project") 
 dir.create(path = project_folder_name, recursive = TRUE, showWarnings = FALSE)
 ```
@@ -67,7 +64,7 @@ parameters_filenames <- create_test_parameters_files(project_folder_name)
 
 Then we run razzo for each parameter setting
 
-```{r}
+```{r run_files}
 for (parameters_filename in parameters_filenames) {
   razzo::run_razzo_from_file(parameters_filename)
 }
@@ -76,7 +73,7 @@ for (parameters_filename in parameters_filenames) {
 ## Step 3: figure 1
 
 ```{r}
-# create_fig_1(project_folder_name)
+create_fig_1(project_folder_name)
 ```
 
 ## Step 4: what is the effect of MBD on the error?

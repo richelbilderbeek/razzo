@@ -13,7 +13,7 @@ test_that("use", {
     cond = 1
   )
   experiment <- pirouette::create_experiment(
-    inference_conditions = create_inference_conditions(
+    pirouette::create_inference_conditions(
       model_type = "generative",
       run_if = "always",
       do_measure_evidence = FALSE

@@ -16,6 +16,12 @@ collect_esses <- function(
     parameters <- open_parameters_file(file.path(paths[p], "parameters.RDa")) # nolint internal function
     pars <- parameters$mbd_params
     files_log <- list.files(paths[p], pattern = "*.log")
+    if (length(files_log) == 0) {
+      stop(
+        "No .log files found at path '", paths[p], "' \n",
+        "Maybe the razzo experiment is not run yet? \n"
+      )
+    }
     for (f in seq_along(files_log)) {
       is_twin <- grepl(files_log[f], pattern = "twin")
       is_best <- grepl(files_log[f], pattern = "best")

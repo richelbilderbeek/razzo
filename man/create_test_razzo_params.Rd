@@ -5,7 +5,19 @@
 \title{Create some testing parameters for one experiment.
 Run one point of the experiment}
 \usage{
-create_test_razzo_params()
+create_test_razzo_params(mbd_params = create_test_mbd_params(),
+  pir_params = create_test_pff_pir_params(),
+  misc_params = create_misc_params())
+}
+\arguments{
+\item{mbd_params}{MBD parameter set}
+
+\item{pir_params}{a parameter set for one \code{pirouette} run,
+as created by \link[pirouette]{create_pir_params}}
+
+\item{misc_params}{additional parameters for razzo. They contain
+tree_filename to store the original given tree and mbd_sim_rng_seed for
+when an mbd tree is simulated}
 }
 \description{
 Create some testing parameters for one experiment.

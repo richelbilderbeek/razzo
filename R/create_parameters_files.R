@@ -9,6 +9,7 @@ create_parameters_files <- function(
   project_folder_name = getwd(),
   experiment_type = "test"
 ) {
+  testit::assert(is_pff(project_folder_name))
   testit::assert(experiment_type == "test" || experiment_type == "full")
   if (experiment_type == "test") {
     n_replicates <- 2
@@ -26,9 +27,11 @@ create_parameters_files <- function(
       nrow(unique(mbd_params_interval))
       == nrow(mbd_params_interval)
     )
+
     parameters_filenames <- create_full_parameters_files(
       project_folder_name = project_folder_name,
-      mbd_params_interval = mbd_params_interval
+      mbd_params_interval = mbd_params_interval,
+      mcmc_chain_length = 3000
     )
     testit::assert(nrow(mbd_params_interval) == length(parameters_filenames))
   } else {
@@ -77,8 +80,10 @@ create_full_parameters_files <- function(
     root_sequence = "aaaaccccggggttt",
     mutation_rate = 0.5 / unique(mbd_params_interval$crown_age)
   ),
-  error_measure_params = pirouette::create_error_measure_params()
+  error_measure_params = pirouette::create_error_measure_params(),
+  mcmc_chain_length = beautier::create_mcmc()$chain_length
 ) {
+  testit::assert(is_pff(project_folder_name))
   # Must start at one, as the BEAST2 RNG seed must be at least one.
   index <- 1
 
@@ -133,20 +138,18 @@ create_full_parameters_files <- function(
     twinning_params$twin_evidence_filename <- file.path(
       seed_folder, "mbd_marg_lik_twin.csv"
     )
-    misc_params <- list()
+    misc_params <- create_misc_params()
     misc_params$tree_filename <- file.path(
       seed_folder, "mbd.tree"
     )
+    check_misc_params(misc_params)
     mrca_prior <- beautier::create_mrca_prior(
       is_monophyletic = TRUE,
       mrca_distr = beautier::create_normal_distr(mean = 15.0, sigma = 0.0001)
     )
 
-    mcmc <- beautier::create_mcmc(chain_length = 3000, store_every = 1000)
-    mrca_prior <- beautier::create_mrca_prior(
-      is_monophyletic = TRUE,
-      mrca_distr = beautier::create_normal_distr(mean = 15.0, sigma = 0.0001)
-    )
+    mcmc <- beautier::create_mcmc(chain_length = mcmc_chain_length, store_every = 1000)
+
     # name                |model_type | run_if         | measure  | inference  # nolint this is no commented code
     #                     |           |                | evidence | model
     # --------------------|-----------|----------------|----------|-----------
@@ -164,7 +167,7 @@ create_full_parameters_files <- function(
     }
 
     experiment_jc69_bd <- pirouette::create_experiment(
-      inference_conditions = create_inference_conditions(
+      inference_conditions = pirouette::create_inference_conditions(
         model_type = "generative",
         run_if = "always",
         do_measure_evidence = do_measure_evidence
@@ -190,7 +193,7 @@ create_full_parameters_files <- function(
     )
     if (rappdirs::app_dir()$os != "win") {
       experiment_jc69_yule <- pirouette::create_experiment(
-        inference_conditions = create_inference_conditions(
+        inference_conditions = pirouette::create_inference_conditions(
           model_type = "candidate",
           run_if = "best_candidate",
           do_measure_evidence = do_measure_evidence
@@ -215,7 +218,7 @@ create_full_parameters_files <- function(
         errors_filename = file.path(seed_folder, "mbd_nltts_best.csv")
       )
       experiment_gtr_bd <- pirouette::create_experiment(
-        inference_conditions = create_inference_conditions(
+        inference_conditions = pirouette::create_inference_conditions(
           model_type = "candidate",
           run_if = "best_candidate",
           do_measure_evidence = do_measure_evidence
@@ -285,7 +288,7 @@ create_test_parameters_files <- function(
   project_folder_name = getwd()
 ) {
   create_parameters_files(
-    project_folder_name,
+    project_folder_name = project_folder_name,
     experiment_type = "test"
   )
 }

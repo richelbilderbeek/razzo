@@ -1,21 +1,21 @@
 <itsabeastystatewerein version='2.0' sample='3000'>
-<statenode id='Tree.t:mbd'>((0:0.8057121192630976,(1:0.013778697245104582,5:0.013778697245104582)8:0.791933422017993)11:14.20106241417913,(((2:0.011899440810677332,(3:0.0012995367472778327,4:0.0012995367472778327)12:0.0105999040633995)9:0.21404991993326605,6:0.2259493607439434)13:0.3648864182927581,7:0.5908357790367015)10:14.415938754405525)14:0.0</statenode>
-<statenode id='BDBirthRate.t:mbd'>BDBirthRate.t:mbd[1 1] (0.0,10000.0): 0.05468287535649854 </statenode>
-<statenode id='BDDeathRate.t:mbd'>BDDeathRate.t:mbd[1 1] (0.0,1.0): 0.9842625995643306 </statenode>
-<statenode id='clockRate.c:mbd'>clockRate.c:mbd[1 1] (0.0,Infinity): 0.2882441688861038 </statenode>
+<statenode id='Tree.t:mbd'>(((0:0.07211239152573104,2:0.07211239152573104)6:2.501369483225028,(3:0.7353466690602792,(4:0.46917864689033073,5:0.46917864689033073)7:0.2661680221699485)9:1.8381352056904798)8:12.426629822242838,1:15.000111696993597)10:0.0</statenode>
+<statenode id='BDBirthRate.t:mbd'>BDBirthRate.t:mbd[1 1] (0.0,10000.0): 0.1311175306747709 </statenode>
+<statenode id='BDDeathRate.t:mbd'>BDDeathRate.t:mbd[1 1] (0.0,1.0): 0.2046590144547514 </statenode>
+<statenode id='clockRate.c:mbd'>clockRate.c:mbd[1 1] (0.0,Infinity): 0.2265384102767426 </statenode>
 </itsabeastystatewerein>
 <!--
 {"operators":[
-{"id":"BirthRateScaler.t:mbd","p":0.75,"accept":93,"reject":22,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
-{"id":"DeathRateScaler.t:mbd","p":0.75,"accept":55,"reject":50,"acceptFC":0,"rejectFC":0,"rejectIv":23,"rejectOp":23},
-{"id":"BirthDeathTreeScaler.t:mbd","p":0.5,"accept":5,"reject":106,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
-{"id":"BirthDeathTreeRootScaler.t:mbd","p":0.5,"accept":2,"reject":115,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
-{"id":"BirthDeathUniformOperator.t:mbd","p":"NaN","accept":407,"reject":636,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
-{"id":"BirthDeathSubtreeSlide.t:mbd","p":1,"accept":75,"reject":447,"acceptFC":0,"rejectFC":0,"rejectIv":178,"rejectOp":178},
-{"id":"BirthDeathNarrow.t:mbd","p":"NaN","accept":271,"reject":294,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
-{"id":"BirthDeathWide.t:mbd","p":"NaN","accept":5,"reject":88,"acceptFC":0,"rejectFC":0,"rejectIv":48,"rejectOp":48},
-{"id":"BirthDeathWilsonBalding.t:mbd","p":"NaN","accept":9,"reject":104,"acceptFC":0,"rejectFC":0,"rejectIv":41,"rejectOp":41},
-{"id":"StrictClockRateScaler.c:mbd","p":0.75,"accept":73,"reject":35,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
-{"id":"strictClockUpDownOperator.c:mbd","p":0.75,"accept":1,"reject":108,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0}
+{"id":"BirthRateScaler.t:mbd","p":0.75,"accept":84,"reject":28,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"DeathRateScaler.t:mbd","p":0.75,"accept":102,"reject":8,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BirthDeathTreeScaler.t:mbd","p":0.5,"accept":5,"reject":103,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BirthDeathTreeRootScaler.t:mbd","p":0.5,"accept":1,"reject":103,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BirthDeathUniformOperator.t:mbd","p":"NaN","accept":427,"reject":666,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BirthDeathSubtreeSlide.t:mbd","p":1,"accept":107,"reject":409,"acceptFC":0,"rejectFC":0,"rejectIv":143,"rejectOp":143},
+{"id":"BirthDeathNarrow.t:mbd","p":"NaN","accept":185,"reject":364,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BirthDeathWide.t:mbd","p":"NaN","accept":3,"reject":103,"acceptFC":0,"rejectFC":0,"rejectIv":58,"rejectOp":58},
+{"id":"BirthDeathWilsonBalding.t:mbd","p":"NaN","accept":5,"reject":87,"acceptFC":0,"rejectFC":0,"rejectIv":46,"rejectOp":46},
+{"id":"StrictClockRateScaler.c:mbd","p":0.75,"accept":67,"reject":30,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"strictClockUpDownOperator.c:mbd","p":0.75,"accept":3,"reject":111,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0}
 ]}
 -->

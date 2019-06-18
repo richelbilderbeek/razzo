@@ -14,7 +14,8 @@
   alignment_params = pirouette::create_alignment_params(root_sequence =
   "aaaaccccggggttt", mutation_rate =
   0.5/unique(mbd_params_interval$crown_age)),
-  error_measure_params = pirouette::create_error_measure_params())
+  error_measure_params = pirouette::create_error_measure_params(),
+  mcmc_chain_length = beautier::create_mcmc()$chain_length)
 }
 \arguments{
 \item{project_folder_name}{project folder name,
@@ -33,6 +34,8 @@ as can be created by \code{\link[pirouette]{create_alignment_params}}}
 \item{error_measure_params}{parameters to set how the error
 between given tree and inferred trees in measure,
 as can be created by \code{\link[pirouette]{create_error_measure_params}}}
+
+\item{mcmc_chain_length}{length of an MCMC}
 }
 \value{
 Create folders for each parameter setting

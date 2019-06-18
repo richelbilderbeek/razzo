@@ -4,8 +4,9 @@
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
 create_misc_params <- function(
-  tree_filename = tempfile(fileext = ".tree")
+  tree_filename = get_pff_tempfile(fileext = ".tree")
 ) {
+  testit::assert(razzo::is_pff(tree_filename))
   misc_params <- list(
     tree_filename = tree_filename
   )

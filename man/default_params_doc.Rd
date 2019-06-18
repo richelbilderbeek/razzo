@@ -10,12 +10,13 @@ default_params_doc(alignment, alignment_params, bd_mutation_rate, bd_tree,
   error_measure_params, experiment_type, experiments, fasta_filename,
   filename, folder_name, init_speciation_rate, init_extinction_rate,
   lambda, mbd_l_matrix, mbd_mutation_rate, mbd_params, mbd_params_interval,
-  mbd_sim_rng_seed, mbd_tree, misc_params, mu, mutation_rate, n_replicates,
-  nu, nu_events, parameters, parameter_filename, parameters_filename,
-  phylo, pir_params, posterior_trees, precision, project_folder_name, q,
-  razzo_params, sample_interval, seed, sequence_length, sim_pars,
-  sim_phylo, site_model, sub_chain_length, tree, tree_filename,
-  trees_filename, twinning_params, verbose)
+  mbd_sim_rng_seed, mbd_tree, mcmc_chain_length, misc_params, mu,
+  mutation_rate, n_replicates, nu, nu_events, parameters,
+  parameter_filename, parameters_filename, phylo, pir_params,
+  posterior_trees, precision, project_folder_name, q, razzo_params,
+  sample_interval, seed, sequence_length, sim_pars, sim_phylo, site_model,
+  sub_chain_length, tree, tree_filename, trees_filename, twinning_params,
+  verbose)
 }
 \arguments{
 \item{alignment}{a DNA alignment}
@@ -78,6 +79,8 @@ this data frame will hold 10 rows, each with different seeds}
 \item{mbd_sim_rng_seed}{rng seed to simulate a mbd tree}
 
 \item{mbd_tree}{an MBD tree}
+
+\item{mcmc_chain_length}{length of an MCMC}
 
 \item{misc_params}{additional parameters for razzo. They contain
 tree_filename to store the original given tree and mbd_sim_rng_seed for

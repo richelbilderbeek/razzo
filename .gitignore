@@ -23,13 +23,13 @@
 # Shiny token, see https://shiny.rstudio.com/articles/shinyapps.html
 rsconnect/
 inst/doc
-/*.fasta
-/*.nex
-/*.xml
-/*.xml.state
-/*.trees
-/*.log
-/*.posterior.log
+*.fasta
+*.nex
+*.xml
+*.xml.state
+*.trees
+*.log
+*.posterior.log
 data/
 tests/testthat/*.fasta
 tests/testthat/*.nex

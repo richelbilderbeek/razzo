@@ -19,51 +19,82 @@
 #        </prior>
 #        <distribution id="auto_name_1.prior" monophyletic="true" spec="beast.math.distributions.MRCAPrior" tree="@Tree.t:mbd">
 #            <taxonset id="auto_name_1" spec="beast.evolution.alignment.TaxonSet">
-#                <taxon id="t1" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t70" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t62" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t40" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t83" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t58" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t32" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t74" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t16" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t86" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t81" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t72" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t27" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t65" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t43" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t13" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t69" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t68" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t73" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t85" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t38" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t79" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t22" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t35" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t77" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t76" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t28" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t80" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t56" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t49" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t59" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t78" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t71" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t14" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t54" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t30" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t44" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t75" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t18" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t106" spec="beast.evolution.alignment.Taxon"/>
 #                <taxon id="t82" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t52" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t87" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t49" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t114" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t34" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t58" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t115" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t31" spec="beast.evolution.alignment.Taxon"/>
 #                <taxon id="t57" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t36" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t15" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t112" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t65" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t69" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t67" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t26" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t111" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t117" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t100" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t44" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t63" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t19" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t40" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t77" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t104" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t91" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t35" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t72" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t42" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t108" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t97" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t68" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t41" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t39" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t28" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t95" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t23" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t96" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t110" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t32" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t55" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t47" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t85" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t20" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t113" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t101" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t73" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t102" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t2" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t78" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t107" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t48" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t81" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t74" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t71" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t53" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t99" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t24" spec="beast.evolution.alignment.Taxon"/>
 #                <taxon id="t64" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t116" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t94" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t109" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t89" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t36" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t54" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t98" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t88" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t50" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t16" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t17" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t105" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t38" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t30" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t90" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t92" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t51" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t59" spec="beast.evolution.alignment.Taxon"/>
 #            </taxonset>
 #            <Normal id="Normal.151" name="distr">
 #                <parameter estimate="false" id="RealParameter.300" name="mean">15.0</parameter>
@@ -84,8 +115,8 @@
 #    </distribution>
 #</input>
 #
-Sample	posterior	likelihood	prior	treeLikelihood	TreeHeight	YuleModel	birthRate	logP(mrca(auto_name_1))	mrcatime(auto_name_1)	clockRate
-0	-9.916772082536383E9	-1128.0869127990975	-9.91677095444947E9	-1128.0869127990975	0.9168391623645132	-3.8053785523881403	1.07715865412399	-9.916770950644093E9	0.9168391623645132	1.0
-1000	-197034.8329832506	-661.9499894684434	-196372.88299378217	-661.9499894684434	14.937336213562187	-43.667859427673775	1.0243044741007987	-196329.2151343545	14.937336213562187	1.206422329469813
-2000	-196970.7268841207	-598.6119496952	-196372.1149344255	-598.6119496952	14.937336213562187	-42.89980007100983	0.9865965151615317	-196329.2151343545	14.937336213562187	0.8667550026185742
-3000	-196912.08637801235	-538.5067256121356	-196373.57965240022	-538.5067256121356	14.937336213562187	-44.364518045711286	0.9932346065581317	-196329.2151343545	14.937336213562187	0.7062171225594798
+Sample	posterior	likelihood	prior	treeLikelihood.mbd	TreeHeight	YuleModel	birthRate	logP(mrca(auto_name_1))	mrca.age(auto_name_1)	clockRate
+0	-8.625475569643164E9	-1816.8833457230155	-8.625473752759817E9	-1816.8833457230155	1.8657137601699028	-9.561706412509059	1.0	-8.62547374319811E9	1.8657137601699028	1.0
+1000	-275072.89151554694	-1061.2739158006584	-274011.61759974627	-1061.2739158006584	15.0740249953306	-34.912316818907584	1.627254563395005	-273976.7052829274	15.0740249953306	1.7212446735428537
+2000	-274960.35311911034	-940.7628845427386	-274019.5902345676	-940.7628845427386	15.0740249953306	-42.884951640193705	1.8205002303102698	-273976.7052829274	15.0740249953306	1.2877692062620276
+3000	-87758.87103936463	-860.3417034601448	-86898.52933590449	-860.3417034601448	15.04168076968612	-42.492656371943845	1.500627819132506	-86856.03667953254	15.04168076968612	0.8176344395410845

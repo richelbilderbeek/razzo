@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{get_gen_models}
 \alias{get_gen_models}
-\title{Generative models}
+\title{Get the names of the supported generative models}
 \usage{
 get_gen_models()
 }
@@ -10,8 +10,15 @@ get_gen_models()
 the generative models
 }
 \description{
-Generative models
+Get the names of the supported generative models
+}
+\examples{
+library(testthat)
+
+expect_true("bd" \%in\% get_gen_models())
+expect_true("mbd" \%in\% get_gen_models())
+expect_false("Jensen Ackles" \%in\% get_gen_models())
 }
 \author{
-Giovanni Laudanno
+Giovanni Laudanno, Richel J.C. Bilderbeek
 }

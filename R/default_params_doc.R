@@ -36,6 +36,7 @@
 #'   from a MBD tree
 #' @param mbd_sim_rng_seed rng seed to simulate a mbd tree
 #' @param mbd_tree an MBD tree
+#' @param mcmc_chain_length length of an MCMC
 #' @param misc_params additional parameters for razzo. They contain
 #'   tree_filename to store the original given tree and mbd_sim_rng_seed for
 #'   when an mbd tree is simulated
@@ -110,6 +111,7 @@ default_params_doc <- function(
   mbd_params_interval,
   mbd_sim_rng_seed,
   mbd_tree,
+  mcmc_chain_length,
   misc_params,
   mu,
   mutation_rate,
