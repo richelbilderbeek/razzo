@@ -3,8 +3,9 @@
 #' @inheritParams default_params_doc
 #' @return the file name of the plot
 #' @author Giovanni Laudanno
-#' @export
-create_fig_1_file <- function(
+#' @aliases create_file_fig_1 create_fig_1_file
+#' @export create_file_fig_1 create_fig_1_file
+create_file_fig_1 <- create_fig_1_file <- function(
   project_folder_name = getwd()
 ) {
 

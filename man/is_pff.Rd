@@ -12,3 +12,6 @@ is_pff(filename)
 \description{
 Is the filename a Peregrine-friendly filename?
 }
+\author{
+Richel J.C. Bilderbeek
+}

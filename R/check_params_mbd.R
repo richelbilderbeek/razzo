@@ -1,8 +1,9 @@
 #' Create mbd parameters
 #' @inheritParams default_params_doc
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
-#' @export
-check_mbd_params <- function(
+#' @aliases check_mbd_params check_params_mbd
+#' @export check_mbd_params check_params_mbd
+check_mbd_params <- check_params_mbd <- function(
   mbd_params
 ) {
   if (!is.numeric(mbd_params$lambda)) {

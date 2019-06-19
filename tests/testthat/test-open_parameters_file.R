@@ -5,11 +5,16 @@ test_that("use", {
   # If ''filename' must be the name of a file in 'inst/extdata'', do
   if (1 == 2) {
     dir.create(file.path(system.file("extdata", package = "razzo"), "razzo_project"))
-    create_test_parameters_files(
-      project_folder_name = system.file("extdata", "razzo_project", package = "razzo")
+    create_files_razzo_params(
+      project_folder_name = system.file(
+        "extdata",
+        "razzo_project",
+        package = "razzo"
+      ),
+      experiment_type = "test"
     )
   }
-  x <- get_data_paths(project_folder_name = get_path("razzo_project/"))
+  x <- get_data_paths(project_folder_name = get_razzo_path("razzo_project/"))
   parameters <- open_parameters_file(
     parameters_filename = file_path(x[[1]], "parameters.RDa")
   )

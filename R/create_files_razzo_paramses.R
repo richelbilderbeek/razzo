@@ -4,8 +4,9 @@
 #' @return Create folders for each parameter setting
 #'   and saves each setting in a file within the corresponding folder.
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
-#' @export
-create_parameters_files <- function(
+#' @aliases create_parameters_files create_files_razzo_paramses
+#' @export create_parameters_files create_files_razzo_paramses
+create_parameters_files <- create_files_razzo_paramses <- function(
   project_folder_name = getwd(),
   experiment_type = "test"
 ) {
@@ -13,8 +14,7 @@ create_parameters_files <- function(
   testit::assert(experiment_type == "test" || experiment_type == "full")
   if (experiment_type == "test") {
     n_replicates <- 2
-    # Create MBD params witha different seed per replicate
-    mbd_params_interval <- create_mbd_params_interval(
+    mbd_paramses <- create_paramses_mbd(
       lambda = 0.2,
       mu = 0.15,
       nu = 1.0,
@@ -24,35 +24,33 @@ create_parameters_files <- function(
       cond = 1
     )
     testit::assert(
-      nrow(unique(mbd_params_interval))
-      == nrow(mbd_params_interval)
+      nrow(unique(mbd_paramses)) == nrow(mbd_paramses)
     )
-
-    parameters_filenames <- create_full_parameters_files(
+    parameters_filenames <- save_razzo_paramses(
       project_folder_name = project_folder_name,
-      mbd_params_interval = mbd_params_interval,
+      mbd_paramses = mbd_paramses,
       mcmc_chain_length = 3000
     )
-    testit::assert(nrow(mbd_params_interval) == length(parameters_filenames))
+    testit::assert(nrow(mbd_paramses) == length(parameters_filenames))
   } else {
     n_replicates <- 10
-    mbd_params_interval <- create_mbd_params_interval(
+    mbd_paramses <- create_paramses_mbd(
       lambda = 0.2,
-      mu = 0.15,
-      nu = c(1.0, 1.5, 2.0),
+      mu = c(0, 0.15),
+      nu = c(1.0, 1.5, 2.0, 2.5),
       q = c(0.1, 0.15, 0.2),
       seed = seq(from = 1, to = n_replicates, by = 1),
-      crown_age = 15.0,
+      crown_age = 10.0,
       cond = 1
     )
-    testit::assert(nrow(unique(mbd_params_interval))
-      == nrow(mbd_params_interval)
+    testit::assert(
+      nrow(unique(mbd_paramses)) == nrow(mbd_paramses)
     )
-    parameters_filenames <- create_full_parameters_files(
+    parameters_filenames <- save_razzo_paramses(
       project_folder_name = project_folder_name,
-      mbd_params_interval = mbd_params_interval
+      mbd_paramses = mbd_paramses
     )
-    testit::assert(nrow(mbd_params_interval) == length(parameters_filenames))
+    testit::assert(nrow(mbd_paramses) == length(parameters_filenames))
   }
   parameters_filenames
 }
@@ -64,9 +62,9 @@ create_parameters_files <- function(
 #'   and saves each setting in a file within the corresponding folder.
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
-create_full_parameters_files <- function(
-  project_folder_name = get_path("razzo_project"),
-  mbd_params_interval = create_mbd_params_interval(
+save_razzo_paramses <- function(
+  project_folder_name,
+  mbd_paramses = create_paramses_mbd(
     lambda = 0.2,
     mu = 0.15,
     nu = c(1.0, 1.5, 2.0),
@@ -82,8 +80,11 @@ create_full_parameters_files <- function(
   ),
   alignment_params = pirouette::create_alignment_params(
     root_sequence = "aaaaccccggggttt",
-    mutation_rate = 0.5 / unique(mbd_params_interval$crown_age),
-    fasta_filename = get_pff_tempfile(pattern = "alignment_", fileext = ".fasta")
+    mutation_rate = 0.5 / unique(mbd_paramses$crown_age),
+    fasta_filename = get_pff_tempfile(
+      pattern = "alignment_",
+      fileext = ".fasta"
+    )
   ),
   error_measure_params = pirouette::create_error_measure_params(),
   mcmc_chain_length = beautier::create_mcmc()$chain_length
@@ -101,11 +102,11 @@ create_full_parameters_files <- function(
   testit::assert(dir.exists(file.path(project_folder_name, data_folder_name)))
 
   # Go through all biological parameters
-  n_rows <- nrow(mbd_params_interval)
+  n_rows <- nrow(mbd_paramses)
   parameters_filenames <- rep(NA, n_rows)
   for (row_index in seq(1:n_rows)) {
     # Extract the biological parameters and create a folder for them
-    mbd_params <- mbd_params_interval[row_index, ]
+    mbd_params <- mbd_paramses[row_index, ]
     parsettings_name <- paste0(
       mbd_params$lambda,
       "-",
@@ -155,9 +156,9 @@ create_full_parameters_files <- function(
 
     mcmc <- beautier::create_mcmc(chain_length = mcmc_chain_length, store_every = 1000)
 
-    # name                |model_type | run_if         | measure  | inference  # nolint this is no commented code
-    #                     |           |                | evidence | model
-    # --------------------|-----------|----------------|----------|-----------
+    # name                |model_type | run_if         | measure  | inference # nolint this is no commented code
+    #                     |           |                | evidence | model     # nolint this is no commented code
+    # --------------------|-----------|----------------|----------|---------- # nolint this is no commented code
     # experiment_jc69_bd  |generative | always         |TRUE      |JC69, BD   # nolint this is no commented code
     # experiment_jc69_yule|candidate  | best_candidate |TRUE      |JC69, Yule # nolint this is no commented code
     # experiment_gtr_bd   |candidate  | best_candidate |TRUE      |GTR, BD    # nolint this is no commented code
@@ -283,20 +284,4 @@ create_full_parameters_files <- function(
     index <- index + 1
   }
   parameters_filenames
-}
-
-#' Create parameter files to be used for testing in
-#'   \code{project_folder_name/data/[settings]/seed/[models]}
-#' @inheritParams default_params_doc
-#' @return Create folders for each parameter setting
-#'   and saves each setting in a file within the corresponding folder.
-#' @author Richel J.C. Bilderbeek
-#' @export
-create_test_parameters_files <- function(
-  project_folder_name = getwd()
-) {
-  create_parameters_files(
-    project_folder_name = project_folder_name,
-    experiment_type = "test"
-  )
 }

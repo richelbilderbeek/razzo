@@ -4,7 +4,8 @@
 \alias{collect_nltt_stats}
 \title{Collect nltt statistics}
 \usage{
-collect_nltt_stats(project_folder_name = get_path("razzo_project"))
+
+  collect_nltt_stats(project_folder_name = get_razzo_path("razzo_project"))
 }
 \arguments{
 \item{project_folder_name}{project folder name,

@@ -9,7 +9,7 @@ run_razzo_from_file(parameters_filename)
 \arguments{
 \item{parameters_filename}{name of a file that contains
 a \code{razzo_params},
-as can be created by \link{create_razzo_params}}
+as can be created by \link{create_params_razzo}}
 }
 \description{
 Run a razzo experiment from a filename

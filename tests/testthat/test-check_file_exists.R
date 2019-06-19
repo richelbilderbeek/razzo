@@ -4,7 +4,7 @@ test_that("use", {
 
   expect_silent(
     check_file_exists(
-      get_path("parameters.RDa")
+      get_razzo_path("parameters.RDa")
     )
   )
   expect_error(

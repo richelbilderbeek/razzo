@@ -1,6 +1,6 @@
 #' Get a Peregrine-friendly temporary directory
-#' @export
 #' @author Richel J.C. Bilderbeek
+#' @export
 get_pff_tempdir <- function() {
   dirname <- file.path(
     rappdirs::user_cache_dir(),

@@ -4,7 +4,7 @@ test_that("use", {
 
   # Should create 'results/'marg_liks.csv'
   filename <- create_marg_liks_file(
-    project_folder_name = get_path("razzo_project")
+    project_folder_name = get_razzo_path("razzo_project")
   )
 
   # File should be created
@@ -41,7 +41,7 @@ test_that("abuse", {
 test_that("marginal likelihood estimates must differ", {
 
   first_params_file_path <- list.files(
-    path = get_path("razzo_project"),
+    path = get_razzo_path("razzo_project"),
     pattern = "parameters.RDa",
     recursive = TRUE,
     full.names = TRUE

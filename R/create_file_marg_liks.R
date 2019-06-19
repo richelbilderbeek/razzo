@@ -3,7 +3,8 @@
 #' @inheritParams default_params_doc
 #' @return the name of the saved file
 #' @author Giovanni Laudanno
-#' @export
+#' @aliases create_file_marg_liks create_marg_liks_file
+#' @export create_file_marg_liks create_marg_liks_file
 create_file_marg_liks <- create_marg_liks_file <- function(
   project_folder_name = getwd()
 ) {

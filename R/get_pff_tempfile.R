@@ -3,8 +3,8 @@
 #' @param pff_tmpdir Peregrine-friendly temporary directory name,
 #'   see \link{get_pff_tempdir}
 #' @param fileext see \link{tempfile}
-#' @export
 #' @author Richel J.C. Bilderbeek
+#' @export
 get_pff_tempfile <- function(
   pattern = "razzo_file_",
   pff_tmpdir = get_pff_tempdir(),

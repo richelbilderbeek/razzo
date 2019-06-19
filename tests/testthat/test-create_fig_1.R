@@ -4,7 +4,18 @@ test_that("use", {
   skip("WIP")
   # Should return plot
   plot <- create_fig_1(
-    project_folder_name = get_path("razzo_project")
+    project_folder_name = get_razzo_path("razzo_project")
+  )
+  expect_true(
+    all(class(plot) == c("gg", "ggplot"))
+  )
+})
+
+test_that("multiple", {
+  skip("WIP")
+  # Should return plot
+  plot <- create_fig_1(
+    project_folder_name = get_razzo_path("razzo_project")
   )
   expect_true(
     all(class(plot) == c("gg", "ggplot"))

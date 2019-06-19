@@ -34,41 +34,6 @@ check_project_folder_name <- function(project_folder_name) {
   }
 }
 
-#' Get the full path of a file in the \code{inst/extdata} folder
-#' @inheritParams default_params_doc
-#' @return the full path of the filename, if and only if
-#'   the file is present. Will stop otherwise.
-#' @author Richel J.C. Bilderbeek, Giovanni Laudanno
-#' @examples
-#'   testit::assert(is.character(get_path("parameters.RDa")))
-#' @export
-get_path <- function(filename) {
-  full <- system.file("extdata", filename, package = "razzo")
-  if (!file.exists(full)) {
-    stop("'filename' must be the name of a file in 'inst/extdata'")
-  }
-  full
-}
-
-#' @title Get paths for the results
-#' @description Get paths for the results
-#' @inheritParams default_params_doc
-#' @return the paths of the results
-#' @author Giovanni Laudanno
-#' @export
-get_results_path <- function(
-  project_folder_name
-) {
-
-  check_project_folder_name(project_folder_name) # nolint
-
-  results_folder <- file.path(
-    project_folder_name,
-    "results"
-  )
-  results_folder
-}
-
 #' Opens a parameter file and parses it
 #' @inheritParams default_params_doc
 #' @return the razzo parameters
@@ -172,9 +137,4 @@ get_generative_model <- function(seed_folder) {
       tree_prior = levels(droplevels(mbd_tree_prior))
     )
   )
-}
-
-#' @noRd
-file_path <- function(..., fsep = .Platform$file.sep){
-  gsub("//", "/", file.path(..., fsep = fsep))
 }

@@ -1,3 +1,4 @@
+context("test-is_pff")
 # is_pff: Is Peregrine Friendly Filename
 
 test_that("use", {

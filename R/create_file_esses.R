@@ -3,8 +3,9 @@
 #' @inheritParams default_params_doc
 #' @return the esses
 #' @author Giovanni Laudanno
-#' @export
-create_esses_file <- function(
+#' @aliases create_file_esses create_esses_file
+#' @export create_file_esses create_esses_file
+create_file_esses <- create_esses_file <- function(
   project_folder_name = getwd()
 ) {
 

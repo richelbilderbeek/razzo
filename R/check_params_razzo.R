@@ -4,8 +4,9 @@
 #' else will do nothing
 #' @inheritParams default_params_doc
 #' @author Richel J.C. Bilderbeek
-#' @export
-check_razzo_params <- function(
+#' @aliases check_razzo_params check_params_razzo
+#' @export check_razzo_params check_params_razzo
+check_razzo_params <- check_params_razzo <- function(
   razzo_params
 ) {
   argument_names <- c(

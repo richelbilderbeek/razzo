@@ -2,7 +2,7 @@
 #' @inheritParams default_params_doc
 #' @param parameters_filename name of a file that contains
 #'   a \code{razzo_params},
-#'   as can be created by \link{create_razzo_params}
+#'   as can be created by \link{create_params_razzo}
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
 run_razzo_from_file <- function(

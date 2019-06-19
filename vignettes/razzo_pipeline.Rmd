@@ -57,7 +57,10 @@ dir.create(path = project_folder_name, recursive = TRUE, showWarnings = FALSE)
 Here we create all testing parameter files, which are only a few:
 
 ```{r create_parameter_files}
-parameters_filenames <- create_test_parameters_files(project_folder_name)
+parameters_filenames <- create_files_razzo_paramses(
+  project_folder_name = project_folder_name,
+  experiment_type = "test"
+)
 ```
 
 ## Step 2: Run the parameter files
@@ -73,7 +76,9 @@ for (parameters_filename in parameters_filenames) {
 ## Step 3: figure 1
 
 ```{r}
-create_fig_1(project_folder_name)
+if (rappdirs::app_dir()$os != "win") {
+  create_fig_1(project_folder_name)
+}
 ```
 
 ## Step 4: what is the effect of MBD on the error?

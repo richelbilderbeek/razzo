@@ -1,10 +1,10 @@
 #' Create the parameters for one experiment.
-#'
 #' Run one point of the experiment
 #' @inheritParams default_params_doc
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
-#' @export
-create_razzo_params <- function(
+#' @aliases create_params_razzo create_razzo_params
+#' @export create_params_razzo create_razzo_params
+create_params_razzo <- create_razzo_params <- function(
   mbd_params,
   pir_params,
   misc_params

@@ -1,4 +1,4 @@
-context("test-create_razzo_params")
+context("test-create_params_razzo")
 
 test_that("use", {
 
@@ -6,7 +6,7 @@ test_that("use", {
   pir_params <- create_test_pff_pir_params()
   misc_params <- create_misc_params()
 
-  razzo_params <- create_razzo_params(
+  razzo_params <- create_params_razzo(
     mbd_params = mbd_params,
     pir_params = pir_params,
     misc_params = misc_params
