@@ -4,7 +4,7 @@
 #' @return the name of the saved file
 #' @author Giovanni Laudanno
 #' @export
-create_marg_liks_file <- function(
+create_file_marg_liks <- create_marg_liks_file <- function(
   project_folder_name = getwd()
 ) {
 
