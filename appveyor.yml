@@ -27,11 +27,10 @@ build_script:
   - travis-tool.sh install_github ropensci/beastier
   - travis-tool.sh install_github ropensci/mauricer
   - travis-tool.sh install_github ropensci/babette
+  - travis-tool.sh install_github richelbilderbeek/mcbette
   - travis-tool.sh install_github richelbilderbeek/pirouette
   - travis-tool.sh install_github Giappo/mbd
-  - travis-tool.sh install_github richelbilderbeek/becosys
   - travis-tool.sh install_github richelbilderbeek/razzo
-  - travis-tool.sh install_github xl0418/dododo
   - travis-tool.sh install_deps
   - Rscript -e "beastier::install_beast2()"
   - Rscript -e 'mauricer::install_beast2_pkg("NS")'

@@ -15,13 +15,12 @@ r_github_packages:
   - jimhester/lintr
   - MangoTheCat/goodpractice
   - ropensci/spelling
-  - ropensci/beastier@develop
+  - ropensci/beastier
   - ropensci/mauricer
   - ropensci/babette
   - richelbilderbeek/mcbette
   - Giappo/mbd
-  - richelbilderbeek/becosys
-  - richelbilderbeek/pirouette@richel
+  - richelbilderbeek/pirouette
 
 before_install:
   - sudo add-apt-repository -y ppa:opencpu/imagemagick
@@ -46,7 +45,7 @@ script:
   - travis_wait 50 R CMD check *tar.gz
   # Check dead links
   - # rm .travis.yml
-  - # ./scripts/check_dead_links
+  - #./scripts/check_dead_links
 
 after_success:
   - Rscript -e 'covr::codecov()'
