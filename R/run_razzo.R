@@ -65,9 +65,6 @@ run_razzo <- function(
     )
   }
 
-  # Yup, debugging for now... remove next line when things work smoothly
-  razzo_params$pir_params$verbose <- TRUE
-
   output <- pirouette::pir_run(
     phylogeny = phylogeny,
     pir_params = razzo_params$pir_params
