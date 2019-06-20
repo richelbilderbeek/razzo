@@ -49,7 +49,7 @@ create_parameters_files <- create_files_razzo_paramses <- function(
     parameters_filenames <- save_razzo_paramses(
       project_folder_name = project_folder_name,
       mbd_paramses = mbd_paramses,
-      mcmc_chain_length = 10000
+      mcmc_chain_length = 3000
     )
     testit::assert(nrow(mbd_paramses) == length(parameters_filenames))
   }
