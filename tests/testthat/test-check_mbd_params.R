@@ -2,7 +2,7 @@ context("test-check_mbd_params")
 
 test_that("use", {
 
-  mbd_params <- create_mbd_params(
+  mbd_params <- razzo::create_mbd_params(
     lambda = 0.1,
     mu = 0.15,
     nu = 0.2,
@@ -20,7 +20,7 @@ test_that("abuse", {
 
   expect_error(
     check_mbd_params(
-      mbd_params <- create_mbd_params(
+      mbd_params = razzo::create_mbd_params(
         lambda = "a",
         mu = 0.15,
         nu = 0.2,
@@ -34,7 +34,7 @@ test_that("abuse", {
   )
   expect_error(
     check_mbd_params(
-      mbd_params <- create_mbd_params(
+      mbd_params = razzo::create_mbd_params(
         lambda = 0.2,
         mu = "a",
         nu = 0.2,
@@ -48,7 +48,7 @@ test_that("abuse", {
   )
   expect_error(
     check_mbd_params(
-      mbd_params <- create_mbd_params(
+      mbd_params = razzo::create_mbd_params(
         lambda = 0.2,
         mu = 0.15,
         nu = "a",
@@ -62,7 +62,7 @@ test_that("abuse", {
   )
   expect_error(
     check_mbd_params(
-      mbd_params <- create_mbd_params(
+      mbd_params = razzo::create_mbd_params(
         lambda = 0.2,
         mu = 0.15,
         nu = 0.2,
@@ -76,7 +76,7 @@ test_that("abuse", {
   )
   expect_error(
     check_mbd_params(
-      mbd_params <- create_mbd_params(
+      mbd_params = razzo::create_mbd_params(
         lambda = -1,
         mu = 0.15,
         nu = 0.2,
@@ -90,7 +90,7 @@ test_that("abuse", {
   )
   expect_error(
     check_mbd_params(
-      mbd_params <- create_mbd_params(
+      mbd_params = razzo::create_mbd_params(
         lambda = 0.2,
         mu = -1,
         nu = 0.2,
@@ -104,7 +104,7 @@ test_that("abuse", {
   )
   expect_error(
     check_mbd_params(
-      mbd_params <- create_mbd_params(
+      mbd_params = razzo::create_mbd_params(
         lambda = 0.2,
         mu = 0.15,
         nu = -1,
@@ -118,7 +118,7 @@ test_that("abuse", {
   )
   expect_error(
     check_mbd_params(
-      mbd_params <- create_mbd_params(
+      mbd_params = razzo::create_mbd_params(
         lambda = 0.2,
         mu = 0.15,
         nu = 0.2,
@@ -132,7 +132,7 @@ test_that("abuse", {
   )
   expect_error(
     check_mbd_params(
-      mbd_params <- create_mbd_params(
+      mbd_params = razzo::create_mbd_params(
         lambda = 0.2,
         mu = 0.15,
         nu = 0.2,
@@ -146,7 +146,7 @@ test_that("abuse", {
   )
   expect_error(
     check_mbd_params(
-      mbd_params <- create_mbd_params(
+      mbd_params = razzo::create_mbd_params(
         lambda = 0.2,
         mu = 0.15,
         nu = 0.2,
@@ -160,7 +160,7 @@ test_that("abuse", {
   )
   expect_error(
     check_mbd_params(
-      mbd_params <- create_mbd_params(
+      mbd_params = razzo::create_mbd_params(
         lambda = 0.2,
         mu = 0.15,
         nu = 0.2,
@@ -174,7 +174,7 @@ test_that("abuse", {
   )
   expect_error(
     check_mbd_params(
-      mbd_params <- create_mbd_params(
+      mbd_params = razzo::create_mbd_params(
         lambda = 0.2,
         mu = 0.15,
         nu = 0.2,
@@ -188,7 +188,7 @@ test_that("abuse", {
   )
     expect_error(
     check_mbd_params(
-      mbd_params <- create_mbd_params(
+      mbd_params = razzo::create_mbd_params(
         lambda = 0.2,
         mu = 0.15,
         nu = 0.2,
