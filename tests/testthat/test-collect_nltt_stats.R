@@ -3,7 +3,7 @@ context("test-collect_nltt_stats")
 test_that("use", {
 
   df <- collect_nltt_stats(
-    project_folder_name = get_path("razzo_project")
+    project_folder_name = get_razzo_path("razzo_project")
   )
 
   # Experimental parameters that vary

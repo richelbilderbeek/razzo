@@ -3,9 +3,10 @@
 #' @inheritParams default_params_doc
 #' @return a dataframe with parameters and marginal likelihoods
 #' @author Giovanni Laudanno
-#' @export
-collect_marg_liks <- function(
-  project_folder_name = get_path("razzo_project")
+#' @aliases collect_evidences collect_marg_liks
+#' @export collect_evidences collect_marg_liks
+collect_evidences <- collect_marg_liks <- function(
+  project_folder_name = get_razzo_path("razzo_project")
 ) {
   check_project_folder_name(project_folder_name) # nolint
 

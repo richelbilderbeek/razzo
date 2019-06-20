@@ -1,17 +1,17 @@
-context("collect_esses")
+context("test-collect_esses")
 
 test_that("use", {
 
-  # Error in collect_esses(project_folder_name = get_path("razzo_project")) :
+  # Error in collect_esses(project_folder_name = get_razzo_path("razzo_project")) :
   # No .log files found at path '/home/richel/GitHubs/razzo/inst/extdata/razzo_project/data/0.2-0.15-1-0.1/1'
   # Maybe the razzo experiment is not run yet?
   if (1 == 2) {
-    for (file in list.files(get_path("razzo_project"), recursive = TRUE, pattern = "parameters\\.RDa")) {
+    for (file in list.files(get_razzo_path("razzo_project"), recursive = TRUE, pattern = "parameters\\.RDa")) {
       run_razzo(open_parameters_file(file))
     }
   }
   df <- collect_esses(
-    project_folder_name = get_path("razzo_project")
+    project_folder_name = get_razzo_path("razzo_project")
   )
 
   # Experimental parameters that vary

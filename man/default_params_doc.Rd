@@ -9,9 +9,9 @@ default_params_doc(alignment, alignment_params, bd_mutation_rate, bd_tree,
   bd_tree_filename, brts, chain_length, clock_model, cond, crown_age,
   error_measure_params, experiment_type, experiments, fasta_filename,
   filename, folder_name, init_speciation_rate, init_extinction_rate,
-  lambda, mbd_l_matrix, mbd_mutation_rate, mbd_params, mbd_params_interval,
-  mbd_sim_rng_seed, mbd_tree, mcmc_chain_length, misc_params, mu,
-  mutation_rate, n_replicates, nu, nu_events, parameters,
+  lambda, mbd_l_matrix, mbd_mutation_rate, mbd_params, mbd_paramses,
+  mbd_params_interval, mbd_sim_rng_seed, mbd_tree, mcmc_chain_length,
+  misc_params, mu, mutation_rate, n_replicates, nu, nu_events, parameters,
   parameter_filename, parameters_filename, phylo, pir_params,
   posterior_trees, precision, project_folder_name, q, razzo_params,
   sample_interval, seed, sequence_length, sim_pars, sim_phylo, site_model,
@@ -72,6 +72,10 @@ from a MBD tree}
 
 \item{mbd_params}{MBD parameter set}
 
+\item{mbd_paramses}{data frame with one MBD parameter set per row.
+If a simulation with one MBD parameter set has 10 replicates,
+this data frame will hold 10 rows, each with different seeds}
+
 \item{mbd_params_interval}{data frame with one MBD parameter set per row.
 If a simulation with one MBD parameter set has 10 replicates,
 this data frame will hold 10 rows, each with different seeds}
@@ -121,7 +125,7 @@ will be the full path to \code{razzo_project}}
 a multiple event. See \code{\link[mbd]{mbd_sim}}}
 
 \item{razzo_params}{a parameter set for one \code{razzo} experiment,
-as created by \link{create_razzo_params}
+as created by \link{create_params_razzo}
 and used by \link{run_razzo}}
 
 \item{sample_interval}{the interval at which the MCMC algorithm

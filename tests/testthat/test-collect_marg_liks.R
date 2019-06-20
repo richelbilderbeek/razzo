@@ -3,7 +3,7 @@ context("test-collect_marg_liks")
 test_that("use", {
 
   df <- collect_marg_liks(
-    project_folder_name = get_path("razzo_project")
+    project_folder_name = get_razzo_path("razzo_project")
   )
 
   # Experimental parameters that vary

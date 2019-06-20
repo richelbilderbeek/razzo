@@ -1,3 +1,5 @@
+context("test-get_pff_tempfile")
+
 test_that("use", {
   # Twice, to be sure all files are unique
   expect_silent(get_pff_tempfile())

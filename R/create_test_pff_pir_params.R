@@ -1,3 +1,5 @@
+#' @author Richel J.C. Bilderbeek
+#' @noRd
 create_test_pff_pir_params <- function() {
   pir_params <- pirouette::create_test_pir_params(
     alignment_params = create_test_alignment_params(
@@ -7,7 +9,10 @@ create_test_pff_pir_params <- function() {
       pirouette::create_test_gen_experiment(
         inference_model = beautier::create_inference_model(
           mrca_prior = beautier::create_mrca_prior(
-            mrca_distr = beautier::create_normal_distr(mean = 15.0, sigma = 0.001),
+            mrca_distr = beautier::create_normal_distr(
+              mean = 15.0,
+              sigma = 0.001
+            ),
             is_monophyletic = TRUE
           ),
           mcmc = beautier::create_mcmc(
@@ -36,4 +41,5 @@ create_test_pff_pir_params <- function() {
       fileext = ".csv"
     )
   )
+  pir_params
 }

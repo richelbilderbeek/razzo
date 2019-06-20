@@ -3,8 +3,9 @@
 #' @inheritParams default_params_doc
 #' @return the name of the saved file
 #' @author Giovanni Laudanno
-#' @export
-create_nltt_stats_file <- function(
+#' @aliases create_file_nltt_stats create_nltt_stats_file
+#' @export create_file_nltt_stats create_nltt_stats_file
+create_file_nltt_stats <- create_nltt_stats_file <- function(
   project_folder_name = getwd()
 ) {
 

@@ -8,7 +8,7 @@ run_razzo(razzo_params)
 }
 \arguments{
 \item{razzo_params}{a parameter set for one \code{razzo} experiment,
-as created by \link{create_razzo_params}
+as created by \link{create_params_razzo}
 and used by \link{run_razzo}}
 }
 \value{

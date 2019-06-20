@@ -6,9 +6,12 @@ test_that("use", {
 
   # super_folder_name <- get_pff_tempdir()
   # project_folder_name <- file.path(super_folder_name, "razzo_project")
-  project_folder_name <- get_path("razzo_project")
+  project_folder_name <- get_razzo_path("razzo_project")
   dir.create(path = project_folder_name, recursive = TRUE, showWarnings = FALSE)
-  parameters_filenames <- create_test_parameters_files(project_folder_name)
+  parameters_filenames <- create_files_razzo_paramses(
+    project_folder_name = project_folder_name,
+    experiment_type = "test"
+  )
 
   # Only run the first
   for (i in seq_along(parameters_filenames)) {

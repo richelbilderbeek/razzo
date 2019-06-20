@@ -1,8 +1,9 @@
 #' Check the misc parameters
 #' @inheritParams default_params_doc
 #' @author Giovanni Laudanno
-#' @export
-check_misc_params <- function(
+#' @aliases check_misc_params check_params_misc
+#' @export check_misc_params check_params_misc
+check_misc_params <- check_params_misc <- function(
   misc_params
 ) {
   argument_names <- c(

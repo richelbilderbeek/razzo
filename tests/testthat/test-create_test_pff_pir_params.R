@@ -1,3 +1,5 @@
+context("test-create_test_pff_pir_params")
+
 test_that("use", {
   pir_params <- create_test_pff_pir_params()
   expect_true(is_pff(pir_params$twinning_params$twin_tree_filename))

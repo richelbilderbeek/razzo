@@ -32,6 +32,9 @@
 #' @param mbd_params_interval data frame with one MBD parameter set per row.
 #'   If a simulation with one MBD parameter set has 10 replicates,
 #'   this data frame will hold 10 rows, each with different seeds
+#' @param mbd_paramses data frame with one MBD parameter set per row.
+#'   If a simulation with one MBD parameter set has 10 replicates,
+#'   this data frame will hold 10 rows, each with different seeds
 #' @param mbd_mutation_rate the mutation rate when creating an alignment
 #'   from a MBD tree
 #' @param mbd_sim_rng_seed rng seed to simulate a mbd tree
@@ -61,7 +64,7 @@
 #' @param q per-species speciation probability in case of occurrance of
 #'   a multiple event. See \code{\link[mbd]{mbd_sim}}
 #' @param razzo_params a parameter set for one \code{razzo} experiment,
-#'   as created by \link{create_razzo_params}
+#'   as created by \link{create_params_razzo}
 #'   and used by \link{run_razzo}
 #' @param sample_interval the interval at which the MCMC algorithm
 #'   makes a measurement
@@ -108,6 +111,7 @@ default_params_doc <- function(
   mbd_l_matrix,
   mbd_mutation_rate,
   mbd_params,
+  mbd_paramses,
   mbd_params_interval,
   mbd_sim_rng_seed,
   mbd_tree,
