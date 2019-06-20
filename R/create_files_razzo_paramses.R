@@ -20,7 +20,7 @@ create_parameters_files <- create_files_razzo_paramses <- function(
       nu = 1.0,
       q = 0.1,
       seed = seq(from = 1, to = n_replicates, by = 1),
-      crown_age = 15.0,
+      crown_age = 6.0,
       cond = 1
     )
     testit::assert(
@@ -40,7 +40,7 @@ create_parameters_files <- create_files_razzo_paramses <- function(
       nu = c(1.0, 1.5, 2.0, 2.5),
       q = c(0.1, 0.15, 0.2),
       seed = seq(from = 1, to = n_replicates, by = 1),
-      crown_age = 10.0,
+      crown_age = 6.0,
       cond = 1
     )
     testit::assert(
@@ -151,7 +151,10 @@ save_razzo_paramses <- function(
     check_misc_params(misc_params)
     mrca_prior <- beautier::create_mrca_prior(
       is_monophyletic = TRUE,
-      mrca_distr = beautier::create_normal_distr(mean = 15.0, sigma = 0.0001)
+      mrca_distr = beautier::create_normal_distr(
+        mean = mbd_params$crown_age,
+        sigma = 0.0001
+      )
     )
 
     mcmc <- beautier::create_mcmc(chain_length = mcmc_chain_length, store_every = 1000)
