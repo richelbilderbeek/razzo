@@ -41,15 +41,15 @@ before_script:
   - Rscript -e 'devtools::install_github("Giappo/mbd")'
 
 script:
-  - travis_wait 50 R CMD build .
-  - travis_wait 50 R CMD check *tar.gz
-  # Check dead links
-  - # rm .travis.yml
-  - #./scripts/check_dead_links
+  - travis_wait 60 R CMD build .
+  - travis_wait 60 R CMD check *tar.gz
 
 after_success:
   - Rscript -e 'covr::codecov()'
   - proselint *.md | egrep -v "typography\.symbols\.curly_quotes"
+  # Check dead links
+  - rm .travis.yml
+  - ./scripts/check_dead_links || true
 
 after_fail:
   - cat /home/travis/build/richelbilderbeek/razzo/razzo.Rcheck/00check.log

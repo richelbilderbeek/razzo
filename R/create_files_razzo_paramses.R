@@ -14,13 +14,13 @@ create_parameters_files <- create_files_razzo_paramses <- function(
   testit::assert(experiment_type == "test" || experiment_type == "full")
   if (experiment_type == "test") {
     n_replicates <- 2
-    mbd_paramses <- create_paramses_mbd(
+    mbd_paramses <- razzo::create_paramses_mbd(
       lambda = 0.2,
       mu = 0.15,
       nu = 1.0,
       q = 0.1,
       seed = seq(from = 1, to = n_replicates, by = 1),
-      crown_age = 15.0,
+      crown_age = 6.0,
       cond = 1
     )
     testit::assert(
@@ -33,14 +33,14 @@ create_parameters_files <- create_files_razzo_paramses <- function(
     )
     testit::assert(nrow(mbd_paramses) == length(parameters_filenames))
   } else {
-    n_replicates <- 10
-    mbd_paramses <- create_paramses_mbd(
+    n_replicates <- 2
+    mbd_paramses <- razzo::create_paramses_mbd(
       lambda = 0.2,
       mu = c(0, 0.15),
       nu = c(1.0, 1.5, 2.0, 2.5),
       q = c(0.1, 0.15, 0.2),
       seed = seq(from = 1, to = n_replicates, by = 1),
-      crown_age = 10.0,
+      crown_age = 6.0,
       cond = 1
     )
     testit::assert(
@@ -48,7 +48,8 @@ create_parameters_files <- create_files_razzo_paramses <- function(
     )
     parameters_filenames <- save_razzo_paramses(
       project_folder_name = project_folder_name,
-      mbd_paramses = mbd_paramses
+      mbd_paramses = mbd_paramses,
+      mcmc_chain_length = 100000
     )
     testit::assert(nrow(mbd_paramses) == length(parameters_filenames))
   }
@@ -64,7 +65,7 @@ create_parameters_files <- create_files_razzo_paramses <- function(
 #' @export
 save_razzo_paramses <- function(
   project_folder_name,
-  mbd_paramses = create_paramses_mbd(
+  mbd_paramses = razzo::create_paramses_mbd(
     lambda = 0.2,
     mu = 0.15,
     nu = c(1.0, 1.5, 2.0),
@@ -87,7 +88,7 @@ save_razzo_paramses <- function(
     )
   ),
   error_measure_params = pirouette::create_error_measure_params(),
-  mcmc_chain_length = beautier::create_mcmc()$chain_length
+  mcmc_chain_length = beautier::create_mcmc()$chain_length / 100
 ) {
   testit::assert(is_pff(project_folder_name))
   # Must start at one, as the BEAST2 RNG seed must be at least one.
@@ -144,14 +145,17 @@ save_razzo_paramses <- function(
     twinning_params$twin_evidence_filename <- file.path(
       seed_folder, "mbd_marg_lik_twin.csv"
     )
-    misc_params <- create_misc_params()
+    misc_params <- razzo::create_misc_params()
     misc_params$tree_filename <- file.path(
       seed_folder, "mbd.tree"
     )
     check_misc_params(misc_params)
     mrca_prior <- beautier::create_mrca_prior(
       is_monophyletic = TRUE,
-      mrca_distr = beautier::create_normal_distr(mean = 15.0, sigma = 0.0001)
+      mrca_distr = beautier::create_normal_distr(
+        mean = mbd_params$crown_age,
+        sigma = 0.0001
+      )
     )
 
     mcmc <- beautier::create_mcmc(chain_length = mcmc_chain_length, store_every = 1000)
@@ -267,7 +271,7 @@ save_razzo_paramses <- function(
       error_measure_params = error_measure_params,
       evidence_filename = file.path(seed_folder, "mbd_marg_lik.csv")
     )
-    razzo_params <- create_razzo_params(
+    razzo_params <- razzo::create_razzo_params(
       mbd_params = mbd_params,
       pir_params = pir_params,
       misc_params = misc_params
