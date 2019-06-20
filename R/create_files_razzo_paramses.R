@@ -33,7 +33,7 @@ create_parameters_files <- create_files_razzo_paramses <- function(
     )
     testit::assert(nrow(mbd_paramses) == length(parameters_filenames))
   } else {
-    n_replicates <- 1
+    n_replicates <- 2
     mbd_paramses <- razzo::create_paramses_mbd(
       lambda = 0.2,
       mu = c(0, 0.15),
