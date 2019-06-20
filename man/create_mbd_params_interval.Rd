@@ -5,9 +5,9 @@
 \alias{create_paramses_mbd}
 \title{Create the parameter interval for mbd setting}
 \usage{
-create_mbd_params_interval(lambda = 0.2, mu = 0.15, nu = c(1, 1.5,
-  2), q = c(0.1, 0.15, 0.2), seed = seq(from = 1, to = 2, by = 1),
-  crown_age = 15, cond = 1)
+create_mbd_params_interval(lambda = 0.2, mu = c(0, 0.15), nu = c(1,
+  1.5, 2, 2.5), q = c(0.1, 0.15, 0.2), seed = seq(from = 1, to = 2, by
+  = 1), crown_age = 15, cond = 1)
 }
 \arguments{
 \item{lambda}{per-lineage speciation rate. See \code{\link[mbd]{mbd_sim}}}

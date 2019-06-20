@@ -223,9 +223,9 @@ create_fig_1 <- function(
     ##### Medians for the vertical lines #####
 
     # Collect the medians
-    medians <- df_long %>%
-      dplyr::group_by(tree_and_model) %>%
-      dplyr::summarise(median = stats::median(error_value))
+    # medians <- df_long %>% # nolint
+    #   dplyr::group_by(tree_and_model) %>% # nolint
+    #   dplyr::summarise(median = stats::median(error_value)) # nolint
 
     ##### Only keep 95% of x axis values #####
 
@@ -234,7 +234,12 @@ create_fig_1 <- function(
 
     ##### Facet Labels
 
+    expected_mbd_params <- create_paramses_mbd()
+    expected_nus <- unique(expected_mbd_params$nu)
+    expected_qs <- unique(expected_mbd_params$q)
+
     # inference models
+    # need to fix this
     inference_model_labels <- c("Best", "Generative") # what you show
     names(inference_model_labels) <- c("candidate", "generative") # what's in the df
 
@@ -242,26 +247,32 @@ create_fig_1 <- function(
     nu_values <- unique(df_long$nu)
     nu_labels <- paste0("nu==", nu_values) # what you show
     names(nu_labels) <- nu_values # what's in the df
-    if (all(nu_labels == c("nu==1", "nu==1.5", "nu==2", "nu==2.5"))) {
+    if (all(nu_values == expected_nus)) {
       df_long$nu2 <- factor(
         df_long$nu,
         labels = c("nu==1", "nu==1.5", "nu==2", "nu==2.5")
       )
     } else {
-      stop("Fix nu labels!")
+      df_long$nu2 <- factor(
+        df_long$nu,
+        labels = nu_labels
+      )
     }
 
     # q
     q_values <- unique(df_long$q)
     q_labels <- paste0("q==", q_values) # what you show
     names(q_labels) <- q_values # what's in the df
-    if (all(q_labels == c("q==0.1", "q==0.15", "q==0.2"))) {
+    if (all(q_values == expected_qs)) {
       df_long$q2 <- factor(
         df_long$q,
         labels = c("q==0.1", "q==0.15", "q==0.2")
       )
     } else {
-      stop("Fix q labels!")
+      df_long$q2 <- factor(
+        df_long$q,
+        labels = q_labels
+      )
     }
 
     ##### Plot #####
