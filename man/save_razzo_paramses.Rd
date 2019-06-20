@@ -6,9 +6,9 @@
   \code{project_folder_name/data/[settings]/seed/[models]}}
 \usage{
 save_razzo_paramses(project_folder_name,
-  mbd_paramses = create_paramses_mbd(lambda = 0.2, mu = 0.15, nu = c(1,
-  1.5, 2), q = c(0.1, 0.15, 0.2), seed = seq(from = 1, to = 2, by = 1),
-  crown_age = 15, cond = 1),
+  mbd_paramses = razzo::create_paramses_mbd(lambda = 0.2, mu = 0.15, nu =
+  c(1, 1.5, 2), q = c(0.1, 0.15, 0.2), seed = seq(from = 1, to = 2, by =
+  1), crown_age = 15, cond = 1),
   twinning_params = pirouette::create_twinning_params(twin_tree_filename
   = get_pff_tempfile(), twin_alignment_filename = get_pff_tempfile(),
   twin_evidence_filename = get_pff_tempfile()),
@@ -17,7 +17,7 @@ save_razzo_paramses(project_folder_name,
   fasta_filename = get_pff_tempfile(pattern = "alignment_", fileext =
   ".fasta")),
   error_measure_params = pirouette::create_error_measure_params(),
-  mcmc_chain_length = beautier::create_mcmc()$chain_length)
+  mcmc_chain_length = beautier::create_mcmc()$chain_length/100)
 }
 \arguments{
 \item{project_folder_name}{project folder name,
