@@ -19,7 +19,7 @@ create_parameters_files <- create_files_razzo_paramses <- function(
       mu = 0.15,
       nu = 1.0,
       q = 0.1,
-      seed = seq(from = 1, to = n_replicates, by = 1),
+      n_replicates = n_replicates,
       crown_age = 6.0,
       cond = 1
     )
@@ -39,7 +39,7 @@ create_parameters_files <- create_files_razzo_paramses <- function(
       mu = c(0, 0.15),
       nu = c(1.0, 1.5, 2.0, 2.5),
       q = c(0.1, 0.15, 0.2),
-      seed = seq(from = 1, to = n_replicates, by = 1),
+      n_replicates = n_replicates,
       crown_age = 6.0,
       cond = 1
     )
@@ -70,7 +70,7 @@ save_razzo_paramses <- function(
     mu = 0.15,
     nu = c(1.0, 1.5, 2.0),
     q = c(0.1, 0.15, 0.2),
-    seed = seq(from = 1, to = 2, by = 1),
+    n_replicates = 2,
     crown_age = 15.0,
     cond = 1
   ),
