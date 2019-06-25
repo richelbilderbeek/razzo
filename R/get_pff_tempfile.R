@@ -3,6 +3,8 @@
 #' @param pff_tmpdir Peregrine-friendly temporary directory name,
 #'   see \link{get_pff_tempdir}
 #' @param fileext see \link{tempfile}
+#' @seealso use \link{get_pff_tempdir}
+#' to get a Peregrine-friendly folder name
 #' @author Richel J.C. Bilderbeek
 #' @export
 get_pff_tempfile <- function(

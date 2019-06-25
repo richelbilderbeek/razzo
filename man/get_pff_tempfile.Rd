@@ -18,6 +18,10 @@ see \link{get_pff_tempdir}}
 \description{
 Get a Peregrine-friendly temporary filename
 }
+\seealso{
+use \link{get_pff_tempdir}
+to get a Peregrine-friendly folder name
+}
 \author{
 Richel J.C. Bilderbeek
 }

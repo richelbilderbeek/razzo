@@ -9,6 +9,10 @@ get_pff_tempdir()
 \description{
 Get a Peregrine-friendly temporary directory
 }
+\seealso{
+use \link{get_pff_tempfile}
+to get a Peregrine-friendly filename
+}
 \author{
 Richel J.C. Bilderbeek
 }
