@@ -123,12 +123,11 @@ test_that("use", {
     )
 
     razzo_params <- good_razzo_params
-    razzo_params$pir_params$experiments[[i]]$errors_filename <- "/tmp/puf"
+    razzo_params$pir_params$experiments[[i]]$errors_filename <- "/tmp/puf.csv"
     expect_error(
       check_razzo_params(razzo_params),
       "Peregrine-unfriendly filename for '"
     )
-
   }
 
   # Check misc_params
