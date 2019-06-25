@@ -1,5 +1,6 @@
+#' Create a \code{pir_params} with PFFs
 #' @author Richel J.C. Bilderbeek
-#' @noRd
+#' @export
 create_test_pff_pir_params <- function() {
   pir_params <- pirouette::create_test_pir_params(
     alignment_params = create_test_alignment_params(
