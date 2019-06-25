@@ -4,7 +4,10 @@
 \alias{create_test_pff_pir_params}
 \title{Create a \code{pir_params} with PFFs}
 \usage{
-create_test_pff_pir_params()
+
+  create_test_pff_pir_params(alignment_params = pirouette::create_alignment_params(fasta_filename
+  = get_pff_tempfile()),
+  experiments = list(pirouette::create_test_pff_gen_experiment()))
 }
 \description{
 Create a \code{pir_params} with PFFs

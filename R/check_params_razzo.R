@@ -77,6 +77,10 @@ check_razzo_params <- check_params_razzo <- function(
     }
   }
 
+
+  if (!is_pff(pir_params$evidence_filename)) {
+    stop("Peregrine-unfriendly filename for 'pir_params$evidence_filename'")
+  }
   if (!is_pff(pir_params$twinning_params$twin_tree_filename)) {
     stop("Peregrine-unfriendly filename for 'pir_params$twinning_params$twin_tree_filename'")
   }
@@ -108,6 +112,9 @@ check_razzo_params <- check_params_razzo <- function(
     }
     if (!is_pff(experiment$beast2_options$beast2_path)) {
       stop("Peregrine-unfriendly filename for 'experiment$beast2_options$beast2_path'")
+    }
+    if (!is_pff(experiment$errors_filename)) {
+      stop("Peregrine-unfriendly filename for 'experiment$errors_filename'")
     }
   }
 }
