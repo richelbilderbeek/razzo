@@ -6,8 +6,8 @@
 \title{Create the parameter interval for mbd setting}
 \usage{
 create_mbd_params_interval(lambda = 0.2, mu = c(0, 0.15), nu = c(1,
-  1.5, 2, 2.5), q = c(0.1, 0.15, 0.2), seed = seq(from = 1, to = 2, by
-  = 1), crown_age = 15, cond = 1)
+  1.5, 2, 2.5), q = c(0.1, 0.15, 0.2), n_replicates = 2,
+  crown_age = 15, cond = 1)
 }
 \arguments{
 \item{lambda}{per-lineage speciation rate. See \code{\link[mbd]{mbd_sim}}}
@@ -20,7 +20,7 @@ See \code{\link[mbd]{mbd_sim}}}
 \item{q}{per-species speciation probability in case of occurrance of
 a multiple event. See \code{\link[mbd]{mbd_sim}}}
 
-\item{seed}{a random number generator seed}
+\item{n_replicates}{number of replicates}
 
 \item{crown_age}{The crown age of the tree.}
 

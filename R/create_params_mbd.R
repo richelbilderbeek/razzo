@@ -53,7 +53,7 @@ create_mbd_params_interval <- create_paramses_mbd <- function(
   mu = c(0, 0.15),
   nu = c(1.0, 1.5, 2.0, 2.5),
   q = c(0.1, 0.15, 0.2),
-  seed = seq(from = 1, to = 2, by = 1),
+  n_replicates = 2,
   crown_age = 15.0,
   cond = 1
 ) {
@@ -61,16 +61,19 @@ create_mbd_params_interval <- create_paramses_mbd <- function(
   mu <- unique(mu)
   nu <- unique(nu)
   q <- unique(q)
-  seed <- unique(seed)
+  seed <- 1:n_replicates
   mbd_paramses <- expand.grid(
+    seed = seed,
     lambda = lambda,
     mu = mu,
     nu = nu,
     q = q,
-    seed = seed,
     crown_age = crown_age,
     cond = cond
   )
+  seeds <- 1:nrow(mbd_paramses)
+  mbd_paramses$seed <- NULL
+  mbd_paramses$seed <- seeds
   testit::assert(
    length(crown_age) == 1
   )
