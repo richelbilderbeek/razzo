@@ -19,12 +19,9 @@ Imports:
     beastier, 
     beautier,
     ggplot2,
-    gridExtra,
-    grDevices,
     mbd,
     peregrine,
     pirouette,
-    stringr,
     testit
 Suggests:
     babette,
