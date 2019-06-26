@@ -10,7 +10,7 @@ create_parameters_files <- create_files_razzo_paramses <- function(
   project_folder_name = getwd(),
   experiment_type = "test"
 ) {
-  testit::assert(is_pff(project_folder_name))
+  testit::assert(peregrine::is_pff(project_folder_name))
   testit::assert(experiment_type == "test" || experiment_type == "full")
   if (experiment_type == "test") {
     n_replicates <- 2
@@ -75,14 +75,14 @@ save_razzo_paramses <- function(
     cond = 1
   ),
   twinning_params = pirouette::create_twinning_params(
-    twin_tree_filename = get_pff_tempfile(),
-    twin_alignment_filename = get_pff_tempfile(),
-    twin_evidence_filename = get_pff_tempfile()
+    twin_tree_filename = peregrine::get_pff_tempfile(),
+    twin_alignment_filename = peregrine::get_pff_tempfile(),
+    twin_evidence_filename = peregrine::get_pff_tempfile()
   ),
   alignment_params = pirouette::create_alignment_params(
     root_sequence = "aaaaccccggggttt",
     mutation_rate = 0.5 / unique(mbd_paramses$crown_age),
-    fasta_filename = get_pff_tempfile(
+    fasta_filename = peregrine::get_pff_tempfile(
       pattern = "alignment_",
       fileext = ".fasta"
     )
@@ -90,7 +90,7 @@ save_razzo_paramses <- function(
   error_measure_params = pirouette::create_error_measure_params(),
   mcmc_chain_length = beautier::create_mcmc()$chain_length / 100
 ) {
-  testit::assert(is_pff(project_folder_name))
+  testit::assert(peregrine::is_pff(project_folder_name))
   # Must start at one, as the BEAST2 RNG seed must be at least one.
   index <- 1
 
@@ -193,7 +193,7 @@ save_razzo_paramses <- function(
         output_log_filename = file.path(seed_folder, "mbd_gen.log"),
         output_trees_filenames = file.path(seed_folder, "mbd_gen.trees"),
         output_state_filename = file.path(seed_folder, "mbd_gen.xml.state"),
-        beast2_working_dir = get_pff_tempdir(),
+        beast2_working_dir = peregrine::get_pff_tempdir(),
         rng_seed = seed,
         overwrite = TRUE
       ),
@@ -220,7 +220,7 @@ save_razzo_paramses <- function(
           output_log_filename = file.path(seed_folder, "mbd_best.log"),
           output_trees_filenames = file.path(seed_folder, "mbd_best.trees"),
           output_state_filename = file.path(seed_folder, "mbd_best.xml.state"),
-          beast2_working_dir = get_pff_tempdir(),
+          beast2_working_dir = peregrine::get_pff_tempdir(),
           rng_seed = seed,
           overwrite = TRUE
         ),
@@ -246,7 +246,7 @@ save_razzo_paramses <- function(
           output_log_filename = file.path(seed_folder, "mbd_best.log"),
           output_trees_filenames = file.path(seed_folder, "mbd_best.trees"),
           output_state_filename = file.path(seed_folder, "mbd_best.xml.state"),
-          beast2_working_dir = get_pff_tempdir(),
+          beast2_working_dir = peregrine::get_pff_tempdir(),
           rng_seed = seed,
           overwrite = TRUE
         ),

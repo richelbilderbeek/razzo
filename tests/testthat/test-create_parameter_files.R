@@ -15,7 +15,7 @@ test_that("must be in working directory by default", {
 test_that("use", {
 
   # Put files in temporary folder
-  super_folder_name <- get_pff_tempdir()
+  super_folder_name <- peregrine::get_pff_tempdir()
   project_folder_name <- file.path(super_folder_name, "razzo_project")
 
   # Do not warn if the folder already exists
@@ -61,7 +61,7 @@ test_that("use, full", {
 
   skip("Issue 127, #127")
   # Put files in temporary folder
-  super_folder_name <- dirname(get_pff_tempfile())
+  super_folder_name <- dirname(peregrine::get_pff_tempfile())
   project_folder_name <- file.path(super_folder_name, "razzo_project")
 
   # Do not warn if the folder already exists
@@ -103,7 +103,7 @@ test_that("use, full", {
 test_that("can read", {
 
   # Put files in temporary folder
-  super_folder_name <- get_pff_tempdir()
+  super_folder_name <- peregrine::get_pff_tempdir()
   project_folder_name <- file.path(super_folder_name, "razzo_project")
 
   # Do not warn if the folder already exists

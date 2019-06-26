@@ -37,7 +37,7 @@ run_razzo <- function(
     recursive = TRUE,
     showWarnings = FALSE
   )
-  testit::assert(is_pff(tree_filename))
+  testit::assert(peregrine::is_pff(tree_filename))
   testit::assert(beautier::is_phylo(phylogeny))
   ape::write.tree(
     phy = phylogeny,

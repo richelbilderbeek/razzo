@@ -10,12 +10,13 @@ save_razzo_paramses(project_folder_name,
   c(1, 1.5, 2), q = c(0.1, 0.15, 0.2), n_replicates = 2, crown_age = 15,
   cond = 1),
   twinning_params = pirouette::create_twinning_params(twin_tree_filename
-  = get_pff_tempfile(), twin_alignment_filename = get_pff_tempfile(),
-  twin_evidence_filename = get_pff_tempfile()),
+  = peregrine::get_pff_tempfile(), twin_alignment_filename =
+  peregrine::get_pff_tempfile(), twin_evidence_filename =
+  peregrine::get_pff_tempfile()),
   alignment_params = pirouette::create_alignment_params(root_sequence =
   "aaaaccccggggttt", mutation_rate = 0.5/unique(mbd_paramses$crown_age),
-  fasta_filename = get_pff_tempfile(pattern = "alignment_", fileext =
-  ".fasta")),
+  fasta_filename = peregrine::get_pff_tempfile(pattern = "alignment_",
+  fileext = ".fasta")),
   error_measure_params = pirouette::create_error_measure_params(),
   mcmc_chain_length = beautier::create_mcmc()$chain_length/100)
 }

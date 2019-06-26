@@ -6,7 +6,8 @@
 \title{Create the parameters for one experiment.
 Run one point of the experiment}
 \usage{
-create_params_misc(tree_filename = get_pff_tempfile(fileext = ".tree"))
+create_params_misc(tree_filename = peregrine::get_pff_tempfile(fileext =
+  ".tree"))
 }
 \arguments{
 \item{tree_filename}{name of the phylogeny file}
