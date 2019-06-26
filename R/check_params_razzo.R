@@ -23,6 +23,8 @@ check_razzo_params <- check_params_razzo <- function(
   check_mbd_params(razzo_params$mbd_params)
   check_misc_params(razzo_params$misc_params)
   pirouette::check_pir_params(razzo_params$pir_params)
+  peregrine::check_pff_pir_params(razzo_params$pir_params)
+
   if (!beautier::has_mrca_prior(
       razzo_params$pir_params$experiments[[1]]$inference_model
     )
@@ -74,47 +76,6 @@ check_razzo_params <- check_params_razzo <- function(
         "Must use an MRCA prior with a distribution that has a mean ",
         "with a non-zero and positive value"
       )
-    }
-  }
-
-
-  if (!peregrine::is_pff(pir_params$evidence_filename)) {
-    stop("Peregrine-unfriendly filename for 'pir_params$evidence_filename'")
-  }
-  if (!peregrine::is_pff(pir_params$twinning_params$twin_tree_filename)) {
-    stop("Peregrine-unfriendly filename for 'pir_params$twinning_params$twin_tree_filename'")
-  }
-  if (!peregrine::is_pff(pir_params$twinning_params$twin_alignment_filename)) {
-    stop("Peregrine-unfriendly filename for 'pir_params$twinning_params$twin_alignment_filename'")
-  }
-  if (!peregrine::is_pff(pir_params$twinning_params$twin_evidence_filename)) {
-    stop("Peregrine-unfriendly filename for 'pir_params$twinning_params$twin_evidence_filename'")
-  }
-  if (!peregrine::is_pff(pir_params$alignment_params$fasta_filename)) {
-    stop("Peregrine-unfriendly filename for 'pir_params$alignment_params$fasta_filename'")
-  }
-  for (i in seq_along(pir_params$experiments)) {
-    experiment <- pir_params$experiments[[i]]
-    if (!peregrine::is_pff(experiment$beast2_options$input_filename)) {
-      stop("Peregrine-unfriendly filename for 'experiment$beast2_options$input_filename'")
-    }
-    if (!peregrine::is_pff(experiment$beast2_options$output_log_filename)) {
-      stop("Peregrine-unfriendly filename for 'experiment$beast2_options$output_log_filename'")
-    }
-    if (!peregrine::is_pff(experiment$beast2_options$output_trees_filenames)) {
-      stop("Peregrine-unfriendly filename for 'experiment$beast2_options$output_trees_filenames'")
-    }
-    if (!peregrine::is_pff(experiment$beast2_options$output_state_filename)) {
-      stop("Peregrine-unfriendly filename for 'experiment$beast2_options$output_state_filename'")
-    }
-    if (!peregrine::is_pff(experiment$beast2_options$beast2_working_dir)) {
-      stop("Peregrine-unfriendly filename for 'experiment$beast2_options$beast2_working_dir'")
-    }
-    if (!peregrine::is_pff(experiment$beast2_options$beast2_path)) {
-      stop("Peregrine-unfriendly filename for 'experiment$beast2_options$beast2_path'")
-    }
-    if (!peregrine::is_pff(experiment$errors_filename)) {
-      stop("Peregrine-unfriendly filename for 'experiment$errors_filename'")
     }
   }
 }
