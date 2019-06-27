@@ -2,6 +2,7 @@ language: r
 cache: packages
 
 r_packages:
+  - BiocManager
   - devtools
   - ggplot2
   - hunspell
