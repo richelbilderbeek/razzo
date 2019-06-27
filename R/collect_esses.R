@@ -80,12 +80,96 @@ collect_esses <- function(
     best_esses,
     gen_esses
   )
-  all_esses$gen_model <- as.factor(all_esses$gen_model)
-  all_esses$site_model <- as.factor(all_esses$site_model)
-  all_esses$clock_model <- as.factor(all_esses$clock_model)
-  all_esses$tree_prior <- as.factor(all_esses$tree_prior)
-  colnames(all_esses)[which(colnames(all_esses) == "likelihood")] <-
-    "ess_likelihood"
   all_esses <- as.data.frame(all_esses, row.names = NULL)
-  all_esses
+  all_esses$models <- interaction(
+    all_esses$site_model,
+    all_esses$clock_model,
+    all_esses$tree_prior,
+    all_esses$best_or_gen,
+    all_esses$gen_model
+  )
+  all_esses$par_settings <- interaction(
+    all_esses$lambda,
+    all_esses$mu,
+    all_esses$nu,
+    all_esses$q,
+    all_esses$seed,
+    all_esses$crown_age,
+    all_esses$cond
+  )
+  all_esses$settings <- interaction(
+    all_esses$par_settings,
+    all_esses$models
+  )
+  traces_names <- c(
+    "Sample",
+    "posterior",
+    "likelihood",
+    "prior",
+    "treeLikelihood",
+    "TreeHeight",
+    "YuleModel",
+    "birthRate"
+  )
+  setting_numeric_names <- c(
+    "lambda",
+    "mu",
+    "nu",
+    "q",
+    "seed",
+    "crown_age",
+    "cond"
+  )
+  setting_string_names <- c(
+    "gen_model",
+    "site_model",
+    "clock_model",
+    "tree_prior",
+    "best_or_gen"
+  )
+  # initialize dataframe components
+  matrix_string <- data.frame(matrix(
+    NA,
+    ncol = length(setting_string_names),
+    nrow = length(all_esses$settings)
+  ))
+  colnames(matrix_string) <- setting_string_names
+  matrix_numeric <- data.frame(matrix(
+    NA,
+    ncol = length(setting_numeric_names),
+    nrow = length(all_esses$settings)
+  ))
+  colnames(matrix_numeric) <- setting_numeric_names
+  ess_likelihood <- rep(NA, length(all_esses$settings))
+  for (i in seq_along(all_esses$settings)) {
+    setting <- all_esses$settings[i]
+    sub_set <- all_esses[all_esses$settings == setting, ]
+    traces <- data.frame(apply(data.frame(sub_set[, traces_names]), MARGIN = 2, FUN = as.numeric))
+    ess_likelihood[i] <- unlist(tracerer::calc_esses(traces, sample_interval = 1e6))["likelihood"]
+    matrix_numeric[i, ] <- all_esses[
+        all_esses$settings == setting,
+        setting_numeric_names
+        ][1, ]
+    matrix_string[i, ] <- all_esses[
+        all_esses$settings == setting,
+        setting_string_names
+        ][1, ]
+  }
+  esses <- cbind(
+    matrix_numeric,
+    ess_likelihood,
+    matrix_string
+  )
+  esses$tree <- plyr::revalue(
+    esses$gen_model,
+    c("mbd" = "true", "bd" = "twin"),
+    warn_missing = TRUE
+  )
+  esses$gen_model <- NULL
+  esses$tree <- as.factor(esses$tree)
+  esses$site_model <- as.factor(esses$site_model)
+  esses$clock_model <- as.factor(esses$clock_model)
+  esses$tree_prior <- as.factor(esses$tree_prior)
+
+  esses
 }

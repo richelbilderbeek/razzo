@@ -22,18 +22,13 @@ test_that("use", {
   expect_true("seed" %in% names(df))
   expect_true("site_model" %in% names(df))
   expect_true("clock_model" %in% names(df))
-
-  # gen_model is the generative model,
-  # can be 'mbd' (the MBD tree)
-  # or 'bd' (for the twin BD tree)
-  expect_true("gen_model" %in% names(df))
+  expect_true("tree" %in% names(df))
 
   # I (@richelbilderbeek) suggest to take the ESS of the likelihood,
   # and that one only. We'll see if that idea changes in the future.
   expect_true("ess_likelihood" %in% names(df))
 
   # Data must be tidy
-  expect_true(is.factor(df$gen_model))
   expect_true(is.factor(df$clock_model))
   expect_true(is.factor(df$site_model))
 
