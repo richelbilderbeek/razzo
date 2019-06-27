@@ -91,7 +91,7 @@ create_fig_1 <- function(
   label_size <- 13
   label_face <- "italic"
   title_size <- 18
-  title_face <- "bold"
+  title_face <- "bold.italic"
   ticks_size <- 12
   ticks_face <- "plain"
   ticks_color <- "black"
