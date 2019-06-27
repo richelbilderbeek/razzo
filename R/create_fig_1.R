@@ -182,9 +182,9 @@ create_fig_1 <- function(
     ggplot2::facet_grid(
       mu + nu ~ q,
       labeller = ggplot2::labeller(
-        mu = ggplot2::as_labeller(mu_labels, label_parsed),
-        nu = ggplot2::as_labeller(nu_labels, label_parsed),
-        q = ggplot2::as_labeller(q_labels, label_parsed)
+        mu = ggplot2::as_labeller(mu_labels, ggplot2::label_parsed),
+        nu = ggplot2::as_labeller(nu_labels, ggplot2::label_parsed),
+        q = ggplot2::as_labeller(q_labels, ggplot2::label_parsed)
       )
     ) +
     ggplot2::scale_color_manual(
