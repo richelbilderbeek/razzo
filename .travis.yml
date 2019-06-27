@@ -2,6 +2,7 @@ language: r
 cache: packages
 
 r_packages:
+  - BiocManager
   - devtools
   - ggplot2
   - hunspell
@@ -21,6 +22,7 @@ r_github_packages:
   - richelbilderbeek/mcbette
   - Giappo/mbd
   - richelbilderbeek/pirouette
+  - richelbilderbeek/peregrine@develop
 
 before_install:
   - sudo add-apt-repository -y ppa:opencpu/imagemagick

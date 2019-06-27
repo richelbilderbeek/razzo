@@ -35,6 +35,7 @@ if (1 == 2) {
   devtools::install_github("ropensci/babette", quiet = TRUE)
   devtools::install_github("richelbilderbeek/mcbette", quiet = TRUE)
   devtools::install_github("richelbilderbeek/pirouette", quiet = TRUE)
+  devtools::install_github("richelbilderbeek/peregrine", quiet = TRUE)
 }
 ```
 

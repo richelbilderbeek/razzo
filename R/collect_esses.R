@@ -166,10 +166,15 @@ collect_esses <- function(
     warn_missing = TRUE
   )
   esses$gen_model <- NULL
+
+
   esses$tree <- as.factor(esses$tree)
   esses$site_model <- as.factor(esses$site_model)
   esses$clock_model <- as.factor(esses$clock_model)
   esses$tree_prior <- as.factor(esses$tree_prior)
 
-  esses
+  # Remove duplicates (no idea how they got in)
+  esses <- unique(esses)
+  # Order by seed, then true/twin then gen/best
+  plyr::arrange(esses, seed, tree, plyr::desc(best_or_gen))
 }

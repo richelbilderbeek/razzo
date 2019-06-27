@@ -5,9 +5,9 @@
 #' @aliases create_params_misc create_misc_params
 #' @export create_params_misc create_misc_params
 create_params_misc <- create_misc_params <- function(
-  tree_filename = get_pff_tempfile(fileext = ".tree")
+  tree_filename = peregrine::get_pff_tempfile(fileext = ".tree")
 ) {
-  testit::assert(razzo::is_pff(tree_filename))
+  testit::assert(peregrine::is_pff(tree_filename))
   misc_params <- list(
     tree_filename = tree_filename
   )

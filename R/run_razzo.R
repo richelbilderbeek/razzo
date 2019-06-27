@@ -37,7 +37,7 @@ run_razzo <- function(
     recursive = TRUE,
     showWarnings = FALSE
   )
-  testit::assert(is_pff(tree_filename))
+  testit::assert(peregrine::is_pff(tree_filename))
   testit::assert(beautier::is_phylo(phylogeny))
   ape::write.tree(
     phy = phylogeny,
@@ -54,6 +54,7 @@ run_razzo <- function(
     razzo_params$pir_params$experiments[[1]]$beast2_options$output_log_filename,
     razzo_params$pir_params$experiments[[1]]$beast2_options$output_state_filename, # nolint yup, it's a long beast. Demeter won't like it ...
     razzo_params$pir_params$experiments[[1]]$beast2_options$output_trees_filename, # nolint yup, it's a long beast. Demeter won't like it ...
+    razzo_params$pir_params$experiments[[1]]$errors_filename, # nolint yup, it's a long beast. Demeter won't like it ...
     razzo_params$pir_params$evidence_filename,
     razzo_params$pir_params$twinning_params$twin_tree_filename,
     razzo_params$pir_params$twinning_params$twin_alignment_filename,
