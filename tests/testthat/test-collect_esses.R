@@ -32,6 +32,8 @@ test_that("use", {
   expect_true(is.factor(df$clock_model))
   expect_true(is.factor(df$site_model))
 
+  # Rows must be unique
+  expect_equal(nrow(unique(df)), nrow(df))
 })
 
 test_that("abuse", {
