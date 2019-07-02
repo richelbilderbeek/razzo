@@ -9,6 +9,11 @@ collect_esses <- function(
 ) {
   check_project_folder_name(project_folder_name) # nolint
 
+  ##### Satisfy R CMD check #####
+  tree <- NULL; rm(tree) # nolint, fixes warning: no visible binding for global variable
+  seed <- NULL; rm(seed) # nolint, fixes warning: no visible binding for global variable
+  best_or_gen <- NULL; rm(best_or_gen) # nolint, fixes warning: no visible binding for global variable
+
   # retrieve information from files
   paths <- get_data_paths(project_folder_name) # nolint internal function
   best_esses <- gen_esses <- data.frame()
@@ -167,7 +172,6 @@ collect_esses <- function(
   )
   esses$gen_model <- NULL
 
-
   esses$tree <- as.factor(esses$tree)
   esses$site_model <- as.factor(esses$site_model)
   esses$clock_model <- as.factor(esses$clock_model)
@@ -175,6 +179,7 @@ collect_esses <- function(
 
   # Remove duplicates (no idea how they got in)
   esses <- unique(esses)
+
   # Order by seed, then true/twin then gen/best
   plyr::arrange(esses, seed, tree, plyr::desc(best_or_gen))
 }

@@ -1,6 +1,5 @@
 test_that("use", {
 
-  skip("Issue #210")
   if (1 == 2) {
     # Run the experiment if you can and need to
     for (file in list.files(get_razzo_path("razzo_project"), recursive = TRUE, pattern = "parameters\\.RDa")) {
