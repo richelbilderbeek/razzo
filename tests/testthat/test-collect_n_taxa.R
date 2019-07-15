@@ -28,7 +28,6 @@ test_that("use", {
   # Rows must be unique
   expect_equal(nrow(unique(df)), nrow(df))
 
-
   skip("#210")
   # As true and twin trees have the same number of taxa, no need
   # to have a 'tree' (with values 'true' or 'twin') column
@@ -43,4 +42,27 @@ test_that("use", {
     )
   )
   expect_equal(nrow(df), n_rows_expected)
+
+  # Data must make sense
+  expect_true(is.numeric(df$n_taxa)) # n_taxa is numeric
+  df_list <- split(
+    df,
+    f = list(
+      df$lambda,
+      df$mu,
+      df$nu,
+      df$q,
+      df$seed,
+      df$crown_age,
+      df$cond,
+      df$site_model,
+      df$clock_model
+    )
+  )
+  skip("Issue to be solved #210")
+  expect_true( # same n_taxa for true and twin
+    all(
+      unlist(lapply(df_list, FUN = function(x) length(unique(x$n_taxa)) == 1))
+    )
+  )
 })
