@@ -4,51 +4,12 @@
     <data
 id="mbd"
 name="alignment">
-                    <sequence id="seq_t1" taxon="t1" totalcount="4" value="taaatctcggggttt"/>
-                    <sequence id="seq_t13" taxon="t13" totalcount="4" value="agaagacgggtgatt"/>
-                    <sequence id="seq_t14" taxon="t14" totalcount="4" value="aaaactccagcgaag"/>
-                    <sequence id="seq_t15" taxon="t15" totalcount="4" value="aaagctccgccgtgg"/>
-                    <sequence id="seq_t16" taxon="t16" totalcount="4" value="aaaactcaggggtct"/>
-                    <sequence id="seq_t22" taxon="t22" totalcount="4" value="tgaaccagggaggtt"/>
-                    <sequence id="seq_t27" taxon="t27" totalcount="4" value="taagcgccgagggct"/>
-                    <sequence id="seq_t28" taxon="t28" totalcount="4" value="catacccgggggctt"/>
-                    <sequence id="seq_t30" taxon="t30" totalcount="4" value="aaaaccccgggatag"/>
-                    <sequence id="seq_t32" taxon="t32" totalcount="4" value="gtaatctgcgggttg"/>
-                    <sequence id="seq_t35" taxon="t35" totalcount="4" value="agaatcatggggttt"/>
-                    <sequence id="seq_t36" taxon="t36" totalcount="4" value="aaaaccctggggcag"/>
-                    <sequence id="seq_t38" taxon="t38" totalcount="4" value="tgggccataggggtc"/>
-                    <sequence id="seq_t40" taxon="t40" totalcount="4" value="tacatctggtggttt"/>
-                    <sequence id="seq_t43" taxon="t43" totalcount="4" value="acaacccctgggttt"/>
-                    <sequence id="seq_t44" taxon="t44" totalcount="4" value="aaaaccccgggctag"/>
-                    <sequence id="seq_t49" taxon="t49" totalcount="4" value="cagaccccaagcccc"/>
-                    <sequence id="seq_t52" taxon="t52" totalcount="4" value="aaagccccgggctag"/>
-                    <sequence id="seq_t54" taxon="t54" totalcount="4" value="aaaactccagcgtag"/>
-                    <sequence id="seq_t56" taxon="t56" totalcount="4" value="cataccccgtgtcca"/>
-                    <sequence id="seq_t57" taxon="t57" totalcount="4" value="tataccccgggccag"/>
-                    <sequence id="seq_t58" taxon="t58" totalcount="4" value="taaatctcgtggttt"/>
-                    <sequence id="seq_t59" taxon="t59" totalcount="4" value="atcaccccagggctt"/>
-                    <sequence id="seq_t62" taxon="t62" totalcount="4" value="taaatctcggggtta"/>
-                    <sequence id="seq_t64" taxon="t64" totalcount="4" value="taagctccgccgttg"/>
-                    <sequence id="seq_t65" taxon="t65" totalcount="4" value="gaagcgatgaggtct"/>
-                    <sequence id="seq_t68" taxon="t68" totalcount="4" value="ggatccataggcttc"/>
-                    <sequence id="seq_t69" taxon="t69" totalcount="4" value="agaagactggtgatt"/>
-                    <sequence id="seq_t70" taxon="t70" totalcount="4" value="taaatctccgggttt"/>
-                    <sequence id="seq_t71" taxon="t71" totalcount="4" value="atgaccccgagactg"/>
-                    <sequence id="seq_t72" taxon="t72" totalcount="4" value="aaaacgccggggtct"/>
-                    <sequence id="seq_t73" taxon="t73" totalcount="4" value="agatgcataggcttc"/>
-                    <sequence id="seq_t74" taxon="t74" totalcount="4" value="gtagtctgcggcttc"/>
-                    <sequence id="seq_t75" taxon="t75" totalcount="4" value="aaaaccccgggctag"/>
-                    <sequence id="seq_t76" taxon="t76" totalcount="4" value="aatactccgtagtgt"/>
-                    <sequence id="seq_t77" taxon="t77" totalcount="4" value="agaatcatggggttt"/>
-                    <sequence id="seq_t78" taxon="t78" totalcount="4" value="atcaccccagggctt"/>
-                    <sequence id="seq_t79" taxon="t79" totalcount="4" value="tgggccataggggtc"/>
-                    <sequence id="seq_t80" taxon="t80" totalcount="4" value="catacccgggggctt"/>
-                    <sequence id="seq_t81" taxon="t81" totalcount="4" value="aaaactccggcgtct"/>
-                    <sequence id="seq_t82" taxon="t82" totalcount="4" value="aaaaccccgggctag"/>
-                    <sequence id="seq_t83" taxon="t83" totalcount="4" value="tacatctcgtggttt"/>
-                    <sequence id="seq_t85" taxon="t85" totalcount="4" value="agatgcataggcttc"/>
-                    <sequence id="seq_t86" taxon="t86" totalcount="4" value="aaaactcaggggtct"/>
-                    <sequence id="seq_t87" taxon="t87" totalcount="4" value="aaagccccgggctag"/>
+                    <sequence id="seq_t1" taxon="t1" totalcount="4" value="caaagcggtgggtgt"/>
+                    <sequence id="seq_t2" taxon="t2" totalcount="4" value="agaaacttggggttt"/>
+                    <sequence id="seq_t4" taxon="t4" totalcount="4" value="acaaacctggggttt"/>
+                    <sequence id="seq_t5" taxon="t5" totalcount="4" value="gaaaccctggggttt"/>
+                    <sequence id="seq_t6" taxon="t6" totalcount="4" value="agaaacctggggtta"/>
+                    <sequence id="seq_t8" taxon="t8" totalcount="4" value="caaagcggagggtgt"/>
                 </data>
 
 
@@ -104,53 +65,14 @@ name="alignment">
             <distribution id="auto_name_1.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:mbd">
                 <taxonset id="auto_name_1" spec="TaxonSet">
                     <taxon id="t1" spec="Taxon"/>
-                    <taxon id="t70" spec="Taxon"/>
-                    <taxon id="t62" spec="Taxon"/>
-                    <taxon id="t40" spec="Taxon"/>
-                    <taxon id="t83" spec="Taxon"/>
-                    <taxon id="t58" spec="Taxon"/>
-                    <taxon id="t32" spec="Taxon"/>
-                    <taxon id="t74" spec="Taxon"/>
-                    <taxon id="t16" spec="Taxon"/>
-                    <taxon id="t86" spec="Taxon"/>
-                    <taxon id="t81" spec="Taxon"/>
-                    <taxon id="t72" spec="Taxon"/>
-                    <taxon id="t27" spec="Taxon"/>
-                    <taxon id="t65" spec="Taxon"/>
-                    <taxon id="t43" spec="Taxon"/>
-                    <taxon id="t13" spec="Taxon"/>
-                    <taxon id="t69" spec="Taxon"/>
-                    <taxon id="t68" spec="Taxon"/>
-                    <taxon id="t73" spec="Taxon"/>
-                    <taxon id="t85" spec="Taxon"/>
-                    <taxon id="t38" spec="Taxon"/>
-                    <taxon id="t79" spec="Taxon"/>
-                    <taxon id="t22" spec="Taxon"/>
-                    <taxon id="t35" spec="Taxon"/>
-                    <taxon id="t77" spec="Taxon"/>
-                    <taxon id="t76" spec="Taxon"/>
-                    <taxon id="t28" spec="Taxon"/>
-                    <taxon id="t80" spec="Taxon"/>
-                    <taxon id="t56" spec="Taxon"/>
-                    <taxon id="t49" spec="Taxon"/>
-                    <taxon id="t59" spec="Taxon"/>
-                    <taxon id="t78" spec="Taxon"/>
-                    <taxon id="t71" spec="Taxon"/>
-                    <taxon id="t14" spec="Taxon"/>
-                    <taxon id="t54" spec="Taxon"/>
-                    <taxon id="t30" spec="Taxon"/>
-                    <taxon id="t44" spec="Taxon"/>
-                    <taxon id="t75" spec="Taxon"/>
-                    <taxon id="t82" spec="Taxon"/>
-                    <taxon id="t52" spec="Taxon"/>
-                    <taxon id="t87" spec="Taxon"/>
-                    <taxon id="t57" spec="Taxon"/>
-                    <taxon id="t36" spec="Taxon"/>
-                    <taxon id="t15" spec="Taxon"/>
-                    <taxon id="t64" spec="Taxon"/>
+                    <taxon id="t8" spec="Taxon"/>
+                    <taxon id="t2" spec="Taxon"/>
+                    <taxon id="t6" spec="Taxon"/>
+                    <taxon id="t4" spec="Taxon"/>
+                    <taxon id="t5" spec="Taxon"/>
                 </taxonset>
                 <Normal id="Normal.151" name="distr">
-                    <parameter id="RealParameter.300" estimate="false" name="mean">15</parameter>
+                    <parameter id="RealParameter.300" estimate="false" name="mean">6</parameter>
                     <parameter id="RealParameter.301" estimate="false" name="sigma">0.0001</parameter>
                 </Normal>
             </distribution>

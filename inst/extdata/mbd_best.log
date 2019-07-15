@@ -3,15 +3,54 @@
 #
 #<?xml version="1.0" encoding="UTF-8" standalone="no"?><input id="posterior" spec="beast.core.util.CompoundDistribution">
 #    <distribution id="prior" spec="beast.core.util.CompoundDistribution">
-#        <distribution id="YuleModel.t:mbd" spec="beast.evolution.speciation.YuleModel">
-#            <parameter id="birthRate.t:mbd" name="birthDiffRate">1.0</parameter>
+#        <distribution id="BirthDeath.t:mbd" spec="beast.evolution.speciation.BirthDeathGernhard08Model">
+#            <parameter id="BDDeathRate.t:mbd" lower="0.0" name="relativeDeathRate" upper="1.0">0.5</parameter>
+#            <parameter id="BDBirthRate.t:mbd" lower="0.0" name="birthDiffRate" upper="10000.0">1.0</parameter>
 #            <tree id="Tree.t:mbd">
 #                <taxonset id="TaxonSet.mbd" spec="beast.evolution.alignment.TaxonSet">
 #                </taxonset>
 #            </tree>
 #        </distribution>
-#        <prior id="YuleBirthRatePrior.t:mbd" name="distribution" x="@birthRate.t:mbd">
+#        <prior id="BirthRatePrior.t:mbd" name="distribution" x="@BDBirthRate.t:mbd">
 #            <Uniform id="Uniform.100" name="distr" upper="Infinity"/>
+#        </prior>
+#        <prior id="DeathRatePrior.t:mbd" name="distribution" x="@BDDeathRate.t:mbd">
+#            <Uniform id="Uniform.101" name="distr" upper="Infinity"/>
+#        </prior>
+#        <prior id="RateACPrior.s:mbd" name="distribution">
+#            <parameter id="rateAC.s:mbd" lower="0.0" name="x">1.0</parameter>
+#            <Gamma id="Gamma.0" name="distr">
+#                <parameter estimate="false" id="RealParameter.0" name="alpha">0.05</parameter>
+#                <parameter estimate="false" id="RealParameter.1" name="beta">10.0</parameter>
+#            </Gamma>
+#        </prior>
+#        <prior id="RateAGPrior.s:mbd" name="distribution">
+#            <parameter id="rateAG.s:mbd" lower="0.0" name="x">1.0</parameter>
+#            <Gamma id="Gamma.1" name="distr">
+#                <parameter estimate="false" id="RealParameter.2" name="alpha">0.05</parameter>
+#                <parameter estimate="false" id="RealParameter.3" name="beta">20.0</parameter>
+#            </Gamma>
+#        </prior>
+#        <prior id="RateATPrior.s:mbd" name="distribution">
+#            <parameter id="rateAT.s:mbd" lower="0.0" name="x">1.0</parameter>
+#            <Gamma id="Gamma.2" name="distr">
+#                <parameter estimate="false" id="RealParameter.4" name="alpha">0.05</parameter>
+#                <parameter estimate="false" id="RealParameter.5" name="beta">10.0</parameter>
+#            </Gamma>
+#        </prior>
+#        <prior id="RateCGPrior.s:mbd" name="distribution">
+#            <parameter id="rateCG.s:mbd" lower="0.0" name="x">1.0</parameter>
+#            <Gamma id="Gamma.3" name="distr">
+#                <parameter estimate="false" id="RealParameter.6" name="alpha">0.05</parameter>
+#                <parameter estimate="false" id="RealParameter.7" name="beta">10.0</parameter>
+#            </Gamma>
+#        </prior>
+#        <prior id="RateGTPrior.s:mbd" name="distribution">
+#            <parameter id="rateGT.s:mbd" lower="0.0" name="x">1.0</parameter>
+#            <Gamma id="Gamma.4" name="distr">
+#                <parameter estimate="false" id="RealParameter.8" name="alpha">0.05</parameter>
+#                <parameter estimate="false" id="RealParameter.9" name="beta">10.0</parameter>
+#            </Gamma>
 #        </prior>
 #        <prior id="ClockPrior.c:mbd" name="distribution">
 #            <parameter id="clockRate.c:mbd" name="x">1.0</parameter>
@@ -19,85 +58,15 @@
 #        </prior>
 #        <distribution id="auto_name_1.prior" monophyletic="true" spec="beast.math.distributions.MRCAPrior" tree="@Tree.t:mbd">
 #            <taxonset id="auto_name_1" spec="beast.evolution.alignment.TaxonSet">
-#                <taxon id="t18" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t106" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t82" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t49" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t114" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t34" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t58" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t115" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t31" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t57" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t112" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t65" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t69" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t67" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t26" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t111" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t117" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t100" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t44" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t63" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t19" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t40" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t77" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t104" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t91" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t35" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t72" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t42" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t108" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t97" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t68" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t41" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t39" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t28" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t95" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t23" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t96" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t110" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t32" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t55" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t47" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t85" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t20" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t113" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t101" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t73" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t102" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t1" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t8" spec="beast.evolution.alignment.Taxon"/>
 #                <taxon id="t2" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t78" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t107" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t48" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t81" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t74" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t71" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t53" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t99" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t24" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t64" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t116" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t94" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t109" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t89" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t36" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t54" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t98" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t88" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t50" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t16" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t17" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t105" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t38" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t30" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t90" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t92" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t51" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t59" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t6" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t4" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t5" spec="beast.evolution.alignment.Taxon"/>
 #            </taxonset>
 #            <Normal id="Normal.151" name="distr">
-#                <parameter estimate="false" id="RealParameter.300" name="mean">15.0</parameter>
+#                <parameter estimate="false" id="RealParameter.300" name="mean">6.0</parameter>
 #                <parameter estimate="false" id="RealParameter.301" name="sigma">1.0E-4</parameter>
 #            </Normal>
 #        </distribution>
@@ -108,15 +77,20 @@
 #                <parameter estimate="false" id="mutationRate.s:mbd" name="mutationRate">1.0</parameter>
 #                <parameter estimate="false" id="gammaShape.s:mbd" name="shape">1.0</parameter>
 #                <parameter estimate="false" id="proportionInvariant.s:mbd" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
-#                <substModel id="JC69.s:mbd" spec="beast.evolution.substitutionmodel.JukesCantor"/>
+#                <substModel id="gtr.s:mbd" rateAC="@rateAC.s:mbd" rateAG="@rateAG.s:mbd" rateAT="@rateAT.s:mbd" rateCG="@rateCG.s:mbd" rateGT="@rateGT.s:mbd" spec="beast.evolution.substitutionmodel.GTR">
+#                    <parameter estimate="false" id="rateCT.s:mbd" lower="0.0" name="rateCT">1.0</parameter>
+#                    <frequencies id="estimatedFreqs.s:mbd" spec="beast.evolution.substitutionmodel.Frequencies">
+#                        <parameter dimension="4" id="freqParameter.s:mbd" lower="0.0" name="frequencies" upper="1.0">0.25</parameter>
+#                    </frequencies>
+#                </substModel>
 #            </siteModel>
 #            <branchRateModel clock.rate="@clockRate.c:mbd" id="StrictClock.c:mbd" spec="beast.evolution.branchratemodel.StrictClockModel"/>
 #        </distribution>
 #    </distribution>
 #</input>
 #
-Sample	posterior	likelihood	prior	treeLikelihood.mbd	TreeHeight	YuleModel	birthRate	logP(mrca(auto_name_1))	mrca.age(auto_name_1)	clockRate
-0	-8.625475569643164E9	-1816.8833457230155	-8.625473752759817E9	-1816.8833457230155	1.8657137601699028	-9.561706412509059	1.0	-8.62547374319811E9	1.8657137601699028	1.0
-1000	-275072.89151554694	-1061.2739158006584	-274011.61759974627	-1061.2739158006584	15.0740249953306	-34.912316818907584	1.627254563395005	-273976.7052829274	15.0740249953306	1.7212446735428537
-2000	-274960.35311911034	-940.7628845427386	-274019.5902345676	-940.7628845427386	15.0740249953306	-42.884951640193705	1.8205002303102698	-273976.7052829274	15.0740249953306	1.2877692062620276
-3000	-87758.87103936463	-860.3417034601448	-86898.52933590449	-860.3417034601448	15.04168076968612	-42.492656371943845	1.500627819132506	-86856.03667953254	15.04168076968612	0.8176344395410845
+Sample	posterior	likelihood	prior	treeLikelihood	TreeHeight	rateAC	rateAG	rateAT	rateCG	rateGT	freqParameter.1	freqParameter.2	freqParameter.3	freqParameter.4	BirthDeath	BDBirthRate	BDDeathRate	logP(mrca(auto_name_1))	mrcatime(auto_name_1)	clockRate
+0	-8.517307414939728E8	-99.87190041263631	-8.517306416220723E8	-99.87190041263631	1.8726991150131935	1.0	1.0	1.0	1.0	1.0	0.25	0.25	0.25	0.25	-4.248130715135339	1.0	0.5	-8.51730621469242E8	1.8726991150131935	1.0
+1000	-6523.8367748245555	-71.96006841001251	-6451.876706414543	-71.96006841001251	5.988656878537477	1.0	1.0	0.8575149291094681	1.0	1.0182121175682577	0.25326449084914027	0.25	0.25	0.24673550915085976	-11.084495239167005	0.6369288652425726	0.6160710995620656	-6425.028823838507	5.988656878537477	0.15627694976873693
+2000	-6524.249881532156	-70.2997947252595	-6453.950086806896	-70.2997947252595	5.988656878537477	1.5985768155629794	1.9087369218725723	0.8575149291094681	1.2633122474514058	1.3417541065856553	0.259551388924557	0.24371310192458326	0.25382393172774137	0.2429115774231184	-11.449934744203265	0.17562516734631908	0.21147527786230713	-6425.028823838507	5.988656878537477	0.05991574592238871
+3000	-2805.807968236925	-68.62686514393849	-2737.181103092986	-68.62686514393849	5.992627866277723	1.5985768155629794	1.9087369218725723	0.8575149291094681	1.2288103908903567	0.923055976822418	0.25449864171295106	0.2410800498384254	0.2615097310255052	0.2429115774231184	-11.01036275742656	0.23250487768058475	0.38254344988196315	-2709.1263791178885	5.992627866277723	0.0881448453637126

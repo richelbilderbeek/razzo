@@ -3,15 +3,54 @@
 #
 #<?xml version="1.0" encoding="UTF-8" standalone="no"?><input id="posterior" spec="beast.core.util.CompoundDistribution">
 #    <distribution id="prior" spec="beast.core.util.CompoundDistribution">
-#        <distribution id="YuleModel.t:mbd_twin" spec="beast.evolution.speciation.YuleModel">
-#            <parameter id="birthRate.t:mbd_twin" name="birthDiffRate">1.0</parameter>
+#        <distribution id="BirthDeath.t:mbd_twin" spec="beast.evolution.speciation.BirthDeathGernhard08Model">
+#            <parameter id="BDDeathRate.t:mbd_twin" lower="0.0" name="relativeDeathRate" upper="1.0">0.5</parameter>
+#            <parameter id="BDBirthRate.t:mbd_twin" lower="0.0" name="birthDiffRate" upper="10000.0">1.0</parameter>
 #            <tree id="Tree.t:mbd_twin">
 #                <taxonset id="TaxonSet.mbd_twin" spec="beast.evolution.alignment.TaxonSet">
 #                </taxonset>
 #            </tree>
 #        </distribution>
-#        <prior id="YuleBirthRatePrior.t:mbd_twin" name="distribution" x="@birthRate.t:mbd_twin">
+#        <prior id="BirthRatePrior.t:mbd_twin" name="distribution" x="@BDBirthRate.t:mbd_twin">
 #            <Uniform id="Uniform.100" name="distr" upper="Infinity"/>
+#        </prior>
+#        <prior id="DeathRatePrior.t:mbd_twin" name="distribution" x="@BDDeathRate.t:mbd_twin">
+#            <Uniform id="Uniform.101" name="distr" upper="Infinity"/>
+#        </prior>
+#        <prior id="RateACPrior.s:mbd_twin" name="distribution">
+#            <parameter id="rateAC.s:mbd_twin" lower="0.0" name="x">1.0</parameter>
+#            <Gamma id="Gamma.0" name="distr">
+#                <parameter estimate="false" id="RealParameter.0" name="alpha">0.05</parameter>
+#                <parameter estimate="false" id="RealParameter.1" name="beta">10.0</parameter>
+#            </Gamma>
+#        </prior>
+#        <prior id="RateAGPrior.s:mbd_twin" name="distribution">
+#            <parameter id="rateAG.s:mbd_twin" lower="0.0" name="x">1.0</parameter>
+#            <Gamma id="Gamma.1" name="distr">
+#                <parameter estimate="false" id="RealParameter.2" name="alpha">0.05</parameter>
+#                <parameter estimate="false" id="RealParameter.3" name="beta">20.0</parameter>
+#            </Gamma>
+#        </prior>
+#        <prior id="RateATPrior.s:mbd_twin" name="distribution">
+#            <parameter id="rateAT.s:mbd_twin" lower="0.0" name="x">1.0</parameter>
+#            <Gamma id="Gamma.2" name="distr">
+#                <parameter estimate="false" id="RealParameter.4" name="alpha">0.05</parameter>
+#                <parameter estimate="false" id="RealParameter.5" name="beta">10.0</parameter>
+#            </Gamma>
+#        </prior>
+#        <prior id="RateCGPrior.s:mbd_twin" name="distribution">
+#            <parameter id="rateCG.s:mbd_twin" lower="0.0" name="x">1.0</parameter>
+#            <Gamma id="Gamma.3" name="distr">
+#                <parameter estimate="false" id="RealParameter.6" name="alpha">0.05</parameter>
+#                <parameter estimate="false" id="RealParameter.7" name="beta">10.0</parameter>
+#            </Gamma>
+#        </prior>
+#        <prior id="RateGTPrior.s:mbd_twin" name="distribution">
+#            <parameter id="rateGT.s:mbd_twin" lower="0.0" name="x">1.0</parameter>
+#            <Gamma id="Gamma.4" name="distr">
+#                <parameter estimate="false" id="RealParameter.8" name="alpha">0.05</parameter>
+#                <parameter estimate="false" id="RealParameter.9" name="beta">10.0</parameter>
+#            </Gamma>
 #        </prior>
 #        <prior id="ClockPrior.c:mbd_twin" name="distribution">
 #            <parameter id="clockRate.c:mbd_twin" name="x">1.0</parameter>
@@ -19,15 +58,13 @@
 #        </prior>
 #        <distribution id="auto_name_1.prior" monophyletic="true" spec="beast.math.distributions.MRCAPrior" tree="@Tree.t:mbd_twin">
 #            <taxonset id="auto_name_1" spec="beast.evolution.alignment.TaxonSet">
-#                <taxon id="t3" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t11" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t7" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t9" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t6" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t1" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t4" spec="beast.evolution.alignment.Taxon"/>
 #                <taxon id="t2" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t3" spec="beast.evolution.alignment.Taxon"/>
 #            </taxonset>
 #            <Normal id="Normal.151" name="distr">
-#                <parameter estimate="false" id="RealParameter.300" name="mean">15.0</parameter>
+#                <parameter estimate="false" id="RealParameter.300" name="mean">6.0</parameter>
 #                <parameter estimate="false" id="RealParameter.301" name="sigma">1.0E-4</parameter>
 #            </Normal>
 #        </distribution>
@@ -38,15 +75,20 @@
 #                <parameter estimate="false" id="mutationRate.s:mbd_twin" name="mutationRate">1.0</parameter>
 #                <parameter estimate="false" id="gammaShape.s:mbd_twin" name="shape">1.0</parameter>
 #                <parameter estimate="false" id="proportionInvariant.s:mbd_twin" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
-#                <substModel id="JC69.s:mbd_twin" spec="beast.evolution.substitutionmodel.JukesCantor"/>
+#                <substModel id="gtr.s:mbd_twin" rateAC="@rateAC.s:mbd_twin" rateAG="@rateAG.s:mbd_twin" rateAT="@rateAT.s:mbd_twin" rateCG="@rateCG.s:mbd_twin" rateGT="@rateGT.s:mbd_twin" spec="beast.evolution.substitutionmodel.GTR">
+#                    <parameter estimate="false" id="rateCT.s:mbd_twin" lower="0.0" name="rateCT">1.0</parameter>
+#                    <frequencies id="estimatedFreqs.s:mbd_twin" spec="beast.evolution.substitutionmodel.Frequencies">
+#                        <parameter dimension="4" id="freqParameter.s:mbd_twin" lower="0.0" name="frequencies" upper="1.0">0.25</parameter>
+#                    </frequencies>
+#                </substModel>
 #            </siteModel>
 #            <branchRateModel clock.rate="@clockRate.c:mbd_twin" id="StrictClock.c:mbd_twin" spec="beast.evolution.branchratemodel.StrictClockModel"/>
 #        </distribution>
 #    </distribution>
 #</input>
 #
-Sample	posterior	likelihood	prior	treeLikelihood.mbd_twin	TreeHeight	YuleModel	birthRate	logP(mrca(auto_name_1))	mrca.age(auto_name_1)	clockRate
-0	-9.811937776541752E9	-119.10902383644235	-9.811937657432728E9	-119.10902383644235	0.9914756935920946	-3.5630733961732126	1.0	-9.811937653869654E9	0.9914756935920946	1.0
-1000	-307946.04229161143	-73.07308855818877	-307872.9692030532	-73.07308855818877	15.07846869379827	-14.465284563220525	0.1828631121737407	-307858.50391849	15.07846869379827	0.139012248872806
-2000	-552.7142106081013	-83.98685454569156	-468.7273560624098	-83.98685454569156	14.996964176927957	-16.207671663725083	0.06449604049343416	-452.5196843986847	14.996964176927957	0.18141439055266917
-3000	-542.6702981189361	-75.19853612342467	-467.47176199551143	-75.19853612342467	14.996964176927957	-14.95207759682672	0.09793235651553908	-452.5196843986847	14.996964176927957	0.16827076221086604
+Sample	posterior	likelihood	prior	treeLikelihood	TreeHeight	rateAC	rateAG	rateAT	rateCG	rateGT	freqParameter.1	freqParameter.2	freqParameter.3	freqParameter.4	BirthDeath	BDBirthRate	BDDeathRate	logP(mrca(auto_name_1))	mrcatime(auto_name_1)	clockRate
+0	-1.3556522295897977E9	-85.63263954156295	-1.355652143957158E9	-85.63263954156295	0.7929814006134954	1.0	1.0	1.0	1.0	1.0	0.25	0.25	0.25	0.25	-1.6260106050360634	1.0	0.5	-1.3556521264264479E9	0.7929814006134954	1.0
+1000	-22314.485583210637	-64.01170859610605	-22250.47387461453	-64.01170859610605	5.978913455847871	1.0	1.2184773153551764	1.0	1.0	1.0	0.25	0.25625500245194643	0.24432128364493755	0.24942371390311602	-10.5447170873634	0.5009206203081248	0.7810550767166199	-22223.825812145667	5.978913455847871	1.2426547633768945
+2000	-22309.967371929237	-62.5248300845316	-22247.442541844706	-62.5248300845316	5.978913455847871	0.6736027679724602	0.9315340526187714	1.278137637363624	2.615370279698339	1.0	0.25	0.25625500245194643	0.24432128364493755	0.24942371390311602	-6.855008421278275	0.1734779843388636	0.5812606801833384	-22223.825812145667	5.978913455847871	4.401985018065044
+3000	-84.55324601881037	-61.269949970750616	-23.283296048059746	-61.269949970750616	5.9995887160902575	0.6736027679724602	0.9315340526187714	0.6978630306763642	3.9830530128264487	0.7240620825869696	0.25	0.25625500245194643	0.24432128364493755	0.24942371390311602	-6.78610997019	0.25458383969523535	0.7897465111159309	-0.1663208818841273	5.9995887160902575	6.460229472653296
