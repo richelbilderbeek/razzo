@@ -23,7 +23,9 @@ create_file_fig_1 <- create_fig_1_file <- function(
 
   ggplot2::ggsave(
     filename = fig_1_filename,
-    plot = fig_1
+    plot = fig_1,
+    width = 7,
+    height = 7
   )
 
   # return file name
