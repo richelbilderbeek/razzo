@@ -17,5 +17,5 @@ a dataframe with parameters and taxa number for each phylogeny
 Collect number of taxa
 }
 \author{
-Giovanni Laudanno
+Giovanni Laudanno, Richel J.C. Bilderbeek
 }

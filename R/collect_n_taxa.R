@@ -2,7 +2,7 @@
 #' @description Collect number of taxa
 #' @inheritParams default_params_doc
 #' @return a dataframe with parameters and taxa number for each phylogeny
-#' @author Giovanni Laudanno
+#' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
 collect_n_taxa <- function(
   project_folder_name = get_razzo_path("razzo_project")
