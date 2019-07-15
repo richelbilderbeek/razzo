@@ -23,15 +23,13 @@
 #        </prior>
 #        <distribution id="auto_name_1.prior" monophyletic="true" spec="beast.math.distributions.MRCAPrior" tree="@Tree.t:mbd_twin">
 #            <taxonset id="auto_name_1" spec="beast.evolution.alignment.TaxonSet">
-#                <taxon id="t3" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t11" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t7" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t9" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t6" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t1" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t4" spec="beast.evolution.alignment.Taxon"/>
 #                <taxon id="t2" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t3" spec="beast.evolution.alignment.Taxon"/>
 #            </taxonset>
 #            <Normal id="Normal.151" name="distr">
-#                <parameter estimate="false" id="RealParameter.300" name="mean">15.0</parameter>
+#                <parameter estimate="false" id="RealParameter.300" name="mean">6.0</parameter>
 #                <parameter estimate="false" id="RealParameter.301" name="sigma">1.0E-4</parameter>
 #            </Normal>
 #        </distribution>
@@ -49,8 +47,8 @@
 #    </distribution>
 #</input>
 #
-Sample	posterior	likelihood	prior	treeLikelihood.mbd_twin	TreeHeight	BirthDeath	BDBirthRate	BDDeathRate	logP(mrca(auto_name_1))	mrca.age(auto_name_1)	clockRate
-0	-9.81193777648441E9	-119.10902383644235	-9.811937657375385E9	-119.10902383644235	0.9914756935920946	-3.5057306827924686	1.0	0.5	-9.811937653869654E9	0.9914756935920946	1.0
-1000	-202.390059589459	-80.75620324284506	-121.63385634661395	-80.75620324284506	14.998479576065348	-14.340811132249677	0.19268769678525463	0.3641867186220792	-107.29304521436428	14.998479576065348	0.4973847040703574
-2000	-194.76572718481708	-73.48173423154685	-121.28399295327023	-73.48173423154685	14.998479576065348	-13.990947738905945	0.13330461741103933	0.20303689863962668	-107.29304521436428	14.998479576065348	0.24052461458423724
-3000	-198.84790119770923	-76.62003008118573	-122.22787111652349	-76.62003008118573	14.998479576065348	-14.934825902159211	0.05643115070057427	0.3792522805658934	-107.29304521436428	14.998479576065348	0.16081234893321028
+Sample	posterior	likelihood	prior	treeLikelihood	TreeHeight	BirthDeath	BDBirthRate	BDDeathRate	logP(mrca(auto_name_1))	mrcatime(auto_name_1)	clockRate
+0	-1.3556522136850982E9	-85.63263954156307	-1.3556521280524585E9	-85.63263954156307	0.7929814006134954	-1.6260106050360634	1.0	0.5	-1.3556521264264479E9	0.7929814006134954	1.0
+1000	-4029.2951715780528	-61.45318639107076	-3967.841985186982	-61.45318639107076	6.008909406352668	-7.257309177694918	0.23618970982423373	0.6195115735375236	-3960.5846760092873	6.008909406352668	1.1626561525157508
+2000	-115.37429930101857	-61.717819913144055	-53.65647938787451	-61.717819913144055	6.001053402834861	-6.465004601963625	0.16695312984223176	0.8388658043393208	-47.191474785910884	6.001053402834861	2.865772740053348
+3000	-115.31387703730354	-59.68605478651025	-55.62782225079329	-59.68605478651025	6.001053402834861	-8.436347464882406	0.5393196931413949	0.8745551402483202	-47.191474785910884	6.001053402834861	11.816957888416207

@@ -4,12 +4,10 @@
     <data
 id="mbd"
 name="alignment">
-                    <sequence id="seq_t11" taxon="t11" totalcount="4" value="taaagagttgggttc"/>
-                    <sequence id="seq_t2" taxon="t2" totalcount="4" value="caaaacgcggcgtct"/>
-                    <sequence id="seq_t3" taxon="t3" totalcount="4" value="taaagagttgggttc"/>
-                    <sequence id="seq_t6" taxon="t6" totalcount="4" value="tacagcgtggggttt"/>
-                    <sequence id="seq_t7" taxon="t7" totalcount="4" value="tagagcatggggtta"/>
-                    <sequence id="seq_t9" taxon="t9" totalcount="4" value="tagagcattgggttt"/>
+                    <sequence id="seq_t1" taxon="t1" totalcount="4" value="caaagcggtgggtct"/>
+                    <sequence id="seq_t2" taxon="t2" totalcount="4" value="agtaccctgggagtt"/>
+                    <sequence id="seq_t3" taxon="t3" totalcount="4" value="agtgccgtggggttt"/>
+                    <sequence id="seq_t4" taxon="t4" totalcount="4" value="caaagcggtgggtat"/>
                 </data>
 
 
@@ -64,15 +62,13 @@ name="alignment">
             </prior>
             <distribution id="auto_name_1.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:mbd">
                 <taxonset id="auto_name_1" spec="TaxonSet">
-                    <taxon id="t3" spec="Taxon"/>
-                    <taxon id="t11" spec="Taxon"/>
-                    <taxon id="t7" spec="Taxon"/>
-                    <taxon id="t9" spec="Taxon"/>
-                    <taxon id="t6" spec="Taxon"/>
+                    <taxon id="t1" spec="Taxon"/>
+                    <taxon id="t4" spec="Taxon"/>
                     <taxon id="t2" spec="Taxon"/>
+                    <taxon id="t3" spec="Taxon"/>
                 </taxonset>
                 <Normal id="Normal.151" name="distr">
-                    <parameter id="RealParameter.300" estimate="false" name="mean">15</parameter>
+                    <parameter id="RealParameter.300" estimate="false" name="mean">6</parameter>
                     <parameter id="RealParameter.301" estimate="false" name="sigma">0.0001</parameter>
                 </Normal>
             </distribution>

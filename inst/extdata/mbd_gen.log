@@ -23,85 +23,15 @@
 #        </prior>
 #        <distribution id="auto_name_1.prior" monophyletic="true" spec="beast.math.distributions.MRCAPrior" tree="@Tree.t:mbd">
 #            <taxonset id="auto_name_1" spec="beast.evolution.alignment.TaxonSet">
-#                <taxon id="t18" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t106" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t82" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t49" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t114" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t34" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t58" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t115" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t31" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t57" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t112" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t65" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t69" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t67" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t26" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t111" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t117" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t100" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t44" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t63" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t19" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t40" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t77" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t104" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t91" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t35" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t72" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t42" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t108" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t97" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t68" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t41" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t39" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t28" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t95" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t23" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t96" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t110" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t32" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t55" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t47" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t85" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t20" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t113" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t101" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t73" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t102" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t1" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t8" spec="beast.evolution.alignment.Taxon"/>
 #                <taxon id="t2" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t78" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t107" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t48" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t81" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t74" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t71" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t53" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t99" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t24" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t64" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t116" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t94" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t109" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t89" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t36" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t54" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t98" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t88" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t50" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t16" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t17" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t105" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t38" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t30" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t90" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t92" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t51" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t59" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t6" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t4" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t5" spec="beast.evolution.alignment.Taxon"/>
 #            </taxonset>
 #            <Normal id="Normal.151" name="distr">
-#                <parameter estimate="false" id="RealParameter.300" name="mean">15.0</parameter>
+#                <parameter estimate="false" id="RealParameter.300" name="mean">6.0</parameter>
 #                <parameter estimate="false" id="RealParameter.301" name="sigma">1.0E-4</parameter>
 #            </Normal>
 #        </distribution>
@@ -119,8 +49,8 @@
 #    </distribution>
 #</input>
 #
-Sample	posterior	likelihood	prior	treeLikelihood.mbd	TreeHeight	BirthDeath	BDBirthRate	BDDeathRate	logP(mrca(auto_name_1))	mrca.age(auto_name_1)	clockRate
-0	-8.625475528400702E9	-1816.8833457230155	-8.625473711517355E9	-1816.8833457230155	1.8657137601699028	31.680755155364277	1.0	0.5	-8.62547374319811E9	1.8657137601699028	1.0
-1000	-43060.795899462064	-1123.58164986533	-41937.214249596735	-1123.58164986533	15.028952025641557	-34.51621396754939	0.5483432028601193	0.8201505815988693	-41902.69803562918	15.028952025641557	0.7895398761208399
-2000	-42942.513610416834	-1009.5051663431182	-41933.00844407372	-1009.5051663431182	15.028952025641557	-30.310408444539647	0.25029295466116797	0.906608912441249	-41902.69803562918	15.028952025641557	0.8608842912873168
-3000	-42863.65179214726	-921.7303747305975	-41941.92141741666	-921.7303747305975	15.028952025641557	-39.223381787483426	0.26831964053051816	0.9003785919498388	-41902.69803562918	15.028952025641557	0.5293373676752295
+Sample	posterior	likelihood	prior	treeLikelihood	TreeHeight	BirthDeath	BDBirthRate	BDDeathRate	logP(mrca(auto_name_1))	mrcatime(auto_name_1)	clockRate
+0	-8.517307255892731E8	-99.87190041263659	-8.517306257173727E8	-99.87190041263659	1.8726991150131935	-4.248130715135339	1.0	0.5	-8.51730621469242E8	1.8726991150131935	1.0
+1000	-36698.5156907785	-76.10943911718662	-36622.40625166131	-76.10943911718662	5.972936554815481	-9.194390727817353	0.4084293783019047	0.3186029266006431	-36613.211860933494	5.972936554815481	0.507445654823047
+2000	-2770.704527526037	-69.91147269268612	-2700.793054833351	-69.91147269268612	6.007346630144591	-10.435732601607668	0.4222141398007508	0.2306515106138094	-2690.3573222317436	6.007346630144591	0.10954232828460897
+3000	-231.9881889914859	-69.44378541018253	-162.54440358130338	-69.44378541018253	5.998213169457688	-11.197636073067383	0.3522052423399713	0.43081715119097647	-151.346767508236	5.998213169457688	0.09197839694083375

@@ -2,8 +2,6 @@ context("test-create_fig_1_file")
 
 test_that("use", {
 
-  skip("Issue #208")
-
   # Should create 'results/fig_1.png'
   filename <- create_fig_1_file(
     project_folder_name = get_razzo_path("razzo_project")
