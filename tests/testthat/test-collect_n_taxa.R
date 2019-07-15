@@ -1,3 +1,5 @@
+context("test-collect_n_taxa")
+
 test_that("use", {
 
   if (1 == 2) {
@@ -18,9 +20,10 @@ test_that("use", {
   expect_true("seed" %in% names(df))
   expect_true("site_model" %in% names(df))
   expect_true("clock_model" %in% names(df))
-  expect_true("tree" %in% names(df))
+
   # The number of taxa
   expect_true("n_taxa" %in% names(df))
+  expect_true(is.numeric(df$n_taxa))
 
   # Data must be tidy
   expect_true(is.factor(df$clock_model))
@@ -29,27 +32,17 @@ test_that("use", {
   # Rows must be unique
   expect_equal(nrow(unique(df)), nrow(df))
 
-  # Data must make sense
-  expect_true(is.numeric(df$n_taxa)) # n_taxa is numeric
-  df_list <- split(
-    df,
-    f = list(
-      df$lambda,
-      df$mu,
-      df$nu,
-      df$q,
-      df$seed,
-      df$crown_age,
-      df$cond,
-      df$site_model,
-      df$clock_model
-    )
-  )
-  skip("Issue to be solved #210")
-  expect_true( # same n_taxa for true and twin
-    all(
-      unlist(lapply(df_list, FUN = function(x) length(unique(x$n_taxa)) == 1))
-    )
-  )
+  # As true and twin trees have the same number of taxa, no need
+  # to have a 'tree' (with values 'true' or 'twin') column
+  expect_false("tree" %in% names(df))
 
+  # As all trees (true, twin, posterior) have an equal amount of tips
+  n_rows_expected <- length(
+    list.files(
+      get_razzo_path("razzo_project"),
+      recursive = TRUE,
+      pattern = "parameters\\.RDa"
+    )
+  )
+  expect_equal(nrow(df), n_rows_expected)
 })
