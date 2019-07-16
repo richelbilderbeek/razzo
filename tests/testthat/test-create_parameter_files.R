@@ -1,28 +1,17 @@
 context("test-create_parameters_files")
 
-test_that("must be in working directory by default", {
-  # Reasons are among others
-  # * The scripts in razzo_project expects this
-  # * Writing to inst/extdata is a bad idea
-  #
-  filenames <- create_parameters_files()
-  expected_pattern <- paste0(getwd(), "/data/.*parameters\\.RDa")
-  expect_true(
-    all(length(grep(x = filenames, pattern = expected_pattern)) >= 1)
-  )
-})
-
 test_that("use", {
 
   # Put files in temporary folder
   super_folder_name <- peregrine::get_pff_tempdir()
   project_folder_name <- file.path(super_folder_name, "razzo_project")
 
-  # Do not warn if the folder already exists
+  # Do warn if the folder already exists: it should not be
   dir.create(path = project_folder_name, recursive = TRUE, showWarnings = TRUE)
 
   filenames <- create_parameters_files(
-    project_folder_name = project_folder_name
+    project_folder_name = project_folder_name,
+    experiment_type = "test" # which is default
   )
 
   # All filenames must be unique, Issue 170, #170
@@ -64,8 +53,8 @@ test_that("use, full", {
   super_folder_name <- dirname(peregrine::get_pff_tempfile())
   project_folder_name <- file.path(super_folder_name, "razzo_project")
 
-  # Do not warn if the folder already exists
-  dir.create(path = project_folder_name, showWarnings = FALSE)
+  # Do warn if the folder already exists: it should not be
+  dir.create(path = project_folder_name, recursive = TRUE, showWarnings = TRUE)
 
   filenames <- create_parameters_files(
     project_folder_name = project_folder_name,
@@ -99,6 +88,14 @@ test_that("use, full", {
     ) > 0
   )
 
+  skip("#222")
+  # MCMC of full run should be 1111k
+  first_filename <- filenames[1]
+  first_parameters <- open_parameters_file(first_filename)
+  expect_equal(
+    first_parameters$pir_params$experiments[[1]]$inference_model$mcmc$chain_length, # nolint yup, Demeter won't be happy about this long line
+    1111000
+  )
 })
 test_that("can read", {
 
