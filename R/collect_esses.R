@@ -23,6 +23,7 @@ collect_esses <- function(
     # Need this: Issue #220
     if (1 == 2) {
       burn_in_fraction <- parameters$pir_params$error_measure_params$burn_in_fraction # nolint indeed unused yet
+      # pirouette checks that all experiments' MCMCs are identical
       sample_interval <- parameters$pir_params$experiments[[1]]$inference_model$mcmc$store_every # nolint indeed unused yet
     }
     files_log <- list.files(paths[p], pattern = "*.log")
@@ -156,6 +157,7 @@ collect_esses <- function(
     sub_set <- all_esses[all_esses$settings == setting, ]
     traces <- data.frame(apply(data.frame(sub_set[, traces_names]), MARGIN = 2, FUN = as.numeric))
     if (1 == 1) {
+      # Current incorrect method
       ess_likelihood[i] <- unlist(tracerer::calc_esses(traces, sample_interval = 1e6))["likelihood"]
     } else {
       # Need this: Issue #220
