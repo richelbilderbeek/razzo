@@ -6,7 +6,11 @@ test_that("use", {
   # No .log files found at path '/home/richel/GitHubs/razzo/inst/extdata/razzo_project/data/0.2-0.15-1-0.1/1'
   # Maybe the razzo experiment is not run yet?
   if (1 == 2) {
-    for (file in list.files(get_razzo_path("razzo_project"), recursive = TRUE, pattern = "parameters\\.RDa")) {
+    for (file in list.files(
+        get_razzo_path("razzo_project"),
+        recursive = TRUE, pattern = "parameters\\.RDa"
+      )
+    ) {
       run_razzo(open_parameters_file(file))
     }
   }
@@ -24,9 +28,11 @@ test_that("use", {
   expect_true("clock_model" %in% names(df))
   expect_true("tree" %in% names(df))
 
-  # I (@richelbilderbeek) suggest to take the ESS of the likelihood,
-  # and that one only. We'll see if that idea changes in the future.
+  # Only take the ESS of the likelihood
   expect_true("ess_likelihood" %in% names(df))
+
+  # Unsure, with the bug it is 4, so hope to get it lower after fixing it
+  expect_true(all(df$ess_likelihood <= 4))
 
   # Data must be tidy
   expect_true(is.factor(df$clock_model))

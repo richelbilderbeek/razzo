@@ -20,6 +20,11 @@ collect_esses <- function(
   for (p in seq_along(paths)) {
     parameters <- open_parameters_file(file.path(paths[p], "parameters.RDa")) # nolint internal function
     pars <- parameters$mbd_params
+    # Need this: Issue #220
+    if (1 == 2) {
+      burn_in_fraction <- parameters$pir_params$error_measure_params$burn_in_fraction # nolint indeed unused yet
+      sample_interval <- parameters$pir_params$experiments[[1]]$inference_model$mcmc$store_every # nolint indeed unused yet
+    }
     files_log <- list.files(paths[p], pattern = "*.log")
     if (length(files_log) == 0) {
       stop(
@@ -150,7 +155,17 @@ collect_esses <- function(
     setting <- all_esses$settings[i]
     sub_set <- all_esses[all_esses$settings == setting, ]
     traces <- data.frame(apply(data.frame(sub_set[, traces_names]), MARGIN = 2, FUN = as.numeric))
-    ess_likelihood[i] <- unlist(tracerer::calc_esses(traces, sample_interval = 1e6))["likelihood"]
+    if (1 == 1) {
+      ess_likelihood[i] <- unlist(tracerer::calc_esses(traces, sample_interval = 1e6))["likelihood"]
+    } else {
+      # Need this: Issue #220
+      # Remove burn-ins, burn_in_fraction obtained earlier
+      clean_traces <- tracerer::remove_burn_ins(traces, burn_in_fraction = burn_in_fraction)
+      # Calculate the correct ESSes, sample_interval obtained earlier
+      ess_likelihood[i] <- unlist(
+        tracerer::calc_esses(clean_traces, sample_interval = sample_interval)
+      )["likelihood"]
+    }
     matrix_numeric[i, ] <- all_esses[
         all_esses$settings == setting,
         setting_numeric_names
