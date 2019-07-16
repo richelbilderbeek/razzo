@@ -16,16 +16,14 @@ collect_esses <- function(
 
   # retrieve information from files
   paths <- get_data_paths(project_folder_name) # nolint internal function
-  best_esses <- gen_esses <- data.frame()
+  data_table_best <- data_table_gen <- data.frame()
   for (p in seq_along(paths)) {
     parameters <- open_parameters_file(file.path(paths[p], "parameters.RDa")) # nolint internal function
     pars <- parameters$mbd_params
-    # Need this: Issue #220
-    if (1 == 2) {
-      burn_in_fraction <- parameters$pir_params$error_measure_params$burn_in_fraction # nolint indeed unused yet
-      # pirouette checks that all experiments' MCMCs are identical
-      sample_interval <- parameters$pir_params$experiments[[1]]$inference_model$mcmc$store_every # nolint indeed unused yet
-    }
+    burn_in_fraction <-
+      parameters$pir_params$error_measure_params$burn_in_fraction
+    sample_interval <-
+      parameters$pir_params$experiments[[1]]$inference_model$mcmc$store_every # pirouette checks that all experiments' MCMCs are identical
     files_log <- list.files(paths[p], pattern = "*.log")
     if (length(files_log) == 0) {
       stop(
@@ -49,68 +47,72 @@ collect_esses <- function(
           use.names = FALSE
         )
       ))
-      esses <- data.frame(x2, row.names = NULL)
+      data_table <- data.frame(x2, row.names = NULL)
+      data_table$burn_in_fraction <- burn_in_fraction
+      data_table$sample_interval <- sample_interval
       if (is_twin == TRUE) {
-        esses$gen_model <- "bd"
+        data_table$gen_model <- "bd"
       } else {
-        esses$gen_model <- "mbd"
+        data_table$gen_model <- "mbd"
       }
       if (is_best == TRUE) {
-        esses$site_model <-
-          get_best_model(paths[p])[[esses$gen_model[1]]]$site_model
-        esses$clock_model <-
-          get_best_model(paths[p])[[esses$gen_model[1]]]$clock_model
-        esses$tree_prior <-
-          get_best_model(paths[p])[[esses$gen_model[1]]]$tree_prior
-        esses <- as.data.frame(esses, row.names = NULL)
-        best_esses <- suppressWarnings(plyr::rbind.fill(
-          best_esses,
-          cbind(pars, esses)
+        data_table$site_model <-
+          get_best_model(paths[p])[[data_table$gen_model[1]]]$site_model
+        data_table$clock_model <-
+          get_best_model(paths[p])[[data_table$gen_model[1]]]$clock_model
+        data_table$tree_prior <-
+          get_best_model(paths[p])[[data_table$gen_model[1]]]$tree_prior
+        data_table <- as.data.frame(data_table, row.names = NULL)
+        data_table_best <- suppressWarnings(plyr::rbind.fill(
+          data_table_best,
+          cbind(pars, data_table)
         ))
-        best_esses <- as.data.frame(best_esses, row.names = NULL)
+        data_table_best <- as.data.frame(data_table_best, row.names = NULL)
       }
       if (is_generative == TRUE) {
-        esses$site_model <-
-          get_generative_model(paths[p])[[esses$gen_model[1]]]$site_model
-        esses$clock_model <-
-          get_generative_model(paths[p])[[esses$gen_model[1]]]$clock_model
-        esses$tree_prior <-
-          get_generative_model(paths[p])[[esses$gen_model[1]]]$tree_prior
-        esses <- as.data.frame(esses, row.names = NULL)
-        gen_esses <- suppressWarnings(plyr::rbind.fill(
-          gen_esses,
-          cbind(pars, esses)
+        data_table$site_model <-
+          get_generative_model(paths[p])[[data_table$gen_model[1]]]$site_model
+        data_table$clock_model <-
+          get_generative_model(paths[p])[[data_table$gen_model[1]]]$clock_model
+        data_table$tree_prior <-
+          get_generative_model(paths[p])[[data_table$gen_model[1]]]$tree_prior
+        data_table <- as.data.frame(data_table, row.names = NULL)
+        data_table_gen <- suppressWarnings(plyr::rbind.fill(
+          data_table_gen,
+          cbind(pars, data_table)
         ))
-        gen_esses <- as.data.frame(gen_esses, row.names = NULL)
+        data_table_gen <- as.data.frame(data_table_gen, row.names = NULL)
       }
     }
   }
-  best_esses$best_or_gen <- "best"
-  gen_esses$best_or_gen <- "gen"
-  all_esses <- plyr::rbind.fill(
-    best_esses,
-    gen_esses
+  data_table_best$best_or_gen <- "best"
+  data_table_gen$best_or_gen <- "gen"
+  data_table_all <- plyr::rbind.fill(
+    data_table_best,
+    data_table_gen
   )
-  all_esses <- as.data.frame(all_esses, row.names = NULL)
-  all_esses$models <- interaction(
-    all_esses$site_model,
-    all_esses$clock_model,
-    all_esses$tree_prior,
-    all_esses$best_or_gen,
-    all_esses$gen_model
+  data_table_all <- as.data.frame(data_table_all, row.names = NULL)
+  data_table_all$models <- interaction(
+    data_table_all$site_model,
+    data_table_all$clock_model,
+    data_table_all$tree_prior,
+    data_table_all$best_or_gen,
+    data_table_all$gen_model,
+    data_table_all$burn_in_fraction,
+    data_table_all$sample_interval
   )
-  all_esses$par_settings <- interaction(
-    all_esses$lambda,
-    all_esses$mu,
-    all_esses$nu,
-    all_esses$q,
-    all_esses$seed,
-    all_esses$crown_age,
-    all_esses$cond
+  data_table_all$par_settings <- interaction(
+    data_table_all$lambda,
+    data_table_all$mu,
+    data_table_all$nu,
+    data_table_all$q,
+    data_table_all$seed,
+    data_table_all$crown_age,
+    data_table_all$cond
   )
-  all_esses$settings <- interaction(
-    all_esses$par_settings,
-    all_esses$models
+  data_table_all$settings <- interaction(
+    data_table_all$par_settings,
+    data_table_all$models
   )
   traces_names <- c(
     "Sample",
@@ -142,38 +144,42 @@ collect_esses <- function(
   matrix_string <- data.frame(matrix(
     NA,
     ncol = length(setting_string_names),
-    nrow = length(all_esses$settings)
+    nrow = length(data_table_all$settings)
   ))
   colnames(matrix_string) <- setting_string_names
   matrix_numeric <- data.frame(matrix(
     NA,
     ncol = length(setting_numeric_names),
-    nrow = length(all_esses$settings)
+    nrow = length(data_table_all$settings)
   ))
   colnames(matrix_numeric) <- setting_numeric_names
-  ess_likelihood <- rep(NA, length(all_esses$settings))
-  for (i in seq_along(all_esses$settings)) {
-    setting <- all_esses$settings[i]
-    sub_set <- all_esses[all_esses$settings == setting, ]
-    traces <- data.frame(apply(data.frame(sub_set[, traces_names]), MARGIN = 2, FUN = as.numeric))
-    if (1 == 1) {
-      # Current incorrect method
-      ess_likelihood[i] <- unlist(tracerer::calc_esses(traces, sample_interval = 1e6))["likelihood"]
-    } else {
-      # Need this: Issue #220
-      # Remove burn-ins, burn_in_fraction obtained earlier
-      clean_traces <- tracerer::remove_burn_ins(traces, burn_in_fraction = burn_in_fraction)
-      # Calculate the correct ESSes, sample_interval obtained earlier
-      ess_likelihood[i] <- unlist(
-        tracerer::calc_esses(clean_traces, sample_interval = sample_interval)
-      )["likelihood"]
-    }
-    matrix_numeric[i, ] <- all_esses[
-        all_esses$settings == setting,
+  ess_likelihood <- rep(NA, length(data_table_all$settings))
+  for (i in seq_along(data_table_all$settings)) {
+    setting <- data_table_all$settings[i]
+    sub_set <- data_table_all[data_table_all$settings == setting, ]
+    traces <- data.frame(apply(
+      data.frame(sub_set[, traces_names]),
+      MARGIN = 2,
+      FUN = as.numeric
+    ))
+    # Remove burn-ins, burn_in_fraction obtained earlier
+    testit::assert(length(unique(sub_set$burn_in_fraction)) == 1)
+    clean_traces <- tracerer::remove_burn_ins(
+      traces = traces,
+      burn_in_fraction = sub_set$burn_in_fraction[1]
+    )
+    # Calculate the correct ESSes, sample_interval obtained earlier
+    testit::assert(length(unique(sub_set$sample_interval)) == 1)
+    ess_likelihood[i] <- unlist(tracerer::calc_esses(
+      clean_traces,
+      sample_interval = sub_set$sample_interval[1]
+    ))["likelihood"]
+    matrix_numeric[i, ] <- data_table_all[
+        data_table_all$settings == setting,
         setting_numeric_names
         ][1, ]
-    matrix_string[i, ] <- all_esses[
-        all_esses$settings == setting,
+    matrix_string[i, ] <- data_table_all[
+        data_table_all$settings == setting,
         setting_string_names
         ][1, ]
   }
