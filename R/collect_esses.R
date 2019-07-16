@@ -48,6 +48,8 @@ collect_esses <- function(
         )
       ))
       data_table <- data.frame(x2, row.names = NULL)
+      data_table$burn_in_fraction <- burn_in_fraction
+      data_table$sample_interval <- sample_interval
       if (is_twin == TRUE) {
         data_table$gen_model <- "bd"
       } else {
@@ -95,7 +97,9 @@ collect_esses <- function(
     data_table_all$clock_model,
     data_table_all$tree_prior,
     data_table_all$best_or_gen,
-    data_table_all$gen_model
+    data_table_all$gen_model,
+    data_table_all$burn_in_fraction,
+    data_table_all$sample_interval
   )
   data_table_all$par_settings <- interaction(
     data_table_all$lambda,
@@ -159,14 +163,17 @@ collect_esses <- function(
       FUN = as.numeric
     ))
     # Remove burn-ins, burn_in_fraction obtained earlier
+    testit::assert(length(unique(sub_set$burn_in_fraction)) == 1)
     clean_traces <- tracerer::remove_burn_ins(
       traces = traces,
-      burn_in_fraction = burn_in_fraction
+      burn_in_fraction = sub_set$burn_in_fraction[1]
     )
     # Calculate the correct ESSes, sample_interval obtained earlier
-    ess_likelihood[i] <- unlist(
-      tracerer::calc_esses(clean_traces, sample_interval = sample_interval)
-    )["likelihood"]
+    testit::assert(length(unique(sub_set$sample_interval)) == 1)
+    ess_likelihood[i] <- unlist(tracerer::calc_esses(
+      clean_traces,
+      sample_interval = sub_set$sample_interval[1]
+    ))["likelihood"]
     matrix_numeric[i, ] <- data_table_all[
         data_table_all$settings == setting,
         setting_numeric_names
