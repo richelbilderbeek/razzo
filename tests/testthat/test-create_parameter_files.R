@@ -48,7 +48,6 @@ test_that("use", {
 
 test_that("use, full", {
 
-  skip("Issue 127, #127")
   # Put files in temporary folder
   super_folder_name <- dirname(peregrine::get_pff_tempfile())
   project_folder_name <- file.path(super_folder_name, "razzo_project")
@@ -88,7 +87,6 @@ test_that("use, full", {
     ) > 0
   )
 
-  skip("#222")
   # MCMC of full run should be 1111k
   first_filename <- filenames[1]
   first_parameters <- open_parameters_file(first_filename)
