@@ -55,14 +55,10 @@ test_that("use, full", {
   # Do warn if the folder already exists: it should not be
   dir.create(path = project_folder_name, recursive = TRUE, showWarnings = TRUE)
 
-  # Rprof(tmp <- tempfile()) # nolint profiling here
-
   filenames <- create_parameters_files(
     project_folder_name = project_folder_name,
     experiment_type = "full"
   )
-
-  # Rprof(); summaryRprof(tmp)  # nolint profiling here
 
   # The folder structure created:
   # * razzo_project (the name of the GitHub containing the scripts)
