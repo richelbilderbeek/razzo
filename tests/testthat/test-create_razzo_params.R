@@ -3,7 +3,9 @@ context("test-create_params_razzo")
 test_that("use", {
 
   mbd_params <- create_test_mbd_params()
-  pir_params <- peregrine::create_test_pff_pir_params()
+  pir_params <- peregrine::create_test_pff_pir_params(
+    twinning_params = peregrine::create_pff_twinning_params()
+  )
   misc_params <- create_misc_params()
 
   razzo_params <- create_params_razzo(

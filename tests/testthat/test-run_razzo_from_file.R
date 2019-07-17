@@ -43,6 +43,6 @@ test_that("abuse", {
       parameters_filename = get_razzo_path("parameters.RDa"),
       add_verbose = "nonsense"
     ),
-    "'add_verbose' must be TRUE or FALSE"
+    "'add_verbose' must be one boolean"
   )
 })
