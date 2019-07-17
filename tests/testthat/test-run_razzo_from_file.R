@@ -19,7 +19,7 @@ test_that("use", {
   )
 
   # Run the second verbosely
-  expect_silent(
+  expect_output(
     run_razzo_from_file(
       parameters_filename = parameters_filenames[2],
       add_verbose = TRUE
