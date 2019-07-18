@@ -18,7 +18,7 @@ run_razzo_from_file <- function(
       parameters_filename
     )
   }
-  if (!is_one_bool(add_verbose)) {
+  if (!beautier::is_one_bool(add_verbose)) {
     stop("'add_verbose' must be one boolean")
   }
 
