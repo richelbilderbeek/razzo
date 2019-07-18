@@ -3,15 +3,54 @@
 #
 #<?xml version="1.0" encoding="UTF-8" standalone="no"?><input id="posterior" spec="beast.core.util.CompoundDistribution">
 #    <distribution id="prior" spec="beast.core.util.CompoundDistribution">
-#        <distribution id="YuleModel.t:mbd" spec="beast.evolution.speciation.YuleModel">
-#            <parameter id="birthRate.t:mbd" name="birthDiffRate">1.0</parameter>
+#        <distribution id="BirthDeath.t:mbd" spec="beast.evolution.speciation.BirthDeathGernhard08Model">
+#            <parameter id="BDDeathRate.t:mbd" lower="0.0" name="relativeDeathRate" upper="1.0">0.5</parameter>
+#            <parameter id="BDBirthRate.t:mbd" lower="0.0" name="birthDiffRate" upper="10000.0">1.0</parameter>
 #            <tree id="Tree.t:mbd">
 #                <taxonset id="TaxonSet.mbd" spec="beast.evolution.alignment.TaxonSet">
 #                </taxonset>
 #            </tree>
 #        </distribution>
-#        <prior id="YuleBirthRatePrior.t:mbd" name="distribution" x="@birthRate.t:mbd">
+#        <prior id="BirthRatePrior.t:mbd" name="distribution" x="@BDBirthRate.t:mbd">
 #            <Uniform id="Uniform.100" name="distr" upper="Infinity"/>
+#        </prior>
+#        <prior id="DeathRatePrior.t:mbd" name="distribution" x="@BDDeathRate.t:mbd">
+#            <Uniform id="Uniform.101" name="distr" upper="Infinity"/>
+#        </prior>
+#        <prior id="RateACPrior.s:mbd" name="distribution">
+#            <parameter id="rateAC.s:mbd" lower="0.0" name="x">1.0</parameter>
+#            <Gamma id="Gamma.0" name="distr">
+#                <parameter estimate="false" id="RealParameter.0" name="alpha">0.05</parameter>
+#                <parameter estimate="false" id="RealParameter.1" name="beta">10.0</parameter>
+#            </Gamma>
+#        </prior>
+#        <prior id="RateAGPrior.s:mbd" name="distribution">
+#            <parameter id="rateAG.s:mbd" lower="0.0" name="x">1.0</parameter>
+#            <Gamma id="Gamma.1" name="distr">
+#                <parameter estimate="false" id="RealParameter.2" name="alpha">0.05</parameter>
+#                <parameter estimate="false" id="RealParameter.3" name="beta">20.0</parameter>
+#            </Gamma>
+#        </prior>
+#        <prior id="RateATPrior.s:mbd" name="distribution">
+#            <parameter id="rateAT.s:mbd" lower="0.0" name="x">1.0</parameter>
+#            <Gamma id="Gamma.2" name="distr">
+#                <parameter estimate="false" id="RealParameter.4" name="alpha">0.05</parameter>
+#                <parameter estimate="false" id="RealParameter.5" name="beta">10.0</parameter>
+#            </Gamma>
+#        </prior>
+#        <prior id="RateCGPrior.s:mbd" name="distribution">
+#            <parameter id="rateCG.s:mbd" lower="0.0" name="x">1.0</parameter>
+#            <Gamma id="Gamma.3" name="distr">
+#                <parameter estimate="false" id="RealParameter.6" name="alpha">0.05</parameter>
+#                <parameter estimate="false" id="RealParameter.7" name="beta">10.0</parameter>
+#            </Gamma>
+#        </prior>
+#        <prior id="RateGTPrior.s:mbd" name="distribution">
+#            <parameter id="rateGT.s:mbd" lower="0.0" name="x">1.0</parameter>
+#            <Gamma id="Gamma.4" name="distr">
+#                <parameter estimate="false" id="RealParameter.8" name="alpha">0.05</parameter>
+#                <parameter estimate="false" id="RealParameter.9" name="beta">10.0</parameter>
+#            </Gamma>
 #        </prior>
 #        <prior id="ClockPrior.c:mbd" name="distribution">
 #            <parameter id="clockRate.c:mbd" name="x">1.0</parameter>
@@ -36,15 +75,20 @@
 #                <parameter estimate="false" id="mutationRate.s:mbd" name="mutationRate">1.0</parameter>
 #                <parameter estimate="false" id="gammaShape.s:mbd" name="shape">1.0</parameter>
 #                <parameter estimate="false" id="proportionInvariant.s:mbd" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
-#                <substModel id="JC69.s:mbd" spec="beast.evolution.substitutionmodel.JukesCantor"/>
+#                <substModel id="gtr.s:mbd" rateAC="@rateAC.s:mbd" rateAG="@rateAG.s:mbd" rateAT="@rateAT.s:mbd" rateCG="@rateCG.s:mbd" rateGT="@rateGT.s:mbd" spec="beast.evolution.substitutionmodel.GTR">
+#                    <parameter estimate="false" id="rateCT.s:mbd" lower="0.0" name="rateCT">1.0</parameter>
+#                    <frequencies id="estimatedFreqs.s:mbd" spec="beast.evolution.substitutionmodel.Frequencies">
+#                        <parameter dimension="4" id="freqParameter.s:mbd" lower="0.0" name="frequencies" upper="1.0">0.25</parameter>
+#                    </frequencies>
+#                </substModel>
 #            </siteModel>
 #            <branchRateModel clock.rate="@clockRate.c:mbd" id="StrictClock.c:mbd" spec="beast.evolution.branchratemodel.StrictClockModel"/>
 #        </distribution>
 #    </distribution>
 #</input>
 #
-Sample	posterior	likelihood	prior	treeLikelihood	TreeHeight	YuleModel	birthRate	logP(mrca(auto_name_1))	mrcatime(auto_name_1)	clockRate
-0	-1.3556522044792714E9	-76.16837530745131	-1.3556521283108962E9	-76.16837530745131	0.7929814006134954	-1.8844482734750692	1.0	-1.3556521264264479E9	0.7929814006134954	1.0
-1000	-2115.8037994523365	-59.46565010065495	-2056.3381493516817	-59.46565010065495	6.006414657397973	-7.238074522051699	0.28519003630796386	-2049.10007482963	6.006414657397973	1.1156130088949603
-2000	-2117.781075361798	-61.43136037653786	-2056.34971498526	-61.43136037653786	6.006414657397973	-7.249640155630175	0.2161867903959746	-2049.10007482963	6.006414657397973	1.0503486566524076
-3000	-650.6434125670594	-59.66864878079323	-590.9747637862662	-59.66864878079323	6.003441160942752	-7.18673392893159	0.23853830691811645	-583.7880298573345	6.003441160942752	2.693429951776744
+Sample	posterior	likelihood	prior	treeLikelihood.mbd	TreeHeight	rateAC	rateAG	rateAT	rateCG	rateGT	freqParameter.1	freqParameter.2	freqParameter.3	freqParameter.4	BirthDeath	BDBirthRate	BDDeathRate	logP(mrca(auto_name_1))	mrca.age(auto_name_1)	clockRate
+0	-1.3556522145266097E9	-70.569451680645	-1.355652143957158E9	-70.569451680645	0.7929814006134954	1.0	1.0	1.0	1.0	1.0	0.25	0.25	0.25	0.25	-1.6260106050360634	1.0	0.5	-1.3556521264264479E9	0.7929814006134954	1.0
+1000	-9706.203355641004	-60.10401780594749	-9646.099337835056	-60.10401780594749	5.9861209454543145	1.0	1.0	1.0	1.0	0.9030004080188833	0.25	0.25	0.250576286096884	0.24942371390311602	-7.184916549856943	0.2747912012731679	0.4668299310089592	-9623.116352266894	5.9861209454543145	0.7641500563194505
+2000	-4962.048288972967	-61.745074845239714	-4900.303214127728	-61.745074845239714	6.00988525959204	0.6889670026952394	1.0	1.0	1.0	1.107533136052905	0.25	0.25	0.250576286096884	0.24942371390311602	-7.049311634742981	0.202410034405202	0.853703567878519	-4877.626458262177	6.00988525959204	1.2434482943422154
+3000	-93.93162412171023	-60.24178975841741	-33.689834363292825	-60.24178975841741	5.999363601390056	0.6889670026952394	0.6707120351361051	0.5459999066421558	0.9403790675429121	1.2177113245581954	0.25	0.25	0.250576286096884	0.24942371390311602	-7.083067907968404	0.30085610336638074	0.6802293382402634	-11.958757698176807	5.999363601390056	1.5214067200814951

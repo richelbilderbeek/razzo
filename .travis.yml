@@ -16,8 +16,9 @@ r_github_packages:
   - jimhester/lintr
   - MangoTheCat/goodpractice
   - ropensci/spelling
+  - ropensci/beautier@develop
   - ropensci/tracerer
-  - ropensci/beastier
+  - ropensci/beastier@develop
   - ropensci/mauricer
   - ropensci/babette
   - richelbilderbeek/mcbette
