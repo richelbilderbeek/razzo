@@ -1,33 +1,33 @@
 <itsabeastystatewerein version='2.0' sample='3000'>
-<statenode id='Tree.t:mbd_twin'>((0:0.4697373477976346,3:0.4697373477976346)4:5.529176383786647,(1:0.034474051081941084,2:0.034474051081941084)5:5.964439680502341)6:0.0</statenode>
-<statenode id='rateAC.s:mbd_twin'>rateAC.s:mbd_twin[1 1] (0.0,Infinity): 0.778035606656096 </statenode>
-<statenode id='rateAG.s:mbd_twin'>rateAG.s:mbd_twin[1 1] (0.0,Infinity): 1.0 </statenode>
-<statenode id='rateAT.s:mbd_twin'>rateAT.s:mbd_twin[1 1] (0.0,Infinity): 1.0 </statenode>
-<statenode id='rateCG.s:mbd_twin'>rateCG.s:mbd_twin[1 1] (0.0,Infinity): 0.7418397974255113 </statenode>
-<statenode id='rateGT.s:mbd_twin'>rateGT.s:mbd_twin[1 1] (0.0,Infinity): 1.0 </statenode>
-<statenode id='freqParameter.s:mbd_twin'>freqParameter.s:mbd_twin[4 1] (0.0,1.0): 0.25 0.25 0.2489022678270062 0.2510977321729938 </statenode>
-<statenode id='BDBirthRate.t:mbd_twin'>BDBirthRate.t:mbd_twin[1 1] (0.0,10000.0): 0.11650028649294769 </statenode>
-<statenode id='BDDeathRate.t:mbd_twin'>BDDeathRate.t:mbd_twin[1 1] (0.0,1.0): 0.9569191640389074 </statenode>
-<statenode id='clockRate.c:mbd_twin'>clockRate.c:mbd_twin[1 1] (0.0,Infinity): 1.2412759123684438 </statenode>
+<statenode id='Tree.t:mbd_twin'>((0:0.08312029187938103,(1:0.008624958176185887,2:0.008624958176185887)4:0.07449533370319514)5:5.916468424210876,3:5.9995887160902575)6:0.0</statenode>
+<statenode id='rateAC.s:mbd_twin'>rateAC.s:mbd_twin[1 1] (0.0,Infinity): 0.6736027679724602 </statenode>
+<statenode id='rateAG.s:mbd_twin'>rateAG.s:mbd_twin[1 1] (0.0,Infinity): 0.9315340526187714 </statenode>
+<statenode id='rateAT.s:mbd_twin'>rateAT.s:mbd_twin[1 1] (0.0,Infinity): 0.6978630306763642 </statenode>
+<statenode id='rateCG.s:mbd_twin'>rateCG.s:mbd_twin[1 1] (0.0,Infinity): 3.9830530128264487 </statenode>
+<statenode id='rateGT.s:mbd_twin'>rateGT.s:mbd_twin[1 1] (0.0,Infinity): 0.7240620825869696 </statenode>
+<statenode id='freqParameter.s:mbd_twin'>freqParameter.s:mbd_twin[4 1] (0.0,1.0): 0.25 0.25625500245194643 0.24432128364493755 0.24942371390311602 </statenode>
+<statenode id='BDBirthRate.t:mbd_twin'>BDBirthRate.t:mbd_twin[1 1] (0.0,10000.0): 0.25458383969523535 </statenode>
+<statenode id='BDDeathRate.t:mbd_twin'>BDDeathRate.t:mbd_twin[1 1] (0.0,1.0): 0.7897465111159309 </statenode>
+<statenode id='clockRate.c:mbd_twin'>clockRate.c:mbd_twin[1 1] (0.0,Infinity): 6.460229472653296 </statenode>
 </itsabeastystatewerein>
 <!--
 {"operators":[
-{"id":"BirthRateScaler.t:mbd_twin","p":0.75,"accept":82,"reject":17,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
-{"id":"DeathRateScaler.t:mbd_twin","p":0.75,"accept":83,"reject":22,"acceptFC":0,"rejectFC":0,"rejectIv":9,"rejectOp":9},
-{"id":"BirthDeathTreeScaler.t:mbd_twin","p":0.5,"accept":2,"reject":118,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
-{"id":"BirthDeathTreeRootScaler.t:mbd_twin","p":0.5,"accept":2,"reject":115,"acceptFC":0,"rejectFC":0,"rejectIv":5,"rejectOp":5},
-{"id":"BirthDeathUniformOperator.t:mbd_twin","p":"NaN","accept":286,"reject":761,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
-{"id":"BirthDeathSubtreeSlide.t:mbd_twin","p":1,"accept":105,"reject":414,"acceptFC":0,"rejectFC":0,"rejectIv":116,"rejectOp":116},
-{"id":"BirthDeathNarrow.t:mbd_twin","p":"NaN","accept":209,"reject":359,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
-{"id":"BirthDeathWide.t:mbd_twin","p":"NaN","accept":10,"reject":86,"acceptFC":0,"rejectFC":0,"rejectIv":58,"rejectOp":58},
-{"id":"BirthDeathWilsonBalding.t:mbd_twin","p":"NaN","accept":3,"reject":116,"acceptFC":0,"rejectFC":0,"rejectIv":77,"rejectOp":77},
-{"id":"RateACScaler.s:mbd_twin","p":0.5,"accept":1,"reject":3,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
-{"id":"RateAGScaler.s:mbd_twin","p":0.5,"accept":0,"reject":0,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
-{"id":"RateATScaler.s:mbd_twin","p":0.5,"accept":0,"reject":0,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
-{"id":"RateCGScaler.s:mbd_twin","p":0.5,"accept":3,"reject":1,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
-{"id":"RateGTScaler.s:mbd_twin","p":0.5,"accept":0,"reject":0,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
-{"id":"FrequenciesExchanger.s:mbd_twin","p":0.010000000000000004,"accept":1,"reject":0,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
-{"id":"StrictClockRateScaler.c:mbd_twin","p":0.75,"accept":82,"reject":18,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
-{"id":"strictClockUpDownOperator.c:mbd_twin","p":0.75,"accept":2,"reject":100,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0}
+{"id":"BirthRateScaler.t:mbd_twin","p":0.75,"accept":65,"reject":30,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"DeathRateScaler.t:mbd_twin","p":0.75,"accept":72,"reject":34,"acceptFC":0,"rejectFC":0,"rejectIv":7,"rejectOp":7},
+{"id":"BirthDeathTreeScaler.t:mbd_twin","p":0.5,"accept":2,"reject":110,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BirthDeathTreeRootScaler.t:mbd_twin","p":0.5,"accept":1,"reject":106,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BirthDeathUniformOperator.t:mbd_twin","p":"NaN","accept":134,"reject":914,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BirthDeathSubtreeSlide.t:mbd_twin","p":1,"accept":45,"reject":509,"acceptFC":0,"rejectFC":0,"rejectIv":170,"rejectOp":170},
+{"id":"BirthDeathNarrow.t:mbd_twin","p":"NaN","accept":182,"reject":371,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BirthDeathWide.t:mbd_twin","p":"NaN","accept":6,"reject":91,"acceptFC":0,"rejectFC":0,"rejectIv":58,"rejectOp":58},
+{"id":"BirthDeathWilsonBalding.t:mbd_twin","p":"NaN","accept":0,"reject":96,"acceptFC":0,"rejectFC":0,"rejectIv":61,"rejectOp":61},
+{"id":"RateACScaler.s:mbd_twin","p":0.5,"accept":3,"reject":0,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"RateAGScaler.s:mbd_twin","p":0.5,"accept":3,"reject":1,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"RateATScaler.s:mbd_twin","p":0.5,"accept":2,"reject":1,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"RateCGScaler.s:mbd_twin","p":0.5,"accept":4,"reject":0,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"RateGTScaler.s:mbd_twin","p":0.5,"accept":2,"reject":1,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"FrequenciesExchanger.s:mbd_twin","p":0.010000000000000004,"accept":2,"reject":0,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"StrictClockRateScaler.c:mbd_twin","p":0.75,"accept":92,"reject":18,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"strictClockUpDownOperator.c:mbd_twin","p":0.75,"accept":2,"reject":102,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0}
 ]}
 -->

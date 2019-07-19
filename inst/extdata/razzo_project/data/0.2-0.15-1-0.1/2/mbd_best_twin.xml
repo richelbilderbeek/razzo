@@ -4,10 +4,10 @@
     <data
 id="mbd_twin"
 name="alignment">
-                    <sequence id="seq_t1" taxon="t1" totalcount="4" value="tgaatgttgcagttg"/>
-                    <sequence id="seq_t2" taxon="t2" totalcount="4" value="ataaaacgggggttc"/>
-                    <sequence id="seq_t3" taxon="t3" totalcount="4" value="ataaaacgggggttc"/>
-                    <sequence id="seq_t4" taxon="t4" totalcount="4" value="taaatctcgtgctct"/>
+                    <sequence id="seq_t1" taxon="t1" totalcount="4" value="tgaatgttgtcgtta"/>
+                    <sequence id="seq_t2" taxon="t2" totalcount="4" value="ataaaactggggtta"/>
+                    <sequence id="seq_t3" taxon="t3" totalcount="4" value="ataaaactggggtta"/>
+                    <sequence id="seq_t4" taxon="t4" totalcount="4" value="taaatctggagttgt"/>
                 </data>
 
 
