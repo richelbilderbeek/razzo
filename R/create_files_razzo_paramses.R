@@ -33,6 +33,7 @@ create_parameters_files <- create_files_razzo_paramses <- function(
     )
     testit::assert(nrow(mbd_paramses) == length(parameters_filenames))
   } else {
+    testit::assert(experiment_type == "full")
     n_replicates <- 2
     mbd_paramses <- razzo::create_paramses_mbd(
       lambda = 0.2,
@@ -49,7 +50,7 @@ create_parameters_files <- create_files_razzo_paramses <- function(
     parameters_filenames <- save_razzo_paramses(
       project_folder_name = project_folder_name,
       mbd_paramses = mbd_paramses,
-      mcmc_chain_length = 100000
+      mcmc_chain_length = 1111000
     )
     testit::assert(nrow(mbd_paramses) == length(parameters_filenames))
   }

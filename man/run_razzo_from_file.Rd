@@ -4,12 +4,16 @@
 \alias{run_razzo_from_file}
 \title{Run a razzo experiment from a filename}
 \usage{
-run_razzo_from_file(parameters_filename)
+run_razzo_from_file(parameters_filename, add_verbose = FALSE)
 }
 \arguments{
 \item{parameters_filename}{name of a file that contains
 a \code{razzo_params},
 as can be created by \link{create_params_razzo}}
+
+\item{add_verbose}{if \code{TRUE}, this will set verbosity
+to \code{TRUE}, even though the \code{razzo} parameter
+file has set it to \code{FALSE}. This is used in debugging}
 }
 \description{
 Run a razzo experiment from a filename
