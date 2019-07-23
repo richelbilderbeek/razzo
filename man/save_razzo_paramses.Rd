@@ -14,9 +14,9 @@ save_razzo_paramses(project_folder_name,
   peregrine::get_pff_tempfile(), twin_evidence_filename =
   peregrine::get_pff_tempfile()),
   alignment_params = pirouette::create_alignment_params(root_sequence =
-  "aaaaccccggggttt", mutation_rate = 0.5/unique(mbd_paramses$crown_age),
-  fasta_filename = peregrine::get_pff_tempfile(pattern = "alignment_",
-  fileext = ".fasta")),
+  pirouette::create_blocked_dna(length = 1000), mutation_rate =
+  0.5/unique(mbd_paramses$crown_age), fasta_filename =
+  peregrine::get_pff_tempfile(pattern = "alignment_", fileext = ".fasta")),
   error_measure_params = pirouette::create_error_measure_params(),
   mcmc_chain_length = beautier::create_mcmc()$chain_length/100)
 }
