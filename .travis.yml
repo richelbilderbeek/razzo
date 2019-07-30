@@ -16,14 +16,14 @@ r_github_packages:
   - jimhester/lintr
   - MangoTheCat/goodpractice
   - ropensci/spelling
-  - ropensci/beautier
+  - ropensci/beautier@develop
   - ropensci/tracerer
-  - ropensci/beastier
+  - ropensci/beastier@develop
   - ropensci/mauricer
-  - ropensci/babette
+  - ropensci/babette@develop
   - richelbilderbeek/mcbette
   - Giappo/mbd
-  - richelbilderbeek/pirouette
+  - richelbilderbeek/pirouette@richel
   - richelbilderbeek/peregrine
 
 before_install:
