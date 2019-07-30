@@ -1,20 +1,3 @@
-#' Function to check if a file exists.
-#' Calls \code{stop} if the file is absent
-#' @param filename name of the file
-#' @return nothing. Will \code{stop} if the file is absent,
-#'   with a proper error message
-#' @author Richel J.C. Bilderbeek
-#' @noRd
-check_file_exists <- function(filename) {
-  if (!file.exists(filename)) {
-    stop(
-      "File not found. Could not find file with path '",
-      filename,
-      "'"
-    )
-  }
-}
-
 #' Check if \code{project_folder_name} ends with \code{razzo_project}
 #' and is the name of an existing folder.
 #' Will throw if not.
