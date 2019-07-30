@@ -25,7 +25,7 @@ check_project_folder_name <- function(project_folder_name) {
 open_parameters_file <- function(
   parameters_filename
 ) {
-  check_file_exists(parameters_filename) # nolint internal function
+  beautier::check_file_exists(parameters_filename)
 
   parameters <- NULL
   if (
