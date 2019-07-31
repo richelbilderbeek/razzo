@@ -81,7 +81,7 @@ save_razzo_paramses <- function(
     twin_evidence_filename = peregrine::get_pff_tempfile()
   ),
   alignment_params = pirouette::create_alignment_params(
-    root_sequence = "aaaaccccggggttt",
+    root_sequence = pirouette::create_blocked_dna(length = 1000),
     mutation_rate = 0.5 / unique(mbd_paramses$crown_age),
     fasta_filename = peregrine::get_pff_tempfile(
       pattern = "alignment_",
