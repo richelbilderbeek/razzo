@@ -36,7 +36,7 @@ test_that("abuse", {
     run_razzo_from_file(
       parameters_filename = parameters_filename
     ),
-    "'parameters_filename' cannot be found"
+    "File 'parameters_filename' not found"
   )
   expect_error(
     run_razzo_from_file(
