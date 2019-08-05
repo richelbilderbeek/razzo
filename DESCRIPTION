@@ -20,7 +20,7 @@ Imports:
     beautier (>= 2.2.2),
     ggplot2,
     mbd,
-    peregrine (>= 0.3),
+    peregrine (>= 0.4),
     pirouette,
     testit
 Suggests:
