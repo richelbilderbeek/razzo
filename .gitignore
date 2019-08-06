@@ -52,3 +52,4 @@ vignettes/pirouette_*.*
 vignettes/razzo_pipeline_cache/
 results/
 Rprof.out
+*.zip
