@@ -5,6 +5,5 @@ test_that("use", {
 })
 
 test_that("abuse", {
-  expect_error(create_misc_params("/local/tmp/not_peregrine_friendly"))
-  expect_error(create_misc_params("/tmp/not_peregrine_friendly"))
+  expect_error(create_misc_params("/not_peregrine_friendly"))
 })
