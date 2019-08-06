@@ -114,15 +114,16 @@ collect_esses <- function(
     data_table_all$par_settings,
     data_table_all$models
   )
+  # We only use the posterior to estimate the ESS
   traces_names <- c(
     "Sample",
     "posterior",
-    "likelihood",
-    "prior",
-    "treeLikelihood",
-    "TreeHeight",
-    "YuleModel",
-    "birthRate"
+    "likelihood"
+  #  "prior",
+  #  "treeLikelihood",
+  #  "TreeHeight",
+  #  "YuleModel",
+  #  "birthRate"
   )
   setting_numeric_names <- c(
     "lambda",
@@ -157,7 +158,7 @@ collect_esses <- function(
   for (i in seq_along(data_table_all$settings)) {
     setting <- data_table_all$settings[i]
     sub_set <- data_table_all[data_table_all$settings == setting, ]
-    if (!all(traces_names) %in% names(sub_set)) {
+    if (!all(traces_names %in% names(sub_set))) {
       msg <- "Not all 'traces_names' are present in data frame. \n"
       for (traces_name in traces_names) {
         if (!traces_name %in% names(sub_set)) {
@@ -166,7 +167,7 @@ collect_esses <- function(
       }
       stop(paste0(msg, collapse = ""))
     }
-    testit::assert(all(traces_names) %in% names(sub_set))
+    testit::assert(all(traces_names %in% names(sub_set)))
     traces <- data.frame(apply(
       data.frame(sub_set[, traces_names]),
       MARGIN = 2,
