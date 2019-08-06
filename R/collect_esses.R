@@ -120,7 +120,7 @@ collect_esses <- function(
     "posterior",
     "likelihood"
   #  "prior",
-  #  "treeLikelihood",
+  #  "treeLikelihood", # nolint do not care
   #  "TreeHeight",
   #  "YuleModel",
   #  "birthRate"
