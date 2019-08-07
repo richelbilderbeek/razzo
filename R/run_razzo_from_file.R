@@ -12,12 +12,8 @@ run_razzo_from_file <- function(
   parameters_filename,
   add_verbose = FALSE
 ) {
-  if (!file.exists(parameters_filename)) {
-    stop(
-      "'parameters_filename' cannot be found. Value: ",
-      parameters_filename
-    )
-  }
+  beautier::check_file_exists(parameters_filename, "parameters_filename")
+
   if (!beautier::is_one_bool(add_verbose)) {
     stop("'add_verbose' must be one boolean")
   }

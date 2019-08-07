@@ -43,7 +43,7 @@ run_razzo <- function(
     phy = phylogeny,
     file = tree_filename
   )
-  testit::assert(file.exists(tree_filename))
+  beautier::check_file_exists(tree_filename, "tree_filename")
 
   # Let pirouette measure the error
 

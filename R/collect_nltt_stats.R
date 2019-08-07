@@ -28,7 +28,7 @@ collect_nltt_stats <- function(
   # define matrices to store data
   first_filename <- file.path(paths[1], "parameters.RDa")
   # Fails on '/tmp/RtmpitOdlW/razzo_project/data/0_twin.2-0.15-1-0.1/1/parameters.RDa' # nolint indeed a long path
-  testit::assert(file.exists(first_filename))
+  beautier::check_file_exists(first_filename, "first_filename")
   parameters <- open_parameters_file(first_filename) # nolint internal function
   pars <- parameters$mbd_params
   matrix_pars <- data.frame(matrix(
