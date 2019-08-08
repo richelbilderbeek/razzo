@@ -84,42 +84,28 @@ get_results_path <- function(
   results_folder
 }
 
-#' @title Get paths for all the settings
-#' @description Get paths for all the settings
-#' @inheritParams default_params_doc
-#' @return the paths of all the parameter settings
-#' @examples
-#'   # Obtain the paths of all razzo testing folders
-#'   all_paths <- get_data_paths(get_razzo_path("razzo_project"))
+#' Get the folder paths of \code{razzo} experiments
 #'
-#'   # In each of these, there is a 'parameters.RDa' file
-#'   parameter_files <- file.path(all_paths, "parameters.RDa")
-#'   testthat::expect_true(all(file.exists(parameter_files)))
-#' @author Giovanni Laudanno
+#' This function looks recursively for \code{parameters.RDa} files
+#' and return the folder names of these.
+#' @inheritParams default_params_doc
+#' @return the folder paths of all \code{razzo} experiments
+#' @examples
+#' # Obtain the paths of all razzo testing folders
+#' all_paths <- get_data_paths(get_razzo_path("razzo_project"))
+#'
+#' # In each of these, there is a 'parameters.RDa' file
+#' parameter_files <- file.path(all_paths, "parameters.RDa")
+#' testthat::expect_true(all(file.exists(parameter_files)))
+#' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
 get_data_paths <- function(
   project_folder_name
 ) {
-
   check_project_folder_name(project_folder_name) # nolint
-
-  data_folder <- file_path(
-    project_folder_name,
-    "data"
-  )
-
-  all_settings <- c()
-  par_settings_folders <- file_path(data_folder, list.files(data_folder))
-  for (p in par_settings_folders) {
-    seed_folders <- file_path(p, list.files(p))
-    all_settings <- c(all_settings, seed_folders)
-  }
-  oldskool_paths <- all_settings
-
-
-  paths <- clean_paths(
-      dirname(
-      list.files(
+  clean_paths(
+    dirname(
+    list.files(
         path = project_folder_name,
         pattern = "parameters.RDa",
         recursive = TRUE,
@@ -127,19 +113,4 @@ get_data_paths <- function(
       )
     )
   )
-  if (!all(paths %in% oldskool_paths)) {
-    warning("paths")
-    warning(paths)
-    warning("oldskool_paths")
-    warning(oldskool_paths)
-
-    stop(
-      "Paths differ: ",
-      "paths: '", paths, "'",
-      "paths: '", oldskool_paths, "'"
-    )
-  }
-  testit::assert(paths == oldskool_paths)
-  paths
-
 }
