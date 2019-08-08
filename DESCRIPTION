@@ -24,6 +24,7 @@ Imports:
     pirouette,
     testit
 Suggests:
+    assertive,
     babette,
     cli,
     devtools,

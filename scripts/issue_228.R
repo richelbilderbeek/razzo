@@ -10,7 +10,6 @@ dir.create(razzo_project_folder, recursive = TRUE)
 
 utils::unzip(zipfile = zip_filename, exdir = razzo_project_folder)
 
-# This takes ages, Issue #228, Issue 228
 df <- collect_esses(
   project_folder_name = razzo_project_folder
 )

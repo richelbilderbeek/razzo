@@ -15,8 +15,8 @@ collect_esses <- function(
   best_or_gen <- NULL; rm(best_or_gen) # nolint, fixes warning: no visible binding for global variable
 
   # retrieve information from files
-  relative_paths <- get_data_paths(project_folder_name, full_names = FALSE) # nolint internal function
-  paths <- file.path(project_folder_name, relative_paths)
+  folder <- get_data_paths(project_folder_name, full_names = FALSE) # nolint internal function
+  paths <- file.path(project_folder_name, folder)
 
   # information needed
   traces_names <- c(
@@ -132,7 +132,7 @@ collect_esses <- function(
         testit::assert(length(par_value) == 1)
         esses[i, ][names(esses) == par_name] <- par_value
       }
-      esses[i, ]$folder <- relative_paths[p]
+      esses[i, ]$folder <- folder[p]
     }
   }
 
