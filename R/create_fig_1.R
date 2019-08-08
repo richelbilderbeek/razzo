@@ -28,15 +28,13 @@ create_fig_1 <- function(
   ..density.. <- NULL; rm(..density..) # nolint, fixes warning: no visible binding for global variable
 
   ##### Data Wrangling #####
-  df1 <- df0[df0$best_or_gen == model_type, ]
-  df1$tree <- plyr::revalue(
-    df1$gen_model,
-    c("mbd" = "true", "bd" = "twin"), warn_missing = TRUE
-  )
-  df1$gen_model <- NULL
-  df1$best_or_gen <- NULL
-  names(df1) <- gsub(names(df1), pattern = "nltt_", replacement = "error_")
-  n_errors <- sum(grepl(names(df1), pattern = "error_"))
+  df_errors <- df0[df0$best_or_gen == model_type, ]
+  df_errors$best_or_gen <- NULL
+  names(df_errors) <- gsub(names(df_errors), pattern = "nltt_", replacement = "error_")
+  n_errors <- sum(grepl(names(df_errors), pattern = "error_"))
+
+  df_params <- collect_mbd_params(project_folder_name)
+  df_merged <- merge(x = df_params, y = df_errors, by = "folder")
   col_order <- c(
     mbd::get_param_names(),
     "seed",
@@ -48,7 +46,7 @@ create_fig_1 <- function(
     "tree_prior",
     paste0("error_", 1:n_errors)
   )
-  df2 <- df1[, col_order]
+  df2 <- df_merged[, col_order]
 
   # Convert to long form
   first_col_index <- which(names(df2) == "error_1")

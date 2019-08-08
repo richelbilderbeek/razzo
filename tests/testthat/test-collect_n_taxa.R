@@ -31,7 +31,6 @@ test_that("use", {
   )
   expect_equal(nrow(df), n_rows_expected)
 
-  skip("Issue 230, Issue #230")
   # Use relative folder path as the primary key
   #
   # E.g. an experiment with its parameter file at either of these locations

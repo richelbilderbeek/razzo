@@ -1,6 +1,6 @@
-test_that("use", {
+context("test-collect_mbd_params")
 
-  skip("Issue 230, Issue #230")
+test_that("use", {
 
   df <- collect_mbd_params(
     project_folder_name = get_razzo_path("razzo_project")
@@ -37,8 +37,6 @@ test_that("use", {
 })
 
 test_that("abuse", {
-
-  skip("Issue 230, Issue #230")
 
   expect_error(
     collect_mbd_params(
