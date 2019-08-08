@@ -37,6 +37,9 @@ test_that("use", {
 })
 
 test_that("abuse", {
+
+  skip("Issue 230, Issue #230")
+
   expect_error(
     collect_mbd_params(
       project_folder_name = "nonsense"
