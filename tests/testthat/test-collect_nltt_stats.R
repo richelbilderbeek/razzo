@@ -6,44 +6,43 @@ test_that("use", {
     project_folder_name = get_razzo_path("razzo_project")
   )
 
-  # Experimental parameters that vary
-  expect_true("lambda" %in% names(df))
-  expect_true("mu" %in% names(df))
-  expect_true("nu" %in% names(df))
-  expect_true("q" %in% names(df))
-  expect_true("seed" %in% names(df))
-  expect_true("site_model" %in% names(df))
-  expect_true("clock_model" %in% names(df))
-
+  # Secondary keys
   # gen_model is the generative model,
   # can be 'mbd' (the MBD tree)
   # or 'bd' (for the twin BD tree)
   expect_true("gen_model" %in% names(df))
+  expect_true("best_or_gen" %in% names(df))
 
+  # The measurementss
   # The collected nLTT statistics, start counting from 1
   expect_true("nltt_1" %in% names(df))
   expect_true("nltt_2" %in% names(df))
 
   # Data must be tidy
   expect_true(is.factor(df$gen_model))
-  expect_true(is.factor(df$clock_model))
-  expect_true(is.factor(df$site_model))
-  expect_true(is.factor(df$tree_prior))
 
   # Data must make sense
-  expect_true(all(df$lambda >= 0))
-  expect_true(all(df$mu >= 0))
-  expect_true(all(df$nu >= 0))
-  expect_true(all(df$q >= 0 & df$q <= 1))
-  expect_true(all(df$crown_age >= 0))
-  expect_true(all(df$sequence_length >= 0))
-  expect_true(all(df$sample_interval >= 0))
-  expect_true(all(df$chain_length >= 0))
-  expect_true(all(df$sub_chain_length >= 0))
   expect_true(all(df$gen_model %in% razzo::get_gen_models()))
-  expect_true(all(df$site_model %in% beautier::get_site_model_names()))
-  expect_true(all(df$clock_model %in% beautier::get_clock_model_names()))
+  expect_true(all(df$best_or_gen %in% c("best", "gen")))
   expect_true(all(df$nltt_1 >= 0))
+
+  skip("Issue 230, Issue #230")
+  # Use relative folder path as the primary key
+  #
+  # E.g. an experiment with its parameter file at either of these locations
+  #
+  #   /home/richel/razzo_project/data/1/2/3/parameters.RDa
+  #   C:\Giappo\razzo_project\data\1\2\3\parameters.RDa
+  #
+  # would get
+  #
+  #  data/1/2/3
+  #
+  expect_true("folder" %in% names(df))
+
+  # Should become a factor
+  expect_true(is.factor(df$best_or_gen))
+
 })
 
 test_that("abuse", {
