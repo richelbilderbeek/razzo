@@ -2,7 +2,7 @@
 % Please edit documentation in R/path_functions.R
 \name{get_data_paths}
 \alias{get_data_paths}
-\title{Get paths for all the settings}
+\title{Get the folder paths of \code{razzo} experiments}
 \usage{
 get_data_paths(project_folder_name)
 }
@@ -11,19 +11,20 @@ get_data_paths(project_folder_name)
 will be the full path to \code{razzo_project}}
 }
 \value{
-the paths of all the parameter settings
+the folder paths of all \code{razzo} experiments
 }
 \description{
-Get paths for all the settings
+This function looks recursively for \code{parameters.RDa} files
+and return the folder names of these.
 }
 \examples{
-  # Obtain the paths of all razzo testing folders
-  all_paths <- get_data_paths(get_razzo_path("razzo_project"))
+# Obtain the paths of all razzo testing folders
+all_paths <- get_data_paths(get_razzo_path("razzo_project"))
 
-  # In each of these, there is a 'parameters.RDa' file
-  parameter_files <- file.path(all_paths, "parameters.RDa")
-  testthat::expect_true(all(file.exists(parameter_files)))
+# In each of these, there is a 'parameters.RDa' file
+parameter_files <- file.path(all_paths, "parameters.RDa")
+testthat::expect_true(all(file.exists(parameter_files)))
 }
 \author{
-Giovanni Laudanno
+Giovanni Laudanno, Richel J.C. Bilderbeek
 }

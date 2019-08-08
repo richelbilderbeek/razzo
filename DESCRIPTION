@@ -1,6 +1,6 @@
 Package: razzo
 Type: Package
-Title: The Error If Nature Is MBD
+Title: The Error if Nature is MBD
 Version: 0.1.0
 Authors@R: c(
     person("Giovanni", "Laudanno", role = c("aut")),

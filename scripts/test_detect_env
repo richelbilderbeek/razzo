@@ -1,0 +1,33 @@
+#!/bin/bash
+# Test if the environment is detected 
+#
+# Usage, locally:
+#
+#   ./scripts/test_detect_env
+#
+# Usage, on Peregrine:
+#
+#   sbatch ./scripts/test_detect_env
+#
+# Peregrine directives:
+#SBATCH --time=0:01:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --ntasks=1
+#SBATCH --mem=1M
+#SBATCH --job-name=test_detect_env
+#SBATCH --output=test_detect_env.log
+
+echo "Host name: "$HOSTNAME
+
+if [[ "$HOSTNAME" == "peregrine.hpc.rug.nl" ]]; then
+  echo "On Peregrine, login node"
+elif [[ "$HOSTNAME" =~ ^pg-node.*$ ]]; then
+  echo "On Peregrine, worker node"
+elif [[ "$HOSTNAME" == "sonic" ]]; then
+  echo "Working from laptop"
+else
+  echo "On some unknown environment"
+fi
+
+
