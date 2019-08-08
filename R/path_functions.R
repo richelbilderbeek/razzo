@@ -80,6 +80,18 @@ get_data_paths <- function(
       full.names = TRUE
     )
   )
+  if (!all(paths %in% oldskool_paths)) {
+    warning("paths")
+    warning(paths)
+    warning("oldskool_paths")
+    warning(oldskool_paths)
+
+    stop(
+      "Paths differ: ",
+      "paths: '", paths, "'",
+      "paths: '", oldskool_paths, "'"
+    )
+  }
   testit::assert(paths == oldskool_paths)
   paths
 
