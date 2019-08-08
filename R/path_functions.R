@@ -105,7 +105,7 @@ get_data_paths <- function(
   check_project_folder_name(project_folder_name) # nolint
   clean_paths(
     dirname(
-    list.files(
+      list.files(
         path = project_folder_name,
         pattern = "parameters.RDa",
         recursive = TRUE,
