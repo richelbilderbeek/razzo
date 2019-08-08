@@ -3,12 +3,57 @@ file_path <- function(..., fsep = .Platform$file.sep){
   gsub("//", "/", file.path(..., fsep = fsep))
 }
 
+#' Clean up a path by removing double folder seperators
+#' @param filename name of a file
+#' @author Richel J.C. Bilderbeek
+#' @examples
+#'  library(testthat)
+#'
+#'  if (rappdirs::app_dir()$os != "win") {
+#'    expect_equal(clean_path("a//b"), "a/b")
+#'  }
+#'  expect_error(clean_path(NULL))
+#'  expect_error(clean_path(NA))
+#'  expect_error(clean_path(Inf))
+#' @export
+clean_path <- function(filename) {
+  assertive::assert_is_a_string(filename)
+  file_path(filename)
+}
+
+#' Clean up a paths by removing double folder seperators
+#' @param filenames names of files
+#' @author Richel J.C. Bilderbeek
+#' @examples
+#' library(testthat)
+#' if (rappdirs::app_dir()$os != "win") {
+#'   expect_equal(
+#'     clean_paths(c("a//b")),
+#'     c("a/b")
+#'   )
+#'   expect_equal(
+#'     clean_paths(c("a//b", "c//d")),
+#'     c("a/b", "c/d")
+#'   )
+#' }
+#' expect_error(clean_paths(NULL))
+#' expect_error(clean_paths(NA))
+#' expect_error(clean_paths(Inf))
+#' @export
+clean_paths <- function(filenames) {
+  assertive::assert_is_not_null(filenames)
+  for (i in seq_along(filenames)) {
+    assertive::assert_is_a_string(filenames[i])
+    filenames[i] <- clean_path(filenames[i])
+  }
+  filenames
+}
+
 
 #' Get the full path of a file in the \code{inst/extdata} folder
 #' @inheritParams default_params_doc
 #' @return the full path of the filename, if and only if
 #'   the file is present. Will stop otherwise.
-#' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @examples
 #'   testit::assert(is.character(get_razzo_path("parameters.RDa")))
 #' @export
@@ -72,12 +117,14 @@ get_data_paths <- function(
   oldskool_paths <- all_settings
 
 
-  paths <- dirname(
-    list.files(
-      path = project_folder_name,
-      pattern = "parameters.RDa",
-      recursive = TRUE,
-      full.names = TRUE
+  paths <- clean_paths(
+      dirname(
+      list.files(
+        path = project_folder_name,
+        pattern = "parameters.RDa",
+        recursive = TRUE,
+        full.names = TRUE
+      )
     )
   )
   if (!all(paths %in% oldskool_paths)) {
