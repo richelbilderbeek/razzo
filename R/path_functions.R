@@ -69,5 +69,18 @@ get_data_paths <- function(
     seed_folders <- file_path(p, list.files(p))
     all_settings <- c(all_settings, seed_folders)
   }
-  all_settings
+  oldskool_paths <- all_settings
+
+
+  paths <- dirname(
+    list.files(
+      path = project_folder_name,
+      pattern = "parameters.RDa",
+      recursive = TRUE,
+      full.names = TRUE
+    )
+  )
+  testit::assert(paths == oldskool_paths)
+  paths
+
 }
