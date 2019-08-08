@@ -9,8 +9,9 @@ collect_nltt_stats <- function(
 ) {
   check_project_folder_name(project_folder_name) # nolint
 
-  # retrieve information from files
+  # Paths to the folder, each folder holds a razzo experiment
   paths <- get_data_paths(project_folder_name) # nolint internal function
+
   n_files <- 0
   max_len_nltts <- 0
   for (p in seq_along(paths)) {
@@ -24,16 +25,6 @@ collect_nltt_stats <- function(
       max_len_nltts <- max(max_len_nltts, len_nltts)
     }
   }
-  oldskool_paths <- paths
-  paths <- dirname(
-    list.files(
-      path = project_folder_name,
-      pattern = "parameters.RDa",
-      recursive = TRUE,
-      full.names = TRUE
-    )
-  )
-  testit::assert(paths == oldskool_paths)
 
   # define matrices to store data
   first_filename <- file.path(paths[1], "parameters.RDa")
