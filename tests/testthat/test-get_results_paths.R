@@ -12,10 +12,9 @@ test_that("use", {
     file.path(project_folder_name, "results")
   )
 
-  skip("dirty path")
+  # Maintain single seperators in the path
   expect_equal(
     get_results_path(paste0(project_folder_name, "/")),
     file.path(project_folder_name, "results")
   )
-
 })

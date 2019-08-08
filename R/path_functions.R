@@ -76,12 +76,12 @@ get_results_path <- function(
 ) {
 
   check_project_folder_name(project_folder_name) # nolint
-
-  results_folder <- file.path(
-    project_folder_name,
-    "results"
+  clean_path(
+    file.path(
+      project_folder_name,
+      "results"
+    )
   )
-  results_folder
 }
 
 #' Get the folder paths of \code{razzo} experiments
