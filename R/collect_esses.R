@@ -43,7 +43,7 @@ collect_esses <- function(
     ncol = 1 + length(setting_string_names) + 1
   ))
   colnames(esses) <- c(
-    "path",
+    "folder",
     "ess_likelihood",
     setting_string_names
   )
@@ -132,7 +132,7 @@ collect_esses <- function(
         testit::assert(length(par_value) == 1)
         esses[i, ][names(esses) == par_name] <- par_value
       }
-      esses[i, ]$path <- relative_paths[p]
+      esses[i, ]$folder <- relative_paths[p]
     }
   }
 
@@ -140,6 +140,7 @@ collect_esses <- function(
   esses$site_model <- as.factor(esses$site_model)
   esses$clock_model <- as.factor(esses$clock_model)
   esses$tree_prior <- as.factor(esses$tree_prior)
+  esses$best_or_gen <- as.factor(esses$best_or_gen)
 
   # Remove duplicates (no idea how they got in)
   esses <- unique(esses)

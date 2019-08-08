@@ -33,12 +33,12 @@ collect_nltt_stats <- function(
   beautier::check_file_exists(first_filename, "first_filename")
   parameters <- open_parameters_file(first_filename) # nolint internal function
   pars <- parameters$mbd_params
-  matrix_path <- data.frame(matrix(
+  matrix_folder <- data.frame(matrix(
     NA,
     ncol = 1,
     nrow = n_files
   ))
-  colnames(matrix_path) <- "path"
+  colnames(matrix_folder) <- "folder"
   names_string <- c(
     "site_model",
     "clock_model",
@@ -90,7 +90,7 @@ collect_nltt_stats <- function(
       matrix_string$site_model[i] <- info$site_model
       matrix_string$clock_model[i] <- info$clock_model
       matrix_string$tree_prior[i] <- info$tree_prior
-      matrix_path[i, ] <- relative_paths[p]
+      matrix_folder[i, ] <- relative_paths[p]
       i <- i + 1
     }
   }
@@ -100,8 +100,10 @@ collect_nltt_stats <- function(
   matrix_string$site_model <- as.factor(matrix_string$site_model)
   matrix_string$clock_model <- as.factor(matrix_string$clock_model)
   matrix_string$tree_prior <- as.factor(matrix_string$tree_prior)
+  matrix_string$best_or_gen <- as.factor(matrix_string$best_or_gen)
+
   results <- cbind(
-    matrix_path,
+    matrix_folder,
     matrix_string,
     matrix_nltts
   )
