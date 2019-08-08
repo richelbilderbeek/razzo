@@ -24,6 +24,16 @@ collect_nltt_stats <- function(
       max_len_nltts <- max(max_len_nltts, len_nltts)
     }
   }
+  oldskool_paths <- paths
+  paths <- dirname(
+    list.files(
+      path = project_folder_name,
+      pattern = "parameters.RDa",
+      recursive = TRUE,
+      full.names = TRUE
+    )
+  )
+  testit::assert(paths == oldskool_paths)
 
   # define matrices to store data
   first_filename <- file.path(paths[1], "parameters.RDa")

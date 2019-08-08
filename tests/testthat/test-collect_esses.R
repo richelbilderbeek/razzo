@@ -6,12 +6,14 @@ test_that("use", {
   # No .log files found at path '/home/richel/GitHubs/razzo/inst/extdata/razzo_project/data/0.2-0.15-1-0.1/1'
   # Maybe the razzo experiment is not run yet?
   if (1 == 2) {
-    for (file in list.files(
+    for (filename in list.files(
         get_razzo_path("razzo_project"),
-        recursive = TRUE, pattern = "parameters\\.RDa"
+        recursive = TRUE, pattern = "parameters\\.RDa",
+        full.names = TRUE
       )
     ) {
-      run_razzo(open_parameters_file(file))
+      beautier::check_file_exists(filename)
+      run_razzo(open_parameters_file(filename))
     }
   }
   df <- collect_esses(

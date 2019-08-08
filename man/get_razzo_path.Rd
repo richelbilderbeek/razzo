@@ -19,6 +19,3 @@ Get the full path of a file in the \code{inst/extdata} folder
 \examples{
   testit::assert(is.character(get_razzo_path("parameters.RDa")))
 }
-\author{
-Richel J.C. Bilderbeek, Giovanni Laudanno
-}
