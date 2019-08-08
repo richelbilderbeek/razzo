@@ -14,7 +14,7 @@ test_that("use", {
     experiment_type = "test" # which is default
   )
 
-  # All filenames must be unique, Issue 170, #170
+  # All filenames must be unique
   expect_equal(length(filenames), length(unique(filenames)))
 
   # The folder structure created:

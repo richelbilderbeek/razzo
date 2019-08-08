@@ -89,6 +89,7 @@ get_results_path <- function(
 #' This function looks recursively for \code{parameters.RDa} files
 #' and return the folder names of these.
 #' @inheritParams default_params_doc
+#' @param full_names TRUE if you want to return the full path
 #' @return the folder paths of all \code{razzo} experiments
 #' @examples
 #' # Obtain the paths of all razzo testing folders
@@ -100,7 +101,8 @@ get_results_path <- function(
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
 get_data_paths <- function(
-  project_folder_name
+  project_folder_name,
+  full_names = TRUE
 ) {
   check_project_folder_name(project_folder_name) # nolint
   clean_paths(
@@ -109,7 +111,7 @@ get_data_paths <- function(
         path = project_folder_name,
         pattern = "parameters.RDa",
         recursive = TRUE,
-        full.names = TRUE
+        full.names = full_names
       )
     )
   )

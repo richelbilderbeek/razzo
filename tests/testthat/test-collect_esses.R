@@ -36,7 +36,6 @@ test_that("use", {
   # Rows must be unique
   expect_equal(nrow(unique(df)), nrow(df))
 
-  skip("Issue 230, Issue #230")
   # Use relative folder path as the primary key
   #
   # E.g. an experiment with its parameter file at either of these locations

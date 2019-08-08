@@ -9,8 +9,13 @@ collect_nltt_stats <- function(
 ) {
   check_project_folder_name(project_folder_name) # nolint
 
+  ##### Satisfy R CMD check #####
+  tree <- NULL; rm(tree) # nolint, fixes warning: no visible binding for global variable
+  best_or_gen <- NULL; rm(best_or_gen) # nolint, fixes warning: no visible binding for global variable
+
   # Paths to the folder, each folder holds a razzo experiment
-  paths <- get_data_paths(project_folder_name) # nolint internal function
+  relative_paths <- get_data_paths(project_folder_name, full_names = FALSE) # nolint internal function
+  paths <- file.path(project_folder_name, relative_paths)
 
   n_files <- 0
   max_len_nltts <- 0
@@ -32,17 +37,17 @@ collect_nltt_stats <- function(
   beautier::check_file_exists(first_filename, "first_filename")
   parameters <- open_parameters_file(first_filename) # nolint internal function
   pars <- parameters$mbd_params
-  matrix_pars <- data.frame(matrix(
+  matrix_folder <- data.frame(matrix(
     NA,
-    ncol = length(pars),
+    ncol = 1,
     nrow = n_files
   ))
-  colnames(matrix_pars) <- names(pars)
+  colnames(matrix_folder) <- "folder"
   names_string <- c(
     "site_model",
     "clock_model",
     "tree_prior",
-    "gen_model",
+    "tree",
     "best_or_gen"
   )
   matrix_string <- data.frame(matrix(
@@ -73,42 +78,38 @@ collect_nltt_stats <- function(
         row.names = NULL
       )[, -1]
       if (is_twin == TRUE) {
-        matrix_string$gen_model[i] <- "bd"
+        matrix_string$tree[i] <- "twin"
       } else {
-        matrix_string$gen_model[i] <- "mbd"
+        matrix_string$tree[i] <- "true"
       }
       if (is_best == TRUE) {
-        matrix_string$site_model[i] <-
-          get_best_model(paths[p])[[matrix_string$gen_model[i]]]$site_model
-        matrix_string$clock_model[i] <-
-          get_best_model(paths[p])[[matrix_string$gen_model[i]]]$clock_model
-        matrix_string$tree_prior[i] <-
-          get_best_model(paths[p])[[matrix_string$gen_model[i]]]$tree_prior
+        info_function <- get_best_model
         matrix_string$best_or_gen[i] <- "best"
       }
       if (is_generative == TRUE) {
-        matrix_string$site_model[i] <-
-          get_generative_model(paths[p])[[matrix_string$gen_model[i]]]$site_model
-        matrix_string$clock_model[i] <-
-          get_generative_model(paths[p])[[matrix_string$gen_model[i]]]$clock_model
-        matrix_string$tree_prior[i] <-
-          get_generative_model(paths[p])[[matrix_string$gen_model[i]]]$tree_prior
+        info_function <- get_generative_model
         matrix_string$best_or_gen[i] <- "gen"
       }
-      matrix_pars[i, ] <- pars
+      info <- info_function(paths[p])[[matrix_string$tree[i]]]
+      matrix_string$site_model[i] <- info$site_model
+      matrix_string$clock_model[i] <- info$clock_model
+      matrix_string$tree_prior[i] <- info$tree_prior
+      matrix_folder[i, ] <- relative_paths[p]
       i <- i + 1
     }
   }
 
   # combine results
-  matrix_string$gen_model <- as.factor(matrix_string$gen_model)
+  matrix_string$tree <- as.factor(matrix_string$tree)
   matrix_string$site_model <- as.factor(matrix_string$site_model)
   matrix_string$clock_model <- as.factor(matrix_string$clock_model)
   matrix_string$tree_prior <- as.factor(matrix_string$tree_prior)
+  matrix_string$best_or_gen <- as.factor(matrix_string$best_or_gen)
+
   results <- cbind(
-    matrix_pars,
+    matrix_folder,
     matrix_string,
     matrix_nltts
   )
-  results
+  plyr::arrange(results, tree, plyr::desc(best_or_gen))
 }

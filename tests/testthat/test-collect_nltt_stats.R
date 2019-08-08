@@ -7,10 +7,9 @@ test_that("use", {
   )
 
   # Secondary keys
-  # gen_model is the generative model,
-  # can be 'mbd' (the MBD tree)
-  # or 'bd' (for the twin BD tree)
-  expect_true("gen_model" %in% names(df))
+  # tree can be can be 'true' (the MBD tree)
+  # or 'twin' (for the twin BD tree)
+  expect_true("tree" %in% names(df))
   expect_true("best_or_gen" %in% names(df))
 
   # The measurementss
@@ -19,14 +18,12 @@ test_that("use", {
   expect_true("nltt_2" %in% names(df))
 
   # Data must be tidy
-  expect_true(is.factor(df$gen_model))
+  expect_true(is.factor(df$tree))
 
   # Data must make sense
-  expect_true(all(df$gen_model %in% razzo::get_gen_models()))
   expect_true(all(df$best_or_gen %in% c("best", "gen")))
   expect_true(all(df$nltt_1 >= 0))
 
-  skip("Issue 230, Issue #230")
   # Use relative folder path as the primary key
   #
   # E.g. an experiment with its parameter file at either of these locations
