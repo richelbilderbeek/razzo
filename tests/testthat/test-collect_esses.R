@@ -32,7 +32,6 @@ test_that("use", {
 
   # Data must be tidy
   expect_true(is.factor(df$tree))
-  expect_true(is.factor(df$best_or_gen))
 
   # Rows must be unique
   expect_equal(nrow(unique(df)), nrow(df))
@@ -50,6 +49,10 @@ test_that("use", {
   #  data/1/2/3
   #
   expect_true("folder" %in% names(df))
+
+  # Also this one:
+  expect_true(is.factor(df$best_or_gen))
+
 })
 
 test_that("abuse", {
