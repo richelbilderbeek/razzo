@@ -6,8 +6,10 @@
 #' @author Richel J.C. Bilderbeek
 #' @noRd
 check_project_folder_name <- function(project_folder_name) {
-  if (basename(project_folder_name) != "razzo_project") {
-    stop("'project_folder_name' must end with 'razzo_project'")
+  if (!basename(project_folder_name) %in% c("razzo_project", "raket_werper")) {
+    stop(
+      "'project_folder_name' must end with 'razzo_project' or 'raket_werper'"
+    )
   }
   if (!dir.exists(project_folder_name)) {
     stop(
