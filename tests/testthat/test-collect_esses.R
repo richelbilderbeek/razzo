@@ -20,15 +20,9 @@ test_that("use", {
     project_folder_name = get_razzo_path("razzo_project")
   )
 
-  # Experimental parameters that vary
-  expect_true("lambda" %in% names(df))
-  expect_true("mu" %in% names(df))
-  expect_true("nu" %in% names(df))
-  expect_true("q" %in% names(df))
-  expect_true("seed" %in% names(df))
-  expect_true("site_model" %in% names(df))
-  expect_true("clock_model" %in% names(df))
+  # Sub-keys
   expect_true("tree" %in% names(df))
+  expect_true("best_or_gen" %in% names(df))
 
   # Only take the ESS of the likelihood
   expect_true("ess_likelihood" %in% names(df))
@@ -37,11 +31,28 @@ test_that("use", {
   expect_true(all(df$ess_likelihood <= 4))
 
   # Data must be tidy
-  expect_true(is.factor(df$clock_model))
-  expect_true(is.factor(df$site_model))
+  expect_true(is.factor(df$tree))
 
   # Rows must be unique
   expect_equal(nrow(unique(df)), nrow(df))
+
+  skip("Issue 230, Issue #230")
+  # Use relative folder path as the primary key
+  #
+  # E.g. an experiment with its parameter file at either of these locations
+  #
+  #   /home/richel/razzo_project/data/1/2/3/parameters.RDa
+  #   C:\Giappo\razzo_project\data\1\2\3\parameters.RDa
+  #
+  # would get
+  #
+  #  data/1/2/3
+  #
+  expect_true("folder" %in% names(df))
+
+  # Also this one:
+  expect_true(is.factor(df$best_or_gen))
+
 })
 
 test_that("abuse", {
