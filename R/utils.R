@@ -81,12 +81,12 @@ get_best_model <- function(seed_folder) {
   mbd_clock_model <- mbd_data[mbd_data$weight == max(mbd_data$weight), "clock_model_name"]
   mbd_tree_prior <- mbd_data[mbd_data$weight == max(mbd_data$weight), "tree_prior_name"]
   list(
-    bd = list(
+    twin = list(
       site_model = levels(droplevels(bd_site_model)),
       clock_model = levels(droplevels(bd_clock_model)),
       tree_prior = levels(droplevels(bd_tree_prior))
     ),
-    mbd = list(
+    true = list(
       site_model = levels(droplevels(mbd_site_model)),
       clock_model = levels(droplevels(mbd_clock_model)),
       tree_prior = levels(droplevels(mbd_tree_prior))
@@ -111,12 +111,12 @@ get_generative_model <- function(seed_folder) {
   mbd_clock_model <- mbd_data[1, "clock_model_name"]
   mbd_tree_prior <- mbd_data[1, "tree_prior_name"]
   list(
-    bd = list(
+    twin = list(
       site_model = levels(droplevels(bd_site_model)),
       clock_model = levels(droplevels(bd_clock_model)),
       tree_prior = levels(droplevels(bd_tree_prior))
     ),
-    mbd = list(
+    true = list(
       site_model = levels(droplevels(mbd_site_model)),
       clock_model = levels(droplevels(mbd_clock_model)),
       tree_prior = levels(droplevels(mbd_tree_prior))

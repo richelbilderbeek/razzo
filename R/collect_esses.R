@@ -15,7 +15,8 @@ collect_esses <- function(
   best_or_gen <- NULL; rm(best_or_gen) # nolint, fixes warning: no visible binding for global variable
 
   # retrieve information from files
-  paths <- get_data_paths(project_folder_name) # nolint internal function
+  relative_paths <- get_data_paths(project_folder_name, full_names = FALSE) # nolint internal function
+  paths <- file.path(project_folder_name, relative_paths)
 
   # information needed
   traces_names <- c(
@@ -28,17 +29,8 @@ collect_esses <- function(
     #  "YuleModel",
     #  "birthRate"
   )
-  setting_numeric_names <- c(
-    "lambda",
-    "mu",
-    "nu",
-    "q",
-    "seed",
-    "crown_age",
-    "cond"
-  )
   setting_string_names <- c(
-    "gen_model",
+    "tree",
     "site_model",
     "clock_model",
     "tree_prior",
@@ -48,18 +40,17 @@ collect_esses <- function(
   )
   esses <- data.frame(matrix(
     NA,
-    ncol = length(setting_numeric_names) + length(setting_string_names) + 1
+    ncol = 1 + length(setting_string_names) + 1
   ))
   colnames(esses) <- c(
-    setting_numeric_names,
+    "path",
     "ess_likelihood",
     setting_string_names
   )
   # Reading files and store data
-  ii <- 0
+  i <- 0
   for (p in seq_along(paths)) {
     parameters <- open_parameters_file(file.path(paths[p], "parameters.RDa")) # nolint internal function
-    pars <- parameters$mbd_params
     burn_in_fraction <-
       parameters$pir_params$error_measure_params$burn_in_fraction
     sample_interval <-
@@ -89,15 +80,12 @@ collect_esses <- function(
       ))
       x3 <- x2[, colnames(x2) %in% traces_names]
       data_table <- data.frame(x3, row.names = NULL)
-      for (par in names(pars)) {
-        data_table[par] <- pars[names(pars) == par]
-      }
       data_table$burn_in_fraction <- burn_in_fraction
       data_table$sample_interval <- sample_interval
       if (is_twin == TRUE) {
-        data_table$gen_model <- "bd"
+        data_table$tree <- "twin"
       } else {
-        data_table$gen_model <- "mbd"
+        data_table$tree <- "true"
       }
       if (is_best == TRUE) {
         info_function <- get_best_model
@@ -107,7 +95,7 @@ collect_esses <- function(
         info_function <- get_generative_model
         data_table$best_or_gen <- "gen"
       }
-      info <- info_function(paths[p])[[data_table$gen_model[1]]]
+      info <- info_function(paths[p])[[data_table$tree[1]]]
       data_table$site_model <- info$site_model
       data_table$clock_model <- info$clock_model
       data_table$tree_prior <- info$tree_prior
@@ -134,24 +122,19 @@ collect_esses <- function(
       )
       # Calculate the correct ESSes, sample_interval obtained earlier
       testit::assert(length(unique(data_table$sample_interval)) == 1)
-      ii <- ii + 1
-      esses[ii, ]$ess_likelihood <- unlist(tracerer::calc_esses(
+      i <- i + 1
+      esses[i, ]$ess_likelihood <- unlist(tracerer::calc_esses(
         clean_traces,
         sample_interval = data_table$sample_interval[1]
       ))["likelihood"]
-      for (par_name in c(setting_numeric_names, setting_string_names)) {
+      for (par_name in setting_string_names) {
         par_value <- unique(unname(data_table[names(data_table) == par_name]))
         testit::assert(length(par_value) == 1)
-        esses[ii, ][names(esses) == par_name] <- par_value
+        esses[i, ][names(esses) == par_name] <- par_value
       }
+      esses[i, ]$path <- relative_paths[p]
     }
   }
-  esses$tree <- plyr::revalue(
-    esses$gen_model,
-    c("mbd" = "true", "bd" = "twin"),
-    warn_missing = TRUE
-  )
-  esses$gen_model <- NULL
 
   esses$tree <- as.factor(esses$tree)
   esses$site_model <- as.factor(esses$site_model)
@@ -161,6 +144,6 @@ collect_esses <- function(
   # Remove duplicates (no idea how they got in)
   esses <- unique(esses)
 
-  # Order by seed, then true/twin then gen/best
-  plyr::arrange(esses, seed, tree, plyr::desc(best_or_gen))
+  # Order by true/twin then gen/best
+  plyr::arrange(esses, tree, plyr::desc(best_or_gen))
 }

@@ -4,11 +4,13 @@
 \alias{get_data_paths}
 \title{Get the folder paths of \code{razzo} experiments}
 \usage{
-get_data_paths(project_folder_name)
+get_data_paths(project_folder_name, full_names = TRUE)
 }
 \arguments{
 \item{project_folder_name}{project folder name,
 will be the full path to \code{razzo_project}}
+
+\item{full_names}{TRUE if you want to return the full path}
 }
 \value{
 the folder paths of all \code{razzo} experiments
