@@ -1,9 +1,9 @@
 "","folder","ess_likelihood","tree","site_model","clock_model","tree_prior","best_or_gen","burn_in_fraction","sample_interval"
 "1","data/0.2-0.15-1-0.1/1",4,"true","JC69","strict","birth_death","gen",0.1,1000
-"2","data/0.2-0.15-1-0.1/2",4,"true","JC69","strict","birth_death","gen",0.1,1000
-"3","data/0.2-0.15-1-0.1/1",4,"true","JC69","strict","birth_death","best",0.1,1000
-"4","data/0.2-0.15-1-0.1/2",4,"true","JC69","strict","yule","best",0.1,1000
-"5","data/0.2-0.15-1-0.1/1",4,"twin","JC69","strict","birth_death","gen",0.1,1000
-"6","data/0.2-0.15-1-0.1/2",4,"twin","JC69","strict","birth_death","gen",0.1,1000
-"7","data/0.2-0.15-1-0.1/1",4,"twin","JC69","strict","birth_death","best",0.1,1000
+"2","data/0.2-0.15-1-0.1/1",4,"true","JC69","strict","birth_death","best",0.1,1000
+"3","data/0.2-0.15-1-0.1/1",4,"twin","JC69","strict","birth_death","gen",0.1,1000
+"4","data/0.2-0.15-1-0.1/1",4,"twin","JC69","strict","birth_death","best",0.1,1000
+"5","data/0.2-0.15-1-0.1/2",4,"true","JC69","strict","birth_death","gen",0.1,1000
+"6","data/0.2-0.15-1-0.1/2",4,"true","JC69","strict","yule","best",0.1,1000
+"7","data/0.2-0.15-1-0.1/2",4,"twin","JC69","strict","birth_death","gen",0.1,1000
 "8","data/0.2-0.15-1-0.1/2",4,"twin","GTR","strict","birth_death","best",0.1,1000

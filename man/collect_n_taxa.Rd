@@ -11,7 +11,7 @@ collect_n_taxa(project_folder_name = get_razzo_path("razzo_project"))
 will be the full path to \code{razzo_project}}
 }
 \value{
-a dataframe with parameters and taxa number for each phylogeny
+a dataframe with folder and taxa number for each phylogeny
 }
 \description{
 Collect number of taxa

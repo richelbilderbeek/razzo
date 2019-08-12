@@ -111,5 +111,5 @@ collect_nltt_stats <- function(
     matrix_string,
     matrix_nltts
   )
-  plyr::arrange(results, tree, plyr::desc(best_or_gen))
+  plyr::arrange(df = results, folder, tree, plyr::desc(best_or_gen))
 }

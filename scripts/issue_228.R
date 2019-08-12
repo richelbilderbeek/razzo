@@ -13,4 +13,3 @@ utils::unzip(zipfile = zip_filename, exdir = razzo_project_folder)
 df <- collect_esses(
   project_folder_name = razzo_project_folder
 )
-

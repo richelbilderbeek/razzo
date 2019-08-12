@@ -33,6 +33,5 @@ collect_mbd_params <- function(
     matrix_numeric[p, ] <- mbd_pars
   }
   out <- cbind(folder, matrix_numeric)
-
-  out
+  plyr::arrange(df = out, folder)
 }
