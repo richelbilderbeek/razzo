@@ -23,24 +23,59 @@ f_low_threshold <- 0.05
 testit::assert(f_low < f_low_threshold)
 
 # Investigate
-possible_candidates <- c(
+library(magrittr); library(ggplot2)
+folder <-
+variables <- c(
+  "n_taxa",
+  "n_mutations",
   "mu",
   "nu",
   "q",
-  "n_taxa",
-  # "tree",
-  # "site_model",
-  # "clock_model",
-  # "tree_prior",
   "nltt_means",
-  "nltt_sd",
-  "n_mutations"
+  "nltt_sd"
 )
-for (candidate in possible_candidates) {
-  print(candidate)
-  df1 <- df[, colnames(df) == candidate]
-  print(
-    cor(df$ess_likelihood, df1)
+
+# numeric
+df2 <- df %>% dplyr::select(ess_likelihood, variables) %>%
+  tidyr::gather(variable, value, -ess_likelihood) %>%
+  dplyr::group_by(variable) %>%
+  dplyr::mutate(q = 0.9 * max(value)) %>%
+  dplyr::mutate(corr2 = cor(ess_likelihood, value))
+
+
+p1 <- ggplot(df2, aes(x = ess_likelihood, y = value, group = variable)) +
+  ggplot2::geom_point() +
+  ggplot2::geom_smooth(method = 'lm', formula = y ~ x)  +
+  facet_wrap(
+    ~ variable,
+    scales = "free",
+    ncol = ceiling(sqrt(length(variables))),
+    nrow = ceiling(sqrt(length(variables))),
+    strip.position = "left"
+  ) +
+  theme(strip.placement = "outside", strip.background = element_blank()) +
+  labs(y = NULL) +
+  geom_text(
+    data = dplyr::distinct(df2, variable, corr2, q),
+    aes(
+      x = 750, y = q,
+      label = glue::glue("R = {signif(corr2, 3)}")
+    ),
+    size = 5
   )
-}
+
+### chars
+variables <- c(
+  "tree",
+  "site_model",
+  "tree_prior"
+)
+
+df3 <- df %>% dplyr::select(ess_likelihood, variables) %>%
+  tidyr::gather(variable, value, -ess_likelihood) %>%
+  dplyr::group_by(variable)
+
+p2 <- ggplot2::ggplot(data = df3, aes(x = value, y = ess_likelihood)) +
+  ggplot2::geom_boxplot(data = df3, aes(x = value, y = ess_likelihood)) +
+  ggplot2::facet_wrap(~ variable, scales = "free")
 
