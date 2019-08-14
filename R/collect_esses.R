@@ -146,5 +146,5 @@ collect_esses <- function(
   esses <- unique(esses)
 
   # Order by true/twin then gen/best
-  plyr::arrange(esses, tree, plyr::desc(best_or_gen))
+  plyr::arrange(df = esses, folder, tree, plyr::desc(best_or_gen))
 }
