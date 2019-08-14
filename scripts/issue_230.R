@@ -39,11 +39,11 @@ variables <- c(
 df2 <- df %>% dplyr::select(ess_likelihood, variables) %>%
   tidyr::gather(variable, value, -ess_likelihood) %>%
   dplyr::group_by(variable) %>%
-  dplyr::mutate(q = 0.9 * max(value)) %>%
+  dplyr::mutate(q = 0.82 * (max(value) - min(value)) + min(value)) %>%
   dplyr::mutate(corr2 = cor(ess_likelihood, value))
 
 
-p1 <- ggplot(df2, aes(x = ess_likelihood, y = value, group = variable)) +
+p1 <- ggplot(df2, aes(x = value, y = ess_likelihood, group = variable)) +
   ggplot2::geom_point() +
   ggplot2::geom_smooth(method = 'lm', formula = y ~ x)  +
   facet_wrap(
@@ -51,18 +51,19 @@ p1 <- ggplot(df2, aes(x = ess_likelihood, y = value, group = variable)) +
     scales = "free",
     ncol = ceiling(sqrt(length(variables))),
     nrow = ceiling(sqrt(length(variables))),
-    strip.position = "left"
+    strip.position = "bottom"
   ) +
   theme(strip.placement = "outside", strip.background = element_blank()) +
-  labs(y = NULL) +
+  labs(y = "ess_likelihood") +
   geom_text(
     data = dplyr::distinct(df2, variable, corr2, q),
     aes(
-      x = 750, y = q,
-      label = glue::glue("R = {signif(corr2, 3)}")
+      x = q, y = 750,
+      label = glue::glue("R = {signif(corr2, 2)}")
     ),
     size = 5
   )
+p1
 
 ### chars
 variables <- c(
@@ -78,4 +79,4 @@ df3 <- df %>% dplyr::select(ess_likelihood, variables) %>%
 p2 <- ggplot2::ggplot(data = df3, aes(x = value, y = ess_likelihood)) +
   ggplot2::geom_boxplot(data = df3, aes(x = value, y = ess_likelihood)) +
   ggplot2::facet_wrap(~ variable, scales = "free")
-
+p2
