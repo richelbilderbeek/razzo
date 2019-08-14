@@ -29,8 +29,8 @@ run_razzo <- function(
 
   testit::assert(!beautier::is_one_na(razzo_params$pir_params$twinning_params))
 
+  # Save the tree
   tree_filename <- razzo_params$misc_params$tree_filename
-
   # Create the folder if needed, no warning when the folder is already present
   dir.create(
     path = dirname(tree_filename),
