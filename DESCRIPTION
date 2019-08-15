@@ -21,7 +21,7 @@ Imports:
     ggplot2,
     mbd,
     peregrine (>= 0.4),
-    pirouette,
+    pirouette (>= 1.3),
     testit
 Suggests:
     assertive,
