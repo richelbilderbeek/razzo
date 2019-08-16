@@ -20,7 +20,7 @@ create_parameters_files <- create_files_razzo_paramses <- function(
       nu = 1.0,
       q = 0.1,
       n_replicates = n_replicates,
-      crown_age = 7.0,
+      crown_age = 6.0,
       cond = 1
     )
     testit::assert(
@@ -41,7 +41,7 @@ create_parameters_files <- create_files_razzo_paramses <- function(
       nu = c(1.0, 1.5, 2.0, 2.5),
       q = c(0.1, 0.15, 0.2),
       n_replicates = n_replicates,
-      crown_age = 7.0,
+      crown_age = 6.0,
       cond = 1
     )
     testit::assert(
