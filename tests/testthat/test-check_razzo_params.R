@@ -43,8 +43,13 @@ test_that("use", {
   # done by check_mbd_params
 
   # Check pir_params
-  # Done by pirouette::check_pir_params
+  # Mostly done by pirouette::check_pir_params
   # and peregrine::check_pff_pir_params
+  razzo_params <- good_razzo_params
+
+  razzo_params$pir_params$evidence_filename
+  "mbd_marg_lik.csv"
+
 
   # Check misc_params
   razzo_params <- good_razzo_params
