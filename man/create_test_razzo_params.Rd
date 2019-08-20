@@ -2,18 +2,14 @@
 % Please edit documentation in R/create_params_razzo.R
 \name{create_test_razzo_params}
 \alias{create_test_razzo_params}
-\title{Create some testing parameters for one experiment.
-Run one point of the experiment}
+\title{Create one set of parameter for one \code{razzo} experiment.}
 \usage{
-create_test_razzo_params(folder_name = peregrine::get_pff_tempdir(),
-  mbd_params = create_test_mbd_params(),
+create_test_razzo_params(mbd_params = create_test_mbd_params(),
   pir_params = peregrine::create_test_pff_pir_params(twinning_params =
   peregrine::create_pff_twinning_params()),
-  misc_params = create_misc_params(folder_name = folder_name))
+  misc_params = create_misc_params())
 }
 \arguments{
-\item{folder_name}{name of the main folder}
-
 \item{mbd_params}{MBD parameter set}
 
 \item{pir_params}{a parameter set for one \code{pirouette} run,
@@ -24,8 +20,10 @@ tree_filename to store the original given tree and mbd_sim_rng_seed for
 when an mbd tree is simulated}
 }
 \description{
-Create some testing parameters for one experiment.
-Run one point of the experiment
+All the files follow the expected naming scheme,
+using the \link{dirname} of
+\code{pir_params$alignment_params$fasta_filename} as
+the folder where all files will be created
 }
 \author{
 Richel J.C. Bilderbeek, Giovanni Laudanno

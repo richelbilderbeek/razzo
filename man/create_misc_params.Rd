@@ -6,12 +6,11 @@
 \title{Create the parameters for one experiment.
 Run one point of the experiment}
 \usage{
-create_misc_params(folder_name = peregrine::get_pff_tempdir(),
-  tree_filename = file.path(folder_name, "mbd.tree"))
+
+  create_misc_params(tree_filename = file.path(peregrine::get_pff_tempdir(),
+  "mbd.tree"))
 }
 \arguments{
-\item{folder_name}{name of the main folder}
-
 \item{tree_filename}{name of the phylogeny file}
 }
 \description{

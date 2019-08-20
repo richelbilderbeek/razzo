@@ -3,8 +3,7 @@
 \name{create_params_razzo}
 \alias{create_params_razzo}
 \alias{create_razzo_params}
-\title{Create the parameters for one experiment.
-Run one point of the experiment}
+\title{Create one set of parameter for one \code{razzo} experiment.}
 \usage{
 create_params_razzo(mbd_params, pir_params, misc_params)
 }
@@ -19,8 +18,10 @@ tree_filename to store the original given tree and mbd_sim_rng_seed for
 when an mbd tree is simulated}
 }
 \description{
-Create the parameters for one experiment.
-Run one point of the experiment
+All the files follow the expected naming scheme,
+using the \link{dirname} of
+\code{pir_params$alignment_params$fasta_filename} as
+the folder where all files will be created
 }
 \author{
 Richel J.C. Bilderbeek, Giovanni Laudanno

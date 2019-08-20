@@ -40,14 +40,14 @@ test_that("check filenames", {
 
   # True alignment
   # One may expect the error:
-  #   "'razzo_params\\$pir_params\\$alignment_params\\$fasta_filename' must be be '\\[folder_name\\]/pbd.fasta'" # nolint indeed long
+  #   "'razzo_params$pir_params$alignment_params$fasta_filename' must be be '\\[folder_name\\]/pbd.fasta'" # nolint indeed long
   # but this is false, as the folder of the alignment is used to generate
   # all other errors
   razzo_params <- good_razzo_params
   razzo_params$pir_params$alignment_params$fasta_filename <- "nonsense"
   expect_error(
     check_razzo_params(razzo_params),
-    "'razzo_params\\$pbd_sim_out_filename' must be be '\\[folder_name\\]/pbd_sim_out.RDa'" # nolint indeed long
+      "'razzo_params\\$misc_params\\$tree_filename' must be be '\\[folder_name\\]/mbd.tree'", # nolint indeed long
   )
   # First experiment must be generative
   # (yes, to test this is hard to set up)
