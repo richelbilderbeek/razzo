@@ -89,7 +89,7 @@ save_razzo_paramses <- function(
     )
   ),
   error_measure_params = pirouette::create_error_measure_params(),
-  mcmc_chain_length = beautier::create_mcmc()$chain_length / 100
+  mcmc_chain_length = beautier::create_mcmc()$chain_length
 ) {
   testit::assert(peregrine::is_pff(project_folder_name))
   # Must start at one, as the BEAST2 RNG seed must be at least one.
