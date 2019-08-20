@@ -43,7 +43,7 @@ create_test_razzo_pir_params <- function(
   # Set up filenames
   ##############################################################################
   # Alignment
-  alignment_params$fasta_filename <- file.path(folder_name, "mbd.tree")
+  alignment_params$fasta_filename <- file.path(folder_name, "mbd.fasta")
   # Twinning
   if (isTRUE(has_twinning)) {
     testit::assert(!is.na(twinning_params))
@@ -55,7 +55,7 @@ create_test_razzo_pir_params <- function(
   # First is always generative
   testit::assert(experiments[[1]]$inference_conditions$model_type == "generative") # nolint indeed long
   experiments[[1]]$beast2_options$input_filename <- file.path(folder_name, "mbd_gen.xml") # nolint indeed long
-  experiments[[1]]$beast2_options$output_log_filename <- file.path(folder_name, "mbd_gen.xml") # nolint indeed long
+  experiments[[1]]$beast2_options$output_log_filename <- file.path(folder_name, "mbd_gen.log") # nolint indeed long
   experiments[[1]]$beast2_options$output_trees_filenames <- file.path(folder_name, "mbd_gen.trees") # nolint indeed long
   experiments[[1]]$beast2_options$output_state_filename <- file.path(folder_name, "mbd_gen.xml.state") # nolint indeed long
   experiments[[1]]$errors_filename <- file.path(folder_name, "mbd_nltts_gen.csv") # nolint indeed long

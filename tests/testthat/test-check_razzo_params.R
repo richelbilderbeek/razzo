@@ -35,7 +35,12 @@ test_that("check filenames", {
 
   skip("Not now")
 
-  good_razzo_params <- create_test_razzo_params()
+  good_razzo_params <- create_test_razzo_params(
+    pir_params = create_test_razzo_pir_params(
+      has_candidates = TRUE,
+      has_twinning = TRUE
+    )
+  )
   expect_silent(check_razzo_params(good_razzo_params))
 
   # True alignment
@@ -66,28 +71,28 @@ test_that("check filenames", {
   razzo_params$pir_params$experiments[[1]]$beast2_options$input_filename <- "nonsense"
   expect_error(
     check_razzo_params(razzo_params),
-    "'razzo_params\\$pir_params\\$experiments\\[\\[1\\]\\]\\$beast2_options\\$input_filename' must be be '\\[folder_name\\]/pbd_gen.xml'" # nolint indeed long
+    "'razzo_params\\$pir_params\\$experiments\\[\\[1\\]\\]\\$beast2_options\\$input_filename' must be be '\\[folder_name\\]/mbd_gen.xml'" # nolint indeed long
   )
   # BEAST2 output log filename
   razzo_params <- good_razzo_params
   razzo_params$pir_params$experiments[[1]]$beast2_options$output_log_filename <- "nonsense"
   expect_error(
     check_razzo_params(razzo_params),
-    "'razzo_params\\$pir_params\\$experiments\\[\\[1\\]\\]\\$beast2_options\\$output_log_filename' must be be '\\[folder_name\\]/pbd_gen.log'" # nolint indeed long
+    "'razzo_params\\$pir_params\\$experiments\\[\\[1\\]\\]\\$beast2_options\\$output_log_filename' must be be '\\[folder_name\\]/mbd_gen.log'" # nolint indeed long
   )
   # BEAST2 output trees filename
   razzo_params <- good_razzo_params
   razzo_params$pir_params$experiments[[1]]$beast2_options$output_trees_filenames <- "nonsense"
   expect_error(
     check_razzo_params(razzo_params),
-    "'razzo_params\\$pir_params\\$experiments\\[\\[1\\]\\]\\$beast2_options\\$output_trees_filenames' must be be '\\[folder_name\\]/pbd_gen.trees'" # nolint indeed long
+    "'razzo_params\\$pir_params\\$experiments\\[\\[1\\]\\]\\$beast2_options\\$output_trees_filenames' must be be '\\[folder_name\\]/mbd_gen.trees'" # nolint indeed long
   )
   # BEAST2 output trees filename
   razzo_params <- good_razzo_params
   razzo_params$pir_params$experiments[[1]]$beast2_options$output_state_filename <- "nonsense"
   expect_error(
     check_razzo_params(razzo_params),
-    "'razzo_params\\$pir_params\\$experiments\\[\\[1\\]\\]\\$beast2_options\\$output_state_filename' must be be '\\[folder_name\\]/pbd_gen.xml.state'" # nolint indeed long
+    "'razzo_params\\$pir_params\\$experiments\\[\\[1\\]\\]\\$beast2_options\\$output_state_filename' must be be '\\[folder_name\\]/mbd_gen.xml.state'" # nolint indeed long
   )
   for (i in seq(2, 3)) {
     # First experiment must be candidate
@@ -110,7 +115,8 @@ test_that("check filenames", {
     )
     # BEAST2 output log file
     razzo_params <- good_razzo_params
-    razzo_params$pir_params$experiments[[i]]$beast2_options$output_log_filename <- "nonsense"
+    razzo_params$pir_params$experiments[[2]]$beast2_options$output_log_filename <- "nonsense"
+    razzo_params$pir_params$experiments[[3]]$beast2_options$output_log_filename <- "nonsense"
     expect_error(
       check_razzo_params(razzo_params)
     )
