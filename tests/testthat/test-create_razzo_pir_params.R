@@ -63,3 +63,14 @@ test_that("use", {
   )
   expect_false(beautier::is_one_na(pir_params$twinning_params))
 })
+
+test_that("matches article", {
+  pir_params <- create_razzo_pir_params(
+    has_candidates = TRUE,
+    has_twinning = TRUE
+  )
+  # We use twinning
+  expect_true(!beautier::is_one_na(pir_params$twinning_params))
+
+  # Etcetera ...
+})
