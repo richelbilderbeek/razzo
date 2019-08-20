@@ -11,7 +11,9 @@ create_params_razzo(mbd_params, pir_params, misc_params)
 \item{mbd_params}{MBD parameter set}
 
 \item{pir_params}{a parameter set for one \code{pirouette} run,
-as created by \link[pirouette]{create_pir_params}}
+as created by \link[pirouette]{create_pir_params}.
+Use \link{create_test_razzo_pir_params} to create
+a \code{pir_params} that has the file naming scheme as \code{razzo}}
 
 \item{misc_params}{additional parameters for razzo. They contain
 tree_filename to store the original given tree and mbd_sim_rng_seed for

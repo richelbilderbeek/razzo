@@ -55,7 +55,9 @@
 #' @param parameters_filename full path to a \code{parameters.RDa} file
 #' @param phylo a phylogeny
 #' @param pir_params a parameter set for one \code{pirouette} run,
-#'   as created by \link[pirouette]{create_pir_params}
+#'   as created by \link[pirouette]{create_pir_params}.
+#'   Use \link{create_test_razzo_pir_params} to create
+#'   a \code{pir_params} that has the file naming scheme as \code{razzo}
 #' @param posterior_trees phylogenetic trees in a BEAST2 posterior,
 #'   of class \code{multiphylo}
 #' @param precision define the precision of the approximation.
