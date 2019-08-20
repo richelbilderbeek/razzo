@@ -9,10 +9,24 @@ test_that("use", {
 })
 
 test_that("abuse", {
-  misc_params <- list()
-  misc_params$pippo <- "mbd.tree"
+
   expect_error(
-    check_misc_params(misc_params),
+    check_misc_params(list()),
     "'tree_filename' must be an element of a 'misc_params'"
   )
+
+  misc_params <- create_misc_params()
+  misc_params$tree_filename <- "/peregrine_unfriendly"
+  expect_error(
+    check_misc_params(misc_params),
+    "'misc_params\\$tree_filename' must be Peregrine-friendly"
+  )
+
+  misc_params <- create_misc_params()
+  misc_params$tree_filename <- peregrine::get_pff_tempfile(pattern = "nonsense")
+  expect_error(
+    check_misc_params(misc_params),
+    "'misc_params\\$tree_filename' must end with 'mbd.tree'"
+  )
+
 })

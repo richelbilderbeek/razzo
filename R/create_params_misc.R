@@ -4,8 +4,8 @@
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @aliases create_params_misc create_misc_params
 #' @export create_params_misc create_misc_params
-create_params_misc <- create_misc_params <- function(
-  tree_filename = peregrine::get_pff_tempfile(fileext = ".tree")
+create_misc_params <- create_params_misc <- function(
+  tree_filename = file.path(peregrine::get_pff_tempdir(), "mbd.tree")
 ) {
   testit::assert(peregrine::is_pff(tree_filename))
   misc_params <- list(
