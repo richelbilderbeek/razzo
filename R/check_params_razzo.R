@@ -79,20 +79,21 @@ check_razzo_params <- check_params_razzo <- function(
     }
   }
 
-  if (1 == 2) {
-    # Filenames
-    folder_name <- dirname(
-      razzo_params$pir_params$alignment_params$fasta_filename
+  # Filenames
+  folder_name <- dirname(
+    razzo_params$pir_params$alignment_params$fasta_filename
+  )
+  # True tree
+  if (razzo_params$misc_params$tree_filename != file.path(folder_name, "mbd.tree")) { # nolint indeed long
+    stop(
+      "'razzo_params$misc_params$tree_filename' must be be '[folder_name]/mbd.tree'. \n", # nolint indeed long
+      "Actual value: '", razzo_params$misc_params$tree_filename, "'\n",
+      "[folder_name]: '", folder_name, "'\n",
+      "(folder name taken from razzo_params$pir_params$alignment_params$fasta_filename)" # nolint indeed long
     )
-    # True tree
-    if (razzo_params$misc_params$tree_filename != file.path(folder_name, "mbd.tree")) { # nolint indeed long
-      stop(
-        "'razzo_params$misc_params$tree_filename' must be be '[folder_name]/mbd.tree'. \n", # nolint indeed long
-        "Actual value: '", razzo_params$misc_params$tree_filename, "'\n",
-        "[folder_name]: '", folder_name, "'\n",
-        "(folder name taken from razzo_params$pir_params$alignment_params$fasta_filename)" # nolint indeed long
-      )
-    }
+  }
+
+  if (1 == 2) {
     # True alignment
     if (razzo_params$pir_params$alignment_params$fasta_filename != file.path(folder_name, "pbd.fasta")) { # nolint indeed long
       stop(

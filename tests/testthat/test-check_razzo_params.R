@@ -7,48 +7,27 @@ test_that("use", {
     check_razzo_params(razzo_params = good_razzo_params)
   )
 
-  mbd_params <- create_test_mbd_params()
-  pir_params <- peregrine::create_test_pff_pir_params(
-    twinning_params = peregrine::create_pff_twinning_params()
-  )
-  misc_params <- create_misc_params()
-
-  expect_silent(
-    create_razzo_params(
-      mbd_params = mbd_params,
-      pir_params = pir_params,
-      misc_params = misc_params
-    )
-  )
-
   # Check elements
+  razzo_params <- good_razzo_params
+  razzo_params$mbd_params <- NULL
   expect_error(
-    check_razzo_params(razzo_params = list()),
+    check_razzo_params(razzo_params),
     "'mbd_params' must be an element of a 'razzo_params'"
   )
 
+  razzo_params <- good_razzo_params
+  razzo_params$pir_params <- NULL
   expect_error(
-    check_razzo_params(razzo_params = list(mbd_params = mbd_params)),
+    check_razzo_params(razzo_params),
     "'pir_params' must be an element of a 'razzo_params'"
   )
 
+  razzo_params <- good_razzo_params
+  razzo_params$misc_params <- NULL
   expect_error(
-    check_razzo_params(razzo_params = list(
-      mbd_params = mbd_params, pir_params = pir_params)
-    ),
+    check_razzo_params(razzo_params),
     "'misc_params' must be an element of a 'razzo_params'"
   )
-
-  # Check mbd_params
-  # done by check_mbd_params
-
-  # Check pir_params
-  # Mostly done by pirouette::check_pir_params
-  # and peregrine::check_pff_pir_params
-  razzo_params <- good_razzo_params
-
-  razzo_params$pir_params$evidence_filename
-  "mbd_marg_lik.csv"
 })
 
 

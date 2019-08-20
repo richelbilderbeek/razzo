@@ -5,12 +5,15 @@
 \title{Create some testing parameters for one experiment.
 Run one point of the experiment}
 \usage{
-create_test_razzo_params(mbd_params = create_test_mbd_params(),
+create_test_razzo_params(folder_name = peregrine::get_pff_tempdir(),
+  mbd_params = create_test_mbd_params(),
   pir_params = peregrine::create_test_pff_pir_params(twinning_params =
   peregrine::create_pff_twinning_params()),
-  misc_params = create_misc_params())
+  misc_params = create_misc_params(folder_name = folder_name))
 }
 \arguments{
+\item{folder_name}{name of the main folder}
+
 \item{mbd_params}{MBD parameter set}
 
 \item{pir_params}{a parameter set for one \code{pirouette} run,
