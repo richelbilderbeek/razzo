@@ -13,7 +13,9 @@ create_razzo_pir_params <- function(
   # Set up logic
   ##############################################################################
   # Alignment
-  alignment_params <- pirouette::create_test_alignment_params()
+  alignment_params <- pirouette::create_alignment_params(
+    root_sequence = pirouette::create_blocked_dna(length = 1000)
+  )
   # Twinning
   twinning_params <- NA
   if (isTRUE(has_twinning)) {

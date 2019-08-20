@@ -69,8 +69,45 @@ test_that("matches article", {
     has_candidates = TRUE,
     has_twinning = TRUE
   )
-  # We use twinning
+
+  ##############################################################################
+  # pir_params$twinning_params
+  ##############################################################################
   expect_true(!beautier::is_one_na(pir_params$twinning_params))
+  expect_equal(pir_params$twinning_params$twin_model, "birth_death")
+  expect_equal(pir_params$twinning_params$method, "random_tree")
+  ##############################################################################
+  # pir_params$alignment_params
+  ##############################################################################
+  expect_equal(
+    pirouette::create_blocked_dna(length = 1000),
+    pir_params$alignment_params$root_sequence
+  )
+  expect_equal(
+    pirouette::create_standard_mutation_rate,
+    pir_params$alignment_params$mutation_rate
+  )
+  expect_equal(
+    pir_params$alignment_params$site_model$name,
+    "JC69"
+  )
+  expect_equal(
+    pir_params$alignment_params$clock_model$name,
+    "strict"
+  )
+
+  ##############################################################################
+  # pir_params$experiments
+  ##############################################################################
+  gen_exp <- pir_params$experiments[[1]]
+  gen_exp$inference_conditions
+  gen_exp$inference_model
+  gen_exp$beast2_options
+  gen_exp$est_evidence_mcmc
+
+  ##############################################################################
+  # pir_params$error_measure_params
+  ##############################################################################
 
   # Etcetera ...
 })
