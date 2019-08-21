@@ -118,6 +118,26 @@ test_that("matches article", {
   # Shouldn't we use the Birth-Death tree prior for the generative model?
   # Issue 246, Issue #246
   expect_equal(gen_exp$inference_model$tree_prior$name, "yule")
+  expect_equal(
+    gen_exp$inference_model$mrca_prior$mrca_distr$name,
+    "normal"
+  )
+  expect_equal(
+    gen_exp$inference_model$mrca_prior$mrca_distr$mean$value,
+    6.0
+  )
+  expect_equal(
+    gen_exp$inference_model$mrca_prior$mrca_distr$sigma$value,
+    0.0001
+  )
+  expect_equal(gen_exp$inference_model$mcmc$chain_length, 1e7)
+  expect_equal(gen_exp$inference_model$mcmc$store_every, 1e3)
+  expect_equal(gen_exp$est_evidence_mcmc$chain_length, 1e7)
+  # Shouldn't we use an explicit store_every
+  # for the nested sampling MCMC of 1000?
+  # Issue 247, Issue #247
+  expect_equal(gen_exp$est_evidence_mcmc$store_every, -1)
+  expect_equal(gen_exp$est_evidence_mcmc$epsilon, 1e-12)
   # --------------------
   # beast2_options
   # --------------------
