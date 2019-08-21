@@ -1,5 +1,16 @@
 #' Create a table of which each row holds a unique MBD parameter combination.#' the parameter interval for mbd setting
 #' @inheritParams default_params_doc
+#' @return a data frame with the following columns:
+#' \itemize{
+#'   \item lambda the speciation rate
+#'   \item mu the extinction rate
+#'   \item nu the co-occurring speciation event rate
+#'   \item q the proportion of species that speciates at a co-occurring
+#'     speciation event
+#'   \item crown_age the crown age of the MBD tree
+#'   \item cond the conditioning
+#'   \item seed the RNG seed for creating an MBD tree
+#' }
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @examples
 #' library(testthat)
@@ -20,7 +31,7 @@ create_mbd_params_table <- function(
   nu = c(1.0, 1.5, 2.0, 2.5),
   q = c(0.1, 0.15, 0.2),
   n_replicates = 2,
-  crown_age = 15.0,
+  crown_age = 6.0,
   cond = 1
 ) {
   lambda <- unique(lambda)
