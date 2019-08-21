@@ -138,10 +138,12 @@ test_that("matches article", {
   # Issue 247, Issue #247
   expect_equal(gen_exp$est_evidence_mcmc$store_every, -1)
   expect_equal(gen_exp$est_evidence_mcmc$epsilon, 1e-12)
+  expect_equal(gen_exp$est_evidence_mcmc$particle_count, 1)
+  expect_equal(gen_exp$est_evidence_mcmc$sub_chain_length, 5000)
   # --------------------
   # beast2_options
   # --------------------
-  gen_exp$beast2_options
+  # gen_exp$beast2_options$rng_seed must match MBD RNG seed
   # --------------------
   # est_evidence_mcmc
   # --------------------

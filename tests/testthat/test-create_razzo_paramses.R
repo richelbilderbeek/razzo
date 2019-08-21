@@ -17,6 +17,8 @@ test_that("matches article", {
   #
   # Search for 'matches article' to find these
   #
+  # These are the tests that looks for bigger picture issues and
+  # relations between the parameter sets
   project_folder_name <- peregrine::get_pff_tempdir()
 
   n_replicates <- 1
@@ -31,4 +33,21 @@ test_that("matches article", {
   )
   n_razzo_paramses <- length(razzo_paramses)
   expect_equal(n_mbd_params, n_razzo_paramses)
+
+  # RNG
+  # experiment$beast2_options$rng_seed must match MBD RNG seed
+  first_razzo_params <- razzo_paramses[[1]]
+  expect_equal(
+    first_razzo_params$mbd_params$seed,
+    first_razzo_params$pir_params$experiments[[1]]$beast2_options$rng_seed,
+  )
+  expect_equal(
+    first_razzo_params$mbd_params$seed,
+    first_razzo_params$pir_params$experiments[[2]]$beast2_options$rng_seed,
+  )
+  skip("Issue 248, Issue #248")
+  expect_equal(
+    first_razzo_params$mbd_params$seed,
+    first_razzo_params$pir_params$alignment_params$rng_seed
+  )
 })
