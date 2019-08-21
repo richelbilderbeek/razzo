@@ -39,4 +39,6 @@ test_that("matches article", {
 
   expected_cond <- 1
   expect_true(all(expected_cond == mbd_params_table$cond))
+
+  expect_true(all(unique(mbd_params_table$seed) == mbd_params_table$seed))
 })
