@@ -102,14 +102,29 @@ test_that("matches article", {
   ##############################################################################
   # First and generative experiment
   gen_exp <- pir_params$experiments[[1]]
+  # --------------------
+  # Inference conditions
+  # --------------------
   expect_equal(gen_exp$inference_conditions$model_type, "generative")
   expect_equal(gen_exp$inference_conditions$run_if, "always")
-
-  # Should we measure the evidence for the generative model?
+  # Shouldn't we measure the evidence for the generative model?
   # Issue 245, Issue #245
   expect_equal(gen_exp$inference_conditions$do_measure_evidence, FALSE)
-  gen_exp$inference_model
+  # --------------------
+  # Inference model
+  # --------------------
+  expect_equal(gen_exp$inference_model$site_model$name, "JC69")
+  expect_equal(gen_exp$inference_model$clock_model$name, "strict")
+  # Shouldn't we use the Birth-Death tree prior for the generative model?
+  # Issue 246, Issue #246
+  expect_equal(gen_exp$inference_model$tree_prior$name, "yule")
+  # --------------------
+  # beast2_options
+  # --------------------
   gen_exp$beast2_options
+  # --------------------
+  # est_evidence_mcmc
+  # --------------------
   gen_exp$est_evidence_mcmc
 
   ##############################################################################
