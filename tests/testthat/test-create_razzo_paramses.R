@@ -10,6 +10,13 @@ test_that("use", {
 
 test_that("matches article", {
   # Issue 242, Isssue #242
+  #
+  # The mbd_params are checked elsewhere
+  # The pir_params are checked elsewhere
+  # The misc_params are irrelevant to be checked :-)
+  #
+  # Search for 'matches article' to find these
+  #
   project_folder_name <- peregrine::get_pff_tempdir()
 
   n_replicates <- 1
@@ -24,5 +31,4 @@ test_that("matches article", {
   )
   n_razzo_paramses <- length(razzo_paramses)
   expect_equal(n_mbd_params, n_razzo_paramses)
-
 })

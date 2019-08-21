@@ -100,8 +100,14 @@ test_that("matches article", {
   ##############################################################################
   # pir_params$experiments
   ##############################################################################
+  # First and generative experiment
   gen_exp <- pir_params$experiments[[1]]
-  gen_exp$inference_conditions
+  expect_equal(gen_exp$inference_conditions$model_type, "generative")
+  expect_equal(gen_exp$inference_conditions$run_if, "always")
+
+  # Should we measure the evidence for the generative model?
+  # Issue 245, Issue #245
+  expect_equal(gen_exp$inference_conditions$do_measure_evidence, FALSE)
   gen_exp$inference_model
   gen_exp$beast2_options
   gen_exp$est_evidence_mcmc
