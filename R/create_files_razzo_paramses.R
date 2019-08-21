@@ -14,7 +14,7 @@ create_parameters_files <- create_files_razzo_paramses <- function(
   testit::assert(experiment_type == "test" || experiment_type == "full")
   if (experiment_type == "test") {
     n_replicates <- 2
-    mbd_paramses <- razzo::create_paramses_mbd(
+    mbd_paramses <- create_mbd_params_table(
       lambda = 0.2,
       mu = 0.15,
       nu = 1.0,
@@ -35,7 +35,7 @@ create_parameters_files <- create_files_razzo_paramses <- function(
   } else {
     testit::assert(experiment_type == "full")
     n_replicates <- 2
-    mbd_paramses <- razzo::create_paramses_mbd(
+    mbd_paramses <- create_mbd_params_table(
       lambda = 0.2,
       mu = c(0, 0.15),
       nu = c(1.0, 1.5, 2.0, 2.5),
@@ -66,7 +66,7 @@ create_parameters_files <- create_files_razzo_paramses <- function(
 #' @export
 save_razzo_paramses <- function(
   project_folder_name,
-  mbd_paramses = razzo::create_paramses_mbd(
+  mbd_paramses = create_mbd_params_table(
     lambda = 0.2,
     mu = 0.15,
     nu = c(1.0, 1.5, 2.0),

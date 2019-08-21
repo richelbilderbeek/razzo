@@ -6,7 +6,7 @@
 #' @export create_paramses_razzo create_razzo_paramses
 create_razzo_paramses <- create_paramses_razzo <- function(
   project_folder_name,
-  mbd_paramses = razzo::create_paramses_mbd(
+  mbd_paramses = create_mbd_params_table(
     lambda = 0.2,
     mu = 0.15,
     nu = c(1.0, 1.5, 2.0),

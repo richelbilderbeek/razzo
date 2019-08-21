@@ -6,7 +6,7 @@
 \title{Create the parameters for all experiment}
 \usage{
 create_razzo_paramses(project_folder_name,
-  mbd_paramses = razzo::create_paramses_mbd(lambda = 0.2, mu = 0.15, nu =
+  mbd_paramses = create_mbd_params_table(lambda = 0.2, mu = 0.15, nu =
   c(1, 1.5, 2), q = c(0.1, 0.15, 0.2), n_replicates = 2, crown_age = 15,
   cond = 1),
   twinning_params = pirouette::create_twinning_params(twin_tree_filename

@@ -65,6 +65,7 @@ test_that("use", {
 })
 
 test_that("matches article", {
+  # Issue 242, Isssue #242
   pir_params <- create_razzo_pir_params(
     has_candidates = TRUE,
     has_twinning = TRUE
