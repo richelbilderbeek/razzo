@@ -1,4 +1,11 @@
 test_that("every row must be unique", {
   df <- create_mbd_params_table()
+  expect_true(is.data.frame(df))
   expect_equal(nrow(unique(df)), nrow(df))
+  expect_true("lambda" %in% names(df))
+  expect_true("mu" %in% names(df))
+  expect_true("nu" %in% names(df))
+  expect_true("q" %in% names(df))
+  expect_true("crown_age" %in% names(df))
+  expect_true("seed" %in% names(df))
 })
