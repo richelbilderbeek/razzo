@@ -1,10 +1,10 @@
 #' Create a list of MBD parameters
 #'
 #' Each element has a unique MBD parameter combination
-#' @seealso use \link{create_mbd_params} to create one
-#'   MBD parameter combination
 #' @inheritParams default_params_doc
 #' @return a list of \code{mbd_params}
+#' @seealso use \link{create_mbd_params} to create one
+#'   MBD parameter combination
 #' @author Richel J.C. Bilderbeek
 #' @examples
 #' library(testthat)
@@ -14,13 +14,17 @@
 #'   expect_silent(check_mbd_params(mbd_params))
 #' }
 #' @export
-create_mbd_paramses <- function() {
-  df <- create_mbd_params_table()
+create_mbd_paramses <- function(
+  n_replicates
+) {
+  df <- create_mbd_params_table(
+    n_replicates = n_replicates,
+  )
   n_paramses <- nrow(df)
   testit::assert(n_paramses > 0)
   mbd_paramses <- list()
   for (i in seq(1, n_paramses)) {
-    mbd_params <- create_mbd_params(
+    mbd_params <- create_mbd_params( # nolint razzo function
       lambda = df$lambda[i],
       mu = df$mu[i],
       nu = df$nu[i],

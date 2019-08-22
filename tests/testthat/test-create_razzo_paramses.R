@@ -22,14 +22,14 @@ test_that("matches article", {
   project_folder_name <- peregrine::get_pff_tempdir()
 
   n_replicates <- 1
-  mbd_params_table <- create_mbd_params_table(
+  mbd_paramses <- create_mbd_paramses(
     n_replicates = n_replicates
   )
-  n_mbd_params <- nrow(mbd_params_table)
+  n_mbd_params <- length(mbd_paramses)
 
   razzo_paramses <- create_razzo_paramses(
     project_folder_name = project_folder_name,
-    mbd_paramses = mbd_params_table
+    mbd_paramses = mbd_paramses
   )
   n_razzo_paramses <- length(razzo_paramses)
   expect_equal(n_mbd_params, n_razzo_paramses)

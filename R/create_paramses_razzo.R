@@ -2,11 +2,10 @@
 #' @inheritParams default_params_doc
 #' @return a set of \code{razzo_params}
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
-#' @aliases create_paramses_razzo create_razzo_paramses
-#' @export create_paramses_razzo create_razzo_paramses
-create_razzo_paramses <- create_paramses_razzo <- function(
+#' @export
+create_razzo_paramses <- function(
   project_folder_name,
-  mbd_paramses = create_mbd_params_table(),
+  mbd_paramses = create_mbd_paramses(),
   twinning_params = pirouette::create_twinning_params(
     twin_tree_filename = peregrine::get_pff_tempfile(),
     twin_alignment_filename = peregrine::get_pff_tempfile(),
@@ -14,7 +13,7 @@ create_razzo_paramses <- create_paramses_razzo <- function(
   ),
   alignment_params = pirouette::create_alignment_params(
     root_sequence = pirouette::create_blocked_dna(length = 1000),
-    mutation_rate = 0.5 / unique(mbd_paramses$crown_age),
+    mutation_rate = 0.5 / unique(mbd_paramses[[1]]$crown_age),
     fasta_filename = peregrine::get_pff_tempfile(
       pattern = "alignment_",
       fileext = ".fasta"
@@ -27,13 +26,12 @@ create_razzo_paramses <- create_paramses_razzo <- function(
   data_folder_name <- "data"
 
   # Go through all biological parameters
-  n_rows <- nrow(mbd_paramses)
   razzo_paramses <- list()
   # Must start at one, as the BEAST2 RNG seed must be at least one.
   index <- 1
-  for (row_index in seq(1, n_rows)) {
+  for (row_index in seq_along(mbd_paramses)) {
     # Extract the biological parameters and create a folder for them
-    mbd_params <- mbd_paramses[row_index, ]
+    mbd_params <- mbd_paramses[[row_index]]
     parsettings_name <- paste0(
       mbd_params$lambda,
       "-",

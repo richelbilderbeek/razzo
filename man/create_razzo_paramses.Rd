@@ -2,18 +2,17 @@
 % Please edit documentation in R/create_paramses_razzo.R
 \name{create_razzo_paramses}
 \alias{create_razzo_paramses}
-\alias{create_paramses_razzo}
 \title{Create the parameters for all experiment}
 \usage{
 create_razzo_paramses(project_folder_name,
-  mbd_paramses = create_mbd_params_table(),
+  mbd_paramses = create_mbd_paramses(),
   twinning_params = pirouette::create_twinning_params(twin_tree_filename
   = peregrine::get_pff_tempfile(), twin_alignment_filename =
   peregrine::get_pff_tempfile(), twin_evidence_filename =
   peregrine::get_pff_tempfile()),
   alignment_params = pirouette::create_alignment_params(root_sequence =
   pirouette::create_blocked_dna(length = 1000), mutation_rate =
-  0.5/unique(mbd_paramses$crown_age), fasta_filename =
+  0.5/unique(mbd_paramses[[1]]$crown_age), fasta_filename =
   peregrine::get_pff_tempfile(pattern = "alignment_", fileext = ".fasta")),
   error_measure_params = pirouette::create_error_measure_params(),
   mcmc_chain_length = beautier::create_mcmc()$chain_length)

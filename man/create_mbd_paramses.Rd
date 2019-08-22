@@ -4,7 +4,10 @@
 \alias{create_mbd_paramses}
 \title{Create a list of MBD parameters}
 \usage{
-create_mbd_paramses()
+create_mbd_paramses(n_replicates)
+}
+\arguments{
+\item{n_replicates}{number of replicates}
 }
 \value{
 a list of \code{mbd_params}
