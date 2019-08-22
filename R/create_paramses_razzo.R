@@ -6,15 +6,7 @@
 #' @export create_paramses_razzo create_razzo_paramses
 create_razzo_paramses <- create_paramses_razzo <- function(
   project_folder_name,
-  mbd_paramses = create_mbd_params_table(
-    lambda = 0.2,
-    mu = 0.15,
-    nu = c(1.0, 1.5, 2.0),
-    q = c(0.1, 0.15, 0.2),
-    n_replicates = 2,
-    crown_age = 15.0,
-    cond = 1
-  ),
+  mbd_paramses = create_mbd_params_table(),
   twinning_params = pirouette::create_twinning_params(
     twin_tree_filename = peregrine::get_pff_tempfile(),
     twin_alignment_filename = peregrine::get_pff_tempfile(),
@@ -123,7 +115,7 @@ create_razzo_paramses <- create_paramses_razzo <- function(
         overwrite = TRUE
       ),
       est_evidence_mcmc = beautier::create_nested_sampling_mcmc(
-        epsilon = 100.0
+        epsilon = 10^-12
       ),
       errors_filename = file.path(seed_folder, "mbd_nltts_gen.csv")
     )
