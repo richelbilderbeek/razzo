@@ -11,68 +11,40 @@ create_parameters_files <- function(
 ) {
   testit::assert(peregrine::is_pff(project_folder_name))
   testit::assert(experiment_type == "test" || experiment_type == "full")
-  if (experiment_type == "test") {
-    n_replicates <- 2
-    mbd_paramses <- create_mbd_paramses(
-      n_replicates = n_replicates
-    )
-    parameters_filenames <- save_razzo_paramses(
-      project_folder_name = project_folder_name,
-      mbd_paramses = mbd_paramses,
-      mcmc_chain_length = 3000
-    )
-    testit::assert(length(mbd_paramses) == length(parameters_filenames))
-  } else {
-    testit::assert(experiment_type == "full")
-    n_replicates <- 2
-    mbd_paramses <- create_mbd_paramses(
-      n_replicates = n_replicates
-    )
-    parameters_filenames <- save_razzo_paramses(
-      project_folder_name = project_folder_name,
-      mbd_paramses = mbd_paramses,
-      mcmc_chain_length = 10^6
-    )
-    testit::assert(length(mbd_paramses) == length(parameters_filenames))
+  n_replicates <- 2
+  if (experiment_type == "full") {
+    # For now
+    n_replicates <- 4
   }
-  parameters_filenames
+  save_razzo_paramses(
+    create_razzo_paramses(
+      project_folder_name = project_folder_name,
+      mbd_paramses = create_mbd_paramses(
+        n_replicates = n_replicates
+      )
+    )
+  )
 }
 
-#' Create the parameter files according to the specified arguments
-#'   \code{project_folder_name/data/[settings]/seed/[models]}
+#' Save the list of \code{razzo_params} to the exected locations
+#'
+#' A \code{razzo_params} already hold its desired location, which
+#' if the folder where
+#' \code{razzo_params$pir_params$alignment_params$fasta_filename}
+#' will be stored. That foldername already follows the
+#' \code{project_folder_name/data/[settings]/seed/[models]}
+#' file storage location convention.
+#' This function will create a \code{parameters.RDa}
+#' in that folder.
 #' @inheritParams default_params_doc
-#' @return Create folders for each parameter setting
-#'   and saves each setting in a file within the corresponding folder.
+#' @return the paths to each created \code{parameters.RDa} file
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
 save_razzo_paramses <- function(
-  project_folder_name,
-  mbd_paramses = create_mbd_paramses(),
-  twinning_params = pirouette::create_twinning_params(
-    twin_tree_filename = peregrine::get_pff_tempfile(),
-    twin_alignment_filename = peregrine::get_pff_tempfile(),
-    twin_evidence_filename = peregrine::get_pff_tempfile()
-  ),
-  alignment_params = pirouette::create_alignment_params(
-    root_sequence = pirouette::create_blocked_dna(length = 1000),
-    mutation_rate = 0.5 / mbd_paramses[[1]]$crown_age,
-    fasta_filename = peregrine::get_pff_tempfile(
-      pattern = "alignment_",
-      fileext = ".fasta"
-    )
-  ),
-  error_measure_params = pirouette::create_error_measure_params(),
-  mcmc_chain_length = beautier::create_mcmc()$chain_length
-) {
-  testit::assert(peregrine::is_pff(project_folder_name))
-  razzo_paramses <- create_razzo_paramses(
-    project_folder_name = project_folder_name,
-    mbd_paramses = mbd_paramses,
-    twinning_params = twinning_params,
-    alignment_params = alignment_params,
-    error_measure_params = error_measure_params,
-    mcmc_chain_length = mcmc_chain_length
+  razzo_paramses = create_razzo_paramses(
+    project_folder_name = peregrine::get_pff_tempfile()
   )
+) {
   parameters_filenames <- rep(NA, length(razzo_paramses))
   for (i in seq_along(razzo_paramses)) {
     razzo_params <- razzo_paramses[[i]]
