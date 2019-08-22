@@ -14,45 +14,27 @@ create_parameters_files <- create_files_razzo_paramses <- function(
   testit::assert(experiment_type == "test" || experiment_type == "full")
   if (experiment_type == "test") {
     n_replicates <- 2
-    mbd_paramses <- create_mbd_params_table(
-      lambda = 0.2,
-      mu = 0.15,
-      nu = 1.0,
-      q = 0.1,
-      n_replicates = n_replicates,
-      crown_age = 6.0,
-      cond = 1
-    )
-    testit::assert(
-      nrow(unique(mbd_paramses)) == nrow(mbd_paramses)
+    mbd_paramses <- create_mbd_paramses(
+      n_replicates = n_replicates
     )
     parameters_filenames <- save_razzo_paramses(
       project_folder_name = project_folder_name,
       mbd_paramses = mbd_paramses,
       mcmc_chain_length = 3000
     )
-    testit::assert(nrow(mbd_paramses) == length(parameters_filenames))
+    testit::assert(length(mbd_paramses) == length(parameters_filenames))
   } else {
     testit::assert(experiment_type == "full")
     n_replicates <- 2
-    mbd_paramses <- create_mbd_params_table(
-      lambda = 0.2,
-      mu = c(0, 0.15),
-      nu = c(1.0, 1.5, 2.0, 2.5),
-      q = c(0.1, 0.15, 0.2),
-      n_replicates = n_replicates,
-      crown_age = 6.0,
-      cond = 1
-    )
-    testit::assert(
-      nrow(unique(mbd_paramses)) == nrow(mbd_paramses)
+    mbd_paramses <- create_mbd_paramses(
+      n_replicates = n_replicates
     )
     parameters_filenames <- save_razzo_paramses(
       project_folder_name = project_folder_name,
       mbd_paramses = mbd_paramses,
-      mcmc_chain_length = 1111000
+      mcmc_chain_length = 10^6
     )
-    testit::assert(nrow(mbd_paramses) == length(parameters_filenames))
+    testit::assert(length(mbd_paramses) == length(parameters_filenames))
   }
   parameters_filenames
 }

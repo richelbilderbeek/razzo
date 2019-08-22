@@ -7,7 +7,7 @@ test_that("use", {
   project_folder_name <- file.path(super_folder_name, "razzo_project")
 
   # Do warn if the folder already exists: it should not be
-  dir.create(path = project_folder_name, recursive = TRUE, showWarnings = TRUE)
+  #dir.create(path = project_folder_name, recursive = TRUE, showWarnings = TRUE)
 
   filenames <- create_parameters_files(
     project_folder_name = project_folder_name,

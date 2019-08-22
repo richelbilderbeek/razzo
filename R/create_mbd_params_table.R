@@ -41,7 +41,7 @@ create_mbd_params_table <- function(
   nu <- unique(nu)
   q <- unique(q)
   seed <- 1:n_replicates
-  mbd_paramses <- expand.grid(
+  mbd_params_table <- expand.grid(
     seed = seed,
     lambda = lambda,
     mu = mu,
@@ -50,14 +50,14 @@ create_mbd_params_table <- function(
     crown_age = crown_age,
     cond = cond
   )
-  seeds <- 1:nrow(mbd_paramses)
-  mbd_paramses$seed <- NULL
-  mbd_paramses$seed <- seeds
+  seeds <- 1:nrow(mbd_params_table)
+  mbd_params_table$seed <- NULL
+  mbd_params_table$seed <- seeds
   testit::assert(
    length(crown_age) == 1
   )
   testit::assert(
    length(cond) == 1
   )
-  mbd_paramses
+  mbd_params_table
 }

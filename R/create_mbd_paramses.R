@@ -15,7 +15,7 @@
 #' }
 #' @export
 create_mbd_paramses <- function(
-  n_replicates
+  n_replicates = 2
 ) {
   df <- create_mbd_params_table(
     n_replicates = n_replicates,
