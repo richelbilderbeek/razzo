@@ -4,9 +4,8 @@
 #' @return Create folders for each parameter setting
 #'   and saves each setting in a file within the corresponding folder.
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
-#' @aliases create_parameters_files create_files_razzo_paramses
-#' @export create_parameters_files create_files_razzo_paramses
-create_parameters_files <- create_files_razzo_paramses <- function(
+#' @export
+create_parameters_files <- function(
   project_folder_name = getwd(),
   experiment_type = "test"
 ) {
@@ -48,15 +47,7 @@ create_parameters_files <- create_files_razzo_paramses <- function(
 #' @export
 save_razzo_paramses <- function(
   project_folder_name,
-  mbd_paramses = create_mbd_params_table(
-    lambda = 0.2,
-    mu = 0.15,
-    nu = c(1.0, 1.5, 2.0),
-    q = c(0.1, 0.15, 0.2),
-    n_replicates = 2,
-    crown_age = 15.0,
-    cond = 1
-  ),
+  mbd_paramses = create_mbd_paramses(),
   twinning_params = pirouette::create_twinning_params(
     twin_tree_filename = peregrine::get_pff_tempfile(),
     twin_alignment_filename = peregrine::get_pff_tempfile(),
@@ -64,7 +55,7 @@ save_razzo_paramses <- function(
   ),
   alignment_params = pirouette::create_alignment_params(
     root_sequence = pirouette::create_blocked_dna(length = 1000),
-    mutation_rate = 0.5 / unique(mbd_paramses$crown_age),
+    mutation_rate = 0.5 / mbd_paramses[[1]]$crown_age,
     fasta_filename = peregrine::get_pff_tempfile(
       pattern = "alignment_",
       fileext = ".fasta"

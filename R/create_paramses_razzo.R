@@ -13,7 +13,7 @@ create_razzo_paramses <- function(
   ),
   alignment_params = pirouette::create_alignment_params(
     root_sequence = pirouette::create_blocked_dna(length = 1000),
-    mutation_rate = 0.5 / unique(mbd_paramses[[1]]$crown_age),
+    mutation_rate = 0.5 / create_mbd_paramses()[[1]]$crown_age,
     fasta_filename = peregrine::get_pff_tempfile(
       pattern = "alignment_",
       fileext = ".fasta"

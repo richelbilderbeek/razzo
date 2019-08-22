@@ -2,7 +2,6 @@
 % Please edit documentation in R/create_files_razzo_paramses.R
 \name{create_parameters_files}
 \alias{create_parameters_files}
-\alias{create_files_razzo_paramses}
 \title{Create all parameter files  in
   \code{project_folder_name/data/[settings]/seed/[models]}}
 \usage{
