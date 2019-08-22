@@ -92,7 +92,7 @@ test_that("use, full", {
   first_parameters <- open_parameters_file(first_filename)
   expect_equal(
     first_parameters$pir_params$experiments[[1]]$inference_model$mcmc$chain_length, # nolint yup, Demeter won't be happy about this long line
-    1111000
+    10^6
   )
 })
 test_that("can read", {
