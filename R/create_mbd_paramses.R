@@ -1,13 +1,18 @@
 #' Create a list of MBD parameters
 #'
 #' Each element has a unique MBD parameter combination
+#' @seealso use \link{create_mbd_params} to create one
+#'   MBD parameter combination
 #' @inheritParams default_params_doc
 #' @return a list of \code{mbd_params}
 #' @author Richel J.C. Bilderbeek
 #' @examples
 #' library(testthat)
 #'
-#' df <- create_mbd_paramses()
+#' mbd_paramses <- create_mbd_paramses()
+#' for (mbd_params in mbd_paramses) {
+#'   expect_silent(check_mbd_params(mbd_params))
+#' }
 #' @export
 create_mbd_paramses <- function() {
   df <- create_mbd_params_table()

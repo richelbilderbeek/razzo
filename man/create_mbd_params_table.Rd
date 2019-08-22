@@ -54,6 +54,10 @@ expect_true("q" \%in\% names(df))
 expect_true("crown_age" \%in\% names(df))
 expect_true("seed" \%in\% names(df))
 }
+\seealso{
+use \link{create_mbd_paramses} to create a list
+of \code{mbd_params}
+}
 \author{
 Giovanni Laudanno, Richel J.C. Bilderbeek
 }

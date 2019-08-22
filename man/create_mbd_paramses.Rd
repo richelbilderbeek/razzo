@@ -15,7 +15,14 @@ Each element has a unique MBD parameter combination
 \examples{
 library(testthat)
 
-df <- create_mbd_paramses()
+mbd_paramses <- create_mbd_paramses()
+for (mbd_params in mbd_paramses) {
+  expect_silent(check_mbd_params(mbd_params))
+}
+}
+\seealso{
+use \link{create_mbd_params} to create one
+  MBD parameter combination
 }
 \author{
 Richel J.C. Bilderbeek
