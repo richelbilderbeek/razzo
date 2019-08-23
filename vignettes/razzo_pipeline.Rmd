@@ -56,10 +56,12 @@ project_folder_name <- file.path(peregrine::get_pff_tempfile(), "razzo_project")
 Here we create all testing parameter files, which are only a few:
 
 ```{r create_parameter_files}
-parameters_filenames <- create_parameters_files(
-  project_folder_name = project_folder_name,
-  experiment_type = "test"
-)
+if (1 == 2) {
+  parameters_filenames <- create_parameters_files(
+    project_folder_name = project_folder_name,
+    experiment_type = "test"
+  )
+}
 ```
 
 ## Step 2: Run the parameter files
