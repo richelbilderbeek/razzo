@@ -71,6 +71,7 @@ test_that("matches article", {
     has_twinning = TRUE
   )
 
+
   ##############################################################################
   # pir_params$twinning_params
   ##############################################################################
@@ -108,16 +109,13 @@ test_that("matches article", {
   expect_equal(gen_exp$inference_conditions$model_type, "generative")
   expect_equal(gen_exp$inference_conditions$run_if, "always")
   # Shouldn't we measure the evidence for the generative model?
-  # Issue 245, Issue #245
-  expect_equal(gen_exp$inference_conditions$do_measure_evidence, FALSE)
+  expect_equal(gen_exp$inference_conditions$do_measure_evidence, TRUE)
   # --------------------
   # Inference model
   # --------------------
   expect_equal(gen_exp$inference_model$site_model$name, "JC69")
   expect_equal(gen_exp$inference_model$clock_model$name, "strict")
-  # Shouldn't we use the Birth-Death tree prior for the generative model?
-  # Issue 246, Issue #246
-  expect_equal(gen_exp$inference_model$tree_prior$name, "yule")
+  expect_equal(gen_exp$inference_model$tree_prior$name, "birth_death")
   expect_equal(
     gen_exp$inference_model$mrca_prior$mrca_distr$name,
     "normal"

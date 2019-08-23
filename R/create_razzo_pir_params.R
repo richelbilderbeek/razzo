@@ -29,7 +29,7 @@ create_razzo_pir_params <- function(
   }
   # Experiments
   experiments <- list()
-  experiments[[1]] <- pirouette::create_test_gen_experiment()
+  experiments[[1]] <- create_razzo_gen_experiment()
   if (isTRUE(has_candidates)) {
     cand_experiments <- pirouette::create_all_experiments(
       exclude_model = experiments[[1]]$inference_model
