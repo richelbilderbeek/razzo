@@ -137,8 +137,9 @@ create_razzo_paramses <- function(
       error_measure_params = error_measure_params,
       evidence_filename = file.path(seed_folder, "mbd_marg_lik.csv")
     )
+    # Cannot do model comparison on Windows
     pir_params <- create_razzo_pir_params(
-      has_candidates = TRUE,
+      has_candidates = rappdirs::app_dir()$os != "win",
       has_twinning = TRUE,
       folder_name = seed_folder,
       rng_seed = seed

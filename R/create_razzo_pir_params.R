@@ -10,6 +10,10 @@ create_razzo_pir_params <- function(
   folder_name = peregrine::get_pff_tempfile(),
   rng_seed = 1
 ) {
+  if (has_candidates == TRUE && rappdirs::app_dir()$os == "win") {
+    stop("Cannot do model comparison on Windows")
+  }
+
   ##############################################################################
   # Set up logic
   ##############################################################################

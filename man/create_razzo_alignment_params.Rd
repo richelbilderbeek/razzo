@@ -7,6 +7,9 @@ the razzo file naming convenstions and article}
 \usage{
 create_razzo_alignment_params(folder_name)
 }
+\arguments{
+\item{folder_name}{name of the main folder}
+}
 \description{
 Create a razzo alignment parameter set that matches
 the razzo file naming convenstions and article

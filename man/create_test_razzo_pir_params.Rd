@@ -6,7 +6,8 @@
 and naming scheme}
 \usage{
 create_test_razzo_pir_params(has_candidates = FALSE,
-  has_twinning = TRUE, folder_name = peregrine::get_pff_tempfile())
+  has_twinning = TRUE, folder_name = peregrine::get_pff_tempfile(),
+  rng_seed = 1)
 }
 \arguments{
 \item{has_candidates}{if there are candidate experiments yes/no}

@@ -70,6 +70,10 @@
 #' @param razzo_params a parameter set for one \code{razzo} experiment,
 #'   as created by \link{create_params_razzo}
 #'   and used by \link{run_razzo}
+#' @param razzo_paramses a list of \code{razzo_params} for a
+#'   set of \code{razzo} experiment.
+#'   Use create \link{create_razzo_paramses} or
+#'   \link{create_test_razzo_paramses} to create such a list
 #' @param sample_interval the interval at which the MCMC algorithm
 #'   makes a measurement
 #' @param sequence_length the length of each DNA sequence in an alignment
@@ -137,6 +141,7 @@ default_params_doc <- function(
   project_folder_name,
   q,
   razzo_params,
+  razzo_paramses,
   sample_interval,
   seed,
   sequence_length,

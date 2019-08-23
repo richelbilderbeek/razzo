@@ -1,5 +1,6 @@
 #' Create BEAST2 options that follow the razzo naming conventions
 #' and article
+#' @param rng_seed the RNG seed used in BEAST2 inference
 #' @inheritParams default_params_doc
 #' @export
 create_razzo_beast2_options <- function(

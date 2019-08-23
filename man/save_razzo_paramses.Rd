@@ -8,6 +8,12 @@
   save_razzo_paramses(razzo_paramses = create_razzo_paramses(project_folder_name
   = peregrine::get_pff_tempfile()))
 }
+\arguments{
+\item{razzo_paramses}{a list of \code{razzo_params} for a
+set of \code{razzo} experiment.
+Use create \link{create_razzo_paramses} or
+\link{create_test_razzo_paramses} to create such a list}
+}
 \value{
 the paths to each created \code{parameters.RDa} file
 }

@@ -13,6 +13,8 @@ create_razzo_beast2_options(model_type,
 \code{generative} or \code{candidate}}
 
 \item{folder_name}{name of the main folder}
+
+\item{rng_seed}{the RNG seed used in BEAST2 inference}
 }
 \description{
 Create BEAST2 options that follow the razzo naming conventions

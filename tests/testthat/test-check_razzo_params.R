@@ -33,8 +33,6 @@ test_that("use", {
 
 test_that("check filenames", {
 
-  skip("Not now")
-
   good_razzo_params <- create_test_razzo_params(
     pir_params = create_test_razzo_pir_params(
       has_candidates = TRUE,
@@ -172,7 +170,6 @@ test_that("check filenames", {
     check_razzo_params(razzo_params),
     "misc_params\\$tree_filename is not of class 'character'"
   )
-
 
   razzo_params <- good_razzo_params
   razzo_params$misc_params$tree_filename <- "/no_way.newick"

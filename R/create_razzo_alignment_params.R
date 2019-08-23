@@ -1,5 +1,6 @@
 #' Create a razzo alignment parameter set that matches
 #' the razzo file naming convenstions and article
+#' @inheritParams default_params_doc
 #' @author Richel J.C. Bilderbeek
 #' @export
 create_razzo_alignment_params <- function(

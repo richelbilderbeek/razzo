@@ -14,9 +14,9 @@ default_params_doc(alignment, alignment_params, bd_mutation_rate, bd_tree,
   misc_params, model_type, mu, mutation_rate, n_replicates, nu, nu_events,
   parameters, parameter_filename, parameters_filename, phylo, pir_params,
   posterior_trees, precision, project_folder_name, q, razzo_params,
-  sample_interval, seed, sequence_length, sim_pars, sim_phylo, site_model,
-  sub_chain_length, tree, tree_filename, trees_filename, twinning_params,
-  verbose)
+  razzo_paramses, sample_interval, seed, sequence_length, sim_pars,
+  sim_phylo, site_model, sub_chain_length, tree, tree_filename,
+  trees_filename, twinning_params, verbose)
 }
 \arguments{
 \item{alignment}{a DNA alignment}
@@ -132,6 +132,11 @@ a multiple event. See \code{\link[mbd]{mbd_sim}}}
 \item{razzo_params}{a parameter set for one \code{razzo} experiment,
 as created by \link{create_params_razzo}
 and used by \link{run_razzo}}
+
+\item{razzo_paramses}{a list of \code{razzo_params} for a
+set of \code{razzo} experiment.
+Use create \link{create_razzo_paramses} or
+\link{create_test_razzo_paramses} to create such a list}
 
 \item{sample_interval}{the interval at which the MCMC algorithm
 makes a measurement}
