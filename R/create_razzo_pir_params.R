@@ -77,13 +77,8 @@ create_razzo_pir_params <- function(
         folder_name = folder_name,
         rng_seed = rng_seed
       )
-      print("DEBUG")
-      print(experiments[[i]]$beast2_options$output_log_filename)
-      print(file.path(folder_name, "mbd_best.xml")) # nolint indeed long
-      print("~DEBUG")
-
       testit::assert(experiments[[i]]$beast2_options$input_filename == file.path(folder_name, "mbd_best.xml")) # nolint indeed long
-      testit::assert(experiments[[i]]$beast2_options$output_log_filename == file.path(folder_name, "mbd_best.xml")) # nolint indeed long
+      testit::assert(experiments[[i]]$beast2_options$output_log_filename == file.path(folder_name, "mbd_best.log")) # nolint indeed long
       testit::assert(experiments[[i]]$beast2_options$output_trees_filenames == file.path(folder_name, "mbd_best.trees")) # nolint indeed long
       testit::assert(experiments[[i]]$beast2_options$output_state_filename == file.path(folder_name, "mbd_best.xml.state")) # nolint indeed long
       experiments[[i]]$errors_filename <- file.path(folder_name, "mbd_nltts_best.csv") # nolint indeed long
