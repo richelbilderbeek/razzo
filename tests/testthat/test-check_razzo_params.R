@@ -1,5 +1,3 @@
-context("test-check_razzo_params")
-
 test_that("use", {
 
   good_razzo_params <- create_test_razzo_params()
