@@ -85,7 +85,7 @@ test_that("matches article", {
     pir_params$alignment_params$root_sequence
   )
   expect_equal(
-    pirouette::create_standard_mutation_rate,
+    0.5 / get_razzo_crown_age(),
     pir_params$alignment_params$mutation_rate
   )
   expect_equal(

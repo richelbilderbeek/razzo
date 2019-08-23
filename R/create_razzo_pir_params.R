@@ -13,8 +13,8 @@ create_razzo_pir_params <- function(
   # Set up logic
   ##############################################################################
   # Alignment
-  alignment_params <- pirouette::create_alignment_params(
-    root_sequence = pirouette::create_blocked_dna(length = 1000)
+  alignment_params <- create_razzo_alignment_params(
+    folder_name = folder_name
   )
   # Twinning
   twinning_params <- NA
@@ -40,19 +40,15 @@ create_razzo_pir_params <- function(
   }
   # MRCA
   for (i in seq_along(experiments)) {
-    experiments[[i]]$inference_model$mrca_prior <- beautier::create_mrca_prior(
-      is_monophyletic = TRUE,
-      mrca_distr = beautier::create_normal_distr(
-        mean = create_test_mbd_params()$crown_age,
-        sigma = 0.0001
-      )
-    )
+    experiments[[i]]$inference_model$mrca_prior <- create_razzo_mrca_prior()
   }
   ##############################################################################
   # Set up filenames
   ##############################################################################
   # Alignment
-  alignment_params$fasta_filename <- file.path(folder_name, "mbd.fasta")
+  testit::assert(
+    alignment_params$fasta_filename == file.path(folder_name, "mbd.fasta")
+  )
   # Twinning
   if (isTRUE(has_twinning)) {
     testit::assert(!is.na(twinning_params))

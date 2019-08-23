@@ -35,16 +35,7 @@ create_razzo_paramses <- function(
       parsettings_name,
       seed
     )
-
-    misc_params <- razzo::create_misc_params(seed_folder)
-    testit::assert(misc_params$tree_filename == file.path(seed_folder, "mbd.tree"))
-    mrca_prior <- beautier::create_mrca_prior(
-      is_monophyletic = TRUE,
-      mrca_distr = beautier::create_normal_distr(
-        mean = mbd_params$crown_age,
-        sigma = 0.0001
-      )
-    )
+    mrca_prior <- create_razzo_mrca_prior()
 
     mcmc <- beautier::create_mcmc(chain_length = mcmc_chain_length, store_every = 1000)
 
@@ -162,7 +153,7 @@ create_razzo_paramses <- function(
     razzo_params <- razzo::create_razzo_params(
       mbd_params = mbd_params,
       pir_params = pir_params,
-      misc_params = misc_params
+      misc_params = razzo::create_misc_params(seed_folder)
     )
     check_razzo_params(razzo_params)
     razzo_paramses[[index]] <- razzo_params

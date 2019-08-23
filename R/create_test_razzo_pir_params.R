@@ -31,13 +31,7 @@ create_test_razzo_pir_params <- function(
     experiments[[3]]$inference_model$site_model <- beautier::create_tn93_site_model() # nolint indeed long
   }
   for (i in seq_along(experiments)) {
-    experiments[[i]]$inference_model$mrca_prior <- beautier::create_mrca_prior(
-      is_monophyletic = TRUE,
-      mrca_distr = beautier::create_normal_distr(
-        mean = create_test_mbd_params()$crown_age,
-        sigma = 0.0001
-      )
-    )
+    experiments[[i]]$inference_model$mrca_prior <- create_razzo_mrca_prior()
   }
   ##############################################################################
   # Set up filenames
