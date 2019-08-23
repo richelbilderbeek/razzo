@@ -45,6 +45,15 @@ run_razzo <- function(
   )
   beautier::check_file_exists(tree_filename, "tree_filename")
 
+  # For phylogenies with 5 or less taxa, one cannot use the
+  # Coalescent Bayesian Skyline.
+  # Remove the pirouette experiments that use CBS
+  if (ape::Ntip(phylogeny) < 6) {
+    razzo_params$pir_params$experiments <- remove_cbs_exps(
+      razzo_params$pir_params$experiments
+    )
+  }
+
   # Let pirouette measure the error
 
   # Create the folder if needed, no warning when the folder is already present
