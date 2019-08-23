@@ -1,5 +1,3 @@
-context("test-create_parameters_files")
-
 test_that("use", {
 
   filenames <- create_parameters_files(
@@ -42,6 +40,8 @@ test_that("use", {
 })
 
 test_that("use, full", {
+  if (!beastier::is_on_travis()) return()
+
   filenames <- create_parameters_files(
     project_folder_name = file.path(
       peregrine::get_pff_tempfile(), "razzo_project"
@@ -73,15 +73,6 @@ test_that("use, full", {
         filenames[1], perl = TRUE, value = TRUE
       )
     ) > 0
-  )
-
-  skip("Not now")
-  # MCMC of full run should be 1M
-  first_filename <- filenames[1]
-  first_parameters <- open_parameters_file(first_filename)
-  expect_equal(
-    first_parameters$pir_params$experiments[[1]]$inference_model$mcmc$chain_length, # nolint yup, Demeter won't be happy about this long line
-    10^6
   )
 })
 test_that("can read", {
