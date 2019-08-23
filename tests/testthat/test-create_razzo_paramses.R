@@ -45,7 +45,6 @@ test_that("matches article", {
     first_razzo_params$mbd_params$seed,
     first_razzo_params$pir_params$experiments[[2]]$beast2_options$rng_seed,
   )
-  skip("Issue 248, Issue #248")
   expect_equal(
     first_razzo_params$mbd_params$seed,
     first_razzo_params$pir_params$alignment_params$rng_seed

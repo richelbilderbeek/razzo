@@ -18,7 +18,10 @@ create_razzo_pir_params <- function(
   # Set up logic
   ##############################################################################
   # Alignment
-  alignment_params <- create_razzo_alignment_params(folder_name = folder_name)
+  alignment_params <- create_razzo_alignment_params(
+    folder_name = folder_name,
+    rng_seed = rng_seed
+  )
   # Twinning
   twinning_params <- NA
   if (isTRUE(has_twinning)) {

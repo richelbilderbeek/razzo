@@ -5,10 +5,12 @@
 \title{Create a razzo alignment parameter set that matches
 the razzo file naming convenstions and article}
 \usage{
-create_razzo_alignment_params(folder_name)
+create_razzo_alignment_params(folder_name, rng_seed = 1)
 }
 \arguments{
 \item{folder_name}{name of the main folder}
+
+\item{rng_seed}{RNG seed for the alignment simulation}
 }
 \description{
 Create a razzo alignment parameter set that matches

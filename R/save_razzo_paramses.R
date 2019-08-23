@@ -30,6 +30,7 @@ save_razzo_paramses <- function(
     dir.create(folder_name, showWarnings = FALSE, recursive = TRUE)
     parameters_filename <- file.path(folder_name, "parameters.RDa")
     saveRDS(object = razzo_params, file = parameters_filename)
+    testit::assert(file.exists(parameters_filename))
     testthat::expect_silent(
       check_razzo_params(readRDS(parameters_filename))
     )
