@@ -28,18 +28,18 @@ create_params_mbd <- create_mbd_params <- function(
 #' Create MBD parameters used in tests
 #' @inheritParams default_params_doc
 #' @author Richel J.C. Bilderbeek
-#' @aliases create_test_mbd_params create_params_mbd_test
-#' @export create_test_mbd_params create_params_mbd_test
-create_test_mbd_params <- create_params_mbd_test <- function(
+#' @export
+create_test_mbd_params <- function(
+  seed = 1
 ) {
   crown_age <- create_mbd_params_table()$crown_age[1]
   create_mbd_params(
-    lambda = 0.1,
+    lambda = 0.2,
     mu = 0.15,
-    nu = 0.2,
-    q = 0.01,
+    nu = 1.0,
+    q = 0.1,
     crown_age = crown_age,
     cond = 1,
-    seed = 1
+    seed = seed
   )
 }

@@ -12,7 +12,7 @@ create_razzo_paramses(project_folder_name,
   peregrine::get_pff_tempfile()),
   alignment_params = pirouette::create_alignment_params(root_sequence =
   pirouette::create_blocked_dna(length = 1000), mutation_rate =
-  0.5/create_mbd_paramses()[[1]]$crown_age, fasta_filename =
+  0.5/get_razzo_crown_age(), fasta_filename =
   peregrine::get_pff_tempfile(pattern = "alignment_", fileext = ".fasta")),
   error_measure_params = pirouette::create_error_measure_params(),
   mcmc_chain_length = beautier::create_mcmc()$chain_length)

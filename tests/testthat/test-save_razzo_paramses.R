@@ -1,6 +1,9 @@
 test_that("use", {
-  project_folder_name <- peregrine::get_pff_tempdir()
-  filenames <- save_razzo_paramses()
+  filenames <- save_razzo_paramses(
+    create_test_razzo_paramses(
+      peregrine::get_pff_tempfile()
+    )
+  )
   # All files are created
   expect_true(all(file.exists(filenames)))
 
