@@ -2,6 +2,7 @@
 #' naming conventions and article
 #' @author Richel J.C. Bilderbeek
 #' @inheritParams default_params_doc
+#' @param rng_seed RNG seed used in inference
 #' @export
 create_razzo_gen_experiment <- function(
   folder_name = peregrine::get_pff_tempfile(),
