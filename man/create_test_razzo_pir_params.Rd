@@ -15,6 +15,8 @@ create_test_razzo_pir_params(has_candidates = FALSE,
 \item{has_twinning}{do use twinning yes/no}
 
 \item{folder_name}{name of the main folder}
+
+\item{rng_seed}{RNG seed for alignment simulation and inference}
 }
 \description{
 Creates a \code{pir_params} with the \code{razzo} setup

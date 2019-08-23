@@ -3,6 +3,7 @@
 #' @inheritParams default_params_doc
 #' @param has_candidates if there are candidate experiments yes/no
 #' @param has_twinning do use twinning yes/no
+#' @param rng_seed RNG seed for alignment simulation and inference
 #' @export
 create_test_razzo_pir_params <- function(
   has_candidates = FALSE,
