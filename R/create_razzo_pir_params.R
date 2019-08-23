@@ -43,6 +43,7 @@ create_razzo_pir_params <- function(
     experiments[[i]]$inference_model$mcmc <- beautier::create_mcmc(
       store_every = 1000
     )
+    experiments[[i]]$est_evidence_mcmc <- create_razzo_nested_sampling_mcmc()
   }
   # MRCA
   for (i in seq_along(experiments)) {
@@ -92,6 +93,9 @@ create_razzo_pir_params <- function(
     }
   }
   for (i in seq_along(experiments)) {
+    testit::assert(
+      peregrine::is_pff(experiments[[i]]$beast2_options$beast2_working_dir)
+    )
     experiments[[i]]$beast2_options$beast2_working_dir <- peregrine::get_pff_tempfile()  # nolint indeed long
   }
   # Evidence filename

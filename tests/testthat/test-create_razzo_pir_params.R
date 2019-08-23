@@ -133,13 +133,27 @@ test_that("matches article", {
   expect_equal(gen_exp$inference_model$mcmc$chain_length, 1e7)
   expect_equal(gen_exp$inference_model$mcmc$store_every, 1e3)
   expect_equal(gen_exp$est_evidence_mcmc$chain_length, 1e7)
-  # Shouldn't we use an explicit store_every
-  # for the nested sampling MCMC of 1000?
-  # Issue 247, Issue #247
-  expect_equal(gen_exp$est_evidence_mcmc$store_every, -1)
-  expect_equal(gen_exp$est_evidence_mcmc$epsilon, 1e-12)
-  expect_equal(gen_exp$est_evidence_mcmc$particle_count, 1)
-  expect_equal(gen_exp$est_evidence_mcmc$sub_chain_length, 5000)
+  # gen_exp$est_evidence_mcmc
+  expect_equal(
+    gen_exp$est_evidence_mcmc$chain_length,
+    create_razzo_nested_sampling_mcmc()$chain_length
+  )
+  expect_equal(
+    gen_exp$est_evidence_mcmc$store_every,
+    create_razzo_nested_sampling_mcmc()$store_every
+  )
+  expect_equal(
+    gen_exp$est_evidence_mcmc$epsilon,
+    create_razzo_nested_sampling_mcmc()$epsilon
+  )
+  expect_equal(
+    gen_exp$est_evidence_mcmc$particle_count,
+    create_razzo_nested_sampling_mcmc()$particle_count
+  )
+  expect_equal(
+    gen_exp$est_evidence_mcmc$sub_chain_length,
+    create_razzo_nested_sampling_mcmc()$sub_chain_length
+  )
   # --------------------
   # beast2_options
   # --------------------

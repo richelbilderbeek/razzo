@@ -71,9 +71,7 @@ create_razzo_paramses <- function(
         folder_name = seed_folder,
         rng_seed = seed
       ),
-      est_evidence_mcmc = beautier::create_nested_sampling_mcmc(
-        epsilon = 10^-12
-      ),
+      est_evidence_mcmc = create_razzo_nested_sampling_mcmc(),
       errors_filename = file.path(seed_folder, "mbd_nltts_gen.csv")
     )
     if (rappdirs::app_dir()$os != "win") {
@@ -94,9 +92,7 @@ create_razzo_paramses <- function(
           folder_name = seed_folder,
           rng_seed = seed
         ),
-        est_evidence_mcmc = beautier::create_nested_sampling_mcmc(
-          epsilon = 100.0
-        ),
+        est_evidence_mcmc = create_razzo_nested_sampling_mcmc(),
         errors_filename = file.path(seed_folder, "mbd_nltts_best.csv")
       )
       experiment_gtr_bd <- pirouette::create_experiment(
@@ -116,9 +112,7 @@ create_razzo_paramses <- function(
           folder_name = seed_folder,
           rng_seed = seed
         ),
-        est_evidence_mcmc = beautier::create_nested_sampling_mcmc(
-          epsilon = 100.0
-        ),
+        est_evidence_mcmc = create_razzo_nested_sampling_mcmc(),
         errors_filename = file.path(seed_folder, "mbd_nltts_best.csv")
       )
       experiments <- list(

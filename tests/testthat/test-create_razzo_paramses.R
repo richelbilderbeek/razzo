@@ -1,7 +1,6 @@
 test_that("use", {
-  project_folder_name <- peregrine::get_pff_tempdir()
   razzo_paramses <- create_razzo_paramses(
-    project_folder_name = project_folder_name
+    project_folder_name = peregrine::get_pff_tempdir()
   )
   for (razzo_params in razzo_paramses) {
     check_razzo_params(razzo_params)
@@ -19,8 +18,6 @@ test_that("matches article", {
   #
   # These are the tests that looks for bigger picture issues and
   # relations between the parameter sets
-  project_folder_name <- peregrine::get_pff_tempdir()
-
   n_replicates <- 1
   mbd_paramses <- create_mbd_paramses(
     n_replicates = n_replicates
@@ -28,7 +25,7 @@ test_that("matches article", {
   n_mbd_params <- length(mbd_paramses)
 
   razzo_paramses <- create_razzo_paramses(
-    project_folder_name = project_folder_name,
+    project_folder_name = peregrine::get_pff_tempdir(),
     mbd_paramses = mbd_paramses
   )
   n_razzo_paramses <- length(razzo_paramses)
