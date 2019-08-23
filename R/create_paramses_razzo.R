@@ -6,11 +6,6 @@
 create_razzo_paramses <- function(
   project_folder_name,
   mbd_paramses = create_mbd_paramses(),
-  twinning_params = pirouette::create_twinning_params(
-    twin_tree_filename = peregrine::get_pff_tempfile(),
-    twin_alignment_filename = peregrine::get_pff_tempfile(),
-    twin_evidence_filename = peregrine::get_pff_tempfile()
-  ),
   error_measure_params = pirouette::create_error_measure_params(),
   mcmc_chain_length = beautier::create_mcmc()$chain_length
 ) {
@@ -43,18 +38,7 @@ create_razzo_paramses <- function(
     alignment_params <- create_razzo_alignment_params(
       folder_name = seed_folder
     )
-    testit::assert(
-      alignment_params$fasta_filename == file.path(seed_folder, "mbd.fasta")
-    )
-    twinning_params$twin_tree_filename <- file.path(
-      seed_folder, "mbd_twin.tree"
-    )
-    twinning_params$twin_alignment_filename <- file.path(
-      seed_folder, "mbd_twin.fasta"
-    )
-    twinning_params$twin_evidence_filename <- file.path(
-      seed_folder, "mbd_marg_lik_twin.csv"
-    )
+    twinning_params <- create_razzo_twinning_params(seed_folder)
     misc_params <- razzo::create_misc_params()
     misc_params$tree_filename <- file.path(
       seed_folder, "mbd.tree"
