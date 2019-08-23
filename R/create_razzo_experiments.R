@@ -36,6 +36,7 @@ create_razzo_experiments <- function(
   beast2_working_dir <- peregrine::get_pff_tempfile()
   for (i in seq_along(experiments)) {
     experiments[[i]]$beast2_options$beast2_working_dir <- beast2_working_dir
+    experiments[[i]]$beast2_options$rng_seed <- rng_seed
   }
 
   # Experiments
