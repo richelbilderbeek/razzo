@@ -2,7 +2,7 @@
 #' and naming scheme
 #' @inheritParams default_params_doc
 #' @param has_candidates if there are candidate experiments yes/no
-#' @param has_twinning do use twinning yes/no
+#' @param rng_seed the RNG seed used in inference
 #' @export
 create_razzo_experiments <- function(
   has_candidates = FALSE,

@@ -10,6 +10,8 @@ create_razzo_gen_experiment(folder_name = peregrine::get_pff_tempfile(),
 }
 \arguments{
 \item{folder_name}{name of the main folder}
+
+\item{rng_seed}{RNG seed used in inference}
 }
 \description{
 Create a generative experiment that follows the razzo

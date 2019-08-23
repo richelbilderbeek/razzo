@@ -13,7 +13,7 @@ create_razzo_experiments(has_candidates = FALSE,
 
 \item{folder_name}{name of the main folder}
 
-\item{has_twinning}{do use twinning yes/no}
+\item{rng_seed}{the RNG seed used in inference}
 }
 \description{
 Creates a \code{pir_params} with the \code{razzo} setup
