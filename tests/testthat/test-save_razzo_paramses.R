@@ -7,6 +7,16 @@ test_that("use", {
   # All files are created
   expect_true(all(file.exists(filenames)))
 
+  # All filename must end with 'parameters.RDa'
+  expect_equal(
+    length(filenames),
+    length(
+      grep(
+        pattern = "parameters\\.RDa$", filenames, perl = TRUE, value = TRUE
+      )
+    )
+  )
+
   # All files are valid
   for (filename in filenames) {
     testthat::expect_silent(
