@@ -7,19 +7,18 @@
 create_razzo_pir_params <- function(
   has_candidates = FALSE,
   has_twinning = TRUE,
-  folder_name = peregrine::get_pff_tempfile()
+  folder_name = peregrine::get_pff_tempfile(),
+  rng_seed = 1
 ) {
   ##############################################################################
   # Set up logic
   ##############################################################################
   # Alignment
-  alignment_params <- create_razzo_alignment_params(
-    folder_name = folder_name
-  )
+  alignment_params <- create_razzo_alignment_params(folder_name = folder_name)
   # Twinning
   twinning_params <- NA
   if (isTRUE(has_twinning)) {
-    twinning_params <- pirouette::create_twinning_params()
+    twinning_params <- create_razzo_twinning_params(folder_name = folder_name)
   }
   # Experiments
   experiments <- list()
@@ -52,26 +51,41 @@ create_razzo_pir_params <- function(
   # Twinning
   if (isTRUE(has_twinning)) {
     testit::assert(!is.na(twinning_params))
-    twinning_params$twin_tree_filename <- file.path(folder_name, "mbd_twin.tree") # nolint indeed long
-    twinning_params$twin_alignment_filename <- file.path(folder_name, "mbd_twin.fasta") # nolint indeed long
-    twinning_params$twin_evidence_filename <- file.path(folder_name, "mbd_marg_lik_twin.csv") # nolint indeed long
+    testit::assert(twinning_params$twin_tree_filename == file.path(folder_name, "mbd_twin.tree")) # nolint indeed long
+    testit::assert(twinning_params$twin_alignment_filename == file.path(folder_name, "mbd_twin.fasta")) # nolint indeed long
+    testit::assert(twinning_params$twin_evidence_filename == file.path(folder_name, "mbd_marg_lik_twin.csv")) # nolint indeed long
   }
   # Experiments
   # First is always generative
   testit::assert(experiments[[1]]$inference_conditions$model_type == "generative") # nolint indeed long
-  experiments[[1]]$beast2_options$input_filename <- file.path(folder_name, "mbd_gen.xml") # nolint indeed long
-  experiments[[1]]$beast2_options$output_log_filename <- file.path(folder_name, "mbd_gen.log") # nolint indeed long
-  experiments[[1]]$beast2_options$output_trees_filenames <- file.path(folder_name, "mbd_gen.trees") # nolint indeed long
-  experiments[[1]]$beast2_options$output_state_filename <- file.path(folder_name, "mbd_gen.xml.state") # nolint indeed long
+  experiments[[1]]$beast2_options <- create_razzo_beast2_options(
+    model_type = "generative",
+    folder_name = folder_name,
+    rng_seed = rng_seed
+  )
+  testit::assert(experiments[[1]]$beast2_options$input_filename == file.path(folder_name, "mbd_gen.xml")) # nolint indeed long
+  testit::assert(experiments[[1]]$beast2_options$output_log_filename == file.path(folder_name, "mbd_gen.log")) # nolint indeed long
+  testit::assert(experiments[[1]]$beast2_options$output_trees_filenames == file.path(folder_name, "mbd_gen.trees")) # nolint indeed long
+  testit::assert(experiments[[1]]$beast2_options$output_state_filename == file.path(folder_name, "mbd_gen.xml.state")) # nolint indeed long
   experiments[[1]]$errors_filename <- file.path(folder_name, "mbd_nltts_gen.csv") # nolint indeed long
   if (isTRUE(has_candidates)) {
     n_candidate_experiments <- length(experiments) - 1
     testit::assert(n_candidate_experiments >= 1)
     for (i in seq(2, 1 + n_candidate_experiments)) {
-      experiments[[i]]$beast2_options$input_filename <- file.path(folder_name, "mbd_best.xml") # nolint indeed long
-      experiments[[i]]$beast2_options$output_log_filename <- file.path(folder_name, "mbd_best.xml") # nolint indeed long
-      experiments[[i]]$beast2_options$output_trees_filenames <- file.path(folder_name, "mbd_best.trees") # nolint indeed long
-      experiments[[i]]$beast2_options$output_state_filename <- file.path(folder_name, "mbd_best.xml.state") # nolint indeed long
+      experiments[[i]]$beast2_options <- create_razzo_beast2_options(
+        model_type = "candidate",
+        folder_name = folder_name,
+        rng_seed = rng_seed
+      )
+      print("DEBUG")
+      print(experiments[[i]]$beast2_options$output_log_filename)
+      print(file.path(folder_name, "mbd_best.xml")) # nolint indeed long
+      print("~DEBUG")
+
+      testit::assert(experiments[[i]]$beast2_options$input_filename == file.path(folder_name, "mbd_best.xml")) # nolint indeed long
+      testit::assert(experiments[[i]]$beast2_options$output_log_filename == file.path(folder_name, "mbd_best.xml")) # nolint indeed long
+      testit::assert(experiments[[i]]$beast2_options$output_trees_filenames == file.path(folder_name, "mbd_best.trees")) # nolint indeed long
+      testit::assert(experiments[[i]]$beast2_options$output_state_filename == file.path(folder_name, "mbd_best.xml.state")) # nolint indeed long
       experiments[[i]]$errors_filename <- file.path(folder_name, "mbd_nltts_best.csv") # nolint indeed long
     }
   }
