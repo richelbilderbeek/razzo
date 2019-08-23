@@ -1,3 +1,5 @@
+#' Create a set of testing MBD parameters
+#' @author Richel J.C. Bilderbeekc
 #' @export
 create_test_mbd_paramses <- function(
 ) {
