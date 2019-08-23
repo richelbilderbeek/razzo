@@ -4,30 +4,11 @@
 #' @param has_candidates if there are candidate experiments yes/no
 #' @param has_twinning do use twinning yes/no
 #' @export
-create_razzo_pir_params <- function(
+create_razzo_experiments <- function(
   has_candidates = FALSE,
-  has_twinning = TRUE,
   folder_name = peregrine::get_pff_tempfile(),
   rng_seed = 1
 ) {
-  if (has_candidates == TRUE && rappdirs::app_dir()$os == "win") {
-    stop("Cannot do model comparison on Windows")
-  }
-
-  ##############################################################################
-  # Set up logic
-  ##############################################################################
-  # Alignment
-  alignment_params <- create_razzo_alignment_params(
-    folder_name = folder_name,
-    rng_seed = rng_seed
-  )
-  # Twinning
-  twinning_params <- NA
-  if (isTRUE(has_twinning)) {
-    twinning_params <- create_razzo_twinning_params(folder_name = folder_name)
-  }
-  # Experiments
   experiments <- list()
   experiments[[1]] <- create_razzo_gen_experiment()
   if (isTRUE(has_candidates)) {
@@ -50,20 +31,7 @@ create_razzo_pir_params <- function(
   for (i in seq_along(experiments)) {
     experiments[[i]]$inference_model$mrca_prior <- create_razzo_mrca_prior()
   }
-  ##############################################################################
-  # Set up filenames
-  ##############################################################################
-  # Alignment
-  testit::assert(
-    alignment_params$fasta_filename == file.path(folder_name, "mbd.fasta")
-  )
-  # Twinning
-  if (isTRUE(has_twinning)) {
-    testit::assert(!is.na(twinning_params))
-    testit::assert(twinning_params$twin_tree_filename == file.path(folder_name, "mbd_twin.tree")) # nolint indeed long
-    testit::assert(twinning_params$twin_alignment_filename == file.path(folder_name, "mbd_twin.fasta")) # nolint indeed long
-    testit::assert(twinning_params$twin_evidence_filename == file.path(folder_name, "mbd_marg_lik_twin.csv")) # nolint indeed long
-  }
+
   # Experiments
   # First is always generative
   testit::assert(experiments[[1]]$inference_conditions$model_type == "generative") # nolint indeed long
@@ -99,23 +67,5 @@ create_razzo_pir_params <- function(
     )
     experiments[[i]]$beast2_options$beast2_working_dir <- peregrine::get_pff_tempfile()  # nolint indeed long
   }
-  # Evidence filename
-  evidence_filename <- file.path(folder_name, "mbd_marg_lik.csv")
-
-  # Ruthlessly overwrite experiments
-  experiments <- create_razzo_experiments(
-    has_candidates = has_candidates,
-    folder_name = folder_name,
-    rng_seed = rng_seed
-  )
-
-  ##############################################################################
-  # Combine
-  ##############################################################################
-  pirouette::create_pir_params(
-    alignment_params = alignment_params,
-    experiments = experiments,
-    twinning_params = twinning_params,
-    evidence_filename = evidence_filename
-  )
+  experiments
 }
