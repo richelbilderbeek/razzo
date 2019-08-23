@@ -1,4 +1,7 @@
 #' Create a set of testing experiments
+#' @inheritParams default_params_doc
+#' @param has_candidates if there are candidate experiments yes/no
+#' @param rng_seed the RNG seed used in inference
 #' @export
 create_test_razzo_experiments <- function(
   has_candidates = TRUE,

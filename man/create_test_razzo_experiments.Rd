@@ -4,7 +4,15 @@
 \alias{create_test_razzo_experiments}
 \title{Create a set of testing experiments}
 \usage{
-create_test_razzo_experiments(has_candidates = TRUE)
+create_test_razzo_experiments(has_candidates = TRUE,
+  folder_name = peregrine::get_pff_tempfile(), rng_seed = 1)
+}
+\arguments{
+\item{has_candidates}{if there are candidate experiments yes/no}
+
+\item{folder_name}{name of the main folder}
+
+\item{rng_seed}{the RNG seed used in inference}
 }
 \description{
 Create a set of testing experiments
