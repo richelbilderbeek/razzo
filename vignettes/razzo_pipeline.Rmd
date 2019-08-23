@@ -67,18 +67,22 @@ parameters_filenames <- create_parameters_files(
 Then we run razzo for each parameter setting
 
 ```{r run_files}
-for (parameters_filename in parameters_filenames) {
-  razzo::run_razzo_from_file(parameters_filename)
+if (1 == 2) {
+  for (parameters_filename in parameters_filenames) {
+    razzo::run_razzo_from_file(parameters_filename)
+  }
 }
 ```
 
 ## Step 3: figure 1
 
-```{r}
-if (rappdirs::app_dir()$os != "win") {
-  plots <- create_fig_1(project_folder_name)
-  for (plot in plots) {
-    print(plot)
+```{r eval=FALSE}
+if (1 == 2) {
+  if (rappdirs::app_dir()$os != "win") {
+    plots <- create_fig_1(project_folder_name)
+    for (plot in plots) {
+      print(plot)
+    }
   }
 }
 ```
@@ -143,20 +147,20 @@ if (rappdirs::app_dir()$os != "win") {
 
 Here we show the results of the first experiment only:
 
-```{r}
+```{r eval=FALSE}
 parameters_filename <- parameters_filenames[1]
 razzo_params <- readRDS(parameters_filename)
 ```
 ### First MBD tree:
 
-```{r}
+```{r eval=FALSE}
 ape::plot.phylo(ape::read.tree(file = razzo_params$misc_params$tree_filename))
 ```
 
 
 ### First twin tree:
 
-```{r}
+```{r eval=FALSE}
 
 ape::plot.phylo(
   ape::read.tree(
@@ -167,7 +171,7 @@ ape::plot.phylo(
 
 ### First MBD alignment
 
-```{r}
+```{r eval=FALSE}
 image(
   ape::read.FASTA(
     file = razzo_params$pir_params$alignment_params$fasta_filename
@@ -177,7 +181,7 @@ image(
 
 ### First twin alignment
 
-```{r}
+```{r eval=FALSE}
 image(
   ape::read.FASTA(
     file = razzo_params$pir_params$twinning_params$twin_alignment_filename
@@ -187,7 +191,7 @@ image(
 
 ### First MBD posterior's trees of generative model
 
-```{r}
+```{r eval=FALSE}
 babette::plot_densitree(
   tracerer::parse_beast_trees(
     razzo_params$pir_params$experiments[[1]]$beast2_options$output_trees_filenames
@@ -197,7 +201,7 @@ babette::plot_densitree(
 
 ### First MBD posterior's trees of best candidate model
 
-```{r}
+```{r eval=FALSE}
 # babette::plot_densitree(
 #   tracerer::parse_beast_trees(
 #     razzo_params$pir_params$experiments[[2]]$beast2_options$output_trees_filenames
@@ -207,7 +211,7 @@ babette::plot_densitree(
 
 ### First MBD posterior's ESSes
 
-```{r}
+```{r eval=FALSE}
 knitr::kable(
   tracerer::calc_esses(
     tracerer::parse_beast_log(razzo_params$pir_params$experiments[[1]]$beast2_options$output_log_filename), 
@@ -219,7 +223,7 @@ knitr::kable(
 
 ### First twin posterior's trees of generative model
 
-```{r}
+```{r eval=FALSE}
 babette::plot_densitree(
   tracerer::parse_beast_trees(
     pirouette::to_twin_filename(
@@ -231,7 +235,7 @@ babette::plot_densitree(
 
 ### First twin posterior's trees of best candidate model
 
-```{r}
+```{r eval=FALSE}
 # babette::plot_densitree(
 #   tracerer::parse_beast_trees(
 #     pirouette::to_twin_filename(
@@ -244,7 +248,7 @@ babette::plot_densitree(
 
 Plot the Effective Sample Sizes (must be at least 200 in manuscript):
 
-```{r}
+```{r eval=FALSE}
 # knitr::kable(
 #   tracerer::calc_esses(
 #     tracerer::parse_beast_log(
