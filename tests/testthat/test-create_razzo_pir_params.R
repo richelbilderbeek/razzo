@@ -155,3 +155,48 @@ test_that("matches article", {
 
   # Etcetera ...
 })
+
+test_that("follows naming convention", {
+  # Issue 242, Isssue #242
+  folder_name <- peregrine::get_pff_tempfile()
+  pir_params <- create_razzo_pir_params(
+    folder_name = folder_name,
+    has_candidates = TRUE,
+    has_twinning = TRUE
+  )
+
+  ##############################################################################
+  # pir_params$twinning_params
+  ##############################################################################
+  expect_equal(
+    pir_params$twinning_params$twin_tree_filename,
+    file.path(folder_name, "mbd_twin.tree")
+  )
+  expect_equal(
+    pir_params$twinning_params$twin_alignment_filename,
+    file.path(folder_name, "mbd_twin.fasta")
+  )
+  expect_equal(
+    pir_params$twinning_params$twin_evidence_filename,
+    file.path(folder_name, "mbd_marg_lik_twin.csv")
+  )
+
+  ##############################################################################
+  # pir_params$alignment_params
+  ##############################################################################
+  expect_equal(
+    pir_params$alignment_params$fasta_filename,
+    file.path(folder_name, "mbd.fasta")
+  )
+
+  ##############################################################################
+  # pir_params$experiments
+  ##############################################################################
+
+
+  ##############################################################################
+  # pir_params$error_measure_params
+  ##############################################################################
+
+  # Etcetera ...
+})
