@@ -50,7 +50,7 @@ script:
   - travis_wait 60 R CMD check *tar.gz
 
 after_success:
-  - Rscript -e 'covr::codecov()'
+  - travis_wait 60 Rscript -e 'covr::codecov()'
   - proselint *.md | egrep -v "typography\.symbols\.curly_quotes"
   # Check dead links
   - rm .travis.yml
