@@ -2,7 +2,6 @@
 % Please edit documentation in R/create_params_misc.R
 \name{create_misc_params}
 \alias{create_misc_params}
-\alias{create_params_misc}
 \title{Create the parameters for one experiment.
 Run one point of the experiment}
 \usage{

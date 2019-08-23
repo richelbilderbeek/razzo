@@ -35,15 +35,9 @@ create_razzo_paramses <- function(
       parsettings_name,
       seed
     )
-    alignment_params <- create_razzo_alignment_params(
-      folder_name = seed_folder
-    )
-    twinning_params <- create_razzo_twinning_params(seed_folder)
-    misc_params <- razzo::create_misc_params()
-    misc_params$tree_filename <- file.path(
-      seed_folder, "mbd.tree"
-    )
-    check_misc_params(misc_params)
+
+    misc_params <- razzo::create_misc_params(seed_folder)
+    testit::assert(misc_params$tree_filename == file.path(seed_folder, "mbd.tree"))
     mrca_prior <- beautier::create_mrca_prior(
       is_monophyletic = TRUE,
       mrca_distr = beautier::create_normal_distr(
@@ -159,8 +153,8 @@ create_razzo_paramses <- function(
     }
 
     pir_params <- pirouette::create_pir_params(
-      alignment_params = alignment_params,
-      twinning_params = twinning_params,
+      alignment_params = create_razzo_alignment_params(seed_folder),
+      twinning_params = create_razzo_twinning_params(seed_folder),
       experiments = experiments,
       error_measure_params = error_measure_params,
       evidence_filename = file.path(seed_folder, "mbd_marg_lik.csv")

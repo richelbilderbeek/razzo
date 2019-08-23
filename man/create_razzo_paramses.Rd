@@ -6,10 +6,6 @@
 \usage{
 create_razzo_paramses(project_folder_name,
   mbd_paramses = create_mbd_paramses(),
-  twinning_params = pirouette::create_twinning_params(twin_tree_filename
-  = peregrine::get_pff_tempfile(), twin_alignment_filename =
-  peregrine::get_pff_tempfile(), twin_evidence_filename =
-  peregrine::get_pff_tempfile()),
   error_measure_params = pirouette::create_error_measure_params(),
   mcmc_chain_length = beautier::create_mcmc()$chain_length)
 }
@@ -20,9 +16,6 @@ will be the full path to \code{razzo_project}}
 \item{mbd_paramses}{data frame with one MBD parameter set per row.
 If a simulation with one MBD parameter set has 10 replicates,
 this data frame will hold 10 rows, each with different seeds}
-
-\item{twinning_params}{parameters for creating a twin tree,
-as can be created by \code{\link[pirouette]{create_twinning_params}}}
 
 \item{error_measure_params}{parameters to set how the error
 between given tree and inferred trees in measure,
