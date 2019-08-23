@@ -27,23 +27,31 @@ create_razzo_experiments <- function(
       cand_experiments[[i]]$est_evidence_mcmc <- create_razzo_nested_sampling_mcmc()
       cand_experiments[[i]]$inference_model$mrca_prior <- create_razzo_mrca_prior()
       cand_experiments[[i]]$est_evidence_mcmc <- create_razzo_nested_sampling_mcmc()
+      cand_experiments[[i]]$beast2_options <- create_razzo_beast2_options(
+        model_type = "candidate", folder_name = folder_name, rng_seed = rng_seed
+      )
     }
     # Copy
     for (i in seq_along(cand_experiments)) {
       experiments[[i + 1]] <- cand_experiments[[i]]
     }
   }
-  beast2_working_dir <- peregrine::get_pff_tempfile()
+  # beast2_working_dir <- peregrine::get_pff_tempfile()
   for (i in seq_along(experiments)) {
-    experiments[[i]]$beast2_options$beast2_working_dir <- beast2_working_dir
-    experiments[[i]]$beast2_options$rng_seed <- rng_seed
+    testit::assert(
+      peregrine::is_pff(experiments[[i]]$beast2_options$beast2_working_dir)
+    )
+    # experiments[[i]]$beast2_options$beast2_working_dir <- beast2_working_dir
+    testit::assert(experiments[[i]]$beast2_options$rng_seed == rng_seed)
+    # experiments[[i]]$beast2_options$rng_seed <- rng_seed
   }
 
   # Experiments
   # First is always generative
   testit::assert(experiments[[1]]$inference_conditions$model_type == "generative") # nolint indeed long
 
-  experiments[[1]]$errors_filename <- file.path(folder_name, "mbd_nltts_gen.csv") # nolint indeed long
+  testit::assert(experiments[[1]]$errors_filename == file.path(folder_name, "mbd_nltts_gen.csv")) # nolint indeed long
+  # experiments[[1]]$errors_filename <- file.path(folder_name, "mbd_nltts_gen.csv") # nolint indeed long
 
   testit::assert(experiments[[1]]$beast2_options$rng_seed == rng_seed)
   testit::assert(experiments[[1]]$beast2_options$input_filename == file.path(folder_name, "mbd_gen.xml")) # nolint indeed long
