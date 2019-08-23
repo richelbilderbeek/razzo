@@ -11,3 +11,6 @@ create_razzo_gen_experiment()
 Create a generative experiment that follows the razzo
 naming conventions and article
 }
+\author{
+Richel J.C. Bilderbeek
+}

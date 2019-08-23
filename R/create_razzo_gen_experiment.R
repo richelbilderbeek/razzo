@@ -1,5 +1,6 @@
 #' Create a generative experiment that follows the razzo
 #' naming conventions and article
+#' @author Richel J.C. Bilderbeek
 #' @export
 create_razzo_gen_experiment <- function() {
   pirouette::create_gen_experiment(
