@@ -58,3 +58,31 @@ test_that("matches article", {
   # --------------------
   gen_exp$est_evidence_mcmc
 })
+
+test_that("razzo naming scheme", {
+
+  folder_name <- peregrine::get_pff_tempfile()
+  gen_exp <- create_razzo_gen_experiment(folder_name = folder_name)
+
+  # TODO: check gen_exp$inference_model
+
+  # gen_exp$beast2_options
+  expect_equal(
+    gen_exp$beast2_options$input_filename,
+    file.path(folder_name, "mbd_gen.xml")
+  )
+  expect_equal(
+    gen_exp$beast2_options$output_log_filename,
+    file.path(folder_name, "mbd_gen.log")
+  )
+  expect_equal(
+    gen_exp$beast2_options$output_trees_filenames,
+    file.path(folder_name, "mbd_gen.trees")
+  )
+  expect_equal(
+    gen_exp$beast2_options$output_state_filename,
+    file.path(folder_name, "mbd_gen.xml.state")
+  )
+
+  # TODO: check gen_exp$errors_filename
+})
