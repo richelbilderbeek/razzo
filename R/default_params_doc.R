@@ -43,6 +43,8 @@
 #' @param misc_params additional parameters for razzo. They contain
 #'   tree_filename to store the original given tree and mbd_sim_rng_seed for
 #'   when an mbd tree is simulated
+#' @param model_type the type of inference model, must be
+#'   \code{generative} or \code{candidate}
 #' @param mu per-species extinction rate. See \code{\link[mbd]{mbd_sim}}
 #' @param mutation_rate something
 #' @param n_replicates number of replicates
@@ -119,6 +121,7 @@ default_params_doc <- function(
   mbd_tree,
   mcmc_chain_length,
   misc_params,
+  model_type,
   mu,
   mutation_rate,
   n_replicates,

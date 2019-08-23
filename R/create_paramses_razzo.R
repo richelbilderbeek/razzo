@@ -35,7 +35,6 @@ create_razzo_paramses <- function(
       parsettings_name,
       seed
     )
-    mrca_prior <- create_razzo_mrca_prior()
 
     mcmc <- beautier::create_mcmc(chain_length = mcmc_chain_length, store_every = 1000)
 
@@ -65,16 +64,12 @@ create_razzo_paramses <- function(
         site_model = beautier::create_jc69_site_model(),
         tree_prior = beautier::create_bd_tree_prior(),
         mcmc = mcmc,
-        mrca_prior = mrca_prior
+        mrca_prior = create_razzo_mrca_prior()
       ),
-      beast2_options = beastier::create_beast2_options(
-        input_filename = file.path(seed_folder, "mbd_gen.xml"),
-        output_log_filename = file.path(seed_folder, "mbd_gen.log"),
-        output_trees_filenames = file.path(seed_folder, "mbd_gen.trees"),
-        output_state_filename = file.path(seed_folder, "mbd_gen.xml.state"),
-        beast2_working_dir = peregrine::get_pff_tempdir(),
-        rng_seed = seed,
-        overwrite = TRUE
+      beast2_options = create_razzo_beast2_options(
+        model_type = "generative",
+        folder_name = seed_folder,
+        rng_seed = seed
       ),
       est_evidence_mcmc = beautier::create_nested_sampling_mcmc(
         epsilon = 10^-12
@@ -92,16 +87,12 @@ create_razzo_paramses <- function(
           site_model = beautier::create_jc69_site_model(),
           tree_prior = beautier::create_yule_tree_prior(),
           mcmc = mcmc,
-          mrca_prior = mrca_prior
+          mrca_prior = create_razzo_mrca_prior()
         ),
-        beast2_options = beastier::create_beast2_options(
-          input_filename = file.path(seed_folder, "mbd_best.xml"),
-          output_log_filename = file.path(seed_folder, "mbd_best.log"),
-          output_trees_filenames = file.path(seed_folder, "mbd_best.trees"),
-          output_state_filename = file.path(seed_folder, "mbd_best.xml.state"),
-          beast2_working_dir = peregrine::get_pff_tempdir(),
-          rng_seed = seed,
-          overwrite = TRUE
+        beast2_options = create_razzo_beast2_options(
+          model_type = "candidate",
+          folder_name = seed_folder,
+          rng_seed = seed
         ),
         est_evidence_mcmc = beautier::create_nested_sampling_mcmc(
           epsilon = 100.0
@@ -118,16 +109,12 @@ create_razzo_paramses <- function(
           site_model = beautier::create_gtr_site_model(),
           tree_prior = beautier::create_bd_tree_prior(),
           mcmc = mcmc,
-          mrca_prior = mrca_prior
+          mrca_prior = create_razzo_mrca_prior()
         ),
-        beast2_options = beastier::create_beast2_options(
-          input_filename = file.path(seed_folder, "mbd_best.xml"),
-          output_log_filename = file.path(seed_folder, "mbd_best.log"),
-          output_trees_filenames = file.path(seed_folder, "mbd_best.trees"),
-          output_state_filename = file.path(seed_folder, "mbd_best.xml.state"),
-          beast2_working_dir = peregrine::get_pff_tempdir(),
-          rng_seed = seed,
-          overwrite = TRUE
+        beast2_options = create_razzo_beast2_options(
+          model_type = "candidate",
+          folder_name = seed_folder,
+          rng_seed = seed
         ),
         est_evidence_mcmc = beautier::create_nested_sampling_mcmc(
           epsilon = 100.0
