@@ -1,5 +1,11 @@
 #' Create a list of \code{razzo_params} to be used in testing
 #' @inheritParams default_params_doc
+#' @usage
+#' create_test_razzo_paramses(
+#'   project_folder_name = file.path(
+#'     peregrine::get_pff_tempfile(), "razzo_project"
+#'   )
+#' )
 #' @export
 create_test_razzo_paramses <- function(
   project_folder_name = file.path(

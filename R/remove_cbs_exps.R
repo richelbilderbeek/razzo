@@ -1,4 +1,7 @@
 #' Remove all experiments that have a CBS tree prior
+#' @param experiments a list of one or more pirouette experiments
+#' @return experiments that do not have a CBS tree prior
+#' @author Richel J.C. Bilderbeek
 #' @export
 remove_cbs_exps <- function(experiments) {
 

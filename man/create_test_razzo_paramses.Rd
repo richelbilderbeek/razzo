@@ -4,9 +4,11 @@
 \alias{create_test_razzo_paramses}
 \title{Create a list of \code{razzo_params} to be used in testing}
 \usage{
-
-  create_test_razzo_paramses(project_folder_name = file.path(peregrine::get_pff_tempfile(),
-  "razzo_project"))
+create_test_razzo_paramses(
+  project_folder_name = file.path(
+    peregrine::get_pff_tempfile(), "razzo_project"
+  )
+)
 }
 \arguments{
 \item{project_folder_name}{project folder name,

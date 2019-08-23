@@ -6,6 +6,15 @@
 \usage{
 remove_cbs_exps(experiments)
 }
+\arguments{
+\item{experiments}{a list of one or more pirouette experiments}
+}
+\value{
+experiments that do not have a CBS tree prior
+}
 \description{
 Remove all experiments that have a CBS tree prior
+}
+\author{
+Richel J.C. Bilderbeek
 }
