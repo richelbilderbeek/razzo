@@ -12,6 +12,16 @@ create_test_razzo_paramses <- function(
     mbd_paramses = mbd_paramses
   )
   for (i in seq_along(razzo_paramses)) {
+    # Only take first 3 experiments
+    razzo_paramses[[i]]$pir_params$experiments <-
+      razzo_paramses[[i]]$pir_params$experiments[1:3]
+    # Use simple inference models
+    razzo_paramses[[i]]$pir_params$experiments[[2]]$inference_model$site_model <- beautier::create_hky_site_model() # nolint indeed long, sorry Demeter
+    razzo_paramses[[i]]$pir_params$experiments[[3]]$inference_model$site_model <- beautier::create_tn93_site_model() # nolint indeed long, sorry Demeter
+    razzo_paramses[[i]]$pir_params$experiments[[2]]$inference_model$clock_model <- beautier::create_strict_clock_model() # nolint indeed long, sorry Demeter
+    razzo_paramses[[i]]$pir_params$experiments[[3]]$inference_model$clock_model <- beautier::create_strict_clock_model() # nolint indeed long, sorry Demeter
+    razzo_paramses[[i]]$pir_params$experiments[[2]]$inference_model$tree_prior <- beautier::create_yule_tree_prior() # nolint indeed long, sorry Demeter
+    razzo_paramses[[i]]$pir_params$experiments[[3]]$inference_model$tree_prior <- beautier::create_yule_tree_prior() # nolint indeed long, sorry Demeter
     for (j in seq_along(razzo_paramses[[i]]$pir_params$experiments)) {
       razzo_paramses[[i]]$pir_params$experiments[[j]]$inference_model$mcmc <-
         beautier::create_mcmc(chain_length = 3000, store_every = 1000)
