@@ -10,10 +10,6 @@ create_razzo_paramses(project_folder_name,
   = peregrine::get_pff_tempfile(), twin_alignment_filename =
   peregrine::get_pff_tempfile(), twin_evidence_filename =
   peregrine::get_pff_tempfile()),
-  alignment_params = pirouette::create_alignment_params(root_sequence =
-  pirouette::create_blocked_dna(length = 1000), mutation_rate =
-  0.5/get_razzo_crown_age(), fasta_filename =
-  peregrine::get_pff_tempfile(pattern = "alignment_", fileext = ".fasta")),
   error_measure_params = pirouette::create_error_measure_params(),
   mcmc_chain_length = beautier::create_mcmc()$chain_length)
 }
@@ -27,9 +23,6 @@ this data frame will hold 10 rows, each with different seeds}
 
 \item{twinning_params}{parameters for creating a twin tree,
 as can be created by \code{\link[pirouette]{create_twinning_params}}}
-
-\item{alignment_params}{parameters for creating an alignment,
-as can be created by \code{\link[pirouette]{create_alignment_params}}}
 
 \item{error_measure_params}{parameters to set how the error
 between given tree and inferred trees in measure,

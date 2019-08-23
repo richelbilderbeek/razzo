@@ -11,14 +11,6 @@ create_razzo_paramses <- function(
     twin_alignment_filename = peregrine::get_pff_tempfile(),
     twin_evidence_filename = peregrine::get_pff_tempfile()
   ),
-  alignment_params = pirouette::create_alignment_params(
-    root_sequence = pirouette::create_blocked_dna(length = 1000),
-    mutation_rate = 0.5 / get_razzo_crown_age(),
-    fasta_filename = peregrine::get_pff_tempfile(
-      pattern = "alignment_",
-      fileext = ".fasta"
-    )
-  ),
   error_measure_params = pirouette::create_error_measure_params(),
   mcmc_chain_length = beautier::create_mcmc()$chain_length
 ) {
@@ -48,8 +40,11 @@ create_razzo_paramses <- function(
       parsettings_name,
       seed
     )
-    alignment_params$fasta_filename <- file.path(
-      seed_folder, "mbd.fasta"
+    alignment_params <- create_razzo_alignment_params(
+      folder_name = seed_folder
+    )
+    testit::assert(
+      alignment_params$fasta_filename == file.path(seed_folder, "mbd.fasta")
     )
     twinning_params$twin_tree_filename <- file.path(
       seed_folder, "mbd_twin.tree"
