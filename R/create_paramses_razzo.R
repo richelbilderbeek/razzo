@@ -137,6 +137,12 @@ create_razzo_paramses <- function(
       error_measure_params = error_measure_params,
       evidence_filename = file.path(seed_folder, "mbd_marg_lik.csv")
     )
+    pir_params <- create_razzo_pir_params(
+      has_candidates = TRUE,
+      has_twinning = TRUE,
+      folder_name = seed_folder,
+      rng_seed = seed
+    )
     razzo_params <- razzo::create_razzo_params(
       mbd_params = mbd_params,
       pir_params = pir_params,
