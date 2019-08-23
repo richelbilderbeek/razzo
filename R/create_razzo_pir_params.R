@@ -41,7 +41,8 @@ create_razzo_pir_params <- function(
   # MCMC
   for (i in seq_along(experiments)) {
     experiments[[i]]$inference_model$mcmc <- beautier::create_mcmc(
-      store_every = 1000
+      store_every = 1000,
+      chain_length = 1e6
     )
     experiments[[i]]$est_evidence_mcmc <- create_razzo_nested_sampling_mcmc()
   }

@@ -128,9 +128,9 @@ test_that("matches article", {
     gen_exp$inference_model$mrca_prior$mrca_distr$sigma$value,
     0.0001
   )
-  expect_equal(gen_exp$inference_model$mcmc$chain_length, 1e7)
+  expect_equal(gen_exp$inference_model$mcmc$chain_length, 1e6)
   expect_equal(gen_exp$inference_model$mcmc$store_every, 1e3)
-  expect_equal(gen_exp$est_evidence_mcmc$chain_length, 1e7)
+  expect_equal(gen_exp$est_evidence_mcmc$chain_length, 1e6)
   # gen_exp$est_evidence_mcmc
   expect_equal(
     gen_exp$est_evidence_mcmc$chain_length,
