@@ -1,7 +1,4 @@
-test_that("use", {
-  ##############################################################################
-  # FALSE
-  ##############################################################################
+test_that("use, without candidate", {
   experiments <- create_razzo_experiments(
     has_candidates = FALSE,
   )
@@ -10,10 +7,9 @@ test_that("use", {
     experiments[[1]]$inference_conditions$model_type,
     "generative"
   )
+})
 
-  ##############################################################################
-  # TRUE
-  ##############################################################################
+test_that("use, with candidate", {
   experiments <- create_razzo_experiments(
     has_candidates = TRUE
   )
@@ -88,4 +84,62 @@ test_that("matches article", {
     gen_exp$est_evidence_mcmc$sub_chain_length,
     create_razzo_nested_sampling_mcmc()$sub_chain_length
   )
+})
+
+test_that("razzo naming conventions", {
+
+  folder_name <- peregrine::get_pff_tempfile()
+  experiments <- create_razzo_experiments(
+    folder_name = folder_name,
+    has_candidates = TRUE
+  )
+  # Generative experiment
+  gen_exp <- experiments[[1]]
+  testit::assert(gen_exp$inference_conditions$model_type == "generative")
+  expect_equal(
+    gen_exp$beast2_options$input_filename,
+    file.path(folder_name, "mbd_gen.xml")
+  )
+  expect_equal(
+    gen_exp$beast2_options$output_log_filename,
+    file.path(folder_name, "mbd_gen.log")
+  )
+  expect_equal(
+    gen_exp$beast2_options$output_trees_filenames,
+    file.path(folder_name, "mbd_gen.trees")
+  )
+  expect_equal(
+    gen_exp$beast2_options$output_state_filename,
+    file.path(folder_name, "mbd_gen.xml.state")
+  )
+  expect_true(peregrine::is_pff(gen_exp$beast2_options$beast2_working_dir))
+  expect_equal(
+    gen_exp$errors_filename,
+    file.path(folder_name, "mbd_nltts_gen.csv")
+  )
+  # Candidate experiments
+  for (cand_exp in experiments[-1]) {
+    testit::assert(cand_exp$inference_conditions$model_type == "candidate")
+    expect_equal(
+      cand_exp$beast2_options$input_filename,
+      file.path(folder_name, "mbd_best.xml")
+    )
+    expect_equal(
+      cand_exp$beast2_options$output_log_filename,
+      file.path(folder_name, "mbd_best.log")
+    )
+    expect_equal(
+      cand_exp$beast2_options$output_trees_filenames,
+      file.path(folder_name, "mbd_best.trees")
+    )
+    expect_equal(
+      cand_exp$beast2_options$output_state_filename,
+      file.path(folder_name, "mbd_best.xml.state")
+    )
+    expect_true(peregrine::is_pff(cand_exp$beast2_options$beast2_working_dir))
+    expect_equal(
+      cand_exp$errors_filename,
+      file.path(folder_name, "mbd_nltts_best.csv")
+    )
+  }
 })
