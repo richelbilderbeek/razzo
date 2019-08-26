@@ -96,6 +96,6 @@ check_razzo_params <- function(
       )
     }
   }
-  # Filenames
+  # Filenames must be Peregrine-friendly and follow razzo convention
   check_razzo_params_filenames(razzo_params) # nolint razzo function
 }
