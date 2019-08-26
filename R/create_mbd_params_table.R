@@ -1,4 +1,4 @@
-#' Create a table of which each row holds a unique MBD parameter combination.#' the parameter interval for mbd setting
+#' Create a table of which each row holds a unique MBD parameter combination.
 #' @inheritParams default_params_doc
 #' @seealso use \link{create_mbd_paramses} to create a list
 #' of \code{mbd_params}

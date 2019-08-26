@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_mbd_params_table.R
 \name{create_mbd_params_table}
 \alias{create_mbd_params_table}
-\title{Create a table of which each row holds a unique MBD parameter combination.#' the parameter interval for mbd setting}
+\title{Create a table of which each row holds a unique MBD parameter combination.}
 \usage{
 create_mbd_params_table(lambda = 0.2, mu = c(0, 0.15), nu = c(1, 1.5,
   2, 2.5), q = c(0.1, 0.15, 0.2), n_replicates = 2, crown_age = 6,
@@ -39,7 +39,7 @@ a data frame with the following columns:
 }
 }
 \description{
-Create a table of which each row holds a unique MBD parameter combination.#' the parameter interval for mbd setting
+Create a table of which each row holds a unique MBD parameter combination.
 }
 \examples{
 library(testthat)

@@ -29,19 +29,6 @@ create_test_razzo_pir_params <- function(
     folder_name = folder_name,
     rng_seed = rng_seed
   )
-  # experiments <- list()
-  # experiments[[1]] <- pirouette::create_test_gen_experiment()
-  # if (isTRUE(has_candidates)) {
-  #   experiments[[2]] <- pirouette::create_test_cand_experiment()
-  #   # Copy BEAST2 options
-  #   experiments[[3]] <- experiments[[2]]
-  #   # Different site models
-  #   experiments[[2]]$inference_model$site_model <- beautier::create_hky_site_model() # nolint indeed long
-  #   experiments[[3]]$inference_model$site_model <- beautier::create_tn93_site_model() # nolint indeed long
-  # }
-  # for (i in seq_along(experiments)) {
-  #   experiments[[i]]$inference_model$mrca_prior <- create_razzo_mrca_prior()
-  # }
   ##############################################################################
   # Set up filenames
   ##############################################################################

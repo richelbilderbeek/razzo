@@ -74,12 +74,18 @@ get_best_model <- function(seed_folder) {
   twin_data_filename <- pirouette::to_twin_filename(data_filename)
   bd_data <- utils::read.csv(file.path(p, twin_data_filename))[-1]
   mbd_data <- utils::read.csv(file.path(p, data_filename))[-1]
-  bd_site_model <- bd_data[bd_data$weight == max(bd_data$weight), "site_model_name"]
-  bd_clock_model <- bd_data[bd_data$weight == max(bd_data$weight), "clock_model_name"]
-  bd_tree_prior <- bd_data[bd_data$weight == max(bd_data$weight), "tree_prior_name"]
-  mbd_site_model <- mbd_data[mbd_data$weight == max(mbd_data$weight), "site_model_name"]
-  mbd_clock_model <- mbd_data[mbd_data$weight == max(mbd_data$weight), "clock_model_name"]
-  mbd_tree_prior <- mbd_data[mbd_data$weight == max(mbd_data$weight), "tree_prior_name"]
+  bd_site_model <- bd_data[
+    bd_data$weight == max(bd_data$weight), "site_model_name"]
+  bd_clock_model <- bd_data[
+    bd_data$weight == max(bd_data$weight), "clock_model_name"]
+  bd_tree_prior <- bd_data[
+    bd_data$weight == max(bd_data$weight), "tree_prior_name"]
+  mbd_site_model <- mbd_data[
+    mbd_data$weight == max(mbd_data$weight), "site_model_name"]
+  mbd_clock_model <- mbd_data[
+    mbd_data$weight == max(mbd_data$weight), "clock_model_name"]
+  mbd_tree_prior <- mbd_data[
+    mbd_data$weight == max(mbd_data$weight), "tree_prior_name"]
   list(
     twin = list(
       site_model = levels(droplevels(bd_site_model)),
