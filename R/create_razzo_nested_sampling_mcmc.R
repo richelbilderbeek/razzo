@@ -1,6 +1,6 @@
 #' Create a nested sampling MCMC that matches the article
 #' @export
-create_razzo_nested_sampling_mcmc <- function() {
+create_razzo_nested_sampling_mcmc <- function() { # nolint indeed a long function name
   beautier::create_nested_sampling_mcmc(
     chain_length = 1e6,
     store_every = 1e3,
