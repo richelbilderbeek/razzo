@@ -4,9 +4,9 @@
 #' else will do nothing
 #' @inheritParams default_params_doc
 #' @author Richel J.C. Bilderbeek
-#' @aliases check_razzo_params check_params_razzo
-#' @export check_razzo_params check_params_razzo
-check_razzo_params <- check_params_razzo <- function(
+#' @aliases check_razzo_params
+#' @export check_razzo_params
+check_razzo_params <- function(
   razzo_params
 ) {
   argument_names <- c(
@@ -63,12 +63,14 @@ check_razzo_params <- check_params_razzo <- function(
     }
     if (beautier::is_one_na(mrca_prior$mrca_distr$mean$value)) {
       stop(
-        "Must use an MRCA prior with a distribution that has a mean with a value"
+        "Must use an MRCA prior with a distribution that has ",
+        "a mean with a value"
       )
     }
     if (length(mrca_prior$mrca_distr$mean$value) == 0) {
       stop(
-        "Must use an MRCA prior with a distribution that has a mean with a value"
+        "Must use an MRCA prior with a distribution that has a mean ",
+        "with a value"
       )
     }
     if (mrca_prior$mrca_distr$mean$value <= 0.0) {
@@ -78,4 +80,22 @@ check_razzo_params <- check_params_razzo <- function(
       )
     }
   }
+  gen_experiment <- razzo_params$pir_params$experiments[[1]]
+  if (gen_experiment$inference_conditions$model_type != "generative") {
+    stop(
+      "razzo_params$pir_params$experiments[[1]]$inference_conditions$",
+      "model_type' must be be 'generative'"
+    )
+  }
+  cand_experiments <- razzo_params$pir_params$experiments[-1]
+  for (cand_experiment in cand_experiments) {
+    if (cand_experiment$inference_conditions$model_type != "candidate") {
+      stop(
+        "razzo_params$pir_params$experiments[[-1]]$inference_conditions$",
+        "model_type' must all be 'candidate'"
+      )
+    }
+  }
+  # Filenames must be Peregrine-friendly and follow razzo convention
+  check_razzo_params_filenames(razzo_params) # nolint razzo function
 }

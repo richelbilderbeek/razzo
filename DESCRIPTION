@@ -16,12 +16,13 @@ LazyData: true
 RoxygenNote: 6.1.1
 Imports: 
     ape,
-    beastier (>= 2.0.18),
+    beastier (>= 2.0.19),
     beautier (>= 2.2.2),
     ggplot2,
     mbd,
-    peregrine (>= 0.4),
-    pirouette,
+    peregrine (>= 0.5),
+    pirouette (>= 1.5),
+    stringr,
     testit
 Suggests:
     assertive,

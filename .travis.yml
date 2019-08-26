@@ -21,7 +21,7 @@ r_github_packages:
   - ropensci/tracerer
   - ropensci/beastier@develop
   - ropensci/mauricer
-  - ropensci/babette@develop
+  - ropensci/babette
   - richelbilderbeek/mcbette
   - Giappo/mbd
   - richelbilderbeek/pirouette@richel
@@ -50,11 +50,11 @@ script:
   - travis_wait 60 R CMD check *tar.gz
 
 after_success:
-  - Rscript -e 'covr::codecov()'
+  - travis_wait 60 Rscript -e 'covr::codecov()'
   - proselint *.md | egrep -v "typography\.symbols\.curly_quotes"
   # Check dead links
   - rm .travis.yml
   - ./scripts/check_dead_links || true
 
-after_fail:
+after_failure:
   - cat /home/travis/build/richelbilderbeek/razzo/razzo.Rcheck/00check.log

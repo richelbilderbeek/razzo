@@ -10,6 +10,11 @@ collect_results <- function(
   project_folder_name = get_razzo_path("razzo_project"),
   include_all_nltt = FALSE
 ) {
+  ##### Satisfy R CMD check #####
+  sd <- NULL; rm(sd) # nolint, fixes warning: no visible binding for global variable
+  folder <- NULL; rm(folder) # nolint, fixes warning: no visible binding for global variable
+  best_or_gen <- NULL; rm(best_or_gen) # nolint, fixes warning: no visible binding for global variable
+
   mbd_params <- TRUE
   n_taxa <- TRUE
   esses <- TRUE

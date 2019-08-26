@@ -43,6 +43,8 @@
 #' @param misc_params additional parameters for razzo. They contain
 #'   tree_filename to store the original given tree and mbd_sim_rng_seed for
 #'   when an mbd tree is simulated
+#' @param model_type the type of inference model, must be
+#'   \code{generative} or \code{candidate}
 #' @param mu per-species extinction rate. See \code{\link[mbd]{mbd_sim}}
 #' @param mutation_rate something
 #' @param n_replicates number of replicates
@@ -55,7 +57,9 @@
 #' @param parameters_filename full path to a \code{parameters.RDa} file
 #' @param phylo a phylogeny
 #' @param pir_params a parameter set for one \code{pirouette} run,
-#'   as created by \link[pirouette]{create_pir_params}
+#'   as created by \link[pirouette]{create_pir_params}.
+#'   Use \link{create_test_razzo_pir_params} to create
+#'   a \code{pir_params} that has the file naming scheme as \code{razzo}
 #' @param posterior_trees phylogenetic trees in a BEAST2 posterior,
 #'   of class \code{multiphylo}
 #' @param precision define the precision of the approximation.
@@ -66,6 +70,10 @@
 #' @param razzo_params a parameter set for one \code{razzo} experiment,
 #'   as created by \link{create_params_razzo}
 #'   and used by \link{run_razzo}
+#' @param razzo_paramses a list of \code{razzo_params} for a
+#'   set of \code{razzo} experiment.
+#'   Use create \link{create_razzo_paramses} or
+#'   \link{create_test_razzo_paramses} to create such a list
 #' @param sample_interval the interval at which the MCMC algorithm
 #'   makes a measurement
 #' @param sequence_length the length of each DNA sequence in an alignment
@@ -117,6 +125,7 @@ default_params_doc <- function(
   mbd_tree,
   mcmc_chain_length,
   misc_params,
+  model_type,
   mu,
   mutation_rate,
   n_replicates,
@@ -132,6 +141,7 @@ default_params_doc <- function(
   project_folder_name,
   q,
   razzo_params,
+  razzo_paramses,
   sample_interval,
   seed,
   sequence_length,

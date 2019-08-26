@@ -11,12 +11,12 @@ default_params_doc(alignment, alignment_params, bd_mutation_rate, bd_tree,
   filename, folder_name, init_speciation_rate, init_extinction_rate,
   lambda, mbd_l_matrix, mbd_mutation_rate, mbd_params, mbd_paramses,
   mbd_params_interval, mbd_sim_rng_seed, mbd_tree, mcmc_chain_length,
-  misc_params, mu, mutation_rate, n_replicates, nu, nu_events, parameters,
-  parameter_filename, parameters_filename, phylo, pir_params,
+  misc_params, model_type, mu, mutation_rate, n_replicates, nu, nu_events,
+  parameters, parameter_filename, parameters_filename, phylo, pir_params,
   posterior_trees, precision, project_folder_name, q, razzo_params,
-  sample_interval, seed, sequence_length, sim_pars, sim_phylo, site_model,
-  sub_chain_length, tree, tree_filename, trees_filename, twinning_params,
-  verbose)
+  razzo_paramses, sample_interval, seed, sequence_length, sim_pars,
+  sim_phylo, site_model, sub_chain_length, tree, tree_filename,
+  trees_filename, twinning_params, verbose)
 }
 \arguments{
 \item{alignment}{a DNA alignment}
@@ -90,6 +90,9 @@ this data frame will hold 10 rows, each with different seeds}
 tree_filename to store the original given tree and mbd_sim_rng_seed for
 when an mbd tree is simulated}
 
+\item{model_type}{the type of inference model, must be
+\code{generative} or \code{candidate}}
+
 \item{mu}{per-species extinction rate. See \code{\link[mbd]{mbd_sim}}}
 
 \item{mutation_rate}{something}
@@ -111,7 +114,9 @@ present in the simulated tree}
 \item{phylo}{a phylogeny}
 
 \item{pir_params}{a parameter set for one \code{pirouette} run,
-as created by \link[pirouette]{create_pir_params}}
+as created by \link[pirouette]{create_pir_params}.
+Use \link{create_test_razzo_pir_params} to create
+a \code{pir_params} that has the file naming scheme as \code{razzo}}
 
 \item{posterior_trees}{phylogenetic trees in a BEAST2 posterior,
 of class \code{multiphylo}}
@@ -127,6 +132,11 @@ a multiple event. See \code{\link[mbd]{mbd_sim}}}
 \item{razzo_params}{a parameter set for one \code{razzo} experiment,
 as created by \link{create_params_razzo}
 and used by \link{run_razzo}}
+
+\item{razzo_paramses}{a list of \code{razzo_params} for a
+set of \code{razzo} experiment.
+Use create \link{create_razzo_paramses} or
+\link{create_test_razzo_paramses} to create such a list}
 
 \item{sample_interval}{the interval at which the MCMC algorithm
 makes a measurement}

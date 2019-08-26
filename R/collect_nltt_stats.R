@@ -12,6 +12,8 @@ collect_nltt_stats <- function(
   ##### Satisfy R CMD check #####
   tree <- NULL; rm(tree) # nolint, fixes warning: no visible binding for global variable
   best_or_gen <- NULL; rm(best_or_gen) # nolint, fixes warning: no visible binding for global variable
+  folder <- NULL; rm(folder) # nolint, fixes warning: no visible binding for global variable
+
 
   # Paths to the folder, each folder holds a razzo experiment
   relative_paths <- get_data_paths(project_folder_name, full_names = FALSE) # nolint internal function

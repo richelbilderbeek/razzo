@@ -2,7 +2,6 @@
 % Please edit documentation in R/check_params_razzo.R
 \name{check_razzo_params}
 \alias{check_razzo_params}
-\alias{check_params_razzo}
 \title{Check if the \code{razzo_params} are valid razzo parameters.}
 \usage{
 check_razzo_params(razzo_params)

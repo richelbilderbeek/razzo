@@ -4,7 +4,11 @@ test_that("use", {
 
   if (1 == 2) {
     # Run the experiment if you can and need to
-    for (file in list.files(get_razzo_path("razzo_project"), recursive = TRUE, pattern = "parameters\\.RDa")) {
+    for (file in list.files(
+      get_razzo_path("razzo_project"),
+        recursive = TRUE, pattern = "parameters\\.RDa"
+      )
+    ) {
       run_razzo(open_parameters_file(file))
     }
   }
@@ -40,7 +44,7 @@ test_that("use", {
   #
   # would get
   #
-  #  data/1/2/3
+  #  data/1/2/3                                                                 # nolint this is not commented code
   #
   expect_true("folder" %in% names(df))
 

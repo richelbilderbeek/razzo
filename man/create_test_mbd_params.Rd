@@ -2,10 +2,12 @@
 % Please edit documentation in R/create_params_mbd.R
 \name{create_test_mbd_params}
 \alias{create_test_mbd_params}
-\alias{create_params_mbd_test}
 \title{Create MBD parameters used in tests}
 \usage{
-create_test_mbd_params()
+create_test_mbd_params(seed = 1)
+}
+\arguments{
+\item{seed}{a random number generator seed}
 }
 \description{
 Create MBD parameters used in tests
