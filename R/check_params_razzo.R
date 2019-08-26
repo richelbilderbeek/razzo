@@ -63,12 +63,14 @@ check_razzo_params <- function(
     }
     if (beautier::is_one_na(mrca_prior$mrca_distr$mean$value)) {
       stop(
-        "Must use an MRCA prior with a distribution that has a mean with a value"
+        "Must use an MRCA prior with a distribution that has ",
+        "a mean with a value"
       )
     }
     if (length(mrca_prior$mrca_distr$mean$value) == 0) {
       stop(
-        "Must use an MRCA prior with a distribution that has a mean with a value"
+        "Must use an MRCA prior with a distribution that has a mean ",
+        "with a value"
       )
     }
     if (mrca_prior$mrca_distr$mean$value <= 0.0) {
@@ -170,7 +172,7 @@ check_razzo_params <- function(
   if (razzo_params$pir_params$alignment_params$fasta_filename != file.path(folder_name, "mbd.fasta")) { # nolint indeed long
     stop(
       "'razzo_params$pir_params$alignment_params$fasta_filename' must be be '[folder_name]/mbd.fasta'. \n", # nolint indeed long
-      "Actual value: '", razzo_params$pir_params$alignment_params$fasta_filename, "'\n",
+      "Actual value: '", razzo_params$pir_params$alignment_params$fasta_filename, "'\n", # nolint indeed long
       "[folder_name]: '", folder_name, "'\n",
       "(folder name taken from razzo_params$pir_params$alignment_params$fasta_filename)" # nolint indeed long
     )

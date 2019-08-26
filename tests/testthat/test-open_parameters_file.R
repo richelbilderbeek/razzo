@@ -4,7 +4,6 @@ test_that("use", {
 
   # If ''filename' must be the name of a file in 'inst/extdata'', do
   if (1 == 2) {
-    dir.create(file.path(system.file("extdata", package = "razzo"), "razzo_project"))
     create_files_razzo_params(
       project_folder_name = system.file(
         "extdata",

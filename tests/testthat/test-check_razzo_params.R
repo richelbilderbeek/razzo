@@ -53,39 +53,48 @@ test_that("check filenames", {
   # First experiment must be generative
   # (yes, to test this is hard to set up)
   razzo_params <- good_razzo_params
-  razzo_params$pir_params$experiments[[1]]$inference_conditions$model_type <- "candidate"
-  razzo_params$pir_params$experiments[[1]]$inference_conditions$run_if <- "best_candidate"
-  razzo_params$pir_params$experiments[[1]]$inference_conditions$do_measure_evidence <- TRUE
-  razzo_params$pir_params$experiments[[1]]$errors_filename <- razzo_params$pir_params$experiments[[2]]$errors_filename
-  razzo_params$pir_params$experiments[[1]]$beast2_options <- razzo_params$pir_params$experiments[[2]]$beast2_options
+  razzo_params$pir_params$experiments[[1]]$inference_conditions$model_type <-
+    "candidate"
+  razzo_params$pir_params$experiments[[1]]$inference_conditions$run_if <-
+    "best_candidate"
+  razzo_params$pir_params$experiments[[1]]$inference_conditions$do_measure_evidence <-  # nolint sorry Demeter
+    TRUE
+  razzo_params$pir_params$experiments[[1]]$errors_filename <-
+    razzo_params$pir_params$experiments[[2]]$errors_filename
+  razzo_params$pir_params$experiments[[1]]$beast2_options <-
+    razzo_params$pir_params$experiments[[2]]$beast2_options
   expect_error(
     check_razzo_params(razzo_params),
     "razzo_params\\$pir_params\\$experiments\\[\\[1\\]\\]\\$inference_conditions\\$model_type' must be be 'generative'" # nolint indeed long
   )
   # BEAST2 input filename
   razzo_params <- good_razzo_params
-  razzo_params$pir_params$experiments[[1]]$beast2_options$input_filename <- "nonsense"
+  razzo_params$pir_params$experiments[[1]]$beast2_options$input_filename <-
+    "nonsense"
   expect_error(
     check_razzo_params(razzo_params),
     "'razzo_params\\$pir_params\\$experiments\\[\\[1\\]\\]\\$beast2_options\\$input_filename' must be be '\\[folder_name\\]/mbd_gen.xml'" # nolint indeed long
   )
   # BEAST2 output log filename
   razzo_params <- good_razzo_params
-  razzo_params$pir_params$experiments[[1]]$beast2_options$output_log_filename <- "nonsense"
+  razzo_params$pir_params$experiments[[1]]$beast2_options$output_log_filename <-
+    "nonsense"
   expect_error(
     check_razzo_params(razzo_params),
     "'razzo_params\\$pir_params\\$experiments\\[\\[1\\]\\]\\$beast2_options\\$output_log_filename' must be be '\\[folder_name\\]/mbd_gen.log'" # nolint indeed long
   )
   # BEAST2 output trees filename
   razzo_params <- good_razzo_params
-  razzo_params$pir_params$experiments[[1]]$beast2_options$output_trees_filenames <- "nonsense"
+  razzo_params$pir_params$experiments[[1]]$beast2_options$output_trees_filenames <-  # nolint sorry Demeter
+    "nonsense"
   expect_error(
     check_razzo_params(razzo_params),
     "'razzo_params\\$pir_params\\$experiments\\[\\[1\\]\\]\\$beast2_options\\$output_trees_filenames' must be be '\\[folder_name\\]/mbd_gen.trees'" # nolint indeed long
   )
   # BEAST2 output trees filename
   razzo_params <- good_razzo_params
-  razzo_params$pir_params$experiments[[1]]$beast2_options$output_state_filename <- "nonsense"
+  razzo_params$pir_params$experiments[[1]]$beast2_options$output_state_filename <-  # nolint sorry Demeter
+    "nonsense"
   expect_error(
     check_razzo_params(razzo_params),
     "'razzo_params\\$pir_params\\$experiments\\[\\[1\\]\\]\\$beast2_options\\$output_state_filename' must be be '\\[folder_name\\]/mbd_gen.xml.state'" # nolint indeed long
@@ -94,40 +103,51 @@ test_that("check filenames", {
     # First experiment must be candidate
     # (yes, to test this is hard to set up)
     razzo_params <- good_razzo_params
-    razzo_params$pir_params$experiments[[i]]$inference_conditions$model_type <- "generative"
-    razzo_params$pir_params$experiments[[i]]$inference_conditions$run_if <- "always"
-    razzo_params$pir_params$experiments[[i]]$inference_conditions$do_measure_evidence <- FALSE
-    razzo_params$pir_params$experiments[[i]]$errors_filename <- razzo_params$pir_params$experiments[[2]]$errors_filename
-    razzo_params$pir_params$experiments[[i]]$beast2_options <- razzo_params$pir_params$experiments[[2]]$beast2_options
+    razzo_params$pir_params$experiments[[i]]$inference_conditions$model_type <-
+      "generative"
+    razzo_params$pir_params$experiments[[i]]$inference_conditions$run_if <-
+      "always"
+    razzo_params$pir_params$experiments[[i]]$inference_conditions$do_measure_evidence <-  # nolint sorry Demeter
+      FALSE
+    razzo_params$pir_params$experiments[[i]]$errors_filename <-
+      razzo_params$pir_params$experiments[[2]]$errors_filename
+    razzo_params$pir_params$experiments[[i]]$beast2_options <-
+      razzo_params$pir_params$experiments[[2]]$beast2_options
     expect_error(
       check_razzo_params(razzo_params),
       "Specifying more than one 'generative' model experiment is redundant"
     )
     # BEAST2 input file
     razzo_params <- good_razzo_params
-    razzo_params$pir_params$experiments[[i]]$beast2_options$input_filename <- "nonsense"
+    razzo_params$pir_params$experiments[[i]]$beast2_options$input_filename <-
+      "nonsense"
     expect_error(
       check_razzo_params(razzo_params)
     )
     # BEAST2 output log file
     razzo_params <- good_razzo_params
-    razzo_params$pir_params$experiments[[2]]$beast2_options$output_log_filename <- "nonsense"
-    razzo_params$pir_params$experiments[[3]]$beast2_options$output_log_filename <- "nonsense"
+    razzo_params$pir_params$experiments[[2]]$beast2_options$output_log_filename <-  # nolint sorry Demeter
+      "nonsense"
+    razzo_params$pir_params$experiments[[3]]$beast2_options$output_log_filename <-  # nolint sorry Demeter
+      "nonsense"
     expect_error(
       check_razzo_params(razzo_params)
     )
     # BEAST2 ouput trees files
     razzo_params <- good_razzo_params
-    razzo_params$pir_params$experiments[[i]]$beast2_options$output_trees_filenames <- "nonsense"
+    razzo_params$pir_params$experiments[[i]]$beast2_options$output_trees_filenames <-  # nolint sorry Demeter
+      "nonsense"
     expect_error(
       check_razzo_params(razzo_params)
     )
     # BEAST2 input file
     razzo_params <- good_razzo_params
-    razzo_params$pir_params$experiments[[i]]$beast2_options$output_state_filename <- "nonsense"
+    razzo_params$pir_params$experiments[[i]]$beast2_options$output_state_filename <- # nolint sorry Demeter
+      "nonsense"
     expect_error(
       check_razzo_params(razzo_params)
     )
+
     # Errors file
     razzo_params <- good_razzo_params
     razzo_params$pir_params$experiments[[i]]$errors_filename <- "nonsense"

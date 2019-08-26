@@ -53,8 +53,9 @@ collect_esses <- function(
     parameters <- open_parameters_file(file.path(paths[p], "parameters.RDa")) # nolint internal function
     burn_in_fraction <-
       parameters$pir_params$error_measure_params$burn_in_fraction
+    # pirouette checks that all experiments' MCMCs are identical
     sample_interval <-
-      parameters$pir_params$experiments[[1]]$inference_model$mcmc$store_every # pirouette checks that all experiments' MCMCs are identical
+      parameters$pir_params$experiments[[1]]$inference_model$mcmc$store_every
     files_log <- list.files(paths[p], pattern = "*.log")
     if (length(files_log) == 0) {
       stop(

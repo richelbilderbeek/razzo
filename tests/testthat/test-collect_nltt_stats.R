@@ -33,7 +33,7 @@ test_that("use", {
   #
   # would get
   #
-  #  data/1/2/3
+  #  data/1/2/3                                                                 # nolint this is not commented code
   #
   expect_true("folder" %in% names(df))
 

@@ -89,4 +89,3 @@ test_that("can read", {
     open_parameters_file(parameters_filename = filenames[1])
   )
 })
-
