@@ -1,4 +1,9 @@
 test_that("use", {
+
+  if (rappdirs::app_dir()$os == "win") {
+    skip("This can only run on Linux.")
+  }
+
   filenames <- save_razzo_paramses(
     create_test_razzo_paramses(
       peregrine::get_pff_tempfile()

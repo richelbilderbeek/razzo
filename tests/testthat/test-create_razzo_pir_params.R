@@ -1,4 +1,9 @@
 test_that("use", {
+
+  if (rappdirs::app_dir()$os == "win") {
+    skip("This can only run on Linux.")
+  }
+
   ##############################################################################
   # FALSE FALSE
   ##############################################################################
@@ -65,12 +70,16 @@ test_that("use", {
 })
 
 test_that("matches article", {
+
+  if (rappdirs::app_dir()$os == "win") {
+    skip("This can only run on Linux.")
+  }
+
   # Issue 242, Isssue #242
   pir_params <- create_razzo_pir_params(
     has_candidates = TRUE,
     has_twinning = TRUE
   )
-
 
   ##############################################################################
   # pir_params$twinning_params
@@ -169,6 +178,11 @@ test_that("matches article", {
 })
 
 test_that("follows naming convention", {
+
+  if (rappdirs::app_dir()$os == "win") {
+    skip("This can only run on Linux.")
+  }
+
   # Issue 242, Isssue #242
   folder_name <- peregrine::get_pff_tempfile()
   pir_params <- create_razzo_pir_params(

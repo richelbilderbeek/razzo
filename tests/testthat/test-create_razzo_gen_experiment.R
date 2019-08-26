@@ -1,5 +1,9 @@
 test_that("matches article", {
 
+  if (rappdirs::app_dir()$os == "win") {
+    skip("This can only run on Linux.")
+  }
+
   gen_exp <- create_razzo_gen_experiment()
   # --------------------
   # Inference conditions
@@ -60,6 +64,10 @@ test_that("matches article", {
 })
 
 test_that("razzo naming scheme", {
+
+  if (rappdirs::app_dir()$os == "win") {
+    skip("This can only run on Linux.")
+  }
 
   folder_name <- peregrine::get_pff_tempfile()
   gen_exp <- create_razzo_gen_experiment(folder_name = folder_name)
