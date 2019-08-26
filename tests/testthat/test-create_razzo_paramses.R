@@ -9,6 +9,11 @@ test_that("use", {
 })
 
 test_that("matches article", {
+
+  if (rappdirs::app_dir()$os == "win") {
+    skip("This can only run on Linux.")
+  }
+
   # Issue 242, Isssue #242
   #
   # The mbd_params are checked elsewhere

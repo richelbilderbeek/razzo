@@ -1,5 +1,9 @@
 test_that("use", {
 
+  if (rappdirs::app_dir()$os == "win") {
+    skip("This can only run on Linux.")
+  }
+
   mbd_params <- create_test_mbd_params()
   pir_params <- razzo::create_test_razzo_pir_params()
   misc_params <- create_misc_params()

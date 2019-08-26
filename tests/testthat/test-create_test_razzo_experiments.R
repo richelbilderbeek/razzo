@@ -1,4 +1,9 @@
 test_that("use, without candidates", {
+
+  if (rappdirs::app_dir()$os == "win") {
+    skip("This can only run on Linux.")
+  }
+
   experiments <- create_test_razzo_experiments(
     has_candidates = FALSE,
   )
@@ -10,6 +15,11 @@ test_that("use, without candidates", {
 })
 
 test_that("use, with candidates", {
+
+  if (rappdirs::app_dir()$os == "win") {
+    skip("This can only run on Linux.")
+  }
+
   experiments <- create_test_razzo_experiments(
     has_candidates = TRUE
   )
@@ -25,6 +35,11 @@ test_that("use, with candidates", {
 })
 
 test_that("values", {
+
+  if (rappdirs::app_dir()$os == "win") {
+    skip("This can only run on Linux.")
+  }
+
   # Issue 242, Isssue #242
   experiments <- create_test_razzo_experiments(
     has_candidates = TRUE
@@ -89,6 +104,10 @@ test_that("values", {
 })
 
 test_that("razzo naming conventions", {
+
+  if (rappdirs::app_dir()$os == "win") {
+    skip("This can only run on Linux.")
+  }
 
   folder_name <- peregrine::get_pff_tempfile()
   experiments <- create_test_razzo_experiments(

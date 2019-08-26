@@ -1,9 +1,19 @@
 test_that("use", {
+
+  if (rappdirs::app_dir()$os == "win") {
+    skip("This can only run on Linux.")
+  }
+
   razzo_paramses <- create_test_razzo_paramses()
   expect_equal(length(razzo_paramses), 2)
 })
 
 test_that("values", {
+
+  if (rappdirs::app_dir()$os == "win") {
+    skip("This can only run on Linux.")
+  }
+
   razzo_paramses <- create_test_razzo_paramses()
   expect_equal(length(razzo_paramses[[1]]$pir_params$experiments), 3)
 

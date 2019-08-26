@@ -1,5 +1,9 @@
 test_that("use", {
 
+  if (rappdirs::app_dir()$os == "win") {
+    skip("This can only run on Linux.")
+  }
+
   filenames <- create_parameters_files(
     project_folder_name = file.path(
       peregrine::get_pff_tempfile(), "razzo_project"
@@ -76,6 +80,10 @@ test_that("use, full", {
   )
 })
 test_that("can read", {
+
+  if (rappdirs::app_dir()$os == "win") {
+    skip("This can only run on Linux.")
+  }
 
   # Create parameter files from fresh
   filenames <- create_parameters_files(

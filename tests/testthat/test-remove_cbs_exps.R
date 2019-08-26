@@ -1,4 +1,9 @@
 test_that("use", {
+
+  if (rappdirs::app_dir()$os == "win") {
+    skip("This can only run on Linux.")
+  }
+
   experiments <- pirouette::create_all_experiments()
   n_experiments_before <- length(experiments)
   n_cbs <- 0

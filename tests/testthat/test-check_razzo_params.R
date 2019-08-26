@@ -1,5 +1,9 @@
 test_that("use", {
 
+  if (rappdirs::app_dir()$os == "win") {
+    skip("This can only run on Linux.")
+  }
+
   good_razzo_params <- create_test_razzo_params()
   expect_silent(
     check_razzo_params(razzo_params = good_razzo_params)
@@ -30,6 +34,10 @@ test_that("use", {
 
 
 test_that("check filenames", {
+
+  if (rappdirs::app_dir()$os == "win") {
+    skip("This can only run on Linux.")
+  }
 
   good_razzo_params <- create_test_razzo_params(
     pir_params = create_test_razzo_pir_params(
