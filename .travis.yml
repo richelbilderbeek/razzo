@@ -56,5 +56,5 @@ after_success:
   - rm .travis.yml
   - ./scripts/check_dead_links || true
 
-after_fail:
+after_failure:
   - cat /home/travis/build/richelbilderbeek/razzo/razzo.Rcheck/00check.log
