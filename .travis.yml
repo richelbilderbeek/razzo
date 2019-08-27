@@ -22,7 +22,7 @@ r_github_packages:
   - ropensci/beastier@develop
   - ropensci/mauricer
   - ropensci/babette
-  - richelbilderbeek/mcbette
+  - richelbilderbeek/mcbette@develop
   - Giappo/mbd
   - richelbilderbeek/pirouette@richel
   - richelbilderbeek/peregrine

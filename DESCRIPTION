@@ -20,6 +20,7 @@ Imports:
     beautier (>= 2.2.2),
     ggplot2,
     mbd,
+    mcbette (>= 1.6),
     peregrine (>= 0.5),
     pirouette (>= 1.5),
     stringr,
