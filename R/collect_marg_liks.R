@@ -14,8 +14,13 @@ collect_evidences <- collect_marg_liks <- function(
   data_folder <- get_data_paths(project_folder_name, full_names = FALSE) # nolint internal function
   data_paths <- file.path(project_folder_name, data_folder)
 
+  # Take the first filename that ends with '_marg_lik.csv',
+  # as it can be 'mbd_marg_lik.csv' and 'pbd_marg_lik.csv'
   data_filename <- "mbd_marg_lik.csv"
+  data_filename <- list.files(path = data_paths, pattern = "_marg_lik\\.csv")[1]
+
   twin_data_filename <- pirouette::to_twin_filename(data_filename)
+
 
   bd_data <- utils::read.csv(file.path(data_paths[1], twin_data_filename))[-1]
   mbd_data <- utils::read.csv(file.path(data_paths[1], data_filename))[-1]

@@ -24,12 +24,6 @@ test_that("use", {
   expect_true(is.factor(df$tree))
   expect_true("best_or_gen" %in% names(df))
   expect_true(is.factor(df$best_or_gen))
-  expect_true("site_model" %in% names(df))
-  expect_true(is.factor(df$site_model))
-  expect_true("clock_model" %in% names(df))
-  expect_true(is.factor(df$clock_model))
-  expect_true("tree_prior" %in% names(df))
-  expect_true(is.factor(df$tree_prior))
   expect_true("ess_likelihood" %in% names(df))
   expect_true("nltt_1" %in% names(df))
 
@@ -38,6 +32,19 @@ test_that("use", {
 
   # Rows must be unique
   expect_equal(nrow(unique(df)), nrow(df))
+
+  skip(
+    paste0(
+      "This function has been used to fix #230",
+      "Little need to maintain it"
+    )
+  )
+  expect_true("site_model" %in% names(df))
+  expect_true(is.factor(df$site_model))
+  expect_true("clock_model" %in% names(df))
+  expect_true(is.factor(df$clock_model))
+  expect_true("tree_prior" %in% names(df))
+  expect_true(is.factor(df$tree_prior))
 
 })
 
@@ -65,12 +72,6 @@ test_that("use - no ltts", {
   expect_true(is.factor(df$tree))
   expect_true("best_or_gen" %in% names(df))
   expect_true(is.factor(df$best_or_gen))
-  expect_true("site_model" %in% names(df))
-  expect_true(is.factor(df$site_model))
-  expect_true("clock_model" %in% names(df))
-  expect_true(is.factor(df$clock_model))
-  expect_true("tree_prior" %in% names(df))
-  expect_true(is.factor(df$tree_prior))
   expect_true("ess_likelihood" %in% names(df))
   expect_true(!("nltt_1" %in% names(df)))
 
@@ -79,6 +80,19 @@ test_that("use - no ltts", {
 
   # Rows must be unique
   expect_equal(nrow(unique(df)), nrow(df))
+
+  skip(
+    paste0(
+      "This function has been used to fix #230",
+      "Little need to maintain it"
+    )
+  )
+  expect_true("site_model" %in% names(df))
+  expect_true(is.factor(df$site_model))
+  expect_true("clock_model" %in% names(df))
+  expect_true(is.factor(df$clock_model))
+  expect_true("tree_prior" %in% names(df))
+  expect_true(is.factor(df$tree_prior))
 
 })
 

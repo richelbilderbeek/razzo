@@ -2,7 +2,7 @@
 #' @description Collect esses
 #' @inheritParams default_params_doc
 #' @return a dataframe with parameters and esses
-#' @author Giovanni Laudanno
+#' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
 collect_esses <- function(
   project_folder_name = get_razzo_path("razzo_project")
@@ -23,20 +23,10 @@ collect_esses <- function(
     "Sample",
     "posterior",
     "likelihood"
-    #  "prior",
-    #  "treeLikelihood",
-    #  "TreeHeight",
-    #  "YuleModel",
-    #  "birthRate"
   )
   setting_string_names <- c(
     "tree",
-    "site_model",
-    "clock_model",
-    "tree_prior",
-    "best_or_gen",
-    "burn_in_fraction",
-    "sample_interval"
+    "best_or_gen"
   )
   esses <- data.frame(matrix(
     NA,
@@ -50,7 +40,7 @@ collect_esses <- function(
   # Reading files and store data
   i <- 0
   for (p in seq_along(paths)) {
-    parameters <- open_parameters_file(file.path(paths[p], "parameters.RDa")) # nolint internal function
+    parameters <- readRDS(file.path(paths[p], "parameters.RDa")) # nolint internal function
     burn_in_fraction <-
       parameters$pir_params$error_measure_params$burn_in_fraction
     # pirouette checks that all experiments' MCMCs are identical
@@ -81,8 +71,6 @@ collect_esses <- function(
       ))
       x3 <- x2[, colnames(x2) %in% traces_names]
       data_table <- data.frame(x3, row.names = NULL)
-      data_table$burn_in_fraction <- burn_in_fraction
-      data_table$sample_interval <- sample_interval
       if (is_twin == TRUE) {
         data_table$tree <- "twin"
       } else {
@@ -96,10 +84,6 @@ collect_esses <- function(
         info_function <- get_generative_model
         data_table$best_or_gen <- "gen"
       }
-      info <- info_function(paths[p])[[data_table$tree[1]]]
-      data_table$site_model <- info$site_model
-      data_table$clock_model <- info$clock_model
-      data_table$tree_prior <- info$tree_prior
       if (!all(traces_names %in% names(data_table))) {
         msg <- "Not all 'traces_names' are present in data frame. \n"
         for (traces_name in traces_names) {
@@ -116,17 +100,15 @@ collect_esses <- function(
         FUN = as.numeric
       ))
       # Remove burn-ins, burn_in_fraction obtained earlier
-      testit::assert(length(unique(data_table$burn_in_fraction)) == 1)
       clean_traces <- tracerer::remove_burn_ins(
         traces = traces,
-        burn_in_fraction = data_table$burn_in_fraction[1]
+        burn_in_fraction = burn_in_fraction
       )
       # Calculate the correct ESSes, sample_interval obtained earlier
-      testit::assert(length(unique(data_table$sample_interval)) == 1)
       i <- i + 1
       esses[i, ]$ess_likelihood <- unlist(tracerer::calc_esses(
         clean_traces,
-        sample_interval = data_table$sample_interval[1]
+        sample_interval = sample_interval
       ))["likelihood"]
       for (par_name in setting_string_names) {
         par_value <- unique(unname(data_table[names(data_table) == par_name]))
@@ -138,9 +120,6 @@ collect_esses <- function(
   }
 
   esses$tree <- as.factor(esses$tree)
-  esses$site_model <- as.factor(esses$site_model)
-  esses$clock_model <- as.factor(esses$clock_model)
-  esses$tree_prior <- as.factor(esses$tree_prior)
   esses$best_or_gen <- as.factor(esses$best_or_gen)
 
   # Remove duplicates (no idea how they got in)

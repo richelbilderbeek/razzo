@@ -17,19 +17,10 @@ collect_n_mutations <- function(
   i <- 1
   for (p in seq_along(paths)) {
     files <- list.files(paths[p])
-    parameters <- open_parameters_file(file.path(paths[p], "parameters.RDa")) # nolint internal function
+    parameters <- readRDS(file.path(paths[p], "parameters.RDa")) # nolint internal function
     root_sequence <- parameters$pir_params$alignment_params$root_sequence
     target_files <- files[grepl(pattern = "*.fasta", x = files)]
     testit::assert(length(target_files) == 2)
-    if (
-      !("mbd.fasta" %in% files) |
-      !("mbd_twin.fasta" %in% files)
-    ) {
-      stop(
-        "No fasta files found at path '", paths[p], "' \n",
-        "Maybe the razzo experiment is not run yet? \n"
-      )
-    }
     for (f in seq_along(target_files)) {
       alignment <- ape::read.FASTA(file.path(paths[p], target_files[f]))
       n_mutations[i] <- pirouette::count_n_mutations(
