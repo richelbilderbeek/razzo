@@ -23,11 +23,6 @@ collect_esses <- function(
     "Sample",
     "posterior",
     "likelihood"
-    #  "prior",
-    #  "treeLikelihood",
-    #  "TreeHeight",
-    #  "YuleModel",
-    #  "birthRate"
   )
   setting_string_names <- c(
     "tree",
