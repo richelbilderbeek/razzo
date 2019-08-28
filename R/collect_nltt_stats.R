@@ -38,7 +38,6 @@ collect_nltt_stats <- function(
   # Fails on '/tmp/RtmpitOdlW/razzo_project/data/0_twin.2-0.15-1-0.1/1/parameters.RDa' # nolint indeed a long path
   beautier::check_file_exists(first_filename, "first_filename")
   parameters <- open_parameters_file(first_filename) # nolint internal function
-  pars <- parameters$mbd_params
   matrix_folder <- data.frame(matrix(
     NA,
     ncol = 1,
@@ -46,9 +45,6 @@ collect_nltt_stats <- function(
   ))
   colnames(matrix_folder) <- "folder"
   names_string <- c(
-    "site_model",
-    "clock_model",
-    "tree_prior",
     "tree",
     "best_or_gen"
   )
@@ -69,7 +65,6 @@ collect_nltt_stats <- function(
   i <- 1
   for (p in seq_along(paths)) {
     parameters <- open_parameters_file(file.path(paths[p], "parameters.RDa")) # nolint internal function
-    pars <- parameters$mbd_params
     files_nltt <- list.files(paths[p], pattern = "nltt")
     for (f in seq_along(files_nltt)) {
       is_twin <- grepl(files_nltt[f], pattern = "twin")
@@ -92,10 +87,6 @@ collect_nltt_stats <- function(
         info_function <- get_generative_model
         matrix_string$best_or_gen[i] <- "gen"
       }
-      info <- info_function(paths[p])[[matrix_string$tree[i]]]
-      matrix_string$site_model[i] <- info$site_model
-      matrix_string$clock_model[i] <- info$clock_model
-      matrix_string$tree_prior[i] <- info$tree_prior
       matrix_folder[i, ] <- relative_paths[p]
       i <- i + 1
     }
@@ -103,9 +94,6 @@ collect_nltt_stats <- function(
 
   # combine results
   matrix_string$tree <- as.factor(matrix_string$tree)
-  matrix_string$site_model <- as.factor(matrix_string$site_model)
-  matrix_string$clock_model <- as.factor(matrix_string$clock_model)
-  matrix_string$tree_prior <- as.factor(matrix_string$tree_prior)
   matrix_string$best_or_gen <- as.factor(matrix_string$best_or_gen)
 
   results <- cbind(

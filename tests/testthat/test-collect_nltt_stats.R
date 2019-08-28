@@ -39,7 +39,6 @@ test_that("use", {
   expect_true(all(df$best_or_gen %in% c("best", "gen")))
   expect_true(all(df$nltt_1 >= 0))
 
-  skip("Issue ")
   # Obsolete values
   expect_false("site_model" %in% names(df))
   expect_false("clock_model" %in% names(df))
