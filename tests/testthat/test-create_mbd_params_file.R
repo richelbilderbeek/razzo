@@ -66,6 +66,9 @@ test_that("use", {
 })
 
 test_that("abuse", {
+
+  skip("Issue 255, Issue #255")
+
   expect_error(
     create_mbd_params_file(project_folder_name = "nonsense"),
     "'project_folder_name' must end with 'razzo_project'"
