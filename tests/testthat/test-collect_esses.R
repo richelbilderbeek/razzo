@@ -33,6 +33,7 @@ test_that("use", {
 
   # Data must be tidy
   expect_true(is.factor(df$tree))
+  expect_true(is.factor(df$best_or_gen))
 
   # Rows must be unique
   expect_equal(nrow(unique(df)), nrow(df))
@@ -50,8 +51,10 @@ test_that("use", {
   #
   expect_true("folder" %in% names(df))
 
-  # Also this one:
-  expect_true(is.factor(df$best_or_gen))
+  skip("Issue #253")
+  expect_false("site_model" %in% names(df))
+  expect_false("clock_model" %in% names(df))
+  expect_false("tree_prior" %in% names(df))
 
 })
 
