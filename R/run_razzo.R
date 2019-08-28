@@ -66,6 +66,8 @@ run_razzo <- function(
     )
   }
 
+  peregrine::check_pff_pir_params(razzo_params$pir_params)
+
   output <- pirouette::pir_run(
     phylogeny = phylogeny,
     pir_params = razzo_params$pir_params

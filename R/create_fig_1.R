@@ -3,7 +3,7 @@
 #' @param model_type It can be either "gen" (stands for "generative") or "best"
 #'  (stands for "best candidate").
 #' @return Figure 1 as a ggplot2 plot
-#' @author Giovanni Laudanno
+#' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
 create_fig_1 <- function(
   project_folder_name = get_razzo_path("razzo_project"),
@@ -21,7 +21,6 @@ create_fig_1 <- function(
   inference_model <- NULL; rm(inference_model) # nolint, fixes warning: no visible binding for global variable
   quantile <- NULL; rm(quantile) # nolint, fixes warning: no visible binding for global variable
   ..y.. <- NULL; rm(..y..) # nolint, fixes warning: no visible binding for global variable
-  model_setting <- NULL; rm(model_setting) # nolint, fixes warning: no visible binding for global variable
   tree_and_model <- NULL; rm(tree_and_model) # nolint, fixes warning: no visible binding for global variable
   median <- NULL; rm(median) # nolint, fixes warning: no visible binding for global variable
   label_parsed <- NULL; rm(label_parsed) # nolint, fixes warning: no visible binding for global variable
@@ -41,9 +40,6 @@ create_fig_1 <- function(
     "crown_age",
     "cond",
     "tree",
-    "site_model",
-    "clock_model",
-    "tree_prior",
     paste0("error_", 1:n_errors)
   )
   df2 <- df_merged[, col_order]
@@ -53,36 +49,7 @@ create_fig_1 <- function(
   df_long <- tidyr::gather(
     df2, "error_index", "error_value", first_col_index:ncol(df2)
   )
-
-  # Convert factor values to human-readable strings
-  df_long$site_model <- plyr::revalue(
-    df_long$site_model, c("JC69" = "JC", "TN93" = "TN"), warn_missing = FALSE)
-  df_long$clock_model <- plyr::revalue(
-    df_long$clock_model,
-    c("strict" = "Strict", "relaxed_log_normal" = "RLN"), warn_missing = FALSE
-  )
-  df_long$tree_prior <- plyr::revalue(
-    df_long$tree_prior,
-    c(
-      "yule" = "Yule",
-      "birth_death" = "BD",
-      "coalescent_bayesian_skyline" = "CBS",
-      "coalescent_constant_population" = "CCP",
-      "coalescent_exp_population" = "CEP"
-    ),
-    warn_missing = FALSE
-  )
-
-  # Add model_setting, the combination of all inference models
-  df_long$model_setting <- interaction(
-    df_long$site_model,
-    df_long$clock_model,
-    df_long$tree_prior,
-    sep = ", "
-  )
   df_long <- df_long[order(df_long$tree), ]
-  df_long$model_setting <-
-    factor(df_long$model_setting, levels = unique(df_long$model_setting))
   rownames(df_long) <- mapply(1:nrow(df_long), FUN = toString)
 
   ##### Theme #####
@@ -117,27 +84,9 @@ create_fig_1 <- function(
   plot_title <- "Inference errors in parameter space"
 
   ##### Legend labels #####
-  get_first <- function(x) utils::head(x, n = 1)
-  # True tree
-  true_label <- NULL
-  true_model <- get_first(
-    df_long$model_setting[df_long$tree == "true"]
-  )
-  if (length(true_model)) {
-    true_label <- paste("True:", true_model)
-  }
-  # Twin tree
-  twin_label <- NULL
-  twin_model <- get_first(
-    df_long$model_setting[df_long$tree == "twin"]
-  )
-  if (length(twin_model)) {
-    twin_label <- paste("Twin:", twin_model)
-  }
-  # Collect all labels. Absent models have NULL labels and are thus ignored
   tree_labels <- c(
-    "true" = true_label,
-    "twin" = twin_label
+    "true" = "true",
+    "twin" = "twin"
   )
 
   ##### Facet Labels
@@ -196,8 +145,8 @@ create_fig_1 <- function(
     ggplot2::labs(
       x = "Error",
       y = "Density",
-      fill = "Tree and Model",
-      color = "Tree and Model",
+      fill = "Tree",
+      color = "Tree",
       title = plot_title
     ) + ggplot2::theme_bw() + theme
   fig_1

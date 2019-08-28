@@ -8,6 +8,26 @@ test_that("use", {
   }
 })
 
+test_that("all filenames are Peregrine friendly", {
+
+  if (!beastier::is_on_travis()) return()
+
+  razzo_paramses <- create_razzo_paramses(
+    project_folder_name = peregrine::get_pff_tempdir()
+  )
+
+  flat_params_set <- unlist(razzo_paramses)
+  names <- names(flat_params_set)
+  filename_indices <- which(
+    grepl(pattern = "(filename|working_dir)", x = names)
+  )
+  filenames <- flat_params_set[filename_indices]
+  for (filename in filenames) {
+    expect_true(beautier::is_one_na(filename) || peregrine::is_pff(filename))
+  }
+})
+
+
 test_that("matches article", {
 
   if (rappdirs::app_dir()$os == "win") {
