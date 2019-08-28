@@ -17,14 +17,9 @@ collect_n_taxa <- function(
 
   n_taxa <- rep(-1, length(paths))
   for (p in seq_along(paths)) {
-    files <- list.files(paths[p])
-    if (!("mbd.tree" %in% files)) {
-      stop(
-        "No tree files found at path '", paths[p], "' \n",
-        "Maybe the razzo experiment is not run yet? \n"
-      )
-    }
-    tree <- ape::read.tree(file.path(paths[p], "mbd.tree"))
+    newick_file <- list.files(paths[p], pattern = "^(mbd\\.tree|pbd\\.newick)$")
+    testit::assert(length(newick_file) == 1)
+    tree <- ape::read.tree(file.path(paths[p], newick_file))
     n_taxa[p] <- length(tree$tip.label)
   }
   out <- data.frame(
