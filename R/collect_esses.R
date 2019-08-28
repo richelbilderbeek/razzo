@@ -84,7 +84,6 @@ collect_esses <- function(
         info_function <- get_generative_model
         data_table$best_or_gen <- "gen"
       }
-      info <- info_function(paths[p])[[data_table$tree[1]]]
       if (!all(traces_names %in% names(data_table))) {
         msg <- "Not all 'traces_names' are present in data frame. \n"
         for (traces_name in traces_names) {
