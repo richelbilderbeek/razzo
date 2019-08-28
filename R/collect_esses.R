@@ -50,7 +50,7 @@ collect_esses <- function(
   # Reading files and store data
   i <- 0
   for (p in seq_along(paths)) {
-    parameters <- open_parameters_file(file.path(paths[p], "parameters.RDa")) # nolint internal function
+    parameters <- readRDS(file.path(paths[p], "parameters.RDa")) # nolint internal function
     burn_in_fraction <-
       parameters$pir_params$error_measure_params$burn_in_fraction
     # pirouette checks that all experiments' MCMCs are identical
