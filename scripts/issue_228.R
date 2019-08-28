@@ -5,11 +5,11 @@ curl::curl_download(
   quiet = FALSE # This download will take some time
 )
 
-razzo_project_folder <- file.path(dirname(zip_filename), "razzo_project")
-dir.create(razzo_project_folder, recursive = TRUE)
+project_folder_name <- file.path(dirname(zip_filename), "razzo_project")
+dir.create(project_folder_name, recursive = TRUE)
 
-utils::unzip(zipfile = zip_filename, exdir = razzo_project_folder)
+utils::unzip(zipfile = zip_filename, exdir = project_folder_name)
 
 df <- collect_esses(
-  project_folder_name = razzo_project_folder
+  project_folder_name = project_folder_name
 )
