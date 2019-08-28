@@ -26,9 +26,7 @@ collect_esses <- function(
   )
   setting_string_names <- c(
     "tree",
-    "best_or_gen",
-    "burn_in_fraction",
-    "sample_interval"
+    "best_or_gen"
   )
   esses <- data.frame(matrix(
     NA,
@@ -73,8 +71,6 @@ collect_esses <- function(
       ))
       x3 <- x2[, colnames(x2) %in% traces_names]
       data_table <- data.frame(x3, row.names = NULL)
-      data_table$burn_in_fraction <- burn_in_fraction
-      data_table$sample_interval <- sample_interval
       if (is_twin == TRUE) {
         data_table$tree <- "twin"
       } else {
@@ -105,17 +101,15 @@ collect_esses <- function(
         FUN = as.numeric
       ))
       # Remove burn-ins, burn_in_fraction obtained earlier
-      testit::assert(length(unique(data_table$burn_in_fraction)) == 1)
       clean_traces <- tracerer::remove_burn_ins(
         traces = traces,
-        burn_in_fraction = data_table$burn_in_fraction[1]
+        burn_in_fraction = burn_in_fraction
       )
       # Calculate the correct ESSes, sample_interval obtained earlier
-      testit::assert(length(unique(data_table$sample_interval)) == 1)
       i <- i + 1
       esses[i, ]$ess_likelihood <- unlist(tracerer::calc_esses(
         clean_traces,
-        sample_interval = data_table$sample_interval[1]
+        sample_interval = sample_interval
       ))["likelihood"]
       for (par_name in setting_string_names) {
         par_value <- unique(unname(data_table[names(data_table) == par_name]))

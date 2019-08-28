@@ -55,11 +55,8 @@ test_that("use", {
   expect_false("site_model" %in% names(df))
   expect_false("clock_model" %in% names(df))
   expect_false("tree_prior" %in% names(df))
-
-  skip("#253")
   expect_false("burn_in_fraction" %in% names(df))
   expect_false("sample_interval" %in% names(df))
-
 })
 
 test_that("abuse", {
