@@ -2,7 +2,7 @@
 #' @description Collect esses
 #' @inheritParams default_params_doc
 #' @return a dataframe with parameters and esses
-#' @author Giovanni Laudanno
+#' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
 collect_esses <- function(
   project_folder_name = get_razzo_path("razzo_project")
@@ -31,9 +31,6 @@ collect_esses <- function(
   )
   setting_string_names <- c(
     "tree",
-    "site_model",
-    "clock_model",
-    "tree_prior",
     "best_or_gen",
     "burn_in_fraction",
     "sample_interval"
@@ -97,9 +94,6 @@ collect_esses <- function(
         data_table$best_or_gen <- "gen"
       }
       info <- info_function(paths[p])[[data_table$tree[1]]]
-      data_table$site_model <- info$site_model
-      data_table$clock_model <- info$clock_model
-      data_table$tree_prior <- info$tree_prior
       if (!all(traces_names %in% names(data_table))) {
         msg <- "Not all 'traces_names' are present in data frame. \n"
         for (traces_name in traces_names) {
@@ -138,9 +132,6 @@ collect_esses <- function(
   }
 
   esses$tree <- as.factor(esses$tree)
-  esses$site_model <- as.factor(esses$site_model)
-  esses$clock_model <- as.factor(esses$clock_model)
-  esses$tree_prior <- as.factor(esses$tree_prior)
   esses$best_or_gen <- as.factor(esses$best_or_gen)
 
   # Remove duplicates (no idea how they got in)

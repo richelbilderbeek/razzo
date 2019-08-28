@@ -51,7 +51,7 @@ test_that("use", {
   #
   expect_true("folder" %in% names(df))
 
-  skip("Issue #253")
+  # Removed obsolete values, Issue #253
   expect_false("site_model" %in% names(df))
   expect_false("clock_model" %in% names(df))
   expect_false("tree_prior" %in% names(df))
