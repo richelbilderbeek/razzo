@@ -37,7 +37,7 @@ collect_nltt_stats <- function(
   first_filename <- file.path(paths[1], "parameters.RDa")
   # Fails on '/tmp/RtmpitOdlW/razzo_project/data/0_twin.2-0.15-1-0.1/1/parameters.RDa' # nolint indeed a long path
   beautier::check_file_exists(first_filename, "first_filename")
-  parameters <- open_parameters_file(first_filename) # nolint internal function
+  parameters <- readRDS(first_filename) # nolint internal function
   matrix_folder <- data.frame(matrix(
     NA,
     ncol = 1,
@@ -64,7 +64,7 @@ collect_nltt_stats <- function(
   # loop over all files
   i <- 1
   for (p in seq_along(paths)) {
-    parameters <- open_parameters_file(file.path(paths[p], "parameters.RDa")) # nolint internal function
+    parameters <- readRDS(file.path(paths[p], "parameters.RDa")) # nolint internal function
     files_nltt <- list.files(paths[p], pattern = "nltt")
     for (f in seq_along(files_nltt)) {
       is_twin <- grepl(files_nltt[f], pattern = "twin")
