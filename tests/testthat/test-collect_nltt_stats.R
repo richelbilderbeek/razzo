@@ -17,13 +17,6 @@ test_that("use", {
   expect_true("nltt_1" %in% names(df))
   expect_true("nltt_2" %in% names(df))
 
-  # Data must be tidy
-  expect_true(is.factor(df$tree))
-
-  # Data must make sense
-  expect_true(all(df$best_or_gen %in% c("best", "gen")))
-  expect_true(all(df$nltt_1 >= 0))
-
   # Use relative folder path as the primary key
   #
   # E.g. an experiment with its parameter file at either of these locations
@@ -37,9 +30,20 @@ test_that("use", {
   #
   expect_true("folder" %in% names(df))
 
-  # Should become a factor
+  # Data must be tidy
+  expect_true(is.factor(df$tree))
   expect_true(is.factor(df$best_or_gen))
 
+
+  # Data must make sense
+  expect_true(all(df$best_or_gen %in% c("best", "gen")))
+  expect_true(all(df$nltt_1 >= 0))
+
+  skip("Issue ")
+  # Obsolete values
+  expect_false("site_model" %in% names(df))
+  expect_false("clock_model" %in% names(df))
+  expect_false("tree_prior" %in% names(df))
 })
 
 test_that("abuse", {
