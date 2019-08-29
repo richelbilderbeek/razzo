@@ -1,6 +1,7 @@
 zip_filename <- file.path(tempdir(), "razzo_project.zip")
 curl::curl_download(
-  url = "http://richelbilderbeek.nl/razzo_project_20190801.zip",
+  # url = "http://richelbilderbeek.nl/razzo_project_20190801.zip",
+  url = "http://richelbilderbeek.nl/razzo_project_20190827.zip",
   destfile = zip_filename,
   quiet = FALSE # This download will take some time
 )

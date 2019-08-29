@@ -4,8 +4,7 @@
 \alias{create_fig_1}
 \title{Create figure 1}
 \usage{
-create_fig_1(project_folder_name = get_razzo_path("razzo_project"),
-  model_type = "best")
+create_fig_1(project_folder_name = get_razzo_path("razzo_project"))
 }
 \arguments{
 \item{project_folder_name}{project folder name,

@@ -17,5 +17,5 @@ a dataframe with parameters and esses
 Collect esses
 }
 \author{
-Giovanni Laudanno
+Giovanni Laudanno, Richel J.C. Bilderbeek
 }

@@ -6,12 +6,9 @@
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
 create_fig_1 <- function(
-  project_folder_name = get_razzo_path("razzo_project"),
-  model_type = "best"
+  project_folder_name = get_razzo_path("razzo_project")
 ) {
-  if (!(model_type %in% c("best", "gen"))) {
-    stop("'model_type' must be either 'best' or 'gen'.")
-  }
+
   check_project_folder_name(project_folder_name)
   df0 <- collect_nltt_stats(project_folder_name)
 
@@ -27,7 +24,11 @@ create_fig_1 <- function(
   ..density.. <- NULL; rm(..density..) # nolint, fixes warning: no visible binding for global variable
 
   ##### Data Wrangling #####
-  df_errors <- df0[df0$best_or_gen == model_type, ]
+  df_errors <- df0
+  df_errors$inference_model <- plyr::revalue(
+    df_errors$best_or_gen,
+    c("generative" = "GEN", "candidate" = "best"), warn_missing = FALSE
+  )
   df_errors$best_or_gen <- NULL
   names(df_errors) <- gsub(names(df_errors), pattern = "nltt_", replacement = "error_")
   n_errors <- sum(grepl(names(df_errors), pattern = "error_"))
@@ -35,11 +36,13 @@ create_fig_1 <- function(
   df_params <- collect_mbd_params(project_folder_name)
   df_merged <- merge(x = df_params, y = df_errors, by = "folder")
   col_order <- c(
+    "folder",
     mbd::get_param_names(),
     "seed",
     "crown_age",
     "cond",
     "tree",
+    "inference_model",
     paste0("error_", 1:n_errors)
   )
   df2 <- df_merged[, col_order]
@@ -49,7 +52,16 @@ create_fig_1 <- function(
   df_long <- tidyr::gather(
     df2, "error_index", "error_value", first_col_index:ncol(df2)
   )
+
+  # Add column tree_and_model, the combination of tree and model type
+  df_long$tree_and_model <- interaction(
+    df_long$tree,
+    df_long$inference_model,
+    sep = "_"
+  )
   df_long <- df_long[order(df_long$tree), ]
+  df_long$inference_model <-
+    factor(df_long$inference_model, levels = unique(df_long$inference_model))
   rownames(df_long) <- mapply(1:nrow(df_long), FUN = toString)
 
   ##### Theme #####
@@ -78,15 +90,20 @@ create_fig_1 <- function(
     axis.text.y = theme_minor_label,
     legend.text = theme_minor_label,
     strip.text.x = ggplot2::element_text(size = 12)
-  )
-
-  ##### Plot title #####
-  plot_title <- "Inference errors in parameter space"
+  ) +
+    ggplot2::theme_bw()
 
   ##### Legend labels #####
-  tree_labels <- c(
-    "true" = "true",
-    "twin" = "twin"
+  tg_label <- paste("Generative, true.")
+  wg_label <- paste("Generative, twin.")
+  tb_label <- paste("Best, true.")
+  wb_label <- paste("Best, twin.")
+
+  tree_and_model_labels <- c(
+    tg_label,
+    wg_label,
+    tb_label,
+    wb_label
   )
 
   ##### Facet Labels
@@ -104,50 +121,123 @@ create_fig_1 <- function(
   names(q_labels) <- q_values # what's in the df
 
   ##### Fill and line colors #####
-  tree_colors <- c(
-    "true" = "orangered",
-    "twin" = "dodgerblue4"
+  # Line colors: must be darker than the fill color
+  tree_and_model_line_colors <- c(
+    "true_gen" = "#FF0000", # Red
+    "twin_gen" = "#E77E22", # Orange
+    "true_best" = "#0000FF", # Blue
+    "twin_best" = "#229955"  # Green
   )
 
+  # Fill colors: must be lighter than the colors at the edges
+  tree_and_model_fill_colors <- c(
+    "true_gen" = "#FF3333", # Red
+    "twin_gen" = "#F99F55", # Orange
+    "true_best" = "#3333FF", # Blue
+    "twin_best" = "#559988"  # Green
+  )
+
+  ##### Only keep 95% of x axis values #####
+  index <- trunc(0.95 * length(df_long$error_value)) # split by mu, nu, q?
+  x_top <- sort(df_long$error_value)[index]
+
+  ##### More aesthetic settings for the plots #####
+  n_error <- length(unique(df_long$error_index))
+  bindwidth <- x_top / sqrt(n_error)
+  alpha <- 0.5
+
+  # Collect the medians
+  medians <- df_long %>%
+    dplyr::group_by(lambda, mu, nu, q, tree_and_model) %>%
+    dplyr::summarise(median = stats::median(error_value))
+
+  medians$inference_model <- gsub(
+    x = gsub(
+      x = medians$tree_and_model,
+      pattern = "true_",
+      replacement = ""
+    ),
+    pattern = "twin_",
+    replacement = ""
+  )
+  df_long$inference_model <- plyr::revalue(
+    df_long$inference_model,
+    c(
+      "candidate" = "Best",
+      "generative" = "Generative"
+    ),
+    warn_missing = FALSE
+  )
+  medians$inference_model <- plyr::revalue(
+    medians$inference_model,
+    c(
+      "candidate" = "Best",
+      "generative" = "Generative"
+    ),
+    warn_missing = FALSE
+  )
+  inference_model_labels <- c("Best", "Generative")
+  names(inference_model_labels) <- c("Generative", "Best")
+
   ##### Plot #####
-  bindwidth <- 0.05
-  fig_1 <- ggplot2::ggplot(
-    data = df_long,
-    ggplot2::aes(
-      x = error_value,
-      color = tree,
-      fill = tree
-    )
-  ) +
-    ggplot2::geom_histogram(
-      data = df_long,
-      ggplot2::aes(y = bindwidth * ..density..),
-      binwidth = bindwidth,
-      alpha = 0.25,
-      position = "identity"
-    ) +
-    ggplot2::facet_grid(
-      mu + nu ~ q,
-      labeller = ggplot2::labeller(
-        mu = ggplot2::as_labeller(mu_labels, ggplot2::label_parsed),
-        nu = ggplot2::as_labeller(nu_labels, ggplot2::label_parsed),
-        q = ggplot2::as_labeller(q_labels, ggplot2::label_parsed)
+  mus <- unique(df_long$mu)
+  plots_mu <- vector("list", length(mus))
+  for (i_mu in seq_along(mus)) {
+    df_mu <- df_long[df_long$mu == mus[i_mu], ]
+    plots_mu[[i_mu]] <- ggplot2::ggplot(
+      data = df_mu,
+      ggplot2::aes(
+        x = error_value,
+        color = tree_and_model,
+        fill = tree_and_model
       )
     ) +
-    ggplot2::scale_color_manual(
-      values = tree_colors,
-      labels = tree_labels
-    ) +
-    ggplot2::scale_fill_manual(
-      values = tree_colors,
-      labels = tree_labels
-    ) +
-    ggplot2::labs(
-      x = "Error",
-      y = "Density",
-      fill = "Tree",
-      color = "Tree",
-      title = plot_title
-    ) + ggplot2::theme_bw() + theme
-  fig_1
+      ggplot2::geom_histogram(
+        data = df_mu,
+        ggplot2::aes(y = bindwidth * ..density..), # nolint the dots in ..density.. are not improper ways to separate words here
+        binwidth = bindwidth,
+        alpha = alpha,
+        position = "identity"
+      ) +
+      ggplot2::facet_grid(
+        nu ~ q,
+        labeller = ggplot2::labeller(
+          mu = ggplot2::as_labeller(mu_labels, ggplot2::label_parsed),
+          nu = ggplot2::as_labeller(nu_labels, ggplot2::label_parsed),
+          q = ggplot2::as_labeller(q_labels, ggplot2::label_parsed)
+        )
+      ) +
+      ggplot2::scale_color_manual(
+        values = tree_and_model_line_colors,
+        labels = tree_and_model_labels
+      ) +
+      ggplot2::scale_fill_manual(
+        values = tree_and_model_fill_colors,
+        labels = tree_and_model_labels
+      ) +
+      ggplot2::scale_x_continuous(
+        minor_breaks = seq(0.0, 1.0, 0.01)
+      ) +
+      ggplot2::coord_cartesian(
+        xlim = c(min(df_mu$error_value), x_top)
+      ) +
+      ggplot2::geom_vline(
+        data = medians,
+        ggplot2::aes(
+          xintercept = median,
+          color = tree_and_model
+        ),
+        linetype = "dashed"
+      ) +
+      ggplot2::ggtitle(paste0(
+        "Inference error distribution: mu = ", mus[i_mu]
+      )) +
+      ggplot2::labs(
+        x = "Error",
+        y = "Density",
+        fill = "Model and tree",
+        color = "Model and tree"
+      ) + theme
+  }
+  plots_mu
 }

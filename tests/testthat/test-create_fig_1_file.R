@@ -10,14 +10,18 @@ test_that("use", {
   # File should be created
   expect_true(file.exists(filename))
 
-  # OK: filename must end with 'fig_1.png'
+  # OK: filename must end with 'figure_1.png'
   testthat::expect_true(
-    length(
+    all(
       grep(
-        pattern = "figure_1\\.png$", filename, perl = TRUE, value = TRUE
+      pattern = "figure_1", filename
+    ) &
+      grep(
+        pattern = ".png", filename
       )
-    ) > 0
+    )
   )
+
   # OK: should be in razzo_project/results folder
   # Use ..? to indicate one or two back- or normal slashes
   testthat::expect_true(
