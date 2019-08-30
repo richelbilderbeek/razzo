@@ -44,25 +44,6 @@ test_that("matches article", {
   #
   # These are the tests that looks for bigger picture issues and
   # relations between the parameter sets
-
-  article_params <- list()
-  lambdas <- c(0.2)
-  mus <- c(0, 0.15)
-  nus <- c(1.0, 1.5, 2.0, 2.5)
-  qs <- c(0.1, 0.15, 0.2)
-  article_params$mbd_params <- expand.grid(
-    lambda = lambdas, mu = mus, nu = nus, q = qs
-  )
-  article_params$mbd_params$cond <- 1.0
-  article_params$mbd_params$crown_age <- 6.0
-  article_params$mbd_params$seed <- 1:nrow(article_params$mbd_params)
-
-  for (i in 1:nrow(article_params$mbd_params)) {
-    testthat::expect_equal(
-      unlist(mbd_paramses[[i]]), unlist(article_params$mbd_params[i, ])
-    )
-  }
-
   n_replicates <- 1
   mbd_paramses <- create_mbd_paramses(
     n_replicates = n_replicates
