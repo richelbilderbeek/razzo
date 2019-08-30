@@ -47,12 +47,8 @@ collect_esses <- function(
     sample_interval <-
       parameters$pir_params$experiments[[1]]$inference_model$mcmc$store_every
     files_log <- list.files(paths[p], pattern = "*.log")
-    if (length(files_log) == 0) {
-      stop(
-        "No .log files found at path '", paths[p], "' \n",
-        "Maybe the razzo experiment is not run yet? \n"
-      )
-    }
+    # In a failed run, there may not file
+    if (length(files_log) == 0) next
     for (f in seq_along(files_log)) {
       is_twin <- grepl(files_log[f], pattern = "twin")
       is_best <- grepl(files_log[f], pattern = "best")
