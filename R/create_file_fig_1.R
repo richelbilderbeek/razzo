@@ -14,19 +14,36 @@ create_file_fig_1 <- create_fig_1_file <- function(
 
   # save output
   results_folder <- get_results_path(project_folder_name) # nolint
+
   # No warning if folder already exists
   dir.create(results_folder, showWarnings = FALSE)
-  fig_1_filename <- file.path(
-    results_folder,
-    "figure_1.png"
-  )
 
-  ggplot2::ggsave(
-    filename = fig_1_filename,
-    plot = fig_1,
-    width = 7,
-    height = 7
-  )
+  if (is.list(fig_1)) {
+    fig_1_filename <- c()
+    for (i in seq_along(fig_1)) {
+      fig_1_filename[i] <- file.path(
+        results_folder,
+        paste0("figure_1", letters[i], ".png")
+      )
+      ggplot2::ggsave(
+        filename = fig_1_filename[i],
+        plot = fig_1[[i]],
+        width = 7,
+        height = 7
+      )
+    }
+  } else {
+    fig_1_filename <- file.path(
+      results_folder,
+      "figure_1.png"
+    )
+    ggplot2::ggsave(
+      filename = fig_1_filename,
+      plot = fig_1,
+      width = 7,
+      height = 7
+    )
+  }
 
   # return file name
   fig_1_filename

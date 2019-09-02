@@ -3,12 +3,20 @@ context("test-create_fig_1")
 test_that("use", {
 
   # Should return plot
-  plot <- create_fig_1(
+  plots <- create_fig_1(
     project_folder_name = get_razzo_path("razzo_project")
   )
-  expect_true(
-    all(class(plot) == c("gg", "ggplot"))
-  )
+  if (is.list(plots)) {
+    for (i in seq_along(plots)) {
+      expect_true(
+        all(class(plots[[i]]) == c("gg", "ggplot"))
+      )
+    }
+  } else {
+    expect_true(
+      all(class(plots) == c("gg", "ggplot"))
+    )
+  }
 })
 
 test_that("abuse", {
