@@ -1,6 +1,6 @@
 #' Collect the times simulations took to run
 #' @inheritParams default_params_doc
-#' @return a dataframe with one folder and run time per row
+#' @return a data frame with columns named 'filename', 'state' and 'cpu_time'
 #' @author Richel J.C. Bilderbeek
 #' @export
 collect_run_times <- function(
@@ -15,6 +15,11 @@ collect_run_times <- function(
     recursive = FALSE
   )
   log_filenames
+  if (length(log_filenames) == 0) {
+    return(
+      data.frame(filename = NA, state = NA, cpu_time = NA)
+    )
+  }
 
   df <- data.frame(filename = log_filenames, state = NA, cpu_time = NA)
 

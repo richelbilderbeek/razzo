@@ -11,7 +11,7 @@ collect_run_times(project_folder_name = get_razzo_path("razzo_project"))
 will be the full path to \code{razzo_project}}
 }
 \value{
-a dataframe with one folder and run time per row
+a data frame with columns named 'filename', 'state' and 'cpu_time'
 }
 \description{
 Collect the times simulations took to run
