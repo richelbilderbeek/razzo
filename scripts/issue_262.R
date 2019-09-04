@@ -87,3 +87,9 @@ ggplot(
   ) + labs(
     title = "Simulation run-times"
   ) + ggsave("~/fig_run_times.png", width = 7, height = 7)
+
+
+# As table
+knitr::kable(
+  ddply(na.omit(df), .(date), summarize, mean = mean(n_sec))
+)
