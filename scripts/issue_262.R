@@ -42,6 +42,22 @@ time_strs_to_n_secs <- function(strs) {
 expect_silent(time_strs_to_n_secs(c("00:00:01", "01:02:03", "1-02:03:04")))
 
 
+all_parameter_filenames <- list.files(
+  path = "~/data",
+  pattern = "parameters.RDa",
+  full.names = TRUE,
+  recursive = TRUE
+)
+parameter_filenames <- as.character(
+  na.omit(
+    stringr::str_match(
+      string = all_parameter_filenames,
+      pattern = ".*razzo_project.*/1/parameters.RDa"
+    )[,1]
+  )
+)
+parameter_filenames
+
 run_times_filenames <- list.files(
   path = "~/data",
   pattern = "run_times.csv",
@@ -92,7 +108,17 @@ ggplot(
 
 
 # As table
-knitr::kable(
-  ddply(na.omit(df), .(date), summarize, mean = mean(n_hour))
-)
+df_means <- ddply(na.omit(df), .(date), summarize, mean = mean(n_hour))
 
+df_means$crown_age <- NA
+df_means$n_candidates <- NA
+
+for (i in seq_along(parameter_filenames)) {
+  df_means$crown_age[i] <- readRDS(parameter_filenames[i])$mbd_params$crown_age
+  df_means$n_candidates[i] <- length(readRDS(parameter_filenames[i])$pir_params$experiments)
+
+}
+
+df_means
+
+knitr::kable(df_means)
