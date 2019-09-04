@@ -75,14 +75,16 @@ names(df)
 library(ggplot2)
 library(plyr)
 
+df$n_hour <- df$n_sec / (60 * 60)
+
 ggplot(
   na.omit(df),
-  aes(x = n_sec, fill = date)
+  aes(x = n_hour, fill = date)
   ) +
   geom_density(alpha = 0.5) +
   scale_x_log10() +
   geom_vline(
-    data = ddply(na.omit(df), .(date), summarize, mean = mean(n_sec)),
+    data = ddply(na.omit(df), .(date), summarize, mean = mean(n_hour)),
     aes(xintercept = mean, col = date)
   ) + labs(
     title = "Simulation run-times"
@@ -91,5 +93,6 @@ ggplot(
 
 # As table
 knitr::kable(
-  ddply(na.omit(df), .(date), summarize, mean = mean(n_sec))
+  ddply(na.omit(df), .(date), summarize, mean = mean(n_hour))
 )
+
