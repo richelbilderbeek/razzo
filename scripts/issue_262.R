@@ -115,6 +115,8 @@ df_means$n_candidates <- NA
 
 for (i in seq_along(parameter_filenames)) {
   df_means$crown_age[i] <- readRDS(parameter_filenames[i])$mbd_params$crown_age
+  crown_age_again <- readRDS(parameter_filenames[i])$pir_params$experiments[[1]]$inference_model$mrca_prior$mrca_distr$mean$value
+  testit::assert(df_means$crown_age[i] == crown_age_again)
   df_means$n_candidates[i] <- length(readRDS(parameter_filenames[i])$pir_params$experiments)
 
 }
