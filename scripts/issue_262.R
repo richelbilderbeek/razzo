@@ -21,8 +21,25 @@ time_str_to_n_sec <- function(str) {
   n_secs
 }
 
-time_str_to_n_sec(str = "00:00:01")
-time_str_to_n_sec(str = "4-00:00:01")
+library(testthat)
+expect_equal(time_str_to_n_sec("00:00:11"), 11)
+expect_equal(time_str_to_n_sec("00:33:22"), (33 * 60) + 22)
+expect_equal(time_str_to_n_sec("12:55:44"), (12 * 60 * 60) + (55 * 60) + 44)
+expect_equal(
+  time_str_to_n_sec(str = "4-33:22:11"),
+  (4 * 24 * 60 * 60) + (33 * 60 * 60) + (22 * 60) + 11
+)
+
+# Convert time in HH:MM:SS
+time_strs_to_n_secs <- function(strs) {
+  n_secs <- rep(NA, length(strs))
+  for (i in seq_along(strs)) {
+    n_secs[i] <- time_str_to_n_sec(strs[i])
+  }
+  n_secs
+}
+
+expect_silent(time_strs_to_n_secs(c("00:00:01", "01:02:03", "1-02:03:04")))
 
 
 run_times_filenames <- list.files(
@@ -33,7 +50,40 @@ run_times_filenames <- list.files(
 )
 run_times_filenames
 
-run_times_filename <- run_times_filenames[1]
-cpu_times_str <- as.character(read.csv(run_times_filename)$cpu_time)
+df <- data.frame()
 
-(cpu_times)
+for (i in seq_along(run_times_filenames)) {
+  run_times_filename <- run_times_filenames[i]
+  cpu_times_str <- as.character(read.csv(run_times_filename)$cpu_time)
+  cpu_times_n_secs <- time_strs_to_n_secs(cpu_times_str)
+  cpu_times_n_secs
+  run_date <- stringr::str_match(
+    string = run_times_filename,
+    "razzo_project_(........)"
+  )[1, 2]
+  run_date
+
+  this_df <- data.frame(date = run_date,  n_sec = cpu_times_n_secs)
+  this_df$i <- seq(1, nrow(this_df))
+  df <- rbind(df, this_df)
+}
+
+df$date <- as.factor(df$date)
+
+names(df)
+
+library(ggplot2)
+library(plyr)
+
+ggplot(
+  na.omit(df),
+  aes(x = n_sec, fill = date)
+  ) +
+  geom_density(alpha = 0.5) +
+  scale_x_log10() +
+  geom_vline(
+    data = ddply(na.omit(df), .(date), summarize, mean = mean(n_sec)),
+    aes(xintercept = mean, col = date)
+  ) + labs(
+    title = "Simulation run-times"
+  ) + ggsave("~/fig_run_times.png", width = 7, height = 7)
