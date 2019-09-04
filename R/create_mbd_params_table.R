@@ -33,7 +33,7 @@ create_mbd_params_table <- function(
   nu = c(1.0, 1.5, 2.0, 2.5),
   q = c(0.1, 0.15, 0.2),
   n_replicates = 2,
-  crown_age = 6.0,
+  crown_age = get_razzo_crown_age(),
   cond = 1
 ) {
   lambda <- unique(lambda)
