@@ -6,7 +6,14 @@
 #' @author Richel J.C. Bilderbeek
 #' @noRd
 check_project_folder_name <- function(project_folder_name) {
-  if (!basename(project_folder_name) %in% c("razzo_project", "raket_werper")) {
+  if (
+    is.na(
+      stringr::str_match(
+        string = project_folder_name,
+        pattern = "(razzo_project|raket_werper)(_........)?(_regen_data|new_logs)?"
+      )[1, 1]
+    )
+  ) {
     stop(
       "'project_folder_name' must end with 'razzo_project' or 'raket_werper'"
     )
