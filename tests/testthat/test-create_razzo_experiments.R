@@ -155,7 +155,7 @@ test_that("matches article", {
     )
   }
 
-  option <- 2
+  option <- 3
   if (option == 2) {
     # Four days ago, I tested for all 39 models.
     # This is perhaps the best biological setup,
@@ -164,27 +164,26 @@ test_that("matches article", {
     expect_equal(39, length(cand_exps))
   }
 
-  skip("Issue 261, Issue #261")
   if (option == 3) {
     # Picking all 3 combination of simplest site models and tree priors
     #
-    #  1.  HKY site model, strict clock model,   BD tree prior
-    #  2. JC69 site model, strict clock model, Yule tree prior
-    #  3.  HKY site model, strict clock model, Yule tree prior
+    #  1. JC69 site model, strict clock model, Yule tree prior
     # (G. JC69 site model, strict clock model,   BD tree prior)
+    #  2.  HKY site model, strict clock model, Yule tree prior
+    #  3.  HKY site model, strict clock model,   BD tree prior
     expect_equal(3, length(cand_exps))
     # site models
-    expect_equal(cand_exps[[1]]$inference_model$site_model$name, "HKY")
-    expect_equal(cand_exps[[2]]$inference_model$site_model$name, "JC69")
+    expect_equal(cand_exps[[1]]$inference_model$site_model$name, "JC69")
+    expect_equal(cand_exps[[2]]$inference_model$site_model$name, "HKY")
     expect_equal(cand_exps[[3]]$inference_model$site_model$name, "HKY")
     # clock models
     expect_equal(cand_exps[[1]]$inference_model$clock_model$name, "strict")
     expect_equal(cand_exps[[2]]$inference_model$clock_model$name, "strict")
     expect_equal(cand_exps[[3]]$inference_model$clock_model$name, "strict")
     # tree priors
-    expect_equal(cand_exps[[1]]$inference_model$tree_prior$name, "birth_death")
+    expect_equal(cand_exps[[1]]$inference_model$tree_prior$name, "yule")
     expect_equal(cand_exps[[2]]$inference_model$tree_prior$name, "yule")
-    expect_equal(cand_exps[[3]]$inference_model$tree_prior$name, "yule")
+    expect_equal(cand_exps[[3]]$inference_model$tree_prior$name, "birth_death")
   }
 })
 
