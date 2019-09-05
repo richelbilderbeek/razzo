@@ -71,7 +71,7 @@ test_that("values", {
   )
   expect_equal(
     gen_exp$inference_model$mrca_prior$mrca_distr$mean$value,
-    6.0
+    get_razzo_crown_age()
   )
   expect_equal(
     gen_exp$inference_model$mrca_prior$mrca_distr$sigma$value,
