@@ -116,6 +116,7 @@ df_means$n_candidates <- NA
 df_means$mcmc_chain_length <- NA
 df_means$n_replicates <- NA
 df_means$mean_n_taxa <- NA
+df_means$mean_ess <- NA
 
 
 for (i in seq_along(parameter_filenames)) {
@@ -124,12 +125,21 @@ for (i in seq_along(parameter_filenames)) {
   df_means$mcmc_chain_length[i] <- readRDS(parameter_filenames[i])$pir_params$experiments[[1]]$inference_model$mcmc$chain_length
   n_replicates <- length(list.dirs(dirname(dirname(parameter_filenames[i]))[1])) - 1
   df_means$n_replicates[i] <- n_replicates
+
+  # Mean number of taxa
   n_taxa_filename <- file.path(dirname(dirname(dirname(dirname(parameter_filenames[i])))), "results", "n_taxa.csv")
-  #if (!file.exists(n_taxa_filename)) next
   testit::assert(file.exists(n_taxa_filename))
   df_n_taxa <- read.csv(n_taxa_filename)
   mean_n_taxa <- mean(df_n_taxa$n_taxa)
   df_means$mean_n_taxa[i] <- mean_n_taxa
+
+  # Mean ESS
+  esses_filename <- file.path(dirname(dirname(dirname(dirname(parameter_filenames[i])))), "results", "esses.csv")
+  #if (!file.exists(esses_filename)) next
+  testit::assert(file.exists(esses_filename))
+  df_esses <- read.csv(esses_filename)
+  mean_ess <- mean(df_esses$ess_likelihood)
+  df_means$mean_ess[i] <- mean_ess
 }
 
 df_means
