@@ -46,6 +46,17 @@ library(ggplot2)
 
 df$inference_model <- fct_cross(fct_cross(df$site_model, df$clock_model), df$tree_prior)
 
+twin_site_model_name <- create_razzo_alignment_params(folder_name = "")$site_model$name
+twin_clock_model_name <- create_razzo_alignment_params(folder_name = "")$clock_model$name
+twin_tree_prior_name <- create_razzo_twinning_params(folder_name = "")$twin_model
+twin_generative_model_name <- paste(
+  twin_site_model_name,
+  twin_clock_model_name,
+  twin_tree_prior_name,
+  sep = ", "
+)
+twin_generative_model_name
+
 ggplot(df, aes(x = tree, y = marg_log_lik, col = inference_model)) +
   geom_point(
     position = position_dodge(0.2),
@@ -67,7 +78,7 @@ ggplot(df, aes(x = tree, y = marg_log_lik, col = inference_model)) +
   ) +
   labs(
     title = "Marginal likelihoods estimates and their standard errors",
-    subtitle = "Do twin models really prefer the true model of JC69 and BD?",
+    subtitle = paste0("Do twin models really prefer the true model of ", twin_generative_model_name, "?"),
     caption = "Error bars denote standard deviation in estimation",
     y = "Marginal log likelihood (higher means the likelier model)"
   ) +
