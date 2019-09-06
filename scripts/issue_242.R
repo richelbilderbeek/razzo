@@ -67,8 +67,9 @@ ggplot(df, aes(x = tree, y = marg_log_lik, col = inference_model)) +
   ) +
   labs(
     title = "Marginal likelihoods estimates and their standard errors",
+    subtitle = "Do twin models really prefer the true model of JC69 and BD?",
     caption = "Error bars denote standard deviation in estimation",
-    y = "Marginal log likelihood (lower means the likelier model)"
+    y = "Marginal log likelihood (higher means the likelier model)"
   ) +
   ggsave("~/issue_242.png", width = 10, height = 10)
 
