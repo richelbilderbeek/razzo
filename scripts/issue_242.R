@@ -1,4 +1,14 @@
-# Kun je een schatting geven van de fout in de marginal loglikelihood?
+# Solves the following question,
+# from rsetienne:
+#
+# > Kun je een schatting geven van de fout in de marginal loglikelihood?
+#
+#
+#
+# This issue matured into the script at
+#
+# https://github.com/richelbilderbeek/razzo_project/blob/richel/scripts/83_create_fig_marg_liks.sh
+#
 
 library(dplyr)
 
