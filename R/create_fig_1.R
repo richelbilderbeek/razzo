@@ -1,7 +1,5 @@
 #' Create figure 1
 #' @inheritParams default_params_doc
-#' @param model_type It can be either "gen" (stands for "generative") or "best"
-#'  (stands for "best candidate").
 #' @return Figure 1 as a ggplot2 plot
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
