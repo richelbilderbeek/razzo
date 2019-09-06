@@ -46,13 +46,18 @@ library(ggplot2)
 
 df$inference_model <- fct_cross(fct_cross(df$site_model, df$clock_model), df$tree_prior)
 
-ggplot(df, aes(x = tree, y = marg_log_lik, col = inference_model)) + geom_point() +
+ggplot(df, aes(x = tree, y = marg_log_lik, col = inference_model)) +
+  geom_point(
+    position = position_dodge(0.2),
+    size = 0.2
+  ) +
   geom_errorbar(
     aes(
       ymin = marg_log_lik - marg_log_lik_sd,
       ymax = marg_log_lik + marg_log_lik_sd
     ),
-    width = 0.1
+    width = 0.4,
+    position = position_dodge(0.2)
   ) +
   facet_wrap(seed ~ tree, scales = "free", ncol = 12) +
   theme(
