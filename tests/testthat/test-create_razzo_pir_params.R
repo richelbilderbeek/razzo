@@ -83,10 +83,7 @@ test_that("matches article", {
 
   ##############################################################################
   # pir_params$twinning_params
-  ##############################################################################
-  expect_true(!beautier::is_one_na(pir_params$twinning_params))
-  expect_equal(pir_params$twinning_params$twin_model, "birth_death")
-  expect_equal(pir_params$twinning_params$method, "random_tree")
+  # checked at 'create_razzo_twinning_params
   ##############################################################################
   # pir_params$alignment_params
   ##############################################################################
