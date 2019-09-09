@@ -9,7 +9,9 @@ create_razzo_alignment_params <- function(
   rng_seed = 1
 ) {
   pirouette::create_alignment_params(
-    root_sequence = pirouette::create_blocked_dna(length = 1000),
+    root_sequence = pirouette::create_blocked_dna(
+      length = get_razzo_dna_alignment_length() # nolint razzo function
+    ),
     mutation_rate = 0.5 / get_razzo_crown_age(),
     rng_seed = rng_seed,
     fasta_filename = file.path(folder_name, "mbd.fasta")
