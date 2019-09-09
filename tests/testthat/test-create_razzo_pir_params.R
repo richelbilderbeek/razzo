@@ -88,7 +88,7 @@ test_that("matches article", {
   # pir_params$alignment_params
   ##############################################################################
   expect_equal(
-    pirouette::create_blocked_dna(length = 1000),
+    pirouette::create_blocked_dna(length = get_razzo_dna_alignment_length()),
     pir_params$alignment_params$root_sequence
   )
   expect_equal(
