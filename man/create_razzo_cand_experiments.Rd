@@ -9,7 +9,16 @@ create_razzo_cand_experiments(gen_experiment,
 }
 \arguments{
 \item{gen_experiment}{the generative experiment}
+
+\item{folder_name}{name of the main folder}
+}
+\value{
+a list of experiments
 }
 \description{
-Create the candidate experiments
+It needs to know what the generative experiment is,
+to exclude it from the created candidate experiments.
+}
+\author{
+Richel J.C. Bilderbeek
 }

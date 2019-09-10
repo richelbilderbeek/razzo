@@ -1,5 +1,11 @@
 #' Create the candidate experiments
+#'
+#' It needs to know what the generative experiment is,
+#' to exclude it from the created candidate experiments.
+#' @inheritParams default_params_doc
 #' @param gen_experiment the generative experiment
+#' @return a list of experiments
+#' @author Richel J.C. Bilderbeek
 create_razzo_cand_experiments <- function(
   gen_experiment,
   folder_name = peregrine::get_pff_tempfile(),
