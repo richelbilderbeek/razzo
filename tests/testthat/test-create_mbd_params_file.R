@@ -1,6 +1,7 @@
+context("test-create_file_mbd_params")
+
 test_that("use", {
 
-  skip("Issue 255, Issue #255")
   # Should create 'results/'mbd_params.csv'
   filename <- create_mbd_params_file(
     project_folder_name = get_razzo_path("razzo_project")
@@ -66,8 +67,6 @@ test_that("use", {
 })
 
 test_that("abuse", {
-
-  skip("Issue 255, Issue #255")
 
   expect_error(
     create_mbd_params_file(project_folder_name = "nonsense"),
