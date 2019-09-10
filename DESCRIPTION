@@ -21,7 +21,7 @@ Imports:
     ggplot2,
     mbd,
     peregrine (>= 0.5),
-    pirouette (>= 1.5),
+    pirouette (>= 1.5.1),
     stringr,
     testit
 Suggests:
