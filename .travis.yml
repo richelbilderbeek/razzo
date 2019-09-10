@@ -24,7 +24,7 @@ r_github_packages:
   - ropensci/babette
   - richelbilderbeek/mcbette
   - Giappo/mbd
-  - richelbilderbeek/pirouette@richel
+  - richelbilderbeek/pirouette
   - richelbilderbeek/peregrine
 
 before_install:
