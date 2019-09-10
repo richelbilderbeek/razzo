@@ -83,15 +83,12 @@ test_that("matches article", {
 
   ##############################################################################
   # pir_params$twinning_params
-  ##############################################################################
-  expect_true(!beautier::is_one_na(pir_params$twinning_params))
-  expect_equal(pir_params$twinning_params$twin_model, "birth_death")
-  expect_equal(pir_params$twinning_params$method, "random_tree")
+  # checked at 'create_razzo_twinning_params
   ##############################################################################
   # pir_params$alignment_params
   ##############################################################################
   expect_equal(
-    pirouette::create_blocked_dna(length = 1000),
+    pirouette::create_blocked_dna(length = get_razzo_dna_alignment_length()),
     pir_params$alignment_params$root_sequence
   )
   expect_equal(
@@ -131,7 +128,7 @@ test_that("matches article", {
   )
   expect_equal(
     gen_exp$inference_model$mrca_prior$mrca_distr$mean$value,
-    6.0
+    get_razzo_crown_age()
   )
   expect_equal(
     gen_exp$inference_model$mrca_prior$mrca_distr$sigma$value,

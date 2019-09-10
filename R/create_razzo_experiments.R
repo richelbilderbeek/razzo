@@ -15,22 +15,11 @@ create_razzo_experiments <- function(
     rng_seed = rng_seed
   )
   if (isTRUE(has_candidates)) {
-    cand_experiments <- pirouette::create_all_experiments(
-      exclude_model = experiments[[1]]$inference_model
+    cand_experiments <- create_razzo_cand_experiments(
+      experiments[[1]],
+      folder_name = folder_name,
+      rng_seed = rng_seed
     )
-    # Adapt to razzo
-    for (i in seq_along(cand_experiments)) {
-      cand_experiments[[i]]$inference_model$mcmc <- beautier::create_mcmc(
-        store_every = 1e3,
-        chain_length = 1e6
-      )
-      cand_experiments[[i]]$est_evidence_mcmc <- create_razzo_nested_sampling_mcmc()
-      cand_experiments[[i]]$inference_model$mrca_prior <- create_razzo_mrca_prior()
-      cand_experiments[[i]]$est_evidence_mcmc <- create_razzo_nested_sampling_mcmc()
-      cand_experiments[[i]]$beast2_options <- create_razzo_beast2_options(
-        model_type = "candidate", folder_name = folder_name, rng_seed = rng_seed
-      )
-    }
     # Copy
     for (i in seq_along(cand_experiments)) {
       experiments[[i + 1]] <- cand_experiments[[i]]

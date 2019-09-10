@@ -34,7 +34,7 @@ test_that("matches article", {
   expect_true(all(mbd_params_table$q %in% expected_qs))
   expect_true(all(expected_qs %in% mbd_params_table$q))
 
-  expected_crown_age <- 6
+  expected_crown_age <- get_razzo_crown_age()
   expect_true(all(mbd_params_table$crown_age == expected_crown_age))
 
   expected_cond <- 1

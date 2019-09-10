@@ -53,8 +53,15 @@ collect_evidences <- collect_marg_liks <- function(
   # collect data
   i <- 1
   for (p in seq_along(data_paths)) {
-    bd_data <- utils::read.csv(file.path(data_paths[p], twin_data_filename))[-1]
-    mbd_data <- utils::read.csv(file.path(data_paths[p], data_filename))[-1]
+    mbd_filename <- file.path(data_paths[p], data_filename)
+    if (!file.exists(mbd_filename)) next
+
+    bd_filename <- file.path(data_paths[p], twin_data_filename)
+    if (!file.exists(bd_filename)) next
+
+
+    bd_data <- utils::read.csv(bd_filename)[-1]
+    mbd_data <- utils::read.csv(mbd_filename)[-1]
 
     # save bd results
     i_span <- nrow(bd_data)

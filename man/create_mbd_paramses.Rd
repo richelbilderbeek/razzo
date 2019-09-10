@@ -4,7 +4,7 @@
 \alias{create_mbd_paramses}
 \title{Create a list of MBD parameters}
 \usage{
-create_mbd_paramses(n_replicates = 2)
+create_mbd_paramses(n_replicates = get_razzo_n_replicates())
 }
 \arguments{
 \item{n_replicates}{number of replicates}

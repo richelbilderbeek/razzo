@@ -46,9 +46,8 @@ test_that("matches article", {
   )
 
   ##############################################################################
-  # experiments
-  ##############################################################################
   # First and generative experiment
+  ##############################################################################
   gen_exp <- experiments[[1]]
   # --------------------
   # Inference conditions
@@ -69,7 +68,7 @@ test_that("matches article", {
   )
   expect_equal(
     gen_exp$inference_model$mrca_prior$mrca_distr$mean$value,
-    6.0
+    get_razzo_crown_age()
   )
   expect_equal(
     gen_exp$inference_model$mrca_prior$mrca_distr$sigma$value,
@@ -99,6 +98,93 @@ test_that("matches article", {
     gen_exp$est_evidence_mcmc$sub_chain_length,
     create_razzo_nested_sampling_mcmc()$sub_chain_length
   )
+
+  ##############################################################################
+  # Candidate experiment
+  ##############################################################################
+  cand_exps <- experiments[-1]
+
+
+  # General
+  for (cand_exp in cand_exps) {
+    # --------------------
+    # Inference conditions
+    # --------------------
+    expect_equal(cand_exp$inference_conditions$model_type, "candidate")
+    expect_equal(cand_exp$inference_conditions$run_if, "best_candidate")
+    # Shouldn't we measure the evidence for the generative model?
+    expect_equal(cand_exp$inference_conditions$do_measure_evidence, TRUE)
+    # --------------------
+    # Inference model
+    # --------------------
+    expect_equal(
+      cand_exp$inference_model$mrca_prior$mrca_distr$name,
+      "normal"
+    )
+    expect_equal(
+      cand_exp$inference_model$mrca_prior$mrca_distr$mean$value,
+      get_razzo_crown_age()
+    )
+    expect_equal(
+      cand_exp$inference_model$mrca_prior$mrca_distr$sigma$value,
+      0.0001
+    )
+    expect_equal(cand_exp$inference_model$mcmc$chain_length, 1e6)
+    expect_equal(cand_exp$inference_model$mcmc$store_every, 1e3)
+    expect_equal(cand_exp$est_evidence_mcmc$chain_length, 1e6)
+    # cand_exp$est_evidence_mcmc
+    expect_equal(
+      cand_exp$est_evidence_mcmc$chain_length,
+      create_razzo_nested_sampling_mcmc()$chain_length
+    )
+    expect_equal(
+      cand_exp$est_evidence_mcmc$store_every,
+      create_razzo_nested_sampling_mcmc()$store_every
+    )
+    expect_equal(
+      cand_exp$est_evidence_mcmc$epsilon,
+      create_razzo_nested_sampling_mcmc()$epsilon
+    )
+    expect_equal(
+      cand_exp$est_evidence_mcmc$particle_count,
+      create_razzo_nested_sampling_mcmc()$particle_count
+    )
+    expect_equal(
+      cand_exp$est_evidence_mcmc$sub_chain_length,
+      create_razzo_nested_sampling_mcmc()$sub_chain_length
+    )
+  }
+
+  option <- 3
+  if (option == 2) {
+    # Four days ago, I tested for all 39 models.
+    # This is perhaps the best biological setup,
+    # but I think infeasable in practice,
+    # as one simulation was still running up until this morning.
+    expect_equal(39, length(cand_exps))
+  }
+
+  if (option == 3) {
+    # Picking all 3 combination of simplest site models and tree priors
+    #
+    #  1. JC69 site model, strict clock model, Yule tree prior
+    # (G. JC69 site model, strict clock model,   BD tree prior)
+    #  2.  HKY site model, strict clock model, Yule tree prior
+    #  3.  HKY site model, strict clock model,   BD tree prior
+    expect_equal(3, length(cand_exps))
+    # site models
+    expect_equal(cand_exps[[1]]$inference_model$site_model$name, "JC69")
+    expect_equal(cand_exps[[2]]$inference_model$site_model$name, "HKY")
+    expect_equal(cand_exps[[3]]$inference_model$site_model$name, "HKY")
+    # clock models
+    expect_equal(cand_exps[[1]]$inference_model$clock_model$name, "strict")
+    expect_equal(cand_exps[[2]]$inference_model$clock_model$name, "strict")
+    expect_equal(cand_exps[[3]]$inference_model$clock_model$name, "strict")
+    # tree priors
+    expect_equal(cand_exps[[1]]$inference_model$tree_prior$name, "yule")
+    expect_equal(cand_exps[[2]]$inference_model$tree_prior$name, "yule")
+    expect_equal(cand_exps[[3]]$inference_model$tree_prior$name, "birth_death")
+  }
 })
 
 test_that("razzo naming conventions", {

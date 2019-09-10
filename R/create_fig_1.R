@@ -1,7 +1,5 @@
 #' Create figure 1
 #' @inheritParams default_params_doc
-#' @param model_type It can be either "gen" (stands for "generative") or "best"
-#'  (stands for "best candidate").
 #' @return Figure 1 as a ggplot2 plot
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
@@ -14,6 +12,9 @@ create_fig_1 <- function(
 
   ##### Satisfy R CMD check #####
   tree <- NULL; rm(tree) # nolint, fixes warning: no visible binding for global variable
+  lambda <- NULL; rm(lambda) # nolint, fixes warning: no visible binding for global variable
+  mu <- NULL; rm(mu) # nolint, fixes warning: no visible binding for global variable
+  nu <- NULL; rm(nu) # nolint, fixes warning: no visible binding for global variable
   error_value <- NULL; rm(error_value) # nolint, fixes warning: no visible binding for global variable
   inference_model <- NULL; rm(inference_model) # nolint, fixes warning: no visible binding for global variable
   quantile <- NULL; rm(quantile) # nolint, fixes warning: no visible binding for global variable

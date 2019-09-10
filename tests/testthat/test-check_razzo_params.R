@@ -211,4 +211,12 @@ test_that("check filenames", {
     check_razzo_params(razzo_params),
     "'misc_params\\$tree_filename' must end with 'mbd.tree'"
   )
+
+  # Check elements
+  razzo_params <- good_razzo_params
+  razzo_params$mbd_params$crown_age <- 12345
+  expect_error(
+    check_razzo_params(razzo_params),
+    "Crown ages in MBD param.* and inference model's MRCA prior.* must be equal"
+  )
 })
