@@ -1,4 +1,4 @@
-context("test-collect_n_mutations")
+context("test-collect_n_mb_events")
 
 test_that("use", {
 

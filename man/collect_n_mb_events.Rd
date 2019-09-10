@@ -2,7 +2,7 @@
 % Please edit documentation in R/collect_n_mb_events.R
 \name{collect_n_mb_events}
 \alias{collect_n_mb_events}
-\title{Collect the number of multiple-birth (MB) events}
+\title{Collect the number of multiple-born (MB) species}
 \usage{
 
   collect_n_mb_events(project_folder_name = get_razzo_path("razzo_project"))
@@ -12,11 +12,11 @@
 will be the full path to \code{razzo_project}}
 }
 \value{
-a dataframe with folder and number of multiple-birth (MB) events
+a dataframe with folder and number of multiple-born (MB) species
 }
 \description{
-Collect the number of multiple-birth (MB) events
+Collect the number of multiple-born (MB) species
 }
 \author{
-Richel J.C. Bilderbeek
+Richel J.C. Bilderbeek, Giovanni Laudanno
 }
