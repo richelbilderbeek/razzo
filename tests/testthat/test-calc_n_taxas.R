@@ -3,7 +3,7 @@ test_that("use", {
   # Issue 278, Issue #278: 'calc_n_taxas' is only a stub
 
   # Create a testing parameter set
-   mbd_paramses <- create_test_mbd_paramses()
+  mbd_paramses <- create_test_mbd_paramses()
 
   # Per mbd_params, get the number of taxa of the true tree,
   # e.g. by simulating it in the same way razzo already does

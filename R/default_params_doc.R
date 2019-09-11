@@ -74,6 +74,7 @@
 #'   set of \code{razzo} experiment.
 #'   Use create \link{create_razzo_paramses} or
 #'   \link{create_test_razzo_paramses} to create such a list
+#' @param rng_seed a random number generator seed
 #' @param sample_interval the interval at which the MCMC algorithm
 #'   makes a measurement
 #' @param sequence_length the length of each DNA sequence in an alignment
@@ -142,6 +143,7 @@ default_params_doc <- function(
   q,
   razzo_params,
   razzo_paramses,
+  rng_seed,
   sample_interval,
   seed,
   sequence_length,

@@ -14,8 +14,8 @@ default_params_doc(alignment, alignment_params, bd_mutation_rate, bd_tree,
   misc_params, model_type, mu, mutation_rate, n_replicates, nu, nu_events,
   parameters, parameter_filename, parameters_filename, phylo, pir_params,
   posterior_trees, precision, project_folder_name, q, razzo_params,
-  razzo_paramses, sample_interval, seed, sequence_length, sim_pars,
-  sim_phylo, site_model, sub_chain_length, tree, tree_filename,
+  razzo_paramses, rng_seed, sample_interval, seed, sequence_length,
+  sim_pars, sim_phylo, site_model, sub_chain_length, tree, tree_filename,
   trees_filename, twinning_params, verbose)
 }
 \arguments{
@@ -137,6 +137,8 @@ and used by \link{run_razzo}}
 set of \code{razzo} experiment.
 Use create \link{create_razzo_paramses} or
 \link{create_test_razzo_paramses} to create such a list}
+
+\item{rng_seed}{a random number generator seed}
 
 \item{sample_interval}{the interval at which the MCMC algorithm
 makes a measurement}

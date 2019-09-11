@@ -13,7 +13,7 @@ calc_n_taxas <- function(mbd_paramses) {
   # STUB! These are just rounded off random values
   # Instead, simulate per MBD params set an MBD tree and
   # count the number of taxa
-  n_taxa <- round(runif(n = length(mbd_paramses), min = 2, max = 1000))
+  n_taxa <- round(stats::runif(n = length(mbd_paramses), min = 2, max = 1000))
 
   # Simple data structure
   testit::assert(length(mbd_paramses) == length(n_taxa))

@@ -11,6 +11,8 @@ create_razzo_cand_experiments(gen_experiment,
 \item{gen_experiment}{the generative experiment}
 
 \item{folder_name}{name of the main folder}
+
+\item{rng_seed}{a random number generator seed}
 }
 \value{
 a list of experiments

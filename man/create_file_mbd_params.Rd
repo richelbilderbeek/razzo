@@ -2,6 +2,7 @@
 % Please edit documentation in R/create_file_mbd_params.R
 \name{create_file_mbd_params}
 \alias{create_file_mbd_params}
+\alias{create_mbd_params_file}
 \title{Collect all MBD parameters of a \code{razzo} run and put these
 in one \code{.csv} file called \code{results/mbd_params.csv}}
 \usage{
