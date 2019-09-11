@@ -7,33 +7,34 @@
 #'   containing the number of taxa each MBD parameter set will create
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
-calc_n_taxas <- function(mbd_paramses) {
+calc_n_taxas <- function(
+  mbd_paramses
+) {
   check_mbd_paramses(mbd_paramses)
 
   # STUB! These are just rounded off random values
   # Instead, simulate per MBD params set an MBD tree and
   # count the number of taxa
-  n_taxa <- round(stats::runif(n = length(mbd_paramses), min = 2, max = 1000))
   n_0 <- 2
-  max_seed <- 1e2
-  for (m in seq_along(mbd_paramses)) {
-    pars <- mbd_paramses[[m]]
-    n_taxa_seed <- rep(NA, max_seed)
-    for (seed in 1:max_seed) {
-      brts <- mbd::mbd_sim(
-        pars = c(pars$lambda, pars$mu, pars$nu, pars$q),
-        n_0 = n_0,
-        age = pars$crown_age,
-        cond = pars$cond,
-        seed = pars$seed
-      )$brts
-      n_taxa_seed[seed] <- length(x$brts) + n_0 - 1
-    }
-    out <- n_taxa_seed
+  x <- data.frame(matrix(
+    unlist(mbd_paramses),
+    ncol = length(mbd_paramses[[1]]),
+    byrow = TRUE
+  ))
+  colnames(x) <- names(mbd_paramses[[1]])
+  x <- x %>% dplyr::distinct()
+  n_taxas <- rep(NA, nrow(x))
+  for (m in 1:nrow(x)) {
+    pars <- x[m, ]
+    brts <- mbd::mbd_sim(
+      pars = c(pars$lambda, pars$mu, pars$nu, pars$q),
+      n_0 = n_0,
+      age = pars$crown_age,
+      cond = pars$cond,
+      seed = pars$seed
+    )$brts
+    n_taxas[m] <- length(brts) + n_0 - 1
   }
-  mbd_paramses
-
-  # Simple data structure
-  testit::assert(length(mbd_paramses) == length(n_taxa))
-  n_taxa
+  testit::assert(length(mbd_paramses) == length(n_taxas))
+  n_taxas
 }
