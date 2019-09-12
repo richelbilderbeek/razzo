@@ -9,6 +9,8 @@ Branch|[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)|[![AppVeyor
 
 Research project by Giovanni Laudanno and Richel J.C. Bilderbeek.
 
+![](pics/razzo_logo.png)
+
 Primary tasks:
 
  * Giovanni Laudanno: making each step right
