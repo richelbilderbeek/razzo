@@ -16,9 +16,14 @@ test_that("use", {
 
   # No secondary key needed here :-)
 
+  skip("#290")
   # Measurement
-  expect_true("n_mb_events" %in% names(df))
-  assertive::assert_all_are_whole_numbers(df$n_mb_events)
+  expect_true("n_mb_species" %in% names(df))
+  expect_true("f_mb_species" %in% names(df))
+  assertive::assert_all_are_whole_numbers(df$n_mb_species)
+  assertive::assert_is_numeric(df$f_mb_species)
+  expect_true(all(df$f_mb_species >= 0.0))
+  expect_true(all(df$f_mb_species <= 1.0))
 
   # Folder names are strings, not factors
   assertive::assert_all_are_non_empty_character(df$folder)
