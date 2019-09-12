@@ -1,5 +1,3 @@
-context("test-collect_n_mb_events")
-
 test_that("use", {
 
   if (1 == 2) {
@@ -12,7 +10,7 @@ test_that("use", {
       run_razzo(open_parameters_file(file))
     }
   }
-  df <- collect_n_mb_events(
+  df <- collect_n_mb_species(
     project_folder_name = get_razzo_path("razzo_project")
   )
 

@@ -3,7 +3,7 @@
 #' @return a dataframe with folder and number of multiple-born (MB) species
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
-collect_n_mb_events <- function(
+collect_n_mb_species <- function(
   project_folder_name = get_razzo_path("razzo_project")
 ) {
   check_project_folder_name(project_folder_name) # nolint razzo function
