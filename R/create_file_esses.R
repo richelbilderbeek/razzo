@@ -1,8 +1,8 @@
-#' Create the dataframe with esses data
+#' Create the dataframe with the Effective Samples Sizes (ESSes)
 #' and save it as a file
 #' @inheritParams default_params_doc
-#' @return the esses
-#' @author Giovanni Laudanno
+#' @return the filename
+#' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @aliases create_file_esses create_esses_file
 #' @export create_file_esses create_esses_file
 create_file_esses <- create_esses_file <- function(

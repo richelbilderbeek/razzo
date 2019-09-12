@@ -1,6 +1,5 @@
 test_that("use", {
 
-  skip("Issue #289")
   # Should create 'results/'marg_liks.csv'
   filename <- create_n_mb_species_file(
     project_folder_name = get_razzo_path("razzo_project")
@@ -31,7 +30,6 @@ test_that("use", {
 })
 
 test_that("abuse", {
-  skip("Issue #289")
   expect_error(
     create_n_mb_species_file(project_folder_name = "nonsense"),
     "'project_folder_name' must end with 'razzo_project'"
