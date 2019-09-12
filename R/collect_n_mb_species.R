@@ -46,8 +46,8 @@ collect_n_mb_species <- function(
 
   assertive::assert_all_are_whole_numbers(df$n_mb_species)
   assertive::assert_is_numeric(df$f_mb_species)
-  expect_true(all(df$f_mb_species >= 0.0))
-  expect_true(all(df$f_mb_species <= 1.0))
+  testit::assert(all(df$f_mb_species >= 0.0))
+  testit::assert(all(df$f_mb_species <= 1.0))
 
   df
 }
