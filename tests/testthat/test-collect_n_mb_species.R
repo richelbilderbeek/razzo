@@ -16,8 +16,7 @@ test_that("use", {
 
   # No secondary key needed here :-)
 
-  skip("#290")
-  # Measurement
+  # Measurements
   expect_true("n_mb_species" %in% names(df))
   expect_true("f_mb_species" %in% names(df))
   assertive::assert_all_are_whole_numbers(df$n_mb_species)
