@@ -26,7 +26,7 @@ test_that("matches article", {
   expect_true(all(mbd_params_table$mu %in% expected_mus))
   expect_true(all(expected_mus %in% mbd_params_table$mu))
 
-  expected_nus <- c(1.0, 1.5, 2.0, 2.5)
+  expected_nus <- c(0.0, 0.5, 1.0, 2.0)
   expect_true(all(mbd_params_table$nu %in% expected_nus))
   expect_true(all(expected_nus %in% mbd_params_table$nu))
 

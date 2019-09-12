@@ -4,8 +4,8 @@
 \alias{create_mbd_params_table}
 \title{Create a table of which each row holds a unique MBD parameter combination.}
 \usage{
-create_mbd_params_table(lambda = 0.2, mu = c(0, 0.15), nu = c(1, 1.5,
-  2, 2.5), q = c(0.1, 0.15, 0.2),
+create_mbd_params_table(lambda = 0.2, mu = c(0, 0.15), nu = c(0, 0.5,
+  1, 2), q = c(0.1, 0.15, 0.2),
   n_replicates = get_razzo_n_replicates(),
   crown_age = get_razzo_crown_age(), cond = 1)
 }
