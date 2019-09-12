@@ -3,7 +3,7 @@
 \name{create_file_esses}
 \alias{create_file_esses}
 \alias{create_esses_file}
-\title{Create the dataframe with esses data
+\title{Create the dataframe with the Effective Samples Sizes (ESSes)
 and save it as a file}
 \usage{
 create_file_esses(project_folder_name = getwd())
@@ -13,12 +13,12 @@ create_file_esses(project_folder_name = getwd())
 will be the full path to \code{razzo_project}}
 }
 \value{
-the esses
+the filename
 }
 \description{
-Create the dataframe with esses data
+Create the dataframe with the Effective Samples Sizes (ESSes)
 and save it as a file
 }
 \author{
-Giovanni Laudanno
+Giovanni Laudanno, Richel J.C. Bilderbeek
 }

@@ -1,5 +1,3 @@
-context("test-create_marg_liks_file")
-
 test_that("use", {
 
   # Should create 'results/'marg_liks.csv'

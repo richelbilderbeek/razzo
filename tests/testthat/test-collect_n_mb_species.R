@@ -1,5 +1,3 @@
-context("test-collect_n_mb_events")
-
 test_that("use", {
 
   if (1 == 2) {
@@ -12,15 +10,19 @@ test_that("use", {
       run_razzo(open_parameters_file(file))
     }
   }
-  df <- collect_n_mb_events(
+  df <- collect_n_mb_species(
     project_folder_name = get_razzo_path("razzo_project")
   )
 
   # No secondary key needed here :-)
 
-  # Measurement
-  expect_true("n_mb_events" %in% names(df))
-  assertive::assert_all_are_whole_numbers(df$n_mb_events)
+  # Measurements
+  expect_true("n_mb_species" %in% names(df))
+  expect_true("f_mb_species" %in% names(df))
+  assertive::assert_all_are_whole_numbers(df$n_mb_species)
+  assertive::assert_is_numeric(df$f_mb_species)
+  expect_true(all(df$f_mb_species >= 0.0))
+  expect_true(all(df$f_mb_species <= 1.0))
 
   # Folder names are strings, not factors
   assertive::assert_all_are_non_empty_character(df$folder)
