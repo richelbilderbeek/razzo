@@ -5,7 +5,6 @@
 #' @author Giovanni Laudanno
 #' @export
 measure_taxa_and_mbness <- function(n_replicates = 1e4) {
-  n_replicates <- 2
   n_0 <- 2
   x <- create_mbd_params_table(n_replicates = n_replicates)
   x <- x %>% dplyr::distinct()
