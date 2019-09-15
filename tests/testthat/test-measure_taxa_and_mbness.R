@@ -9,8 +9,8 @@ test_that("use", {
   expect_true("crown_age" %in% names(df))
   expect_true("cond" %in% names(df))
   expect_true("seed" %in% names(df))
-  expect_true("n_taxa" %in% names(df))
-  expect_true("precentage_mb_species" %in% names(df))
+  expect_true("n_taxas" %in% names(df))
+  expect_true("percentage_mb_species" %in% names(df))
   expect_true("setting" %in% names(df))
 
   # Values
