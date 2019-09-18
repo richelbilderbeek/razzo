@@ -9,7 +9,7 @@ Branch|[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)|[![AppVeyor
 
 Research project by Giovanni Laudanno and Richel J.C. Bilderbeek.
 
-![](pics/razzo_logo.png)
+![](pics/razzo_logo_2.png)
 
 Primary tasks:
 
@@ -60,3 +60,10 @@ Package|[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)|[![Codecov
 [mauricer](https://github.com/ropensci/mauricer)|[![Build Status](https://travis-ci.org/ropensci/mauricer.svg?branch=master)](https://travis-ci.org/ropensci/mauricer)|[![codecov.io](https://codecov.io/github/ropensci/mauricer/coverage.svg?branch=master)](https://codecov.io/github/ropensci/mauricer/branch/master)
 [mbd](https://github.com/Giappo/mbd)|[![Build Status](https://travis-ci.org/Giappo/mbd.svg?branch=master)](https://travis-ci.org/Giappo/mbd)|[![codecov.io](https://codecov.io/github/Giappo/mbd/coverage.svg?branch=master)](https://codecov.io/github/Giappo/mbd/branch/master)
 [tracerer](https://github.com/ropensci/tracerer)|[![Build Status](https://travis-ci.org/ropensci/tracerer.svg?branch=master)](https://travis-ci.org/ropensci/tracerer)|[![codecov.io](https://codecov.io/github/ropensci/tracerer/coverage.svg?branch=master)](https://codecov.io/github/ropensci/tracerer/branch/master)
+
+
+## Image attribution
+
+From https://commons.wikimedia.org/wiki/File:RocketX.png
+
+Image comes from Template:Http://wpclipart.com which ONLY features public domain images and provides extensive source information on their &quot;Legal&quot; page: Template:Http://www.wpclipart.com/legal.html [Public domain]
