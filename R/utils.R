@@ -36,24 +36,24 @@ open_parameters_file <- function(
 ) {
   beautier::check_file_exists(parameters_filename)
 
-  parameters <- NULL
+  razzo_params <- NULL
   if (
     tools::file_ext(parameters_filename) == "Rda" ||
     tools::file_ext(parameters_filename) == "RDa"
   ) {
-    parameters <- readRDS(parameters_filename)
-    check_razzo_params(parameters)
+    razzo_params <- readRDS(parameters_filename)
+    check_razzo_params(razzo_params)
   } else {
     # Remove the first column, as it is an unused row name
-    parameters <- utils::read.csv(parameters_filename)[, -1]
+    razzo_params <- utils::read.csv(parameters_filename)[, -1]
 
-    testit::assert(parameters$lambda >= 0)
-    testit::assert(parameters$mu >= 0)
-    testit::assert(parameters$nu >= 0)
-    testit::assert(parameters$q >= 0)
-    testit::assert(parameters$q <= 1)
+    testit::assert(razzo_params$mbd_params$lambda >= 0)
+    testit::assert(razzo_params$mbd_params$mu >= 0)
+    testit::assert(razzo_params$mbd_params$nu >= 0)
+    testit::assert(razzo_params$mbd_params$q >= 0)
+    testit::assert(razzo_params$mbd_params$q <= 1)
   }
-  parameters
+  razzo_params
 }
 
 #' Get the names of the supported generative models
