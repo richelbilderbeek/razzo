@@ -12,6 +12,4 @@ update_razzo <- function() {
       upgrade = "always"
     )
   }
-  # Restart R
-  .rs.restartR()
 }
