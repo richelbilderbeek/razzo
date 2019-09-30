@@ -177,22 +177,22 @@ create_fig_1 <- function(
     ),
     warn_missing = FALSE
   )
-  inference_model_labels <- c("Best", "Generative")
-  names(inference_model_labels) <- c("Generative", "Best")
 
   ##### Plot #####
   mus <- unique(df_long$mu)
   plots_mu <- vector("list", length(mus))
   for (i_mu in seq_along(mus)) {
     df_mu <- df_long[df_long$mu == mus[i_mu], ]
-    plots_mu[[i_mu]] <- ggplot2::ggplot(
-      data = df_mu,
-      ggplot2::aes(
-        x = error_value,
-        color = tree_and_model,
-        fill = tree_and_model
-      )
-    ) +
+    medians_mu <- medians[medians$mu == mus[i_mu], ]
+    plots_mu[[i_mu]] <-
+      ggplot2::ggplot(
+        data = df_mu,
+        ggplot2::aes(
+          x = error_value,
+          color = tree_and_model,
+          fill = tree_and_model
+        )
+      ) +
       ggplot2::geom_histogram(
         data = df_mu,
         ggplot2::aes(y = bindwidth * ..density..), # nolint the dots in ..density.. are not improper ways to separate words here
@@ -223,7 +223,7 @@ create_fig_1 <- function(
         xlim = c(min(df_mu$error_value), x_top)
       ) +
       ggplot2::geom_vline(
-        data = medians,
+        data = medians_mu,
         ggplot2::aes(
           xintercept = median,
           color = tree_and_model
