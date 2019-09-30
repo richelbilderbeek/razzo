@@ -16,7 +16,7 @@ LazyData: true
 RoxygenNote: 6.1.1
 Imports: 
     ape,
-    beastier (>= 2.0.23),
+    beastier (>= 2.0.24),
     beautier (>= 2.2.2),
     ggplot2,
     mbd,
