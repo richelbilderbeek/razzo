@@ -47,6 +47,7 @@ devtools::install_github("ropensci/mauricer")
 devtools::install_github("ropensci/babette")
 devtools::install_github("Giappo/mbd")
 devtools::install_github("richelbilderbeek/pirouette")
+devtools::install_github("richelbilderbeek/peregrine")
 devtools::install_github("richelbilderbeek/razzo")
 ```
 
