@@ -92,7 +92,7 @@ test_that("matches article", {
     pir_params$alignment_params$root_sequence
   )
   expect_equal(
-    0.5 / get_razzo_crown_age(),
+    get_razzo_mutation_rate(),
     pir_params$alignment_params$mutation_rate
   )
   expect_equal(

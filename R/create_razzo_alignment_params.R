@@ -12,7 +12,7 @@ create_razzo_alignment_params <- function(
     root_sequence = pirouette::create_blocked_dna(
       length = get_razzo_dna_alignment_length() # nolint razzo function
     ),
-    mutation_rate = 0.5 / get_razzo_crown_age(),
+    mutation_rate = get_razzo_mutation_rate(),
     rng_seed = rng_seed,
     fasta_filename = file.path(folder_name, "mbd.fasta")
   )
