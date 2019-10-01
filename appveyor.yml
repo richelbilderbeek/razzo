@@ -29,6 +29,7 @@ build_script:
   - travis-tool.sh install_github ropensci/babette
   - travis-tool.sh install_github richelbilderbeek/mcbette
   - travis-tool.sh install_github richelbilderbeek/pirouette
+  - travis-tool.sh install_github richelbilderbeek/peregrine
   - travis-tool.sh install_github Giappo/mbd
   - travis-tool.sh install_github richelbilderbeek/razzo
   - travis-tool.sh install_deps
