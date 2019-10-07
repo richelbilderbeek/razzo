@@ -2,12 +2,12 @@
 % Please edit documentation in R/get_razzo_mutation_rate.R
 \name{get_razzo_mutation_rate}
 \alias{get_razzo_mutation_rate}
-\title{Get the razzo mutation rate, 
+\title{Get the razzo mutation rate,
 as used in the article}
 \usage{
 get_razzo_mutation_rate()
 }
 \description{
-Get the razzo mutation rate, 
+Get the razzo mutation rate,
 as used in the article
 }
