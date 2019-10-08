@@ -15,10 +15,11 @@ library(mcbette)
 library(ggplot2)
 
 inference_model <- mcbette::create_test_ns_inference_model()
+inference_model$mcmc$chain_length <- 1e7
 beast2_options <- mcbette::create_mcbette_beast2_options(rng_seed = 42)
 
-epsilons <- c(0.01, 1.0, 100.0)
-n_particleses <- c(1, 2)
+epsilons <- c(1e-16, 1.0, 1e16)
+n_particleses <- c(1, 2, 4)
 
 df <- expand.grid(epsilons, n_particleses)
 names(df) <- c("epsilon", "n_particles")
@@ -36,4 +37,10 @@ for (i in seq(1, nrow(df))) {
   df$marg_log_lik_sd[i] <- evidence$marg_log_lik_sd
 }
 df
+
+cat(
+  knitr::kable(df, format = "markdown"),
+  sep = "\n",
+  file = "~/GitHubs/razzo/scripts/issue_294.md"
+)
 
