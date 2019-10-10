@@ -23,7 +23,6 @@ test_that("can plug in mbd.TaxaAndMbness::create_params_table", {
 })
 
 test_that("matches article", {
-  skip("No need to match article for exploration in #336")
   # Issue 242, Isssue #242
   n_replicates <- 1
   mbd_params_table <- create_mbd_params_table(
