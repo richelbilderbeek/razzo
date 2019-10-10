@@ -1,5 +1,7 @@
 test_that("use", {
-  expect_silent(check_mbd_paramses(create_mbd_paramses()))
+  expect_silent(
+    check_mbd_paramses(
+      create_mbd_paramses()))
 })
 
 test_that("no duplicates", {

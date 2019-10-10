@@ -20,18 +20,3 @@ test_that("equal values as table", {
     expect_equal(df$seed[i], mbd_params$seed)
   }
 })
-
-test_that("can plug in mbd.TaxaAndMbness::create_params_table", {
-
-  mbd_paramses <- create_mbd_paramses()
-  for (mbd_params in mbd_paramses) {
-    expect_silent(check_mbd_params(mbd_params))
-  }
-
-  mbd_paramses <- mbd.TaxaAndMbness::create_params_table()
-  for (mbd_params in mbd_paramses) {
-    expect_silent(check_mbd_params(mbd_params))
-  }
-
-
-})

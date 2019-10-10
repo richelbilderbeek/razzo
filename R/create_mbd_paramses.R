@@ -18,7 +18,7 @@ create_mbd_paramses <- function(
   n_replicates = get_razzo_n_replicates()
 ) {
   df <- create_mbd_params_table(
-    n_replicates = n_replicates,
+    n_replicates = n_replicates
   )
   n_paramses <- nrow(df)
   testit::assert(n_paramses > 0)
