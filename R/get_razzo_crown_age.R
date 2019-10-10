@@ -3,5 +3,5 @@
 #' @author Richel J.C. Bilderbeek
 #' @export
 get_razzo_crown_age <- function() {
-  5.0
+  6.0
 }
