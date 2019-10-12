@@ -6,8 +6,7 @@
 \usage{
 create_razzo_paramses(project_folder_name,
   mbd_paramses = create_mbd_paramses(),
-  error_measure_params = pirouette::create_error_measure_params(),
-  mcmc_chain_length = beautier::create_mcmc()$chain_length)
+  error_measure_params = pirouette::create_error_measure_params())
 }
 \arguments{
 \item{project_folder_name}{project folder name,
@@ -20,8 +19,6 @@ this data frame will hold 10 rows, each with different seeds}
 \item{error_measure_params}{parameters to set how the error
 between given tree and inferred trees in measure,
 as can be created by \code{\link[pirouette]{create_error_measure_params}}}
-
-\item{mcmc_chain_length}{length of an MCMC}
 }
 \value{
 a set of \code{razzo_params}
