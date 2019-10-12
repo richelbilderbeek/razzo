@@ -30,10 +30,10 @@
 create_mbd_params_table <- function(
   lambdas = c(0.2),
   mus = c(0, 0.1),
-  nus = c(0, 0.5, 1.0, 1.5),
+  nus = get_razzo_nus(),
   qs = c(0.1, 0.15, 0.2),
   cond = 1,
-  crown_age = 8,
+  crown_age = get_razzo_crown_age(),
   n_replicates = 2
 ) {
 
