@@ -6,7 +6,8 @@
 \usage{
 create_mbd_params_table(lambdas = c(0.2), mus = get_razzo_mus(),
   nus = get_razzo_nus(), qs = get_razzo_qs(), cond = 1,
-  crown_age = get_razzo_crown_age(), n_replicates = 2)
+  crown_age = get_razzo_crown_age(),
+  n_replicates = get_razzo_n_replicates())
 }
 \arguments{
 \item{cond}{conditioning as specified in \code{\link[mbd]{mbd_sim}}}

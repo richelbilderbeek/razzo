@@ -34,7 +34,7 @@ create_mbd_params_table <- function(
   qs = get_razzo_qs(),
   cond = 1,
   crown_age = get_razzo_crown_age(),
-  n_replicates = 2
+  n_replicates = get_razzo_n_replicates()
 ) {
 
   x <- expand.grid(lambda = lambdas, mu = mus, nu = nus, q = qs)
