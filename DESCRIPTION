@@ -33,7 +33,6 @@ Suggests:
     dplyr,
     knitr,
     lintr,
-    mbd.TaxaAndMbness,
     nLTT,
     plyr,
     tidyr,
