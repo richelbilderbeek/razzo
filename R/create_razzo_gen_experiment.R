@@ -17,8 +17,8 @@ create_razzo_gen_experiment <- function(
     inference_model = beautier::create_inference_model(
       tree_prior = beautier::create_bd_tree_prior(),
       mcmc = beautier::create_mcmc(
-        chain_length = 1e6,
-        store_every = 1e3
+        chain_length = get_razzo_mcmc_chain_length(),
+        store_every = get_razzo_mcmc_store_every()
       ),
       mrca_prior = create_razzo_mrca_prior()
     ),

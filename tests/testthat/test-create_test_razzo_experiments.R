@@ -77,17 +77,26 @@ test_that("values", {
     gen_exp$inference_model$mrca_prior$mrca_distr$sigma$value,
     0.0001
   )
-  expect_equal(gen_exp$inference_model$mcmc$chain_length, 3e3)
-  expect_equal(gen_exp$inference_model$mcmc$store_every, 1e3)
-  expect_equal(gen_exp$est_evidence_mcmc$chain_length, 1e6)
+  expect_equal(
+    gen_exp$inference_model$mcmc$chain_length,
+    3e3
+  )
+  expect_equal(
+    gen_exp$inference_model$mcmc$store_every,
+    1e3
+  )
+  expect_equal(
+    gen_exp$est_evidence_mcmc$chain_length,
+    3e3
+  )
   # gen_exp$est_evidence_mcmc
   expect_equal(
     gen_exp$est_evidence_mcmc$chain_length,
-    create_razzo_nested_sampling_mcmc()$chain_length
+    3e3
   )
   expect_equal(
     gen_exp$est_evidence_mcmc$store_every,
-    create_razzo_nested_sampling_mcmc()$store_every
+    1e3
   )
   expect_equal(
     gen_exp$est_evidence_mcmc$epsilon,

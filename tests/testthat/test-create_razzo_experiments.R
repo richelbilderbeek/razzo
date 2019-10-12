@@ -74,9 +74,18 @@ test_that("matches article", {
     gen_exp$inference_model$mrca_prior$mrca_distr$sigma$value,
     0.0001
   )
-  expect_equal(gen_exp$inference_model$mcmc$chain_length, 1e6)
-  expect_equal(gen_exp$inference_model$mcmc$store_every, 1e3)
-  expect_equal(gen_exp$est_evidence_mcmc$chain_length, 1e6)
+  expect_equal(
+    gen_exp$inference_model$mcmc$chain_length,
+    get_razzo_mcmc_chain_length()
+  )
+  expect_equal(
+    gen_exp$inference_model$mcmc$store_every,
+    get_razzo_mcmc_store_every()
+  )
+  expect_equal(
+    gen_exp$est_evidence_mcmc$chain_length,
+    get_razzo_mcmc_chain_length()
+  )
   # gen_exp$est_evidence_mcmc
   expect_equal(
     gen_exp$est_evidence_mcmc$chain_length,
@@ -129,9 +138,18 @@ test_that("matches article", {
       cand_exp$inference_model$mrca_prior$mrca_distr$sigma$value,
       0.0001
     )
-    expect_equal(cand_exp$inference_model$mcmc$chain_length, 1e6)
-    expect_equal(cand_exp$inference_model$mcmc$store_every, 1e3)
-    expect_equal(cand_exp$est_evidence_mcmc$chain_length, 1e6)
+    expect_equal(
+      cand_exp$inference_model$mcmc$chain_length,
+      get_razzo_mcmc_chain_length()
+    )
+    expect_equal(
+      cand_exp$inference_model$mcmc$store_every,
+      get_razzo_mcmc_store_every()
+    )
+    expect_equal(
+      cand_exp$est_evidence_mcmc$chain_length,
+      get_razzo_mcmc_chain_length()
+    )
     # cand_exp$est_evidence_mcmc
     expect_equal(
       cand_exp$est_evidence_mcmc$chain_length,
