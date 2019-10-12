@@ -29,9 +29,9 @@
 #' @export
 create_mbd_params_table <- function(
   lambdas = c(0.2),
-  mus = c(0, 0.1),
+  mus = get_razzo_mus(),
   nus = get_razzo_nus(),
-  qs = c(0.1, 0.15, 0.2),
+  qs = get_razzo_qs(),
   cond = 1,
   crown_age = get_razzo_crown_age(),
   n_replicates = 2
