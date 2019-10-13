@@ -33,7 +33,7 @@ Suggests:
     dplyr,
     knitr,
     lintr,
-    nLTT,
+    nLTT (>=1.4.2),
     plyr,
     tidyr,
     rappdirs,

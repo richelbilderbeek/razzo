@@ -24,6 +24,7 @@ r_github_packages:
   - ropensci/babette
   - richelbilderbeek/mcbette
   - Giappo/mbd
+  - thijsjanzen/nodeSub
   - richelbilderbeek/pirouette
   - richelbilderbeek/peregrine
 
