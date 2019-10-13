@@ -123,3 +123,9 @@ Status|Description|Function name
 ?|Collect effective sample sizes|`create_esses_file`
 ?|Create nLTT statistics file|`create_nltt_stats_file`
 ?|Create figure 1|`create_fig_1_file`
+
+### How to create the dependency graph from the `.dot` file?
+
+```
+dot -Tps dependencies.dot -o dependencies.ps; convert dependencies.ps dependencies.png
+```
