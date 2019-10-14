@@ -22,7 +22,7 @@ test_that("matches article", {
   expect_true(all(mbd_params_table$lambda %in% expected_lambdas))
   expect_true(all(expected_lambdas %in% mbd_params_table$lambda))
 
-  expected_mus <- c(0.0, 0.15)
+  expected_mus <- get_razzo_mus()
   expect_true(all(mbd_params_table$mu %in% expected_mus))
   expect_true(all(expected_mus %in% mbd_params_table$mu))
 
@@ -30,7 +30,7 @@ test_that("matches article", {
   expect_true(all(mbd_params_table$nu %in% expected_nus))
   expect_true(all(expected_nus %in% mbd_params_table$nu))
 
-  expected_qs <- c(0.10, 0.15, 0.20)
+  expected_qs <- get_razzo_qs()
   expect_true(all(mbd_params_table$q %in% expected_qs))
   expect_true(all(expected_qs %in% mbd_params_table$q))
 

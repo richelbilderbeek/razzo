@@ -28,36 +28,25 @@
 #' expect_true("seed" %in% names(df))
 #' @export
 create_mbd_params_table <- function(
-  lambda = 0.2,
-  mu = c(0, 0.15),
-  nu = get_razzo_nus(),
-  q = c(0.1, 0.15, 0.2),
-  n_replicates = get_razzo_n_replicates(),
+  lambdas = c(0.2),
+  mus = get_razzo_mus(),
+  nus = get_razzo_nus(),
+  qs = get_razzo_qs(),
+  cond = 1,
   crown_age = get_razzo_crown_age(),
-  cond = 1
+  n_replicates = 2
 ) {
-  lambda <- unique(lambda)
-  mu <- unique(mu)
-  nu <- unique(nu)
-  q <- unique(q)
-  seed <- 1:n_replicates
-  mbd_params_table <- expand.grid(
-    seed = seed,
-    lambda = lambda,
-    mu = mu,
-    nu = nu,
-    q = q,
-    crown_age = crown_age,
-    cond = cond
-  )
-  seeds <- 1:nrow(mbd_params_table)
-  mbd_params_table$seed <- NULL
-  mbd_params_table$seed <- seeds
-  testit::assert(
-   length(crown_age) == 1
-  )
-  testit::assert(
-   length(cond) == 1
-  )
-  mbd_params_table
+
+  x <- expand.grid(lambda = lambdas, mu = mus, nu = nus, q = qs)
+  no_mbd_lines <-
+    apply(X = x, MARGIN = 1, FUN = function(y) y[3] == 0 | y[4] == 0)
+  no_mbd_x <- expand.grid(lambda = lambdas, mu = mus, nu = 0, q = 0)
+  x[no_mbd_lines, ] <- no_mbd_x
+  x <- dplyr::distinct(x)
+  x$crown_age <- crown_age
+  x$cond <- cond
+  x2 <- x[rep(1:nrow(x), rep(n_replicates, nrow(x))), ]
+  x2$seed <- 1:nrow(x2)
+  rownames(x2) <- NULL
+  x2
 }

@@ -4,27 +4,16 @@
 \alias{create_mbd_params_table}
 \title{Create a table of which each row holds a unique MBD parameter combination.}
 \usage{
-create_mbd_params_table(lambda = 0.2, mu = c(0, 0.15),
-  nu = get_razzo_nus(), q = c(0.1, 0.15, 0.2),
-  n_replicates = get_razzo_n_replicates(),
-  crown_age = get_razzo_crown_age(), cond = 1)
+create_mbd_params_table(lambdas = c(0.2), mus = get_razzo_mus(),
+  nus = get_razzo_nus(), qs = get_razzo_qs(), cond = 1,
+  crown_age = get_razzo_crown_age(), n_replicates = 2)
 }
 \arguments{
-\item{lambda}{per-lineage speciation rate. See \code{\link[mbd]{mbd_sim}}}
-
-\item{mu}{per-species extinction rate. See \code{\link[mbd]{mbd_sim}}}
-
-\item{nu}{the rate at which a multiple-birth specation is triggered.
-See \code{\link[mbd]{mbd_sim}}}
-
-\item{q}{per-species speciation probability in case of occurrance of
-a multiple event. See \code{\link[mbd]{mbd_sim}}}
-
-\item{n_replicates}{number of replicates}
+\item{cond}{conditioning as specified in \code{\link[mbd]{mbd_sim}}}
 
 \item{crown_age}{The crown age of the tree.}
 
-\item{cond}{conditioning as specified in \code{\link[mbd]{mbd_sim}}}
+\item{n_replicates}{number of replicates}
 }
 \value{
 a data frame with the following columns:
