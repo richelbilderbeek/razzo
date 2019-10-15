@@ -24,6 +24,7 @@ r_github_packages:
   - ropensci/babette
   - richelbilderbeek/mcbette
   - Giappo/mbd
+  - Giappo/mbd.SimTree
   - thijsjanzen/nodeSub
   - richelbilderbeek/nLTT
   - richelbilderbeek/pirouette
