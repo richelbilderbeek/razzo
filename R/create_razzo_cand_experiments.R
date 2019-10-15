@@ -46,8 +46,8 @@ create_razzo_cand_experiments <- function(
   # Adapt to razzo
   for (i in seq_along(cand_experiments)) {
     cand_experiments[[i]]$inference_model$mcmc <- beautier::create_mcmc(
-      store_every = 1e3,
-      chain_length = 1e6
+      store_every = get_razzo_mcmc_store_every(),
+      chain_length = get_razzo_mcmc_chain_length()
     )
     cand_experiments[[i]]$est_evidence_mcmc <- create_razzo_nested_sampling_mcmc()
     cand_experiments[[i]]$inference_model$mrca_prior <- create_razzo_mrca_prior()

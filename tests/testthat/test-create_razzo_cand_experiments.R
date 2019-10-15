@@ -1,4 +1,5 @@
-test_that("use", {
+test_that("must create experiments of the razzo MCMC chain length", {
+
   gen_experiment <- create_gen_experiment()
   expect_equal(
     gen_experiment$inference_model$mcmc$chain_length,
@@ -9,9 +10,10 @@ test_that("use", {
     folder_name = peregrine::get_pff_tempfile(),
     rng_seed = 1
   )
-  skip("Expose #350")
-  expect_equal(
-    cand_experiments[[1]]$inference_model$mcmc$chain_length,
-    get_razzo_mcmc_chain_length()
-  )
+  for (cand_experiment in cand_experiments) {
+    expect_equal(
+      cand_experiment$inference_model$mcmc$chain_length,
+      get_razzo_mcmc_chain_length()
+    )
+  }
 })
