@@ -4,6 +4,8 @@ test_that("use", {
 
   if (!beastier::is_on_travis()) return()
 
+  skip("Expose #350")
+
   razzo_params <- create_test_razzo_params()
   run_razzo(razzo_params)
 
