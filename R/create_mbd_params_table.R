@@ -28,7 +28,7 @@
 #' expect_true("seed" %in% names(df))
 #' @export
 create_mbd_params_table <- function(
-  lambdas = c(0.2),
+  lambdas = get_razzo_lambdas(),
   mus = get_razzo_mus(),
   nus = get_razzo_nus(),
   qs = get_razzo_qs(),
