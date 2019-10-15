@@ -3,5 +3,5 @@
 #' @author Richel J.C. Bilderbeek
 #' @export
 get_razzo_mcmc_chain_length <- function() {
-  1e7
+  1e6
 }
