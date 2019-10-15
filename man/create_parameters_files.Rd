@@ -5,8 +5,7 @@
 \title{Create all parameter files  in
   \code{project_folder_name/data/[settings]/seed/[models]}}
 \usage{
-create_parameters_files(project_folder_name = getwd(),
-  experiment_type = "test")
+create_parameters_files(project_folder_name = getwd(), experiment_type)
 }
 \arguments{
 \item{project_folder_name}{project folder name,

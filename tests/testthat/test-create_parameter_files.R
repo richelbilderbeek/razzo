@@ -89,7 +89,8 @@ test_that("can read", {
   filenames <- create_parameters_files(
     project_folder_name = file.path(
       peregrine::get_pff_tempfile(), "razzo_project"
-    )
+    ),
+    experiment_type = "test"
   )
 
   # Load the first one
