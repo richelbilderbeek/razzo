@@ -47,3 +47,55 @@ test_that("abuse", {
     "'add_verbose' must be one boolean"
   )
 })
+
+
+
+
+test_that("use", {
+
+  if (!beastier::is_on_travis()) return()
+
+  skip("Expose #350")
+
+  parameters_filenames <- create_parameters_files(
+    project_folder_name = file.path(
+      peregrine::get_pff_tempdir(),
+      "razzo_project"
+    ),
+    experiment_type = "test"
+  )
+  parameters_filename <- parameters_filenames[1]
+
+  # Run the first without verbose
+  expect_silent(
+    run_razzo_from_file(
+      parameters_filename = parameters_filename
+    )
+  )
+
+  razzo_params <- readRDS(parameters_filename)
+
+  # Check if MCMC chain length in parameters matches the final state
+  # in the BEAST2 output files
+  expected_mcmc_chain_length <-
+    razzo_params$pir_params$experiments[[1]]$inference_model$mcmc$chain_length
+
+  final_mcmc_state_line <- tail(
+    readLines(
+      razzo_params$pir_params$experiments[[1]]$beast2_options$output_trees_filenames, # nolint sorry Demeter
+      warn = FALSE
+    ),
+    n = 2
+  )[1]
+  final_mcmc_state_line
+  actual_mcmc_chain_length <- as.numeric(
+    stringr::str_match(
+      string = final_mcmc_state_line,
+      pattern = "tree STATE_(.*) = \\("
+    )[1, 2]
+  )
+  expect_equal(
+    expected_mcmc_chain_length,
+    actual_mcmc_chain_length
+  )
+})

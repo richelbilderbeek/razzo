@@ -6,8 +6,7 @@
 create_razzo_paramses <- function(
   project_folder_name,
   mbd_paramses = create_mbd_paramses(),
-  error_measure_params = pirouette::create_error_measure_params(),
-  mcmc_chain_length = beautier::create_mcmc()$chain_length
+  error_measure_params = pirouette::create_error_measure_params()
 ) {
   testit::assert(peregrine::is_pff(project_folder_name))
   data_folder_name <- "data"

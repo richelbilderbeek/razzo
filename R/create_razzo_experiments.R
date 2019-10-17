@@ -60,8 +60,13 @@ create_razzo_experiments <- function(
   }
   # MCMC
   for (i in seq_along(experiments)) {
-    testit::assert(experiments[[i]]$inference_model$mcmc$store_every == 1e3)
-    testit::assert(experiments[[i]]$inference_model$mcmc$chain_length == 1e6)
+    experiments[[i]]$inference_model$mcmc <- get_razzo_mcmc()
+    testit::assert(experiments[[i]]$inference_model$mcmc$store_every ==
+      get_razzo_mcmc_store_every()
+    )
+    testit::assert(experiments[[i]]$inference_model$mcmc$chain_length ==
+      get_razzo_mcmc_chain_length()
+    )
   }
   # MRCA
   for (i in seq_along(experiments)) {

@@ -7,7 +7,7 @@
 #' @export
 create_parameters_files <- function(
   project_folder_name = getwd(),
-  experiment_type = "test"
+  experiment_type
 ) {
   testit::assert(peregrine::is_pff(project_folder_name))
   testit::assert(experiment_type == "test" || experiment_type == "full")

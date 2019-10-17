@@ -72,4 +72,8 @@ test_that("matches article", {
     first_razzo_params$mbd_params$seed,
     first_razzo_params$pir_params$alignment_params$rng_seed
   )
+  expect_equal(
+    first_razzo_params$pir_params$experiments[[1]]$inference_model$mcmc$chain_length, # nolint sorry Demeter
+    get_razzo_mcmc_chain_length()
+  )
 })
