@@ -17,7 +17,7 @@ RoxygenNote: 6.1.1
 Imports: 
     ape,
     beastier (>= 2.0.25),
-    beautier (>= 2.2.4),
+    beautier (>= 2.3),
     ggplot2,
     mbd,
     nodeSub (>= 0.4.0),
