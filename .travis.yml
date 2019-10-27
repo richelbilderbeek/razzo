@@ -19,15 +19,15 @@ r_github_packages:
   - ropensci/spelling
   - ropensci/beautier@develop
   - ropensci/tracerer
-  - ropensci/beastier
+  - ropensci/beastier@develop
   - ropensci/mauricer
-  - ropensci/babette
-  - richelbilderbeek/mcbette
+  - ropensci/babette@develop
+  - richelbilderbeek/mcbette@develop
   - Giappo/mbd
   - Giappo/mbd.SimTrees
   - richelbilderbeek/nLTT
   - thijsjanzen/nodeSub
-  - richelbilderbeek/pirouette
+  - richelbilderbeek/pirouette@richel
   - richelbilderbeek/peregrine
 
 before_install:
