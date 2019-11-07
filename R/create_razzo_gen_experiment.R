@@ -18,7 +18,13 @@ create_razzo_gen_experiment <- function(
       tree_prior = beautier::create_bd_tree_prior(),
       mcmc = beautier::create_mcmc(
         chain_length = get_razzo_mcmc_chain_length(),
-        store_every = get_razzo_mcmc_store_every()
+        store_every = get_razzo_mcmc_store_every(),
+        tracelog = beautier::create_tracelog(
+          filename = get_tracelog_filename()
+        ),
+        treelog = create_treelog(
+          filename = get_treelog_filename()
+        )
       ),
       mrca_prior = create_razzo_mrca_prior()
     ),
