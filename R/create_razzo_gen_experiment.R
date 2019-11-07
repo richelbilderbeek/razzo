@@ -28,6 +28,9 @@ create_razzo_gen_experiment <- function(
       rng_seed = rng_seed
     ),
     est_evidence_mcmc = create_razzo_nested_sampling_mcmc(),
-    errors_filename = file.path(folder_name, "mbd_nltts_gen.csv")
+    errors_filename = get_errors_filename(
+      folder_name = folder_name,
+      model_type = model_type
+    )
   )
 }
