@@ -19,10 +19,16 @@ create_test_razzo_experiments <- function(
       chain_length = 3e3,
       store_every = 1e3,
       tracelog = beautier::create_tracelog(
-        filename = get_tracelog_filename()
+        filename = get_tracelog_filename(
+          folder_name = folder_name,
+          model_type = experiments[[i]]$inference_conditions$model_type
+        )
       ),
       treelog = beautier::create_treelog(
-        filename = get_treelog_filename()
+        filename = get_treelog_filename(
+          folder_name = folder_name,
+          model_type = experiments[[i]]$inference_conditions$model_type
+        )
       )
     )
     experiments[[i]]$est_evidence_mcmc$chain_length <- 3e3

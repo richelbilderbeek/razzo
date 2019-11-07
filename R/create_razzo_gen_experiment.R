@@ -8,9 +8,10 @@ create_razzo_gen_experiment <- function(
   folder_name = peregrine::get_pff_tempfile(),
   rng_seed = 1
 ) {
+  model_type <- "generative"
   pirouette::create_gen_experiment(
     inference_conditions = pirouette::create_inference_conditions(
-      model_type = "generative",
+      model_type = model_type,
       run_if = "always",
       do_measure_evidence = TRUE
     ),
@@ -20,16 +21,22 @@ create_razzo_gen_experiment <- function(
         chain_length = get_razzo_mcmc_chain_length(),
         store_every = get_razzo_mcmc_store_every(),
         tracelog = beautier::create_tracelog(
-          filename = get_tracelog_filename()
+          filename = get_tracelog_filename(
+            folder_name = folder_name,
+            model_type = model_type
+          )
         ),
         treelog = beautier::create_treelog(
-          filename = get_treelog_filename()
+          filename = get_treelog_filename(
+            folder_name = folder_name,
+            model_type = model_type
+          )
         )
       ),
       mrca_prior = create_razzo_mrca_prior()
     ),
     beast2_options = create_razzo_beast2_options(
-      model_type = "generative",
+      model_type = model_type,
       folder_name = folder_name,
       rng_seed = rng_seed
     ),

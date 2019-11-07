@@ -1,37 +1,3 @@
-#' Get input filename
-#' @inheritParams default_params_doc
-#' @export
-get_input_filename <- function(
-  folder_name,
-  model_type
-) {
-  pirouette::check_model_type(model_type)
-  if (model_type == "generative") {
-    input_filename <- file.path(folder_name, "mbd_gen.xml")
-  }
-  if (model_type == "candidate") {
-    input_filename <- file.path(folder_name, "mbd_best.xml")
-  }
-  input_filename
-}
-
-#' Get output state filename
-#' @inheritParams default_params_doc
-#' @export
-get_output_state_filename <- function(
-  folder_name,
-  model_type
-) {
-  pirouette::check_model_type(model_type)
-  if (model_type == "generative") {
-    output_state_filename <- file.path(folder_name, "mbd_gen.xml.state")
-  }
-  if (model_type == "candidate") {
-    output_state_filename <- file.path(folder_name, "mbd_best.xml.state")
-  }
-  output_state_filename
-}
-
 #' Get output log filename
 #' @inheritParams default_params_doc
 #' @export
@@ -64,6 +30,40 @@ get_output_trees_filenames <- function(
     output_trees_filenames <- file.path(folder_name, "mbd_best.trees")
   }
   output_trees_filenames
+}
+
+#' Get input filename
+#' @inheritParams default_params_doc
+#' @export
+get_input_filename <- function(
+  folder_name,
+  model_type
+) {
+  pirouette::check_model_type(model_type)
+  if (model_type == "generative") {
+    input_filename <- file.path(folder_name, "mbd_gen.xml")
+  }
+  if (model_type == "candidate") {
+    input_filename <- file.path(folder_name, "mbd_best.xml")
+  }
+  input_filename
+}
+
+#' Get output state filename
+#' @inheritParams default_params_doc
+#' @export
+get_output_state_filename <- function(
+  folder_name,
+  model_type
+) {
+  pirouette::check_model_type(model_type)
+  if (model_type == "generative") {
+    output_state_filename <- file.path(folder_name, "mbd_gen.xml.state")
+  }
+  if (model_type == "candidate") {
+    output_state_filename <- file.path(folder_name, "mbd_best.xml.state")
+  }
+  output_state_filename
 }
 
 #' Get errors filename

@@ -49,10 +49,16 @@ create_razzo_cand_experiments <- function(
       store_every = get_razzo_mcmc_store_every(),
       chain_length = get_razzo_mcmc_chain_length(),
       tracelog = beautier::create_tracelog(
-        filename = get_tracelog_filename()
+        filename = get_tracelog_filename(
+          folder_name = folder_name,
+          model_type = "candidate"
+        )
       ),
       treelog = beautier::create_treelog(
-        filename = get_treelog_filename()
+        filename = get_treelog_filename(
+          folder_name = folder_name,
+          model_type = "candidate"
+        )
       )
     )
     cand_experiments[[i]]$est_evidence_mcmc <- create_razzo_nested_sampling_mcmc()
