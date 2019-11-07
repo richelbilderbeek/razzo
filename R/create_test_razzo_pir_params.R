@@ -37,7 +37,8 @@ create_test_razzo_pir_params <- function(
   # Experiments
   # Done by 'create_test_razzo_experiments'
   # Evidence filename
-  evidence_filename <- file.path(folder_name, "mbd_marg_lik.csv")
+  evidence_filename <-
+    get_evidence_filename(folder_name = folder_name, tree_type = "true")
   ##############################################################################
   # Combine
   ##############################################################################

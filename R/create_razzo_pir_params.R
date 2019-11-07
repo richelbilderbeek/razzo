@@ -40,6 +40,9 @@ create_razzo_pir_params <- function(
     alignment_params = alignment_params,
     experiments = experiments,
     twinning_params = twinning_params,
-    evidence_filename = file.path(folder_name, "mbd_marg_lik.csv")
+    evidence_filename = get_evidence_filename(
+      folder_name = folder_name,
+      tree_type = "true"
+    )
   )
 }

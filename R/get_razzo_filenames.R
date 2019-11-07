@@ -133,3 +133,20 @@ get_evidence_filename <- function(
   }
   evidence_filename
 }
+
+#' Get fasta filename
+#' @inheritParams default_params_doc
+#' @export
+get_fasta_filename <- function(
+  folder_name,
+  tree_type
+) {
+  pirouette::check_tree_type(tree_type)
+  if (tree_type == "true") {
+    fasta_filename <- file.path(folder_name, "mbd.fasta")
+  }
+  if (tree_type == "twin") {
+    fasta_filename <- file.path(folder_name, "mbd_twin.fasta")
+  }
+  fasta_filename
+}

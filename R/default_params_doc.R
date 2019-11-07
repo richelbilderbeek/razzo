@@ -86,6 +86,7 @@
 #' @param sub_chain_length length of the sub-chain used by the Nested Sampling
 #'   algorithm to estimate the marginal likelihood
 #' @param tree an ultrametric phylogenetic tree of class \code{phylo}
+#' @param tree_type can be 'true' or 'twin'
 #' @param tree_filename name of the phylogeny file
 #' @param trees_filename name of the BEAST2 posterior phylogenies file
 #' @param twinning_params parameters for creating a twin tree,
@@ -152,6 +153,7 @@ default_params_doc <- function(
   site_model,
   sub_chain_length,
   tree,
+  tree_type,
   tree_filename,
   trees_filename,
   twinning_params,

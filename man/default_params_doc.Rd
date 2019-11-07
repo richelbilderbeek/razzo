@@ -15,8 +15,8 @@ default_params_doc(alignment, alignment_params, bd_mutation_rate, bd_tree,
   parameters, parameter_filename, parameters_filename, phylo, pir_params,
   posterior_trees, precision, project_folder_name, q, razzo_params,
   razzo_paramses, rng_seed, sample_interval, seed, sequence_length,
-  sim_pars, sim_phylo, site_model, sub_chain_length, tree, tree_filename,
-  trees_filename, twinning_params, verbose)
+  sim_pars, sim_phylo, site_model, sub_chain_length, tree, tree_type,
+  tree_filename, trees_filename, twinning_params, verbose)
 }
 \arguments{
 \item{alignment}{a DNA alignment}
@@ -158,6 +158,8 @@ has to be used for the inference. Valid names are 'jc69' and 'gtr'.}
 algorithm to estimate the marginal likelihood}
 
 \item{tree}{an ultrametric phylogenetic tree of class \code{phylo}}
+
+\item{tree_type}{can be 'true' or 'twin'}
 
 \item{tree_filename}{name of the phylogeny file}
 
