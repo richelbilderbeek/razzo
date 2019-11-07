@@ -32,7 +32,13 @@ create_test_razzo_paramses <- function(
       razzo_paramses[[i]]$pir_params$experiments[[j]]$inference_model$mcmc <-
         beautier::create_mcmc(
           chain_length = 3000,
-          store_every = 1000
+          store_every = 1000,
+          tracelog = beautier::create_tracelog(
+            filename = get_tracelog_filename()
+          ),
+          treelog = beautier::create_treelog(
+            filename = get_treelog_filename()
+          )
         )
     }
   }

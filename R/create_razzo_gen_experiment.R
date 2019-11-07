@@ -22,7 +22,7 @@ create_razzo_gen_experiment <- function(
         tracelog = beautier::create_tracelog(
           filename = get_tracelog_filename()
         ),
-        treelog = create_treelog(
+        treelog = beautier::create_treelog(
           filename = get_treelog_filename()
         )
       ),

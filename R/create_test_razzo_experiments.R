@@ -17,7 +17,13 @@ create_test_razzo_experiments <- function(
   for (i in seq_along(experiments)) {
     experiments[[i]]$inference_model$mcmc <- beautier::create_mcmc(
       chain_length = 3e3,
-      store_every = 1e3
+      store_every = 1e3,
+      tracelog = beautier::create_tracelog(
+        filename = get_tracelog_filename()
+      ),
+      treelog = beautier::create_treelog(
+        filename = get_treelog_filename()
+      )
     )
     experiments[[i]]$est_evidence_mcmc$chain_length <- 3e3
     experiments[[i]]$est_evidence_mcmc$store_every <- 1e3
