@@ -134,10 +134,10 @@ get_evidence_filename <- function(
   evidence_filename
 }
 
-#' Get fasta filename
+#' Get alignment filename
 #' @inheritParams default_params_doc
 #' @export
-get_fasta_filename <- function(
+get_alignment_filename <- function(
   folder_name,
   tree_type
 ) {

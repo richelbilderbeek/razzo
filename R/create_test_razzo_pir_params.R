@@ -33,7 +33,10 @@ create_test_razzo_pir_params <- function(
   # Set up filenames
   ##############################################################################
   # Alignment
-  alignment_params$fasta_filename <- file.path(folder_name, "mbd.fasta")
+  alignment_params$fasta_filename <- get_alignment_filename(
+    folder_name = folder_name,
+    tree_type = "true"
+  )
   # Experiments
   # Done by 'create_test_razzo_experiments'
   # Evidence filename

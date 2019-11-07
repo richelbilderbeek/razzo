@@ -102,7 +102,7 @@ check_razzo_params_filenames <- function(razzo_params) {
   # True alignment
   if (
     razzo_params$pir_params$alignment_params$fasta_filename !=
-    get_fasta_filename(folder_name = folder_name, tree_type = "true")
+    get_alignment_filename(folder_name = folder_name, tree_type = "true")
   ) { # nolint indeed long
     stop(
       "'razzo_params$pir_params$alignment_params$fasta_filename' must be be '[folder_name]/mbd.fasta'. \n", # nolint indeed long
@@ -117,7 +117,7 @@ check_razzo_params_filenames <- function(razzo_params) {
     razzo_params$pir_params$twinning_params$twin_tree_filename
   )
   testit::assert(
-    get_fasta_filename(folder_name = folder_name, tree_type = "twin") ==
+    get_alignment_filename(folder_name = folder_name, tree_type = "twin") ==
     razzo_params$pir_params$twinning_params$twin_alignment_filename
   )
   testit::assert(
