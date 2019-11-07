@@ -63,23 +63,38 @@ check_razzo_params_filenames <- function(razzo_params) {
       "candidate"
     )
     testit::assert(
-      file.path(folder_name, "mbd_best.xml") ==
+      get_input_filename(
+        folder_name = folder_name,
+        model_type = "candidate"
+      ) ==
       cand_experiment$beast2_options$input_filename
     )
     testit::assert(
-      file.path(folder_name, "mbd_best.log") ==
+      get_output_log_filenames(
+        folder_name = folder_name,
+        model_type = "candidate"
+      ) ==
       cand_experiment$beast2_options$output_log_filename
     )
     testit::assert(
-      file.path(folder_name, "mbd_best.trees") ==
+      get_output_trees_filenames(
+        folder_name = folder_name,
+        model_type = "candidate"
+      ) ==
       cand_experiment$beast2_options$output_trees_filenames
     )
     testit::assert(
-      file.path(folder_name, "mbd_best.xml.state") ==
-      cand_experiment$beast2_options$output_state_filename
+      get_output_state_filename(
+        folder_name = folder_name,
+        model_type = "candidate"
+      ) ==
+        cand_experiment$beast2_options$output_state_filename
     )
     testit::assert(
-      file.path(folder_name, "mbd_nltts_best.csv") ==
+      get_errors_filename(
+        folder_name = folder_name,
+        model_type = "candidate"
+      ) ==
       cand_experiment$errors_filename
     )
   }
@@ -103,11 +118,11 @@ check_razzo_params_filenames <- function(razzo_params) {
     razzo_params$pir_params$twinning_params$twin_alignment_filename
   )
   testit::assert(
-    file.path(folder_name, "mbd_marg_lik_twin.csv") ==
+    get_evidence_filename(folder_name = folder_name, tree_type = "twin") ==
     razzo_params$pir_params$twinning_params$twin_evidence_filename
   )
   testit::assert(
-    file.path(folder_name, "mbd_marg_lik.csv") ==
+    get_evidence_filename(folder_name = folder_name, tree_type = "true") ==
     razzo_params$pir_params$evidence_filename
   )
 

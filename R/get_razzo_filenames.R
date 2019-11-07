@@ -32,6 +32,23 @@ get_output_state_filename <- function(
   output_state_filename
 }
 
+#' Get output log filename
+#' @inheritParams default_params_doc
+#' @export
+get_output_log_filename <- function(
+  folder_name,
+  model_type
+) {
+  pirouette::check_model_type(model_type)
+  if (model_type == "generative") {
+    output_log_filename <- file.path(folder_name, "mbd_gen.log")
+  }
+  if (model_type == "candidate") {
+    output_log_filename <- file.path(folder_name, "mbd_best.log")
+  }
+  output_log_filename
+}
+
 #' Get output trees filenames
 #' @inheritParams default_params_doc
 #' @export
@@ -98,4 +115,21 @@ get_tracelog_filename <- function(
     tracelog_filename <- file.path(folder_name, "mbd_tracelog_best.log")
   }
   tracelog_filename
+}
+
+#' Get evidence filename
+#' @inheritParams default_params_doc
+#' @export
+get_evidence_filename <- function(
+  folder_name,
+  tree_type
+) {
+  pirouette::check_tree_type(tree_type)
+  if (tree_type == "true") {
+    evidence_filename <- file.path(folder_name, "mbd_marg_lik.csv")
+  }
+  if (tree_type == "twin") {
+    evidence_filename <- file.path(folder_name, "mbd_marg_lik_twin.csv")
+  }
+  evidence_filename
 }
