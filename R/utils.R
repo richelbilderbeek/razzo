@@ -2,6 +2,7 @@
 #' and is the name of an existing folder.
 #' Will throw if not.
 #' Else will do nothing.
+#' @inheritParams default_params_doc
 #' @return nothing
 #' @author Richel J.C. Bilderbeek
 #' @export

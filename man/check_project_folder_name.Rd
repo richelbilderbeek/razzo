@@ -9,6 +9,10 @@ Else will do nothing.}
 \usage{
 check_project_folder_name(project_folder_name)
 }
+\arguments{
+\item{project_folder_name}{project folder name,
+will be the full path to \code{razzo_project}}
+}
 \value{
 nothing
 }
