@@ -150,3 +150,20 @@ get_alignment_filename <- function(
   }
   fasta_filename
 }
+
+#' Get tree filename
+#' @inheritParams default_params_doc
+#' @export
+get_tree_filename <- function(
+  folder_name,
+  tree_type
+) {
+  pirouette::check_tree_type(tree_type)
+  if (tree_type == "true") {
+    tree_filename <- file.path(folder_name, "mbd.tree")
+  }
+  if (tree_type == "twin") {
+    tree_filename <- file.path(folder_name, "mbd_twin.tree")
+  }
+  tree_filename
+}

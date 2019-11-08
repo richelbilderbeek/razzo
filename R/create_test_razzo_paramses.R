@@ -12,8 +12,8 @@ create_test_razzo_paramses <- function(
     peregrine::get_pff_tempfile(), "razzo_project"
   )
 ) {
-  mbd_paramses <- create_test_mbd_paramses()
-  razzo_paramses <- create_razzo_paramses(
+  mbd_paramses <- razzo::create_test_mbd_paramses()
+  razzo_paramses <- razzo::create_razzo_paramses(
     project_folder_name = project_folder_name,
     mbd_paramses = mbd_paramses
   )
@@ -35,13 +35,13 @@ create_test_razzo_paramses <- function(
           chain_length = 3000,
           store_every = 1000,
           tracelog = beautier::create_tracelog(
-            filename = get_tracelog_filename(
+            filename = razzo::get_tracelog_filename(
               folder_name = folder_name,
               model_type = experiment$inference_conditions$model_type
             )
           ),
           treelog = beautier::create_treelog(
-            filename = get_treelog_filename(
+            filename = razzo::get_treelog_filename(
               folder_name = folder_name,
               model_type = experiment$inference_conditions$model_type
             )
