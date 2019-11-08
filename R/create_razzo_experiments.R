@@ -10,12 +10,12 @@ create_razzo_experiments <- function(
   rng_seed = 1
 ) {
   experiments <- list()
-  experiments[[1]] <- create_razzo_gen_experiment(
+  experiments[[1]] <- razzo::create_razzo_gen_experiment(
     folder_name = folder_name,
     rng_seed = rng_seed
   )
   if (isTRUE(has_candidates)) {
-    cand_experiments <- create_razzo_cand_experiments(
+    cand_experiments <- razzo::create_razzo_cand_experiments(
       experiments[[1]],
       folder_name = folder_name,
       rng_seed = rng_seed
@@ -42,14 +42,20 @@ create_razzo_experiments <- function(
   testit::assert(experiments[[1]]$beast2_options$output_trees_filenames == file.path(folder_name, "mbd_gen.trees")) # nolint indeed long
   testit::assert(experiments[[1]]$beast2_options$output_state_filename == file.path(folder_name, "mbd_gen.xml.state")) # nolint indeed long
   if (isTRUE(has_candidates)) {
+    model_type <- "candidate"
     n_candidate_experiments <- length(experiments) - 1
     testit::assert(n_candidate_experiments >= 1)
     for (i in seq(2, 1 + n_candidate_experiments)) {
-      experiments[[i]]$beast2_options$input_filename <- file.path(folder_name, "mbd_best.xml") # nolint indeed long
-      experiments[[i]]$beast2_options$output_log_filename <- file.path(folder_name, "mbd_best.log") # nolint indeed long
-      experiments[[i]]$beast2_options$output_trees_filenames <- file.path(folder_name, "mbd_best.trees") # nolint indeed long
-      experiments[[i]]$beast2_options$output_state_filename <- file.path(folder_name, "mbd_best.xml.state") # nolint indeed long
-      experiments[[i]]$errors_filename <- file.path(folder_name, "mbd_nltts_best.csv") # nolint indeed long
+      experiments[[i]]$beast2_options$input_filename <-
+        razzo::get_input_filename(folder_name = folder_name, model_type = model_type) # nolint indeed long
+      experiments[[i]]$beast2_options$output_log_filename <-
+        razzo::get_output_log_filename(folder_name = folder_name, model_type = model_type) # nolint indeed long
+      experiments[[i]]$beast2_options$output_trees_filenames <-
+        razzo::get_output_trees_filenames(folder_name = folder_name, model_type = model_type) # nolint indeed long
+      experiments[[i]]$beast2_options$output_state_filename <-
+        razzo::get_output_state_filename(folder_name = folder_name, model_type = model_type) # nolint indeed long
+      experiments[[i]]$errors_filename <-
+        razzo::get_errors_filename(folder_name = folder_name, model_type = model_type) # nolint indeed long
 
       testit::assert(experiments[[i]]$beast2_options$input_filename == file.path(folder_name, "mbd_best.xml")) # nolint indeed long
       testit::assert(experiments[[i]]$beast2_options$output_log_filename == file.path(folder_name, "mbd_best.log")) # nolint indeed long
@@ -62,17 +68,17 @@ create_razzo_experiments <- function(
   for (i in seq_along(experiments)) {
     experiments[[i]]$inference_model$mcmc <- get_razzo_mcmc()
     testit::assert(experiments[[i]]$inference_model$mcmc$store_every ==
-      get_razzo_mcmc_store_every()
+      razzo::get_razzo_mcmc_store_every()
     )
     testit::assert(experiments[[i]]$inference_model$mcmc$chain_length ==
-      get_razzo_mcmc_chain_length()
+      razzo::get_razzo_mcmc_chain_length()
     )
   }
   # MRCA
   for (i in seq_along(experiments)) {
     testit::assert(
       experiments[[i]]$inference_model$mrca_prior$mrca_distr$mean$value ==
-      get_razzo_crown_age()
+      razzo::get_razzo_crown_age()
     )
   }
   for (i in seq_along(experiments)) {
