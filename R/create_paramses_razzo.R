@@ -39,7 +39,8 @@ create_razzo_paramses <- function(
       has_candidates = rappdirs::app_dir()$os != "win",
       has_twinning = TRUE,
       folder_name = seed_folder,
-      rng_seed = seed
+      rng_seed = seed,
+      error_measure_params = error_measure_params
     )
     razzo_params <- razzo::create_razzo_params(
       mbd_params = mbd_params,

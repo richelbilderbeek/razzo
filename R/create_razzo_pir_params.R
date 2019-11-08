@@ -9,7 +9,8 @@ create_razzo_pir_params <- function(
   has_candidates = FALSE,
   has_twinning = TRUE,
   folder_name = peregrine::get_pff_tempfile(),
-  rng_seed = 1
+  rng_seed = 1,
+  error_measure_params = pirouette::create_error_measure_params()
 ) {
   testit::assert(beautier::is_one_bool(has_candidates))
   testit::assert(beautier::is_one_bool(has_twinning))
@@ -20,12 +21,12 @@ create_razzo_pir_params <- function(
     stop("Cannot do model comparison on Windows")
   }
   # Alignment
-  alignment_params <- create_razzo_alignment_params(
+  alignment_params <- razzo::create_razzo_alignment_params(
     folder_name = folder_name,
     rng_seed = rng_seed
   )
   # Experiments
-  experiments <- create_razzo_experiments(
+  experiments <- razzo::create_razzo_experiments(
     has_candidates = has_candidates,
     folder_name = folder_name,
     rng_seed = rng_seed
@@ -33,16 +34,18 @@ create_razzo_pir_params <- function(
   # Twinning
   twinning_params <- NA
   if (isTRUE(has_twinning)) {
-    twinning_params <- create_razzo_twinning_params(folder_name = folder_name)
+    twinning_params <-
+      razzo::create_razzo_twinning_params(folder_name = folder_name)
   }
   # Combine
   pirouette::create_pir_params(
     alignment_params = alignment_params,
     experiments = experiments,
     twinning_params = twinning_params,
-    evidence_filename = get_evidence_filename(
+    evidence_filename = razzo::get_evidence_filename(
       folder_name = folder_name,
       tree_type = "true"
-    )
+    ),
+    error_measure_params = error_measure_params
   )
 }
