@@ -7,7 +7,7 @@
 collect_mbd_params <- function(
   project_folder_name = get_razzo_path("razzo_project")
 ) {
-  check_project_folder_name(project_folder_name) # nolint
+  razzo::check_project_folder_name(project_folder_name) # nolint
 
   ##### Satisfy R CMD check #####
   seed <- NULL; rm(seed) # nolint, fixes warning: no visible binding for global variable
@@ -18,7 +18,7 @@ collect_mbd_params <- function(
 
   # initialize dataframe components
   n_settings <- length(paths)
-  mbd_pars <- open_parameters_file(file.path(paths[1], "parameters.RDa"))$mbd_params # nolint internal function
+  mbd_pars <- razzo::open_parameters_file(file.path(paths[1], "parameters.RDa"))$mbd_params # nolint internal function
   setting_numeric_names <- names(mbd_pars)
 
   matrix_numeric <- data.frame(matrix(
@@ -28,7 +28,7 @@ collect_mbd_params <- function(
   ))
   colnames(matrix_numeric) <- setting_numeric_names
   for (p in seq_along(paths)) {
-    parameters <- open_parameters_file(file.path(paths[p], "parameters.RDa")) # nolint internal function
+    parameters <- razzo::open_parameters_file(file.path(paths[p], "parameters.RDa")) # nolint internal function
     mbd_pars <- parameters$mbd_params
     matrix_numeric[p, ] <- mbd_pars
   }

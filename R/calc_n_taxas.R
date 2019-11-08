@@ -10,7 +10,7 @@
 calc_n_taxas <- function(
   mbd_paramses
 ) {
-  check_mbd_paramses(mbd_paramses)
+  razzo::check_mbd_paramses(mbd_paramses)
 
   # STUB! These are just rounded off random values
   # Instead, simulate per MBD params set an MBD tree and

@@ -1,6 +1,6 @@
 #' Check if all filenames in the \code{razzo_params}
 #' follow the \code{razzo} naming convention
-#' @noRd
+#' @export
 check_razzo_params_filenames <- function(razzo_params) {
   folder_name <- dirname(
     razzo_params$pir_params$alignment_params$fasta_filename

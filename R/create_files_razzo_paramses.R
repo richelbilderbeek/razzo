@@ -15,17 +15,17 @@ create_parameters_files <- function(
   # Pick the right set of razzo_paramses
   razzo_paramses <- NA
   if (experiment_type == "test") {
-    razzo_paramses <- create_test_razzo_paramses(
+    razzo_paramses <- razzo::create_test_razzo_paramses(
       project_folder_name = project_folder_name
     )
   } else {
     testit::assert(experiment_type == "full")
-    razzo_paramses <- create_razzo_paramses(
+    razzo_paramses <- razzo::create_razzo_paramses(
       project_folder_name = project_folder_name
     )
   }
   testit::assert(!beautier::is_one_na(razzo_paramses))
 
   # Save it to file, returns filenames
-  save_razzo_paramses(razzo_paramses)
+  razzo::save_razzo_paramses(razzo_paramses)
 }
