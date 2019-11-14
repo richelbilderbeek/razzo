@@ -2,6 +2,6 @@
 #'
 #' @docType package
 #' @name razzo
-#' @import beautier, tracerer, beastier, tracerer, babette, mcbette, nodeSub 
-#' @import pirouette, peregrine
+#' @import beautier tracerer beastier tracerer babette mcbette nodeSub
+#' @import pirouette peregrine
 NULL
