@@ -43,14 +43,6 @@ test_that("follows naming conventions, generative", {
     file.path(folder_name, "mbd_gen.xml")
   )
   expect_equal(
-    beast2_options$output_log_filename,
-    file.path(folder_name, "mbd_gen.log")
-  )
-  expect_equal(
-    beast2_options$output_trees_filenames,
-    file.path(folder_name, "mbd_gen.trees")
-  )
-  expect_equal(
     beast2_options$output_state_filename,
     file.path(folder_name, "mbd_gen.xml.state")
   )
@@ -65,14 +57,6 @@ test_that("follows naming conventions, candidate", {
   expect_equal(
     beast2_options$input_filename,
     file.path(folder_name, "mbd_best.xml")
-  )
-  expect_equal(
-    beast2_options$output_log_filename,
-    file.path(folder_name, "mbd_best.log")
-  )
-  expect_equal(
-    beast2_options$output_trees_filenames,
-    file.path(folder_name, "mbd_best.trees")
   )
   expect_equal(
     beast2_options$output_state_filename,

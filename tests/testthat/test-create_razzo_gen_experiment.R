@@ -81,25 +81,29 @@ test_that("razzo naming scheme", {
   folder_name <- peregrine::get_pff_tempfile()
   gen_exp <- create_razzo_gen_experiment(folder_name = folder_name)
 
-  # TODO: check gen_exp$inference_model
-
+  # gen_exp$inference_model
+  expect_equal(
+    gen_exp$inference_model$mcmc$tracelog$filename,
+    file.path(folder_name, "mbd_gen.log")
+  )
+  expect_equal(
+    gen_exp$inference_model$mcmc$treelog$filename,
+    file.path(folder_name, "mbd_gen.trees")
+  )
   # gen_exp$beast2_options
   expect_equal(
     gen_exp$beast2_options$input_filename,
     file.path(folder_name, "mbd_gen.xml")
   )
   expect_equal(
-    gen_exp$beast2_options$output_log_filename,
-    file.path(folder_name, "mbd_gen.log")
-  )
-  expect_equal(
-    gen_exp$beast2_options$output_trees_filenames,
-    file.path(folder_name, "mbd_gen.trees")
-  )
-  expect_equal(
     gen_exp$beast2_options$output_state_filename,
     file.path(folder_name, "mbd_gen.xml.state")
   )
 
-  # TODO: check gen_exp$errors_filename
+  # gen_exp$errors_filename
+  expect_equal(
+    gen_exp$errors_filename,
+    file.path(folder_name, "mbd_nltts_gen.csv")
+  )
+
 })
