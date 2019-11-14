@@ -15,10 +15,7 @@ create_razzo_beast2_options <- function(
   if (model_type == "generative") {
     beast2_options <- beastier::create_beast2_options(
       input_filename = file.path(folder_name, "mbd_gen.xml"),
-      output_log_filename = file.path(folder_name, "mbd_gen.log"),
-      output_trees_filenames = file.path(folder_name, "mbd_gen.trees"),
       output_state_filename = file.path(folder_name, "mbd_gen.xml.state"),
-      beast2_working_dir = peregrine::get_pff_tempfile(),
       rng_seed = rng_seed,
       overwrite = TRUE
     )
@@ -26,10 +23,7 @@ create_razzo_beast2_options <- function(
     testit::assert(model_type == "candidate")
     beast2_options <- beastier::create_beast2_options(
       input_filename = file.path(folder_name, "mbd_best.xml"),
-      output_log_filename = file.path(folder_name, "mbd_best.log"),
-      output_trees_filenames = file.path(folder_name, "mbd_best.trees"),
       output_state_filename = file.path(folder_name, "mbd_best.xml.state"),
-      beast2_working_dir = peregrine::get_pff_tempfile(),
       rng_seed = rng_seed,
       overwrite = TRUE
     )
