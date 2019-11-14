@@ -26,9 +26,6 @@ create_razzo_experiments <- function(
     }
   }
   for (i in seq_along(experiments)) {
-    testit::assert(
-      peregrine::is_pff(experiments[[i]]$beast2_options$beast2_working_dir)
-    )
     testit::assert(experiments[[i]]$beast2_options$rng_seed == rng_seed)
   }
 
@@ -73,11 +70,6 @@ create_razzo_experiments <- function(
     testit::assert(
       experiments[[i]]$inference_model$mrca_prior$mrca_distr$mean$value ==
       get_razzo_crown_age()
-    )
-  }
-  for (i in seq_along(experiments)) {
-    testit::assert(
-      peregrine::is_pff(experiments[[i]]$beast2_options$beast2_working_dir)
     )
   }
   experiments

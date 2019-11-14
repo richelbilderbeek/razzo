@@ -235,7 +235,6 @@ test_that("razzo naming conventions", {
     gen_exp$beast2_options$output_state_filename,
     file.path(folder_name, "mbd_gen.xml.state")
   )
-  expect_true(peregrine::is_pff(gen_exp$beast2_options$beast2_working_dir))
   expect_equal(
     gen_exp$errors_filename,
     file.path(folder_name, "mbd_nltts_gen.csv")
@@ -259,7 +258,6 @@ test_that("razzo naming conventions", {
       cand_exp$beast2_options$output_state_filename,
       file.path(folder_name, "mbd_best.xml.state")
     )
-    expect_true(peregrine::is_pff(cand_exp$beast2_options$beast2_working_dir))
     expect_equal(
       cand_exp$errors_filename,
       file.path(folder_name, "mbd_nltts_best.csv")

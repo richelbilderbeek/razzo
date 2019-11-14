@@ -54,7 +54,6 @@ test_that("follows naming conventions, generative", {
     beast2_options$output_state_filename,
     file.path(folder_name, "mbd_gen.xml.state")
   )
-  expect_true(peregrine::is_pff(beast2_options$beast2_working_dir))
 })
 
 test_that("follows naming conventions, candidate", {
@@ -79,5 +78,4 @@ test_that("follows naming conventions, candidate", {
     beast2_options$output_state_filename,
     file.path(folder_name, "mbd_best.xml.state")
   )
-  expect_true(peregrine::is_pff(beast2_options$beast2_working_dir))
 })
