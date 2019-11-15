@@ -49,8 +49,9 @@ before_script:
   - Rscript -e 'devtools::install_github("Giappo/mbd")'
 
 script:
-  - travis_wait 60 R CMD build .
-  - travis_wait 60 R CMD check *tar.gz
+  - echo "Just updating the cache"
+  #- travis_wait 60 R CMD build .
+  #- travis_wait 60 R CMD check *tar.gz
 
 after_success:
   - travis_wait 60 Rscript -e 'covr::codecov()'
