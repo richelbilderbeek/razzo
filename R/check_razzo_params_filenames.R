@@ -30,7 +30,7 @@ check_razzo_params_filenames <- function(razzo_params) {
   # BEAST2 output log filename
   if (gen_experiment$inference_model$mcmc$tracelog$filename != file.path(folder_name, "mbd_gen.log")) { # nolint indeed long
     stop(
-      "'razzo_params$pir_params$experiments[[1]]$beast2_options$output_log_filename' must be be '[folder_name]/mbd_gen.log'. \n", # nolint indeed long
+      "'razzo_params$pir_params$experiments[[1]]$inference_model$mcmc$tracelog$filename' must be be '[folder_name]/mbd_gen.log'. \n", # nolint indeed long
       "Actual value: '", gen_experiment$inference_model$mcmc$tracelog$filename, "'\n", # nolint indeed long
       "[folder_name]: '", folder_name, "'\n",
       "(folder name taken from razzo_params$pir_params$alignment_params$fasta_filename)" # nolint indeed long
@@ -39,7 +39,7 @@ check_razzo_params_filenames <- function(razzo_params) {
   # BEAST2 output trees filenames
   if (gen_experiment$inference_model$mcmc$treelog$filename != file.path(folder_name, "mbd_gen.trees")) { # nolint indeed long
     stop(
-      "'razzo_params$pir_params$experiments[[1]]$beast2_options$output_trees_filenames' must be be '[folder_name]/mbd_gen.trees'. \n", # nolint indeed long
+      "'razzo_params$pir_params$experiments[[1]]$inference_model$mcmc$treelog$filename' must be be '[folder_name]/mbd_gen.trees'. \n", # nolint indeed long
       "Actual value: '", gen_experiment$inference_model$mcmc$treeelog$filename, "'\n", # nolint indeed long
       "[folder_name]: '", folder_name, "'\n",
       "(folder name taken from razzo_params$pir_params$alignment_params$fasta_filename)" # nolint indeed long

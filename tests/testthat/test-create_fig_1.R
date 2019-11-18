@@ -2,6 +2,7 @@ context("test-create_fig_1")
 
 test_that("use", {
 
+  skip("Cannot read parameters from files yet")
   # Should return plot
   plots <- create_fig_1(
     project_folder_name = get_razzo_path("razzo_project")
