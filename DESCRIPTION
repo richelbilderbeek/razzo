@@ -15,21 +15,21 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
 Depends: 
-    babette,
     beastier (>= 2.0.25),
     beautier (>= 2.3),
-    tracerer,
-    mauricer,
-    mcbette,
-    nodeSub (>= 0.4.0),
     peregrine (>= 0.5),
     pirouette (>= 1.5.1)
 Imports: 
     ape,
+    babette,
     ggplot2,
+    mauricer,
     mbd,
+    mcbette,
+    nodeSub (>= 0.4.0),
     remotes,
     stringr,
+    tracerer,
     testit
 Suggests:
     assertive,
