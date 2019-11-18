@@ -2,7 +2,9 @@ test_that("must create experiments of the razzo MCMC chain length", {
 
   gen_experiment <- create_gen_experiment(
     inference_model = beautier::create_inference_model(
-      mcmc = get_razzo_mcmc()
+      mcmc = get_razzo_mcmc(
+        model_type = "generative"
+      )
     )
   )
   expect_equal(

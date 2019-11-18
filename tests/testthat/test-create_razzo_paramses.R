@@ -23,7 +23,11 @@ test_that("all filenames are Peregrine friendly", {
   )
   filenames <- flat_params_set[filename_indices]
   for (filename in filenames) {
-    expect_true(beautier::is_one_na(filename) || peregrine::is_pff(filename))
+    expect_true(
+      filename == "" ||
+      beautier::is_one_na(filename) ||
+      peregrine::is_pff(filename)
+    )
   }
 })
 

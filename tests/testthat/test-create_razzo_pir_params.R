@@ -91,18 +91,31 @@ test_that("matches article", {
     pirouette::create_blocked_dna(length = get_razzo_dna_alignment_length()),
     pir_params$alignment_params$root_sequence
   )
-  expect_equal(
-    get_razzo_mutation_rate(),
-    pir_params$alignment_params$mutation_rate
-  )
-  expect_equal(
-    pir_params$alignment_params$site_model$name,
-    "JC69"
-  )
-  expect_equal(
-    pir_params$alignment_params$clock_model$name,
-    "strict"
-  )
+  if (1 == 2) {
+    # Cannot read the mutation rates that is already partially evaluated in
+    # the function
+    #
+    # These all fail to read the mutation rate filled in in the function
+    formals(pir_params$alignment_params$sim_true_alignment_fun)
+    formalArgs(pir_params$alignment_params$sim_true_alignment_fun)
+    args(pir_params$alignment_params$sim_true_alignment_fun)
+    alist(pir_params$alignment_params$sim_true_alignment_fun)
+    body(pir_params$alignment_params$sim_true_alignment_fun)
+    body(pir_params$alignment_params$sim_true_alignment_fun)
+    class(pir_params$alignment_params$sim_true_alignment_fun)
+    attributes(pir_params$alignment_params$sim_true_alignment_fun)
+
+    expect_equal(
+      get_razzo_mutation_rate(),
+      pir_params$alignment_params$sim_true_alignment_fun$mutation_rate
+    )
+  }
+  if (1 == 2) {
+    expect_equal(
+      pir_params$alignment_params$sim_true_alignment_fun$site_model$name,
+      "JC69"
+    )
+  }
 
   ##############################################################################
   # pir_params$experiments

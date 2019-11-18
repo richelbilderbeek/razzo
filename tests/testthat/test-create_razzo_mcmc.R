@@ -9,7 +9,7 @@ test_that("use, generative", {
     file.path(folder_name, "mbd_gen.log")
   )
   expect_equal(
-    mcmc$treeslog$filename,
+    mcmc$treelog$filename,
     file.path(folder_name, "mbd_gen.trees")
   )
 })
@@ -25,7 +25,7 @@ test_that("use, candidate", {
     file.path(folder_name, "mbd_best.log")
   )
   expect_equal(
-    mcmc$treeslog$filename,
+    mcmc$treelog$filename,
     file.path(folder_name, "mbd_best.trees")
   )
 })
