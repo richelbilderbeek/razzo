@@ -4,9 +4,9 @@
 #<?xml version="1.0" encoding="UTF-8" standalone="no"?><input id="posterior" spec="beast.core.util.CompoundDistribution">
 #    <distribution id="prior" spec="beast.core.util.CompoundDistribution">
 #        <distribution id="BirthDeath.t:mbd_twin" spec="beast.evolution.speciation.BirthDeathGernhard08Model">
-#            <parameter id="BDDeathRate.t:mbd_twin" lower="0.0" name="relativeDeathRate" upper="1.0">0.5</parameter>
-#            <parameter id="BDBirthRate.t:mbd_twin" lower="0.0" name="birthDiffRate" upper="10000.0">1.0</parameter>
-#            <tree id="Tree.t:mbd_twin">
+#            <parameter id="BDDeathRate.t:mbd_twin" lower="0.0" name="relativeDeathRate" spec="beast.core.parameter.RealParameter" upper="1.0">0.5</parameter>
+#            <parameter id="BDBirthRate.t:mbd_twin" lower="0.0" name="birthDiffRate" spec="beast.core.parameter.RealParameter" upper="10000.0">1.0</parameter>
+#            <tree id="Tree.t:mbd_twin" spec="beast.evolution.tree.Tree">
 #                <taxonset id="TaxonSet.mbd_twin" spec="beast.evolution.alignment.TaxonSet">
 #                </taxonset>
 #            </tree>
@@ -18,30 +18,33 @@
 #            <Uniform id="Uniform.101" name="distr" upper="Infinity"/>
 #        </prior>
 #        <prior id="ClockPrior.c:mbd_twin" name="distribution">
-#            <parameter id="clockRate.c:mbd_twin" name="x">1.0</parameter>
+#            <parameter id="clockRate.c:mbd_twin" name="x" spec="beast.core.parameter.RealParameter">1.0</parameter>
 #            <Uniform id="Uniform.150" name="distr" upper="Infinity"/>
 #        </prior>
 #        <distribution id="auto_name_1.prior" monophyletic="true" spec="beast.math.distributions.MRCAPrior" tree="@Tree.t:mbd_twin">
 #            <taxonset id="auto_name_1" spec="beast.evolution.alignment.TaxonSet">
-#                <taxon id="t1" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t8" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t12" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t17" spec="beast.evolution.alignment.Taxon"/>
 #                <taxon id="t2" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t6" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t4" spec="beast.evolution.alignment.Taxon"/>
-#                <taxon id="t5" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t19" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t18" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t7" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t14" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t20" spec="beast.evolution.alignment.Taxon"/>
+#                <taxon id="t21" spec="beast.evolution.alignment.Taxon"/>
 #            </taxonset>
 #            <Normal id="Normal.151" name="distr">
-#                <parameter estimate="false" id="RealParameter.300" name="mean">6.0</parameter>
-#                <parameter estimate="false" id="RealParameter.301" name="sigma">1.0E-4</parameter>
+#                <parameter estimate="false" id="RealParameter.300" name="mean" spec="beast.core.parameter.RealParameter">8.0</parameter>
+#                <parameter estimate="false" id="RealParameter.301" name="sigma" spec="beast.core.parameter.RealParameter">1.0E-4</parameter>
 #            </Normal>
 #        </distribution>
 #    </distribution>
 #    <distribution id="likelihood" spec="beast.core.util.CompoundDistribution" useThreads="true">
 #        <distribution data="@mbd_twin" id="treeLikelihood.mbd_twin" spec="beast.evolution.likelihood.ThreadedTreeLikelihood" tree="@Tree.t:mbd_twin">
 #            <siteModel id="SiteModel.s:mbd_twin" spec="beast.evolution.sitemodel.SiteModel">
-#                <parameter estimate="false" id="mutationRate.s:mbd_twin" name="mutationRate">1.0</parameter>
-#                <parameter estimate="false" id="gammaShape.s:mbd_twin" name="shape">1.0</parameter>
-#                <parameter estimate="false" id="proportionInvariant.s:mbd_twin" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
+#                <parameter estimate="false" id="mutationRate.s:mbd_twin" name="mutationRate" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#                <parameter estimate="false" id="gammaShape.s:mbd_twin" name="shape" spec="beast.core.parameter.RealParameter">1.0</parameter>
+#                <parameter estimate="false" id="proportionInvariant.s:mbd_twin" lower="0.0" name="proportionInvariant" spec="beast.core.parameter.RealParameter" upper="1.0">0.0</parameter>
 #                <substModel id="JC69.s:mbd_twin" spec="beast.evolution.substitutionmodel.JukesCantor"/>
 #            </siteModel>
 #            <branchRateModel clock.rate="@clockRate.c:mbd_twin" id="StrictClock.c:mbd_twin" spec="beast.evolution.branchratemodel.StrictClockModel"/>
@@ -49,8 +52,8 @@
 #    </distribution>
 #</input>
 #
-Sample	posterior	likelihood	prior	treeLikelihood	TreeHeight	BirthDeath	BDBirthRate	BDDeathRate	logP(mrca(auto_name_1))	mrcatime(auto_name_1)	clockRate
-0	-8.517307336722639E8	-107.95489121843373	-8.517306257173727E8	-107.95489121843373	1.8726991150131935	-4.248130715135339	1.0	0.5	-8.51730621469242E8	1.8726991150131935	1.0
-1000	-23049.205151537673	-79.68964270922228	-22969.515508828452	-79.68964270922228	5.978568210408328	-11.726655582636488	0.7847291053317041	0.2535997947320208	-22957.788853245816	5.978568210408328	0.3292208245932019
-2000	-23046.051153271772	-76.7666455144401	-22969.284507757333	-76.7666455144401	5.978568210408328	-11.495654511515466	0.4078413132725548	0.2635753864649397	-22957.788853245816	5.978568210408328	0.1269001001533126
-3000	-23050.77962863706	-78.79990981370767	-22971.979718823353	-78.79990981370767	5.978568210408328	-14.190865577535966	0.3360915193066748	0.5255207859943721	-22957.788853245816	5.978568210408328	0.058323635581379915
+Sample	posterior	likelihood	prior	treeLikelihood.mbd_twin	TreeHeight	BirthDeath	BDBirthRate	BDDeathRate	logP(mrca(auto_name_1))	mrca.age(auto_name_1)	clockRate
+0	-2.2083115329271317E9	-14369.908222635519	-2.208297163018909E9	-14369.908222635519	1.3542537377452286	-2.196647762114365	1.0	0.5	-2.2082971608222613E9	1.3542537377452286	1.0
+1000	-22058.71475767564	-9993.197247054999	-12065.51751062064	-9993.197247054999	7.984470125493767	-14.958803492647117	0.553037988267238	0.6277074953109214	-12050.558707127993	7.984470125493767	0.8026031342301595
+2000	-22054.641792799164	-9990.38611314229	-12064.255679656875	-9990.38611314229	7.984470125493767	-13.696972528881645	0.1842642756084538	0.5966735005564046	-12050.558707127993	7.984470125493767	0.860755844209257
+3000	-22054.830390413495	-9991.500527540968	-12063.32986287253	-9991.500527540968	7.984470125493767	-12.771155744535967	0.18716027211118913	0.9176633286987163	-12050.558707127993	7.984470125493767	0.8387407321945096

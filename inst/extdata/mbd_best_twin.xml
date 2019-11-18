@@ -4,12 +4,15 @@
     <data
 id="mbd_twin"
 name="alignment">
-                    <sequence id="seq_t1" taxon="t1" totalcount="4" value="taaatgtggcggtta"/>
-                    <sequence id="seq_t2" taxon="t2" totalcount="4" value="ataaaactggggttt"/>
-                    <sequence id="seq_t4" taxon="t4" totalcount="4" value="attaaactcgggttt"/>
-                    <sequence id="seq_t5" taxon="t5" totalcount="4" value="ataaatctcgggttt"/>
-                    <sequence id="seq_t6" taxon="t6" totalcount="4" value="ataaaactggggttc"/>
-                    <sequence id="seq_t8" taxon="t8" totalcount="4" value="taaatcggtgtgttt"/>
+                    <sequence id="seq_t12" taxon="t12" totalcount="4" value="gaagtatccaaagtgcaatcacccaaaatatataaaggaacgaaacaaagaaagaacaaacgcataaaacacaacagacaaaagacacaaaaaggagtaacaataaagtcacagcgaaaagcaacaagagtaatattatcattcaaaacaaaaaagtaaatattacaatatatccagaaacaaaaagacgacagtattaagagtaaaaaacaaacgaatttcagagcttaaatcggtgcagataaaaccagtgcccctccaacaccctccccatggcaatcgcgaaccgcccttacccccgccccctttaccgccccgggaccatcggcactcgcccactccccagcttccctccccccaagcccccggccttgtccgccccgcacccaattagcgagccccctgctgccgacctacatcacgtccacccagcccccgccctctctgtacctccccactacctcctttcgcctgtccccacccggacgcgcatccaccccggggattagtgatcatgtgaggcgggtggaaatgaggcggagtgtgaaatgtagggacatggcctcgatgtgtgaatcctggtcgtgggagggaggggatggcggacggtccgctatggacgtgtagagttagtgggggcgcgtttgcggtgcacgggatgcggggaagtaggcgaaagccgaggacgtaaagagacctagtacggtcgtcctggggcgggggcggaggggtgtagggactaggcgtcggtgcatctcaatttttttctccttaagtttgattctgatctgtcgtcctagtataggttatatgaaaaacctttcttttatagcaccgtggcgtttttcattggtcttttctggtgtctttgtaatagttcatgagattactcattctgtcttatttatcttagtgttattaagagctttcggattttgatttgtctctactttccttcgtcgtcatattatattagtggtgttcatgttagtttatgttt"/>
+                    <sequence id="seq_t14" taxon="t14" totalcount="4" value="accaaacgagcgaggtcgtatacaagaataatgatgtaaggcacatagcattagaagggcacatatagagaaaaataaaaaagttttgatgacaggaaatgtaaatgcaatataccaaaaataaggttcggatcatatagtcactgaatataccagagtaaaagtagaagagatcaggataatgaattaacaatggcaagaagttacgccagaatgccgtggagcagtattcatgtaagtaaataaaagacccgaccctaaccgcccacctgtctcctccacaacgccccccacgcctgcgcacccccccgcacaccccaccccaccgcccttccacgccgtcagtgatccccgcgcgagccaaacaccctcccgacgcatctccggtaccgagtccgtcaatgcactcgcccacgcgcatgtcccgtgtacaactcccgactctaattccaggtgaccacaactgttctgccgctctcgttcaccgcgccgcctgtgctattaggaggtgcgggggaagaggtggggtaggtagtggcgggggggctgagtggaggggagtcgggcgcgggtgtgggaggggggaaacgccccccggctaggaaggagcttttgatgggccaacgtgcgcatgggaatagacggagcccggagaagggaaacggggacgaattgatttggtcatgggcggggggggacggggtcgccggtgggggaaggggcctctggggggcatgggggggttttgcgattatgttactttctatgctagtgtctttacttatcacgttctatgtcgcattttttacgtagtttgttggaaagttttaaggtaataacgttctttttatgtttttcgtgttgctacagattttgcaatttttttgtacatggttattttttcggttttgttactcggccgtatatccatttgcaattgttttttttaattacttatatattttgatttcctttgtaacctagcgttttatagatcttt"/>
+                    <sequence id="seq_t17" taxon="t17" totalcount="4" value="caccgcccaaagaaaagtcgaaaaataataaataagaaaataaagcaaatatatagcataagtgaagaagcacagagatacgcactacaaagaggaatagcatgttaaaagacagaggaacccatgaactaactattaaacacgaaatatataaacgataaacaaggacgaaaaaagtaaaatgcaaagttgaataaacgaatgggcttaaccagaaattacccctaaggagcaacaaagagtgaaagaagcgcccccttgccccccagttgcccttcctatgtccttcaccctccccactctcactgacctcaccccctcccctggcaagtcccgctccgtaccacccgccctggttaaaatactacctcctaccccacgaatgcgccctttgccagcgcttaagccccgtgcccgcccccctacccgaggacatcgccgagtgcattggtgcctcatgtcctacaatcctgcgactgcgactgcctatcccccacgccagagggaggcgtagagctggagtagttgttggacggagagcttttgcaggggtgcatagcgggcgcaaaatcgacgcccacatgggggcttggtccgacgcgtgaaagcgatggggggtgggagcgcgggtgaggagggatagtgtggagggcgggaggcgggggggcggagtgactggtggcgcgggggtttgagaggtggcgtgggaggctcggtagggggccgccagggtgggagtatgcgggggtgttgttattgtctagtatctctattattttcacattttttatttgtcgatttctatatacaacgtactagatacactattcttctctttggttacgtgttaagttgtatatcgtcttcctttgacttccataatacttttttcctcttctaagtacttgacattttagttgcttatcttctatgctttagggtgcattgtctttttgtcctattgtctgcagataattctcttgattataagtttcatttt"/>
+                    <sequence id="seq_t18" taxon="t18" totalcount="4" value="taatataaaaaagtagaacaactctaaaaagagacaaacacaacgcaaaataacaaaaacggccaaagaaaaaggtgcataaaccacgaaagatgaaacagaggacctaatagaccacgaaataaaaataacgatataaggacatatatagagtagtacgcaataaaactttagaaatagtgcagccggtatgtgatcaagacactgcaataaattaaacgacaaggtaaataagaaagcagcacagggaccccagatgcgtccctcttctacatttatcctctccttgcccccccctatcggcatcccctcccccctatccaaacccccccccggcagcaccccctccccccgcgacgccctcccgcccgagcgatgccatacccgtcgcccacatgcccgccccagactcgctcgtctcatgacggccctggctcagcctatcattttggtatctggtctggcaccggcccgccaccgatgctcgtgccccaggctatgaggggccggggcgtgcaagggggtcagtgtgggggataggggagtgcaaggccgagggcgggcagggggggttgcatggagggtggatgattgtcttggatggaggcggctacgagcgggttgtgcgattatgctaggcagtagggtcgaaggaaggagtactgagacggagatgcgaggctcggtgccaatttctaagggcccggggttggaggggagctaagatggaccgcatctctgactggcggggtttagatcattactactttttcgtgcctgttcttttttggtatacttgtatgtgccgtgattttagtctatttgtttgtaatgtttgttatttttggtacgctcgttctatttacttcttcattagttttgtctagtattgttttctatttgtttttattgtagtcgctcgtgattgtttcgttgggctttattatttgtaaaatagatgtctttactgctgccgtgtgttcatttgtctaccgtatgt"/>
+                    <sequence id="seq_t19" taxon="t19" totalcount="4" value="aaaatatagcgacttgaaatcaaacaagaggaatgtcagcagacacccaataacataaataaattaacatgaacatagtacgaaaataaattcagttatagggaagacgagcccacaacggagatgaataaagcgataaacaaattactaaagcaaaaaacaaggaaagatgcaagaaaaaacacttgaacagtcagaaagacacgtagaagatataccatttgacgaactaatcaaagttgcataacaacccgccttcacaccgtccccacaagactcgccctcccgactaaggctactcccgtctcactttttcaccctggaacccccccgccatacccccacctgtctcgtcaccaatgtgctcctcctacccctacgtggccaccgcgccccgaaacacccaagtcttctcatcccaatccgacccacacccacttcctgcaacgttaggcgcccgacttcatcaagacttcctcccaccgcccggcggcctatgaatggacggtggttgaggaaggagaggggttaacaacccggggtgcggtgtgggaagcagccgcgccgcgctgtgggggggggggggttggcttggtgggggacgtccgaggtgaggggatgcagccgcatggagtcagtggttagttcggggcggtggttatgcaatactatgttacttacttttgtgctggggggcaggggatatgggtaggggggtgccgacctgacaggggcggggtctggtagggttacttagtagttctttttactctggcttgatttctttttttttccctgatatcatcttcatctttcttcgattattcgctagccttttgtagcttcggtatcatctcgtgttgtcttattcatttagctttttcctagtgctttacggtgtttgttattcttaatttgcgtttgttccttttactcctcccttatatttttctacttagtttgttaatatgcgctgtttgtacctgctttttctaattat"/>
+                    <sequence id="seq_t2" taxon="t2" totalcount="4" value="agaatagtaagactagaatataaacccccaaaagggaagaaaccacacaaaaaaatcaataactataaatgaacataaaaaacatagaaatacagataagcggaagaaaaccactacacgaaaaaatttaaagaaaagaaggcataattagagtcaaaaacaatgagatatgaaaagaaaaccgcatcacgcgtcagataattatttcgcgtttcctgcagtcaacgaactaatcaaaggtgcgtcgcaacccttaaagacaccttcgacacctcccttaccgctcagactgaggattcgcccgccttccgcagccccggcagcaccccccccctgacccaacaccttttccctctcggatctgcccctcacacccccatgtggactgagcgctaagtcacacccaattagccccgtccacgcacggtccactcactcttgctcaacggttagatccttgcctcccccaagacttgctggcaccgcgcgaagccatctccgggcaccgtggttggagaaggataggtgcgagtggaacgtggtgcgaggatgggtgctggggatgagttgtgctgcgtgggtaaggttagactagcgggcggggggcgtgatgcactggtgcaataccagatattgagttgtgggggggagcgggcggtggggtaaggggatgtttattgctcatgggaggcagagcgggtggtgcggctgggtggtggcctcaccgacagggttcgggggagcgcccgcatcctagtagttctttgggttctgccttgtgtttttttttattacaccgtagcatctgcattttgcttcgaattttcgccggtcgtgttggttttttgtgacttcttgtgttgtccattttctttattttgtttttgggtctttgttggttttgtcgttgatcatttatgtttgtctgttgcgatcatcctcagtgaattgctagttattttggaaacaagcgaaaagtttacttgtagtgtcttaattt"/>
+                    <sequence id="seq_t20" taxon="t20" totalcount="4" value="accaaatgagcgaggtcgtatacaagaattaaaatgtaaggcacacatcataagaagaacacaaatagggaaaaaccaaaaagttttgatgggagtaaacgtaaatgtgttataccaaaaataaggttgggatcatataggcactgacaaaaccagatacaaagtagaagagaacgagataatgaagtaaaaatggcatagaattacgccaaaaggcaaagaagcagtattaatgtaagtaaacaaaatactcgacgctaagcacccagttgtctccgccacaccgccccccacgcctgcgcacccccccgcacacccctccccaccgcacttccactccgtcactgagccccgcgcgagccaaaccccctacccacgcatatccggtacggagtccgtcaaatcaccccccaatgcgcatttcccggggacaacttccctctccaattcctggtaaccacaccccctctgccctgcccgcccgccgagcccccggtgccattaggggttgccggggaaggggtggggtgggtggtggcgggggggttgcggggaggggggtcgggcgggggtgttggggtggggagacgctccgcggctaggagggagctagtgatgggcgcacttgcgcatgggaatagacggaacccgcggaagggcatcggggaggaattgattgggtcctggacggcgggggacggggtaccctgcgggagaacgagcgacggggatgcatgggcgcgttttgggattatattattttctatgctagtgtcttgtatcatctctttctatgtggcatttttaacgtcttttgtagggatgtttttatattcattcattctttttatgtttatcttgtttctactctacttgggatttttttttatatagttattttttctgttttgctattcggcttattttctatttgcagttgttttttttcatcacttctatatgtggattatctttgttacctagagttttatagatgtct"/>
+                    <sequence id="seq_t21" taxon="t21" totalcount="4" value="accatatgagcgagatcgtatacaagaataaaaatgaatgacacacaacatcaaaagaacacaaaatgaaaaaaatcaaaaagttttgatgacagtaaatgtaaatgtatgataccaaaaataaggttgggttcatagaggatcttacttatccagataaaaagtagaagagatctagatcatgaactaagaatggcaaggaattacgcaaaatggcaaagaagcaataatacggtaaggaaaccaaatacacatcgctaagcacactgctgtctccgccacactgccccccacgtcggcgcacccccccgcacacctctccgcacggcacctccactccgtcactcatttctgcgggcgccaaacccccttacgacgcatctcccgtacggagtccgtcaaatcactcgcccatgcccaattcccatctacatcttccccttccaaatcctggcgaccacaacttttctgctacgcccgctcacagcgccccctgtgggagtacggggtgcgggggaagggttggggtgggcgttgtggggcgggttgcggagaggggggtagggcgggggtgtggggggggggatacgctctgcggcaaggagggaacttgtcatgggcgaacgcacgcttgggaatagacggagcccggggaagggcataggggaggagttgattgggtagagggcgggggggggcggggtagccggtgagggcacgggcgacggggaggcatgggggggttttgagattatattattttctatgctagtgtcttgttttatcgctttctaagtagtatttttaacgtattttgttggattgtttttatgttcattcattctttttatgtttttattgttgctactgttcttggaactttttttgatatacttatgttttctgttatgttattcggctttttttttatttgcagttgtttttattcatcactcctatatctggattttctttgtttcctagggtgttatagatcttt"/>
+                    <sequence id="seq_t7" taxon="t7" totalcount="4" value="accaaatgagcaacgtcgtgtggaagaataaaaatgtaagacacacaacataataactacataaaaagccaatttgcaaaagactatgataaaaggaaccggaaatatattctaataaaaataagcgtgggaacatataagcaatgaataagccaggactaaattagaagagaccgagataatgaagtaaaaattgcaacatcttaagggacaaggataacaatcagtcatacagtaaatgatcaaaatatccagccctcaacccccagttgtccccgccacacgtaccccgacgcctgcgcacacccccgctccccgctccccaccccacctccacgccgtcacttaaccagctgcgacccaaacaccttcctcacgcacgtcctccacggagtccgtataatcgctctgcaatgttcagttcacctgcccaactccccactccaattccccctgaccacaaccgttctgctgggttcgctcgccgcccgccctgtccagtgagagggtacgggggaaggggtggggtgtggggtggcgggggagtcgcggcgaggggggtcgggtgaaggtgtggggggggggagacgctctgtgtctaggatgtagggtgtgatggaccaaggcgcaggggggttctagcggggaccgcagaatggtatcggggaggaattgctcgggtcatgggcggggaggcaggggggggccggggggggagcgggcgacggggtggcctgagcgggttttgggactatgttattttctacgctagtgccttgttttatatgtttctatgcagcattctctacgttcgtttgtggagtgtgttgacttaaaatcattcttttcatatttttcttaaagccacttattttgggattttcttggttttagtttctttttctgtttagttaattggatttttttttatttgcagttgttttttatcgttactaatatagtgggattttaattgttacctatagtttaacgggtcttt"/>
                 </data>
 
 
@@ -39,14 +42,9 @@ name="alignment">
                 <alignment idref="mbd_twin"/>
             </taxonset>
         </tree>
-        <parameter id="rateAC.s:mbd_twin" lower="0.0" name="stateNode">1.0</parameter>
-        <parameter id="rateAG.s:mbd_twin" lower="0.0" name="stateNode">1.0</parameter>
-        <parameter id="rateAT.s:mbd_twin" lower="0.0" name="stateNode">1.0</parameter>
-        <parameter id="rateCG.s:mbd_twin" lower="0.0" name="stateNode">1.0</parameter>
-        <parameter id="rateGT.s:mbd_twin" lower="0.0" name="stateNode">1.0</parameter>
+        <parameter id="kappa.s:mbd_twin" lower="0.0" name="stateNode">2.0</parameter>
         <parameter id="freqParameter.s:mbd_twin" dimension="4" lower="0.0" name="stateNode" upper="1.0">0.25</parameter>
-        <parameter id="BDBirthRate.t:mbd_twin" lower="0.0" name="stateNode" upper="10000.0">1.0</parameter>
-        <parameter id="BDDeathRate.t:mbd_twin" lower="0.0" name="stateNode" upper="1.0">0.5</parameter>
+        <parameter id="birthRate.t:mbd_twin" name="stateNode">1.0</parameter>
         <parameter id="clockRate.c:mbd_twin" name="stateNode">1.0</parameter>
     </state>
 
@@ -58,57 +56,33 @@ name="alignment">
 
     <distribution id="posterior" spec="util.CompoundDistribution">
         <distribution id="prior" spec="util.CompoundDistribution">
-            <distribution id="BirthDeath.t:mbd_twin" spec="beast.evolution.speciation.BirthDeathGernhard08Model" birthDiffRate="@BDBirthRate.t:mbd_twin" relativeDeathRate="@BDDeathRate.t:mbd_twin" tree="@Tree.t:mbd_twin"/>
-            <prior id="BirthRatePrior.t:mbd_twin" name="distribution" x="@BDBirthRate.t:mbd_twin">
+            <distribution id="YuleModel.t:mbd_twin" spec="beast.evolution.speciation.YuleModel" birthDiffRate="@birthRate.t:mbd_twin" tree="@Tree.t:mbd_twin"/>
+            <prior id="YuleBirthRatePrior.t:mbd_twin" name="distribution" x="@birthRate.t:mbd_twin">
                 <Uniform id="Uniform.100" name="distr" upper="Infinity"/>
             </prior>
-            <prior id="DeathRatePrior.t:mbd_twin" name="distribution" x="@BDDeathRate.t:mbd_twin">
-                <Uniform id="Uniform.101" name="distr" upper="Infinity"/>
-            </prior>
-            <prior id="RateACPrior.s:mbd_twin" name="distribution" x="@rateAC.s:mbd_twin">
-                <Gamma id="Gamma.0" name="distr">
-                    <parameter id="RealParameter.0" estimate="false" name="alpha">0.05</parameter>
-                    <parameter id="RealParameter.1" estimate="false" name="beta">10.0</parameter>
-                </Gamma>
-            </prior>
-            <prior id="RateAGPrior.s:mbd_twin" name="distribution" x="@rateAG.s:mbd_twin">
-                <Gamma id="Gamma.1" name="distr">
-                    <parameter id="RealParameter.2" estimate="false" name="alpha">0.05</parameter>
-                    <parameter id="RealParameter.3" estimate="false" name="beta">20.0</parameter>
-                </Gamma>
-            </prior>
-            <prior id="RateATPrior.s:mbd_twin" name="distribution" x="@rateAT.s:mbd_twin">
-                <Gamma id="Gamma.2" name="distr">
-                    <parameter id="RealParameter.4" estimate="false" name="alpha">0.05</parameter>
-                    <parameter id="RealParameter.5" estimate="false" name="beta">10.0</parameter>
-                </Gamma>
-            </prior>
-            <prior id="RateCGPrior.s:mbd_twin" name="distribution" x="@rateCG.s:mbd_twin">
-                <Gamma id="Gamma.3" name="distr">
-                    <parameter id="RealParameter.6" estimate="false" name="alpha">0.05</parameter>
-                    <parameter id="RealParameter.7" estimate="false" name="beta">10.0</parameter>
-                </Gamma>
-            </prior>
-            <prior id="RateGTPrior.s:mbd_twin" name="distribution" x="@rateGT.s:mbd_twin">
-                <Gamma id="Gamma.4" name="distr">
-                    <parameter id="RealParameter.8" estimate="false" name="alpha">0.05</parameter>
-                    <parameter id="RealParameter.9" estimate="false" name="beta">10.0</parameter>
-                </Gamma>
+            <prior id="KappaPrior.s:mbd_twin" name="distribution" x="@kappa.s:mbd_twin">
+                <LogNormal id="LogNormalDistributionModel.0" name="distr">
+                    <parameter id="RealParameter.0" estimate="false" name="M">1.0</parameter>
+                    <parameter id="RealParameter.1" estimate="false" lower="0" name="S" upper="Infinity">1.25</parameter>
+                </LogNormal>
             </prior>
             <prior id="ClockPrior.c:mbd_twin" name="distribution" x="@clockRate.c:mbd_twin">
                 <Uniform id="Uniform.150" name="distr" upper="Infinity"/>
             </prior>
             <distribution id="auto_name_1.prior" spec="beast.math.distributions.MRCAPrior" monophyletic="true" tree="@Tree.t:mbd_twin">
                 <taxonset id="auto_name_1" spec="TaxonSet">
-                    <taxon id="t1" spec="Taxon"/>
-                    <taxon id="t8" spec="Taxon"/>
+                    <taxon id="t12" spec="Taxon"/>
+                    <taxon id="t17" spec="Taxon"/>
                     <taxon id="t2" spec="Taxon"/>
-                    <taxon id="t6" spec="Taxon"/>
-                    <taxon id="t4" spec="Taxon"/>
-                    <taxon id="t5" spec="Taxon"/>
+                    <taxon id="t19" spec="Taxon"/>
+                    <taxon id="t18" spec="Taxon"/>
+                    <taxon id="t7" spec="Taxon"/>
+                    <taxon id="t14" spec="Taxon"/>
+                    <taxon id="t20" spec="Taxon"/>
+                    <taxon id="t21" spec="Taxon"/>
                 </taxonset>
                 <Normal id="Normal.151" name="distr">
-                    <parameter id="RealParameter.300" estimate="false" name="mean">6</parameter>
+                    <parameter id="RealParameter.300" estimate="false" name="mean">8</parameter>
                     <parameter id="RealParameter.301" estimate="false" name="sigma">0.0001</parameter>
                 </Normal>
             </distribution>
@@ -119,8 +93,7 @@ name="alignment">
                     <parameter id="mutationRate.s:mbd_twin" estimate="false" name="mutationRate">1.0</parameter>
                     <parameter id="gammaShape.s:mbd_twin" estimate="false" name="shape">1.0</parameter>
                     <parameter id="proportionInvariant.s:mbd_twin" estimate="false" lower="0.0" name="proportionInvariant" upper="1.0">0.0</parameter>
-                    <substModel id="gtr.s:mbd_twin" spec="GTR" rateAC="@rateAC.s:mbd_twin" rateAG="@rateAG.s:mbd_twin" rateAT="@rateAT.s:mbd_twin" rateCG="@rateCG.s:mbd_twin" rateGT="@rateGT.s:mbd_twin">
-                        <parameter id="rateCT.s:mbd_twin" estimate="false" lower="0.0" name="rateCT">1.0</parameter>
+                    <substModel id="hky.s:mbd_twin" spec="HKY" kappa="@kappa.s:mbd_twin">
                         <frequencies id="estimatedFreqs.s:mbd_twin" spec="Frequencies" frequencies="@freqParameter.s:mbd_twin"/>
                     </substModel>
                 </siteModel>
@@ -129,33 +102,23 @@ name="alignment">
         </distribution>
     </distribution>
 
-    <operator id="BirthRateScaler.t:mbd_twin" spec="ScaleOperator" parameter="@BDBirthRate.t:mbd_twin" scaleFactor="0.75" weight="3.0"/>
+    <operator id="YuleBirthRateScaler.t:mbd_twin" spec="ScaleOperator" parameter="@birthRate.t:mbd_twin" scaleFactor="0.75" weight="3.0"/>
 
-    <operator id="DeathRateScaler.t:mbd_twin" spec="ScaleOperator" parameter="@BDDeathRate.t:mbd_twin" scaleFactor="0.75" weight="3.0"/>
+    <operator id="YuleModelTreeScaler.t:mbd_twin" spec="ScaleOperator" scaleFactor="0.5" tree="@Tree.t:mbd_twin" weight="3.0"/>
 
-    <operator id="BirthDeathTreeScaler.t:mbd_twin" spec="ScaleOperator" scaleFactor="0.5" tree="@Tree.t:mbd_twin" weight="3.0"/>
+    <operator id="YuleModelTreeRootScaler.t:mbd_twin" spec="ScaleOperator" rootOnly="true" scaleFactor="0.5" tree="@Tree.t:mbd_twin" weight="3.0"/>
 
-    <operator id="BirthDeathTreeRootScaler.t:mbd_twin" spec="ScaleOperator" rootOnly="true" scaleFactor="0.5" tree="@Tree.t:mbd_twin" weight="3.0"/>
+    <operator id="YuleModelUniformOperator.t:mbd_twin" spec="Uniform" tree="@Tree.t:mbd_twin" weight="30.0"/>
 
-    <operator id="BirthDeathUniformOperator.t:mbd_twin" spec="Uniform" tree="@Tree.t:mbd_twin" weight="30.0"/>
+    <operator id="YuleModelSubtreeSlide.t:mbd_twin" spec="SubtreeSlide" tree="@Tree.t:mbd_twin" weight="15.0"/>
 
-    <operator id="BirthDeathSubtreeSlide.t:mbd_twin" spec="SubtreeSlide" tree="@Tree.t:mbd_twin" weight="15.0"/>
+    <operator id="YuleModelNarrow.t:mbd_twin" spec="Exchange" tree="@Tree.t:mbd_twin" weight="15.0"/>
 
-    <operator id="BirthDeathNarrow.t:mbd_twin" spec="Exchange" tree="@Tree.t:mbd_twin" weight="15.0"/>
+    <operator id="YuleModelWide.t:mbd_twin" spec="Exchange" isNarrow="false" tree="@Tree.t:mbd_twin" weight="3.0"/>
 
-    <operator id="BirthDeathWide.t:mbd_twin" spec="Exchange" isNarrow="false" tree="@Tree.t:mbd_twin" weight="3.0"/>
+    <operator id="YuleModelWilsonBalding.t:mbd_twin" spec="WilsonBalding" tree="@Tree.t:mbd_twin" weight="3.0"/>
 
-    <operator id="BirthDeathWilsonBalding.t:mbd_twin" spec="WilsonBalding" tree="@Tree.t:mbd_twin" weight="3.0"/>
-
-    <operator id="RateACScaler.s:mbd_twin" spec="ScaleOperator" parameter="@rateAC.s:mbd_twin" scaleFactor="0.5" weight="0.1"/>
-
-    <operator id="RateAGScaler.s:mbd_twin" spec="ScaleOperator" parameter="@rateAG.s:mbd_twin" scaleFactor="0.5" weight="0.1"/>
-
-    <operator id="RateATScaler.s:mbd_twin" spec="ScaleOperator" parameter="@rateAT.s:mbd_twin" scaleFactor="0.5" weight="0.1"/>
-
-    <operator id="RateCGScaler.s:mbd_twin" spec="ScaleOperator" parameter="@rateCG.s:mbd_twin" scaleFactor="0.5" weight="0.1"/>
-
-    <operator id="RateGTScaler.s:mbd_twin" spec="ScaleOperator" parameter="@rateGT.s:mbd_twin" scaleFactor="0.5" weight="0.1"/>
+    <operator id="KappaScaler.s:mbd_twin" spec="ScaleOperator" parameter="@kappa.s:mbd_twin" scaleFactor="0.5" weight="0.1"/>
 
     <operator id="FrequenciesExchanger.s:mbd_twin" spec="DeltaExchangeOperator" delta="0.01" weight="0.1">
         <parameter idref="freqParameter.s:mbd_twin"/>
@@ -168,21 +131,16 @@ name="alignment">
         <down idref="Tree.t:mbd_twin"/>
     </operator>
 
-    <logger id="tracelog" fileName="mbd_twin.log" logEvery="1000" model="@posterior" sanitiseHeaders="true" sort="smart">
+    <logger id="tracelog" fileName="/home/richel/GitHubs/razzo_project/data/0.2-0.15-1-0.1/1/mbd_best_twin.log" logEvery="1000" model="@posterior" sanitiseHeaders="true" sort="smart">
         <log idref="posterior"/>
         <log idref="likelihood"/>
         <log idref="prior"/>
         <log idref="treeLikelihood.mbd_twin"/>
         <log id="TreeHeight.t:mbd_twin" spec="beast.evolution.tree.TreeHeightLogger" tree="@Tree.t:mbd_twin"/>
-        <log idref="rateAC.s:mbd_twin"/>
-        <log idref="rateAG.s:mbd_twin"/>
-        <log idref="rateAT.s:mbd_twin"/>
-        <log idref="rateCG.s:mbd_twin"/>
-        <log idref="rateGT.s:mbd_twin"/>
+        <log idref="kappa.s:mbd_twin"/>
         <log idref="freqParameter.s:mbd_twin"/>
-        <log idref="BirthDeath.t:mbd_twin"/>
-        <log idref="BDBirthRate.t:mbd_twin"/>
-        <log idref="BDDeathRate.t:mbd_twin"/>
+        <log idref="YuleModel.t:mbd_twin"/>
+        <log idref="birthRate.t:mbd_twin"/>
         <log idref="auto_name_1.prior"/>
         <log idref="clockRate.c:mbd_twin"/>
     </logger>
@@ -194,7 +152,7 @@ name="alignment">
         <log idref="prior"/>
     </logger>
 
-    <logger id="treelog.t:mbd_twin" fileName="$(tree).trees" logEvery="1000" mode="tree">
+    <logger id="treelog.t:mbd_twin" fileName="/home/richel/GitHubs/razzo_project/data/0.2-0.15-1-0.1/1/mbd_best_twin.trees" logEvery="1000" mode="tree">
         <log id="TreeWithMetaDataLogger.t:mbd_twin" spec="beast.evolution.tree.TreeWithMetaDataLogger" tree="@Tree.t:mbd_twin"/>
     </logger>
 
