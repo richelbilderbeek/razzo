@@ -224,11 +224,11 @@ test_that("razzo naming conventions", {
     file.path(folder_name, "mbd_gen.xml")
   )
   expect_equal(
-    gen_exp$beast2_options$output_log_filename,
+    gen_exp$inference_model$mcmc$tracelog$filename,
     file.path(folder_name, "mbd_gen.log")
   )
   expect_equal(
-    gen_exp$beast2_options$output_trees_filenames,
+    gen_exp$inference_model$mcmc$treelog$filename,
     file.path(folder_name, "mbd_gen.trees")
   )
   expect_equal(
@@ -247,11 +247,11 @@ test_that("razzo naming conventions", {
       file.path(folder_name, "mbd_best.xml")
     )
     expect_equal(
-      cand_exp$beast2_options$output_log_filename,
+      cand_exp$inference_model$mcmc$tracelog$filename,
       file.path(folder_name, "mbd_best.log")
     )
     expect_equal(
-      cand_exp$beast2_options$output_trees_filenames,
+      cand_exp$inference_model$mcmc$treelog$filename,
       file.path(folder_name, "mbd_best.trees")
     )
     expect_equal(

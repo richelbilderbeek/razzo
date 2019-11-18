@@ -29,8 +29,8 @@ create_test_razzo_paramses <- function(
     razzo_paramses[[i]]$pir_params$experiments[[2]]$inference_model$tree_prior <- beautier::create_yule_tree_prior() # nolint indeed long, sorry Demeter
     razzo_paramses[[i]]$pir_params$experiments[[3]]$inference_model$tree_prior <- beautier::create_yule_tree_prior() # nolint indeed long, sorry Demeter
     for (j in seq_along(razzo_paramses[[i]]$pir_params$experiments)) {
-      razzo_paramses[[i]]$pir_params$experiments[[j]]$inference_model$mcmc <-
-        beautier::create_mcmc(chain_length = 3000, store_every = 1000)
+      razzo_paramses[[i]]$pir_params$experiments[[j]]$inference_model$mcmc$chain_length <- 3000
+      razzo_paramses[[i]]$pir_params$experiments[[j]]$inference_model$mcmc$store_every <- 1000
     }
   }
   razzo_paramses
