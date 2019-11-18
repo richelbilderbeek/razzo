@@ -1,6 +1,6 @@
 test_that("use, generative", {
   folder_name <- peregrine::get_pff_tempfile()
-  mcmc <- create_razzo_mcmc(
+  mcmc <- get_razzo_mcmc(
     model_type = "generative",
     folder_name = folder_name
   )
@@ -16,7 +16,7 @@ test_that("use, generative", {
 
 test_that("use, candidate", {
   folder_name <- peregrine::get_pff_tempfile()
-  mcmc <- create_razzo_mcmc(
+  mcmc <- get_razzo_mcmc(
     model_type = "candidate",
     folder_name = folder_name
   )

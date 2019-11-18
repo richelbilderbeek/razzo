@@ -4,7 +4,13 @@
 \alias{get_razzo_mcmc}
 \title{Get the MCMC chain used in the article}
 \usage{
-get_razzo_mcmc()
+get_razzo_mcmc(model_type, folder_name = peregrine::get_pff_tempfile())
+}
+\arguments{
+\item{model_type}{the type of inference model, must be
+\code{generative} or \code{candidate}}
+
+\item{folder_name}{name of the main folder}
 }
 \value{
 the MCMC chain

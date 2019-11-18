@@ -4,21 +4,11 @@
 #' else will do nothing
 #' @inheritParams default_params_doc
 #' @author Richel J.C. Bilderbeek
-#' @aliases check_razzo_params
-#' @export check_razzo_params
+#' @export
 check_razzo_params <- function(
   razzo_params
 ) {
-  argument_names <- c(
-    "mbd_params", "pir_params", "misc_params"
-  )
-  for (arg_name in argument_names) {
-    if (!arg_name %in% names(razzo_params)) {
-      stop(
-        "'", arg_name, "' must be an element of a 'razzo_params'"
-      )
-    }
-  }
+  check_razzo_params_names(razzo_params)
 
   check_mbd_params(razzo_params$mbd_params)
   check_misc_params(razzo_params$misc_params)
@@ -99,3 +89,26 @@ check_razzo_params <- function(
   # Filenames must be Peregrine-friendly and follow razzo convention
   check_razzo_params_filenames(razzo_params) # nolint razzo function
 }
+
+#' Check if the \code{razzo_params} is a list with elements
+#' that have the required names to be valid razzo parameters.
+#'
+#' Will \link{stop} if not
+#' @inheritParams default_params_doc
+#' @author Richel J.C. Bilderbeek
+#' @export
+check_razzo_params_names <- function(
+  razzo_params
+) {
+  argument_names <- c(
+    "mbd_params", "pir_params", "misc_params"
+  )
+  for (arg_name in argument_names) {
+    if (!arg_name %in% names(razzo_params)) {
+      stop(
+        "'", arg_name, "' must be an element of a 'razzo_params'"
+      )
+    }
+  }
+}
+

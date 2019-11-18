@@ -45,15 +45,17 @@ create_razzo_cand_experiments <- function(
 
   # Adapt to razzo
   for (i in seq_along(cand_experiments)) {
-    cand_experiments[[i]]$inference_model$mcmc <- beautier::create_mcmc(
-      store_every = get_razzo_mcmc_store_every(),
-      chain_length = get_razzo_mcmc_chain_length()
+    cand_experiments[[i]]$inference_model$mcmc <- razzo::get_razzo_mcmc(
+      model_type = "candidate",
+      folder_name = folder_name
     )
     cand_experiments[[i]]$est_evidence_mcmc <- create_razzo_nested_sampling_mcmc()
     cand_experiments[[i]]$inference_model$mrca_prior <- create_razzo_mrca_prior()
     cand_experiments[[i]]$est_evidence_mcmc <- create_razzo_nested_sampling_mcmc()
     cand_experiments[[i]]$beast2_options <- create_razzo_beast2_options(
-      model_type = "candidate", folder_name = folder_name, rng_seed = rng_seed
+      model_type = "candidate",
+      folder_name = folder_name,
+      rng_seed = rng_seed
     )
   }
   cand_experiments
