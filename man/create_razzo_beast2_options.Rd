@@ -9,6 +9,11 @@ create_razzo_beast2_options(model_type,
   folder_name = peregrine::get_pff_tempfile(), rng_seed = 1)
 }
 \arguments{
+\item{model_type}{the type of inference model, must be
+\code{generative} or \code{candidate}}
+
+\item{folder_name}{name of the main folder}
+
 \item{rng_seed}{the RNG seed used in BEAST2 inference}
 }
 \description{

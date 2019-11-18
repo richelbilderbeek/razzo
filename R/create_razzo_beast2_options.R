@@ -1,5 +1,6 @@
 #' Create BEAST2 options that follow the razzo naming conventions
 #' and article
+#' @inheritParams default_params_doc
 #' @param rng_seed the RNG seed used in BEAST2 inference
 #' @inheritParams beastier::create_beast2_options
 #' @export

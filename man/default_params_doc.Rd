@@ -9,14 +9,15 @@ default_params_doc(alignment, alignment_params, bd_mutation_rate, bd_tree,
   bd_tree_filename, brts, chain_length, clock_model, cond, crown_age,
   error_measure_params, experiment_type, experiments, fasta_filename,
   filename, folder_name, init_speciation_rate, init_extinction_rate,
-  lambda, mbd_l_matrix, mbd_mutation_rate, mbd_params, mbd_paramses,
-  mbd_params_interval, mbd_sim_rng_seed, mbd_tree, mcmc_chain_length,
-  misc_params, model_type, mu, mutation_rate, n_replicates, nu, nu_events,
-  parameters, parameter_filename, parameters_filename, phylo, pir_params,
-  posterior_trees, precision, project_folder_name, q, razzo_params,
-  razzo_paramses, rng_seed, sample_interval, seed, sequence_length,
-  sim_pars, sim_phylo, site_model, sub_chain_length, tree, tree_filename,
-  trees_filename, twinning_params, verbose)
+  lambda, lambdas, mbd_l_matrix, mbd_mutation_rate, mbd_params,
+  mbd_paramses, mbd_params_interval, mbd_sim_rng_seed, mbd_tree,
+  mcmc_chain_length, misc_params, model_type, mu, mus, mutation_rate,
+  n_replicates, nu, nus, nu_events, parameters, parameter_filename,
+  parameters_filename, phylo, pir_params, posterior_trees, precision,
+  project_folder_name, q, qs, razzo_params, razzo_paramses, rng_seed,
+  sample_interval, seed, sequence_length, sim_pars, sim_phylo, site_model,
+  sub_chain_length, tree, tree_filename, trees_filename, twinning_params,
+  verbose)
 }
 \arguments{
 \item{alignment}{a DNA alignment}
@@ -65,6 +66,8 @@ up. To create it use \code{\link[pirouette]{create_experiment}}}
 
 \item{lambda}{per-lineage speciation rate. See \code{\link[mbd]{mbd_sim}}}
 
+\item{lambdas}{per-lineage speciation rates. See \code{\link[mbd]{mbd_sim}}}
+
 \item{mbd_l_matrix}{the L matrix of an MBD tree}
 
 \item{mbd_mutation_rate}{the mutation rate when creating an alignment
@@ -95,11 +98,16 @@ when an mbd tree is simulated}
 
 \item{mu}{per-species extinction rate. See \code{\link[mbd]{mbd_sim}}}
 
+\item{mus}{per-species extinction rates. See \code{\link[mbd]{mbd_sim}}}
+
 \item{mutation_rate}{something}
 
 \item{n_replicates}{number of replicates}
 
 \item{nu}{the rate at which a multiple-birth specation is triggered.
+See \code{\link[mbd]{mbd_sim}}}
+
+\item{nus}{the rates at which a multiple-birth specation is triggered.
 See \code{\link[mbd]{mbd_sim}}}
 
 \item{nu_events}{the number of nu-triggered events that have to be
@@ -127,6 +135,9 @@ of class \code{multiphylo}}
 will be the full path to \code{razzo_project}}
 
 \item{q}{per-species speciation probability in case of occurrance of
+a multiple event. See \code{\link[mbd]{mbd_sim}}}
+
+\item{qs}{per-species speciation probabilities in case of occurrance of
 a multiple event. See \code{\link[mbd]{mbd_sim}}}
 
 \item{razzo_params}{a parameter set for one \code{razzo} experiment,

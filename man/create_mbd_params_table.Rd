@@ -10,6 +10,16 @@ create_mbd_params_table(lambdas = get_razzo_lambdas(),
   n_replicates = get_razzo_n_replicates())
 }
 \arguments{
+\item{lambdas}{per-lineage speciation rates. See \code{\link[mbd]{mbd_sim}}}
+
+\item{mus}{per-species extinction rates. See \code{\link[mbd]{mbd_sim}}}
+
+\item{nus}{the rates at which a multiple-birth specation is triggered.
+See \code{\link[mbd]{mbd_sim}}}
+
+\item{qs}{per-species speciation probabilities in case of occurrance of
+a multiple event. See \code{\link[mbd]{mbd_sim}}}
+
 \item{cond}{conditioning as specified in \code{\link[mbd]{mbd_sim}}}
 
 \item{crown_age}{The crown age of the tree.}
