@@ -131,18 +131,17 @@ test_that("razzo naming conventions", {
     file.path(folder_name, "mbd_gen.xml")
   )
   expect_equal(
-    gen_exp$beast2_options$output_log_filename,
+    gen_exp$inference_model$mcmc$tracelog$filename,
     file.path(folder_name, "mbd_gen.log")
   )
   expect_equal(
-    gen_exp$beast2_options$output_trees_filenames,
+    gen_exp$inference_model$mcmc$treelog$filename,
     file.path(folder_name, "mbd_gen.trees")
   )
   expect_equal(
     gen_exp$beast2_options$output_state_filename,
     file.path(folder_name, "mbd_gen.xml.state")
   )
-  expect_true(peregrine::is_pff(gen_exp$beast2_options$beast2_working_dir))
   expect_equal(
     gen_exp$errors_filename,
     file.path(folder_name, "mbd_nltts_gen.csv")
@@ -155,18 +154,17 @@ test_that("razzo naming conventions", {
       file.path(folder_name, "mbd_best.xml")
     )
     expect_equal(
-      cand_exp$beast2_options$output_log_filename,
+      cand_exp$inference_model$mcmc$tracelog$filename,
       file.path(folder_name, "mbd_best.log")
     )
     expect_equal(
-      cand_exp$beast2_options$output_trees_filenames,
+      cand_exp$inference_model$mcmc$treelog$filename,
       file.path(folder_name, "mbd_best.trees")
     )
     expect_equal(
       cand_exp$beast2_options$output_state_filename,
       file.path(folder_name, "mbd_best.xml.state")
     )
-    expect_true(peregrine::is_pff(cand_exp$beast2_options$beast2_working_dir))
     expect_equal(
       cand_exp$errors_filename,
       file.path(folder_name, "mbd_nltts_best.csv")

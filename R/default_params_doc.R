@@ -27,6 +27,7 @@
 #' @param init_speciation_rate a speciation rate
 #' @param init_extinction_rate an extinction rate
 #' @param lambda per-lineage speciation rate. See \code{\link[mbd]{mbd_sim}}
+#' @param lambdas per-lineage speciation rates. See \code{\link[mbd]{mbd_sim}}
 #' @param mbd_l_matrix the L matrix of an MBD tree
 #' @param mbd_params MBD parameter set
 #' @param mbd_params_interval data frame with one MBD parameter set per row.
@@ -46,9 +47,12 @@
 #' @param model_type the type of inference model, must be
 #'   \code{generative} or \code{candidate}
 #' @param mu per-species extinction rate. See \code{\link[mbd]{mbd_sim}}
+#' @param mus per-species extinction rates. See \code{\link[mbd]{mbd_sim}}
 #' @param mutation_rate something
 #' @param n_replicates number of replicates
 #' @param nu the rate at which a multiple-birth specation is triggered.
+#'   See \code{\link[mbd]{mbd_sim}}
+#' @param nus the rates at which a multiple-birth specation is triggered.
 #'   See \code{\link[mbd]{mbd_sim}}
 #' @param nu_events the number of nu-triggered events that have to be
 #'   present in the simulated tree
@@ -66,6 +70,8 @@
 #' @param project_folder_name project folder name,
 #'   will be the full path to \code{razzo_project}
 #' @param q per-species speciation probability in case of occurrance of
+#'   a multiple event. See \code{\link[mbd]{mbd_sim}}
+#' @param qs per-species speciation probabilities in case of occurrance of
 #'   a multiple event. See \code{\link[mbd]{mbd_sim}}
 #' @param razzo_params a parameter set for one \code{razzo} experiment,
 #'   as created by \link{create_params_razzo}
@@ -117,7 +123,7 @@ default_params_doc <- function(
   folder_name,
   init_speciation_rate,
   init_extinction_rate,
-  lambda,
+  lambda, lambdas,
   mbd_l_matrix,
   mbd_mutation_rate,
   mbd_params,
@@ -128,10 +134,10 @@ default_params_doc <- function(
   mcmc_chain_length,
   misc_params,
   model_type,
-  mu,
+  mu, mus,
   mutation_rate,
   n_replicates,
-  nu,
+  nu, nus,
   nu_events,
   parameters,
   parameter_filename,
@@ -141,7 +147,7 @@ default_params_doc <- function(
   posterior_trees,
   precision,
   project_folder_name,
-  q,
+  q, qs,
   razzo_params,
   razzo_paramses,
   rng_seed,

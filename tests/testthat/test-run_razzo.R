@@ -16,7 +16,7 @@ test_that("use", {
 
   final_mcmc_state_line <- tail(
     readLines(
-      razzo_params$pir_params$experiments[[1]]$beast2_options$output_trees_filenames, # nolint sorry Demeter
+      razzo_params$pir_params$experiments[[1]]$inference_model$mcmc$treelog$filename, # nolint sorry Demeter
       warn = FALSE
     ),
     n = 2

@@ -14,32 +14,35 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
+Depends: 
+    beastier (>= 2.0.25),
+    beautier (>= 2.3),
+    peregrine (>= 0.5),
+    pirouette (>= 1.5.1)
 Imports: 
     ape,
-    beastier (>= 2.0.25),
-    beautier (>= 2.2.4),
+    babette,
     ggplot2,
     mbd,
-    nodeSub (>= 0.4.0),
-    peregrine (>= 0.5),
-    pirouette (>= 1.5.1),
     remotes,
     stringr,
+    tracerer,
     testit
 Suggests:
     assertive,
-    babette,
     cli,
     devtools,
     dplyr,
     knitr,
     lintr,
+    mauricer,
+    mcbette,
     nLTT (>= 1.4.2),
+    nodeSub (>= 0.4.0),
     plyr,
     tidyr,
     rappdirs,
     rmarkdown,
     testthat (>= 2.1.0),
-    tidyverse,
-    tracerer
+    tidyverse
 VignetteBuilder: knitr

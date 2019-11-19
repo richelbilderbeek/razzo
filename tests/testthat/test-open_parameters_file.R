@@ -2,6 +2,8 @@ context("test-open_parameters_file")
 
 test_that("use", {
 
+  skip("Cannot read parameters from files yet")
+
   # If ''filename' must be the name of a file in 'inst/extdata'', do
   if (1 == 2) {
     # this functon does not exists

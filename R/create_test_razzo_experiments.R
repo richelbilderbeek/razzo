@@ -33,7 +33,6 @@ create_test_razzo_experiments <- function(
     )
     experiments[[i]]$est_evidence_mcmc$chain_length <- 3e3
     experiments[[i]]$est_evidence_mcmc$store_every <- 1e3
-
   }
 
   if (isTRUE(has_candidates)) {

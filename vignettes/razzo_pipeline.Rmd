@@ -196,7 +196,7 @@ image(
 ```{r eval=FALSE}
 babette::plot_densitree(
   tracerer::parse_beast_trees(
-    razzo_params$pir_params$experiments[[1]]$beast2_options$output_trees_filenames
+    razzo_params$pir_params$experiments[[1]]$inference_model$mcmc$treelog$filename
   )
 )
 ```
@@ -204,11 +204,11 @@ babette::plot_densitree(
 ### First MBD posterior's trees of best candidate model
 
 ```{r eval=FALSE}
-# babette::plot_densitree(
-#   tracerer::parse_beast_trees(
-#     razzo_params$pir_params$experiments[[2]]$beast2_options$output_trees_filenames
-#   )
-# )
+babette::plot_densitree(
+  tracerer::parse_beast_trees(
+    razzo_params$pir_params$experiments[[2]]$inference_model$mcmc$treelog$filename
+  )
+)
 ```
 
 ### First MBD posterior's ESSes
@@ -216,7 +216,7 @@ babette::plot_densitree(
 ```{r eval=FALSE}
 knitr::kable(
   tracerer::calc_esses(
-    tracerer::parse_beast_log(razzo_params$pir_params$experiments[[1]]$beast2_options$output_log_filename), 
+    tracerer::parse_beast_log(razzo_params$pir_params$experiments[[1]]$inference_model$mcmc$tracelog$filename), 
     sample_interval = razzo_params$pir_params$experiments[[1]]$inference_model$mcmc$store_every
   )
 )
@@ -229,7 +229,7 @@ knitr::kable(
 babette::plot_densitree(
   tracerer::parse_beast_trees(
     pirouette::to_twin_filename(
-      razzo_params$pir_params$experiments[[1]]$beast2_options$output_trees_filenames
+      razzo_params$pir_params$experiments[[1]]$inference_model$mcmc$treelog$filename
     )
   )
 )
@@ -238,28 +238,28 @@ babette::plot_densitree(
 ### First twin posterior's trees of best candidate model
 
 ```{r eval=FALSE}
-# babette::plot_densitree(
-#   tracerer::parse_beast_trees(
-#     pirouette::to_twin_filename(
-#       razzo_params$pir_params$experiments[[2]]$beast2_options$output_trees_filenames
-#     )
-#   )
-# )
+babette::plot_densitree(
+  tracerer::parse_beast_trees(
+    pirouette::to_twin_filename(
+      razzo_params$pir_params$experiments[[2]]$inference_model$mcmc$treelog$filename
+    )
+  )
+)
 ```
 ### First BD posterior's ESSes
 
 Plot the Effective Sample Sizes (must be at least 200 in manuscript):
 
 ```{r eval=FALSE}
-# knitr::kable(
-#   tracerer::calc_esses(
-#     tracerer::parse_beast_log(
-#       pirouette::to_twin_filename(
-#         razzo_params$pir_params$experiments[[2]]$beast2_options$output_log_filename)
-#     ), 
-#     sample_interval = razzo_params$pir_params$experiments[[2]]$inference_model$mcmc$store_every
-#   )
-# )
+knitr::kable(
+  tracerer::calc_esses(
+    tracerer::parse_beast_log(
+      pirouette::to_twin_filename(
+        razzo_params$pir_params$experiments[[2]]$inference_model$mcmc$tracelog$filename)
+    ),
+    sample_interval = razzo_params$pir_params$experiments[[2]]$inference_model$mcmc$store_every
+  )
+)
 ```
 
 ### First MBD errors
