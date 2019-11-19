@@ -22,7 +22,7 @@ check_razzo_params <- function(
 
   razzo::check_mbd_params(razzo_params$mbd_params)
   razzo::check_misc_params(razzo_params$misc_params)
-  pirouette::check_pir_params(razzo_params$pir_params)
+  pirouette::check_pir_params(pir_params = razzo_params$pir_params)
   peregrine::check_pff_pir_params(razzo_params$pir_params)
 
   if (!beautier::has_mrca_prior(
