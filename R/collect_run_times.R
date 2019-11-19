@@ -6,7 +6,7 @@
 collect_run_times <- function(
   project_folder_name = get_razzo_path("razzo_project")
 ) {
-  check_project_folder_name(project_folder_name) # nolint
+  razzo::check_project_folder_name(project_folder_name)
 
   log_filenames <- list.files(
     path = project_folder_name,

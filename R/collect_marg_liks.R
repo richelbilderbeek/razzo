@@ -11,7 +11,7 @@ collect_evidences <- collect_marg_liks <- function(
   razzo::check_project_folder_name(project_folder_name) # nolint
 
   # retrieve information from files
-  data_folder <- get_data_paths(project_folder_name, full_names = FALSE) # nolint internal function
+  data_folder <- razzo::get_data_paths(project_folder_name, full_names = FALSE) # nolint internal function
   data_paths <- file.path(project_folder_name, data_folder)
 
   # Take the first filename that ends with '_marg_lik.csv',

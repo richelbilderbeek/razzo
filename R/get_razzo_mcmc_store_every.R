@@ -3,5 +3,5 @@
 #' @author Richel J.C. Bilderbeek
 #' @export
 get_razzo_mcmc_store_every <- function() {
-  get_razzo_mcmc_chain_length() / 1000
+  razzo::get_razzo_mcmc_chain_length() / 1000
 }

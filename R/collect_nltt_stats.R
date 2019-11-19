@@ -7,7 +7,7 @@
 collect_nltt_stats <- function(
   project_folder_name = get_razzo_path("razzo_project")
 ) {
-  check_project_folder_name(project_folder_name) # nolint
+  razzo::check_project_folder_name(project_folder_name)
 
   ##### Satisfy R CMD check #####
   tree <- NULL; rm(tree) # nolint, fixes warning: no visible binding for global variable
@@ -16,7 +16,8 @@ collect_nltt_stats <- function(
 
 
   # Paths to the folder, each folder holds a razzo experiment
-  relative_paths <- get_data_paths(project_folder_name, full_names = FALSE) # nolint internal function
+  relative_paths <-
+    razzo::get_data_paths(project_folder_name, full_names = FALSE)
   paths <- file.path(project_folder_name, relative_paths)
 
   n_files <- 0

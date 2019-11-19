@@ -1,5 +1,6 @@
 #' Get output log filename
 #' @inheritParams default_params_doc
+#' @author Giovanni Laudanno
 #' @export
 get_output_log_filename <- function(
   folder_name,
@@ -17,6 +18,7 @@ get_output_log_filename <- function(
 
 #' Get output trees filenames
 #' @inheritParams default_params_doc
+#' @author Giovanni Laudanno
 #' @export
 get_output_trees_filenames <- function(
   folder_name,
@@ -34,6 +36,7 @@ get_output_trees_filenames <- function(
 
 #' Get input filename
 #' @inheritParams default_params_doc
+#' @author Giovanni Laudanno
 #' @export
 get_input_filename <- function(
   folder_name,
@@ -51,6 +54,7 @@ get_input_filename <- function(
 
 #' Get output state filename
 #' @inheritParams default_params_doc
+#' @author Giovanni Laudanno
 #' @export
 get_output_state_filename <- function(
   folder_name,
@@ -68,6 +72,7 @@ get_output_state_filename <- function(
 
 #' Get errors filename
 #' @inheritParams default_params_doc
+#' @author Giovanni Laudanno
 #' @export
 get_errors_filename <- function(
   folder_name,
@@ -85,6 +90,7 @@ get_errors_filename <- function(
 
 #' Get treelog filename
 #' @inheritParams default_params_doc
+#' @author Giovanni Laudanno
 #' @export
 get_treelog_filename <- function(
   folder_name,
@@ -102,6 +108,7 @@ get_treelog_filename <- function(
 
 #' Get tracelog filename
 #' @inheritParams default_params_doc
+#' @author Giovanni Laudanno
 #' @export
 get_tracelog_filename <- function(
   folder_name,
@@ -119,6 +126,7 @@ get_tracelog_filename <- function(
 
 #' Get evidence filename
 #' @inheritParams default_params_doc
+#' @author Giovanni Laudanno
 #' @export
 get_evidence_filename <- function(
   folder_name,
@@ -136,6 +144,7 @@ get_evidence_filename <- function(
 
 #' Get alignment filename
 #' @inheritParams default_params_doc
+#' @author Giovanni Laudanno
 #' @export
 get_alignment_filename <- function(
   folder_name,
@@ -153,6 +162,7 @@ get_alignment_filename <- function(
 
 #' Get tree filename
 #' @inheritParams default_params_doc
+#' @author Giovanni Laudanno
 #' @export
 get_tree_filename <- function(
   folder_name,
@@ -170,6 +180,7 @@ get_tree_filename <- function(
 
 #' Get seed folder name
 #' @inheritParams default_params_doc
+#' @author Giovanni Laudanno
 #' @export
 get_seed_folder_name <- function(
   project_folder_name,
