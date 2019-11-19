@@ -15,3 +15,6 @@ will be the full path to \code{razzo_project}}
 \description{
 Get seed folder name
 }
+\author{
+Giovanni Laudanno
+}

@@ -1,13 +1,13 @@
 test_that("use", {
   if (rappdirs::app_dir()$os != "win") {
-    expect_equal(clean_path(""), "")
-    expect_equal(clean_path("a"), "a")
-    expect_equal(clean_path("a/b"), "a/b")
-    expect_equal(clean_path("a/b/"), "a/b/")
-    expect_equal(clean_path("a//b"), "a/b")
-    expect_equal(clean_path("a//b//c"), "a/b/c")
+    testthat::expect_equal(razzo::clean_path(""), "")
+    testthat::expect_equal(razzo::clean_path("a"), "a")
+    testthat::expect_equal(razzo::clean_path("a/b"), "a/b")
+    testthat::expect_equal(razzo::clean_path("a/b/"), "a/b/")
+    testthat::expect_equal(razzo::clean_path("a//b"), "a/b")
+    testthat::expect_equal(razzo::clean_path("a//b//c"), "a/b/c")
   }
-  expect_error(clean_path(NULL))
-  expect_error(clean_path(NA))
-  expect_error(clean_path(Inf))
+  testthat::expect_error(razzo::clean_path(NULL))
+  testthat::expect_error(razzo::clean_path(NA))
+  testthat::expect_error(razzo::clean_path(Inf))
 })

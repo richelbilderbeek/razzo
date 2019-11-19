@@ -14,3 +14,6 @@ get_tree_filename(folder_name, tree_type)
 \description{
 Get tree filename
 }
+\author{
+Giovanni Laudanno
+}

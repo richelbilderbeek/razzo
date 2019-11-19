@@ -15,3 +15,6 @@ get_input_filename(folder_name, model_type)
 \description{
 Get input filename
 }
+\author{
+Giovanni Laudanno
+}

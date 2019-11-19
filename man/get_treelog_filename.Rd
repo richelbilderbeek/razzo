@@ -15,3 +15,6 @@ get_treelog_filename(folder_name, model_type)
 \description{
 Get treelog filename
 }
+\author{
+Giovanni Laudanno
+}
