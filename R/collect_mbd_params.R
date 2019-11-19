@@ -5,7 +5,7 @@
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
 collect_mbd_params <- function(
-  project_folder_name = get_razzo_path("razzo_project")
+  project_folder_name = razzo::get_razzo_path("razzo_project")
 ) {
   razzo::check_project_folder_name(project_folder_name) # nolint
 
@@ -13,12 +13,14 @@ collect_mbd_params <- function(
   seed <- NULL; rm(seed) # nolint, fixes warning: no visible binding for global variable
 
   # retrieve information from files
-  folder <- get_data_paths(project_folder_name, full_names = FALSE) # nolint internal function
+  folder <- razzo::get_data_paths(project_folder_name, full_names = FALSE) # nolint internal function
   paths <- file.path(project_folder_name, folder)
 
   # initialize dataframe components
   n_settings <- length(paths)
-  mbd_pars <- razzo::open_parameters_file(file.path(paths[1], "parameters.RDa"))$mbd_params # nolint internal function
+  mbd_pars <- razzo::open_parameters_file(
+    parameters_filename = file.path(paths[1], "parameters.RDa")
+  )$mbd_params # nolint internal function
   setting_numeric_names <- names(mbd_pars)
 
   matrix_numeric <- data.frame(matrix(
