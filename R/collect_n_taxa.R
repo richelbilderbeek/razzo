@@ -7,7 +7,7 @@
 collect_n_taxa <- function(
   project_folder_name = get_razzo_path("razzo_project")
 ) {
-  check_project_folder_name(project_folder_name) # nolint
+  razzo::check_project_folder_name(project_folder_name) # nolint
 
   ##### Satisfy R CMD check #####
 
