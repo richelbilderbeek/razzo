@@ -3,12 +3,12 @@ context("test-create_nltt_stats_file")
 test_that("use", {
 
   # Should create 'results/nltt_stats.csv'
-  filename <- create_nltt_stats_file(
-    project_folder_name = get_razzo_path("razzo_project")
+  filename <- razzo::create_nltt_stats_file(
+    project_folder_name = razzo::get_razzo_path("razzo_project")
   )
 
   # File should be created
-  expect_true(file.exists(filename))
+  testthat::expect_true(file.exists(filename))
 
   # OK: filename must end with 'nltt_stats.csv'
   testthat::expect_true(
@@ -32,10 +32,11 @@ test_that("use", {
 })
 
 test_that("abuse", {
-  expect_error(
-    create_nltt_stats_file(
+  testthat::expect_error(
+    razzo::create_nltt_stats_file(
       project_folder_name = "nonsense"
     ),
-    "'project_folder_name' must end with 'razzo_project'"
+    "'project_folder_name' must end with 'razzo_project' or 'raket_werper'"
   )
+
 })
