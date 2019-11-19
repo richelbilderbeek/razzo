@@ -8,7 +8,7 @@
 check_razzo_params <- function(
   razzo_params
 ) {
-  check_razzo_params_names(razzo_params)
+  razzo::check_razzo_params_names(razzo_params)
 
   razzo::check_mbd_params(razzo_params$mbd_params)
   razzo::check_misc_params(razzo_params$misc_params)
