@@ -1,4 +1,4 @@
-"","site_model_name","clock_model_name","tree_prior_name","marg_log_lik","marg_log_lik_sd","weight"
-"1","JC69","strict","birth_death",-123.762529202248,0.387567128060883,0.641499942398555
-"2","JC69","strict","yule",-125.040558299399,0.372123300754335,0.178712790900875
-"3","GTR","strict","birth_death",-125.034563996223,0.380298113425992,0.179787266700569
+"","site_model_name","clock_model_name","tree_prior_name","marg_log_lik","marg_log_lik_sd","weight","ess"
+"1","JC69","strict","birth_death",-9977.2422280689,7.82119550442112,1,7.33388272809331
+"2","HKY","strict","yule",-12470.8539055232,0.211544354089818,0,3.44484321824861
+"3","TN93","strict","yule",-12477.3954334245,2.72899894374473,0,5.27063313615887

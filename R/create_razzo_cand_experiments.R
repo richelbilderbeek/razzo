@@ -65,7 +65,9 @@ create_razzo_cand_experiments <- function(
     cand_experiments[[i]]$inference_model$mrca_prior <- create_razzo_mrca_prior()
     cand_experiments[[i]]$est_evidence_mcmc <- create_razzo_nested_sampling_mcmc()
     cand_experiments[[i]]$beast2_options <- create_razzo_beast2_options(
-      model_type = "candidate", folder_name = folder_name, rng_seed = rng_seed
+      model_type = "candidate",
+      folder_name = folder_name,
+      rng_seed = rng_seed
     )
   }
   cand_experiments

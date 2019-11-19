@@ -1,21 +1,21 @@
 <itsabeastystatewerein version='2.0' sample='3000'>
-<statenode id='Tree.t:mbd'>((0:0.7805632322941628,5:0.7805632322941628)7:5.217649937163525,((1:0.4309398159205,(2:0.4274984213413325,4:0.4274984213413325)6:0.0034413945791675338)8:2.295766332943551,3:2.726706148864051)9:3.2715070205936367)10:0.0</statenode>
-<statenode id='BDBirthRate.t:mbd'>BDBirthRate.t:mbd[1 1] (0.0,10000.0): 0.3522052423399713 </statenode>
-<statenode id='BDDeathRate.t:mbd'>BDDeathRate.t:mbd[1 1] (0.0,1.0): 0.43081715119097647 </statenode>
-<statenode id='clockRate.c:mbd'>clockRate.c:mbd[1 1] (0.0,Infinity): 0.09197839694083375 </statenode>
+<statenode id='Tree.t:mbd'>(((0:0.8262691080835168,2:0.8262691080835168)11:0.21978900414919422,(((1:0.10401581399715572,(6:0.04555586279783645,7:0.04555586279783645)12:0.058459951199319266)9:0.4062663275500112,8:0.5102821415471669)14:0.4375457702600799,(4:0.1263071910407488,5:0.1263071910407488)13:0.821520720766498)15:0.09823020042546426)10:6.943450514030742,3:7.989508626263453)16:0.0</statenode>
+<statenode id='BDBirthRate.t:mbd'>BDBirthRate.t:mbd[1 1] (0.0,10000.0): 0.3355846051633533 </statenode>
+<statenode id='BDDeathRate.t:mbd'>BDDeathRate.t:mbd[1 1] (0.0,1.0): 0.8844142309859767 </statenode>
+<statenode id='clockRate.c:mbd'>clockRate.c:mbd[1 1] (0.0,Infinity): 0.49281090324281024 </statenode>
 </itsabeastystatewerein>
 <!--
 {"operators":[
-{"id":"BirthRateScaler.t:mbd","p":0.75,"accept":75,"reject":20,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
-{"id":"DeathRateScaler.t:mbd","p":0.75,"accept":96,"reject":9,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
-{"id":"BirthDeathTreeScaler.t:mbd","p":0.5,"accept":1,"reject":111,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
-{"id":"BirthDeathTreeRootScaler.t:mbd","p":0.5,"accept":2,"reject":112,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
-{"id":"BirthDeathUniformOperator.t:mbd","p":"NaN","accept":428,"reject":633,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
-{"id":"BirthDeathSubtreeSlide.t:mbd","p":1,"accept":124,"reject":401,"acceptFC":0,"rejectFC":0,"rejectIv":133,"rejectOp":133},
-{"id":"BirthDeathNarrow.t:mbd","p":"NaN","accept":196,"reject":342,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
-{"id":"BirthDeathWide.t:mbd","p":"NaN","accept":8,"reject":102,"acceptFC":0,"rejectFC":0,"rejectIv":48,"rejectOp":48},
-{"id":"BirthDeathWilsonBalding.t:mbd","p":"NaN","accept":4,"reject":117,"acceptFC":0,"rejectFC":0,"rejectIv":56,"rejectOp":56},
-{"id":"StrictClockRateScaler.c:mbd","p":0.75,"accept":72,"reject":37,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
-{"id":"strictClockUpDownOperator.c:mbd","p":0.75,"accept":3,"reject":108,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0}
+{"id":"BirthRateScaler.t:mbd","p":0.75,"accept":65,"reject":31,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"DeathRateScaler.t:mbd","p":0.75,"accept":83,"reject":20,"acceptFC":0,"rejectFC":0,"rejectIv":2,"rejectOp":2},
+{"id":"BirthDeathTreeScaler.t:mbd","p":0.5,"accept":1,"reject":120,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BirthDeathTreeRootScaler.t:mbd","p":0.5,"accept":5,"reject":114,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BirthDeathUniformOperator.t:mbd","p":"NaN","accept":152,"reject":939,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BirthDeathSubtreeSlide.t:mbd","p":1,"accept":14,"reject":485,"acceptFC":0,"rejectFC":0,"rejectIv":174,"rejectOp":174},
+{"id":"BirthDeathNarrow.t:mbd","p":"NaN","accept":15,"reject":531,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"BirthDeathWide.t:mbd","p":"NaN","accept":1,"reject":98,"acceptFC":0,"rejectFC":0,"rejectIv":43,"rejectOp":43},
+{"id":"BirthDeathWilsonBalding.t:mbd","p":"NaN","accept":0,"reject":105,"acceptFC":0,"rejectFC":0,"rejectIv":39,"rejectOp":39},
+{"id":"StrictClockRateScaler.c:mbd","p":0.75,"accept":21,"reject":99,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0},
+{"id":"strictClockUpDownOperator.c:mbd","p":0.75,"accept":1,"reject":101,"acceptFC":0,"rejectFC":0,"rejectIv":0,"rejectOp":0}
 ]}
 -->
