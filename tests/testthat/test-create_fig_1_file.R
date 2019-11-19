@@ -1,8 +1,4 @@
-context("test-create_fig_1_file")
-
 test_that("use", {
-
-  skip("Cannot read parameters from files yet")
 
   # Should create 'results/fig_1.png'
   filename <- create_fig_1_file(
@@ -34,7 +30,6 @@ test_that("use", {
       )
     ) > 0
   )
-
 })
 
 test_that("abuse", {
