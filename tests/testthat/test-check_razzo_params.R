@@ -33,7 +33,6 @@ test_that("use", {
 
 })
 
-
 test_that("check filenames", {
 
   if (rappdirs::app_dir()$os == "win") {
