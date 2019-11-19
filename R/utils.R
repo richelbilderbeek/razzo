@@ -2,9 +2,10 @@
 #' and is the name of an existing folder.
 #' Will throw if not.
 #' Else will do nothing.
+#' @inheritParams default_params_doc
 #' @return nothing
 #' @author Richel J.C. Bilderbeek
-#' @noRd
+#' @export
 check_project_folder_name <- function(project_folder_name) {
   if (
     is.na(
@@ -42,7 +43,7 @@ open_parameters_file <- function(
     tools::file_ext(parameters_filename) == "RDa"
   ) {
     razzo_params <- readRDS(parameters_filename)
-    check_razzo_params(razzo_params)
+    razzo::check_razzo_params(razzo_params)
   } else {
     # Remove the first column, as it is an unused row name
     razzo_params <- utils::read.csv(parameters_filename)[, -1]
@@ -74,7 +75,7 @@ get_gen_models <- function() {
 #' Retrieve the best candidates from the data
 #' @return list of models
 #' @author Giovanni Laudanno
-#' @noRd
+#' @export
 get_best_model <- function(seed_folder) {
   p <- seed_folder
   data_filename <- "mbd_marg_lik.csv"
@@ -110,7 +111,7 @@ get_best_model <- function(seed_folder) {
 #' Retrieve the generative model from the data
 #' @return list of models
 #' @author Giovanni Laudanno
-#' @noRd
+#' @export
 get_generative_model <- function(seed_folder) {
   p <- seed_folder
   data_filename <- "mbd_marg_lik.csv"

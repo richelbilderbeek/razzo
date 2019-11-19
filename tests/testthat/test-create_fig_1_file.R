@@ -10,7 +10,7 @@ test_that("use", {
   )
 
   # File should be created
-  expect_true(file.exists(filename))
+  expect_true(all(file.exists(filename)))
 
   # OK: filename must end with 'figure_1.png'
   testthat::expect_true(

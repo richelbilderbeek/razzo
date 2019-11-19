@@ -9,15 +9,14 @@ default_params_doc(alignment, alignment_params, bd_mutation_rate, bd_tree,
   bd_tree_filename, brts, chain_length, clock_model, cond, crown_age,
   error_measure_params, experiment_type, experiments, fasta_filename,
   filename, folder_name, init_speciation_rate, init_extinction_rate,
-  lambda, lambdas, mbd_l_matrix, mbd_mutation_rate, mbd_params,
-  mbd_paramses, mbd_params_interval, mbd_sim_rng_seed, mbd_tree,
-  mcmc_chain_length, misc_params, model_type, mu, mus, mutation_rate,
-  n_replicates, nu, nus, nu_events, parameters, parameter_filename,
-  parameters_filename, phylo, pir_params, posterior_trees, precision,
-  project_folder_name, q, qs, razzo_params, razzo_paramses, rng_seed,
-  sample_interval, seed, sequence_length, sim_pars, sim_phylo, site_model,
-  sub_chain_length, tree, tree_filename, trees_filename, twinning_params,
-  verbose)
+  lambda, mbd_l_matrix, mbd_mutation_rate, mbd_params, mbd_paramses,
+  mbd_params_interval, mbd_sim_rng_seed, mbd_tree, mcmc_chain_length,
+  misc_params, model_type, mu, mutation_rate, n_replicates, nu, nu_events,
+  parameters, parameter_filename, parameters_filename, phylo, pir_params,
+  posterior_trees, precision, project_folder_name, q, razzo_params,
+  razzo_paramses, rng_seed, sample_interval, seed, sequence_length,
+  sim_pars, sim_phylo, site_model, sub_chain_length, tree, tree_type,
+  tree_filename, trees_filename, twinning_params, verbose)
 }
 \arguments{
 \item{alignment}{a DNA alignment}
@@ -169,6 +168,8 @@ has to be used for the inference. Valid names are 'jc69' and 'gtr'.}
 algorithm to estimate the marginal likelihood}
 
 \item{tree}{an ultrametric phylogenetic tree of class \code{phylo}}
+
+\item{tree_type}{can be 'true' or 'twin'}
 
 \item{tree_filename}{name of the phylogeny file}
 

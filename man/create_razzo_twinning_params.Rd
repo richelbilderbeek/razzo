@@ -15,5 +15,5 @@ Create a \code{twinning_params} that follows the razzo naming
 convention and article
 }
 \author{
-Richel J.C. Bilderbeek
+Richel J.C. Bilderbeek, Giovanni Laudanno
 }

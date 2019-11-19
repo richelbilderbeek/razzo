@@ -1,6 +1,6 @@
 #' Check if all filenames in the \code{razzo_params}
 #' follow the \code{razzo} naming convention
-#' @noRd
+#' @export
 check_razzo_params_filenames <- function(razzo_params) {
   folder_name <- dirname(
     razzo_params$pir_params$alignment_params$fasta_filename
@@ -63,29 +63,47 @@ check_razzo_params_filenames <- function(razzo_params) {
       "candidate"
     )
     testit::assert(
-      file.path(folder_name, "mbd_best.xml") ==
+      get_input_filename(
+        folder_name = folder_name,
+        model_type = "candidate"
+      ) ==
       cand_experiment$beast2_options$input_filename
     )
     testit::assert(
-      file.path(folder_name, "mbd_best.log") ==
-      cand_experiment$inference_model$mcmc$tracelog$filename
+      get_output_log_filenames(
+        folder_name = folder_name,
+        model_type = "candidate"
+      ) ==
+      cand_experiment$beast2_options$output_log_filename
     )
     testit::assert(
-      file.path(folder_name, "mbd_best.trees") ==
-      cand_experiment$inference_model$mcmc$treelog$filename
+      get_output_trees_filenames(
+        folder_name = folder_name,
+        model_type = "candidate"
+      ) ==
+      cand_experiment$beast2_options$output_trees_filenames
     )
     testit::assert(
-      file.path(folder_name, "mbd_best.xml.state") ==
-      cand_experiment$beast2_options$output_state_filename
+      get_output_state_filename(
+        folder_name = folder_name,
+        model_type = "candidate"
+      ) ==
+        cand_experiment$beast2_options$output_state_filename
     )
     testit::assert(
-      file.path(folder_name, "mbd_nltts_best.csv") ==
+      get_errors_filename(
+        folder_name = folder_name,
+        model_type = "candidate"
+      ) ==
       cand_experiment$errors_filename
     )
   }
 
   # True alignment
-  if (razzo_params$pir_params$alignment_params$fasta_filename != file.path(folder_name, "mbd.fasta")) { # nolint indeed long
+  if (
+    razzo_params$pir_params$alignment_params$fasta_filename !=
+    get_alignment_filename(folder_name = folder_name, tree_type = "true")
+  ) { # nolint indeed long
     stop(
       "'razzo_params$pir_params$alignment_params$fasta_filename' must be be '[folder_name]/mbd.fasta'. \n", # nolint indeed long
       "Actual value: '", razzo_params$pir_params$alignment_params$fasta_filename, "'\n", # nolint indeed long
@@ -99,15 +117,15 @@ check_razzo_params_filenames <- function(razzo_params) {
     razzo_params$pir_params$twinning_params$twin_tree_filename
   )
   testit::assert(
-    file.path(folder_name, "mbd_twin.fasta") ==
+    get_alignment_filename(folder_name = folder_name, tree_type = "twin") ==
     razzo_params$pir_params$twinning_params$twin_alignment_filename
   )
   testit::assert(
-    file.path(folder_name, "mbd_marg_lik_twin.csv") ==
+    get_evidence_filename(folder_name = folder_name, tree_type = "twin") ==
     razzo_params$pir_params$twinning_params$twin_evidence_filename
   )
   testit::assert(
-    file.path(folder_name, "mbd_marg_lik.csv") ==
+    get_evidence_filename(folder_name = folder_name, tree_type = "true") ==
     razzo_params$pir_params$evidence_filename
   )
 

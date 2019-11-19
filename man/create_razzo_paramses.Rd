@@ -5,7 +5,7 @@
 \title{Create the parameters for all experiment}
 \usage{
 create_razzo_paramses(project_folder_name,
-  mbd_paramses = create_mbd_paramses(),
+  mbd_paramses = razzo::create_mbd_paramses(),
   error_measure_params = pirouette::create_error_measure_params())
 }
 \arguments{

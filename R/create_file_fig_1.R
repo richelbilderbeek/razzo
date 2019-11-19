@@ -14,6 +14,8 @@ create_file_fig_1 <- create_fig_1_file <- function(
 
   # save output
   results_folder <- get_results_path(project_folder_name) # nolint
+  fig_width <- 10
+  fig_height <- 10
 
   # No warning if folder already exists
   dir.create(results_folder, showWarnings = FALSE)
@@ -28,8 +30,8 @@ create_file_fig_1 <- create_fig_1_file <- function(
       ggplot2::ggsave(
         filename = fig_1_filename[i],
         plot = fig_1[[i]],
-        width = 7,
-        height = 7
+        width = fig_width,
+        height = fig_height
       )
     }
   } else {
@@ -40,8 +42,8 @@ create_file_fig_1 <- create_fig_1_file <- function(
     ggplot2::ggsave(
       filename = fig_1_filename,
       plot = fig_1,
-      width = 7,
-      height = 7
+      width = fig_width,
+      height = fig_height
     )
   }
 

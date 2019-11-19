@@ -8,8 +8,11 @@ create_misc_params <- function(
 ) {
   testit::assert(peregrine::is_pff(folder_name))
   misc_params <- list(
-    tree_filename = file.path(folder_name, "mbd.tree")
+    tree_filename = razzo::get_tree_filename(
+        folder_name = folder_name,
+        tree_type = "true"
+      )
   )
-  check_misc_params(misc_params) # nolint razzo function
+  razzo::check_misc_params(misc_params) # nolint razzo function
   misc_params
 }

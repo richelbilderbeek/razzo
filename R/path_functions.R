@@ -1,8 +1,3 @@
-#' @noRd
-file_path <- function(..., fsep = .Platform$file.sep){
-  gsub("//", "/", file.path(..., fsep = fsep))
-}
-
 #' Clean up a path by removing double folder seperators
 #' @param filename name of a file
 #' @author Richel J.C. Bilderbeek
@@ -18,7 +13,7 @@ file_path <- function(..., fsep = .Platform$file.sep){
 #' @export
 clean_path <- function(filename) {
   assertive::assert_is_a_string(filename)
-  file_path(filename)
+  mbd::file_path(filename)
 }
 
 #' Clean up a paths by removing double folder seperators
@@ -44,7 +39,7 @@ clean_paths <- function(filenames) {
   assertive::assert_is_not_null(filenames)
   for (i in seq_along(filenames)) {
     assertive::assert_is_a_string(filenames[i])
-    filenames[i] <- clean_path(filenames[i])
+    filenames[i] <- razzo::clean_path(filenames[i])
   }
   filenames
 }
@@ -75,8 +70,8 @@ get_results_path <- function(
   project_folder_name
 ) {
 
-  check_project_folder_name(project_folder_name) # nolint
-  clean_path(
+  razzo::check_project_folder_name(project_folder_name) # nolint
+  razzo::clean_path(
     file.path(
       project_folder_name,
       "results"
@@ -104,8 +99,8 @@ get_data_paths <- function(
   project_folder_name,
   full_names = TRUE
 ) {
-  check_project_folder_name(project_folder_name) # nolint
-  clean_paths(
+  razzo::check_project_folder_name(project_folder_name) # nolint
+  razzo::clean_paths(
     dirname(
       list.files(
         path = project_folder_name,

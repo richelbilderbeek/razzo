@@ -8,7 +8,7 @@
 collect_evidences <- collect_marg_liks <- function(
   project_folder_name = get_razzo_path("razzo_project")
 ) {
-  check_project_folder_name(project_folder_name) # nolint
+  razzo::check_project_folder_name(project_folder_name) # nolint
 
   # retrieve information from files
   data_folder <- get_data_paths(project_folder_name, full_names = FALSE) # nolint internal function
@@ -20,7 +20,6 @@ collect_evidences <- collect_marg_liks <- function(
   data_filename <- list.files(path = data_paths, pattern = "_marg_lik\\.csv")[1]
 
   twin_data_filename <- pirouette::to_twin_filename(data_filename)
-
 
   bd_data <- utils::read.csv(file.path(data_paths[1], twin_data_filename))[-1]
   mbd_data <- utils::read.csv(file.path(data_paths[1], data_filename))[-1]
@@ -58,7 +57,6 @@ collect_evidences <- collect_marg_liks <- function(
 
     bd_filename <- file.path(data_paths[p], twin_data_filename)
     if (!file.exists(bd_filename)) next
-
 
     bd_data <- utils::read.csv(bd_filename)[-1]
     mbd_data <- utils::read.csv(mbd_filename)[-1]

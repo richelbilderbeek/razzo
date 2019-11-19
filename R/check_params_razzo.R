@@ -10,8 +10,8 @@ check_razzo_params <- function(
 ) {
   check_razzo_params_names(razzo_params)
 
-  check_mbd_params(razzo_params$mbd_params)
-  check_misc_params(razzo_params$misc_params)
+  razzo::check_mbd_params(razzo_params$mbd_params)
+  razzo::check_misc_params(razzo_params$misc_params)
   pirouette::check_pir_params(razzo_params$pir_params)
   peregrine::check_pff_pir_params(razzo_params$pir_params)
 
@@ -87,7 +87,7 @@ check_razzo_params <- function(
     }
   }
   # Filenames must be Peregrine-friendly and follow razzo convention
-  check_razzo_params_filenames(razzo_params) # nolint razzo function
+  razzo::check_razzo_params_filenames(razzo_params) # nolint razzo function
 }
 
 #' Check if the \code{razzo_params} is a list with elements

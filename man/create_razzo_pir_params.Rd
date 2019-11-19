@@ -6,7 +6,8 @@
 and naming scheme}
 \usage{
 create_razzo_pir_params(has_candidates = FALSE, has_twinning = TRUE,
-  folder_name = peregrine::get_pff_tempfile(), rng_seed = 1)
+  folder_name = peregrine::get_pff_tempfile(), rng_seed = 1,
+  error_measure_params = pirouette::create_error_measure_params())
 }
 \arguments{
 \item{has_candidates}{if there are candidate experiments yes/no}
@@ -16,6 +17,10 @@ create_razzo_pir_params(has_candidates = FALSE, has_twinning = TRUE,
 \item{folder_name}{name of the main folder}
 
 \item{rng_seed}{RNG seed for alignment simulation and inference}
+
+\item{error_measure_params}{parameters to set how the error
+between given tree and inferred trees in measure,
+as can be created by \code{\link[pirouette]{create_error_measure_params}}}
 }
 \description{
 Creates a \code{pir_params} with the \code{razzo} setup

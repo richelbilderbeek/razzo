@@ -12,8 +12,8 @@ create_test_razzo_paramses <- function(
     peregrine::get_pff_tempfile(), "razzo_project"
   )
 ) {
-  mbd_paramses <- create_test_mbd_paramses()
-  razzo_paramses <- create_razzo_paramses(
+  mbd_paramses <- razzo::create_test_mbd_paramses()
+  razzo_paramses <- razzo::create_razzo_paramses(
     project_folder_name = project_folder_name,
     mbd_paramses = mbd_paramses
   )
@@ -29,8 +29,24 @@ create_test_razzo_paramses <- function(
     razzo_paramses[[i]]$pir_params$experiments[[2]]$inference_model$tree_prior <- beautier::create_yule_tree_prior() # nolint indeed long, sorry Demeter
     razzo_paramses[[i]]$pir_params$experiments[[3]]$inference_model$tree_prior <- beautier::create_yule_tree_prior() # nolint indeed long, sorry Demeter
     for (j in seq_along(razzo_paramses[[i]]$pir_params$experiments)) {
-      razzo_paramses[[i]]$pir_params$experiments[[j]]$inference_model$mcmc$chain_length <- 3000
-      razzo_paramses[[i]]$pir_params$experiments[[j]]$inference_model$mcmc$store_every <- 1000
+      experiment <- razzo_paramses[[i]]$pir_params$experiments[[j]]
+      razzo_paramses[[i]]$pir_params$experiments[[j]]$inference_model$mcmc <-
+        beautier::create_mcmc(
+          chain_length = 3000,
+          store_every = 1000,
+          tracelog = beautier::create_tracelog(
+            filename = razzo::get_tracelog_filename(
+              folder_name = folder_name,
+              model_type = experiment$inference_conditions$model_type
+            )
+          ),
+          treelog = beautier::create_treelog(
+            filename = razzo::get_treelog_filename(
+              folder_name = folder_name,
+              model_type = experiment$inference_conditions$model_type
+            )
+          )
+        )
     }
   }
   razzo_paramses

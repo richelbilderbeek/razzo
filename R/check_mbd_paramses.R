@@ -12,7 +12,7 @@
 check_mbd_paramses <- function(mbd_paramses) {
 
   for (mbd_params in mbd_paramses) {
-    check_mbd_params(mbd_params)
+    razzo::check_mbd_params(mbd_params)
   }
 
   for (i in seq(1, length(mbd_paramses) - 1)) {
