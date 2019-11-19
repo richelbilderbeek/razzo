@@ -3,34 +3,34 @@ test_that("use", {
   if (1 == 2) {
     # Run the experiment if you can and need to
     for (file in list.files(
-        get_razzo_path(
+        razzo::get_razzo_path(
           "razzo_project"), recursive = TRUE, pattern = "parameters\\.RDa"
       )
     ) {
-      run_razzo(open_parameters_file(file))
+      razzo::run_razzo(razzo::open_parameters_file(file))
     }
   }
-  df <- collect_n_mb_species(
-    project_folder_name = get_razzo_path("razzo_project")
+  df <- razzo::collect_n_mb_species(
+    project_folder_name = razzo::get_razzo_path("razzo_project")
   )
 
   # No secondary key needed here :-)
 
   # Measurements
-  expect_true("n_mb_species" %in% names(df))
-  expect_true("f_mb_species" %in% names(df))
+  testthat::expect_true("n_mb_species" %in% names(df))
+  testthat::expect_true("f_mb_species" %in% names(df))
   assertive::assert_all_are_whole_numbers(df$n_mb_species)
   assertive::assert_is_numeric(df$f_mb_species)
-  expect_true(all(df$f_mb_species >= 0.0))
-  expect_true(all(df$f_mb_species <= 1.0))
+  testthat::expect_true(all(df$f_mb_species >= 0.0))
+  testthat::expect_true(all(df$f_mb_species <= 1.0))
 
   # Folder names are strings, not factors
   assertive::assert_all_are_non_empty_character(df$folder)
-  expect_true(!is.factor(df$folder))
+  testthat::expect_true(!is.factor(df$folder))
 
   # Rows must be unique, easy when all seeds (and thus folder names)
   # are unique
-  expect_equal(nrow(unique(df)), nrow(df))
+  testthat::expect_equal(nrow(unique(df)), nrow(df))
 
   # Only the true tree will have MB events
   # Therefore, per parameter setting,
@@ -39,12 +39,12 @@ test_that("use", {
   # the number of those files equals the number of MB event counts
   n_rows_expected <- length(
     list.files(
-      get_razzo_path("razzo_project"),
+      razzo::get_razzo_path("razzo_project"),
       recursive = TRUE,
       pattern = "parameters.RDa"
     )
   )
-  expect_equal(nrow(df), n_rows_expected)
+  testthat::expect_equal(nrow(df), n_rows_expected)
 
   # Use relative folder path as the primary key
   #
@@ -57,9 +57,9 @@ test_that("use", {
   #
   #  data/1/2/3                                                                 # nolint this is not commented code
   #
-  expect_true("folder" %in% names(df))
+  testthat::expect_true("folder" %in% names(df))
   # All folders are relative and start with 'data/'
-  expect_true(
+  testthat::expect_true(
     all(
       !is.na(
         stringr::str_match(
