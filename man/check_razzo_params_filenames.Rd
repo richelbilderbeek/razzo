@@ -7,6 +7,11 @@ follow the \code{razzo} naming convention}
 \usage{
 check_razzo_params_filenames(razzo_params)
 }
+\arguments{
+\item{razzo_params}{a parameter set for one \code{razzo} experiment,
+as created by \link{create_params_razzo}
+and used by \link{run_razzo}}
+}
 \description{
 Check if all filenames in the \code{razzo_params}
 follow the \code{razzo} naming convention

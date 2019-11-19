@@ -167,3 +167,30 @@ get_tree_filename <- function(
   }
   tree_filename
 }
+
+#' Get seed folder name
+#' @inheritParams default_params_doc
+#' @export
+get_seed_folder_name <- function(
+  project_folder_name,
+  mbd_params
+) {
+  data_folder_name <- "data"
+  parsettings_name <- paste0(
+    mbd_params$lambda,
+    "-",
+    mbd_params$mu,
+    "-",
+    mbd_params$nu,
+    "-",
+    mbd_params$q
+  )
+  seed <- mbd_params$seed
+  seed_folder_name <- file.path(
+    project_folder_name,
+    data_folder_name,
+    parsettings_name,
+    seed
+  )
+  seed_folder_name
+}

@@ -6,6 +6,9 @@
 \usage{
 get_best_model(seed_folder)
 }
+\arguments{
+\item{seed_folder}{the folder where the data for a specific seed is stored}
+}
 \value{
 list of models
 }

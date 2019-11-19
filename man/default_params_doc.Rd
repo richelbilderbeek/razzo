@@ -15,9 +15,9 @@ default_params_doc(alignment, alignment_params, bd_mutation_rate, bd_tree,
   n_replicates, nu, nus, nu_events, parameters, parameter_filename,
   parameters_filename, phylo, pir_params, posterior_trees, precision,
   project_folder_name, q, qs, razzo_params, razzo_paramses, rng_seed,
-  sample_interval, seed, sequence_length, sim_pars, sim_phylo, site_model,
-  sub_chain_length, tree, tree_type, tree_filename, trees_filename,
-  twinning_params, verbose)
+  sample_interval, seed, seed_folder, sequence_length, sim_pars, sim_phylo,
+  site_model, sub_chain_length, tree, tree_type, tree_filename,
+  trees_filename, twinning_params, verbose)
 }
 \arguments{
 \item{alignment}{a DNA alignment}
@@ -155,6 +155,8 @@ Use create \link{create_razzo_paramses} or
 makes a measurement}
 
 \item{seed}{a random number generator seed}
+
+\item{seed_folder}{the folder where the data for a specific seed is stored}
 
 \item{sequence_length}{the length of each DNA sequence in an alignment}
 

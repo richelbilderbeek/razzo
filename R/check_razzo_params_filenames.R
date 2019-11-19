@@ -1,5 +1,6 @@
 #' Check if all filenames in the \code{razzo_params}
 #' follow the \code{razzo} naming convention
+#' @inheritParams default_params_doc
 #' @export
 check_razzo_params_filenames <- function(razzo_params) {
   folder_name <- dirname(
@@ -63,35 +64,35 @@ check_razzo_params_filenames <- function(razzo_params) {
       "candidate"
     )
     testit::assert(
-      get_input_filename(
+      razzo::get_input_filename(
         folder_name = folder_name,
         model_type = "candidate"
       ) ==
       cand_experiment$beast2_options$input_filename
     )
     testit::assert(
-      get_output_log_filenames(
+      razzo::get_output_log_filename(
         folder_name = folder_name,
         model_type = "candidate"
       ) ==
       cand_experiment$beast2_options$output_log_filename
     )
     testit::assert(
-      get_output_trees_filenames(
+      razzo::get_output_trees_filenames(
         folder_name = folder_name,
         model_type = "candidate"
       ) ==
       cand_experiment$beast2_options$output_trees_filenames
     )
     testit::assert(
-      get_output_state_filename(
+      razzo::get_output_state_filename(
         folder_name = folder_name,
         model_type = "candidate"
       ) ==
         cand_experiment$beast2_options$output_state_filename
     )
     testit::assert(
-      get_errors_filename(
+      razzo::get_errors_filename(
         folder_name = folder_name,
         model_type = "candidate"
       ) ==
@@ -102,7 +103,7 @@ check_razzo_params_filenames <- function(razzo_params) {
   # True alignment
   if (
     razzo_params$pir_params$alignment_params$fasta_filename !=
-    get_alignment_filename(folder_name = folder_name, tree_type = "true")
+    razzo::get_alignment_filename(folder_name = folder_name, tree_type = "true")
   ) { # nolint indeed long
     stop(
       "'razzo_params$pir_params$alignment_params$fasta_filename' must be be '[folder_name]/mbd.fasta'. \n", # nolint indeed long
@@ -117,15 +118,15 @@ check_razzo_params_filenames <- function(razzo_params) {
     razzo_params$pir_params$twinning_params$twin_tree_filename
   )
   testit::assert(
-    get_alignment_filename(folder_name = folder_name, tree_type = "twin") ==
+    razzo::get_alignment_filename(folder_name = folder_name, tree_type = "twin") ==
     razzo_params$pir_params$twinning_params$twin_alignment_filename
   )
   testit::assert(
-    get_evidence_filename(folder_name = folder_name, tree_type = "twin") ==
+    razzo::get_evidence_filename(folder_name = folder_name, tree_type = "twin") ==
     razzo_params$pir_params$twinning_params$twin_evidence_filename
   )
   testit::assert(
-    get_evidence_filename(folder_name = folder_name, tree_type = "true") ==
+    razzo::get_evidence_filename(folder_name = folder_name, tree_type = "true") ==
     razzo_params$pir_params$evidence_filename
   )
 
