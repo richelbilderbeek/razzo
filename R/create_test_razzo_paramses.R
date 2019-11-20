@@ -29,6 +29,10 @@ create_test_razzo_paramses <- function(
     razzo_paramses[[i]]$pir_params$experiments[[2]]$inference_model$tree_prior <- beautier::create_yule_tree_prior() # nolint indeed long, sorry Demeter
     razzo_paramses[[i]]$pir_params$experiments[[3]]$inference_model$tree_prior <- beautier::create_yule_tree_prior() # nolint indeed long, sorry Demeter
     for (j in seq_along(razzo_paramses[[i]]$pir_params$experiments)) {
+      folder_name <- razzo::get_seed_folder_name(
+        project_folder_name = project_folder_name,
+        mbd_params = razzo_paramses[[i]]$mbd_params
+      )
       experiment <- razzo_paramses[[i]]$pir_params$experiments[[j]]
       razzo_paramses[[i]]$pir_params$experiments[[j]]$inference_model$mcmc <-
         beautier::create_mcmc(

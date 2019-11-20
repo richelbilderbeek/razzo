@@ -17,12 +17,12 @@ get_razzo_mcmc <- function(
     treelog_filename <- file.path(folder_name, "mbd_best.trees")
   }
   beautier::create_mcmc(
-    chain_length = get_razzo_mcmc_chain_length(),
-    store_every = get_razzo_mcmc_store_every(),
-    tracelog = create_tracelog(
+    chain_length = razzo::get_razzo_mcmc_chain_length(),
+    store_every = razzo::get_razzo_mcmc_store_every(),
+    tracelog = beautier::create_tracelog(
       filename = tracelog_filename
     ),
-    treelog = create_treelog(
+    treelog = beautier::create_treelog(
       filename = treelog_filename
     )
   )

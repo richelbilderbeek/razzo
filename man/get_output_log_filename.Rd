@@ -15,3 +15,6 @@ get_output_log_filename(folder_name, model_type)
 \description{
 Get output log filename
 }
+\author{
+Giovanni Laudanno
+}

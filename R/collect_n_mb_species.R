@@ -6,7 +6,7 @@
 collect_n_mb_species <- function(
   project_folder_name = get_razzo_path("razzo_project")
 ) {
-  check_project_folder_name(project_folder_name) # nolint razzo function
+  razzo::check_project_folder_name(project_folder_name) # nolint razzo function
 
   # Obtain all the tree filenames, as stored in Newick format
   true_tree_filenames <- list.files(
@@ -35,7 +35,7 @@ collect_n_mb_species <- function(
   # Should give:
   #   data/0.2-0.15-1-0.1/1
   #   data/0.2-0.15-1-0.1/2
-  folder_names <- get_data_paths(project_folder_name, full_names = FALSE) # nolint internal function
+  folder_names <- razzo::get_data_paths(project_folder_name, full_names = FALSE)
 
   df <- data.frame(
     folder = folder_names,

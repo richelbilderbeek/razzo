@@ -1,7 +1,7 @@
 test_that("use", {
 
-  df <- collect_mbd_params(
-    project_folder_name = get_razzo_path("razzo_project")
+  df <- razzo::collect_mbd_params(
+    project_folder_name = razzo::get_razzo_path("razzo_project")
   )
 
   # Use relative folder path as the primary key

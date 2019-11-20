@@ -21,10 +21,10 @@ create_test_razzo_pir_params <- function(
   # Twinning
   twinning_params <- NA
   if (isTRUE(has_twinning)) {
-    twinning_params <- create_razzo_twinning_params(folder_name)
+    twinning_params <- razzo::create_razzo_twinning_params(folder_name)
   }
   # Experiments
-  experiments <- create_test_razzo_experiments(
+  experiments <- razzo::create_test_razzo_experiments(
     has_candidates = has_candidates,
     folder_name = folder_name,
     rng_seed = rng_seed
@@ -33,7 +33,7 @@ create_test_razzo_pir_params <- function(
   # Set up filenames
   ##############################################################################
   # Alignment
-  alignment_params$fasta_filename <- get_alignment_filename(
+  alignment_params$fasta_filename <- razzo::get_alignment_filename(
     folder_name = folder_name,
     tree_type = "true"
   )
@@ -41,7 +41,7 @@ create_test_razzo_pir_params <- function(
   # Done by 'create_test_razzo_experiments'
   # Evidence filename
   evidence_filename <-
-    get_evidence_filename(folder_name = folder_name, tree_type = "true")
+    razzo::get_evidence_filename(folder_name = folder_name, tree_type = "true")
   ##############################################################################
   # Combine
   ##############################################################################

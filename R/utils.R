@@ -73,6 +73,7 @@ get_gen_models <- function() {
 }
 
 #' Retrieve the best candidates from the data
+#' @inheritParams default_params_doc
 #' @return list of models
 #' @author Giovanni Laudanno
 #' @export
@@ -109,6 +110,7 @@ get_best_model <- function(seed_folder) {
 }
 
 #' Retrieve the generative model from the data
+#' @inheritParams default_params_doc
 #' @return list of models
 #' @author Giovanni Laudanno
 #' @export

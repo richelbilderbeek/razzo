@@ -5,7 +5,7 @@
 \title{Save the list of \code{razzo_params} to the exected locations}
 \usage{
 
-  save_razzo_paramses(razzo_paramses = create_razzo_paramses(project_folder_name
+  save_razzo_paramses(razzo_paramses = razzo::create_razzo_paramses(project_folder_name
   = peregrine::get_pff_tempfile()))
 }
 \arguments{

@@ -10,10 +10,10 @@ create_file_esses <- create_esses_file <- function(
 ) {
 
   # create the dataframe
-  df_esses <- collect_esses(project_folder_name) # nolint internal function
+  df_esses <- razzo::collect_esses(project_folder_name)
 
   # save output
-  results_folder <- get_results_path(project_folder_name) # nolint
+  results_folder <- razzo::get_results_path(project_folder_name)
 
   # No warning if folder already exists
   dir.create(results_folder, showWarnings = FALSE)

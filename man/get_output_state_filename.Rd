@@ -15,3 +15,6 @@ get_output_state_filename(folder_name, model_type)
 \description{
 Get output state filename
 }
+\author{
+Giovanni Laudanno
+}

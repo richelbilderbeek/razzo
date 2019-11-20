@@ -85,6 +85,7 @@
 #'   makes a measurement
 #' @param sequence_length the length of each DNA sequence in an alignment
 #' @param seed a random number generator seed
+#' @param seed_folder the folder where the data for a specific seed is stored
 #' @param sim_pars something
 #' @param sim_phylo something
 #' @param site_model Name of the site model that
@@ -153,6 +154,7 @@ default_params_doc <- function(
   rng_seed,
   sample_interval,
   seed,
+  seed_folder,
   sequence_length,
   sim_pars,
   sim_phylo,

@@ -15,3 +15,6 @@ get_errors_filename(folder_name, model_type)
 \description{
 Get errors filename
 }
+\author{
+Giovanni Laudanno
+}

@@ -7,12 +7,12 @@
 collect_n_taxa <- function(
   project_folder_name = get_razzo_path("razzo_project")
 ) {
-  razzo::check_project_folder_name(project_folder_name) # nolint
+  razzo::check_project_folder_name(project_folder_name)
 
   ##### Satisfy R CMD check #####
 
   # retrieve information from files
-  folder <- get_data_paths(project_folder_name, full_names = FALSE) # nolint internal function
+  folder <- razzo::get_data_paths(project_folder_name, full_names = FALSE)
   paths <- file.path(project_folder_name, folder)
 
   n_taxa <- rep(-1, length(paths))

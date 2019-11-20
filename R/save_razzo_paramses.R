@@ -13,7 +13,7 @@
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
 save_razzo_paramses <- function(
-  razzo_paramses = create_razzo_paramses(
+  razzo_paramses = razzo::create_razzo_paramses(
     project_folder_name = peregrine::get_pff_tempfile()
   )
 ) {
@@ -32,7 +32,7 @@ save_razzo_paramses <- function(
     saveRDS(object = razzo_params, file = parameters_filename)
     testit::assert(file.exists(parameters_filename))
     testthat::expect_silent(
-      check_razzo_params(readRDS(parameters_filename))
+      razzo::check_razzo_params(readRDS(parameters_filename))
     )
     parameters_filenames[i] <- parameters_filename
   }

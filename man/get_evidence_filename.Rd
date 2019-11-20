@@ -14,3 +14,6 @@ get_evidence_filename(folder_name, tree_type)
 \description{
 Get evidence filename
 }
+\author{
+Giovanni Laudanno
+}

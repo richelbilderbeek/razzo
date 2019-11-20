@@ -19,14 +19,14 @@ run_razzo_from_file <- function(
   }
 
   razzo_params <- readRDS(parameters_filename)
-  check_razzo_params(razzo_params)
+  razzo::check_razzo_params(razzo_params)
   if (add_verbose == TRUE) {
     razzo_params$pir_params$verbose <- TRUE
     for (i in seq_along(razzo_params$pir_params$experiments)) {
       razzo_params$pir_params$experiments[[i]]$beast2_options$verbose <- TRUE
     }
   }
-  run_razzo(
+  razzo::run_razzo(
     razzo_params = razzo_params
   )
 }

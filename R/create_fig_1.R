@@ -4,10 +4,10 @@
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
 create_fig_1 <- function(
-  project_folder_name = get_razzo_path("razzo_project")
+  project_folder_name = razzo::get_razzo_path("razzo_project")
 ) {
-  check_project_folder_name(project_folder_name)
-  df0 <- collect_nltt_stats(project_folder_name)
+  razzo::check_project_folder_name(project_folder_name)
+  df0 <- razzo::collect_nltt_stats(project_folder_name)
   ##### Satisfy R CMD check #####
   tree <- NULL; rm(tree) # nolint, fixes warning: no visible binding for global variable
   lambda <- NULL; rm(lambda) # nolint, fixes warning: no visible binding for global variable
@@ -30,7 +30,7 @@ create_fig_1 <- function(
   df_errors$best_or_gen <- NULL
   names(df_errors) <- gsub(names(df_errors), pattern = "nltt_", replacement = "error_")
   n_errors <- sum(grepl(names(df_errors), pattern = "error_"))
-  df_params <- collect_mbd_params(project_folder_name)
+  df_params <- razzo::collect_mbd_params(project_folder_name)
   df_merged <- merge(x = df_params, y = df_errors, by = "folder")
   col_order <- c(
     "folder",

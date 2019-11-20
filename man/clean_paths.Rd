@@ -15,18 +15,18 @@ Clean up a paths by removing double folder seperators
 \examples{
 library(testthat)
 if (rappdirs::app_dir()$os != "win") {
-  expect_equal(
-    clean_paths(c("a//b")),
+  testthat::expect_equal(
+    razzo::clean_paths(c("a//b")),
     c("a/b")
   )
-  expect_equal(
-    clean_paths(c("a//b", "c//d")),
+  testthat::expect_equal(
+    razzo::clean_paths(c("a//b", "c//d")),
     c("a/b", "c/d")
   )
 }
-expect_error(clean_paths(NULL))
-expect_error(clean_paths(NA))
-expect_error(clean_paths(Inf))
+testthat::expect_error(razzo::clean_paths(NULL))
+testthat::expect_error(razzo::clean_paths(NA))
+testthat::expect_error(razzo::clean_paths(Inf))
 }
 \author{
 Richel J.C. Bilderbeek

@@ -15,3 +15,6 @@ get_tracelog_filename(folder_name, model_type)
 \description{
 Get tracelog filename
 }
+\author{
+Giovanni Laudanno
+}

@@ -15,3 +15,6 @@ get_output_trees_filenames(folder_name, model_type)
 \description{
 Get output trees filenames
 }
+\author{
+Giovanni Laudanno
+}

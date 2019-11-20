@@ -5,11 +5,11 @@
 #'  library(testthat)
 #'
 #'  if (rappdirs::app_dir()$os != "win") {
-#'    expect_equal(clean_path("a//b"), "a/b")
+#'    testthat::expect_equal(clean_path("a//b"), "a/b")
 #'  }
-#'  expect_error(clean_path(NULL))
-#'  expect_error(clean_path(NA))
-#'  expect_error(clean_path(Inf))
+#'  testthat::expect_error(clean_path(NULL))
+#'  testthat::expect_error(clean_path(NA))
+#'  testthat::expect_error(clean_path(Inf))
 #' @export
 clean_path <- function(filename) {
   assertive::assert_is_a_string(filename)
@@ -22,18 +22,18 @@ clean_path <- function(filename) {
 #' @examples
 #' library(testthat)
 #' if (rappdirs::app_dir()$os != "win") {
-#'   expect_equal(
-#'     clean_paths(c("a//b")),
+#'   testthat::expect_equal(
+#'     razzo::clean_paths(c("a//b")),
 #'     c("a/b")
 #'   )
-#'   expect_equal(
-#'     clean_paths(c("a//b", "c//d")),
+#'   testthat::expect_equal(
+#'     razzo::clean_paths(c("a//b", "c//d")),
 #'     c("a/b", "c/d")
 #'   )
 #' }
-#' expect_error(clean_paths(NULL))
-#' expect_error(clean_paths(NA))
-#' expect_error(clean_paths(Inf))
+#' testthat::expect_error(razzo::clean_paths(NULL))
+#' testthat::expect_error(razzo::clean_paths(NA))
+#' testthat::expect_error(razzo::clean_paths(Inf))
 #' @export
 clean_paths <- function(filenames) {
   assertive::assert_is_not_null(filenames)

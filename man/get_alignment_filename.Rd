@@ -14,3 +14,6 @@ get_alignment_filename(folder_name, tree_type)
 \description{
 Get alignment filename
 }
+\author{
+Giovanni Laudanno
+}

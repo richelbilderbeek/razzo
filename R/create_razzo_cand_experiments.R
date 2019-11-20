@@ -6,6 +6,7 @@
 #' @param gen_experiment the generative experiment
 #' @return a list of experiments
 #' @author Richel J.C. Bilderbeek
+#' @export
 create_razzo_cand_experiments <- function(
   gen_experiment,
   folder_name = peregrine::get_pff_tempfile(),
@@ -55,20 +56,24 @@ create_razzo_cand_experiments <- function(
         )
       ),
       treelog = beautier::create_treelog(
-        filename = get_treelog_filename(
+        filename = razzo::get_treelog_filename(
           folder_name = folder_name,
           model_type = "candidate"
         )
       )
     )
-    cand_experiments[[i]]$est_evidence_mcmc <- create_razzo_nested_sampling_mcmc()
-    cand_experiments[[i]]$inference_model$mrca_prior <- create_razzo_mrca_prior()
-    cand_experiments[[i]]$est_evidence_mcmc <- create_razzo_nested_sampling_mcmc()
-    cand_experiments[[i]]$beast2_options <- create_razzo_beast2_options(
-      model_type = "candidate",
-      folder_name = folder_name,
-      rng_seed = rng_seed
-    )
+    cand_experiments[[i]]$est_evidence_mcmc <-
+      razzo::create_razzo_nested_sampling_mcmc()
+    cand_experiments[[i]]$inference_model$mrca_prior <-
+      razzo::create_razzo_mrca_prior()
+    cand_experiments[[i]]$est_evidence_mcmc <-
+      razzo::create_razzo_nested_sampling_mcmc()
+    cand_experiments[[i]]$beast2_options <-
+      razzo::create_razzo_beast2_options(
+        model_type = "candidate",
+        folder_name = folder_name,
+        rng_seed = rng_seed
+      )
   }
   cand_experiments
 }

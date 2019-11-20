@@ -16,11 +16,11 @@ Clean up a path by removing double folder seperators
  library(testthat)
 
  if (rappdirs::app_dir()$os != "win") {
-   expect_equal(clean_path("a//b"), "a/b")
+   testthat::expect_equal(clean_path("a//b"), "a/b")
  }
- expect_error(clean_path(NULL))
- expect_error(clean_path(NA))
- expect_error(clean_path(Inf))
+ testthat::expect_error(clean_path(NULL))
+ testthat::expect_error(clean_path(NA))
+ testthat::expect_error(clean_path(Inf))
 }
 \author{
 Richel J.C. Bilderbeek
