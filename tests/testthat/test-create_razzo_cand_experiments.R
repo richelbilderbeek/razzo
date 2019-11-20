@@ -12,9 +12,7 @@ test_that("must create experiments of the razzo MCMC chain length", {
     razzo::get_razzo_mcmc_chain_length()
   )
 
-  if (rappdirs::app_dir()$os == "win") {
-    skip("This can only run on Linux.")
-  }
+  if (rappdirs::app_dir()$os == "win") return()
 
   cand_experiments <- razzo::create_razzo_cand_experiments(
     gen_experiment = gen_experiment,
