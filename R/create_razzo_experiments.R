@@ -45,10 +45,6 @@ create_razzo_experiments <- function(
     for (i in seq(2, 1 + n_candidate_experiments)) {
       experiments[[i]]$beast2_options$input_filename <-
         razzo::get_input_filename(folder_name = folder_name, model_type = model_type) # nolint indeed long
-      experiments[[i]]$beast2_options$output_log_filename <-
-        razzo::get_output_log_filename(folder_name = folder_name, model_type = model_type) # nolint indeed long
-      experiments[[i]]$beast2_options$output_trees_filenames <-
-        razzo::get_output_trees_filenames(folder_name = folder_name, model_type = model_type) # nolint indeed long
       experiments[[i]]$beast2_options$output_state_filename <-
         razzo::get_output_state_filename(folder_name = folder_name, model_type = model_type) # nolint indeed long
       experiments[[i]]$errors_filename <-

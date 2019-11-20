@@ -71,20 +71,6 @@ check_razzo_params_filenames <- function(razzo_params) {
       cand_experiment$beast2_options$input_filename
     )
     testit::assert(
-      razzo::get_output_log_filename(
-        folder_name = folder_name,
-        model_type = "candidate"
-      ) ==
-      cand_experiment$beast2_options$output_log_filename
-    )
-    testit::assert(
-      razzo::get_output_trees_filenames(
-        folder_name = folder_name,
-        model_type = "candidate"
-      ) ==
-      cand_experiment$beast2_options$output_trees_filenames
-    )
-    testit::assert(
       razzo::get_output_state_filename(
         folder_name = folder_name,
         model_type = "candidate"

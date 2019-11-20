@@ -1,3 +1,5 @@
+context("collect_mbd_params")
+
 test_that("use", {
 
   df <- razzo::collect_mbd_params(
