@@ -24,7 +24,7 @@ create_mbd_paramses <- function(
   testit::assert(n_paramses > 0)
   mbd_paramses <- list()
   for (i in seq(1, n_paramses)) {
-    mbd_params <- create_mbd_params( # nolint razzo function
+    mbd_params <- razzo::create_mbd_params(
       lambda = df$lambda[i],
       mu = df$mu[i],
       nu = df$nu[i],
