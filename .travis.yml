@@ -17,16 +17,16 @@ r_github_packages:
   - jimhester/lintr
   - MangoTheCat/goodpractice
   - ropensci/spelling
-  - ropensci/beautier@develop
+  - ropensci/beautier
   - ropensci/tracerer
-  - ropensci/beastier@develop
+  - ropensci/beastier
   - ropensci/mauricer
-  - ropensci/babette@develop
-  - richelbilderbeek/mcbette@develop
+  - ropensci/babette
+  - richelbilderbeek/mcbette
   - richelbilderbeek/nLTT
   - thijsjanzen/nodeSub
-  - richelbilderbeek/pirouette@richel
-  - richelbilderbeek/peregrine@richel
+  - richelbilderbeek/pirouette
+  - richelbilderbeek/peregrine
   - Giappo/mbd
   - Giappo/mbd.SimTrees
 
