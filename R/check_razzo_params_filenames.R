@@ -41,7 +41,7 @@ check_razzo_params_filenames <- function(razzo_params) {
   if (gen_experiment$inference_model$mcmc$treelog$filename != file.path(folder_name, "mbd_gen.trees")) { # nolint indeed long
     stop(
       "'razzo_params$pir_params$experiments[[1]]$inference_model$mcmc$treelog$filename' must be be '[folder_name]/mbd_gen.trees'. \n", # nolint indeed long
-      "Actual value: '", gen_experiment$inference_model$mcmc$treeelog$filename, "'\n", # nolint indeed long
+      "Actual value: '", gen_experiment$inference_model$mcmc$treelog$filename, "'\n", # nolint indeed long
       "[folder_name]: '", folder_name, "'\n",
       "(folder name taken from razzo_params$pir_params$alignment_params$fasta_filename)" # nolint indeed long
     )
@@ -69,6 +69,20 @@ check_razzo_params_filenames <- function(razzo_params) {
         model_type = "candidate"
       ) ==
       cand_experiment$beast2_options$input_filename
+    )
+    testit::assert(
+      razzo::get_output_log_filename(
+        folder_name = folder_name,
+        model_type = "candidate"
+      ) ==
+      cand_experiment$inference_model$mcmc$tracelog$filename
+    )
+    testit::assert(
+      razzo::get_output_trees_filenames(
+        folder_name = folder_name,
+        model_type = "candidate"
+      ) ==
+      cand_experiment$inference_model$mcmc$treelog$filename
     )
     testit::assert(
       razzo::get_output_state_filename(

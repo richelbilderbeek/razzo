@@ -17,21 +17,9 @@ create_razzo_gen_experiment <- function(
     ),
     inference_model = beautier::create_inference_model(
       tree_prior = beautier::create_bd_tree_prior(),
-      mcmc = beautier::create_mcmc(
-        chain_length = get_razzo_mcmc_chain_length(),
-        store_every = get_razzo_mcmc_store_every(),
-        tracelog = beautier::create_tracelog(
-          filename = get_tracelog_filename(
-            folder_name = folder_name,
-            model_type = model_type
-          )
-        ),
-        treelog = beautier::create_treelog(
-          filename = get_treelog_filename(
-            folder_name = folder_name,
-            model_type = model_type
-          )
-        )
+      mcmc = razzo::get_razzo_mcmc(
+        model_type = "generative",
+        folder_name = folder_name
       ),
       mrca_prior = create_razzo_mrca_prior()
     ),
