@@ -16,7 +16,7 @@ create_razzo_experiments <- function(
   )
   if (isTRUE(has_candidates)) {
     cand_experiments <- razzo::create_razzo_cand_experiments(
-      experiments[[1]],
+      gen_experiment = experiments[[1]],
       folder_name = folder_name,
       rng_seed = rng_seed
     )
@@ -45,15 +45,17 @@ create_razzo_experiments <- function(
     for (i in seq(2, 1 + n_candidate_experiments)) {
       experiments[[i]]$beast2_options$input_filename <-
         razzo::get_input_filename(folder_name = folder_name, model_type = model_type) # nolint indeed long
-      experiments[[i]]$beast2_options$output_log_filename <-
+      experiments[[i]]$inference_model$mcmc$tracelog$filename <-
         razzo::get_output_log_filename(folder_name = folder_name, model_type = model_type) # nolint indeed long
-      experiments[[i]]$beast2_options$output_trees_filenames <-
+      experiments[[i]]$inference_model$mcmc$treelog$filename <-
         razzo::get_output_trees_filenames(folder_name = folder_name, model_type = model_type) # nolint indeed long
       experiments[[i]]$beast2_options$output_state_filename <-
         razzo::get_output_state_filename(folder_name = folder_name, model_type = model_type) # nolint indeed long
       experiments[[i]]$errors_filename <-
         razzo::get_errors_filename(folder_name = folder_name, model_type = model_type) # nolint indeed long
 
+      testit::assert(experiments[[i]]$inference_model$mcmc$tracelog$filename == file.path(folder_name, "mbd_best.log")) # nolint indeed long
+      testit::assert(experiments[[i]]$inference_model$mcmc$treelog$filename == file.path(folder_name, "mbd_best.trees")) # nolint indeed long
       testit::assert(experiments[[i]]$beast2_options$input_filename == file.path(folder_name, "mbd_best.xml")) # nolint indeed long
       testit::assert(experiments[[i]]$beast2_options$output_state_filename == file.path(folder_name, "mbd_best.xml.state")) # nolint indeed long
       testit::assert(experiments[[i]]$errors_filename == file.path(folder_name, "mbd_nltts_best.csv")) # nolint indeed long

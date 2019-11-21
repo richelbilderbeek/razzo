@@ -5,6 +5,7 @@ test_that("use", {
   }
 
   good_razzo_params <- razzo::create_test_razzo_params()
+  good_razzo_params
   testthat::expect_silent(
     razzo::check_razzo_params(razzo_params = good_razzo_params)
   )

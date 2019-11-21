@@ -98,10 +98,10 @@ get_treelog_filename <- function(
 ) {
   pirouette::check_model_type(model_type)
   if (model_type == "generative") {
-    treelog_filename <- file.path(folder_name, "mbd_treelog_gen.trees")
+    treelog_filename <- file.path(folder_name, "mbd_gen.trees")
   }
   if (model_type == "candidate") {
-    treelog_filename <- file.path(folder_name, "mbd_treelog_best.trees")
+    treelog_filename <- file.path(folder_name, "mbd_best.trees")
   }
   treelog_filename
 }
@@ -116,10 +116,10 @@ get_tracelog_filename <- function(
 ) {
   pirouette::check_model_type(model_type)
   if (model_type == "generative") {
-    tracelog_filename <- file.path(folder_name, "mbd_tracelog_gen.log")
+    tracelog_filename <- file.path(folder_name, "mbd_gen.log")
   }
   if (model_type == "candidate") {
-    tracelog_filename <- file.path(folder_name, "mbd_tracelog_best.log")
+    tracelog_filename <- file.path(folder_name, "mbd_best.log")
   }
   tracelog_filename
 }
