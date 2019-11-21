@@ -170,31 +170,34 @@ test_that("check filenames", {
       razzo::check_razzo_params(razzo_params)
     )
   }
+
   # Twinning params: tree
   razzo_params <- good_razzo_params
   razzo_params$pir_params$twinning_params$twin_tree_filename <- "nonsense"
   testthat::expect_error(
     razzo::check_razzo_params(razzo_params)
   )
+
   # Twinning params: alignment
   razzo_params <- good_razzo_params
   razzo_params$pir_params$twinning_params$twin_alignment_filename <- "nonsense"
   testthat::expect_error(
     razzo::check_razzo_params(razzo_params)
   )
+
   # Twinning params: evidence
   razzo_params <- good_razzo_params
   razzo_params$pir_params$twinning_params$twin_evidence_filename <- "nonsense"
   testthat::expect_error(
     razzo::check_razzo_params(razzo_params)
   )
+
   # Evidence
   razzo_params <- good_razzo_params
   razzo_params$pir_params$evidence_filename <- "nonsense"
   testthat::expect_error(
     razzo::check_razzo_params(razzo_params)
   )
-
 
   # misc params
   razzo_params <- good_razzo_params
@@ -226,4 +229,5 @@ test_that("check filenames", {
     razzo::check_razzo_params(razzo_params),
     "Crown ages in MBD param.* and inference model's MRCA prior.* must be equal"
   )
+
 })
