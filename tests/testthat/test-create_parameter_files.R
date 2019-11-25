@@ -4,7 +4,7 @@ test_that("use", {
     skip("This can only run on Linux.")
   }
 
-  filenames <- create_parameters_files(
+  filenames <- razzo::create_parameters_files(
     project_folder_name = file.path(
       peregrine::get_pff_tempfile(), "razzo_project"
     ),
@@ -12,7 +12,7 @@ test_that("use", {
   )
 
   # All filenames must be unique
-  expect_equal(length(filenames), length(unique(filenames)))
+  testthat::expect_equal(length(filenames), length(unique(filenames)))
 
   # The folder structure created:
   # * razzo_project (the name of the GitHub containing the scripts)
@@ -44,9 +44,10 @@ test_that("use", {
 })
 
 test_that("use, full", {
+
   if (!beastier::is_on_travis()) return()
 
-  filenames <- create_parameters_files(
+  filenames <- razzo::create_parameters_files(
     project_folder_name = file.path(
       peregrine::get_pff_tempfile(), "razzo_project"
     ),
@@ -79,6 +80,7 @@ test_that("use, full", {
     ) > 0
   )
 })
+
 test_that("can read", {
 
   if (rappdirs::app_dir()$os == "win") {
@@ -86,7 +88,7 @@ test_that("can read", {
   }
 
   # Create parameter files from fresh
-  filenames <- create_parameters_files(
+  filenames <- razzo::create_parameters_files(
     project_folder_name = file.path(
       peregrine::get_pff_tempfile(), "razzo_project"
     ),
@@ -94,7 +96,8 @@ test_that("can read", {
   )
 
   # Load the first one
-  expect_silent(
-    open_parameters_file(parameters_filename = filenames[1])
+  testthat::expect_silent(
+    razzo::open_parameters_file(parameters_filename = filenames[1])
   )
+
 })

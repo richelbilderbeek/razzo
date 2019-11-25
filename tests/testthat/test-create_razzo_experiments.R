@@ -20,7 +20,7 @@ test_that("use, with candidate", {
     skip("This can only run on Linux.")
   }
 
-  experiments <- create_razzo_experiments(
+  experiments <- razzo::create_razzo_experiments(
     has_candidates = TRUE
   )
   testthat::expect_true(length(experiments) > 1)
