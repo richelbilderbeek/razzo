@@ -17,14 +17,14 @@
 create_mbd_paramses <- function(
   n_replicates = get_razzo_n_replicates()
 ) {
-  df <- create_mbd_params_table(
+  df <- mbd.SimTrees::create_params_table(
     n_replicates = n_replicates
   )
   n_paramses <- nrow(df)
   testit::assert(n_paramses > 0)
   mbd_paramses <- list()
   for (i in seq(1, n_paramses)) {
-    mbd_params <- create_mbd_params( # nolint razzo function
+    mbd_params <- razzo::create_mbd_params(
       lambda = df$lambda[i],
       mu = df$mu[i],
       nu = df$nu[i],
