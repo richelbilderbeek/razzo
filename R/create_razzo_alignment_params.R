@@ -12,7 +12,7 @@ create_razzo_alignment_params <- function(
     root_sequence = pirouette::create_blocked_dna(
       length = get_razzo_dna_alignment_length() # nolint razzo function
     ),
-    sim_true_alignment_fun = get_sim_true_alignment_with_std_site_model_fun(
+    sim_true_alignment_fun = get_sim_true_alignment_with_std_nsm_fun(
       mutation_rate = get_razzo_mutation_rate()
     ),
     rng_seed = rng_seed,
