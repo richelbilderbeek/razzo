@@ -13,7 +13,7 @@ r_github_packages:
   - ropensci/babette
   - richelbilderbeek/mcbette
   - thijsjanzen/nodeSub
-  - richelbilderbeek/pirouette
+  - richelbilderbeek/pirouette@richel
   - richelbilderbeek/peregrine
   - Giappo/mbd
   - Giappo/mbd.SimTrees
