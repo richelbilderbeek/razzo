@@ -96,23 +96,23 @@ test_that("matches article", {
     # the function
     #
     # These all fail to read the mutation rate filled in in the function
-    formals(pir_params$alignment_params$sim_true_alignment_fun)
-    formalArgs(pir_params$alignment_params$sim_true_alignment_fun)
-    args(pir_params$alignment_params$sim_true_alignment_fun)
-    alist(pir_params$alignment_params$sim_true_alignment_fun)
-    body(pir_params$alignment_params$sim_true_alignment_fun)
-    body(pir_params$alignment_params$sim_true_alignment_fun)
-    class(pir_params$alignment_params$sim_true_alignment_fun)
-    attributes(pir_params$alignment_params$sim_true_alignment_fun)
+    formals(pir_params$alignment_params$sim_tral_fun)
+    formalArgs(pir_params$alignment_params$sim_tral_fun)
+    args(pir_params$alignment_params$sim_tral_fun)
+    alist(pir_params$alignment_params$sim_tral_fun)
+    body(pir_params$alignment_params$sim_tral_fun)
+    body(pir_params$alignment_params$sim_tral_fun)
+    class(pir_params$alignment_params$sim_tral_fun)
+    attributes(pir_params$alignment_params$sim_tral_fun)
 
     expect_equal(
       get_razzo_mutation_rate(),
-      pir_params$alignment_params$sim_true_alignment_fun$mutation_rate
+      pir_params$alignment_params$sim_tral_fun$mutation_rate
     )
   }
   if (1 == 2) {
     expect_equal(
-      pir_params$alignment_params$sim_true_alignment_fun$site_model$name,
+      pir_params$alignment_params$sim_tral_fun$site_model$name,
       "JC69"
     )
   }
