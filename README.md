@@ -68,3 +68,4 @@ Package|[![Travis CI logo](pics/TravisCI.png)](https://travis-ci.org)|[![Codecov
 From https://commons.wikimedia.org/wiki/File:RocketX.png
 
 Image comes from Template:Http://wpclipart.com which ONLY features public domain images and provides extensive source information on their &quot;Legal&quot; page: Template:Http://www.wpclipart.com/legal.html [Public domain]
+
