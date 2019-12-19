@@ -38,7 +38,6 @@ collect_nltt_stats <- function(
   first_filename <- file.path(paths[1], "parameters.RDa")
   # Fails on '/tmp/RtmpitOdlW/razzo_project/data/0_twin.2-0.15-1-0.1/1/parameters.RDa' # nolint indeed a long path
   beautier::check_file_exists(first_filename, "first_filename")
-  parameters <- readRDS(first_filename) # nolint internal function
   matrix_folder <- data.frame(matrix(
     NA,
     ncol = 1,
