@@ -13,6 +13,6 @@ create_misc_params <- function(
         tree_type = "true"
       )
   )
-  razzo::check_misc_params(misc_params) # nolint razzo function
+  razzo::check_misc_params(misc_params)
   misc_params
 }

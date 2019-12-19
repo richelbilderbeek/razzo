@@ -9,10 +9,10 @@ create_n_mb_species_file <- function(
 ) {
 
   # create the dataframe
-  df_n_mb_species <- collect_n_mb_species(project_folder_name) # nolint internal function
+  df_n_mb_species <- razzo::collect_n_mb_species(project_folder_name)
 
   # save output
-  results_folder <- get_results_path(project_folder_name) # nolint
+  results_folder <- razzo::get_results_path(project_folder_name)
 
   # No warning if folder already exists
   dir.create(results_folder, showWarnings = FALSE)

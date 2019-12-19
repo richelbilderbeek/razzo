@@ -65,7 +65,7 @@ test_that("use", {
         stringr::str_match(
           string = df$folder,
           pattern = "^data/.*"
-        )[ ,1]
+        )[, 1]
       )
     )
   )

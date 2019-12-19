@@ -32,7 +32,7 @@ create_params_mbd <- create_mbd_params <- function(
 create_test_mbd_params <- function(
   seed = 1
 ) {
-  crown_age <- create_mbd_params_table()$crown_age[1]
+  crown_age <- razzo::create_mbd_params_table()$crown_age[1]
   create_mbd_params(
     lambda = 0.2,
     mu = 0.15,
