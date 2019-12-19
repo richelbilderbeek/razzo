@@ -24,7 +24,7 @@ calc_n_taxas <- function(
   colnames(x) <- names(mbd_paramses[[1]])
   x <- x %>% dplyr::distinct()
   n_taxas <- rep(NA, nrow(x))
-  for (m in 1:nrow(x)) {
+  for (m in leq_len(x)) {
     pars <- x[m, ]
     brts <- mbd::mbd_sim(
       pars = c(pars$lambda, pars$mu, pars$nu, pars$q),
