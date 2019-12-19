@@ -6,8 +6,7 @@
 \title{Collect all MBD parameters of a \code{razzo} run and put these
 in one \code{.csv} file called \code{results/mbd_params.csv}}
 \usage{
-
-  create_file_mbd_params(project_folder_name = get_razzo_path("razzo_project"))
+create_file_mbd_params(project_folder_name = get_razzo_path("razzo_project"))
 }
 \arguments{
 \item{project_folder_name}{project folder name,

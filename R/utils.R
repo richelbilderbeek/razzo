@@ -58,7 +58,6 @@ open_parameters_file <- function(
 }
 
 #' Get the names of the supported generative models
-#' @inheritParams default_params_doc
 #' @return the generative models
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @examples

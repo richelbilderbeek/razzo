@@ -3,7 +3,6 @@
 \docType{package}
 \name{razzo}
 \alias{razzo}
-\alias{razzo-package}
 \title{razzo: the effect of MBD on inference}
 \description{
 razzo: the effect of MBD on inference
