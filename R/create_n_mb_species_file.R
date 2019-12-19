@@ -1,4 +1,4 @@
-#' Create the dataframe with number of multiple-born species 
+#' Create the dataframe with number of multiple-born species
 #' and save it as a file
 #' @inheritParams default_params_doc
 #' @return the filename
