@@ -28,7 +28,9 @@ create_fig_1 <- function(
     c("generative" = "GEN", "candidate" = "best"), warn_missing = FALSE
   )
   df_errors$best_or_gen <- NULL
-  names(df_errors) <- gsub(names(df_errors), pattern = "nltt_", replacement = "error_")
+  names(df_errors) <- gsub(
+    names(df_errors), pattern = "nltt_", replacement = "error_"
+  )
   n_errors <- sum(grepl(names(df_errors), pattern = "error_"))
   df_params <- razzo::collect_mbd_params(project_folder_name)
   df_merged <- merge(x = df_params, y = df_errors, by = "folder")
@@ -57,7 +59,7 @@ create_fig_1 <- function(
   df_long <- df_long[order(df_long$tree), ]
   df_long$inference_model <-
     factor(df_long$inference_model, levels = unique(df_long$inference_model))
-  rownames(df_long) <- mapply(1:nrow(df_long), FUN = toString)
+  rownames(df_long) <- mapply(seq_len(nrow(df_long)), FUN = toString)
   ##### Theme #####
   label_size <- 13
   label_face <- "italic"
