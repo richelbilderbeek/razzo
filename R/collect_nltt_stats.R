@@ -81,11 +81,9 @@ collect_nltt_stats <- function(
         matrix_string$tree[i] <- "true"
       }
       if (is_best == TRUE) {
-        info_function <- get_best_model
         matrix_string$best_or_gen[i] <- "best"
       }
       if (is_generative == TRUE) {
-        info_function <- get_generative_model
         matrix_string$best_or_gen[i] <- "gen"
       }
       matrix_folder[i, ] <- relative_paths[p]
