@@ -27,8 +27,7 @@ collect_run_times <- function(
     log_filename <- log_filenames[i]
     testit::assert(file.exists(log_filename))
     log_filename_text <- readLines(log_filename)
-    tryCatch(
-      {
+    tryCatch({
         state <- as.character(
           stats::na.omit(
             stringr::str_match(string = log_filename_text, pattern = "State.*: (CANCELLED|COMPLETED)")[,2]
