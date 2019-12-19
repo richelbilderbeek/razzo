@@ -47,7 +47,7 @@ collect_run_times <- function(
         )
         cpu_time
         df$cpu_time[i] <- cpu_time
-      }, error = function(e) {} # ignore if something goes wrong
+      }, error = function(e) {} # nolint ignore if something goes wrong
     )
   }
   df
