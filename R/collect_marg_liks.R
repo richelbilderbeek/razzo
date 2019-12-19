@@ -24,7 +24,7 @@ collect_evidences <- collect_marg_liks <- function(
   bd_data <- utils::read.csv(file.path(data_paths[1], twin_data_filename))[-1]
   mbd_data <- utils::read.csv(file.path(data_paths[1], data_filename))[-1]
   is_string <- which(grepl(pattern = "name", x = names(mbd_data)))
-  is_numeric <- (1:ncol(mbd_data))[-is_string]
+  is_numeric <- (seq_len(mbd_data))[-is_string]
   names_string <- names(mbd_data[, is_string])
   names_numeric <- names(mbd_data[, is_numeric])
   len_string <- length(is_string)
