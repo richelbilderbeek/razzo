@@ -1,5 +1,7 @@
 test_that("use", {
 
+  skip("Fix https://github.com/richelbilderbeek/razzo/issues/375")
+
   # Should return plot
   plots <- create_fig_1(
     project_folder_name = get_razzo_path("razzo_project")

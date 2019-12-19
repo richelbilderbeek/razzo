@@ -1,17 +1,8 @@
 test_that("use", {
 
+  skip("Fix https://github.com/richelbilderbeek/razzo/issues/375")
+
   # If ''filename' must be the name of a file in 'inst/extdata'', do
-  if (1 == 2) {
-    # this functon does not exists
-    create_files_razzo_params(
-      project_folder_name = system.file(
-        "extdata",
-        "razzo_project",
-        package = "razzo"
-      ),
-      experiment_type = "test"
-    )
-  }
   x <- razzo::get_data_paths(
     project_folder_name = razzo::get_razzo_path("razzo_project/")
   )

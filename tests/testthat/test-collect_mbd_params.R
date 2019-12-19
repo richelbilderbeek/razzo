@@ -2,6 +2,7 @@ context("collect_mbd_params")
 
 test_that("use", {
 
+  skip("Fix https://github.com/richelbilderbeek/razzo/issues/375")
   df <- razzo::collect_mbd_params(
     project_folder_name = razzo::get_razzo_path("razzo_project")
   )
