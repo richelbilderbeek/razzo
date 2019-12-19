@@ -24,9 +24,9 @@ before_install:
   - sudo apt-get install -y libmagick++-dev
   - sudo apt install -qq libmpfr-dev
   # Check dead links
-  - sudo apt-get install -qq npm
-  - npm config set strict-ssl false
-  - sudo npm install -g markdown-link-check
+  #- sudo apt-get install -qq npm
+  #- npm config set strict-ssl false
+  #- sudo npm install -g markdown-link-check
 
 before_script:
   - Rscript -e "beastier::install_beast2()"
@@ -41,11 +41,17 @@ script:
   - travis_wait 60 R CMD check *tar.gz
 
 after_success:
-  - travis_wait 60 Rscript -e 'covr::codecov()'
-  - proselint *.md | egrep -v "typography\.symbols\.curly_quotes"
+  # Lint
+  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "release" ]; then Rscript -e 'lintr::lint_package()'; fi
+  # Codecov
+  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "devel" ]; then travis_wait 20 Rscript -e 'covr::codecov()'; fi
+  # Proselint
+  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "release" ]; then proselint *.md | egrep -v "typography\.symbols\.curly_quotes"; fi
+  # Goodpractice
+  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "release" ]; then travis_wait 60 Rscript -e 'goodpractice::gp()'; fi
   # Check dead links
-  - rm .travis.yml
-  - ./scripts/check_dead_links || true
+  #- rm .travis.yml
+  #- ./scripts/check_dead_links || true
 
 
 after_failure:
