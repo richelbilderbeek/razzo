@@ -30,13 +30,19 @@ collect_run_times <- function(
     tryCatch({
         state <- as.character(
           stats::na.omit(
-            stringr::str_match(string = log_filename_text, pattern = "State.*: (CANCELLED|COMPLETED)")[,2]
+            stringr::str_match(
+              string = log_filename_text,
+              pattern = "State.*: (CANCELLED|COMPLETED)"
+            )[,2]
           )
         )
         df$state[i] <- state
         cpu_time <- as.character(
           stats::na.omit(
-            stringr::str_match(string = log_filename_text, pattern = "Used CPU time .*:.*((.-)?..:..:..) ")[,2]
+            stringr::str_match(
+              string = log_filename_text,
+              pattern = "Used CPU time .*:.*((.-)?..:..:..) "
+            )[,2]
           )
         )
         cpu_time
