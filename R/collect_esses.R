@@ -73,11 +73,9 @@ collect_esses <- function(
         data_table$tree <- "true"
       }
       if (is_best == TRUE) {
-        info_function <- get_best_model
         data_table$best_or_gen <- "best"
       }
       if (is_generative == TRUE) {
-        info_function <- get_generative_model
         data_table$best_or_gen <- "gen"
       }
       if (!all(traces_names %in% names(data_table))) {
