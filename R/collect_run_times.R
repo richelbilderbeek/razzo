@@ -33,7 +33,7 @@ collect_run_times <- function(
             stringr::str_match(
               string = log_filename_text,
               pattern = "State.*: (CANCELLED|COMPLETED)"
-            )[,2]
+            )[, 2]
           )
         )
         df$state[i] <- state
@@ -42,7 +42,7 @@ collect_run_times <- function(
             stringr::str_match(
               string = log_filename_text,
               pattern = "Used CPU time .*:.*((.-)?..:..:..) "
-            )[,2]
+            )[, 2]
           )
         )
         cpu_time
