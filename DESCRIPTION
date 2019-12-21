@@ -23,6 +23,7 @@ Imports:
     ape,
     babette,
     ggplot2,
+    magrittr,
     mbd,
     mbd.SimTrees,
     remotes,
