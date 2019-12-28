@@ -78,15 +78,7 @@ collect_esses <- function(
       if (is_generative == TRUE) {
         data_table$best_or_gen <- "gen"
       }
-      if (!all(traces_names %in% names(data_table))) {
-        msg <- "Not all 'traces_names' are present in data frame. \n"
-        for (traces_name in traces_names) {
-          if (!traces_name %in% names(data_table)) {
-            msg <- c(msg, paste0("'", traces_name, "' is absent. \n"))
-          }
-        }
-        stop(paste0(msg, collapse = ""))
-      }
+      razzo::check_traces_in_df(traces_names = traces_names, df = data_table)
       testit::assert(all(traces_names %in% names(data_table)))
       traces <- data.frame(apply(
         data.frame(data_table[, traces_names]),
