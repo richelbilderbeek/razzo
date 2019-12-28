@@ -9,10 +9,10 @@ test_that("use", {
   parameters <- razzo::open_parameters_file(
     parameters_filename = mbd::file_path(x[[1]], "parameters.RDa")
   )
-  testthat::expect_true(
+  expect_true(
     all(c("mbd_params", "pir_params", "misc_params") %in% names(parameters))
   )
-  testthat::expect_silent(razzo::check_mbd_params(parameters$mbd_params))
-  testthat::expect_silent(pirouette::check_pir_params(parameters$pir_params))
-  testthat::expect_silent(razzo::check_misc_params(parameters$misc_params))
+  expect_silent(razzo::check_mbd_params(parameters$mbd_params))
+  expect_silent(pirouette::check_pir_params(parameters$pir_params))
+  expect_silent(razzo::check_misc_params(parameters$misc_params))
 })

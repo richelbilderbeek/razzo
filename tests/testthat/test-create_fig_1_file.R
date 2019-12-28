@@ -11,7 +11,7 @@ test_that("use", {
   expect_true(all(file.exists(filename)))
 
   # OK: filename must end with 'figure_1.png'
-  testthat::expect_true(
+  expect_true(
     all(
       grep(
       pattern = "figure_1", filename
@@ -24,7 +24,7 @@ test_that("use", {
 
   # OK: should be in razzo_project/results folder
   # Use ..? to indicate one or two back- or normal slashes
-  testthat::expect_true(
+  expect_true(
     length(
       grep(
         pattern = "razzo_project..?results..?",

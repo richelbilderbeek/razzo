@@ -13,7 +13,7 @@ test_that("use", {
   expect_true(file.exists(filename))
 
   # OK: filename must end with 'esses.csv'
-  testthat::expect_true(
+  expect_true(
     length(
       grep(
         pattern = "esses\\.csv$", filename, perl = TRUE, value = TRUE
@@ -22,7 +22,7 @@ test_that("use", {
   )
   # OK: should be in razzo_project/results folder
   # Use ..? to indicate one or two back- or normal slashes
-  testthat::expect_true(
+  expect_true(
     length(
       grep(
         pattern = "razzo_project..?results..?",

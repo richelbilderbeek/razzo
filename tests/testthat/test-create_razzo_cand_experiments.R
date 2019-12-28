@@ -7,7 +7,7 @@ test_that("must create experiments of the razzo MCMC chain length", {
       )
     )
   )
-  testthat::expect_equal(
+  expect_equal(
     gen_experiment$inference_model$mcmc$chain_length,
     razzo::get_razzo_mcmc_chain_length()
   )
@@ -20,7 +20,7 @@ test_that("must create experiments of the razzo MCMC chain length", {
     rng_seed = 1
   )
   for (cand_experiment in cand_experiments) {
-    testthat::expect_equal(
+    expect_equal(
       cand_experiment$inference_model$mcmc$chain_length,
       razzo::get_razzo_mcmc_chain_length()
     )

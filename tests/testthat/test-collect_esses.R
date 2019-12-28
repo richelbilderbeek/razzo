@@ -24,21 +24,21 @@ test_that("use", {
   )
 
   # Sub-keys
-  testthat::expect_true("tree" %in% names(df))
-  testthat::expect_true("best_or_gen" %in% names(df))
+  expect_true("tree" %in% names(df))
+  expect_true("best_or_gen" %in% names(df))
 
   # Only take the ESS of the likelihood
-  testthat::expect_true("ess_likelihood" %in% names(df))
+  expect_true("ess_likelihood" %in% names(df))
 
   # Unsure, with the bug it is 4, so hope to get it lower after fixing it
-  testthat::expect_true(all(df$ess_likelihood <= 4))
+  expect_true(all(df$ess_likelihood <= 4))
 
   # Data must be tidy
-  testthat::expect_true(is.factor(df$tree))
-  testthat::expect_true(is.factor(df$best_or_gen))
+  expect_true(is.factor(df$tree))
+  expect_true(is.factor(df$best_or_gen))
 
   # Rows must be unique
-  testthat::expect_equal(nrow(unique(df)), nrow(df))
+  expect_equal(nrow(unique(df)), nrow(df))
 
   # Use relative folder path as the primary key
   #
@@ -51,18 +51,18 @@ test_that("use", {
   #
   #  data/1/2/3                                                                 # nolint this is not commented code
   #
-  testthat::expect_true("folder" %in% names(df))
+  expect_true("folder" %in% names(df))
 
   # Removed obsolete values, Issue #253
-  testthat::expect_false("site_model" %in% names(df))
-  testthat::expect_false("clock_model" %in% names(df))
-  testthat::expect_false("tree_prior" %in% names(df))
-  testthat::expect_false("burn_in_fraction" %in% names(df))
-  testthat::expect_false("sample_interval" %in% names(df))
+  expect_false("site_model" %in% names(df))
+  expect_false("clock_model" %in% names(df))
+  expect_false("tree_prior" %in% names(df))
+  expect_false("burn_in_fraction" %in% names(df))
+  expect_false("sample_interval" %in% names(df))
 })
 
 test_that("abuse", {
-  testthat::expect_error(
+  expect_error(
     razzo::collect_esses(
       project_folder_name = "nonsense"
     ),

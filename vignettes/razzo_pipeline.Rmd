@@ -214,10 +214,13 @@ babette::plot_densitree(
 ### First MBD posterior's ESSes
 
 ```{r eval=FALSE}
+first_experiment <- razzo_params$pir_params$experiments[[1]]
 knitr::kable(
   tracerer::calc_esses(
-    tracerer::parse_beast_log(razzo_params$pir_params$experiments[[1]]$inference_model$mcmc$tracelog$filename), 
-    sample_interval = razzo_params$pir_params$experiments[[1]]$inference_model$mcmc$store_every
+    tracerer::parse_beast_log(
+      first_experiment$inference_model$mcmc$tracelog$filename
+    ), 
+    sample_interval = first_experiment$inference_model$mcmc$store_every
   )
 )
 ```

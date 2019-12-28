@@ -27,7 +27,7 @@ create_params_razzo <- create_razzo_params <- function(
     pir_params = pir_params,
     misc_params = misc_params
   )
-  check_razzo_params(razzo_params) # nolint razzo function
+  razzo::check_razzo_params(razzo_params)
   razzo_params
 }
 

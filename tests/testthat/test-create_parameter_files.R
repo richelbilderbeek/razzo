@@ -12,7 +12,7 @@ test_that("use", {
   )
 
   # All filenames must be unique
-  testthat::expect_equal(length(filenames), length(unique(filenames)))
+  expect_equal(length(filenames), length(unique(filenames)))
 
   # The folder structure created:
   # * razzo_project (the name of the GitHub containing the scripts)
@@ -23,7 +23,7 @@ test_that("use", {
   #   * figures
 
   # OK: Parameter filenames end with 'parameters.RDa'
-  testthat::expect_true(
+  expect_true(
     length(
       grep(
         pattern = "parameters\\.RDa$", filenames[1], perl = TRUE, value = TRUE
@@ -32,7 +32,7 @@ test_that("use", {
   )
   # OK: there is a data folder that is a subfolder of razzo_project'
   # Use ..? to indicate one or two back- or normal slashes
-  testthat::expect_true(
+  expect_true(
     length(
       grep(
         pattern = "razzo_project..?data",
@@ -62,7 +62,7 @@ test_that("use, full", {
   #   * figures
 
   # OK: Parameter filenames end with 'parameters.RDa'
-  testthat::expect_true(
+  expect_true(
     length(
       grep(
         pattern = "parameters\\.RDa$", filenames[1], perl = TRUE, value = TRUE
@@ -71,7 +71,7 @@ test_that("use, full", {
   )
   # OK: there is a data folder that is a subfolder of razzo_project'
   # Use ..? to indicate one or two back- or normal slashes
-  testthat::expect_true(
+  expect_true(
     length(
       grep(
         pattern = "razzo_project..?data",
@@ -96,7 +96,7 @@ test_that("can read", {
   )
 
   # Load the first one
-  testthat::expect_silent(
+  expect_silent(
     razzo::open_parameters_file(parameters_filename = filenames[1])
   )
 

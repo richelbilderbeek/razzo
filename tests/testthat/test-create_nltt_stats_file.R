@@ -8,10 +8,10 @@ test_that("use", {
   )
 
   # File should be created
-  testthat::expect_true(file.exists(filename))
+  expect_true(file.exists(filename))
 
   # OK: filename must end with 'nltt_stats.csv'
-  testthat::expect_true(
+  expect_true(
     length(
       grep(
         pattern = "nltt_stats\\.csv$", filename, perl = TRUE, value = TRUE
@@ -20,7 +20,7 @@ test_that("use", {
   )
   # OK: should be in razzo_project/results folder
   # Use ..? to indicate one or two back- or normal slashes
-  testthat::expect_true(
+  expect_true(
     length(
       grep(
         pattern = "razzo_project..?results..?",
@@ -32,7 +32,7 @@ test_that("use", {
 })
 
 test_that("abuse", {
-  testthat::expect_error(
+  expect_error(
     razzo::create_nltt_stats_file(
       project_folder_name = "nonsense"
     ),

@@ -64,7 +64,6 @@ collect_nltt_stats <- function(
   # loop over all files
   i <- 1
   for (p in seq_along(paths)) {
-    parameters <- readRDS(file.path(paths[p], "parameters.RDa")) # nolint internal function
     files_nltt <- list.files(paths[p], pattern = "nltt")
     for (f in seq_along(files_nltt)) {
       is_twin <- grepl(files_nltt[f], pattern = "twin")

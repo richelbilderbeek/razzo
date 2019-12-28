@@ -19,11 +19,11 @@ test_that("use", {
   # No secondary key needed here :-)
 
   # Measurement
-  testthat::expect_true("n_taxa" %in% names(df))
-  testthat::expect_true(is.numeric(df$n_taxa))
+  expect_true("n_taxa" %in% names(df))
+  expect_true(is.numeric(df$n_taxa))
 
   # Rows must be unique
-  testthat::expect_equal(nrow(unique(df)), nrow(df))
+  expect_equal(nrow(unique(df)), nrow(df))
 
   # As all trees (true, twin, posterior) have an equal amount of tips
   n_rows_expected <- length(
@@ -33,7 +33,7 @@ test_that("use", {
       pattern = "parameters\\.RDa"
     )
   )
-  testthat::expect_equal(nrow(df), n_rows_expected)
+  expect_equal(nrow(df), n_rows_expected)
 
   # Use relative folder path as the primary key
   #
@@ -46,6 +46,6 @@ test_that("use", {
   #
   #  data/1/2/3                                                                 # nolint this is not commented code
   #
-  testthat::expect_true("folder" %in% names(df))
+  expect_true("folder" %in% names(df))
 
 })
