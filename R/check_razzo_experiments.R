@@ -1,6 +1,9 @@
 #' Check razzo experiments
+#' @inheritParams default_params_doc
 #' @export
-check_razzo_experiments <- function(experiments)
+check_razzo_experiments <- function(experiments) {
+  pirouette::check_experiments(experiments)
+
   for (experiment in experiments) {
     mrca_prior <- experiment$inference_model$mrca_prior
     if (beautier::is_one_na(mrca_prior)) {
@@ -31,4 +34,4 @@ check_razzo_experiments <- function(experiments)
       )
     }
   }
-
+}

@@ -6,6 +6,10 @@
 \usage{
 check_razzo_experiments(experiments)
 }
+\arguments{
+\item{experiments}{provides information on how the experiment has to be set
+up. To create it use \code{\link[pirouette]{create_experiment}}}
+}
 \description{
 Check razzo experiments
 }
