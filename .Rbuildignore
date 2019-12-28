@@ -6,6 +6,7 @@
 ^doc$
 ^CONTRIBUTING\.md$
 ^NEWS\.md$
+^schedule\.md$
 ^cluster_scripts$
 ^scripts$
 ^data-raw$
