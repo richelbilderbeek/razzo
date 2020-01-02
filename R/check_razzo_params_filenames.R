@@ -19,7 +19,7 @@ check_razzo_params_filenames <- function(razzo_params) {
       "Actual value: '", razzo_params$misc_params$tree_filename, "'\n",
       "[folder_name]: '", folder_name, "'\n",
       "(folder name taken from ",
-        "razzo_params$pir_params$alignment_params$fasta_filename)" #
+        "razzo_params$pir_params$alignment_params$fasta_filename)"
     )
   }
 
