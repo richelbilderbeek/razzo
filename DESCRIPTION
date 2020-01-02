@@ -1,14 +1,15 @@
 Package: razzo
 Type: Package
 Title: The Error if Nature is MBD
-Version: 0.6
+Version: 0.7
 Authors@R: c(
     person("Giovanni", "Laudanno", role = c("aut")),
     person("Richel J.C.", "Bilderbeek", email = "richel@richelbilderbeek.nl", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1107-7049")))
 Maintainer: Richel J.C. Bilderbeek <richel@richelbilderbeek.nl>
-Description: The MBD model is a model that does stuff.
-    That stuff is important. That is why we use it. This
-    package measures the error BEAST2 makes if nature follow that model,
+Description: The MBD (Multiple-Birth-Death) model is a model in which
+    speciation events can happen at exactly the same time.
+    Contemporary standard phylogenetic tools ignore this feature of nature.
+    This package measures the error BEAST2 makes if nature follow that model,
     when we are only using contemporary priors.
 License: GPL-3
 Encoding: UTF-8
