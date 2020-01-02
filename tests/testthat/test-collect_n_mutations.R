@@ -5,8 +5,9 @@ test_that("use", {
   if (1 == 2) {
     # Run the experiment if you can and need to
     for (file in list.files(
-        razzo::get_razzo_path(
-          "razzo_project"), recursive = TRUE, pattern = "parameters\\.RDa"
+        razzo::get_razzo_path("razzo_project"),
+        recursive = TRUE,
+        pattern = "parameters\\.RDa"
       )
     ) {
       razzo::run_razzo(razzo::open_parameters_file(file))
