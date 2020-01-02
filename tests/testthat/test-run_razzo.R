@@ -1,10 +1,8 @@
 context("test-run_razzo")
 
-test_that("use", {
+test_that("Correct MCMC chain length, #350", {
 
   if (!beastier::is_on_travis()) return()
-
-  skip("Expose #350")
 
   razzo_params <- create_test_razzo_params()
   run_razzo(razzo_params)
