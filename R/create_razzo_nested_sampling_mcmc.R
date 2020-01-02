@@ -1,5 +1,8 @@
 #' Create a nested sampling MCMC that matches the article
 #' @inheritParams default_params_doc
+#' @param index the index of the candidate model. The first
+#'   candidate model has an index of 1, also when there is yes/no a
+#'   generative model.
 #' @export
 create_razzo_nested_sampling_mcmc <- function(
   folder_name,

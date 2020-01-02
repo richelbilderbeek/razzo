@@ -11,6 +11,10 @@ create_razzo_nested_sampling_mcmc(folder_name, model_type, index = 1)
 
 \item{model_type}{the type of inference model, must be
 \code{generative} or \code{candidate}}
+
+\item{index}{the index of the candidate model. The first
+candidate model has an index of 1, also when there is yes/no a
+generative model.}
 }
 \description{
 Create a nested sampling MCMC that matches the article
