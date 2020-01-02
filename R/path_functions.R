@@ -51,7 +51,9 @@ clean_paths <- function(filenames) {
 #'   the file is present. Will stop otherwise.
 #' @examples
 #' library(testthat)
-#' expect_true(is.character(get_razzo_path("parameters.RDa")))
+#'
+#' expect_true(file.exists(get_razzo_path("parameters.RDa")))
+#' expect_error(get_razzo_path("abs.ent"))
 #' @export
 get_razzo_path <- function(filename) {
   full <- system.file("extdata", filename, package = "razzo")

@@ -1,2 +1,9 @@
 "","folder","ess_likelihood","tree","best_or_gen"
-"1",NA,NA,NA,NA
+"1","data/0.2-0.15-1-0.1/1",4,"true","gen"
+"2","data/0.2-0.15-1-0.1/1",4,"true","best"
+"3","data/0.2-0.15-1-0.1/1",4,"twin","gen"
+"4","data/0.2-0.15-1-0.1/1",4,"twin","best"
+"5","data/0.2-0.15-1-0.1/2",4,"true","gen"
+"6","data/0.2-0.15-1-0.1/2",4,"true","best"
+"7","data/0.2-0.15-1-0.1/2",4,"twin","gen"
+"8","data/0.2-0.15-1-0.1/2",4,"twin","best"
