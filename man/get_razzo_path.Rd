@@ -18,5 +18,7 @@ Get the full path of a file in the \code{inst/extdata} folder
 }
 \examples{
 library(testthat)
-expect_true(is.character(get_razzo_path("parameters.RDa")))
+
+expect_true(file.exists(get_razzo_path("parameters.RDa")))
+expect_error(get_razzo_path("abs.ent"))
 }
