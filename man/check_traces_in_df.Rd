@@ -6,6 +6,21 @@
 \usage{
 check_traces_in_df(traces_names, df)
 }
+\arguments{
+\item{traces_names}{names of the traces}
+
+\item{df}{a data frame}
+}
 \description{
 Check if all the traces' names are in the names of the data frames
+}
+\examples{
+library(testthat)
+
+df <- data.frame(my_name = 3.14)
+expect_silent(check_traces_in_df("my_name", df))
+expect_error(check_traces_in_df("absent", df))
+}
+\author{
+Richel J.C. Bilderbeek
 }
