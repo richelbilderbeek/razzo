@@ -51,11 +51,13 @@ create_razzo_cand_experiments <- function(
       folder_name = folder_name
     )
     cand_experiments[[i]]$est_evidence_mcmc <-
-      razzo::create_razzo_nested_sampling_mcmc()
+      razzo::create_razzo_nested_sampling_mcmc(
+        folder_name =  folder_name,
+        model_type = "candidate",
+        index = i
+      )
     cand_experiments[[i]]$inference_model$mrca_prior <-
       razzo::create_razzo_mrca_prior()
-    cand_experiments[[i]]$est_evidence_mcmc <-
-      razzo::create_razzo_nested_sampling_mcmc()
     cand_experiments[[i]]$beast2_options <-
       razzo::create_razzo_beast2_options(
         model_type = "candidate",

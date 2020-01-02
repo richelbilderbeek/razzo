@@ -106,14 +106,13 @@ test_that("razzo naming scheme", {
     file.path(folder_name, "mbd_nltts_gen.csv")
   )
 
-  skip("#376")
   # est_evidence_mcmc
   expect_equal(
     gen_exp$est_evidence_mcmc$treelog$filename,
     file.path(folder_name, "mbd_gen_evidence.trees")
   )
   expect_equal(
-    gen_exp$est_evidence_mcmc$treelog$filename,
+    gen_exp$est_evidence_mcmc$tracelog$filename,
     file.path(folder_name, "mbd_gen_evidence.log")
   )
 })

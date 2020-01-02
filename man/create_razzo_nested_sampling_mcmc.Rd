@@ -4,7 +4,13 @@
 \alias{create_razzo_nested_sampling_mcmc}
 \title{Create a nested sampling MCMC that matches the article}
 \usage{
-create_razzo_nested_sampling_mcmc()
+create_razzo_nested_sampling_mcmc(folder_name, model_type, index = 1)
+}
+\arguments{
+\item{folder_name}{name of the main folder}
+
+\item{model_type}{the type of inference model, must be
+\code{generative} or \code{candidate}}
 }
 \description{
 Create a nested sampling MCMC that matches the article

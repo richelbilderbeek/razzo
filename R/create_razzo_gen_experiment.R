@@ -18,7 +18,7 @@ create_razzo_gen_experiment <- function(
     inference_model = beautier::create_inference_model(
       tree_prior = beautier::create_bd_tree_prior(),
       mcmc = razzo::get_razzo_mcmc(
-        model_type = "generative",
+        model_type = model_type,
         folder_name = folder_name
       ),
       mrca_prior = create_razzo_mrca_prior()
@@ -28,7 +28,10 @@ create_razzo_gen_experiment <- function(
       folder_name = folder_name,
       rng_seed = rng_seed
     ),
-    est_evidence_mcmc = create_razzo_nested_sampling_mcmc(),
+    est_evidence_mcmc = create_razzo_nested_sampling_mcmc(
+      folder_name = folder_name,
+      model_type = model_type
+    ),
     errors_filename = get_errors_filename(
       folder_name = folder_name,
       model_type = model_type

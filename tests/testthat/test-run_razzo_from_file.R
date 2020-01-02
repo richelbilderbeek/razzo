@@ -12,21 +12,12 @@ test_that("use", {
     experiment_type = "test"
   )
 
-  parameters <- open_parameters_file(parameters_filenames[1])
-  expect_false(
-    parameters$pir_params$experiments[[1]]$est_evidence_mcmc$treelog$filename ==
-    parameters$pir_params$experiments[[1]]$inference_model$mcmc$treelog$filename
-  )
-  skip("#376")
-  expect_false(
-    parameters$pir_params$experiments[[1]]$est_evidence_mcmc$treelog$filename ==
+  expect_true(
+    open_parameters_file(
+      parameters_filenames[1]
+    )$pir_params$experiments[[1]]$est_evidence_mcmc$treelog$filename !=
     "$(tree).trees"
   )
-  unlist(parameters)[
-    !is.na(
-      stringr::str_match(string = names(unlist(parameters)), pattern = "filename")
-    )
-  ]
 
   # Run the first without verbose
   expect_silent(
