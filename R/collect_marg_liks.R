@@ -2,22 +2,23 @@
 #' @description Collect marginal loglikelihoods
 #' @inheritParams default_params_doc
 #' @return a dataframe with parameters and marginal likelihoods
-#' @author Giovanni Laudanno
+#' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @aliases collect_evidences collect_marg_liks
 #' @export collect_evidences collect_marg_liks
 collect_evidences <- collect_marg_liks <- function(
   project_folder_name = get_razzo_path("razzo_project")
 ) {
-  razzo::check_project_folder_name(project_folder_name) # nolint
+  razzo::check_project_folder_name(project_folder_name)
 
   # retrieve information from files
-  data_folder <- razzo::get_data_paths(project_folder_name, full_names = FALSE) # nolint internal function
+  data_folder <- razzo::get_data_paths(project_folder_name, full_names = FALSE)
   data_paths <- file.path(project_folder_name, data_folder)
 
   # Take the first filename that ends with '_marg_lik.csv',
   # as it can be 'mbd_marg_lik.csv' and 'pbd_marg_lik.csv'
   data_filename <- "mbd_marg_lik.csv"
   data_filename <- list.files(path = data_paths, pattern = "_marg_lik\\.csv")[1]
+  testit::assert(!is.na(data_filename))
 
   twin_data_filename <- pirouette::to_twin_filename(data_filename)
 
