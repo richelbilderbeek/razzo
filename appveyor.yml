@@ -22,7 +22,6 @@ environment:
     USE_RTOOLS: true
 
 build_script:
-  - travis-tool.sh install_r curl
   - Rscript scripts/install_r_packages.R
   - travis-tool.sh install_deps
   - Rscript -e "beastier::install_beast2()"
