@@ -40,8 +40,11 @@ test_that("matches article", {
     skip("This can only run on Linux.")
   }
 
+  folder_name <- peregrine::get_pff_tempfile()
+
   # Issue 242, Isssue #242
   experiments <- razzo::create_razzo_experiments(
+    folder_name = folder_name,
     has_candidates = TRUE
   )
 
@@ -87,25 +90,45 @@ test_that("matches article", {
     razzo::get_razzo_mcmc_chain_length()
   )
   # gen_exp$est_evidence_mcmc
+  ns_mcmc_gen <- razzo::create_razzo_nested_sampling_mcmc(
+    folder_name = folder_name,
+    model_type = "generative"
+  )
   expect_equal(
     gen_exp$est_evidence_mcmc$chain_length,
-    razzo::create_razzo_nested_sampling_mcmc()$chain_length
+    ns_mcmc_gen$chain_length
   )
   expect_equal(
     gen_exp$est_evidence_mcmc$store_every,
-    razzo::create_razzo_nested_sampling_mcmc()$store_every
+    ns_mcmc_gen$store_every
   )
   expect_equal(
     gen_exp$est_evidence_mcmc$epsilon,
-    razzo::create_razzo_nested_sampling_mcmc()$epsilon
+    ns_mcmc_gen$epsilon
   )
   expect_equal(
     gen_exp$est_evidence_mcmc$particle_count,
-    razzo::create_razzo_nested_sampling_mcmc()$particle_count
+    ns_mcmc_gen$particle_count
   )
   expect_equal(
     gen_exp$est_evidence_mcmc$sub_chain_length,
-    razzo::create_razzo_nested_sampling_mcmc()$sub_chain_length
+    ns_mcmc_gen$sub_chain_length
+  )
+  expect_equal(
+    gen_exp$est_evidence_mcmc$tracelog$filename,
+    ns_mcmc_gen$tracelog$filename
+  )
+  expect_equal(
+    gen_exp$est_evidence_mcmc$tracelog$log_every,
+    ns_mcmc_gen$tracelog$log_every
+  )
+  expect_equal(
+    gen_exp$est_evidence_mcmc$treelog$filename,
+    ns_mcmc_gen$treelog$filename
+  )
+  expect_equal(
+    gen_exp$est_evidence_mcmc$treelog$log_every,
+    ns_mcmc_gen$treelog$log_every
   )
 
   ##############################################################################
@@ -115,7 +138,9 @@ test_that("matches article", {
 
 
   # General
-  for (cand_exp in cand_exps) {
+  for (i in seq_along(cand_exps)) {
+    cand_exp <- cand_exps[[i]]
+
     # --------------------
     # Inference conditions
     # --------------------
@@ -151,25 +176,46 @@ test_that("matches article", {
       razzo::get_razzo_mcmc_chain_length()
     )
     # cand_exp$est_evidence_mcmc
+    ns_mcmc_cand <- razzo::create_razzo_nested_sampling_mcmc(
+      folder_name = folder_name,
+      model_type = "candidate",
+      index = i
+    )
     expect_equal(
       cand_exp$est_evidence_mcmc$chain_length,
-      razzo::create_razzo_nested_sampling_mcmc()$chain_length
+      ns_mcmc_cand$chain_length
     )
     expect_equal(
       cand_exp$est_evidence_mcmc$store_every,
-      razzo::create_razzo_nested_sampling_mcmc()$store_every
+      ns_mcmc_cand$store_every
     )
     expect_equal(
       cand_exp$est_evidence_mcmc$epsilon,
-      razzo::create_razzo_nested_sampling_mcmc()$epsilon
+      ns_mcmc_cand$epsilon
     )
     expect_equal(
       cand_exp$est_evidence_mcmc$particle_count,
-      razzo::create_razzo_nested_sampling_mcmc()$particle_count
+      ns_mcmc_cand$particle_count
     )
     expect_equal(
       cand_exp$est_evidence_mcmc$sub_chain_length,
-      razzo::create_razzo_nested_sampling_mcmc()$sub_chain_length
+      ns_mcmc_cand$sub_chain_length
+    )
+    expect_equal(
+      cand_exp$est_evidence_mcmc$tracelog$filename,
+      ns_mcmc_cand$tracelog$filename
+    )
+    expect_equal(
+      cand_exp$est_evidence_mcmc$tracelog$log_every,
+      ns_mcmc_cand$tracelog$log_every
+    )
+    expect_equal(
+      cand_exp$est_evidence_mcmc$treelog$filename,
+      ns_mcmc_cand$treelog$filename
+    )
+    expect_equal(
+      cand_exp$est_evidence_mcmc$treelog$log_every,
+      ns_mcmc_cand$treelog$log_every
     )
   }
 
@@ -239,8 +285,20 @@ test_that("razzo naming conventions", {
     gen_exp$errors_filename,
     file.path(folder_name, "mbd_nltts_gen.csv")
   )
+  expect_equal(
+    gen_exp$est_evidence_mcmc$tracelog$filename,
+    file.path(folder_name, "mbd_gen_evidence.log")
+  )
+  expect_equal(
+    gen_exp$est_evidence_mcmc$treelog$filename,
+    file.path(folder_name, "mbd_gen_evidence.trees")
+  )
+
+
   # Candidate experiments
-  for (cand_exp in experiments[-1]) {
+  candidate_experiments <- experiments[-1]
+  for (i in seq_along(candidate_experiments)) {
+    cand_exp <- candidate_experiments[[i]]
     testit::assert(cand_exp$inference_conditions$model_type == "candidate")
     expect_equal(
       cand_exp$beast2_options$input_filename,
@@ -261,6 +319,14 @@ test_that("razzo naming conventions", {
     expect_equal(
       cand_exp$errors_filename,
       file.path(folder_name, "mbd_nltts_best.csv")
+    )
+    expect_equal(
+      cand_exp$est_evidence_mcmc$tracelog$filename,
+      file.path(folder_name, paste0("mbd_best_", i, "_evidence.log"))
+    )
+    expect_equal(
+      cand_exp$est_evidence_mcmc$treelog$filename,
+      file.path(folder_name, paste0("mbd_best_", i, "_evidence.trees"))
     )
   }
 })
