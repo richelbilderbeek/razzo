@@ -112,7 +112,7 @@ test_that("values", {
   )
   expect_equal(
     gen_exp$est_evidence_mcmc$store_every,
-    10000
+    1000
   )
   expect_equal(
     gen_exp$est_evidence_mcmc$epsilon,
