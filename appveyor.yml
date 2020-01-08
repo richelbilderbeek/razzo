@@ -22,6 +22,7 @@ environment:
     USE_RTOOLS: true
 
 build_script:
+  - travis-tool.sh install_r curl
   - travis-tool.sh install_github Giappo/mbd
   - travis-tool.sh install_github Giappo/mbd.SimTrees
   - travis-tool.sh install_github jimhester/covr
@@ -38,7 +39,6 @@ build_script:
   - travis-tool.sh install_github thijsjanzen/nodeSub
   - travis-tool.sh install_github richelbilderbeek/pirouette
   - travis-tool.sh install_github richelbilderbeek/peregrine
-  - travis-tool.sh install_r curl
   - travis-tool.sh install_deps
   - Rscript -e "beastier::install_beast2()"
 
