@@ -10,14 +10,20 @@ r_github_packages:
   - jimhester/lintr
   - MangoTheCat/goodpractice
   - ropensci/spelling
-  - ropensci/babette
-  - richelbilderbeek/mcbette
-  - thijsjanzen/nodeSub
-  - thijsjanzen/nLTT
-  - richelbilderbeek/pirouette@richel
-  - richelbilderbeek/peregrine
-  - Giappo/mbd
-  - Giappo/mbd.SimTrees
+  - thijsjanzen/nLTT@v1.4.3
+  - ropensci/beautier@v2.3.3
+  - ropensci/tracerer@v2.0.3
+  - ropensci/beastier@v2.1.2
+  - ropensci/mauricer@v2.0.6
+  - ropensci/babette@v2.1.1
+  - richelbilderbeek/mcbette@v1.8
+  - thijsjanzen/nodeSub@v0.4.2
+  - richelbilderbeek/pirouette@v1.6.2
+  - Giappo/mbd@v1.0
+  - Giappo/mbd.SimTrees@v0.1
+  - richelbilderbeek/becosys@v1.0.1
+  - richelbilderbeek/peregrine@v1.0
+  - richelbilderbeek/razzo@v0.7.2
 
 before_install:
   - sudo add-apt-repository -y ppa:opencpu/imagemagick

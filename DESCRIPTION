@@ -16,20 +16,20 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.0.2
 Depends: 
-    beastier (>= 2.0.25),
-    beautier (>= 2.3),
-    peregrine (>= 0.5),
-    pirouette (>= 1.5.1)
+    beastier (== 2.1.2),
+    beautier (== 2.3.3),
+    peregrine (== 1.0),
+    pirouette (== 1.6.2)
 Imports: 
     ape,
-    babette,
+    babette (== 2.1.1),
     ggplot2,
     magrittr,
-    mbd,
-    mbd.SimTrees,
+    mbd (== 1.0),
+    mbd.SimTrees (== 0.1),
     remotes,
     stringr,
-    tracerer,
+    tracerer (== 2.0.3)
     testit
 Suggests:
     assertive,
@@ -38,10 +38,10 @@ Suggests:
     dplyr,
     knitr,
     lintr,
-    mauricer,
-    mcbette,
-    nLTT (>= 1.4.2),
-    nodeSub (>= 0.4.0),
+    mauricer (== 2.0.6),
+    mcbette (== 1.8),
+    nLTT (== 1.4.3),
+    nodeSub (== 0.4.2),
     plyr,
     tidyr,
     rappdirs,
