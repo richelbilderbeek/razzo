@@ -7,9 +7,9 @@ devtools::install_github("ropensci/mauricer", ref = "v2.0.6", dependencies = TRU
 devtools::install_github("ropensci/babette", ref = "v2.1.1", dependencies = TRUE)
 devtools::install_github("richelbilderbeek/mcbette", ref = "v1.8", dependencies = TRUE)
 devtools::install_github("thijsjanzen/nodeSub", ref = "v0.4.2", dependencies = TRUE)
+devtools::install_github("richelbilderbeek/becosys", ref = "v1.0.1", dependencies = TRUE)
 devtools::install_github("richelbilderbeek/pirouette", ref = "v1.6.2", dependencies = TRUE)
 devtools::install_github("Giappo/mbd", ref = "v1.0", dependencies = TRUE)
 devtools::install_github("Giappo/mbd.SimTrees", ref = "v0.1", dependencies = TRUE)
-devtools::install_github("richelbilderbeek/becosys", ref = "v1.0.1", dependencies = TRUE)
 devtools::install_github("richelbilderbeek/peregrine", ref = "v1.0", dependencies = TRUE)
 
