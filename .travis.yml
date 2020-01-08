@@ -35,7 +35,7 @@ before_install:
   #- sudo npm install -g markdown-link-check
 
 before_script:
-  - Rscript -e "scripts/install_r_packages.R"
+  - Rscript scripts/install_r_packages.R
   - Rscript -e "beastier::install_beast2()"
   - Rscript -e 'mauricer::install_beast2_pkg("NS")'
   - if [ -f ".lintr" ]; then echo "Do use Hadley Wickham's style guide"; exit 1; fi
