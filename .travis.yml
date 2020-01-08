@@ -41,11 +41,11 @@ script:
 
 after_success:
   # Lint
-  #- if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "release" ]; then Rscript -e 'lintr::lint_package()'; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "release" ]; then Rscript -e 'lintr::lint_package()'; fi
   # Codecov
-  #- if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "devel" ]; then travis_wait 20 Rscript -e 'covr::codecov()'; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "devel" ]; then travis_wait 20 Rscript -e 'covr::codecov()'; fi
   # Proselint
-  #- if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "release" ]; then proselint *.md | egrep -v "typography\.symbols\.curly_quotes"; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "release" ]; then proselint *.md | egrep -v "typography\.symbols\.curly_quotes"; fi
   # Goodpractice
   #- if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "release" ]; then travis_wait 60 Rscript -e 'goodpractice::gp()'; fi
   ## Check dead links
