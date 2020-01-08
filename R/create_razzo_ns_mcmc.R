@@ -4,7 +4,7 @@
 #'   candidate model has an index of 1, also when there is yes/no a
 #'   generative model.
 #' @export
-create_razzo_nested_sampling_mcmc <- function(
+create_razzo_ns_mcmc <- function(
   folder_name,
   model_type,
   index = 1

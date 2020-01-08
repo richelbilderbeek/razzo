@@ -4,7 +4,11 @@ test_that("matches article", {
     skip("This can only run on Linux.")
   }
 
-  gen_exp <- create_razzo_gen_experiment()
+  folder_name <- peregrine::get_pff_tempfile()
+
+  gen_exp <- create_razzo_gen_experiment(
+    folder_name = folder_name
+  )
   # --------------------
   # Inference conditions
   # --------------------
@@ -42,34 +46,48 @@ test_that("matches article", {
     get_razzo_mcmc_chain_length()
   )
   # gen_exp$est_evidence_mcmc
+  ns_mcmc_gen <- razzo::create_razzo_ns_mcmc(
+    folder_name = folder_name,
+    model_type = "generative"
+  )
   expect_equal(
     gen_exp$est_evidence_mcmc$chain_length,
-    create_razzo_nested_sampling_mcmc()$chain_length
+    ns_mcmc_gen$chain_length
   )
   expect_equal(
     gen_exp$est_evidence_mcmc$store_every,
-    create_razzo_nested_sampling_mcmc()$store_every
+    ns_mcmc_gen$store_every
   )
   expect_equal(
     gen_exp$est_evidence_mcmc$epsilon,
-    create_razzo_nested_sampling_mcmc()$epsilon
+    ns_mcmc_gen$epsilon
   )
   expect_equal(
     gen_exp$est_evidence_mcmc$particle_count,
-    create_razzo_nested_sampling_mcmc()$particle_count
+    ns_mcmc_gen$particle_count
   )
   expect_equal(
     gen_exp$est_evidence_mcmc$sub_chain_length,
-    create_razzo_nested_sampling_mcmc()$sub_chain_length
+    ns_mcmc_gen$sub_chain_length
   )
-  # --------------------
-  # beast2_options
-  # --------------------
+  expect_equal(
+    gen_exp$est_evidence_mcmc$tracelog$filename,
+    ns_mcmc_gen$tracelog$filename
+  )
+  expect_equal(
+    gen_exp$est_evidence_mcmc$tracelog$log_every,
+    ns_mcmc_gen$tracelog$log_every
+  )
+  expect_equal(
+    gen_exp$est_evidence_mcmc$treelog$filename,
+    ns_mcmc_gen$treelog$filename
+  )
+  expect_equal(
+    gen_exp$est_evidence_mcmc$treelog$log_every,
+    ns_mcmc_gen$treelog$log_every
+  )
+  skip("TODO")
   # gen_exp$beast2_options$rng_seed must match MBD RNG seed
-  # --------------------
-  # est_evidence_mcmc
-  # --------------------
-  gen_exp$est_evidence_mcmc
 })
 
 test_that("razzo naming scheme", {

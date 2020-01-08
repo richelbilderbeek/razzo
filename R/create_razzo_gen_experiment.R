@@ -28,7 +28,7 @@ create_razzo_gen_experiment <- function(
       folder_name = folder_name,
       rng_seed = rng_seed
     ),
-    est_evidence_mcmc = create_razzo_nested_sampling_mcmc(
+    est_evidence_mcmc = create_razzo_ns_mcmc(
       folder_name = folder_name,
       model_type = model_type
     ),

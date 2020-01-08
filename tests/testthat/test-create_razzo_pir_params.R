@@ -75,10 +75,13 @@ test_that("matches article", {
     skip("This can only run on Linux.")
   }
 
+  folder_name <- peregrine::get_pff_tempfile()
+
   # Issue 242, Isssue #242
   pir_params <- create_razzo_pir_params(
     has_candidates = TRUE,
-    has_twinning = TRUE
+    has_twinning = TRUE,
+    folder_name = folder_name
   )
 
   ##############################################################################
@@ -91,32 +94,14 @@ test_that("matches article", {
     pirouette::create_blocked_dna(length = get_razzo_dna_alignment_length()),
     pir_params$alignment_params$root_sequence
   )
-  if (1 == 2) {
-    # Cannot read the mutation rates that is already partially evaluated in
-    # the function
-    #
-    # These all fail to read the mutation rate filled in in the function
-    formals(pir_params$alignment_params$sim_tral_fun)
-    formalArgs(pir_params$alignment_params$sim_tral_fun)
-    args(pir_params$alignment_params$sim_tral_fun)
-    alist(pir_params$alignment_params$sim_tral_fun)
-    body(pir_params$alignment_params$sim_tral_fun)
-    body(pir_params$alignment_params$sim_tral_fun)
-    class(pir_params$alignment_params$sim_tral_fun)
-    attributes(pir_params$alignment_params$sim_tral_fun)
-
-    expect_equal(
-      get_razzo_mutation_rate(),
-      pir_params$alignment_params$sim_tral_fun$mutation_rate
-    )
-  }
-  if (1 == 2) {
-    expect_equal(
-      pir_params$alignment_params$sim_tral_fun$site_model$name,
-      "JC69"
-    )
-  }
-
+  expect_equal(
+    get_razzo_mutation_rate(),
+    environment(pir_params$alignment_params$sim_tral_fun)$mutation_rate
+  )
+  expect_equal(
+    environment(pir_params$alignment_params$sim_tral_fun)$site_model$name,
+    "JC69"
+  )
   ##############################################################################
   # pir_params$experiments
   ##############################################################################
@@ -160,25 +145,45 @@ test_that("matches article", {
     get_razzo_mcmc_chain_length()
   )
   # gen_exp$est_evidence_mcmc
+  ns_mcmc_gen <- razzo::create_razzo_ns_mcmc(
+    folder_name = folder_name,
+    model_type = "generative"
+  )
   expect_equal(
     gen_exp$est_evidence_mcmc$chain_length,
-    create_razzo_nested_sampling_mcmc()$chain_length
+    ns_mcmc_gen$chain_length
   )
   expect_equal(
     gen_exp$est_evidence_mcmc$store_every,
-    create_razzo_nested_sampling_mcmc()$store_every
+    ns_mcmc_gen$store_every
   )
   expect_equal(
     gen_exp$est_evidence_mcmc$epsilon,
-    create_razzo_nested_sampling_mcmc()$epsilon
+    ns_mcmc_gen$epsilon
   )
   expect_equal(
     gen_exp$est_evidence_mcmc$particle_count,
-    create_razzo_nested_sampling_mcmc()$particle_count
+    ns_mcmc_gen$particle_count
   )
   expect_equal(
     gen_exp$est_evidence_mcmc$sub_chain_length,
-    create_razzo_nested_sampling_mcmc()$sub_chain_length
+    ns_mcmc_gen$sub_chain_length
+  )
+  expect_equal(
+    gen_exp$est_evidence_mcmc$tracelog$filename,
+    ns_mcmc_gen$tracelog$filename
+  )
+  expect_equal(
+    gen_exp$est_evidence_mcmc$tracelog$log_every,
+    ns_mcmc_gen$tracelog$log_every
+  )
+  expect_equal(
+    gen_exp$est_evidence_mcmc$treelog$filename,
+    ns_mcmc_gen$treelog$filename
+  )
+  expect_equal(
+    gen_exp$est_evidence_mcmc$treelog$log_every,
+    ns_mcmc_gen$treelog$log_every
   )
   # --------------------
   # beast2_options
@@ -187,7 +192,6 @@ test_that("matches article", {
   # --------------------
   # est_evidence_mcmc
   # --------------------
-  gen_exp$est_evidence_mcmc
 
   ##############################################################################
   # pir_params$error_measure_params

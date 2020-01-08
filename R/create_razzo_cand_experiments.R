@@ -51,7 +51,7 @@ create_razzo_cand_experiments <- function(
       folder_name = folder_name
     )
     cand_experiments[[i]]$est_evidence_mcmc <-
-      razzo::create_razzo_nested_sampling_mcmc(
+      razzo::create_razzo_ns_mcmc(
         folder_name =  folder_name,
         model_type = "candidate",
         index = i

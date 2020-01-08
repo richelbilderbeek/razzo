@@ -1,6 +1,6 @@
 test_that("matches article, generative", {
   folder_name <- get_pff_tempfile()
-  nested_sampling_mcmc <- create_razzo_nested_sampling_mcmc(
+  nested_sampling_mcmc <- create_razzo_ns_mcmc(
     folder_name = folder_name,
     model_type = "generative"
   )
@@ -20,7 +20,7 @@ test_that("matches article, generative", {
 
 test_that("file names, generative", {
   folder_name <- get_pff_tempfile()
-  nested_sampling_mcmc <- create_razzo_nested_sampling_mcmc(
+  nested_sampling_mcmc <- create_razzo_ns_mcmc(
     folder_name = folder_name,
     model_type = "generative"
   )
@@ -36,7 +36,7 @@ test_that("file names, generative", {
 
 test_that("file names, candidate", {
   folder_name <- get_pff_tempfile()
-  nested_sampling_mcmc <- create_razzo_nested_sampling_mcmc(
+  nested_sampling_mcmc <- create_razzo_ns_mcmc(
     folder_name = folder_name,
     model_type = "candidate",
     index = 1
@@ -53,7 +53,7 @@ test_that("file names, candidate", {
 
 test_that("file names, candidate, 2nd", {
   folder_name <- get_pff_tempfile()
-  nested_sampling_mcmc <- create_razzo_nested_sampling_mcmc(
+  nested_sampling_mcmc <- create_razzo_ns_mcmc(
     folder_name = folder_name,
     model_type = "candidate",
     index = 2

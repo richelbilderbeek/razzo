@@ -40,8 +40,11 @@ test_that("values", {
     skip("This can only run on Linux.")
   }
 
+  folder_name <- peregrine::get_pff_tempfile()
+
   # Issue 242, Isssue #242
   experiments <- create_test_razzo_experiments(
+    folder_name = folder_name,
     has_candidates = TRUE
   )
   # Generative and two candidates
@@ -98,17 +101,46 @@ test_that("values", {
     gen_exp$est_evidence_mcmc$store_every,
     1e3
   )
+  # gen_exp$est_evidence_mcmc
+  ns_mcmc_gen <- razzo::create_razzo_ns_mcmc(
+    folder_name = folder_name,
+    model_type = "generative"
+  )
+  expect_equal(
+    gen_exp$est_evidence_mcmc$chain_length,
+    3000
+  )
+  expect_equal(
+    gen_exp$est_evidence_mcmc$store_every,
+    10000
+  )
   expect_equal(
     gen_exp$est_evidence_mcmc$epsilon,
-    create_razzo_nested_sampling_mcmc()$epsilon
+    ns_mcmc_gen$epsilon
   )
   expect_equal(
     gen_exp$est_evidence_mcmc$particle_count,
-    create_razzo_nested_sampling_mcmc()$particle_count
+    ns_mcmc_gen$particle_count
   )
   expect_equal(
     gen_exp$est_evidence_mcmc$sub_chain_length,
-    create_razzo_nested_sampling_mcmc()$sub_chain_length
+    ns_mcmc_gen$sub_chain_length
+  )
+  expect_equal(
+    gen_exp$est_evidence_mcmc$tracelog$filename,
+    ns_mcmc_gen$tracelog$filename
+  )
+  expect_equal(
+    gen_exp$est_evidence_mcmc$tracelog$log_every,
+    ns_mcmc_gen$tracelog$log_every
+  )
+  expect_equal(
+    gen_exp$est_evidence_mcmc$treelog$filename,
+    ns_mcmc_gen$treelog$filename
+  )
+  expect_equal(
+    gen_exp$est_evidence_mcmc$treelog$log_every,
+    ns_mcmc_gen$treelog$log_every
   )
 })
 

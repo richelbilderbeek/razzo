@@ -50,6 +50,8 @@ test_that("matches article", {
 
   ##############################################################################
   # First and generative experiment
+  # Will be the same as 'create_razzo_gen_experiment,
+  # and is also tested there
   ##############################################################################
   gen_exp <- experiments[[1]]
   # --------------------
@@ -90,7 +92,7 @@ test_that("matches article", {
     razzo::get_razzo_mcmc_chain_length()
   )
   # gen_exp$est_evidence_mcmc
-  ns_mcmc_gen <- razzo::create_razzo_nested_sampling_mcmc(
+  ns_mcmc_gen <- razzo::create_razzo_ns_mcmc(
     folder_name = folder_name,
     model_type = "generative"
   )
@@ -176,7 +178,7 @@ test_that("matches article", {
       razzo::get_razzo_mcmc_chain_length()
     )
     # cand_exp$est_evidence_mcmc
-    ns_mcmc_cand <- razzo::create_razzo_nested_sampling_mcmc(
+    ns_mcmc_cand <- razzo::create_razzo_ns_mcmc(
       folder_name = folder_name,
       model_type = "candidate",
       index = i
