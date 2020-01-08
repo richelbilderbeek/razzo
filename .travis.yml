@@ -10,19 +10,19 @@ r_github_packages:
   - jimhester/lintr
   - MangoTheCat/goodpractice
   - ropensci/spelling
-  - thijsjanzen/nLTT@v1.4.3
-  - ropensci/beautier@v2.3.3
-  - ropensci/tracerer@v2.0.3
-  - ropensci/beastier@v2.1.2
-  - ropensci/mauricer@v2.0.6
-  - ropensci/babette@v2.1.1
-  - richelbilderbeek/mcbette@v1.8
-  - thijsjanzen/nodeSub@v0.4.2
-  - richelbilderbeek/pirouette@v1.6.2
-  - Giappo/mbd@v1.0
-  - Giappo/mbd.SimTrees@v0.1
-  - richelbilderbeek/becosys@v1.0.1
-  - richelbilderbeek/peregrine@v1.0
+  #- thijsjanzen/nLTT@v1.4.3
+  #- ropensci/beautier@v2.3.3
+  #- ropensci/tracerer@v2.0.3
+  #- ropensci/beastier@v2.1.2
+  #- ropensci/mauricer@v2.0.6
+  #- ropensci/babette@v2.1.1
+  #- richelbilderbeek/mcbette@v1.8
+  #- thijsjanzen/nodeSub@v0.4.2
+  #- richelbilderbeek/pirouette@v1.6.2
+  #- Giappo/mbd@v1.0
+  #- Giappo/mbd.SimTrees@v0.1
+  #- richelbilderbeek/becosys@v1.0.1
+  #- richelbilderbeek/peregrine@v1.0
 
 before_install:
   - sudo add-apt-repository -y ppa:opencpu/imagemagick
@@ -35,6 +35,7 @@ before_install:
   #- sudo npm install -g markdown-link-check
 
 before_script:
+  - Rscript -e "scripts/install_r_packages.R"
   - Rscript -e "beastier::install_beast2()"
   - Rscript -e 'mauricer::install_beast2_pkg("NS")'
   - if [ -f ".lintr" ]; then echo "Do use Hadley Wickham's style guide"; exit 1; fi

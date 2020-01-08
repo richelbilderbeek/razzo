@@ -1,38 +1,27 @@
-# razzo
 # Installation
 
-You can install
+`razzo` uses specific version numbers of its package,
+as this aids in having reproducible science.
 
- * Stable version (recommended)
- * Bleeding-edge
+You can install the packages of the correct version with:
 
-## Stable
+## Bash 
 
-```
-usethis::install_github("ropensci/babette")
-usethis::install_github("Giappo/mbd")
-usethis::install_github("Giappo/mbd.SimTrees")
-usethis::install_github("richelbilderbeek/mcbette")
-usethis::install_github("thijsjanzen/nodeSub")
-usethis::install_github("richelbilderbeek/pirouette")
-usethis::install_github("richelbilderbeek/peregrine")
-usethis::install_github("richelbilderbeek/razzo")
-```
-
-## Bleeding edge
+From a terminal, in the `razzo` root folder do:
 
 ```
-usethis::install_github("ropensci/beautier")
-usethis::install_github("ropensci/tracerer")
-usethis::install_github("ropensci/beastier")
-usethis::install_github("ropensci/mauricer")
-usethis::install_github("ropensci/babette")
-usethis::install_github("Giappo/mbd")
-usethis::install_github("Giappo/mbd.SimTrees")
-usethis::install_github("richelbilderbeek/mcbette")
-usethis::install_github("thijsjanzen/nodeSub")
-usethis::install_github("richelbilderbeek/pirouette")
-usethis::install_github("richelbilderbeek/peregrine")
-usethis::install_github("richelbilderbeek/razzo")
+./scripts/install_r_packages.sh
 ```
+
+## Rscript
+
+From a terminal, in the `razzo` root folder do:
+
+```
+Rscript scripts/install_r_packages.R
+```
+
+## Run an R script manually
+
+Run the file `install_r_packages.R` in the `scripts` folder.
 
