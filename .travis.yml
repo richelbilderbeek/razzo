@@ -13,6 +13,7 @@ r_github_packages:
   - ropensci/babette
   - richelbilderbeek/mcbette
   - thijsjanzen/nodeSub
+  - thijsjanzen/nLTT
   - richelbilderbeek/pirouette@richel
   - richelbilderbeek/peregrine
   - Giappo/mbd
