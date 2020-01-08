@@ -1,4 +1,5 @@
 # Script to install razzo and its dependencies
+install.packages("devtools", repos="http://cran.us.r-project.org")
 devtools::install_github("thijsjanzen/nLTT", ref = "v1.4.3", dependencies = TRUE)
 devtools::install_github("ropensci/beautier", ref = "v2.3.3", dependencies = TRUE)
 devtools::install_github("ropensci/tracerer", ref = "v2.0.3", dependencies = TRUE)
