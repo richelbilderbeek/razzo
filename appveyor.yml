@@ -23,22 +23,21 @@ environment:
 
 build_script:
   - travis-tool.sh install_r curl
-  - travis-tool.sh install_github Giappo/mbd
-  - travis-tool.sh install_github Giappo/mbd.SimTrees
+  - travis-tool.sh install_github Giappo/mbd@v1.0
+  - travis-tool.sh install_github Giappo/mbd.SimTrees@v0.1
   - travis-tool.sh install_github jimhester/covr
   - travis-tool.sh install_github jimhester/lintr
-  - travis-tool.sh install_github ropensci/beautier
-  - travis-tool.sh install_github ropensci/tracerer
-  - travis-tool.sh install_github ropensci/beastier
-  - travis-tool.sh install_github ropensci/mauricer
-  - travis-tool.sh install_github ropensci/babette
-  - travis-tool.sh install_github richelbilderbeek/mcbette
-  - travis-tool.sh install_github richelbilderbeek/nLTT
-  - travis-tool.sh install_github rsetienne/PBD/PBD
-  - travis-tool.sh install_github richelbilderbeek/becosys
-  - travis-tool.sh install_github thijsjanzen/nodeSub
-  - travis-tool.sh install_github richelbilderbeek/pirouette
-  - travis-tool.sh install_github richelbilderbeek/peregrine
+  - travis-tool.sh install_github ropensci/beautier@v2.3.3
+  - travis-tool.sh install_github ropensci/tracerer@v2.0.3
+  - travis-tool.sh install_github ropensci/beastier@v2.1.2
+  - travis-tool.sh install_github ropensci/mauricer@v2.0.6
+  - travis-tool.sh install_github ropensci/babette@v2.1.1
+  - travis-tool.sh install_github richelbilderbeek/mcbette@v1.8
+  - travis-tool.sh install_github thijsjanzen/nLTT@v1.4.3
+  - travis-tool.sh install_github richelbilderbeek/becosys@v1.0.1
+  - travis-tool.sh install_github thijsjanzen/nodeSub@v0.4.2
+  - travis-tool.sh install_github richelbilderbeek/pirouette@v1.6.2
+  - travis-tool.sh install_github richelbilderbeek/peregrine@v1.0
   - travis-tool.sh install_deps
   - Rscript -e "beastier::install_beast2()"
 
