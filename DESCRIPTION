@@ -29,7 +29,7 @@ Imports:
     mbd.SimTrees (== 0.1),
     remotes,
     stringr,
-    tracerer (== 2.0.3)
+    tracerer (== 2.0.3),
     testit
 Suggests:
     assertive,
