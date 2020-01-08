@@ -2,8 +2,6 @@ context("test-create_esses_file")
 
 test_that("use", {
 
-  skip("Need regen data")
-
   # Should create 'results/esses.csv'
   filename <- create_esses_file(
     project_folder_name = get_razzo_path("razzo_project")

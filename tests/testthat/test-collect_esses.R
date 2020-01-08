@@ -2,23 +2,6 @@ context("test-collect_esses")
 
 test_that("use", {
 
-  skip("Need regen data")
-
-  # Error in collect_esses(project_folder_name = get_razzo_path("razzo_project")) :  # nolint error message is indeed long
-  # No .log files found at path
-  # '/home/richel/GitHubs/razzo/inst/extdata/razzo_project/data/0.2-0.15-1-0.1/1' # nolint path is indeed long
-  # Maybe the razzo experiment is not run yet?
-  if (1 == 2) {
-    for (filename in list.files(
-      razzo::get_razzo_path("razzo_project"),
-      recursive = TRUE, pattern = "parameters\\.RDa",
-      full.names = TRUE
-    )
-    ) {
-      beautier::check_file_exists(filename)
-      razzo::run_razzo(razzo::open_parameters_file(filename))
-    }
-  }
   df <- razzo::collect_esses(
     project_folder_name = razzo::get_razzo_path("razzo_project")
   )
@@ -29,9 +12,7 @@ test_that("use", {
 
   # Only take the ESS of the likelihood
   expect_true("ess_likelihood" %in% names(df))
-
-  # Unsure, with the bug it is 4, so hope to get it lower after fixing it
-  expect_true(all(df$ess_likelihood <= 4))
+  expect_true(all(df$ess_likelihood <= 8))
 
   # Data must be tidy
   expect_true(is.factor(df$tree))

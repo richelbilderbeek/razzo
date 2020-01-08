@@ -2,8 +2,6 @@ context("test-create_file_mbd_params")
 
 test_that("use", {
 
-  skip("Cannot read parameters from files yet")
-
   # Should create 'results/'mbd_params.csv'
   filename <- create_mbd_params_file(
     project_folder_name = get_razzo_path("razzo_project")
