@@ -23,7 +23,7 @@ environment:
 
 build_script:
   - travis-tool.sh install_r curl
-  - Rscript -e "scripts/install_r_packages.R"
+  - Rscript scripts/install_r_packages.R
   #- travis-tool.sh install_github Giappo/mbd@v1.0
   #- travis-tool.sh install_github Giappo/mbd.SimTrees@v0.1
   #- travis-tool.sh install_github jimhester/covr
