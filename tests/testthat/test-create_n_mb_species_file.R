@@ -12,7 +12,8 @@ test_that("use", {
   expect_true(
     length(
       grep(
-        pattern = "razzo_project.results.n_mb_species\\.csv$", filename, perl = TRUE, value = TRUE
+        pattern = "razzo_project.results.n_mb_species\\.csv$",
+        filename, perl = TRUE, value = TRUE
       )
     ) > 0
   )
