@@ -16,7 +16,7 @@ Primary tasks:
  * Giovanni Laudanno: making each step right
  * Richel J.C. Bilderbeek: big picture, software architecture, testing, continuous integration
 
-The research project uses three GitHub repo's:
+The research project uses these GitHub repo's:
 
  * [razzo](https://github.com/richelbilderbeek/razzo): R code
  * [razzo_project](https://github.com/richelbilderbeek/razzo_project): bash scripts to run and analyse an experiment
