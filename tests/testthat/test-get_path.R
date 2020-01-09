@@ -1,7 +1,7 @@
 test_that("use", {
 
   expect_equal(
-    system.file("extdata", "parameters.RDa", package = "razzo"),
+    raztr::get_raztr_path("parameters.RDa"),
     get_razzo_path("parameters.RDa")
   )
 })
