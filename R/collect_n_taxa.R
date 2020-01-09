@@ -1,4 +1,8 @@
-#' @title Collect number of taxa
+#' Collect the number of taxa for analyses.
+#'
+#' After a razzo experiment is run, this function extracts the number
+#' of taxa from the resulting files. In practice, this number is extracted
+#' from all files named \code{mbd.tree} or \code{pbd.newick}.
 #' @description Collect number of taxa
 #' @inheritParams default_params_doc
 #' @return a dataframe with folder and taxa number for each phylogeny
