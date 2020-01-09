@@ -19,8 +19,9 @@ Primary tasks:
 The research project uses three GitHub repo's:
 
  * [razzo](https://github.com/richelbilderbeek/razzo): R code
- * `https://github.com/richelbilderbeek/razzo_article`: scientific manuscript (private GitHub for now)
- * [razzo_project](https://github.com/richelbilderbeek/razzo_project): bash scripts
+ * [razzo_project](https://github.com/richelbilderbeek/razzo_project): bash scripts to run and analyse an experiment
+ * [razzo_article (private)](https://github.com/richelbilderbeek/razzo_article): scientific manuscript (private GitHub for now)
+ * [razzo_pilot_results (private)](https://github.com/richelbilderbeek/razzo_pilot_results)
 
 ## Roadmap
 
