@@ -4,7 +4,7 @@
 \alias{collect_n_mb_species}
 \title{Collect the number of multiple-born (MB) species}
 \usage{
-collect_n_mb_species(project_folder_name = get_razzo_path("razzo_project"))
+collect_n_mb_species(project_folder_name = getwd())
 }
 \arguments{
 \item{project_folder_name}{project folder name,

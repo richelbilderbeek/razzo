@@ -4,7 +4,7 @@
 #' @author Richel J.C. Bilderbeek
 #' @export
 collect_run_times <- function(
-  project_folder_name = get_razzo_path("razzo_project")
+  project_folder_name = getwd()
 ) {
   razzo::check_project_folder_name(project_folder_name)
 

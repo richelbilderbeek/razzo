@@ -5,9 +5,10 @@
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @examples
 #' library(testthat)
+#' library(raztr)
 #'
 #' # Collect the nLTT statistics from the data supplied with this package
-#' project_folder_name <- get_razzo_path("razzo_project")
+#' project_folder_name <- get_raztr_path("razzo_project")
 #' df <- collect_nltt_stats(
 #'   project_folder_name = project_folder_name
 #' )
@@ -29,7 +30,7 @@
 #' expect_true(all(df$nltt_1 >= 0.0))
 #' @export
 collect_nltt_stats <- function(
-  project_folder_name = get_razzo_path("razzo_project")
+  project_folder_name = getwd()
 ) {
   razzo::check_project_folder_name(project_folder_name)
 

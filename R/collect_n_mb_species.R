@@ -4,7 +4,7 @@
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
 collect_n_mb_species <- function(
-  project_folder_name = get_razzo_path("razzo_project")
+  project_folder_name = getwd()
 ) {
   razzo::check_project_folder_name(project_folder_name) # nolint razzo function
 

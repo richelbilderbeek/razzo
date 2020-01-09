@@ -4,7 +4,7 @@
 \alias{collect_run_times}
 \title{Collect the times simulations took to run}
 \usage{
-collect_run_times(project_folder_name = get_razzo_path("razzo_project"))
+collect_run_times(project_folder_name = getwd())
 }
 \arguments{
 \item{project_folder_name}{project folder name,

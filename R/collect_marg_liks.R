@@ -6,7 +6,7 @@
 #' @aliases collect_evidences collect_marg_liks
 #' @export collect_evidences collect_marg_liks
 collect_evidences <- collect_marg_liks <- function(
-  project_folder_name = get_razzo_path("razzo_project")
+  project_folder_name = getwd()
 ) {
   razzo::check_project_folder_name(project_folder_name)
 

@@ -4,9 +4,7 @@
 \alias{collect_mbd_params}
 \title{Collect mbd parameters}
 \usage{
-collect_mbd_params(
-  project_folder_name = razzo::get_razzo_path("razzo_project")
-)
+collect_mbd_params(project_folder_name = getwd())
 }
 \arguments{
 \item{project_folder_name}{project folder name,

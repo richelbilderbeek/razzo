@@ -4,7 +4,7 @@
 \alias{collect_nltt_stats}
 \title{Collect nltt statistics}
 \usage{
-collect_nltt_stats(project_folder_name = get_razzo_path("razzo_project"))
+collect_nltt_stats(project_folder_name = getwd())
 }
 \arguments{
 \item{project_folder_name}{project folder name,
@@ -18,9 +18,10 @@ Collect nltt statistics
 }
 \examples{
 library(testthat)
+library(raztr)
 
 # Collect the nLTT statistics from the data supplied with this package
-project_folder_name <- get_razzo_path("razzo_project")
+project_folder_name <- get_raztr_path("razzo_project")
 df <- collect_nltt_stats(
   project_folder_name = project_folder_name
 )

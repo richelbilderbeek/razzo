@@ -5,7 +5,7 @@
 \alias{collect_marg_liks}
 \title{Collect marginal loglikelihoods}
 \usage{
-collect_evidences(project_folder_name = get_razzo_path("razzo_project"))
+collect_evidences(project_folder_name = getwd())
 }
 \arguments{
 \item{project_folder_name}{project folder name,
