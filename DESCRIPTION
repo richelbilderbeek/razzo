@@ -27,7 +27,6 @@ Imports:
     magrittr,
     mbd (== 0.2),
     mbd.SimTrees (== 0.1),
-    raztr (== 1.0),
     remotes,
     stringr,
     tracerer (== 2.0.3),
@@ -46,6 +45,7 @@ Suggests:
     plyr,
     tidyr,
     rappdirs,
+    raztr (== 1.0),
     rmarkdown,
     testthat (>= 2.1.0),
     tidyverse
