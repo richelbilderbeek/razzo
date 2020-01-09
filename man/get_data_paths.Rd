@@ -23,7 +23,7 @@ and return the folder names of these.
 library(testthat)
 
 # Obtain the paths of all razzo testing folders
-all_paths <- get_data_paths(get_razzo_path("razzo_project"))
+all_paths <- get_data_paths(raztr::get_raztr_path("razzo_project"))
 
 # In each of these, there is a 'parameters.RDa' file
 parameter_files <- file.path(all_paths, "parameters.RDa")

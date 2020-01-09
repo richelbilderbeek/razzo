@@ -1,7 +1,7 @@
 test_that("use", {
 
   plots <- create_fig_1(
-    project_folder_name = get_razzo_path("razzo_project")
+    project_folder_name = raztr::get_raztr_path("razzo_project")
   )
   expect_equal(class(plots), "list")
 

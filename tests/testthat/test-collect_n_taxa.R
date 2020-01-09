@@ -16,7 +16,7 @@ test_that("use", {
   # As all trees (true, twin, posterior) have an equal amount of tips
   n_rows_expected <- length(
     list.files(
-      razzo::get_razzo_path("razzo_project"),
+      raztr::get_raztr_path("razzo_project"),
       recursive = TRUE,
       pattern = "parameters\\.RDa"
     )

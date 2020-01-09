@@ -3,7 +3,7 @@ context("test-collect_marg_liks")
 test_that("use", {
 
   df <- razzo::collect_marg_liks(
-    project_folder_name = razzo::get_razzo_path("razzo_project")
+    project_folder_name = raztr::get_raztr_path("razzo_project")
   )
 
   # Secondary keys

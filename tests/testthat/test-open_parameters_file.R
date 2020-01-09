@@ -4,7 +4,7 @@ test_that("use", {
 
   # If ''filename' must be the name of a file in 'inst/extdata'', do
   x <- razzo::get_data_paths(
-    project_folder_name = razzo::get_razzo_path("razzo_project/")
+    project_folder_name = raztr::get_raztr_path("razzo_project/")
   )
   parameters <- razzo::open_parameters_file(
     parameters_filename = mbd::file_path(x[[1]], "parameters.RDa")

@@ -48,7 +48,7 @@ test_that("abuse", {
   )
   expect_error(
     run_razzo_from_file(
-      parameters_filename = get_razzo_path("parameters.RDa"),
+      parameters_filename = raztr::get_raztr_path("parameters.RDa"),
       add_verbose = "nonsense"
     ),
     "'add_verbose' must be one boolean"

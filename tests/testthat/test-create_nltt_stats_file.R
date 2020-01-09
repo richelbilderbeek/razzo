@@ -4,7 +4,7 @@ test_that("use", {
 
   # Should create 'results/nltt_stats.csv'
   filename <- razzo::create_nltt_stats_file(
-    project_folder_name = razzo::get_razzo_path("razzo_project")
+    project_folder_name = raztr::get_raztr_path("razzo_project")
   )
 
   # File should be created

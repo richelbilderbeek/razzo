@@ -5,7 +5,7 @@ test_that("use", {
   if (1 == 2) {
     # Run the experiment if you can and need to
     for (file in list.files(
-        razzo::get_razzo_path("razzo_project"),
+        raztr::get_raztr_path("razzo_project"),
         recursive = TRUE,
         pattern = "parameters\\.RDa"
       )
@@ -14,7 +14,7 @@ test_that("use", {
     }
   }
   df <- razzo::collect_n_mutations(
-    project_folder_name = razzo::get_razzo_path("razzo_project")
+    project_folder_name = raztr::get_raztr_path("razzo_project")
   )
 
   # No secondary key needed here :-)
@@ -29,7 +29,7 @@ test_that("use", {
   # As all trees (true, twin, posterior) have an equal amount of tips
   n_rows_expected <- length(
     list.files(
-      razzo::get_razzo_path("razzo_project"),
+      raztr::get_raztr_path("razzo_project"),
       recursive = TRUE,
       pattern = "*.fasta"
     )

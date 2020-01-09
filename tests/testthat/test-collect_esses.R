@@ -3,7 +3,7 @@ context("test-collect_esses")
 test_that("use", {
 
   df <- razzo::collect_esses(
-    project_folder_name = razzo::get_razzo_path("razzo_project")
+    project_folder_name = raztr::get_raztr_path("razzo_project")
   )
 
   # Sub-keys

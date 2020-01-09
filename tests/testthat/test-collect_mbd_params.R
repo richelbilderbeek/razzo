@@ -3,7 +3,7 @@ context("collect_mbd_params")
 test_that("use", {
 
   df <- razzo::collect_mbd_params(
-    project_folder_name = razzo::get_razzo_path("razzo_project")
+    project_folder_name = raztr::get_raztr_path("razzo_project")
   )
 
   # Use relative folder path as the primary key
