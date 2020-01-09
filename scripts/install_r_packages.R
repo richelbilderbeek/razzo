@@ -19,5 +19,5 @@ devtools::install_github("richelbilderbeek/becosys", ref = "v1.0.1", dependencie
 devtools::install_github("richelbilderbeek/pirouette", ref = "v1.6.2", dependencies = TRUE)
 devtools::install_github("richelbilderbeek/peregrine", ref = "v1.0", dependencies = TRUE)
 devtools::install_github("Giappo/mbd.SimTrees", ref = "v0.1", dependencies = TRUE)
-devtools::install_github("richelbilderbeek/raztr", dependencies = TRUE)
+devtools::install_github("richelbilderbeek/raztr", ref = "v1.0", dependencies = TRUE)
 
