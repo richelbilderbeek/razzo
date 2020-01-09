@@ -22,8 +22,12 @@ create_razzo_ns_mcmc <- function(
   }
   else {
     testit::assert(model_type == "candidate")
-    mcmc$tracelog$filename <- file.path(folder_name, paste0("mbd_best_", index, "_evidence.log"))
-    mcmc$treelog$filename <- file.path(folder_name, paste0("mbd_best_", index, "_evidence.trees"))
+    mcmc$tracelog$filename <- file.path(
+      folder_name, paste0("mbd_best_", index, "_evidence.log")
+    )
+    mcmc$treelog$filename <- file.path(
+      folder_name, paste0("mbd_best_", index, "_evidence.trees")
+    )
   }
   mcmc
 }
