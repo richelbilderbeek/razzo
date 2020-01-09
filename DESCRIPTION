@@ -1,7 +1,7 @@
 Package: razzo
 Type: Package
 Title: The Error if Nature is MBD
-Version: 0.7.3
+Version: 0.8
 Authors@R: c(
     person("Giovanni", "Laudanno", role = c("aut")),
     person("Richel J.C.", "Bilderbeek", email = "richel@richelbilderbeek.nl", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1107-7049")))
