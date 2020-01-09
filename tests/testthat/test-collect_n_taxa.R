@@ -1,19 +1,7 @@
-context("test-collect_n_taxa")
-
 test_that("use", {
 
-  if (1 == 2) {
-    # Run the experiment if you can and need to
-    for (file in list.files(
-      razzo::get_razzo_path("razzo_project"),
-        recursive = TRUE, pattern = "parameters\\.RDa"
-      )
-    ) {
-      razzo::run_razzo(razzo::open_parameters_file(file))
-    }
-  }
   df <- razzo::collect_n_taxa(
-    project_folder_name = razzo::get_razzo_path("razzo_project")
+    project_folder_name = raztr::get_raztr_path("razzo_project")
   )
 
   # No secondary key needed here :-)
@@ -47,5 +35,6 @@ test_that("use", {
   #  data/1/2/3                                                                 # nolint this is not commented code
   #
   expect_true("folder" %in% names(df))
+  expect_true(is.character(df$folder))
 
 })
