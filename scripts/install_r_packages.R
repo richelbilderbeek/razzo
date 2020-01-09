@@ -1,11 +1,10 @@
 # Script to install razzo and its dependencies
 install.packages("devtools", repos="http://cran.us.r-project.org")
-
 devtools::install_github("jimhester/covr", dependencies = TRUE)
 devtools::install_github("jimhester/lintr", dependencies = TRUE)
 devtools::install_github("MangoTheCat/goodpractice", dependencies = TRUE)
 devtools::install_github("ropensci/spelling", dependencies = TRUE)
-
+devtools::install_github("richelbilderbeek/raztr", ref = "v1.0", dependencies = TRUE)
 devtools::install_github("thijsjanzen/nLTT", ref = "v1.4.3", dependencies = TRUE)
 devtools::install_github("ropensci/beautier", ref = "v2.3.3", dependencies = TRUE)
 devtools::install_github("ropensci/tracerer", ref = "v2.0.3", dependencies = TRUE)
@@ -19,5 +18,4 @@ devtools::install_github("richelbilderbeek/becosys", ref = "v1.0.1", dependencie
 devtools::install_github("richelbilderbeek/pirouette", ref = "v1.6.2", dependencies = TRUE)
 devtools::install_github("richelbilderbeek/peregrine", ref = "v1.0", dependencies = TRUE)
 devtools::install_github("Giappo/mbd.SimTrees", ref = "v0.1", dependencies = TRUE)
-devtools::install_github("richelbilderbeek/raztr", ref = "v1.0", dependencies = TRUE)
 
