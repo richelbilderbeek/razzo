@@ -50,8 +50,6 @@ script:
   - travis_wait 60 R CMD check *tar.gz
 
 after_success:
-  # Lint
-  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "release" ]; then Rscript -e 'lintr::lint_package()'; fi
   # Codecov
   - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "devel" ]; then travis_wait 20 Rscript -e 'covr::codecov()'; fi
   # Proselint
