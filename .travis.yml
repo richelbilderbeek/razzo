@@ -31,13 +31,14 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install -y libmagick++-dev
   - sudo apt install -qq libmpfr-dev
+  # Install the packages by hand, to test the install script
+  - Rscript scripts/install_r_packages.R
   # Check dead links
   #- sudo apt-get install -qq npm
   #- npm config set strict-ssl false
   #- sudo npm install -g markdown-link-check
 
 before_script:
-  - Rscript scripts/install_r_packages.R
   - Rscript -e "beastier::install_beast2()"
   - Rscript -e 'mauricer::install_beast2_pkg("NS")'
   - if [ -f ".lintr" ]; then echo "Do use Hadley Wickham's style guide"; exit 1; fi
