@@ -56,11 +56,7 @@ clean_paths <- function(filenames) {
 #' expect_error(get_razzo_path("abs.ent"))
 #' @export
 get_razzo_path <- function(filename) {
-  full <- system.file("extdata", filename, package = "razzo")
-  if (!file.exists(full)) {
-    stop("'filename' must be the name of a file in 'inst/extdata'")
-  }
-  full
+  raztr::get_raztr_path(filename)
 }
 
 #' @title Get paths for the results

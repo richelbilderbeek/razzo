@@ -1,5 +1,3 @@
-context("test-get_razzo_path")
-
 test_that("use", {
 
   expect_equal(

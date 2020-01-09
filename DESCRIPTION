@@ -27,6 +27,7 @@ Imports:
     magrittr,
     mbd (== 0.2),
     mbd.SimTrees (== 0.1),
+    raztr,
     remotes,
     stringr,
     tracerer (== 2.0.3),

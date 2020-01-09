@@ -21,6 +21,7 @@ digraph G
   razzo -> mbdSimTrees;
   razzo -> babette;
   razzo -> tracerer;
+  razzo -> raztr;
   razzo -> mauricer [style=dotted];
   razzo -> mcbette [style=dotted];
   razzo -> nLTT [style=dotted];
