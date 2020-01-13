@@ -16,8 +16,8 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.0.2
 Depends: 
-    beastier (== 2.1.2),
-    beautier (== 2.3.3),
+    beastier (== 2.1.1),
+    beautier (== 2.3.2),
     peregrine (== 1.0),
     pirouette (== 1.6.2)
 Imports: 
@@ -29,7 +29,7 @@ Imports:
     mbd.SimTrees (== 0.1),
     remotes,
     stringr,
-    tracerer (== 2.0.3),
+    tracerer (== 2.0.2),
     testit
 Suggests:
     assertive,
@@ -38,7 +38,7 @@ Suggests:
     dplyr,
     knitr,
     lintr,
-    mauricer (== 2.0.6),
+    mauricer (== 2.0.5),
     mcbette (== 1.8),
     nLTT (== 1.4.3),
     nodeSub (== 0.4.2),
