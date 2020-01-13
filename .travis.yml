@@ -1,16 +1,9 @@
-# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
-
 language: r
 dist: bionic
-cache: packages
-
-bioc_packages:
-  - ggtree
+#cache: packages
 
 r_github_packages:
   - jimhester/covr
-  - jimhester/lintr
-  - MangoTheCat/goodpractice
   - ropensci/spelling
 
 before_install:
@@ -20,10 +13,6 @@ before_install:
   - sudo apt install -qq libmpfr-dev
   # Install the packages by hand, to test the install script
   - Rscript scripts/install_r_packages.R
-  # Check dead links
-  #- sudo apt-get install -qq npm
-  #- npm config set strict-ssl false
-  #- sudo npm install -g markdown-link-check
 
 before_script:
   - Rscript -e "beastier::install_beast2()"
@@ -41,11 +30,6 @@ after_success:
   - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "devel" ]; then travis_wait 20 Rscript -e 'covr::codecov()'; fi
   # Proselint
   - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "release" ]; then proselint *.md | egrep -v "typography\.symbols\.curly_quotes"; fi
-  # Goodpractice
-  #- if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "release" ]; then travis_wait 60 Rscript -e 'goodpractice::gp()'; fi
-  ## Check dead links
-  ##- rm .travis.yml
-  ##- ./scripts/check_dead_links || true
 
 
 after_failure:
