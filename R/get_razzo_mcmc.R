@@ -20,10 +20,12 @@ get_razzo_mcmc <- function(
     chain_length = razzo::get_razzo_mcmc_chain_length(),
     store_every = razzo::get_razzo_mcmc_store_every(),
     tracelog = beautier::create_tracelog(
-      filename = tracelog_filename
+      filename = tracelog_filename,
+      log_every = razzo::get_razzo_mcmc_store_every()
     ),
     treelog = beautier::create_treelog(
-      filename = treelog_filename
+      filename = treelog_filename,
+      log_every = razzo::get_razzo_mcmc_store_every()
     )
   )
 }
