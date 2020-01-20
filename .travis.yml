@@ -7,10 +7,16 @@ r_github_packages:
   - ropensci/spelling
 
 before_install:
+  # ImageMagick
   - sudo add-apt-repository -y ppa:opencpu/imagemagick
   - sudo apt-get update
   - sudo apt-get install -y libmagick++-dev
+  # MPFR
   - sudo apt install -qq libmpfr-dev
+  # Poppler
+  - sudo add-apt-repository -y ppa:cran/poppler
+  - sudo apt-get update
+  - sudo sudo apt-get install -y libpoppler-cpp-dev
   # Install the packages by hand, to test the install script
   - Rscript scripts/install_r_packages.R
 
