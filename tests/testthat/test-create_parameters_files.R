@@ -41,7 +41,6 @@ test_that("use", {
     ) > 0
   )
 
-  skip("Expose #270")
   first_razzo_params <- readRDS(filenames[1])
   second_razzo_params <- readRDS(filenames[2])
   expect_true(
@@ -104,7 +103,6 @@ test_that("use, full", {
     )
   }
 
-  skip("Expose #270")
   first_razzo_params <- readRDS(filenames[1])
   second_razzo_params <- readRDS(filenames[2])
   expect_true(

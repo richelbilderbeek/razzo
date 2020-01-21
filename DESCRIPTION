@@ -17,9 +17,9 @@ LazyData: true
 RoxygenNote: 7.0.2
 Depends: 
     beastier (== 2.1.1),
-    beautier (== 2.3.2),
+    beautier (>= 2.3.2),
     peregrine (== 1.0),
-    pirouette (== 1.6.2)
+    pirouette (>= 1.6.2)
 Imports: 
     ape,
     babette (== 2.1.1),
