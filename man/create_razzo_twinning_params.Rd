@@ -12,6 +12,8 @@ create_razzo_twinning_params(
 )
 }
 \arguments{
+\item{folder_name}{name of the main folder}
+
 \item{rng_seed_twin_tree}{the random number generator seed as used in the
 simulation of a twin tree}
 

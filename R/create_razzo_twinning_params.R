@@ -1,5 +1,6 @@
 #' Create a \code{twinning_params} that follows the razzo naming
 #' convention and article
+#' @inheritParams default_params_doc
 #' @inheritParams pirouette::create_twinning_params
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
