@@ -79,6 +79,19 @@ test_that("use, full", {
       )
     ) > 0
   )
+
+  # Verify #384: MCMC's log are setup correctly
+  first_razzo_params <- readRDS(filenames[1])
+  for (experiment in first_razzo_params$pir_params$experiments) {
+    expect_equal(
+      experiment$inference_model$mcmc$tracelog$log_every,
+      get_razzo_mcmc_store_every()
+    )
+    expect_equal(
+      experiment$inference_model$mcmc$treelog$log_every,
+      get_razzo_mcmc_store_every()
+    )
+  }
 })
 
 test_that("can read", {

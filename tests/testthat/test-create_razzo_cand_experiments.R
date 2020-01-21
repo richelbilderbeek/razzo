@@ -9,7 +9,15 @@ test_that("must create experiments of the razzo MCMC chain length", {
   )
   expect_equal(
     gen_experiment$inference_model$mcmc$chain_length,
-    razzo::get_razzo_mcmc_chain_length()
+    get_razzo_mcmc_chain_length()
+  )
+  expect_equal(
+    gen_experiment$inference_model$mcmc$tracelog$log_every,
+    get_razzo_mcmc_store_every()
+  )
+  expect_equal(
+    gen_experiment$inference_model$mcmc$treelog$log_every,
+    get_razzo_mcmc_store_every()
   )
 
   if (rappdirs::app_dir()$os == "win") return()
