@@ -16,31 +16,18 @@ create_razzo_cand_experiments <- function(
 
   cand_experiments <- NA
 
-  # For a list of the options, see
-  # https://github.com/richelbilderbeek/razzo/issues/261#issue-488720156 # nolint indeed a URL
-  option <- 3
-
-  cand_experiments <- NA
-
-  if (option == 2) {
-    cand_experiments <- pirouette::create_all_experiments(
-      exclude_model = gen_experiment$inference_model
-    )
-  }
-  if (option == 3) {
-    cand_experiments <- pirouette::create_all_experiments(
-      site_models = list(
-        beautier::create_jc69_site_model(),
-        beautier::create_hky_site_model()
-      ),
-      clock_models = list(beautier::create_strict_clock_model()),
-      tree_priors = list(
-        beautier::create_yule_tree_prior(),
-        beautier::create_bd_tree_prior()
-      ),
-      exclude_model = gen_experiment$inference_model
-    )
-  }
+  cand_experiments <- pirouette::create_all_experiments(
+    site_models = list(
+      beautier::create_jc69_site_model(),
+      beautier::create_hky_site_model()
+    ),
+    clock_models = list(beautier::create_strict_clock_model()),
+    tree_priors = list(
+      beautier::create_yule_tree_prior(),
+      beautier::create_bd_tree_prior()
+    ),
+    exclude_model = gen_experiment$inference_model
+  )
 
   testit::assert(!beautier::is_one_na(cand_experiments))
 
