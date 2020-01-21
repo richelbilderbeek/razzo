@@ -5,10 +5,18 @@
 \title{Create a \code{twinning_params} that follows the razzo naming
 convention and article}
 \usage{
-create_razzo_twinning_params(folder_name)
+create_razzo_twinning_params(
+  folder_name,
+  rng_seed_twin_tree,
+  rng_seed_twin_alignment
+)
 }
 \arguments{
-\item{folder_name}{name of the main folder}
+\item{rng_seed_twin_tree}{the random number generator seed as used in the
+simulation of a twin tree}
+
+\item{rng_seed_twin_alignment}{the random number generator seed
+as used in the simulation of a twin alignment}
 }
 \description{
 Create a \code{twinning_params} that follows the razzo naming
