@@ -41,6 +41,17 @@ test_that("use", {
     ) > 0
   )
 
+  skip("Expose #270")
+  first_razzo_params <- readRDS(filenames[1])
+  second_razzo_params <- readRDS(filenames[2])
+  expect_true(
+    first_razzo_params$pir_params$twinning_params$rng_seed_twin_tree
+    != second_razzo_params$pir_params$twinning_params$rng_seed_twin_tree
+  )
+  expect_true(
+    first_razzo_params$pir_params$twinning_params$rng_seed_twin_alignment
+    != second_razzo_params$pir_params$twinning_params$rng_seed_twin_alignment
+  )
 })
 
 test_that("use, full", {
@@ -92,6 +103,18 @@ test_that("use, full", {
       get_razzo_mcmc_store_every()
     )
   }
+
+  skip("Expose #270")
+  first_razzo_params <- readRDS(filenames[1])
+  second_razzo_params <- readRDS(filenames[2])
+  expect_true(
+    first_razzo_params$pir_params$twinning_params$rng_seed_twin_tree
+    != second_razzo_params$pir_params$twinning_params$rng_seed_twin_tree
+  )
+  expect_true(
+    first_razzo_params$pir_params$twinning_params$rng_seed_twin_alignment
+    != second_razzo_params$pir_params$twinning_params$rng_seed_twin_alignment
+  )
 })
 
 test_that("can read", {
