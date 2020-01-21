@@ -7,8 +7,8 @@ convention and article}
 \usage{
 create_razzo_twinning_params(
   folder_name,
-  rng_seed_twin_tree,
-  rng_seed_twin_alignment
+  rng_seed_twin_tree = 0,
+  rng_seed_twin_alignment = 0
 )
 }
 \arguments{

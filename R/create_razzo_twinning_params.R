@@ -6,8 +6,8 @@
 #' @export
 create_razzo_twinning_params <- function(
   folder_name,
-  rng_seed_twin_tree,
-  rng_seed_twin_alignment
+  rng_seed_twin_tree = 0,
+  rng_seed_twin_alignment = 0
 ) {
   twinning_params <- pirouette::create_twinning_params(
     rng_seed_twin_tree = rng_seed_twin_tree,
