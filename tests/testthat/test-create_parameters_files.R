@@ -41,6 +41,21 @@ test_that("use", {
     ) > 0
   )
 
+  # Verify #384: MCMC's log are setup correctly
+  for (filename in filenames) {
+    razzo_params <- readRDS(filename)
+    for (experiment in razzo_params$pir_params$experiments) {
+      expect_equal(
+        experiment$inference_model$mcmc$tracelog$log_every,
+        get_razzo_mcmc_store_every()
+      )
+      expect_equal(
+        experiment$inference_model$mcmc$treelog$log_every,
+        get_razzo_mcmc_store_every()
+      )
+    }
+  }
+
   first_razzo_params <- readRDS(filenames[1])
   second_razzo_params <- readRDS(filenames[2])
   expect_true(
@@ -91,16 +106,18 @@ test_that("use, full", {
   )
 
   # Verify #384: MCMC's log are setup correctly
-  first_razzo_params <- readRDS(filenames[1])
-  for (experiment in first_razzo_params$pir_params$experiments) {
-    expect_equal(
-      experiment$inference_model$mcmc$tracelog$log_every,
-      get_razzo_mcmc_store_every()
-    )
-    expect_equal(
-      experiment$inference_model$mcmc$treelog$log_every,
-      get_razzo_mcmc_store_every()
-    )
+  for (filename in filenames) {
+    razzo_params <- readRDS(filename)
+    for (experiment in razzo_params$pir_params$experiments) {
+      expect_equal(
+        experiment$inference_model$mcmc$tracelog$log_every,
+        get_razzo_mcmc_store_every()
+      )
+      expect_equal(
+        experiment$inference_model$mcmc$treelog$log_every,
+        get_razzo_mcmc_store_every()
+      )
+    }
   }
 
   first_razzo_params <- readRDS(filenames[1])
