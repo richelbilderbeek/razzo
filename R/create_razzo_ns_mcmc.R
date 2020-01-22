@@ -14,7 +14,13 @@ create_razzo_ns_mcmc <- function(
     store_every = get_razzo_mcmc_store_every(),
     particle_count = 1,
     sub_chain_length = 5e3,
-    epsilon = 1e-12
+    epsilon = 1e-12,
+    treelog = beautier::create_treelog(
+      log_every = razzo::get_razzo_mcmc_store_every()
+    ),
+    tracelog = beautier::create_tracelog(
+      log_every = razzo::get_razzo_mcmc_store_every()
+    )
   )
   if (model_type == "generative") {
     mcmc$tracelog$filename <- file.path(folder_name, "mbd_gen_evidence.log")

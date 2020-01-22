@@ -16,7 +16,7 @@ create_test_razzo_experiments <- function(
   # Shorten the MCMC
   for (i in seq_along(experiments)) {
     experiments[[i]]$inference_model$mcmc$chain_length <- 3e3
-    experiments[[i]]$inference_model$mcmc$store_every = 1e3
+    experiments[[i]]$inference_model$mcmc$store_every <- 1e3
     experiments[[i]]$inference_model$mcmc$tracelog$filename <-
       get_tracelog_filename(
         folder_name = folder_name,

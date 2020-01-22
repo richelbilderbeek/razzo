@@ -7,7 +7,7 @@ check_misc_params <- check_params_misc <- function(
   misc_params
 ) {
   argument_names <- c(
-    "tree_filename"
+    "tree_filename", "razzo_version"
   )
   for (arg_name in argument_names) {
     if (!arg_name %in% names(misc_params)) {

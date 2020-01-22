@@ -34,20 +34,20 @@ create_test_razzo_paramses <- function(
         mbd_params = razzo_paramses[[i]]$mbd_params
       )
       experiment <- razzo_paramses[[i]]$pir_params$experiments[[j]]
-      razzo_paramses[[i]]$pir_params$experiments[[j]]$inference_model$mcmc$chain_length <- 3000
-      razzo_paramses[[i]]$pir_params$experiments[[j]]$inference_model$mcmc$store_every <- 1000
-      razzo_paramses[[i]]$pir_params$experiments[[j]]$inference_model$mcmc$tracelog$filename <-
+      razzo_paramses[[i]]$pir_params$experiments[[j]]$inference_model$mcmc$chain_length <- 3000 # nolint sorry Demeter
+      razzo_paramses[[i]]$pir_params$experiments[[j]]$inference_model$mcmc$store_every <- 1000 # nolint sorry Demeter
+      razzo_paramses[[i]]$pir_params$experiments[[j]]$inference_model$mcmc$tracelog$filename <- # nolint sorry Demeter
         razzo::get_tracelog_filename(
           folder_name = folder_name,
           model_type = experiment$inference_conditions$model_type
         )
-      razzo_paramses[[i]]$pir_params$experiments[[j]]$inference_model$mcmc$tracelog$log_every <- 1000
-      razzo_paramses[[i]]$pir_params$experiments[[j]]$inference_model$mcmc$treelog$filename <-
+      razzo_paramses[[i]]$pir_params$experiments[[j]]$inference_model$mcmc$tracelog$log_every <- 1000 # nolint sorry Demeter
+      razzo_paramses[[i]]$pir_params$experiments[[j]]$inference_model$mcmc$treelog$filename <- # nolint sorry Demeter
         razzo::get_treelog_filename(
           folder_name = folder_name,
           model_type = experiment$inference_conditions$model_type
         )
-      razzo_paramses[[i]]$pir_params$experiments[[j]]$inference_model$mcmc$treelog$log_every <- 1000
+      razzo_paramses[[i]]$pir_params$experiments[[j]]$inference_model$mcmc$treelog$log_every <- 1000 # nolint sorry Demeter
     }
   }
   razzo_paramses

@@ -16,6 +16,14 @@ test_that("matches article, generative", {
   expect_equal(nested_sampling_mcmc$epsilon, 1e-12)
   expect_equal(nested_sampling_mcmc$particle_count, 1)
   expect_equal(nested_sampling_mcmc$sub_chain_length, 5000)
+  expect_equal(
+    nested_sampling_mcmc$tracelog$log_every,
+    get_razzo_mcmc_store_every()
+  )
+  expect_equal(
+    nested_sampling_mcmc$treelog$log_every,
+    get_razzo_mcmc_store_every()
+  )
 })
 
 test_that("file names, generative", {

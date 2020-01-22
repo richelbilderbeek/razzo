@@ -56,6 +56,14 @@ create_razzo_cand_experiments <- function(
     testit::assert(experiment$inference_model$mcmc$tracelog$filename ==
         file.path(folder_name, "mbd_best.log")
     )
+    testit::assert(
+      experiment$inference_model$mcmc$tracelog$log_every ==
+      get_razzo_mcmc_store_every()
+    )
+    testit::assert(
+      experiment$inference_model$mcmc$treelog$log_every ==
+      get_razzo_mcmc_store_every()
+    )
   }
   cand_experiments
 }

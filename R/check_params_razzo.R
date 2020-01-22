@@ -11,6 +11,12 @@ check_razzo_params <- function(
   razzo::check_razzo_params_names(razzo_params)
 
   razzo::check_mbd_params(razzo_params$mbd_params)
+
+  # Older version than 0.8.1.1
+  if (is.null(razzo_params$misc_params$razzo_version)) {
+    razzo_params$misc_params$razzo_version <- "0.8.1"
+  }
+
   razzo::check_misc_params(razzo_params$misc_params)
   pirouette::check_pir_params(pir_params = razzo_params$pir_params)
   peregrine::check_pff_pir_params(razzo_params$pir_params)
