@@ -15,22 +15,20 @@ create_test_razzo_experiments <- function(
   )
   # Shorten the MCMC
   for (i in seq_along(experiments)) {
-    experiments[[i]]$inference_model$mcmc <- beautier::create_mcmc(
-      chain_length = 3e3,
-      store_every = 1e3,
-      tracelog = beautier::create_tracelog(
-        filename = get_tracelog_filename(
-          folder_name = folder_name,
-          model_type = experiments[[i]]$inference_conditions$model_type
-        )
-      ),
-      treelog = beautier::create_treelog(
-        filename = get_treelog_filename(
-          folder_name = folder_name,
-          model_type = experiments[[i]]$inference_conditions$model_type
-        )
+    experiments[[i]]$inference_model$mcmc$chain_length <- 3e3
+    experiments[[i]]$inference_model$mcmc$store_every = 1e3
+    experiments[[i]]$inference_model$mcmc$tracelog$filename <-
+      get_tracelog_filename(
+        folder_name = folder_name,
+        model_type = experiments[[i]]$inference_conditions$model_type
       )
-    )
+    experiments[[i]]$inference_model$mcmc$tracelog$log_every <- 1000
+    experiments[[i]]$inference_model$mcmc$treelog$filename <-
+      get_treelog_filename(
+        folder_name = folder_name,
+        model_type = experiments[[i]]$inference_conditions$model_type
+      )
+    experiments[[i]]$inference_model$mcmc$treelog$log_every <- 1000
     experiments[[i]]$est_evidence_mcmc$chain_length <- 3e3
     experiments[[i]]$est_evidence_mcmc$store_every <- 1e3
   }
