@@ -2,7 +2,7 @@
 
 Newest versions at top.
 
-## razzo 0.8.1 (unreleased)
+## razzo 0.8.1.1 (unreleased)
 
 This version is to verify if I use the latest version.
 
@@ -12,7 +12,10 @@ This version is to verify if I use the latest version.
   
 ### MINOR IMPROVEMENTS
 
-  * None
+  * Added `razzo_params$misc_params$razzo_version` to store the version of
+    `razzo` that created the parameters.
+    First version is `0.8.1.1` (this one), older versions are set 
+    to `0.8.1` (the previous version)
 
 ### BUG FIXES
 
