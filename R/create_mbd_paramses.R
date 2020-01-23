@@ -30,7 +30,7 @@ create_mbd_paramses <- function(
     df <- mbd.SimTrees::create_params_table(
       n_replicates = 20
     )
-    df <- df[ df$nu == max(df$nu) & df$q == max(df$q), ]
+    df <- df[df$nu == max(df$nu) & df$q == max(df$q), ]
   }
 
   n_paramses <- nrow(df)
