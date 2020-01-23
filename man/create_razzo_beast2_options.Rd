@@ -5,11 +5,8 @@
 \title{Create BEAST2 options that follow the razzo naming conventions
 and article}
 \usage{
-create_razzo_beast2_options(
-  model_type,
-  folder_name = peregrine::get_pff_tempfile(),
-  rng_seed = 1
-)
+create_razzo_beast2_options(model_type,
+  folder_name = peregrine::get_pff_tempfile(), rng_seed = 1)
 }
 \arguments{
 \item{model_type}{the type of inference model, must be
