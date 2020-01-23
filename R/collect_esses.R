@@ -49,6 +49,8 @@ collect_esses <- function(
     files_log <- list.files(paths[p], pattern = "*.log")
     # In a failed run, there may not file
     if (length(files_log) == 0) next
+    files_log <- files_log[!grepl(pattern = "evidence", x = files_log)]
+    if (length(files_log) == 0) next
     for (f in seq_along(files_log)) {
       is_twin <- grepl(files_log[f], pattern = "twin")
       is_best <- grepl(files_log[f], pattern = "best")
