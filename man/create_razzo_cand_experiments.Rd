@@ -4,11 +4,8 @@
 \alias{create_razzo_cand_experiments}
 \title{Create the candidate experiments}
 \usage{
-create_razzo_cand_experiments(
-  gen_experiment,
-  folder_name = peregrine::get_pff_tempfile(),
-  rng_seed = 1
-)
+create_razzo_cand_experiments(gen_experiment,
+  folder_name = peregrine::get_pff_tempfile(), rng_seed = 1)
 }
 \arguments{
 \item{gen_experiment}{the generative experiment}

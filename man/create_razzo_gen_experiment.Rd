@@ -5,10 +5,8 @@
 \title{Create a generative experiment that follows the razzo
 naming conventions and article}
 \usage{
-create_razzo_gen_experiment(
-  folder_name = peregrine::get_pff_tempfile(),
-  rng_seed = 1
-)
+create_razzo_gen_experiment(folder_name = peregrine::get_pff_tempfile(),
+  rng_seed = 1)
 }
 \arguments{
 \item{folder_name}{name of the main folder}

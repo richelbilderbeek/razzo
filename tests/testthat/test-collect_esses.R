@@ -7,19 +7,19 @@ test_that("use", {
   )
 
   # Sub-keys
-  expect_true("tree" %in% names(df))
-  expect_true("best_or_gen" %in% names(df))
+  testthat::expect_true("tree" %in% names(df))
+  testthat::expect_true("best_or_gen" %in% names(df))
 
   # Only take the ESS of the likelihood
-  expect_true("ess_likelihood" %in% names(df))
-  expect_true(all(df$ess_likelihood <= 8))
+  testthat::expect_true("ess_likelihood" %in% names(df))
+  testthat::expect_true(all(df$ess_likelihood <= 8))
 
   # Data must be tidy
-  expect_true(is.factor(df$tree))
-  expect_true(is.factor(df$best_or_gen))
+  testthat::expect_true(is.factor(df$tree))
+  testthat::expect_true(is.factor(df$best_or_gen))
 
   # Rows must be unique
-  expect_equal(nrow(unique(df)), nrow(df))
+  testthat::expect_equal(nrow(unique(df)), nrow(df))
 
   # Use relative folder path as the primary key
   #
@@ -32,28 +32,25 @@ test_that("use", {
   #
   #  data/1/2/3                                                                 # nolint this is not commented code
   #
-  expect_true("folder" %in% names(df))
+  testthat::expect_true("folder" %in% names(df))
 
   # Removed obsolete values, Issue #253
-  expect_false("site_model" %in% names(df))
-  expect_false("clock_model" %in% names(df))
-  expect_false("tree_prior" %in% names(df))
-  expect_false("burn_in_fraction" %in% names(df))
-  expect_false("sample_interval" %in% names(df))
+  testthat::expect_false("site_model" %in% names(df))
+  testthat::expect_false("clock_model" %in% names(df))
+  testthat::expect_false("tree_prior" %in% names(df))
+  testthat::expect_false("burn_in_fraction" %in% names(df))
+  testthat::expect_false("sample_interval" %in% names(df))
 
-  skip("#385")
   # raztr has run one setting ..."
   #  - with two seeds
   #  - for true and twin tree
   #  - for generative and candidate
   # This is 2x2x2 Effective Sample Sizes
-  #
-  # Hypothesis: the logs for the marginal likelihoods are also read.
-  expect_equal(nrow(df), 8)
+  testthat::expect_equal(nrow(df), 8)
 })
 
 test_that("abuse", {
-  expect_error(
+  testthat::expect_error(
     razzo::collect_esses(
       project_folder_name = "nonsense"
     ),

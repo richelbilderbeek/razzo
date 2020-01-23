@@ -4,15 +4,10 @@
 \alias{create_mbd_params_table}
 \title{Create a table of which each row holds a unique MBD parameter combination.}
 \usage{
-create_mbd_params_table(
-  lambdas = get_razzo_lambdas(),
-  mus = get_razzo_mus(),
-  nus = get_razzo_nus(),
-  qs = get_razzo_qs(),
-  cond = 1,
-  crown_age = get_razzo_crown_age(),
-  n_replicates = get_razzo_n_replicates()
-)
+create_mbd_params_table(lambdas = get_razzo_lambdas(),
+  mus = get_razzo_mus(), nus = get_razzo_nus(), qs = get_razzo_qs(),
+  cond = 1, crown_age = get_razzo_crown_age(),
+  n_replicates = get_razzo_n_replicates())
 }
 \arguments{
 \item{lambdas}{per-lineage speciation rates. See \code{\link[mbd]{mbd_sim}}}
