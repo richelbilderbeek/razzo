@@ -5,8 +5,10 @@
 \title{Create the parameters for one experiment.
 Run one point of the experiment}
 \usage{
-create_misc_params(folder_name = peregrine::get_pff_tempfile(),
-  razzo_version = as.character(packageVersion("razzo")))
+create_misc_params(
+  folder_name = peregrine::get_pff_tempfile(),
+  razzo_version = as.character(packageVersion("razzo"))
+)
 }
 \arguments{
 \item{folder_name}{name of the main folder}

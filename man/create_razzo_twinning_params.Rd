@@ -5,8 +5,11 @@
 \title{Create a \code{twinning_params} that follows the razzo naming
 convention and article}
 \usage{
-create_razzo_twinning_params(folder_name, rng_seed_twin_tree = 0,
-  rng_seed_twin_alignment = 0)
+create_razzo_twinning_params(
+  folder_name,
+  rng_seed_twin_tree = 0,
+  rng_seed_twin_alignment = 0
+)
 }
 \arguments{
 \item{folder_name}{name of the main folder}

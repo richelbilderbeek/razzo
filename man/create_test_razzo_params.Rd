@@ -4,9 +4,11 @@
 \alias{create_test_razzo_params}
 \title{Create one set of parameter for one \code{razzo} experiment.}
 \usage{
-create_test_razzo_params(mbd_params = create_test_mbd_params(),
+create_test_razzo_params(
+  mbd_params = create_test_mbd_params(),
   pir_params = create_test_razzo_pir_params(),
-  misc_params = create_misc_params())
+  misc_params = create_misc_params()
+)
 }
 \arguments{
 \item{mbd_params}{MBD parameter set}

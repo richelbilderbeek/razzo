@@ -5,8 +5,7 @@
 \alias{create_mbd_params}
 \title{Create mbd parameters}
 \usage{
-create_params_mbd(lambda, mu, nu, q, cond = 1, crown_age = 10,
-  seed = NA)
+create_params_mbd(lambda, mu, nu, q, cond = 1, crown_age = 10, seed = NA)
 }
 \arguments{
 \item{lambda}{per-lineage speciation rate. See \code{\link[mbd]{mbd_sim}}}
