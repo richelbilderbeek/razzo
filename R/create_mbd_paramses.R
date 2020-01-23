@@ -17,9 +17,22 @@
 create_mbd_paramses <- function(
   n_replicates = get_razzo_n_replicates()
 ) {
-  df <- mbd.SimTrees::create_params_table(
-    n_replicates = n_replicates
-  )
+  issue <- 381
+
+  if (issue != 381) {
+    df <- mbd.SimTrees::create_params_table(
+      n_replicates = n_replicates
+    )
+  } else {
+    # Dirty hack for https://github.com/richelbilderbeek/razzo/issues/381 :
+    # - Select the settings with the strongest MBDness
+    # - Use 20 replicates whatsoever
+    df <- mbd.SimTrees::create_params_table(
+      n_replicates = 20
+    )
+    df <- df[ df$nu == max(df$nu) & df$q == max(df$q), ]
+  }
+
   n_paramses <- nrow(df)
   testit::assert(n_paramses > 0)
   mbd_paramses <- list()
