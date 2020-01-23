@@ -3,5 +3,7 @@
 #' @author Richel J.C. Bilderbeek
 #' @export
 get_razzo_mcmc_chain_length <- function() {
-  1e7
+  # Changed for https://github.com/richelbilderbeek/razzo/issues/346
+  # Original value: 1e7
+  1e8
 }
