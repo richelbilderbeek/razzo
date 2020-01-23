@@ -162,7 +162,18 @@ get_alignment_filename <- function(
 
 #' Get tree filename
 #' @inheritParams default_params_doc
-#' @author Giovanni Laudanno
+#' @author Giovanni Laudanno, Richel J.C. Bilderbeek
+#' @examples
+#' library(testthat)
+#'
+#' expect_equal(
+#'   get_tree_filename(folder_name = "", tree_type = "true"),
+#'   "/mbd.tree"
+#' )
+#' expect_equal(
+#'   get_tree_filename(folder_name = "", tree_type = "twin"),
+#'   "/mbd_twin.tree"
+#' )
 #' @export
 get_tree_filename <- function(
   folder_name,

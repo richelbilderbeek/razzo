@@ -4,7 +4,7 @@
 #' @author Richel J.C. Bilderbeek, Giovanni Laudanno
 #' @export
 collect_n_mb_species <- function(
-  project_folder_name = get_razzo_path("razzo_project")
+  project_folder_name = getwd()
 ) {
   razzo::check_project_folder_name(project_folder_name) # nolint razzo function
 
@@ -33,8 +33,8 @@ collect_n_mb_species <- function(
 
   # Issue 279, Issue #279
   # Should give:
-  #   data/0.2-0.15-1-0.1/1
-  #   data/0.2-0.15-1-0.1/2
+  #   data/0.2-0.15-1-0.1/1                                                     # nolint this is no commented code
+  #   data/0.2-0.15-1-0.1/2                                                     # nolint this is no commented code
   folder_names <- razzo::get_data_paths(project_folder_name, full_names = FALSE)
 
   df <- data.frame(

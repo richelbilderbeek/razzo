@@ -5,7 +5,7 @@ test_that("use", {
   }
 
   razzo_paramses <- razzo::create_test_razzo_paramses()
-  testthat::expect_equal(length(razzo_paramses), 2)
+  expect_equal(length(razzo_paramses), 2)
 })
 
 test_that("values", {
@@ -15,19 +15,19 @@ test_that("values", {
   }
 
   razzo_paramses <- razzo::create_test_razzo_paramses()
-  testthat::expect_equal(length(razzo_paramses[[1]]$pir_params$experiments), 3)
+  expect_equal(length(razzo_paramses[[1]]$pir_params$experiments), 3)
 
   experiment_1_1 <- razzo_paramses[[1]]$pir_params$experiments[[1]]
   experiment_1_2 <- razzo_paramses[[1]]$pir_params$experiments[[2]]
   experiment_1_3 <- razzo_paramses[[1]]$pir_params$experiments[[3]]
-  testthat::expect_true(experiment_1_1$inference_model$mcmc$chain_length < 10000)
-  testthat::expect_true(experiment_1_2$inference_model$mcmc$chain_length < 10000)
-  testthat::expect_true(experiment_1_3$inference_model$mcmc$chain_length < 10000)
+  expect_true(experiment_1_1$inference_model$mcmc$chain_length < 10000)
+  expect_true(experiment_1_2$inference_model$mcmc$chain_length < 10000)
+  expect_true(experiment_1_3$inference_model$mcmc$chain_length < 10000)
 
   experiment_2_1 <- razzo_paramses[[1]]$pir_params$experiments[[1]]
   experiment_2_2 <- razzo_paramses[[1]]$pir_params$experiments[[2]]
   experiment_2_3 <- razzo_paramses[[1]]$pir_params$experiments[[3]]
-  testthat::expect_true(experiment_2_1$inference_model$mcmc$chain_length < 10000)
-  testthat::expect_true(experiment_2_2$inference_model$mcmc$chain_length < 10000)
-  testthat::expect_true(experiment_2_3$inference_model$mcmc$chain_length < 10000)
+  expect_true(experiment_2_1$inference_model$mcmc$chain_length < 10000)
+  expect_true(experiment_2_2$inference_model$mcmc$chain_length < 10000)
+  expect_true(experiment_2_3$inference_model$mcmc$chain_length < 10000)
 })

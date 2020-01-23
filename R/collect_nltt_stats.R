@@ -3,9 +3,34 @@
 #' @inheritParams default_params_doc
 #' @return a dataframe with parameters and nltt statistics
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
+#' @examples
+#' library(testthat)
+#' library(raztr)
+#'
+#' # Collect the nLTT statistics from the data supplied with this package
+#' project_folder_name <- get_raztr_path("razzo_project")
+#' df <- collect_nltt_stats(
+#'   project_folder_name = project_folder_name
+#' )
+#'
+#' expect_true("folder" %in% names(df))
+#' expect_true("tree" %in% names(df))
+#' expect_true("best_or_gen" %in% names(df))
+#' expect_true("nltt_1" %in% names(df))
+#' expect_true("nltt_2" %in% names(df))
+#'
+#' # Data is tidy
+#' expect_true(is.factor(df$tree))
+#' expect_true(is.factor(df$best_or_gen))
+#'
+#' # Data makes sense
+#' expect_true(all(file.exists(file.path(project_folder_name, df$folder))))
+#' expect_true(all(df$tree %in% c("true", "twin")))
+#' expect_true(all(df$best_or_gen %in% c("best", "gen")))
+#' expect_true(all(df$nltt_1 >= 0.0))
 #' @export
 collect_nltt_stats <- function(
-  project_folder_name = get_razzo_path("razzo_project")
+  project_folder_name = getwd()
 ) {
   razzo::check_project_folder_name(project_folder_name)
 
@@ -16,10 +41,14 @@ collect_nltt_stats <- function(
 
 
   # Paths to the folder, each folder holds a razzo experiment
-  relative_paths <-
-    razzo::get_data_paths(project_folder_name, full_names = FALSE)
+  relative_paths <- razzo::get_data_paths(
+    project_folder_name,
+    full_names = FALSE
+  )
   paths <- file.path(project_folder_name, relative_paths)
 
+  # Find the maximum number of measured nLTT statistics,
+  # so a data frame with the right number of columns can be created
   n_files <- 0
   max_len_nltts <- 0
   for (p in seq_along(paths)) {
@@ -38,7 +67,6 @@ collect_nltt_stats <- function(
   first_filename <- file.path(paths[1], "parameters.RDa")
   # Fails on '/tmp/RtmpitOdlW/razzo_project/data/0_twin.2-0.15-1-0.1/1/parameters.RDa' # nolint indeed a long path
   beautier::check_file_exists(first_filename, "first_filename")
-  parameters <- readRDS(first_filename) # nolint internal function
   matrix_folder <- data.frame(matrix(
     NA,
     ncol = 1,
@@ -65,7 +93,6 @@ collect_nltt_stats <- function(
   # loop over all files
   i <- 1
   for (p in seq_along(paths)) {
-    parameters <- readRDS(file.path(paths[p], "parameters.RDa")) # nolint internal function
     files_nltt <- list.files(paths[p], pattern = "nltt")
     for (f in seq_along(files_nltt)) {
       is_twin <- grepl(files_nltt[f], pattern = "twin")
@@ -81,11 +108,9 @@ collect_nltt_stats <- function(
         matrix_string$tree[i] <- "true"
       }
       if (is_best == TRUE) {
-        info_function <- get_best_model
         matrix_string$best_or_gen[i] <- "best"
       }
       if (is_generative == TRUE) {
-        info_function <- get_generative_model
         matrix_string$best_or_gen[i] <- "gen"
       }
       matrix_folder[i, ] <- relative_paths[p]

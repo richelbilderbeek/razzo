@@ -12,6 +12,13 @@ test_that("use", {
     experiment_type = "test"
   )
 
+  expect_true(
+    open_parameters_file(
+      parameters_filenames[1]
+    )$pir_params$experiments[[1]]$est_evidence_mcmc$treelog$filename !=
+    "$(tree).trees"
+  )
+
   # Run the first without verbose
   expect_silent(
     run_razzo_from_file(
@@ -41,7 +48,7 @@ test_that("abuse", {
   )
   expect_error(
     run_razzo_from_file(
-      parameters_filename = get_razzo_path("parameters.RDa"),
+      parameters_filename = raztr::get_raztr_path("parameters.RDa"),
       add_verbose = "nonsense"
     ),
     "'add_verbose' must be one boolean"

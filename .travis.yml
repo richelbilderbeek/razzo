@@ -2,43 +2,23 @@ language: r
 dist: bionic
 cache: packages
 
-r_packages:
-  - BiocManager
-  - devtools
-  - ggplot2
-  - hunspell
-  - xml2
-
-bioc_packages:
-  - ggtree
-
 r_github_packages:
   - jimhester/covr
-  - jimhester/lintr
-  - MangoTheCat/goodpractice
   - ropensci/spelling
-  - ropensci/beautier@develop
-  - ropensci/tracerer
-  - ropensci/beastier@develop
-  - ropensci/mauricer
-  - ropensci/babette@develop
-  - richelbilderbeek/mcbette@develop
-  - richelbilderbeek/nLTT
-  - thijsjanzen/nodeSub
-  - richelbilderbeek/pirouette@richel
-  - richelbilderbeek/peregrine@richel
-  - Giappo/mbd
-  - Giappo/mbd.SimTrees
 
 before_install:
+  # ImageMagick
   - sudo add-apt-repository -y ppa:opencpu/imagemagick
   - sudo apt-get update
   - sudo apt-get install -y libmagick++-dev
+  # MPFR
   - sudo apt install -qq libmpfr-dev
-  # Check dead links
-  - sudo apt-get install -qq npm
-  - npm config set strict-ssl false
-  - sudo npm install -g markdown-link-check
+  # Poppler
+  - sudo add-apt-repository -y ppa:cran/poppler
+  - sudo apt-get update
+  - sudo sudo apt-get install -y libpoppler-cpp-dev
+  # Install the packages by hand, to test the install script
+  - Rscript scripts/install_r_packages.R
 
 before_script:
   - Rscript -e "beastier::install_beast2()"
@@ -46,18 +26,16 @@ before_script:
   - if [ -f ".lintr" ]; then echo "Do use Hadley Wickham's style guide"; exit 1; fi
   # proselint
   - sudo pip install proselint
-  - Rscript -e 'devtools::install_github("Giappo/mbd")'
 
 script:
   - travis_wait 60 R CMD build .
   - travis_wait 60 R CMD check *tar.gz
 
 after_success:
-  - travis_wait 60 Rscript -e 'covr::codecov()'
-  - proselint *.md | egrep -v "typography\.symbols\.curly_quotes"
-  # Check dead links
-  - rm .travis.yml
-  - ./scripts/check_dead_links || true
+  # Codecov
+  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "devel" ]; then travis_wait 20 Rscript -e 'covr::codecov()'; fi
+  # Proselint
+  - if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_R_VERSION_STRING" == "release" ]; then proselint *.md | egrep -v "typography\.symbols\.curly_quotes"; fi
 
 
 after_failure:

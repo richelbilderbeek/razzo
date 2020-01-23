@@ -10,12 +10,16 @@ check_razzo_params_filenames <- function(razzo_params) {
   testit::assert(gen_experiment$inference_conditions$model_type == "generative")
 
   # True tree
-  if (razzo_params$misc_params$tree_filename != file.path(folder_name, "mbd.tree")) { # nolint indeed long
+  if (razzo_params$misc_params$tree_filename !=
+      file.path(folder_name, "mbd.tree")
+  ) {
     stop(
-      "'razzo_params$misc_params$tree_filename' must be be '[folder_name]/mbd.tree'. \n", # nolint indeed long
+      "'razzo_params$misc_params$tree_filename' must be be ",
+        "'[folder_name]/mbd.tree'. \n",
       "Actual value: '", razzo_params$misc_params$tree_filename, "'\n",
       "[folder_name]: '", folder_name, "'\n",
-      "(folder name taken from razzo_params$pir_params$alignment_params$fasta_filename)" # nolint indeed long
+      "(folder name taken from ",
+        "razzo_params$pir_params$alignment_params$fasta_filename)"
     )
   }
 
@@ -29,30 +33,46 @@ check_razzo_params_filenames <- function(razzo_params) {
     )
   }
   # BEAST2 output log filename
-  if (gen_experiment$inference_model$mcmc$tracelog$filename != file.path(folder_name, "mbd_gen.log")) { # nolint indeed long
+  if (gen_experiment$inference_model$mcmc$tracelog$filename !=
+      file.path(folder_name, "mbd_gen.log")
+  ) {
     stop(
-      "'razzo_params$pir_params$experiments[[1]]$inference_model$mcmc$tracelog$filename' must be be '[folder_name]/mbd_gen.log'. \n", # nolint indeed long
-      "Actual value: '", gen_experiment$inference_model$mcmc$tracelog$filename, "'\n", # nolint indeed long
+      "'razzo_params$pir_params$experiments[[1]]$inference_model$mcmc",
+        "$tracelog$filename' must be be '[folder_name]/mbd_gen.log'. \n",
+      "Actual value: '",
+        gen_experiment$inference_model$mcmc$tracelog$filename, "'\n",
       "[folder_name]: '", folder_name, "'\n",
-      "(folder name taken from razzo_params$pir_params$alignment_params$fasta_filename)" # nolint indeed long
+      "(folder name taken from ",
+        "razzo_params$pir_params$alignment_params$fasta_filename)"
     )
   }
   # BEAST2 output trees filenames
-  if (gen_experiment$inference_model$mcmc$treelog$filename != file.path(folder_name, "mbd_gen.trees")) { # nolint indeed long
+  if (gen_experiment$inference_model$mcmc$treelog$filename !=
+      file.path(folder_name, "mbd_gen.trees")
+  ) {
     stop(
-      "'razzo_params$pir_params$experiments[[1]]$inference_model$mcmc$treelog$filename' must be be '[folder_name]/mbd_gen.trees'. \n", # nolint indeed long
-      "Actual value: '", gen_experiment$inference_model$mcmc$treelog$filename, "'\n", # nolint indeed long
+      "'razzo_params$pir_params$experiments[[1]]$inference_model$",
+        "mcmc$treelog$filename' must be be '[folder_name]/mbd_gen.trees'. \n",
+      "Actual value: '",
+        gen_experiment$inference_model$mcmc$treelog$filename, "'\n",
       "[folder_name]: '", folder_name, "'\n",
-      "(folder name taken from razzo_params$pir_params$alignment_params$fasta_filename)" # nolint indeed long
+      "(folder name taken from ",
+        "razzo_params$pir_params$alignment_params$fasta_filename)"
     )
   }
   # BEAST2 output state filenames
-  if (gen_experiment$beast2_options$output_state_filename != file.path(folder_name, "mbd_gen.xml.state")) { # nolint indeed long
+  if (gen_experiment$beast2_options$output_state_filename !=
+      file.path(folder_name, "mbd_gen.xml.state")
+  ) {
     stop(
-      "'razzo_params$pir_params$experiments[[1]]$beast2_options$output_state_filename' must be be '[folder_name]/mbd_gen.xml.state'. \n", # nolint indeed long
-      "Actual value: '", gen_experiment$beast2_options$output_state_filename, "'\n", # nolint indeed long
+      "'razzo_params$pir_params$experiments[[1]]$beast2_options$",
+        "output_state_filename' must be be ",
+        "'[folder_name]/mbd_gen.xml.state'. \n",
+      "Actual value: '",
+        gen_experiment$beast2_options$output_state_filename, "'\n",
       "[folder_name]: '", folder_name, "'\n",
-      "(folder name taken from razzo_params$pir_params$alignment_params$fasta_filename)" # nolint indeed long
+      "(folder name taken from ",
+        "razzo_params$pir_params$alignment_params$fasta_filename)"
     )
   }
 
@@ -106,10 +126,13 @@ check_razzo_params_filenames <- function(razzo_params) {
     razzo::get_alignment_filename(folder_name = folder_name, tree_type = "true")
   ) { # nolint indeed long
     stop(
-      "'razzo_params$pir_params$alignment_params$fasta_filename' must be be '[folder_name]/mbd.fasta'. \n", # nolint indeed long
-      "Actual value: '", razzo_params$pir_params$alignment_params$fasta_filename, "'\n", # nolint indeed long
+      "'razzo_params$pir_params$alignment_params$fasta_filename' ",
+      "must be be '[folder_name]/mbd.fasta'. \n",
+      "Actual value: '",
+      razzo_params$pir_params$alignment_params$fasta_filename, "'\n",
       "[folder_name]: '", folder_name, "'\n",
-      "(folder name taken from razzo_params$pir_params$alignment_params$fasta_filename)" # nolint indeed long
+      "(folder name taken from razzo_params$",
+        "pir_params$alignment_params$fasta_filename)"
     )
   }
   # Twinning
@@ -118,15 +141,21 @@ check_razzo_params_filenames <- function(razzo_params) {
     razzo_params$pir_params$twinning_params$twin_tree_filename
   )
   testit::assert(
-    razzo::get_alignment_filename(folder_name = folder_name, tree_type = "twin") ==
+    razzo::get_alignment_filename(
+      folder_name = folder_name, tree_type = "twin"
+    ) ==
     razzo_params$pir_params$twinning_params$twin_alignment_filename
   )
   testit::assert(
-    razzo::get_evidence_filename(folder_name = folder_name, tree_type = "twin") ==
+    razzo::get_evidence_filename(
+      folder_name = folder_name, tree_type = "twin"
+    ) ==
     razzo_params$pir_params$twinning_params$twin_evidence_filename
   )
   testit::assert(
-    razzo::get_evidence_filename(folder_name = folder_name, tree_type = "true") ==
+    razzo::get_evidence_filename(
+      folder_name = folder_name, tree_type = "true"
+    ) ==
     razzo_params$pir_params$evidence_filename
   )
 

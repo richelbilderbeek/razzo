@@ -4,8 +4,7 @@
 \alias{collect_n_mutations}
 \title{Collect number of mutations}
 \usage{
-
-  collect_n_mutations(project_folder_name = get_razzo_path("razzo_project"))
+collect_n_mutations(project_folder_name = getwd())
 }
 \arguments{
 \item{project_folder_name}{project folder name,

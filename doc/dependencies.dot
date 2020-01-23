@@ -12,5 +12,25 @@ digraph G
   pirouette -> mbd;
   pirouette -> nodeSub;
   peregrine -> pirouette;
+  razzo -> pirouette;
   razzo -> peregrine;
+  razzo -> razzotestresults;
+  razzo -> beastier;
+  razzo -> beastier;
+  razzo -> mbd;
+  razzo -> mbdSimTrees;
+  razzo -> babette;
+  razzo -> tracerer;
+  razzo -> raztr;
+  razzo -> mauricer [style=dotted];
+  razzo -> mcbette [style=dotted];
+  razzo -> nLTT [style=dotted];
+  razzo -> nodeSub [style=dotted];
+  mbdSimTrees -> beastier;
+  mbdSimTrees -> beautier;
+  mbdSimTrees -> mbd;
+  mbdSimTrees -> peregrine;
+  mbdSimTrees -> pirouette;
+  mbdSimTrees -> babette [style=dotted];
+  mbdSimTrees -> nLTT [style=dotted];
 }

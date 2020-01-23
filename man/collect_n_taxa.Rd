@@ -2,9 +2,9 @@
 % Please edit documentation in R/collect_n_taxa.R
 \name{collect_n_taxa}
 \alias{collect_n_taxa}
-\title{Collect number of taxa}
+\title{Collect the number of taxa for analyses.}
 \usage{
-collect_n_taxa(project_folder_name = get_razzo_path("razzo_project"))
+collect_n_taxa(project_folder_name = getwd())
 }
 \arguments{
 \item{project_folder_name}{project folder name,
@@ -15,6 +15,24 @@ a dataframe with folder and taxa number for each phylogeny
 }
 \description{
 Collect number of taxa
+}
+\details{
+After a razzo experiment is run, this function extracts the number
+of taxa from the resulting files. In practice, this number is extracted
+from all files named \code{mbd.tree} or \code{pbd.newick}.
+}
+\examples{
+library(testthat)
+library(raztr)
+
+df <- collect_n_taxa(
+  project_folder_name = get_raztr_path("razzo_project")
+)
+
+expect_true("folder" \%in\% names(df))
+expect_true("n_taxa" \%in\% names(df))
+expect_true(is.character(df$folder))
+expect_true(is.numeric(df$n_taxa))
 }
 \author{
 Giovanni Laudanno, Richel J.C. Bilderbeek

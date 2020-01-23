@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_n_mb_species_file.R
 \name{create_n_mb_species_file}
 \alias{create_n_mb_species_file}
-\title{Create the dataframe with number of multiple-born species 
+\title{Create the dataframe with number of multiple-born species
 and save it as a file}
 \usage{
 create_n_mb_species_file(project_folder_name = getwd())
@@ -15,7 +15,7 @@ will be the full path to \code{razzo_project}}
 the filename
 }
 \description{
-Create the dataframe with number of multiple-born species 
+Create the dataframe with number of multiple-born species
 and save it as a file
 }
 \author{

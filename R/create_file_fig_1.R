@@ -9,11 +9,10 @@ create_file_fig_1 <- create_fig_1_file <- function(
   project_folder_name = getwd()
 ) {
 
-  # create figure 1
-  fig_1 <- create_fig_1(project_folder_name) # nolint internal function
+  fig_1 <- razzo::create_fig_1(project_folder_name)
 
   # save output
-  results_folder <- get_results_path(project_folder_name) # nolint
+  results_folder <- razzo::get_results_path(project_folder_name)
   fig_width <- 10
   fig_height <- 10
 

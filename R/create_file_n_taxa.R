@@ -9,10 +9,11 @@ create_file_n_taxa <- create_n_taxa_file <- function(
 ) {
 
   # create the dataframe
-  n_taxa <- collect_n_taxa(project_folder_name) # nolint internal function
+  n_taxa <- razzo::collect_n_taxa(project_folder_name)
 
   # save output
-  results_folder <- get_results_path(project_folder_name) # nolint
+  results_folder <- razzo::get_results_path(project_folder_name)
+
   # No warning if folder already exists
   dir.create(results_folder, showWarnings = FALSE)
 

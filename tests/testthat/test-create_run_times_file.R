@@ -4,7 +4,7 @@ test_that("use", {
 
   # Should create 'results/'run_times.csv'
   filename <- create_run_times_file(
-    project_folder_name = get_razzo_path("razzo_project")
+    project_folder_name = raztr::get_raztr_path("razzo_project")
   )
 
   # File should be created

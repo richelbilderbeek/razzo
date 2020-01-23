@@ -16,31 +16,18 @@ create_razzo_cand_experiments <- function(
 
   cand_experiments <- NA
 
-  # For a list of the options, see
-  # https://github.com/richelbilderbeek/razzo/issues/261#issue-488720156 # nolint indeed a URL
-  option <- 3
-
-  cand_experiments <- NA
-
-  if (option == 2) {
-    cand_experiments <- pirouette::create_all_experiments(
-      exclude_model = gen_experiment$inference_model
-    )
-  }
-  if (option == 3) {
-    cand_experiments <- pirouette::create_all_experiments(
-      site_models = list(
-        beautier::create_jc69_site_model(),
-        beautier::create_hky_site_model()
-      ),
-      clock_models = list(beautier::create_strict_clock_model()),
-      tree_priors = list(
-        beautier::create_yule_tree_prior(),
-        beautier::create_bd_tree_prior()
-      ),
-      exclude_model = gen_experiment$inference_model
-    )
-  }
+  cand_experiments <- pirouette::create_all_experiments(
+    site_models = list(
+      beautier::create_jc69_site_model(),
+      beautier::create_hky_site_model()
+    ),
+    clock_models = list(beautier::create_strict_clock_model()),
+    tree_priors = list(
+      beautier::create_yule_tree_prior(),
+      beautier::create_bd_tree_prior()
+    ),
+    exclude_model = gen_experiment$inference_model
+  )
 
   testit::assert(!beautier::is_one_na(cand_experiments))
 
@@ -51,11 +38,13 @@ create_razzo_cand_experiments <- function(
       folder_name = folder_name
     )
     cand_experiments[[i]]$est_evidence_mcmc <-
-      razzo::create_razzo_nested_sampling_mcmc()
+      razzo::create_razzo_ns_mcmc(
+        folder_name =  folder_name,
+        model_type = "candidate",
+        index = i
+      )
     cand_experiments[[i]]$inference_model$mrca_prior <-
       razzo::create_razzo_mrca_prior()
-    cand_experiments[[i]]$est_evidence_mcmc <-
-      razzo::create_razzo_nested_sampling_mcmc()
     cand_experiments[[i]]$beast2_options <-
       razzo::create_razzo_beast2_options(
         model_type = "candidate",
@@ -66,6 +55,14 @@ create_razzo_cand_experiments <- function(
   for (experiment in cand_experiments) {
     testit::assert(experiment$inference_model$mcmc$tracelog$filename ==
         file.path(folder_name, "mbd_best.log")
+    )
+    testit::assert(
+      experiment$inference_model$mcmc$tracelog$log_every ==
+      get_razzo_mcmc_store_every()
+    )
+    testit::assert(
+      experiment$inference_model$mcmc$treelog$log_every ==
+      get_razzo_mcmc_store_every()
     )
   }
   cand_experiments

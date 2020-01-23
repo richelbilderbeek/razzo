@@ -15,22 +15,26 @@ In each of these folders, there are folders named after their site and clock mod
 
 In each of these folders, there are:
 
-Filename            |Description
---------------------|---------------------------------------
-`parameters.RDa`    |the parameter file
-`mbd.tree`          |the true MBD tree
-`mbd.fasta`         |the true MBD alignment
-`mbd_gen.xml`       |the BEAST2 input file, using the generative model
-`mbd_gen.trees`     |the posterior trees from the true alignment, using the generative model
-`mbd_gen.log`       |the posterior parameter estimates from the true tree, using the generative model
-`mbd_gen.xml.state` |the final posterior state from the true tree, using the generative model
-`mbd_best.xml`      |the BEAST2 input file, using the best candidate model
-`mbd_best.trees`    |the posterior trees from the true tree, using best candidate model
-`mbd_best.log`      |the posterior parameter estimates from the true tree, using the best candidate model
-`mbd_best.xml.state`|the final posterior state from the true tree, using the best candidate model
-`mbd_marg_lik.csv`  |the evidences (aka marginal likelihoods) all models have for the true alignment 
-`mbd_nltts_gen.csv` |the error between true tree and its posterior for the generative model
-`mbd_nltts_best.csv`|the error between true tree and its posterior for the best candidate model
+Filename                     |Description
+-----------------------------|----------------------------------------------------------------------------------------------------------------------
+`parameters.RDa`             |the parameter file
+`mbd.tree`                   |the true MBD tree
+`mbd.fasta`                  |the true MBD alignment
+`mbd_gen.xml`                |the BEAST2 input file, using the generative model
+`mbd_gen.trees`              |the posterior trees from the true alignment, using the generative model
+`mbd_gen.log`                |the posterior parameter estimates from the true tree, using the generative model
+`mbd_gen_evidence.trees`     |the trees to estimate the marginal likelihood, using the generative model
+`mbd_gen_evidence.log`       |the parameter estimates to estimate the marginal likelihood, using the generative model
+`mbd_gen.xml.state`          |the final posterior state from the true tree, using the generative model
+`mbd_best.xml`               |the BEAST2 input file, using the best candidate model
+`mbd_best.trees`             |the posterior trees from the true tree, using best candidate model
+`mbd_best.log`               |the posterior parameter estimates from the true tree, using the best candidate model
+`mbd_best.xml.state`         |the final posterior state from the true tree, using the best candidate model
+`mbd_best_[x]_evidence.trees`|the trees to estimate the marginal likelihood, for the `x`th candidate model (`x == 1` for first model)
+`mbd_best_[x]_evidence.log`  |the parameter estimates to estimate the marginal likelihood, for the `x`th candidate model (`x == 1` for first model)
+`mbd_marg_lik.csv`           |the evidences (aka marginal likelihoods) all models have for the true alignment 
+`mbd_nltts_gen.csv`          |the error between true tree and its posterior for the generative model
+`mbd_nltts_best.csv`         |the error between true tree and its posterior for the best candidate model
 
 Filename                 |Description
 -------------------------|---------------------------------------

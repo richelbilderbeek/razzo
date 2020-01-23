@@ -19,14 +19,9 @@
 #SBATCH --job-name=1_install_razzo
 #SBATCH --output=1_install_razzo.log
 module load R
-Rscript -e 'devtools::install_github("richelbilderbeek/nLTT")'
-Rscript -e 'devtools::install_github("ropensci/beautier")'
-Rscript -e 'devtools::install_github("ropensci/tracerer")'
-Rscript -e 'devtools::install_github("ropensci/beastier")'
-Rscript -e 'devtools::install_github("ropensci/mauricer")'
-Rscript -e 'devtools::install_github("ropensci/babette")'
+Rscript -e 'devtools::install_github("thijsjanzen/nLTT")'
 Rscript -e 'devtools::install_github("richelbilderbeek/mcbette")'
-Rscript -e 'devtools::install_github("richelbilderbeek/pirouette", ref = "richel")'
+Rscript -e 'devtools::install_github("richelbilderbeek/pirouette", ref = "richel", dependencies = TRUE)'
 Rscript -e 'devtools::install_github("Giappo/mbd")'
 Rscript -e 'devtools::install_github("richelbilderbeek/becosys")'
 Rscript -e 'devtools::install_github("richelbilderbeek/peregrine", ref = "richel")'

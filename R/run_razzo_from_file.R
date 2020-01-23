@@ -1,5 +1,4 @@
 #' Run a razzo experiment from a filename
-#' @inheritParams default_params_doc
 #' @param parameters_filename name of a file that contains
 #'   a \code{razzo_params},
 #'   as can be created by \link{create_params_razzo}

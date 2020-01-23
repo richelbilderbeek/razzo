@@ -34,8 +34,11 @@ create_razzo_pir_params <- function(
   # Twinning
   twinning_params <- NA
   if (isTRUE(has_twinning)) {
-    twinning_params <-
-      razzo::create_razzo_twinning_params(folder_name = folder_name)
+    twinning_params <- razzo::create_razzo_twinning_params(
+      folder_name = folder_name,
+      rng_seed_twin_tree = rng_seed,
+      rng_seed_twin_alignment = rng_seed
+    )
   }
   # Combine
   pirouette::create_pir_params(

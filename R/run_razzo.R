@@ -9,7 +9,7 @@
 run_razzo <- function(
   razzo_params
 ) {
-  check_razzo_params(razzo_params) # nolint razzo function
+  razzo::check_razzo_params(razzo_params)
   testit::assert(beastier::is_beast2_installed())
 
   # Simulate incipient species tree

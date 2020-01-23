@@ -4,7 +4,7 @@ test_that("use", {
 
   # Should create 'results/'n_taxa.csv'
   filename <- create_n_taxa_file(
-    project_folder_name = get_razzo_path("razzo_project")
+    project_folder_name = raztr::get_raztr_path("razzo_project")
   )
 
   # File should be created

@@ -11,7 +11,8 @@ check_project_folder_name <- function(project_folder_name) {
     is.na(
       stringr::str_match(
         string = project_folder_name,
-        pattern = "(razzo_project|raket_werper)(_........)?(_regen_data|new_logs)?"
+        pattern =
+          "(razzo_project|raket_werper)(_........)?(_regen_data|new_logs)?"
       )[1, 1]
     )
   ) {
@@ -58,7 +59,6 @@ open_parameters_file <- function(
 }
 
 #' Get the names of the supported generative models
-#' @inheritParams default_params_doc
 #' @return the generative models
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @examples

@@ -2,14 +2,14 @@ test_that("use", {
 
   # Should create 'results/fig_1.png'
   filename <- create_fig_1_file(
-    project_folder_name = get_razzo_path("razzo_project")
+    project_folder_name = raztr::get_raztr_path("razzo_project")
   )
 
   # File should be created
   expect_true(all(file.exists(filename)))
 
   # OK: filename must end with 'figure_1.png'
-  testthat::expect_true(
+  expect_true(
     all(
       grep(
       pattern = "figure_1", filename
@@ -22,7 +22,7 @@ test_that("use", {
 
   # OK: should be in razzo_project/results folder
   # Use ..? to indicate one or two back- or normal slashes
-  testthat::expect_true(
+  expect_true(
     length(
       grep(
         pattern = "razzo_project..?results..?",

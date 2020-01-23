@@ -10,10 +10,10 @@ test_that("use", {
     )
   )
   # All files are created
-  testthat::expect_true(all(file.exists(filenames)))
+  expect_true(all(file.exists(filenames)))
 
   # All filename must end with 'parameters.RDa'
-  testthat::expect_equal(
+  expect_equal(
     length(filenames),
     length(
       grep(
@@ -24,7 +24,7 @@ test_that("use", {
 
   # All files are valid
   for (filename in filenames) {
-    testthat::expect_silent(
+    expect_silent(
       razzo::check_razzo_params(readRDS(filename))
     )
   }

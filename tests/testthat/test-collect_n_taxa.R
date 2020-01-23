@@ -1,39 +1,27 @@
-context("test-collect_n_taxa")
-
 test_that("use", {
 
-  if (1 == 2) {
-    # Run the experiment if you can and need to
-    for (file in list.files(
-      razzo::get_razzo_path("razzo_project"),
-        recursive = TRUE, pattern = "parameters\\.RDa"
-      )
-    ) {
-      razzo::run_razzo(razzo::open_parameters_file(file))
-    }
-  }
   df <- razzo::collect_n_taxa(
-    project_folder_name = razzo::get_razzo_path("razzo_project")
+    project_folder_name = raztr::get_raztr_path("razzo_project")
   )
 
   # No secondary key needed here :-)
 
   # Measurement
-  testthat::expect_true("n_taxa" %in% names(df))
-  testthat::expect_true(is.numeric(df$n_taxa))
+  expect_true("n_taxa" %in% names(df))
+  expect_true(is.numeric(df$n_taxa))
 
   # Rows must be unique
-  testthat::expect_equal(nrow(unique(df)), nrow(df))
+  expect_equal(nrow(unique(df)), nrow(df))
 
   # As all trees (true, twin, posterior) have an equal amount of tips
   n_rows_expected <- length(
     list.files(
-      razzo::get_razzo_path("razzo_project"),
+      raztr::get_raztr_path("razzo_project"),
       recursive = TRUE,
       pattern = "parameters\\.RDa"
     )
   )
-  testthat::expect_equal(nrow(df), n_rows_expected)
+  expect_equal(nrow(df), n_rows_expected)
 
   # Use relative folder path as the primary key
   #
@@ -46,6 +34,7 @@ test_that("use", {
   #
   #  data/1/2/3                                                                 # nolint this is not commented code
   #
-  testthat::expect_true("folder" %in% names(df))
+  expect_true("folder" %in% names(df))
+  expect_true(is.character(df$folder))
 
 })

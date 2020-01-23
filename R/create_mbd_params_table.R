@@ -45,8 +45,8 @@ create_mbd_params_table <- function(
   x <- dplyr::distinct(x)
   x$crown_age <- crown_age
   x$cond <- cond
-  x2 <- x[rep(1:nrow(x), rep(n_replicates, nrow(x))), ]
-  x2$seed <- 1:nrow(x2)
+  x2 <- x[rep(seq_len(nrow(x)), rep(n_replicates, nrow(x))), ]
+  x2$seed <- seq_len(nrow(x2))
   rownames(x2) <- NULL
   x2
 }

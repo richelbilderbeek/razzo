@@ -5,7 +5,7 @@
 #' @author Giovanni Laudanno, Richel J.C. Bilderbeek
 #' @export
 collect_esses <- function(
-  project_folder_name = get_razzo_path("razzo_project")
+  project_folder_name = getwd()
 ) {
   razzo::check_project_folder_name(project_folder_name) # nolint
 
@@ -73,22 +73,12 @@ collect_esses <- function(
         data_table$tree <- "true"
       }
       if (is_best == TRUE) {
-        info_function <- get_best_model
         data_table$best_or_gen <- "best"
       }
       if (is_generative == TRUE) {
-        info_function <- get_generative_model
         data_table$best_or_gen <- "gen"
       }
-      if (!all(traces_names %in% names(data_table))) {
-        msg <- "Not all 'traces_names' are present in data frame. \n"
-        for (traces_name in traces_names) {
-          if (!traces_name %in% names(data_table)) {
-            msg <- c(msg, paste0("'", traces_name, "' is absent. \n"))
-          }
-        }
-        stop(paste0(msg, collapse = ""))
-      }
+      razzo::check_traces_in_df(traces_names = traces_names, df = data_table)
       testit::assert(all(traces_names %in% names(data_table)))
       traces <- data.frame(apply(
         data.frame(data_table[, traces_names]),

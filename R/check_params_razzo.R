@@ -11,6 +11,12 @@ check_razzo_params <- function(
   razzo::check_razzo_params_names(razzo_params)
 
   razzo::check_mbd_params(razzo_params$mbd_params)
+
+  # Older version than 0.8.1.1
+  if (is.null(razzo_params$misc_params$razzo_version)) {
+    razzo_params$misc_params$razzo_version <- "0.8.1"
+  }
+
   razzo::check_misc_params(razzo_params$misc_params)
   pirouette::check_pir_params(pir_params = razzo_params$pir_params)
   peregrine::check_pff_pir_params(razzo_params$pir_params)
@@ -40,36 +46,7 @@ check_razzo_params <- function(
       first_mrca_prior$mrca_distr$mean$value, ") must be equal"
     )
   }
-  for (experiment in razzo_params$pir_params$experiments) {
-    mrca_prior <- experiment$inference_model$mrca_prior
-    if (beautier::is_one_na(mrca_prior)) {
-      stop("Must use an MRCA prior")
-    }
-    if (beautier::is_one_na(mrca_prior$mrca_distr)) {
-      stop("Must use an MRCA prior with a distribution")
-    }
-    if (beautier::is_one_na(mrca_prior$mrca_distr$mean)) {
-      stop("Must use an MRCA prior with a distribution that has a mean")
-    }
-    if (beautier::is_one_na(mrca_prior$mrca_distr$mean$value)) {
-      stop(
-        "Must use an MRCA prior with a distribution that has ",
-        "a mean with a value"
-      )
-    }
-    if (length(mrca_prior$mrca_distr$mean$value) == 0) {
-      stop(
-        "Must use an MRCA prior with a distribution that has a mean ",
-        "with a value"
-      )
-    }
-    if (mrca_prior$mrca_distr$mean$value <= 0.0) {
-      stop(
-        "Must use an MRCA prior with a distribution that has a mean ",
-        "with a non-zero and positive value"
-      )
-    }
-  }
+  razzo::check_razzo_experiments(razzo_params$pir_params$experiments)
   gen_experiment <- razzo_params$pir_params$experiments[[1]]
   if (gen_experiment$inference_conditions$model_type != "generative") {
     stop(
@@ -111,4 +88,3 @@ check_razzo_params_names <- function(
     }
   }
 }
-

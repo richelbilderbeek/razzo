@@ -6,7 +6,7 @@
 #' @aliases create_file_mbd_params create_mbd_params_file
 #' @export create_file_mbd_params create_mbd_params_file
 create_file_mbd_params <- create_mbd_params_file <- function(
-  project_folder_name = get_razzo_path("razzo_project")
+  project_folder_name = getwd()
 ) {
   check_project_folder_name(project_folder_name) # nolint
 
