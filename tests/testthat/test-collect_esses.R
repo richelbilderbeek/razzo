@@ -40,6 +40,16 @@ test_that("use", {
   expect_false("tree_prior" %in% names(df))
   expect_false("burn_in_fraction" %in% names(df))
   expect_false("sample_interval" %in% names(df))
+
+  skip("#385")
+  # raztr has run one setting ..."
+  #  - with two seeds
+  #  - for true and twin tree
+  #  - for generative and candidate
+  # This is 2x2x2 Effective Sample Sizes
+  #
+  # Hypothesis: the logs for the marginal likelihoods are also read.
+  expect_equal(nrow(df), 8)
 })
 
 test_that("abuse", {
