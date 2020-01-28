@@ -4,9 +4,11 @@
 \alias{create_razzo_paramses}
 \title{Create the parameters for all experiment}
 \usage{
-create_razzo_paramses(project_folder_name,
+create_razzo_paramses(
+  project_folder_name,
   mbd_paramses = razzo::create_mbd_paramses(),
-  error_measure_params = pirouette::create_error_measure_params())
+  error_measure_params = pirouette::create_error_measure_params()
+)
 }
 \arguments{
 \item{project_folder_name}{project folder name,
