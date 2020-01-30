@@ -9,6 +9,12 @@
 data_folder <- "/media/richel/D2B40C93B40C7BEB/"
 scripts_folder <- "/home/richel/GitHubs/razzo_project"
 
+# ONLY USE RUNS THAT HAVE A MAX ESS OF 1000,
+# that is, that sample only 901 times
+# TRUE makes sense for the created CSV
+# FALSE makes sense for the created PNG
+do_low_n_esses_only <- FALSE
+
 library(testthat)
 library(peregrine)
 
@@ -59,6 +65,10 @@ for (i in seq_along(mbd_params_filenames)) {
   # Four ESSes per folder and mbd setting
   esses <- read.csv(esses_filename, stringsAsFactors = FALSE)
 
+  if (do_low_n_esses_only) {
+    if (any(esses$ess_likelihood > 1000)) next
+  }
+
   # Outer join on folder
   this_df <- merge(mbd_params, esses, by = "folder")
   expect_equal(nrow(this_df), nrow(esses))
@@ -72,3 +82,13 @@ cat(
   sep = "\n",
   file = "~/GitHubs/razzo_pilot_results/mbd_vs_ess.md"
 )
+
+library(ggplot2)
+
+ggplot(df, aes(x = nu, y = ess_likelihood, color = as.factor(q))) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  geom_hline(yintercept = mean(df[ df$q == 0.0,  ]$ess_likelihood), col = "red") +
+  ggtitle("horizontal line is mean for q == 0.0") +
+  ggsave("~/issue_327.png")
+
