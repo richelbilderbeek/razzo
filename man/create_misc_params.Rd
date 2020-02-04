@@ -7,7 +7,7 @@ Run one point of the experiment}
 \usage{
 create_misc_params(
   folder_name = peregrine::get_pff_tempfile(),
-  razzo_version = as.character(packageVersion("razzo"))
+  razzo_version = as.character(utils::packageVersion("razzo"))
 )
 }
 \arguments{

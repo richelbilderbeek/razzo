@@ -6,7 +6,7 @@
 #' @export
 create_misc_params <- function(
   folder_name = peregrine::get_pff_tempfile(),
-  razzo_version = as.character(packageVersion("razzo"))
+  razzo_version = as.character(utils::packageVersion("razzo"))
 ) {
   testit::assert(peregrine::is_pff(folder_name))
   misc_params <- list(
