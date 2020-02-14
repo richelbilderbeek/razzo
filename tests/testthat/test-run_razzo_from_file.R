@@ -4,7 +4,7 @@ test_that("use", {
 
   if (!beastier::is_on_travis()) return()
 
-  parameters_filenames <- create_parameters_files(
+  parameters_filenames <- razzo::create_parameters_files(
     project_folder_name = file.path(
       peregrine::get_pff_tempdir(),
       "razzo_project"
@@ -12,42 +12,41 @@ test_that("use", {
     experiment_type = "test"
   )
 
-  expect_true(
-    open_parameters_file(
+  testthat::expect_true(
+    razzo::open_parameters_file(
       parameters_filenames[1]
     )$pir_params$experiments[[1]]$est_evidence_mcmc$treelog$filename !=
     "$(tree).trees"
   )
 
-  # Run the first without verbose
-  expect_silent(
-    run_razzo_from_file(
-      parameters_filename = parameters_filenames[1]
-    )
-  )
-
-  # Run the second verbosely
-  expect_output(
-    run_razzo_from_file(
+  # Run the first verbosely
+  testthat::expect_output(
+    razzo::run_razzo_from_file(
       parameters_filename = parameters_filenames[2],
       add_verbose = TRUE
     )
   )
 
+  # Run the second without verbose
+  testthat::expect_silent(
+    razzo::run_razzo_from_file(
+      parameters_filename = parameters_filenames[1]
+    )
+  )
 
 })
 
 test_that("abuse", {
 
   parameters_filename <- "neverland"
-  expect_error(
-    run_razzo_from_file(
+  testthat::expect_error(
+    razzo::run_razzo_from_file(
       parameters_filename = parameters_filename
     ),
     "File 'parameters_filename' not found"
   )
-  expect_error(
-    run_razzo_from_file(
+  testthat::expect_error(
+    razzo::run_razzo_from_file(
       parameters_filename = raztr::get_raztr_path("parameters.RDa"),
       add_verbose = "nonsense"
     ),
@@ -55,16 +54,13 @@ test_that("abuse", {
   )
 })
 
-
-
-
 test_that("use", {
 
   if (!beastier::is_on_travis()) return()
 
   skip("Expose #350")
 
-  parameters_filenames <- create_parameters_files(
+  parameters_filenames <- razzo::create_parameters_files(
     project_folder_name = file.path(
       peregrine::get_pff_tempdir(),
       "razzo_project"
@@ -74,8 +70,8 @@ test_that("use", {
   parameters_filename <- parameters_filenames[1]
 
   # Run the first without verbose
-  expect_silent(
-    run_razzo_from_file(
+  testthat::expect_silent(
+    razzo::run_razzo_from_file(
       parameters_filename = parameters_filename
     )
   )
@@ -101,7 +97,7 @@ test_that("use", {
       pattern = "tree STATE_(.*) = \\("
     )[1, 2]
   )
-  expect_equal(
+  testthat::expect_equal(
     expected_mcmc_chain_length,
     actual_mcmc_chain_length
   )

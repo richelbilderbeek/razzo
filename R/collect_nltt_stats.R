@@ -39,7 +39,6 @@ collect_nltt_stats <- function(
   best_or_gen <- NULL; rm(best_or_gen) # nolint, fixes warning: no visible binding for global variable
   folder <- NULL; rm(folder) # nolint, fixes warning: no visible binding for global variable
 
-
   # Paths to the folder, each folder holds a razzo experiment
   relative_paths <- razzo::get_data_paths(
     project_folder_name,
@@ -47,20 +46,31 @@ collect_nltt_stats <- function(
   )
   paths <- file.path(project_folder_name, relative_paths)
 
+  # Can we load the data?
+  nltt_summary_file <- file.path(
+    project_folder_name,
+    "results",
+    "nltt_stats.csv"
+  )
+  if (file.exists(nltt_summary_file)) {
+    nltt_summary <- read.csv(nltt_summary_file)[, -1]
+  }
+  n_files_nltt <- length(list.files(paths, pattern = "nltt"))
+  if (nrow(nltt_summary) == n_files_nltt) {
+    return(nltt_summary)
+  }
+
   # Find the maximum number of measured nLTT statistics,
   # so a data frame with the right number of columns can be created
-  n_files <- 0
   max_len_nltts <- 0
-  for (p in seq_along(paths)) {
-    files_nltt <- list.files(paths[p], pattern = "nltt")
-    n_files <- n_files + length(files_nltt)
-    for (f in seq_along(files_nltt)) {
-      len_nltts <- length(utils::read.csv(
-        file.path(paths[p], files_nltt[f]),
-        row.names = NULL
-      )[, -1])
-      max_len_nltts <- max(max_len_nltts, len_nltts)
-    }
+  files_nltt <- list.files(paths, pattern = "nltt", full.names = TRUE)
+  n_files <- length(files_nltt)
+  for (f in seq_along(files_nltt)) {
+    len_nltts <- length(utils::read.csv(
+      file.path(files_nltt[f]),
+      row.names = NULL
+    )[, -1])
+    max_len_nltts <- max(max_len_nltts, len_nltts)
   }
 
   # define matrices to store data
