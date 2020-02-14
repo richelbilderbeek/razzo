@@ -62,18 +62,15 @@ collect_nltt_stats <- function(
 
   # Find the maximum number of measured nLTT statistics,
   # so a data frame with the right number of columns can be created
-  n_files <- 0
   max_len_nltts <- 0
-  for (p in seq_along(paths)) {
-    files_nltt <- list.files(paths[p], pattern = "nltt")
-    n_files <- n_files + length(files_nltt)
-    for (f in seq_along(files_nltt)) {
-      len_nltts <- length(utils::read.csv(
-        file.path(paths[p], files_nltt[f]),
-        row.names = NULL
-      )[, -1])
-      max_len_nltts <- max(max_len_nltts, len_nltts)
-    }
+  files_nltt <- list.files(paths, pattern = "nltt", full.names = TRUE)
+  n_files <- length(files_nltt)
+  for (f in seq_along(files_nltt)) {
+    len_nltts <- length(utils::read.csv(
+      file.path(files_nltt[f]),
+      row.names = NULL
+    )[, -1])
+    max_len_nltts <- max(max_len_nltts, len_nltts)
   }
 
   # define matrices to store data
