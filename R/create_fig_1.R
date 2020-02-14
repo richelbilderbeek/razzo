@@ -59,7 +59,7 @@ create_fig_1 <- function(
   df_long <- df_long[order(df_long$tree), ]
   df_long$inference_model <-
     factor(df_long$inference_model, levels = unique(df_long$inference_model))
-  rownames(df_long) <- mapply(seq_len(nrow(df_long)), FUN = toString)
+  rownames(df_long) <- sprintf("%.0f", seq_len(nrow(df_long)))
   ##### Theme #####
   label_size <- 13
   label_face <- "italic"

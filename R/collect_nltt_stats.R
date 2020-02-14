@@ -39,13 +39,26 @@ collect_nltt_stats <- function(
   best_or_gen <- NULL; rm(best_or_gen) # nolint, fixes warning: no visible binding for global variable
   folder <- NULL; rm(folder) # nolint, fixes warning: no visible binding for global variable
 
-
   # Paths to the folder, each folder holds a razzo experiment
   relative_paths <- razzo::get_data_paths(
     project_folder_name,
     full_names = FALSE
   )
   paths <- file.path(project_folder_name, relative_paths)
+
+  # Can we load the data?
+  nltt_summary_file <- file.path(
+    project_folder_name,
+    "results",
+    "nltt_stats.csv"
+  )
+  if (file.exists(nltt_summary_file)) {
+    nltt_summary <- read.csv(nltt_summary_file)[, -1]
+  }
+  n_files_nltt <- length(list.files(paths, pattern = "nltt"))
+  if (nrow(nltt_summary) == n_files_nltt) {
+    return(nltt_summary)
+  }
 
   # Find the maximum number of measured nLTT statistics,
   # so a data frame with the right number of columns can be created
