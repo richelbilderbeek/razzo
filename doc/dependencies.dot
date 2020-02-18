@@ -14,7 +14,7 @@ digraph G
   peregrine -> pirouette;
   razzo -> pirouette;
   razzo -> peregrine;
-  razzo -> razzotestresults;
+  razzo -> raztr;
   razzo -> beastier;
   razzo -> beastier;
   razzo -> mbd;
