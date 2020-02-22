@@ -44,7 +44,6 @@ collect_mbd_params <- function(
   ))
   colnames(matrix_numeric) <- setting_numeric_names
   for (p in seq_along(paths)) {
-    print(p)
     parameters <- razzo::open_parameters_file(file.path(paths[p], "parameters.RDa")) # nolint internal function
     mbd_pars <- parameters$mbd_params
     matrix_numeric[p, ] <- mbd_pars
