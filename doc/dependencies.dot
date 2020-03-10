@@ -1,36 +1,18 @@
 digraph G
 {
-  babette -> beastier;
-  babette -> mauricer [style=dotted];
+  babette -> mauricer;
   mauricer -> beastier;
   beastier -> tracerer;
   beastier -> beautier;
   lumier -> beautier;
+  babetter -> babette;
   mcbette -> babette;
-  pirouette -> babette;
-  pirouette -> mcbette [style=dotted];
+  nodeSub -> nLTT ;
+  pirouette -> mcbette;
   pirouette -> mbd;
   pirouette -> nodeSub;
   peregrine -> pirouette;
-  razzo -> pirouette;
-  razzo -> peregrine;
-  razzo -> razzotestresults;
-  razzo -> beastier;
-  razzo -> beastier;
-  razzo -> mbd;
-  razzo -> mbdSimTrees;
-  razzo -> babette;
-  razzo -> tracerer;
   razzo -> raztr;
-  razzo -> mauricer [style=dotted];
-  razzo -> mcbette [style=dotted];
-  razzo -> nLTT [style=dotted];
-  razzo -> nodeSub [style=dotted];
-  mbdSimTrees -> beastier;
-  mbdSimTrees -> beautier;
-  mbdSimTrees -> mbd;
+  razzo -> mbdSimTrees;
   mbdSimTrees -> peregrine;
-  mbdSimTrees -> pirouette;
-  mbdSimTrees -> babette [style=dotted];
-  mbdSimTrees -> nLTT [style=dotted];
 }

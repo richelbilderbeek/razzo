@@ -1,6 +1,7 @@
 #' Collect the times simulations took to run
 #' @inheritParams default_params_doc
-#' @return a data frame with columns named 'filename', 'state' and 'cpu_time'
+#' @return a data frame with columns named 'filename', 'state' and 'cpu_time'.
+#'   \code{cpu_time} can be NA if the simulation was still running
 #' @author Richel J.C. Bilderbeek
 #' @export
 collect_run_times <- function(
@@ -32,7 +33,7 @@ collect_run_times <- function(
           stats::na.omit(
             stringr::str_match(
               string = log_filename_text,
-              pattern = "State.*: (CANCELLED|COMPLETED)"
+              pattern = "State.*: (CANCELLED|COMPLETED|RUNNING)"
             )[, 2]
           )
         )
@@ -45,7 +46,6 @@ collect_run_times <- function(
             )[, 2]
           )
         )
-        cpu_time
         df$cpu_time[i] <- cpu_time
       }, error = function(e) {} # nolint ignore if something goes wrong
     )

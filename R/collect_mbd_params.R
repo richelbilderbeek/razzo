@@ -16,6 +16,20 @@ collect_mbd_params <- function(
   folder <- razzo::get_data_paths(project_folder_name, full_names = FALSE) # nolint internal function
   paths <- file.path(project_folder_name, folder)
 
+  # Can we load the data?
+  params_summary_file <- file.path(
+    project_folder_name,
+    "results",
+    "mbd_params.csv"
+  )
+  if (file.exists(params_summary_file)) {
+    params_summary <- read.csv(params_summary_file)[, -1]
+  }
+  n_files_params <- length(list.files(paths, pattern = "parameters"))
+  if (nrow(params_summary) == n_files_params) {
+    return(params_summary)
+  }
+
   # initialize dataframe components
   n_settings <- length(paths)
   mbd_pars <- razzo::open_parameters_file(
