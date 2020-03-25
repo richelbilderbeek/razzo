@@ -70,7 +70,7 @@ df <- data.frame()
 
 for (i in seq_along(run_times_filenames)) {
   run_times_filename <- run_times_filenames[i]
-  cpu_times_str <- as.character(read.csv(run_times_filename)$cpu_time)
+  cpu_times_str <- as.character(utils::read.csv(run_times_filename)$cpu_time)
   cpu_times_n_secs <- time_strs_to_n_secs(cpu_times_str)
   cpu_times_n_secs
   run_date <- stringr::str_match(
@@ -129,7 +129,7 @@ for (i in seq_along(parameter_filenames)) {
   # Mean number of taxa
   n_taxa_filename <- file.path(dirname(dirname(dirname(dirname(parameter_filenames[i])))), "results", "n_taxa.csv")
   testit::assert(file.exists(n_taxa_filename))
-  df_n_taxa <- read.csv(n_taxa_filename)
+  df_n_taxa <- utils::read.csv(n_taxa_filename)
   mean_n_taxa <- mean(df_n_taxa$n_taxa)
   df_means$mean_n_taxa[i] <- mean_n_taxa
 
@@ -137,7 +137,7 @@ for (i in seq_along(parameter_filenames)) {
   esses_filename <- file.path(dirname(dirname(dirname(dirname(parameter_filenames[i])))), "results", "esses.csv")
   #if (!file.exists(esses_filename)) next
   testit::assert(file.exists(esses_filename))
-  df_esses <- read.csv(esses_filename)
+  df_esses <- utils::read.csv(esses_filename)
   mean_ess <- mean(df_esses$ess_likelihood)
   df_means$mean_ess[i] <- mean_ess
 }

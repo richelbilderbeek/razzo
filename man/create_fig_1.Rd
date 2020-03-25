@@ -4,11 +4,13 @@
 \alias{create_fig_1}
 \title{Create figure 1}
 \usage{
-create_fig_1(project_folder_name = getwd())
+create_fig_1(project_folder_name = getwd(), bins = 15)
 }
 \arguments{
 \item{project_folder_name}{project folder name,
 will be the full path to \code{razzo_project}}
+
+\item{bins}{how many bins in the histograms?}
 }
 \value{
 Figure 1 as a ggplot2 plot

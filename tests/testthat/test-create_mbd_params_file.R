@@ -3,15 +3,15 @@ context("test-create_file_mbd_params")
 test_that("use", {
 
   # Should create 'results/'mbd_params.csv'
-  filename <- create_mbd_params_file(
+  filename <- razzo::create_mbd_params_file(
     project_folder_name = raztr::get_raztr_path("razzo_project")
   )
 
   # File should be created
-  expect_true(file.exists(filename))
+  testthat::expect_true(file.exists(filename))
 
   # OK: filename must end with 'mbd_params.csv'
-  expect_true(
+  testthat::expect_true(
     length(
       grep(
         pattern = "mbd_params\\.csv$", filename, perl = TRUE, value = TRUE
@@ -20,7 +20,7 @@ test_that("use", {
   )
   # OK: should be in razzo_project/results folder
   # Use ..? to indicate one or two back- or normal slashes
-  expect_true(
+  testthat::expect_true(
     length(
       grep(
         pattern = "razzo_project..?results..?",
@@ -32,8 +32,7 @@ test_that("use", {
   #
   # From here: same tests as used in 'collect_mbd_params':
   #
-  df <- read.csv(file = filename)
-
+  df <- utils::read.csv(file = filename)
 
   # Use relative folder path as the primary key
   #
@@ -46,30 +45,30 @@ test_that("use", {
   #
   #  data/1/2/3                                                                 # nolint this is not commented code
   #
-  expect_true("folder" %in% names(df))
+  testthat::expect_true("folder" %in% names(df))
 
   # The measurements, simply all arguments of 'create_params_mbd'
-  expect_true("lambda" %in% names(df))
-  expect_true("mu" %in% names(df))
-  expect_true("nu" %in% names(df))
-  expect_true("q" %in% names(df))
-  expect_true("cond" %in% names(df)) # Currently always 1 (whatever that means)
-  expect_true("crown_age" %in% names(df))
-  expect_true("seed" %in% names(df))
+  testthat::expect_true("lambda" %in% names(df))
+  testthat::expect_true("mu" %in% names(df))
+  testthat::expect_true("nu" %in% names(df))
+  testthat::expect_true("q" %in% names(df))
+  testthat::expect_true("cond" %in% names(df)) # Currently always 1
+  testthat::expect_true("crown_age" %in% names(df))
+  testthat::expect_true("seed" %in% names(df))
 
   # Data must make sense
-  expect_true(all(df$lambda >= 0.0))
-  expect_true(all(df$mu >= 0.0))
-  expect_true(all(df$nu >= 0.0))
-  expect_true(all(df$q >= 0.0 & df$q <= 1.0))
-  expect_true(all(df$crown_age >= 0.0))
+  testthat::expect_true(all(df$lambda >= 0.0))
+  testthat::expect_true(all(df$mu >= 0.0))
+  testthat::expect_true(all(df$nu >= 0.0))
+  testthat::expect_true(all(df$q >= 0.0 & df$q <= 1.0))
+  testthat::expect_true(all(df$crown_age >= 0.0))
 
 })
 
 test_that("abuse", {
 
-  expect_error(
-    create_mbd_params_file(project_folder_name = "nonsense"),
+  testthat::expect_error(
+    razzo::create_mbd_params_file(project_folder_name = "nonsense"),
     "'project_folder_name' must end with 'razzo_project'"
   )
 })

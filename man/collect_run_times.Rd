@@ -11,7 +11,8 @@ collect_run_times(project_folder_name = getwd())
 will be the full path to \code{razzo_project}}
 }
 \value{
-a data frame with columns named 'filename', 'state' and 'cpu_time'
+a data frame with columns named 'filename', 'state' and 'cpu_time'.
+  \code{cpu_time} can be NA if the simulation was still running
 }
 \description{
 Collect the times simulations took to run

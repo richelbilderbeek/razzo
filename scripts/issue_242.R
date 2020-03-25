@@ -37,7 +37,7 @@ dates <- stringr::str_match(
 dates
 
 marg_liks_filename <- marg_liks_filenames[4]
-df <- read.csv(marg_liks_filename)
+df <- utils::read.csv(marg_liks_filename)
 df$seed <- stringr::str_match(string = df$folder, pattern = "/([0-9]{1,2})$")[, 2]
 
 
@@ -105,7 +105,7 @@ library(forcats)
 # Collect all data frames
 for (i in seq_along(marg_liks_filenames)) {
   marg_liks_filename <- marg_liks_filenames[i]
-  this_df <- read.csv(marg_liks_filename) %>% select(marg_liks)
+  this_df <- utils::read.csv(marg_liks_filename) %>% select(marg_liks)
   this_df$date <- dates[i]
   this_df$index <- seq(1, nrow(this_df))
   df <- rbind(df, this_df)

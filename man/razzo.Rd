@@ -4,6 +4,3 @@
 \name{razzo}
 \alias{razzo}
 \title{razzo: the effect of MBD on inference}
-\description{
-razzo: the effect of MBD on inference
-}

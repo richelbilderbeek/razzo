@@ -3,7 +3,7 @@
 #
 library(ggplot2)
 
-df <- read.csv(
+df <- utils::read.csv(
   "~/GitHubs/razzo_project/overview.md",
   sep = "|",
   stringsAsFactors = FALSE
