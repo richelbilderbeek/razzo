@@ -35,7 +35,7 @@ df <- data.frame()
 # Collect all data frames
 for (i in seq_along(n_taxa_filenames)) {
   n_taxa_filename <- n_taxa_filenames[i]
-  this_df <- read.csv(n_taxa_filename) %>% select(n_taxa)
+  this_df <- utils::read.csv(n_taxa_filename) %>% select(n_taxa)
   this_df$date <- dates[i]
   this_df$index <- seq(1, nrow(this_df))
   df <- rbind(df, this_df)

@@ -22,12 +22,12 @@ collect_mbd_params <- function(
     "results",
     "mbd_params.csv"
   )
-  if (file.exists(params_summary_file)) {
-    params_summary <- read.csv(params_summary_file)[, -1]
-  }
   n_files_params <- length(list.files(paths, pattern = "parameters"))
-  if (nrow(params_summary) == n_files_params) {
-    return(params_summary)
+  if (file.exists(params_summary_file)) {
+    params_summary <- utils::read.csv(params_summary_file)[, -1]
+    if (nrow(params_summary) == n_files_params) {
+      return(params_summary)
+    }
   }
 
   # initialize dataframe components
@@ -49,5 +49,8 @@ collect_mbd_params <- function(
     matrix_numeric[p, ] <- mbd_pars
   }
   out <- cbind(folder, matrix_numeric)
-  plyr::arrange(df = out, folder)
+  out <- plyr::arrange(df = out, folder)
+  save(out, file = params_summary_file)
+  utils::write.csv(x = out, file = params_summary_file)
+  out
 }

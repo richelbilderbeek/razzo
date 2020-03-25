@@ -60,10 +60,10 @@ for (i in seq_along(mbd_params_filenames)) {
   esses_filename <- esses_filenames[i]
 
   # One mbd param per folder
-  mbd_params <- read.csv(mbd_params_filename, stringsAsFactors = FALSE)
+  mbd_params <- utils::read.csv(mbd_params_filename, stringsAsFactors = FALSE)
 
   # Four ESSes per folder and mbd setting
-  esses <- read.csv(esses_filename, stringsAsFactors = FALSE)
+  esses <- utils::read.csv(esses_filename, stringsAsFactors = FALSE)
 
   if (do_low_n_esses_only) {
     if (any(esses$ess_likelihood > 1000)) next
