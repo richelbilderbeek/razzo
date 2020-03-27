@@ -23,6 +23,7 @@ Depends:
 Imports: 
     ape,
     babette (>= 2.1.1),
+    DDD,
     ggplot2,
     magrittr,
     mbd (>= 0.2),

@@ -2,12 +2,14 @@
 #' @description Collect all data
 #' @inheritParams default_params_doc
 #' @param new_run If true will collect all data from scratch
+#' @param coarse_grain choose how many digits precision for nltt
 #' @return a dataframe with all data
 #' @author Giovanni Laudanno
 #' @export
 collect_all_data <- function(
   project_folder_name = getwd(),
-  new_run = FALSE
+  new_run = FALSE,
+  coarse_grain = 0
 ) {
   razzo::check_project_folder_name(project_folder_name) # nolint
 
@@ -69,12 +71,25 @@ collect_all_data <- function(
     x2 <- n_mutations
   }
 
+  # coarse grain?
+  if (coarse_grain > 0) {
+    if (!is.integer(coarse_grain)) {
+      stop("'coarse_grain' must be an integer")
+    }
+    nltt_stats[grepl(x = colnames(nltt_stats), pattern = "nltt_")] <-
+      DDD::roundn(
+        nltt_stats[grepl(x = colnames(nltt_stats), pattern = "nltt_")],
+        coarse_grain
+      )
+  }
+
   df3 <- merge(df2, droplevels(x2), by = c("folder", "tree"))
   df3$folder_tree.x <- NULL; df3$folder_tree.y <- NULL # nolint
   df4 <- merge(df3, n_taxa, by = c("folder"))
   df5 <- merge(df4, nltt_stats, by = c("folder", "tree", "best_or_gen"))
   errors <- df5[grepl(x = colnames(df5), pattern = "nltt_")]
   df5$median_nltt <- apply(errors, MARGIN = 1, "median")
+  df5$mean_nltt <- apply(errors, MARGIN = 1, "mean")
   df5$variance_nltt <- apply(errors, MARGIN = 1, "var")
   df5$stdev_nltt <- apply(errors, MARGIN = 1, "sd")
 
