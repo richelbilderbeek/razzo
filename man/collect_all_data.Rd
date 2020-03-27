@@ -4,13 +4,19 @@
 \alias{collect_all_data}
 \title{Collect all data}
 \usage{
-collect_all_data(project_folder_name = getwd(), new_run = FALSE)
+collect_all_data(
+  project_folder_name = getwd(),
+  new_run = FALSE,
+  coarse_grain = 0
+)
 }
 \arguments{
 \item{project_folder_name}{project folder name,
 will be the full path to \code{razzo_project}}
 
 \item{new_run}{If true will collect all data from scratch}
+
+\item{coarse_grain}{choose how many digits precision for nltt}
 }
 \value{
 a dataframe with all data
