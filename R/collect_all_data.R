@@ -73,6 +73,10 @@ collect_all_data <- function(
   df3$folder_tree.x <- NULL; df3$folder_tree.y <- NULL # nolint
   df4 <- merge(df3, n_taxa, by = c("folder"))
   df5 <- merge(df4, nltt_stats, by = c("folder", "tree", "best_or_gen"))
+  errors <- df5[grepl(x = colnames(df5), pattern = "nltt_")]
+  df5$median_nltt <- apply(errors, MARGIN = 1, "median")
+  df5$variance_nltt <- apply(errors, MARGIN = 1, "var")
+  df5$stdev_nltt <- apply(errors, MARGIN = 1, "sd")
 
   ### so far so good
   out <- plyr::arrange(df = df5, folder, tree, plyr::desc(best_or_gen))
