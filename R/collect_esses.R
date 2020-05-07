@@ -2,7 +2,7 @@
 #' @description Collect esses
 #' @inheritParams default_params_doc
 #' @return a dataframe with parameters and esses
-#' @author Giovanni Laudanno, Richel J.C. Bilderbeek
+#' @author Giovanni Laudanno, Richèl J.C. Bilderbeek
 #' @export
 collect_esses <- function(
   project_folder_name = getwd()

@@ -13,7 +13,7 @@
 #'   \item cond the conditioning
 #'   \item seed the RNG seed for creating an MBD tree
 #' }
-#' @author Giovanni Laudanno, Richel J.C. Bilderbeek
+#' @author Giovanni Laudanno, Richèl J.C. Bilderbeek
 #' @examples
 #' library(testthat)
 #'

@@ -1,7 +1,7 @@
 #' Check if all the traces' names are in the names of the data frames
 #' @param traces_names names of the traces
 #' @param df a data frame
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @examples
 #' library(testthat)
 #'

@@ -10,7 +10,7 @@
 #' in that folder.
 #' @inheritParams default_params_doc
 #' @return the paths to each created \code{parameters.RDa} file
-#' @author Giovanni Laudanno, Richel J.C. Bilderbeek
+#' @author Giovanni Laudanno, Richèl J.C. Bilderbeek
 #' @export
 save_razzo_paramses <- function(
   razzo_paramses = razzo::create_razzo_paramses(

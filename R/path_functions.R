@@ -1,6 +1,6 @@
 #' Clean up a path by removing double folder seperators
 #' @param filename name of a file
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @examples
 #' library(testthat)
 #'
@@ -18,7 +18,7 @@ clean_path <- function(filename) {
 
 #' Clean up a paths by removing double folder seperators
 #' @param filenames names of files
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @examples
 #' library(testthat)
 #' if (rappdirs::app_dir()$os != "win") {
@@ -78,7 +78,7 @@ get_results_path <- function(
 #' # In each of these, there is a 'parameters.RDa' file
 #' parameter_files <- file.path(all_paths, "parameters.RDa")
 #' expect_true(all(file.exists(parameter_files)))
-#' @author Giovanni Laudanno, Richel J.C. Bilderbeek
+#' @author Giovanni Laudanno, Richèl J.C. Bilderbeek
 #' @export
 get_data_paths <- function(
   project_folder_name,

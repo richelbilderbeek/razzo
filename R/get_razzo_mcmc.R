@@ -1,7 +1,7 @@
 #' Get the MCMC chain used in the article
 #' @inheritParams default_params_doc
 #' @return the MCMC chain
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @export
 get_razzo_mcmc <- function(
   model_type,

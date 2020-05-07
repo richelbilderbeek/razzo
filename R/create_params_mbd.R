@@ -1,6 +1,6 @@
 #' Create mbd parameters
 #' @inheritParams default_params_doc
-#' @author Richel J.C. Bilderbeek, Giovanni Laudanno
+#' @author Richèl J.C. Bilderbeek, Giovanni Laudanno
 #' @aliases create_params_mbd create_mbd_params
 #' @export create_params_mbd create_mbd_params
 create_params_mbd <- create_mbd_params <- function(
@@ -27,7 +27,7 @@ create_params_mbd <- create_mbd_params <- function(
 
 #' Create MBD parameters used in tests
 #' @inheritParams default_params_doc
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @export
 create_test_mbd_params <- function(
   seed = 1

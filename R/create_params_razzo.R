@@ -5,7 +5,7 @@
 #' \code{pir_params$alignment_params$fasta_filename} as
 #' the folder where all files will be created
 #' @inheritParams default_params_doc
-#' @author Richel J.C. Bilderbeek, Giovanni Laudanno
+#' @author Richèl J.C. Bilderbeek, Giovanni Laudanno
 #' @aliases create_params_razzo create_razzo_params
 #' @export create_params_razzo create_razzo_params
 create_params_razzo <- create_razzo_params <- function(
@@ -38,7 +38,7 @@ create_params_razzo <- create_razzo_params <- function(
 #' \code{pir_params$alignment_params$fasta_filename} as
 #' the folder where all files will be created
 #' @inheritParams default_params_doc
-#' @author Richel J.C. Bilderbeek, Giovanni Laudanno
+#' @author Richèl J.C. Bilderbeek, Giovanni Laudanno
 #' @export
 create_test_razzo_params <- function(
   mbd_params = create_test_mbd_params(),

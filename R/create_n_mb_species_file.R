@@ -2,7 +2,7 @@
 #' and save it as a file
 #' @inheritParams default_params_doc
 #' @return the filename
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @export
 create_n_mb_species_file <- function(
   project_folder_name = getwd()

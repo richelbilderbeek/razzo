@@ -2,7 +2,7 @@
 #' @description Collect nltt statistics
 #' @inheritParams default_params_doc
 #' @return a dataframe with parameters and nltt statistics
-#' @author Giovanni Laudanno, Richel J.C. Bilderbeek
+#' @author Giovanni Laudanno, Richèl J.C. Bilderbeek
 #' @examples
 #' library(testthat)
 #' library(raztr)

@@ -6,7 +6,7 @@
 #' @description Collect number of taxa
 #' @inheritParams default_params_doc
 #' @return a dataframe with folder and taxa number for each phylogeny
-#' @author Giovanni Laudanno, Richel J.C. Bilderbeek
+#' @author Giovanni Laudanno, Richèl J.C. Bilderbeek
 #' @examples
 #' library(testthat)
 #' library(raztr)

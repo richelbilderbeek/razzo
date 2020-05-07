@@ -2,7 +2,7 @@
 #' @description Collect number of mutations
 #' @inheritParams default_params_doc
 #' @return a dataframe with folder and number of mutations
-#' @author Giovanni Laudanno, Richel J.C. Bilderbeek
+#' @author Giovanni Laudanno, Richèl J.C. Bilderbeek
 #' @export
 collect_n_mutations <- function(
   project_folder_name = getwd()

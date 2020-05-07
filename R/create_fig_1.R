@@ -1,7 +1,7 @@
 #' Create figure 1
 #' @inheritParams default_params_doc
 #' @return Figure 1 as a ggplot2 plot
-#' @author Giovanni Laudanno, Richel J.C. Bilderbeek
+#' @author Giovanni Laudanno, Richèl J.C. Bilderbeek
 #' @export
 create_fig_1 <- function(
   project_folder_name = getwd()

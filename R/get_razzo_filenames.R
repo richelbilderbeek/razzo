@@ -162,7 +162,7 @@ get_alignment_filename <- function(
 
 #' Get tree filename
 #' @inheritParams default_params_doc
-#' @author Giovanni Laudanno, Richel J.C. Bilderbeek
+#' @author Giovanni Laudanno, Richèl J.C. Bilderbeek
 #' @examples
 #' library(testthat)
 #'

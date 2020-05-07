@@ -2,7 +2,7 @@
 #' convention and article
 #' @inheritParams default_params_doc
 #' @inheritParams pirouette::create_twinning_params
-#' @author Richel J.C. Bilderbeek, Giovanni Laudanno
+#' @author Richèl J.C. Bilderbeek, Giovanni Laudanno
 #' @export
 create_razzo_twinning_params <- function(
   folder_name,

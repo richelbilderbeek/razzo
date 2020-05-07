@@ -2,7 +2,7 @@
 #' @description Collect mbd parameters
 #' @inheritParams default_params_doc
 #' @return a dataframe with parameters and folder
-#' @author Giovanni Laudanno, Richel J.C. Bilderbeek
+#' @author Giovanni Laudanno, Richèl J.C. Bilderbeek
 #' @export
 collect_mbd_params <- function(
   project_folder_name = getwd()

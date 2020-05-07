@@ -2,7 +2,7 @@
 #' @description Collect marginal loglikelihoods
 #' @inheritParams default_params_doc
 #' @return a dataframe with parameters and marginal likelihoods
-#' @author Giovanni Laudanno, Richel J.C. Bilderbeek
+#' @author Giovanni Laudanno, Richèl J.C. Bilderbeek
 #' @aliases collect_evidences collect_marg_liks
 #' @export collect_evidences collect_marg_liks
 collect_evidences <- collect_marg_liks <- function(

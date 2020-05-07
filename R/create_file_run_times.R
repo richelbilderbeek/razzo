@@ -1,7 +1,7 @@
 #' Creates file containing the run times
 #' @inheritParams default_params_doc
 #' @return the name of the saved file
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @aliases create_file_run_times create_run_times_file
 #' @export create_file_run_times create_run_times_file
 create_file_run_times <- create_run_times_file <- function(

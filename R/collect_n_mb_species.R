@@ -1,7 +1,7 @@
 #' Collect the number of multiple-born (MB) species
 #' @inheritParams default_params_doc
 #' @return a dataframe with folder and number of multiple-born (MB) species
-#' @author Richel J.C. Bilderbeek, Giovanni Laudanno
+#' @author Richèl J.C. Bilderbeek, Giovanni Laudanno
 #' @export
 collect_n_mb_species <- function(
   project_folder_name = getwd()

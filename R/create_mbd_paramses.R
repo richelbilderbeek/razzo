@@ -5,7 +5,7 @@
 #' @return a list of \code{mbd_params}
 #' @seealso use \link{create_mbd_params} to create one
 #'   MBD parameter combination
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @examples
 #' library(testthat)
 #'

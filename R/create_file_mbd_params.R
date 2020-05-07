@@ -2,7 +2,7 @@
 #' in one \code{.csv} file called \code{results/mbd_params.csv}
 #' @inheritParams default_params_doc
 #' @return the name of the file created
-#' @author Giovanni Laudanno, Richel J.C. Bilderbeek
+#' @author Giovanni Laudanno, Richèl J.C. Bilderbeek
 #' @aliases create_file_mbd_params create_mbd_params_file
 #' @export create_file_mbd_params create_mbd_params_file
 create_file_mbd_params <- create_mbd_params_file <- function(

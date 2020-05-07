@@ -2,7 +2,7 @@
 #' @inheritParams default_params_doc
 #' @return a data frame with columns named 'filename', 'state' and 'cpu_time'.
 #'   \code{cpu_time} can be NA if the simulation was still running
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @export
 collect_run_times <- function(
   project_folder_name = getwd()

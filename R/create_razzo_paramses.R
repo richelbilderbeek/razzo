@@ -1,7 +1,7 @@
 #' Create the parameters for all experiment
 #' @inheritParams default_params_doc
 #' @return a set of \code{razzo_params}
-#' @author Richel J.C. Bilderbeek, Giovanni Laudanno
+#' @author Richèl J.C. Bilderbeek, Giovanni Laudanno
 #' @export
 create_razzo_paramses <- function(
   project_folder_name,

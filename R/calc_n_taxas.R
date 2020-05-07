@@ -5,7 +5,7 @@
 #' @return a numeric vector of whole numbers,
 #'   with as much values as the \code{mbd_paramses},
 #'   containing the number of taxa each MBD parameter set will create
-#' @author Richel J.C. Bilderbeek, Giovanni Laudanno
+#' @author Richèl J.C. Bilderbeek, Giovanni Laudanno
 #' @export
 calc_n_taxas <- function(
   mbd_paramses

@@ -1,5 +1,5 @@
 #' Update the \code{razzo} dependencies
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @export
 update_razzo <- function() {
   babette::update_babette()

@@ -4,7 +4,7 @@
 #' Else will do nothing.
 #' @inheritParams default_params_doc
 #' @return nothing
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @export
 check_project_folder_name <- function(project_folder_name) {
   if (
@@ -31,7 +31,7 @@ check_project_folder_name <- function(project_folder_name) {
 #' Opens a parameter file and parses it
 #' @inheritParams default_params_doc
 #' @return the razzo parameters
-#' @author Richel J.C. Bilderbeek, Giovanni Laudanno
+#' @author Richèl J.C. Bilderbeek, Giovanni Laudanno
 #' @export
 open_parameters_file <- function(
   parameters_filename
@@ -60,7 +60,7 @@ open_parameters_file <- function(
 
 #' Get the names of the supported generative models
 #' @return the generative models
-#' @author Giovanni Laudanno, Richel J.C. Bilderbeek
+#' @author Giovanni Laudanno, Richèl J.C. Bilderbeek
 #' @examples
 #' library(testthat)
 #'

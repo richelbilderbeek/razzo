@@ -1,6 +1,6 @@
 #' Create a generative experiment that follows the razzo
 #' naming conventions and article
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @inheritParams default_params_doc
 #' @param rng_seed RNG seed used in inference
 #' @export

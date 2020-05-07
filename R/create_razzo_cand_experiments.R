@@ -5,7 +5,7 @@
 #' @inheritParams default_params_doc
 #' @param gen_experiment the generative experiment
 #' @return a list of experiments
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @export
 create_razzo_cand_experiments <- function(
   gen_experiment,

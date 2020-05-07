@@ -4,7 +4,7 @@
 #'   with as many rows as model selection parameter sets.
 #'   Tip: use \link[pirouette]{pir_plot} to display it.
 #'   More important are the files it creates.
-#' @author Richel J.C. Bilderbeek, Giovanni Laudanno
+#' @author Richèl J.C. Bilderbeek, Giovanni Laudanno
 #' @export
 run_razzo <- function(
   razzo_params

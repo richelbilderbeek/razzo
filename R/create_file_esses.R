@@ -2,7 +2,7 @@
 #' and save it as a file
 #' @inheritParams default_params_doc
 #' @return the filename
-#' @author Giovanni Laudanno, Richel J.C. Bilderbeek
+#' @author Giovanni Laudanno, Richèl J.C. Bilderbeek
 #' @aliases create_file_esses create_esses_file
 #' @export create_file_esses create_esses_file
 create_file_esses <- create_esses_file <- function(

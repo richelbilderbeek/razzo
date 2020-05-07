@@ -5,7 +5,7 @@
 #' @param add_verbose if \code{TRUE}, this will set verbosity
 #'   to \code{TRUE}, even though the \code{razzo} parameter
 #'   file has set it to \code{FALSE}. This is used in debugging
-#' @author Richel J.C. Bilderbeek, Giovanni Laudanno
+#' @author Richèl J.C. Bilderbeek, Giovanni Laudanno
 #' @export
 run_razzo_from_file <- function(
   parameters_filename,

@@ -2,7 +2,7 @@
 #' Run one point of the experiment
 #' @inheritParams default_params_doc
 #' @param razzo_version version of razzo this parameter file is created with
-#' @author Richel J.C. Bilderbeek, Giovanni Laudanno
+#' @author Richèl J.C. Bilderbeek, Giovanni Laudanno
 #' @export
 create_misc_params <- function(
   folder_name = peregrine::get_pff_tempfile(),

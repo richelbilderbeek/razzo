@@ -1,7 +1,7 @@
 #' Creates file containing the number of taxa
 #' @inheritParams default_params_doc
 #' @return the name of the saved file
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @aliases create_file_n_taxa create_n_taxa_file
 #' @export create_file_n_taxa create_n_taxa_file
 create_file_n_taxa <- create_n_taxa_file <- function(

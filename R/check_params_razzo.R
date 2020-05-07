@@ -3,7 +3,7 @@
 #' Will \link{stop} if the \code{razzo_params} are invalid,
 #' else will do nothing
 #' @inheritParams default_params_doc
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @export
 check_razzo_params <- function(
   razzo_params
@@ -72,7 +72,7 @@ check_razzo_params <- function(
 #'
 #' Will \link{stop} if not
 #' @inheritParams default_params_doc
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @export
 check_razzo_params_names <- function(
   razzo_params

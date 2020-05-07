@@ -2,7 +2,7 @@
 #' the razzo file naming convenstions and article
 #' @inheritParams default_params_doc
 #' @param rng_seed RNG seed for the alignment simulation
-#' @author Richel J.C. Bilderbeek
+#' @author Richèl J.C. Bilderbeek
 #' @export
 create_razzo_alignment_params <- function(
   folder_name,
