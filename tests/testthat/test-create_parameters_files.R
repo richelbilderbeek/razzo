@@ -55,7 +55,9 @@ test_that("use", {
 
 test_that("use, full", {
 
+
   if (!beastier::is_on_travis()) return()
+  skip("Takes too long")
 
   filenames <- razzo::create_parameters_files(
     project_folder_name = file.path(
