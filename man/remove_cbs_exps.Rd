@@ -16,5 +16,5 @@ experiments that do not have a CBS tree prior
 Remove all experiments that have a CBS tree prior
 }
 \author{
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 }

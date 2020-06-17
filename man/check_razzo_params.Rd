@@ -16,5 +16,5 @@ Will \link{stop} if the \code{razzo_params} are invalid,
 else will do nothing
 }
 \author{
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 }

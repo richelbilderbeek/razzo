@@ -13,5 +13,5 @@ a numeric vector of \code{lambda}s
 Get the \code{lambda}s used in the MBD process
 }
 \author{
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 }

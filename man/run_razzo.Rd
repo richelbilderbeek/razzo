@@ -21,5 +21,5 @@ a data frame with errors,
 Runs one \code{razzo} experiment
 }
 \author{
-Richel J.C. Bilderbeek, Giovanni Laudanno
+Richèl J.C. Bilderbeek, Giovanni Laudanno
 }

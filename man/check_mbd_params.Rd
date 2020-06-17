@@ -14,5 +14,5 @@ check_mbd_params(mbd_params)
 Create mbd parameters
 }
 \author{
-Richel J.C. Bilderbeek, Giovanni Laudanno
+Richèl J.C. Bilderbeek, Giovanni Laudanno
 }

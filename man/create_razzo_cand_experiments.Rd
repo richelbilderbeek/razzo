@@ -25,5 +25,5 @@ It needs to know what the generative experiment is,
 to exclude it from the created candidate experiments.
 }
 \author{
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 }

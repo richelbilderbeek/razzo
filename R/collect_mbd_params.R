@@ -23,7 +23,7 @@ collect_mbd_params <- function(
     "mbd_params.csv"
   )
   if (file.exists(params_summary_file)) {
-    params_summary <- read.csv(params_summary_file)[, -1]
+    params_summary <- utils::read.csv(params_summary_file)[, -1]
   }
   n_files_params <- length(list.files(paths, pattern = "parameters"))
   if (nrow(params_summary) == n_files_params) {

@@ -13,5 +13,5 @@ the MCMC chain length
 Get the MCMC chain length used in the article
 }
 \author{
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 }

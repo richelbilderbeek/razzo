@@ -18,5 +18,5 @@ a dataframe with parameters and marginal likelihoods
 Collect marginal loglikelihoods
 }
 \author{
-Giovanni Laudanno, Richel J.C. Bilderbeek
+Giovanni Laudanno, Richèl J.C. Bilderbeek
 }

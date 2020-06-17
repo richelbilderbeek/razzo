@@ -22,5 +22,5 @@ expect_silent(check_traces_in_df("my_name", df))
 expect_error(check_traces_in_df("absent", df))
 }
 \author{
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 }

@@ -23,5 +23,5 @@ Will throw if not.
 Else will do nothing.
 }
 \author{
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 }

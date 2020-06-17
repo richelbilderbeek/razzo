@@ -19,5 +19,5 @@ Create the dataframe with number of multiple-born species
 and save it as a file
 }
 \author{
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 }

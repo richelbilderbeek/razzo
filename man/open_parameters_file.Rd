@@ -16,5 +16,5 @@ the razzo parameters
 Opens a parameter file and parses it
 }
 \author{
-Richel J.C. Bilderbeek, Giovanni Laudanno
+Richèl J.C. Bilderbeek, Giovanni Laudanno
 }

@@ -16,5 +16,5 @@ and used by \link{run_razzo}}
 Will \link{stop} if not
 }
 \author{
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 }

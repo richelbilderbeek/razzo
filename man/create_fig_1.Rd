@@ -17,5 +17,5 @@ Figure 1 as a ggplot2 plot
 Create figure 1
 }
 \author{
-Giovanni Laudanno, Richel J.C. Bilderbeek
+Giovanni Laudanno, Richèl J.C. Bilderbeek
 }

@@ -13,5 +13,5 @@ the MCMC sampling interval
 Get the MCMC sampling interval used in the article
 }
 \author{
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 }

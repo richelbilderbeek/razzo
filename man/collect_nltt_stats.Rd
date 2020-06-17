@@ -43,5 +43,5 @@ expect_true(all(df$best_or_gen \%in\% c("best", "gen")))
 expect_true(all(df$nltt_1 >= 0.0))
 }
 \author{
-Giovanni Laudanno, Richel J.C. Bilderbeek
+Giovanni Laudanno, Richèl J.C. Bilderbeek
 }

@@ -30,5 +30,5 @@ parameter_files <- file.path(all_paths, "parameters.RDa")
 expect_true(all(file.exists(parameter_files)))
 }
 \author{
-Giovanni Laudanno, Richel J.C. Bilderbeek
+Giovanni Laudanno, Richèl J.C. Bilderbeek
 }

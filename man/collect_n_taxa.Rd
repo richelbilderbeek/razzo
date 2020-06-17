@@ -35,5 +35,5 @@ expect_true(is.character(df$folder))
 expect_true(is.numeric(df$n_taxa))
 }
 \author{
-Giovanni Laudanno, Richel J.C. Bilderbeek
+Giovanni Laudanno, Richèl J.C. Bilderbeek
 }

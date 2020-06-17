@@ -23,5 +23,5 @@ Create all parameter files  in
   \code{project_folder_name/data/[settings]/seed/[models]}
 }
 \author{
-Giovanni Laudanno, Richel J.C. Bilderbeek
+Giovanni Laudanno, Richèl J.C. Bilderbeek
 }

@@ -13,5 +13,5 @@ create_test_mbd_params(seed = 1)
 Create MBD parameters used in tests
 }
 \author{
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 }

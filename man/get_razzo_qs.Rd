@@ -13,5 +13,5 @@ a numeric vector of \code{q}s
 Get the \code{q}s used in the MBD process
 }
 \author{
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 }

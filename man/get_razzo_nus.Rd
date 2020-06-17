@@ -13,5 +13,5 @@ a numeric vector of \code{nu}s
 Get the \code{nu}s used in the MBD process
 }
 \author{
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 }

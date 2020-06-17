@@ -10,5 +10,5 @@ update_razzo()
 Update the \code{razzo} dependencies
 }
 \author{
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 }

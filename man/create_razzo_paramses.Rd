@@ -29,5 +29,5 @@ a set of \code{razzo_params}
 Create the parameters for all experiment
 }
 \author{
-Richel J.C. Bilderbeek, Giovanni Laudanno
+Richèl J.C. Bilderbeek, Giovanni Laudanno
 }

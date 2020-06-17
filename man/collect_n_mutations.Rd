@@ -17,5 +17,5 @@ a dataframe with folder and number of mutations
 Collect number of mutations
 }
 \author{
-Giovanni Laudanno, Richel J.C. Bilderbeek
+Giovanni Laudanno, Richèl J.C. Bilderbeek
 }

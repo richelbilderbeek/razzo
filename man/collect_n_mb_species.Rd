@@ -17,5 +17,5 @@ a dataframe with folder and number of multiple-born (MB) species
 Collect the number of multiple-born (MB) species
 }
 \author{
-Richel J.C. Bilderbeek, Giovanni Laudanno
+Richèl J.C. Bilderbeek, Giovanni Laudanno
 }

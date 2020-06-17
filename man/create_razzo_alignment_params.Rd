@@ -17,5 +17,5 @@ Create a razzo alignment parameter set that matches
 the razzo file naming convenstions and article
 }
 \author{
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 }

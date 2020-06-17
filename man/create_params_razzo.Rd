@@ -26,5 +26,5 @@ using the \link{dirname} of
 the folder where all files will be created
 }
 \author{
-Richel J.C. Bilderbeek, Giovanni Laudanno
+Richèl J.C. Bilderbeek, Giovanni Laudanno
 }

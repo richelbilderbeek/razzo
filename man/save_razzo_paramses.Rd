@@ -29,5 +29,5 @@ This function will create a \code{parameters.RDa}
 in that folder.
 }
 \author{
-Giovanni Laudanno, Richel J.C. Bilderbeek
+Giovanni Laudanno, Richèl J.C. Bilderbeek
 }

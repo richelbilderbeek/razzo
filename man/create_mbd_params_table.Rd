@@ -65,5 +65,5 @@ use \link{create_mbd_paramses} to create a list
 of \code{mbd_params}
 }
 \author{
-Giovanni Laudanno, Richel J.C. Bilderbeek
+Giovanni Laudanno, Richèl J.C. Bilderbeek
 }

@@ -28,5 +28,5 @@ use \link{create_mbd_params} to create one
   MBD parameter combination
 }
 \author{
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 }

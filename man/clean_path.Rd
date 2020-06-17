@@ -23,5 +23,5 @@ library(testthat)
  expect_error(clean_path(Inf))
 }
 \author{
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 }

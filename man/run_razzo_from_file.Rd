@@ -19,5 +19,5 @@ file has set it to \code{FALSE}. This is used in debugging}
 Run a razzo experiment from a filename
 }
 \author{
-Richel J.C. Bilderbeek, Giovanni Laudanno
+Richèl J.C. Bilderbeek, Giovanni Laudanno
 }

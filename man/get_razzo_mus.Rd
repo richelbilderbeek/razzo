@@ -13,5 +13,5 @@ a numeric vector of \code{mu}s
 Get the \code{mu}s used in the MBD process
 }
 \author{
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 }

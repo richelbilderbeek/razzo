@@ -20,5 +20,5 @@ Create a generative experiment that follows the razzo
 naming conventions and article
 }
 \author{
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 }

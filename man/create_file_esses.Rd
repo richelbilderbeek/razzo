@@ -20,5 +20,5 @@ Create the dataframe with the Effective Samples Sizes (ESSes)
 and save it as a file
 }
 \author{
-Giovanni Laudanno, Richel J.C. Bilderbeek
+Giovanni Laudanno, Richèl J.C. Bilderbeek
 }

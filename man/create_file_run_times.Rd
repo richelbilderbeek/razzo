@@ -18,5 +18,5 @@ the name of the saved file
 Creates file containing the run times
 }
 \author{
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 }

@@ -28,5 +28,5 @@ a multiple event. See \code{\link[mbd]{mbd_sim}}}
 Create mbd parameters
 }
 \author{
-Richel J.C. Bilderbeek, Giovanni Laudanno
+Richèl J.C. Bilderbeek, Giovanni Laudanno
 }

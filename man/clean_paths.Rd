@@ -29,5 +29,5 @@ expect_error(razzo::clean_paths(NA))
 expect_error(razzo::clean_paths(Inf))
 }
 \author{
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 }

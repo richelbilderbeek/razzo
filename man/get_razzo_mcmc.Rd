@@ -19,5 +19,5 @@ the MCMC chain
 Get the MCMC chain used in the article
 }
 \author{
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 }

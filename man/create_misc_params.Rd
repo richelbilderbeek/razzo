@@ -20,5 +20,5 @@ Create the parameters for one experiment.
 Run one point of the experiment
 }
 \author{
-Richel J.C. Bilderbeek, Giovanni Laudanno
+Richèl J.C. Bilderbeek, Giovanni Laudanno
 }

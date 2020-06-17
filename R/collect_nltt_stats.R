@@ -53,7 +53,7 @@ collect_nltt_stats <- function(
     "nltt_stats.csv"
   )
   if (file.exists(nltt_summary_file)) {
-    nltt_summary <- read.csv(nltt_summary_file)[, -1]
+    nltt_summary <- utils::read.csv(nltt_summary_file)[, -1]
   }
   n_files_nltt <- length(list.files(paths, pattern = "nltt"))
   if (nrow(nltt_summary) == n_files_nltt) {

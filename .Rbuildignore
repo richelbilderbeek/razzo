@@ -10,3 +10,5 @@
 ^cluster_scripts$
 ^scripts$
 ^data-raw$
+^\.github$
+^LICENSE$

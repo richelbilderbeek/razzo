@@ -22,5 +22,5 @@ Calculate the number of taxa that trees will have when
 simulated from the set of MBD parameters.
 }
 \author{
-Richel J.C. Bilderbeek, Giovanni Laudanno
+Richèl J.C. Bilderbeek, Giovanni Laudanno
 }

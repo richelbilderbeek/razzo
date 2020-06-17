@@ -13,5 +13,5 @@ the crown age
 Get the crown age used in the article
 }
 \author{
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 }

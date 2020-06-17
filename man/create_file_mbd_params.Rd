@@ -20,5 +20,5 @@ Collect all MBD parameters of a \code{razzo} run and put these
 in one \code{.csv} file called \code{results/mbd_params.csv}
 }
 \author{
-Giovanni Laudanno, Richel J.C. Bilderbeek
+Giovanni Laudanno, Richèl J.C. Bilderbeek
 }

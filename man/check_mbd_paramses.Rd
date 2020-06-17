@@ -21,5 +21,5 @@ mbd_paramses <- create_mbd_paramses()
 expect_silent(check_mbd_paramses(mbd_paramses))
 }
 \author{
-Richel J.C. Bilderbeek
+Richèl J.C. Bilderbeek
 }

@@ -20,5 +20,5 @@ expect_true("mbd" \%in\% get_gen_models())
 expect_false("Jensen Ackles" \%in\% get_gen_models())
 }
 \author{
-Giovanni Laudanno, Richel J.C. Bilderbeek
+Giovanni Laudanno, Richèl J.C. Bilderbeek
 }
