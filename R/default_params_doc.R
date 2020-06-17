@@ -8,6 +8,7 @@
 #' @param bd_tree a phylogent of class \code{phylo}, created by a Birth Death
 #'   process
 #' @param bd_tree_filename name of the file that stores a BD twin tree
+#' @param bins how many bins in the histograms?
 #' @param brts set of branching times
 #' @param chain_length something
 #' @param clock_model Name of the clock model that has
@@ -111,6 +112,7 @@ default_params_doc <- function(
   bd_mutation_rate,
   bd_tree,
   bd_tree_filename,
+  bins,
   brts,
   chain_length,
   clock_model,

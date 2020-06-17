@@ -8,9 +8,9 @@
 create_file_mbd_params <- create_mbd_params_file <- function(
   project_folder_name = getwd()
 ) {
-  check_project_folder_name(project_folder_name) # nolint
+  razzo::check_project_folder_name(project_folder_name) # nolint
 
-  df <- collect_mbd_params(project_folder_name) # nolint razzo function
+  df <- razzo::collect_mbd_params(project_folder_name) # nolint razzo function
   filename <- file.path(project_folder_name, "results", "mbd_params.csv")
   dir.create(path = dirname(filename), showWarnings = FALSE, recursive = TRUE)
   utils::write.csv(

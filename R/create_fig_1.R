@@ -4,7 +4,8 @@
 #' @author Giovanni Laudanno, Richèl J.C. Bilderbeek
 #' @export
 create_fig_1 <- function(
-  project_folder_name = getwd()
+  project_folder_name = getwd(),
+  bins = 15
 ) {
   razzo::check_project_folder_name(project_folder_name)
   df0 <- razzo::collect_nltt_stats(project_folder_name)

@@ -5,11 +5,13 @@
 \alias{create_fig_1_file}
 \title{Save nllt figure}
 \usage{
-create_file_fig_1(project_folder_name = getwd())
+create_file_fig_1(project_folder_name = getwd(), bins = 15)
 }
 \arguments{
 \item{project_folder_name}{project folder name,
 will be the full path to \code{razzo_project}}
+
+\item{bins}{how many bins in the histograms?}
 }
 \value{
 the file name of the plot

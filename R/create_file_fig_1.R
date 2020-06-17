@@ -6,10 +6,14 @@
 #' @aliases create_file_fig_1 create_fig_1_file
 #' @export create_file_fig_1 create_fig_1_file
 create_file_fig_1 <- create_fig_1_file <- function(
-  project_folder_name = getwd()
+  project_folder_name = getwd(),
+  bins = 15
 ) {
 
-  fig_1 <- razzo::create_fig_1(project_folder_name)
+  fig_1 <- razzo::create_fig_1(
+    project_folder_name = project_folder_name,
+    bins = bins
+  )
 
   # save output
   results_folder <- razzo::get_results_path(project_folder_name)

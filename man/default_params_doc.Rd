@@ -11,6 +11,7 @@ default_params_doc(
   bd_mutation_rate,
   bd_tree,
   bd_tree_filename,
+  bins,
   brts,
   chain_length,
   clock_model,
@@ -85,6 +86,8 @@ from a BD tree}
 process}
 
 \item{bd_tree_filename}{name of the file that stores a BD twin tree}
+
+\item{bins}{how many bins in the histograms?}
 
 \item{brts}{set of branching times}
 
