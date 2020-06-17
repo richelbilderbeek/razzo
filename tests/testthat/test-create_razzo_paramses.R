@@ -1,5 +1,6 @@
 test_that("use", {
   if (!beastier::is_on_travis()) return()
+  skip("Too long")
   razzo_paramses <- razzo::create_razzo_paramses(
     project_folder_name = peregrine::get_pff_tempdir()
   )
@@ -11,6 +12,7 @@ test_that("use", {
 test_that("all filenames are Peregrine friendly", {
 
   if (!beastier::is_on_travis()) return()
+  skip("Too long")
 
   razzo_paramses <- razzo::create_razzo_paramses(
     project_folder_name = peregrine::get_pff_tempdir()

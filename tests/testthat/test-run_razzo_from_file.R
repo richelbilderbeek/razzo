@@ -3,6 +3,7 @@ context("test-run_razzo_from_file")
 test_that("use", {
 
   if (!beastier::is_on_travis()) return()
+  skip("Too long")
 
   parameters_filenames <- razzo::create_parameters_files(
     project_folder_name = file.path(
