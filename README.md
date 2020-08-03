@@ -21,8 +21,8 @@ The research project uses these GitHub repo's:
  * [razzo](https://github.com/richelbilderbeek/razzo): R code
  * [raztr](https://github.com/richelbilderbeek/raztr): `razzo` results of a test run
  * [razzo_project](https://github.com/richelbilderbeek/razzo_project): bash scripts to run and analyse an experiment
- * [razzo_article (private)](https://github.com/richelbilderbeek/razzo_article): scientific manuscript (private GitHub for now)
- * [razzo_pilot_results (private)](https://github.com/richelbilderbeek/razzo_pilot_results): results of the pilot runs
+ * [razzo_article](https://github.com/richelbilderbeek/razzo_article): scientific manuscript (private GitHub for now)
+ * [razzo_pilot_results](https://github.com/richelbilderbeek/razzo_pilot_results): results of the pilot runs
 
 ## Roadmap
 
@@ -52,6 +52,13 @@ Package                                         |[![Travis CI logo](pics/TravisC
 [mbd](https://github.com/Giappo/mbd)            |[![Build Status](https://travis-ci.org/Giappo/mbd.svg?branch=master)](https://travis-ci.org/Giappo/mbd)              |[![codecov.io](https://codecov.io/github/Giappo/mbd/coverage.svg?branch=master)](https://codecov.io/github/Giappo/mbd/branch/master)
 [tracerer](https://github.com/ropensci/tracerer)|[![Build Status](https://travis-ci.org/ropensci/tracerer.svg?branch=master)](https://travis-ci.org/ropensci/tracerer)|[![codecov.io](https://codecov.io/github/ropensci/tracerer/coverage.svg?branch=master)](https://codecov.io/github/ropensci/tracerer/branch/master)
 
+## Data
+
+Data                  |DOI
+----------------------|----------------------------------------------------------------------------------------------------------------
+razzo v1.0            |[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3970327.svg)](https://doi.org/10.5281/zenodo.3970327)
+razzo_article v1.0    |[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3969899.svg)](https://doi.org/10.5281/zenodo.3969899)
+razzo_project         |[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3969932.svg)](https://doi.org/10.5281/zenodo.3969932)
 
 ## Image attribution
 
