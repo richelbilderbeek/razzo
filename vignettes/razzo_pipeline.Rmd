@@ -253,7 +253,8 @@ knitr::kable(
         razzo_params$pir_params$experiments[[2]]$
           inference_model$mcmc$tracelog$filename)
     ),
-    sample_interval = razzo_params$pir_params$experiments[[2]]$inference_model$mcmc$store_every
+    sample_interval = razzo_params$pir_params$experiments[[2]]$
+      inference_model$mcmc$store_every
   )
 )
 ```
