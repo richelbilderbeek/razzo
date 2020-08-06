@@ -27,10 +27,11 @@ From
 
 To derive the MBD parameters
 
- * speciation rate $\lambda$ 
- * extinction rate $\mu$ 
+ * speciation rate $\lambda$
+ * extinction rate $\mu$
  * rate at which a co-occuring speciation event in triggered $\nu$
- * fraction of species that speciate during such a co-occurring speciation event $q$
+ * fraction of species that speciate 
+   during such a co-occurring speciation event $q$
 
 ## Overview
 
@@ -89,16 +90,17 @@ with the desired number of extant taxa $n$.
 n_extant_taxas <- c(60, 120, 240)
 ```
 
-These are values close to 50, 100, 200, 
-yet these play better with the next sections, 
+These are values close to 50, 100, 200,
+yet these play better with the next sections,
 in which the fractions of extinction $f_{\dagger}$ and
 MB-generated taxa $f_{\mathbb{M}}$ are chosen.
 
 ## 2. fraction of the taxa extinct
 
 We pick a desired strength of extinction.
-Instead of using an extinction rate, 
-we use a fraction of the taxa that went extinct before the reaching the present $f_{\dagger}$.
+Instead of using an extinction rate,
+we use a fraction of the taxa that went extinct 
+before the reaching the present $f_{\dagger}$.
 
 ```{r}
 f_exinctses <- c(0.0, 0.25, 0.5) # Gollumese plural
@@ -122,7 +124,7 @@ $$
 ```{r}
 df <- expand.grid(n_extant_taxa = n_extant_taxas, f_extinct = f_exinctses)
 df$n_taxa <- df$n_extant_taxa / (1.0 - df$f_extinct)
-df$n_extinct_taxa <- df$n_taxa - df$n_extant_taxa 
+df$n_extinct_taxa <- df$n_taxa - df$n_extant_taxa
 knitr::kable(head(df))
 ```
 
@@ -139,7 +141,7 @@ As we know the number of (extinct and extant) taxa $N$, we can calculate this:
 
 ```{r}
 df <- expand.grid(
-  n_extant_taxa = n_extant_taxas, 
+  n_extant_taxa = n_extant_taxas,
   f_extinct = f_exinctses,
   f_mb = f_mbs
 )
@@ -150,7 +152,7 @@ knitr::kable(head(df))
 
 ## 4. MB regimes: calculate $q$
 
-We pick a desired MB regime. 
+We pick a desired MB regime.
 There are three MB regimes, in which the co-occuring speciation events are:
 
 
@@ -158,7 +160,7 @@ There are three MB regimes, in which the co-occuring speciation events are:
  * some events of intermediate intensity
  * many events of modest intensity
 
-Starting from two lineages and $q = 1$, the number 
+Starting from two lineages and $q = 1$, the number
 of (extant and extinct) lineages $N$ will be
 
 $$
@@ -194,10 +196,10 @@ one needs at least `r min_n_events` events.
 We set the number of co-occurring speciation events, $n_{\nu}$, as:
 
 ```{r}
-n_nu_eventses <- c(min_n_events, min_n_events * 2, min_n_events * 4) # Gollumese plural
+n_nu_eventses <- c(min_n_events, min_n_events * 2, min_n_events * 4)
 ```
 
-Now we know the amount of taxa created by the MB process $N_{\mathbb{M}}$, 
+Now we know the amount of taxa created by the MB process $N_{\mathbb{M}}$,
 the number of nu events, and that we start with two taxa,
 we can calculate the intensity of an MB event $q$:
 
@@ -208,7 +210,8 @@ $$
 Because we start with two taxa, $N_{\mathbb{M}}$ can never become less than 2.
 
 In the current context, we known the number of MB taxa that must be
-generated $N_{\mathbb{M}}$ and the number of co-occurring speciation events $n_{\nu}$.
+generated $N_{\mathbb{M}}$ 
+and the number of co-occurring speciation events $n_{\nu}$.
 All we need to do is calculate $q$.
 
 This we can solve this analytically in Maxima:
@@ -243,7 +246,7 @@ calc_q <- function(n_nu_events, n_mb_taxa) {
   if (n_mb_taxa < 2) {
     return (0.0)
   }
-  
+
   q <- - ((2.0 ^ (1.0 / n_nu_events)) - (n_mb_taxa ^ (1.0 / n_nu_events))) /
   (2.0 ^ (1.0 / n_nu_events))
   testit::assert(q >= 0.0)
@@ -256,7 +259,7 @@ As we know the number of (extinct and extant) taxa $N$, we can calculate this:
 
 ```{r}
 df <- expand.grid(
-  n_extant_taxa = n_extant_taxas, 
+  n_extant_taxa = n_extant_taxas,
   f_extinct = f_exinctses,
   f_mb = f_mbs,
   n_nu_events = n_nu_eventses
@@ -271,7 +274,10 @@ Calculating the $q$s:
 calc_q(n_nu_events = 9, n_mb_taxa = 15)
 df$q <- NA
 for (i in seq_along(df$q)) {
-  df$q[i] <- calc_q(n_nu_events = df$n_nu_events[i], n_mb_taxa = df$n_mb_taxa[i])
+  df$q[i] <- calc_q(
+    n_nu_events = df$n_nu_events[i], 
+    n_mb_taxa = df$n_mb_taxa[i]
+  )
 }
 knitr::kable(head(df))
 ```
@@ -279,7 +285,7 @@ knitr::kable(head(df))
 Or display the $q$ as a tile plot:
 
 ```{r fig.width=7}
-ggplot(df) + 
+ggplot(df) +
   geom_tile(aes(as.factor(n_nu_events), as.factor(n_mb_taxa), fill = q)) +
   scale_fill_gradientn(colours = rainbow(100), limits = c(0.0, 1.0))
 ```
@@ -314,7 +320,7 @@ knitr::kable(head(df))
 
 ## 6. speciation rate $\lambda$
 
-The number of (extinct and extant) species $N_{\mathbb{B}}$ created is 
+The number of (extinct and extant) species $N_{\mathbb{B}}$ created is
 dependent on the initial number of lineages (which is two),
 the crown age $T$ and per-lineage speciation rate $\lambda$:
 
@@ -356,7 +362,10 @@ Calculate the $\lambda$s:
 ```{r}
 df$lambda <- NA
 for (i in seq_along(df$lambda)) {
-  df$lambda[i] <- calc_lambda(n_bd_taxa = df$n_bd_taxa[i], crown_age = crown_age)
+  df$lambda[i] <- calc_lambda(
+    n_bd_taxa = df$n_bd_taxa[i], 
+    crown_age = crown_age
+  )
 }
 knitr::kable(head(df))
 ```
@@ -364,7 +373,7 @@ knitr::kable(head(df))
 ## 7. number of extinct taxa
 
 The number of taxa gone extinct $N_{\dagger}$ has a simple
-ralationship to the total number of (extinct and extant) taxa $N$ 
+ralationship to the total number of (extinct and extant) taxa $N$
 and the extant taxa $N_{\star}$:
 
 $$
@@ -392,7 +401,7 @@ knitr::kable(
 
 ## 8. extinction rate $\mu$
 
-The number of extinct species $N_{\dagger}$ created is 
+The number of extinct species $N_{\dagger}$ created is
 dependent on the initial number of lineages (which is two),
 the crown age $T$ and per-lineage extinction rate $\mu$:
 
@@ -433,7 +442,10 @@ calc_mu <- function(n_extinct_taxa, crown_age) {
 ```{r}
 df$mu <- NA
 for (i in seq_along(df$mu)) {
-  df$mu[i] <- calc_mu(n_extinct_taxa = df$n_extinct_taxa[i], crown_age = crown_age)
+  df$mu[i] <- calc_mu(
+    n_extinct_taxa = df$n_extinct_taxa[i], 
+    crown_age = crown_age
+  )
 }
 
 knitr::kable(
@@ -461,7 +473,7 @@ $$
 Solving this for co-occuring speciation rate $\nu$:
 
 $$
-\nu = \frac{n_{\nu}}{T} 
+\nu = \frac{n_{\nu}}{T}
 $$
 
 ```{r}
@@ -491,17 +503,18 @@ From
 
 we derive the MBD parameters
 
- * speciation rate $\lambda$ 
- * extinction rate $\mu$ 
+ * speciation rate $\lambda$
+ * extinction rate $\mu$
  * rate at which a co-occuring speciation event in triggered $\nu$
- * fraction of species that speciate during such a co-occurring speciation event $q$
+ * fraction of species that speciate 
+   during such a co-occurring speciation event $q$
 
 ```{r}
 knitr::kable(
   dplyr::select(
-    df, 
+    df,
     c(
-      "n_extant_taxa", "f_extinct", "f_mb", "n_nu_events", 
+      "n_extant_taxa", "f_extinct", "f_mb", "n_nu_events",
       "lambda", "mu", "nu", "q"
     )
   )

@@ -19,9 +19,11 @@ nLTT|normalized lineages through time
 BD|Birth Death Model
 MBD|Multiple Birth Death Model
 
-This is the pipeline to follow for the Razzo project. 
+This is the pipeline to follow for the Razzo project.
 
-Our aim is to compare two nLTT distributions related to two tree posteriors: one descending from MBD alignments and another one from BD alignments. Both posteriors are generated using a BD prior in BEAST.
+Our aim is to compare two nLTT distributions related to two tree posteriors: 
+one descending from MBD alignments and another one from BD alignments. 
+Both posteriors are generated using a BD prior in BEAST2.
 
 ## Overview
 
@@ -48,7 +50,7 @@ library(razzo)
 We will work in this folder:
 
 ```{r create_working_folder}
-project_folder_name <- file.path(peregrine::get_pff_tempfile(), "razzo_project") 
+project_folder_name <- file.path(peregrine::get_pff_tempfile(), "razzo_project")
 ```
 
 ## Step 1: Create parameter files
@@ -106,7 +108,7 @@ bd_nltts <- utils::read.csv(bd_nltt_filenames[1])$x
 df <- data.frame(
   model = c(rep("MBD", length(mbd_nltts)), rep("BD", length(bd_nltts))),
   nltt = c(mbd_nltts, bd_nltts),
-  stringsAsFactors = TRUE  
+  stringsAsFactors = TRUE
 )
 
 plot <- ggplot(
@@ -219,7 +221,7 @@ knitr::kable(
   tracerer::calc_esses(
     tracerer::parse_beast_log(
       first_experiment$inference_model$mcmc$tracelog$filename
-    ), 
+    ),
     sample_interval = first_experiment$inference_model$mcmc$store_every
   )
 )
@@ -271,7 +273,7 @@ knitr::kable(
 ggplot(
   data = data.frame(nltt = utils::read.csv(mbd_nltt_filenames[1])$x),
   aes(x = nltt)
-) + geom_histogram(binwidth = 0.01) + 
+) + geom_histogram(binwidth = 0.01) +
   ggplot2::scale_x_continuous(limits = c(0.0, 1.0))
 ```
 
@@ -282,7 +284,7 @@ ggplot(
 ggplot(
   data = data.frame(nltt = utils::read.csv(bd_nltt_filenames[1])$x),
   aes(x = nltt)
-) + geom_histogram(binwidth = 0.01) + 
+) + geom_histogram(binwidth = 0.01) +
   ggplot2::scale_x_continuous(limits = c(0.0, 1.0))
 ```
 
