@@ -244,7 +244,7 @@ calc_q <- function(n_nu_events, n_mb_taxa) {
   # From the equation, zero MB taxa results in strange values for q.
   # Just use q == zero instead
   if (n_mb_taxa < 2) {
-    return (0.0)
+    return(0.0)
   }
 
   q <- - ((2.0 ^ (1.0 / n_nu_events)) - (n_mb_taxa ^ (1.0 / n_nu_events))) /
@@ -275,7 +275,7 @@ calc_q(n_nu_events = 9, n_mb_taxa = 15)
 df$q <- NA
 for (i in seq_along(df$q)) {
   df$q[i] <- calc_q(
-    n_nu_events = df$n_nu_events[i], 
+    n_nu_events = df$n_nu_events[i],
     n_mb_taxa = df$n_mb_taxa[i]
   )
 }
@@ -349,7 +349,7 @@ calc_lambda <- function(n_bd_taxa, crown_age) {
   # From the equation, zero BD taxa results in strange values for lambda.
   # Just use lambda == zero instead
   if (n_bd_taxa < 2) {
-    return (0.0)
+    return(0.0)
   }
   lambda <- log(n_bd_taxa / 2, base = crown_age)
   testit::assert(lambda >= 0.0)
@@ -363,7 +363,7 @@ Calculate the $\lambda$s:
 df$lambda <- NA
 for (i in seq_along(df$lambda)) {
   df$lambda[i] <- calc_lambda(
-    n_bd_taxa = df$n_bd_taxa[i], 
+    n_bd_taxa = df$n_bd_taxa[i],
     crown_age = crown_age
   )
 }
@@ -430,7 +430,7 @@ calc_mu <- function(n_extinct_taxa, crown_age) {
   # From the equation, zero extinct taxa results in strange values for mu.
   # Just use mu == zero instead
   if (n_extinct_taxa < 2) {
-    return (0.0)
+    return(0.0)
   }
   mu <- log(n_extinct_taxa / 2, base = crown_age)
   testit::assert(mu >= 0.0)
@@ -443,7 +443,7 @@ calc_mu <- function(n_extinct_taxa, crown_age) {
 df$mu <- NA
 for (i in seq_along(df$mu)) {
   df$mu[i] <- calc_mu(
-    n_extinct_taxa = df$n_extinct_taxa[i], 
+    n_extinct_taxa = df$n_extinct_taxa[i],
     crown_age = crown_age
   )
 }

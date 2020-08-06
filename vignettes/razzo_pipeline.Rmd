@@ -27,20 +27,6 @@ Both posteriors are generated using a BD prior in BEAST2.
 
 ## Overview
 
-Update our dependencies:
-
-```{r message=FALSE, install_dependencies}
-if (1 == 2) {
-  if (!require(ape)) {install.packages("ape")}
-  if (!require(mbd)) {devtools::install_github("Giappo/mbd", quiet = TRUE)}
-  devtools::install_github("ropensci/mauricer", quiet = TRUE)
-  devtools::install_github("ropensci/babette", quiet = TRUE)
-  devtools::install_github("richelbilderbeek/mcbette", quiet = TRUE)
-  devtools::install_github("richelbilderbeek/pirouette", quiet = TRUE)
-  devtools::install_github("richelbilderbeek/peregrine", quiet = TRUE)
-}
-```
-
 Load the libraries needed:
 
 ```{r load_libraries}
@@ -198,7 +184,8 @@ image(
 ```{r eval=FALSE}
 babette::plot_densitree(
   tracerer::parse_beast_trees(
-    razzo_params$pir_params$experiments[[1]]$inference_model$mcmc$treelog$filename
+    razzo_params$pir_params$experiments[[1]]$
+      inference_model$mcmc$treelog$filename
   )
 )
 ```
@@ -208,7 +195,8 @@ babette::plot_densitree(
 ```{r eval=FALSE}
 babette::plot_densitree(
   tracerer::parse_beast_trees(
-    razzo_params$pir_params$experiments[[2]]$inference_model$mcmc$treelog$filename
+    razzo_params$pir_params$experiments[[2]]$
+      inference_model$mcmc$treelog$filename
   )
 )
 ```
@@ -234,7 +222,8 @@ knitr::kable(
 babette::plot_densitree(
   tracerer::parse_beast_trees(
     pirouette::to_twin_filename(
-      razzo_params$pir_params$experiments[[1]]$inference_model$mcmc$treelog$filename
+      razzo_params$pir_params$experiments[[1]]$
+        inference_model$mcmc$treelog$filename
     )
   )
 )
@@ -246,7 +235,8 @@ babette::plot_densitree(
 babette::plot_densitree(
   tracerer::parse_beast_trees(
     pirouette::to_twin_filename(
-      razzo_params$pir_params$experiments[[2]]$inference_model$mcmc$treelog$filename
+      razzo_params$pir_params$experiments[[2]]$
+        inference_model$mcmc$treelog$filename
     )
   )
 )
@@ -260,7 +250,8 @@ knitr::kable(
   tracerer::calc_esses(
     tracerer::parse_beast_log(
       pirouette::to_twin_filename(
-        razzo_params$pir_params$experiments[[2]]$inference_model$mcmc$tracelog$filename)
+        razzo_params$pir_params$experiments[[2]]$
+          inference_model$mcmc$tracelog$filename)
     ),
     sample_interval = razzo_params$pir_params$experiments[[2]]$inference_model$mcmc$store_every
   )
