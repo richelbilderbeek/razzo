@@ -16,12 +16,7 @@ a list of \code{mbd_params}
 Each element has a unique MBD parameter combination
 }
 \examples{
-library(testthat)
-
-mbd_paramses <- create_mbd_paramses()
-for (mbd_params in mbd_paramses) {
-  expect_silent(check_mbd_params(mbd_params))
-}
+create_mbd_paramses()
 }
 \seealso{
 use \link{create_mbd_params} to create one

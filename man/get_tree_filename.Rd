@@ -15,16 +15,8 @@ get_tree_filename(folder_name, tree_type)
 Get tree filename
 }
 \examples{
-library(testthat)
-
-expect_equal(
-  get_tree_filename(folder_name = "", tree_type = "true"),
-  "/mbd.tree"
-)
-expect_equal(
-  get_tree_filename(folder_name = "", tree_type = "twin"),
-  "/mbd_twin.tree"
-)
+get_tree_filename(folder_name = "", tree_type = "true")
+get_tree_filename(folder_name = "", tree_type = "twin")
 }
 \author{
 Giovanni Laudanno, Richèl J.C. Bilderbeek

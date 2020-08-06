@@ -3,11 +3,8 @@
 #' @param df a data frame
 #' @author Richèl J.C. Bilderbeek
 #' @examples
-#' library(testthat)
-#'
 #' df <- data.frame(my_name = 3.14)
-#' expect_silent(check_traces_in_df("my_name", df))
-#' expect_error(check_traces_in_df("absent", df))
+#' check_traces_in_df("my_name", df)
 #' @export
 check_traces_in_df <- function(traces_names, df) {
   if (!all(traces_names %in% names(df))) {

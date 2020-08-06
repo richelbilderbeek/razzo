@@ -13,14 +13,7 @@ clean_path(filename)
 Clean up a path by removing double folder seperators
 }
 \examples{
-library(testthat)
-
- if (rappdirs::app_dir()$os != "win") {
-   expect_equal(clean_path("a//b"), "a/b")
- }
- expect_error(clean_path(NULL))
- expect_error(clean_path(NA))
- expect_error(clean_path(Inf))
+clean_path("a//b")
 }
 \author{
 Richèl J.C. Bilderbeek

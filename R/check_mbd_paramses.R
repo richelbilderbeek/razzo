@@ -3,10 +3,7 @@
 #' For example, each element should have a unique MBD parameter setting
 #' @inheritParams default_params_doc
 #' @examples
-#' library(testthat)
-#'
-#' mbd_paramses <- create_mbd_paramses()
-#' expect_silent(check_mbd_paramses(mbd_paramses))
+#' check_mbd_paramses(create_mbd_paramses())
 #' @author Richèl J.C. Bilderbeek
 #' @export
 check_mbd_paramses <- function(mbd_paramses) {

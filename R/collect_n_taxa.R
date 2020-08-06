@@ -8,17 +8,11 @@
 #' @return a dataframe with folder and taxa number for each phylogeny
 #' @author Giovanni Laudanno, Richèl J.C. Bilderbeek
 #' @examples
-#' library(testthat)
 #' library(raztr)
 #'
-#' df <- collect_n_taxa(
+#' collect_n_taxa(
 #'   project_folder_name = get_raztr_path("razzo_project")
 #' )
-#'
-#' expect_true("folder" %in% names(df))
-#' expect_true("n_taxa" %in% names(df))
-#' expect_true(is.character(df$folder))
-#' expect_true(is.numeric(df$n_taxa))
 #' @export
 collect_n_taxa <- function(
   project_folder_name = getwd()

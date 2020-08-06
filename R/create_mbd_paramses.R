@@ -7,12 +7,7 @@
 #'   MBD parameter combination
 #' @author Richèl J.C. Bilderbeek
 #' @examples
-#' library(testthat)
-#'
-#' mbd_paramses <- create_mbd_paramses()
-#' for (mbd_params in mbd_paramses) {
-#'   expect_silent(check_mbd_params(mbd_params))
-#' }
+#' create_mbd_paramses()
 #' @export
 create_mbd_paramses <- function(
   n_replicates = get_razzo_n_replicates()

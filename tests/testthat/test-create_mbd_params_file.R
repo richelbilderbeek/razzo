@@ -33,10 +33,6 @@ test_that("use", {
   # From here: same tests as used in 'collect_mbd_params':
   #
   df <- utils::read.csv(file = filename)
-<<<<<<< HEAD
-
-=======
->>>>>>> develop
 
   # Use relative folder path as the primary key
   #

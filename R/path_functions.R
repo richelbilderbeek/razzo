@@ -2,14 +2,7 @@
 #' @param filename name of a file
 #' @author Richèl J.C. Bilderbeek
 #' @examples
-#' library(testthat)
-#'
-#'  if (rappdirs::app_dir()$os != "win") {
-#'    expect_equal(clean_path("a//b"), "a/b")
-#'  }
-#'  expect_error(clean_path(NULL))
-#'  expect_error(clean_path(NA))
-#'  expect_error(clean_path(Inf))
+#' clean_path("a//b")
 #' @export
 clean_path <- function(filename) {
   assertive::assert_is_a_string(filename)
@@ -20,20 +13,7 @@ clean_path <- function(filename) {
 #' @param filenames names of files
 #' @author Richèl J.C. Bilderbeek
 #' @examples
-#' library(testthat)
-#' if (rappdirs::app_dir()$os != "win") {
-#'   expect_equal(
-#'     razzo::clean_paths(c("a//b")),
-#'     c("a/b")
-#'   )
-#'   expect_equal(
-#'     razzo::clean_paths(c("a//b", "c//d")),
-#'     c("a/b", "c/d")
-#'   )
-#' }
-#' expect_error(razzo::clean_paths(NULL))
-#' expect_error(razzo::clean_paths(NA))
-#' expect_error(razzo::clean_paths(Inf))
+#' clean_paths(c("a//b", "c//d"))
 #' @export
 clean_paths <- function(filenames) {
   assertive::assert_is_not_null(filenames)
@@ -70,14 +50,7 @@ get_results_path <- function(
 #' @param full_names TRUE if you want to return the full path
 #' @return the folder paths of all \code{razzo} experiments
 #' @examples
-#' library(testthat)
-#'
-#' # Obtain the paths of all razzo testing folders
-#' all_paths <- get_data_paths(raztr::get_raztr_path("razzo_project"))
-#'
-#' # In each of these, there is a 'parameters.RDa' file
-#' parameter_files <- file.path(all_paths, "parameters.RDa")
-#' expect_true(all(file.exists(parameter_files)))
+#' get_data_paths(raztr::get_raztr_path("razzo_project"))
 #' @author Giovanni Laudanno, Richèl J.C. Bilderbeek
 #' @export
 get_data_paths <- function(

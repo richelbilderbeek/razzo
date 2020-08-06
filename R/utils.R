@@ -62,11 +62,7 @@ open_parameters_file <- function(
 #' @return the generative models
 #' @author Giovanni Laudanno, Richèl J.C. Bilderbeek
 #' @examples
-#' library(testthat)
-#'
-#' expect_true("bd" %in% get_gen_models())
-#' expect_true("mbd" %in% get_gen_models())
-#' expect_false("Jensen Ackles" %in% get_gen_models())
+#' get_gen_models()
 #' @export
 get_gen_models <- function() {
   c("bd", "mbd")

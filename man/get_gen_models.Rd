@@ -13,11 +13,7 @@ the generative models
 Get the names of the supported generative models
 }
 \examples{
-library(testthat)
-
-expect_true("bd" \%in\% get_gen_models())
-expect_true("mbd" \%in\% get_gen_models())
-expect_false("Jensen Ackles" \%in\% get_gen_models())
+get_gen_models()
 }
 \author{
 Giovanni Laudanno, Richèl J.C. Bilderbeek

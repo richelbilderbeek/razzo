@@ -22,17 +22,11 @@ of taxa from the resulting files. In practice, this number is extracted
 from all files named \code{mbd.tree} or \code{pbd.newick}.
 }
 \examples{
-library(testthat)
 library(raztr)
 
-df <- collect_n_taxa(
+collect_n_taxa(
   project_folder_name = get_raztr_path("razzo_project")
 )
-
-expect_true("folder" \%in\% names(df))
-expect_true("n_taxa" \%in\% names(df))
-expect_true(is.character(df$folder))
-expect_true(is.numeric(df$n_taxa))
 }
 \author{
 Giovanni Laudanno, Richèl J.C. Bilderbeek

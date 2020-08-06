@@ -15,10 +15,7 @@ this data frame will hold 10 rows, each with different seeds}
 For example, each element should have a unique MBD parameter setting
 }
 \examples{
-library(testthat)
-
-mbd_paramses <- create_mbd_paramses()
-expect_silent(check_mbd_paramses(mbd_paramses))
+check_mbd_paramses(create_mbd_paramses())
 }
 \author{
 Richèl J.C. Bilderbeek

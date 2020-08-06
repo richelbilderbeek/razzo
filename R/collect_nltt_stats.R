@@ -4,30 +4,13 @@
 #' @return a dataframe with parameters and nltt statistics
 #' @author Giovanni Laudanno, Richèl J.C. Bilderbeek
 #' @examples
-#' library(testthat)
 #' library(raztr)
 #'
 #' # Collect the nLTT statistics from the data supplied with this package
 #' project_folder_name <- get_raztr_path("razzo_project")
-#' df <- collect_nltt_stats(
+#' collect_nltt_stats(
 #'   project_folder_name = project_folder_name
 #' )
-#'
-#' expect_true("folder" %in% names(df))
-#' expect_true("tree" %in% names(df))
-#' expect_true("best_or_gen" %in% names(df))
-#' expect_true("nltt_1" %in% names(df))
-#' expect_true("nltt_2" %in% names(df))
-#'
-#' # Data is tidy
-#' expect_true(is.factor(df$tree))
-#' expect_true(is.factor(df$best_or_gen))
-#'
-#' # Data makes sense
-#' expect_true(all(file.exists(file.path(project_folder_name, df$folder))))
-#' expect_true(all(df$tree %in% c("true", "twin")))
-#' expect_true(all(df$best_or_gen %in% c("best", "gen")))
-#' expect_true(all(df$nltt_1 >= 0.0))
 #' @export
 collect_nltt_stats <- function(
   project_folder_name = getwd()
