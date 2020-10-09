@@ -20,7 +20,7 @@
 #SBATCH --output=1_install_razzo.log
 module load R
 Rscript -e 'devtools::install_github("thijsjanzen/nLTT")'
-Rscript -e 'devtools::install_github("richelbilderbeek/mcbette")'
+Rscript -e 'devtools::install_github("ropensci/mcbette")'
 Rscript -e 'devtools::install_github("richelbilderbeek/pirouette", ref = "richel", dependencies = TRUE)'
 Rscript -e 'devtools::install_github("Giappo/mbd")'
 Rscript -e 'devtools::install_github("richelbilderbeek/becosys")'

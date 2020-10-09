@@ -3,7 +3,7 @@
 #' @export
 update_razzo <- function() {
   babette::update_babette()
-  repo_names <- c("richelbilderbeek/mcbette", "richelbilderbeek/pirouette")
+  repo_names <- c("ropensci/mcbette", "richelbilderbeek/pirouette")
   for (repo_name in repo_names) {
     remotes::install_github(
       repo_name,
