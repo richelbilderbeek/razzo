@@ -3,7 +3,6 @@ dist: bionic
 cache: packages
 
 r_github_packages:
-  - ropensci/beautier
   - ropensci/tracerer
   - ropensci/beastier
   - ropensci/mauricer
