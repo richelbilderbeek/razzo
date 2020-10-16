@@ -1,6 +1,6 @@
-context("test-collect_nltt_stats")
-
 test_that("use", {
+  # Works locally
+  if (beastier::is_on_travis()) return()
 
   df <- collect_nltt_stats(
     project_folder_name = raztr::get_raztr_path("razzo_project")

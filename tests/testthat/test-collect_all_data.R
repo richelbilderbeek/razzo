@@ -1,4 +1,6 @@
 test_that("use", {
+  # Works locally
+  if (beastier::is_on_travis()) return()
 
   project_folder_name <- raztr::get_raztr_path("razzo_project")
   expect_true(dir.exists(project_folder_name))
