@@ -1,8 +1,10 @@
 test_that("use", {
 
+  project_folder_name <- raztr::get_raztr_path("razzo_project")
+  expect_true(dir.exists(project_folder_name))
+
   df <- razzo::collect_all_data(
-    project_folder_name = dirname(dirname(system.file("extdata", "mbd.fasta", package = "razzo"))), # nolint long path indeed, fine for test
-    # project_folder_name = raztr::get_raztr_path("razzo_project"), # nolint
+    project_folder_name = project_folder_name,
     new_run = TRUE
   )
 
