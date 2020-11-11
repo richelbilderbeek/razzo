@@ -16,7 +16,7 @@ sim_phylo <- function(n_taxa, crown_age) {
     n_tips <- ape::Ntip(phylo)
     if (n_tips > n_taxa) speciation_rate <- speciation_rate / 1.01
     if (n_tips < n_taxa) speciation_rate <- speciation_rate * 1.01
-    print(n_tips)
+    message(n_tips)
   }
   phylo
 }

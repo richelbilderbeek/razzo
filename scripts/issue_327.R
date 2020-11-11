@@ -55,7 +55,7 @@ expect_equal(
 df <- NULL
 
 for (i in seq_along(mbd_params_filenames)) {
-  print(i)
+  message(i)
   mbd_params_filename <- mbd_params_filenames[i]
   esses_filename <- esses_filenames[i]
 
