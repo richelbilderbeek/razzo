@@ -1,11 +1,9 @@
 language: r
-dist: bionic
 cache: packages
 
 r_github_packages:
   - ropensci/tracerer
   - ropensci/babette
-  - ropensci/mcbette
   - jimhester/covr
   - ropensci/spelling
 
