@@ -58,8 +58,8 @@ collect_all_data <- function(
   nltt_stats <- as.data.frame(utils::read.csv(file)[, -1])
 
   # merge all
-  df1 <- merge(esses, mbd_params, by = "folder"); dim(df1); colnames(df1)
-  df2 <- merge(df1, n_mb_species, by = "folder"); dim(df2); colnames(df2)
+  df1 <- merge(esses, mbd_params, by = "folder")
+  df2 <- merge(df1, n_mb_species, by = "folder")
   df2$folder_tree <- interaction(df2$folder, df2$tree)
   n_mutations$folder_tree <- interaction(n_mutations$folder, n_mutations$tree)
 
