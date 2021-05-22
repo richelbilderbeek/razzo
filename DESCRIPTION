@@ -38,7 +38,7 @@ Suggests:
     dplyr,
     knitr,
     lintr,
-    mauricer (>= 2.0.5),
+    mauricer (>= 2.5),
     mcbette (>= 1.8),
     nLTT (>= 1.4.3),
     nodeSub (>= 0.4.2),
