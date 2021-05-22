@@ -13,7 +13,6 @@ Description: The MBD (Multiple-Birth-Death) model is a model in which
     when we are only using contemporary priors.
 License: GPL-3
 Encoding: UTF-8
-LazyData: true
 RoxygenNote: 7.1.1
 Depends: 
     beastier (>= 2.1.1),
