@@ -91,8 +91,7 @@ ggplot(df, aes(x = tree, y = marg_log_lik, col = inference_model)) +
     subtitle = paste0("Do twin models really prefer the true model of ", twin_generative_model_name, "?"),
     caption = "Error bars denote standard deviation in estimation",
     y = "Marginal log likelihood (higher means the likelier model)"
-  ) +
-  ggsave("~/issue_242.png", width = 10, height = 10)
+  ); ggsave("~/issue_242.png", width = 10, height = 10)
 
 
 
@@ -124,8 +123,7 @@ ggplot(data = df, aes(x = marg_liks)) + geom_histogram(binwidth = 10) +
   ggplot2::facet_grid(date ~ .) +
   ggplot2::geom_vline(data = ddply(df, "date", summarize, median_marg_liks = median(marg_liks)), aes(xintercept = median_marg_liks), col = "red") +
   ggplot2::geom_vline(data = ddply(df, "date", summarize, mean_marg_liks = mean(marg_liks)), aes(xintercept = mean_marg_liks), col = "blue") +
-  ggtitle("marg_liks per date, median = red, mean = blue") +
-  ggsave("~/issue_260.png", width = 7, height = 7)
+  ggtitle("marg_liks per date, median = red, mean = blue"); ggsave("~/issue_260.png", width = 7, height = 7)
 
 
 # As a table

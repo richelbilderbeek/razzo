@@ -67,5 +67,4 @@ ggplot(df, aes(f_mutations_per_taxon)) +
   labs(
     title("Fraction of mutation per taxon for different mutation rates"),
     caption = paste("Crown age", max(ape::branching.times(phylogeny)), "Issue 299")
-  ) +
-  ggsave("~/issue_299.png", width = 7, height = 14)
+  ); ggsave("~/issue_299.png", width = 7, height = 14)

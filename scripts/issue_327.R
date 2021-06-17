@@ -89,6 +89,5 @@ ggplot(df, aes(x = nu, y = ess_likelihood, color = as.factor(q))) +
   geom_point() +
   geom_smooth(method = "lm") +
   geom_hline(yintercept = mean(df[ df$q == 0.0,  ]$ess_likelihood), col = "red") +
-  ggtitle("horizontal line is mean for q == 0.0") +
-  ggsave("~/issue_327.png")
+  ggtitle("horizontal line is mean for q == 0.0"); ggsave("~/issue_327.png")
 

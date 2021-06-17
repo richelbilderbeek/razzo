@@ -54,8 +54,7 @@ ggplot(data = df, aes(x = n_taxa)) + geom_histogram(binwidth = 10) +
   ggplot2::facet_grid(date ~ .) +
   ggplot2::geom_vline(data = ddply(df, "date", summarize, median_n_taxa = median(n_taxa)), aes(xintercept = median_n_taxa), col = "red") +
   ggplot2::geom_vline(data = ddply(df, "date", summarize, mean_n_taxa = mean(n_taxa)), aes(xintercept = mean_n_taxa), col = "blue") +
-  ggtitle("n_taxa per date, median = red, mean = blue") +
-  ggsave("~/issue_260.png", width = 7, height = 7)
+  ggtitle("n_taxa per date, median = red, mean = blue"); ggsave("~/issue_260.png", width = 7, height = 7)
 
 
 # As a table
