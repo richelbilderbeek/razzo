@@ -48,7 +48,7 @@ Filename                 |Description
 `mbd_nltts_gen_twin.csv` |the error between twin tree and its posterior for the generative model
 `mbd_nltts_best_twin.csv`|the error between twin tree and its posterior for the best candidate model
 
-See [a razzo_project build log](https://travis-ci.org/richelbilderbeek/razzo_project/jobs/457099656#L1789)
+See [a razzo_project build log](https://travis-ci.com/richelbilderbeek/razzo_project/jobs/457099656#L1789)
 to see such a `data` folder.
 
 ### The `results` folder
@@ -63,7 +63,7 @@ Filename|Description|Created by
 `figure_1.png`|figure 1|`create_fig_1_file`
 `figure_2.png`|figure 2|`create_fig_2_file`
 
-See [a razzo_project build log](https://travis-ci.org/richelbilderbeek/razzo_project/builds/458324105#L2074)
+See [a razzo_project build log](https://travis-ci.com/richelbilderbeek/razzo_project/builds/458324105#L2074)
 to see such a `results` folder.
 
 ## Function overview
